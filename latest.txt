@@ -1,5 +1,5 @@
 0.7.20
 https://sourceforge.net/projects/sabnzbdplus/files/sabnzbdplus/0.7.20/
-0.8.0Beta3
-https://sourceforge.net/projects/sabnzbdplus/files/sabnzbdplus-beta/0.8.0Beta3/
+0.8.0Beta4
+https://sourceforge.net/projects/sabnzbdplus/files/sabnzbdplus-beta/0.8.0Beta4/
 
