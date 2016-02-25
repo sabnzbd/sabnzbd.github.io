@@ -1,4 +1,4 @@
 0.7.20
 https://sourceforge.net/projects/sabnzbdplus/files/sabnzbdplus/0.7.20/
-1.0.0RC1
-https://github.com/sabnzbd/sabnzbd/releases/tag/1.0.0RC1/
+1.0.0RC2
+https://github.com/sabnzbd/sabnzbd/releases/tag/1.0.0RC2/
