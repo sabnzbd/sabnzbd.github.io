@@ -1,2 +1,4 @@
 1.0.0
 https://github.com/sabnzbd/sabnzbd/releases/tag/1.0.0/
+1.0.1RC1
+https://github.com/sabnzbd/sabnzbd/releases/tag/1.0.0RC1/
