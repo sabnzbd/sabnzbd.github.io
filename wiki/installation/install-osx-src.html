@@ -1,0 +1,69 @@
+---
+title: Install SABnzbd for OSX
+---
+
+
+<h1 id="toc0"><span>The official App</span></h1>
+<p>If you just want to use SABnzbd, we provide a packaged application (for PPC/x86) available  <a href="https://github.com/sabnzbd/sabnzbd/releases">here</a>.</p>
+<img src="http://sabnzbd.wdfiles.com/local--files/howto-osx-src/sabnzbd-dmg.png" alt="sabnzbd-dmg.png" class="image">
+<p>Pick the right folder for your OSX version and drag SABnzbd to the Applications folder.</p>
+<h1 id="toc1"><span>How to run from sources on OSX</span></h1>
+<p>If for some reason you don't want to use the app, you can install from source.</p>
+<p>For OSX 10.4 you needed to install Python first. OSX 10.5 and above already has it installed</p>
+<p>Download &amp; Install:<br>
+    <a href="http://developer.apple.com/tools/download/" target="_blank">GCC compiler from the XCode installer</a>. This is also on your OS X install DVD.
+</p>
+<p>Install these packages (clicking will start download).</p>
+<p><a href="http://sourceforge.net/project/showfiles.php?group_id=28961&amp;package_id=20864&amp;release_id=554622" target="_blank">Cheetah-2.0.1</a><br>
+    <a href="http://sabnzbd.sourceforge.net/yenc-0.3.tar.gz" target="_blank">yenc-0.3</a>
+</p>
+<p>Extract the above four archives and open terminal.app.<br>
+    Change directory to the Cheetah-2.0.1 folder that you've extracted.<br>
+    If the folder is on your desktop then type
+</p>
+<div class="code">
+    <pre><code>cd ~/Desktop/Cheetah-2.0.1/
+python setup.py install</code>
+</pre>
+</div>
+<p>Repeat for the other three packages</p>
+<p>Finally, download the <a href="/downloads">source code</a>, unpack into any folder (e.g. ~/SABnzbd).<br>
+    Don't compile or anything, just run from source:
+</p>
+<div class="code">
+    <pre><code>cd SABnzbd/
+./SABnzbd.py</code>
+</pre>
+</div>
+<p>Your default web browser should now start and show the user interface of SABnzbd.<br>
+    Changes to the active template do not require a SABnzbd restart.
+</p>
+<h2 id="toc2"><span>Running from Terminal<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup></span></h2>
+<p>Since the "-d" option of SABnzbd+ is not working under Leopard, we need to create a daemon environment. This can easily be done by running the command in <em>screen</em>. This also adds running at a low priority so that it willl affect system performance less. The final command looks like this (provided that SABnzbd+ is still on your desktop):</p>
+<div class="code">
+    <pre><code>cd SABnzbd/
+/usr/bin/screen -m -d /usr/bin/nice -n 20 ~/SABnzbd/SABnzbd.py -b 0</code>
+</pre>
+</div>
+<p>Explanation:</p>
+<ul>
+    <li>screen -m -d: starts the command in a detached screen.</li>
+    <li>nice -n 20: starts the command with the lowest processor priority.</li>
+    <li>SABnzbd.py -b 0: starts the SABnzbd+ without autostarting your browser.</li>
+</ul>
+<p>Start SABnzbd+ at boottime<br>
+    Run this script in crontab periodically, so that SABnzb+ is started at boottime and will be kept running.
+</p>
+<div class="code">
+    <pre><code>#!/bin/bash
+active=$(/bin/ps aux | grep -v grep | grep SABnzbd.py)
+if [ "$active" = "" ]
+then
+    /usr/bin/screen -m -d /usr/bin/nice -n 20 ~/SABnzbd/SABnzbd.py -b 0
+fi</code>
+</pre>
+</div>
+<div class="footnotes-footer">
+    <div class="title">Footnotes</div>
+    <div class="footnote-footer" id="footnote-1">1. This part has been contributed by [<a href="http://iwonder.be/index.php/2008/05/run-sabnzbd-in-daemon-mode-on-leopard/" target="_blank">http://iwonder.be/index.php/2008/05/run-sabnzbd-in-daemon-mode-on-leopard/</a>]</div>
+</div>

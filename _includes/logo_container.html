@@ -1,0 +1,22 @@
+<div class="container logo-text-pages">
+    <div class="row">
+        <div class="col-sm-3">
+            <img src="/images/logo-full.svg">
+        </div>
+        <div class="col-sm-9">
+            <h1>
+                {% if page.section == "Wiki" %}
+                    <button class="navbar-wiki-button btn btn-default collapsed" type="button" data-toggle="collapse" data-target="#wiki-side-bar">
+                        Wiki menu <span class="caret"></span>
+                    </button>
+                {% endif %}
+                
+                {% if page.section %}
+                    {{ page.section }}
+                {% else %}
+                    {{ page.title }}
+                {% endif %}
+            </h1>
+        </div>
+    </div>
+</div>

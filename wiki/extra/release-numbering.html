@@ -1,0 +1,35 @@
+---
+title: Release Numbering
+---
+<p>We use a three group release number.</p>
+<p>Major.minor.bugfix</p>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td>Major</td>
+            <td>A major breaking release. May not be compatible with your current release and may require things like rebuilding your queue. Going back to a previous release is not straightforward.</td>
+        </tr>
+        <tr>
+            <td>Minor</td>
+            <td>We added new features. The upgrade will try to preserve your current queue. You may need to review your configuration. Going back should be no problem.</td>
+        </tr>
+        <tr>
+            <td>Bugfix</td>
+            <td>We fixed some bugs. Upgrade is trivial. So is going back to an older release (should we have fixed bugs incorrectly or inadvertently added new bugs.</td>
+        </tr>
+    </tbody>
+</table>
+<p>0.7.20 —&gt; 1.0.0<br>
+    We added lots of features.<br>
+    You need to rebuild your queue.<br>
+    You need to review your configuration.
+</p>
+<p>1.0.0 —&gt; 1.0.1<br>
+    We fixed one or more bugs.<br>
+    Just install the new release over the old one and continue.<br>
+    Downgrade: just install 1.0.0 over 1.0.1
+</p>
+<p>1.0.1 —&gt; 1.1.0<br>
+    We added some features.<br>
+    Please review the release notes for potential upgrade issues.
+</p>

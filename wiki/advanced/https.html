@@ -1,0 +1,48 @@
+---
+title: Webserver using HTTPS
+---
+<p>Please note you might not be able to operate SABnzbd from behind a Apache of LightTpd server when using HTTPS<br>
+    <strong>Requires: pyopenssl (listed as python-openssl under apt-get)</strong>
+</p>
+<p>To make the communication between SABnzbd and your web browser private, you can enable HTTPS (secured HTTP). The purpose of a certificate is two-fold; one is to give you encrypted communication, the other is to authenticate the server. The certificate authority guarantees that you are actually talking to the website of your bank or similar service. Web browsers are very fussy about the authentication part, and by default will complain unless you buy your own certificate.</p>
+<p>By default SABnzbd will create self signed certificates for you to use. These however will give browser warnings when you try to connect however it is usually easy to make an exception for these certificates.</p>
+<p>The default key and certs are located inside your admin folder of the folder where your sabnzbd.ini is. For example:</p>
+<div class="code">
+    <pre><code>Windows:
+%localappdata%/sabnzbd/admin/server.cert
+%localappdata%/sabnzbd/admin/server.key
+Linux:
+~/.sabnzbd/admin/server.cert
+~/.sabnzbd/admin/server.key</code>
+</pre>
+</div>
+<br>
+You can change the location of these files by entering the full path to both in config&gt;general (or https_cert and https_key in the ini)
+<p>If you want trouble-free communication you need to buy a certificate from one of the many Certificate Authorities, for example from Verisign.<br>
+    Be warned that certificates come with different capabilities and hence, different prices. You probably only need a basic certificate, but even these are expensive not worth the price for just accessing SABnzbd.
+</p>
+<p>To turn on access using HTTPS, you need enable https and specify what port to listen on, this can be done using the web-ui, or at commandline using the —https command<br>
+    Usage:
+</p>
+<div class="code">
+    <pre><code>--https &lt;port&gt;</code>
+</pre>
+</div>
+<p>This will listen on the same host as specified in -s host:port, and also enable https. Please make sure the port is different from the one that is set for normal http access.</p>
+<p>You will then be able to access sabnzbd like so:</p>
+<div class="code">
+    <pre><code><a class="vglnk" href="https://host:sslport/" rel="nofollow"><span>https</span><span>://</span><span>host</span><span>:</span><span>sslport</span><span>/</span></a></code>
+</pre>
+</div>
+<p>If you expose SABnzbd to the Internet you can use 443 as port number, as this is the official number for HTTPS and allows you to not specify the port when accessing. Please note using a port number below 1024 requires running as root under linux.</p>
+<h2>Creating a valid certificate using Let’s Encrypt</h2>
+<p>If you run SABnzbd behind an Apache proxy, you can create free valid certificates using Let's Encrypt.<br> <a href="https://forums.sabnzbd.org/viewtopic.php?f=1&t=19684">A guide is available on the forums.</a></p>
+<h2 id="toc0"><span>Create a self-signed certificate with OpenSSL.</span></h2>
+<p>From a command prompt type:</p>
+<div class="code">
+    <pre><code>openssl genrsa 1024 &gt; host.key
+openssl req -new -x509 -nodes -sha1 -days 365 -key host.key &gt; host.cert</code>
+</pre>
+
+
+</div>

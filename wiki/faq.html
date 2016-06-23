@@ -1,0 +1,386 @@
+---
+title: FAQ
+---
+
+<ul class="toc-list">
+    <li>
+        <a href="#toc0">About SABnzbd</a>
+        <ul>
+            <li><a href="#toc1">What is SABnzbd?</a></li>
+            <li><a href="#toc2">Why should I use SABnzbd over other programs such as Grabit?</a></li>
+            <li><a href="#toc3">What do I need to get started with using SABnzbd?</a></li>
+            <li><a href="#toc4">Which versions of Python are supported?</a></li>
+            <li><a href="#toc5">Can SABnzbd run on NAS / Android / operating system XYZ / … ?</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#toc6">Troubleshooting SABnzbd</a>
+        <ul>
+            <li><a href="#toc7">Beware of Firewalls and Virus scanners</a></li>
+            <li><a href="#toc8">I just upgraded from 0.4, where did my queue and history go?!!?</a></li>
+            <li><a href="#toc9">SABnzbd won't start!</a></li>
+            <li><a href="#toc10">I'm using Opera! Why doesn't it work?</a></li>
+            <li><a href="#toc11">SABnzbd says "Out of your server's retention?". What does that mean?</a></li>
+            <li><a href="#toc12">SABnzbd shows a very slow download speed, with a extremely high ETA, but is progressing quite fast through the post, and then fails.</a></li>
+            <li><a href="#toc13">SABnzbd is stuck repairing a file, how do I fix it?</a></li>
+            <li><a href="#toc14">An NZB just failed post-processing, how do I re-process it?</a></li>
+            <li><a href="#toc15">An NZB died halfway through downloading. Do I really have to re-download all 600 gigs?</a></li>
+            <li><a href="#toc16">What are CRC errors, and how do I fix them?</a></li>
+            <li>
+                <a href="#toc17">Where are are my files?</a>
+                <ul>
+                    <li><a href="#toc18">Downloads</a></li>
+                    <li><a href="#toc19">Settings</a></li>
+                    <li><a href="#toc20">Logs</a></li>
+                </ul>
+            </li>
+            <li><a href="#toc21">SABnzbd is asking for a password and I didn't set one/forgotten the password, what do I do?</a></li>
+            <li><a href="#toc22">Error: (10049, "Can't assign requested address")</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#toc23">Using SABnzbd</a>
+        <ul>
+            <li><a href="#toc24">If I close my Internet browser does SABnzbd close too?</a></li>
+            <li><a href="#toc25">Why doesn't SABnzbd download all PARs for a post?</a></li>
+            <li><a href="#toc26">How can I download a set of PAR files without activating auto-par2 mode?</a></li>
+            <li><a href="#toc27">How do I upgrade SABnzbd to a new version?</a></li>
+            <li><a href="#toc28">What does R/U/D or Repair/Unpack/Delete mean?</a></li>
+            <li><a href="#toc29">How do I change my download folder to another drive?</a></li>
+            <li><a href="#toc30">How do I run SABnzbd as a portable/self contained program?</a></li>
+            <li><a href="#toc31">"My Internet connection is 20&nbsp;Mbps, and SAB only downloads at 2MB/s"?</a></li>
+            <li><a href="#toc32">"Repair failed, not enough repair blocks (585 short) " … what does that mean?</a></li>
+            <li><a href="#toc33">"API Key incorrect, Use the api key from Config-&gt;General in your 3rd party program:" … what does that mean?</a></li>
+            <li><a href="#toc34">After some time, SABnzbd is still running but its webinterface stops responding … what is going on?</a></li>
+            <li><a href="#toc35">"[Errno 111] Failed to connect: (110, 'timed out') -1 @news.example.com:119" when clicking on Test Server</a></li>
+            <li><a href="#toc36">A download says "ENCRYPTED". What does that mean, and is there anything I can do?</a></li>
+            <li><a href="#toc37">Do I need port forwarding for SABnzbd usage?</a></li>
+        </ul>
+    </li>
+</ul>
+
+
+
+<h1 id="toc0"><span>About SABnzbd</span></h1>
+<h2 id="toc1"><span>What is SABnzbd?</span></h2>
+<p>SABnzbd is a multi-platform binary newsgroup downloader.<br>
+    The program works in the background and simplifies the downloading verifying and extracting of files from <a href="http://en.wikipedia.org/wiki/Usenet" target="_blank">Usenet</a>.<br>
+    SABnzbd uses <a href="http://en.wikipedia.org/wiki/Nzb" target="_blank">NZB</a> files (similar to .torrent files, but for Usenet), instead of browsing Usenet directly. NZBs can be acquired from a <a href="/wiki/introduction/nzb-sources">variety of usenet indexing services</a>.<br>
+    SABnzbd's main interface is web-based, this means with a little bit of configuration you can easily check and add files from other PC's around the world or on other devices such as the iPhone.
+</p>
+<h2 id="toc2"><span>Why should I use SABnzbd over other programs such as Grabit?</span></h2>
+<p>Grabit is great for manually downloading a few moderately sized posts, or for browsing newsgroups. Generally tasks that require a lot of direct interaction.</p>
+<p>SABnzbd's goal is to be as automated as possible. Once configured, you should never really have to look directly at SABnzbd ever again, you just send it NZBs and files appear at the other end. Our full-featured <a href="/wiki/advanced/api">API</a> means that browser plugins like <a href="https://addons.mozilla.org/en-US/firefox/addon/7617">nzbdstatus</a> and <a href="https://chrome.google.com/extensions/detail/jnjalpkoocinmppkagibfbhplifocfgp">SABConnect</a> seamlessly handle all the transferring of NZBs from the web to SABnzbd, and provide you with a method to check on your queue's progress.</p>
+<p>You can even put SABnzbd on a lowly server and let it work night and day. It can even schedule, so that, for instance, you only download at night. Since it has a web interface, SABnzbd is built from the ground-up to be accessed remotely just as easily as it can be accessed locally, so it works great on little servers.</p>
+<h2 id="toc3"><span>What do I need to get started with using SABnzbd?</span></h2>
+<p>Usenet/Newsgroup Provider</p>
+<p>NZB Website</p>
+<p>Third Party tools</p>
+<h2 id="toc4"><span>Which versions of Python are supported?</span></h2>
+<p>We currently support Python Python 2.6.x and Python 2.7.x (recommended). Python 3.x is NOT supported.</p>
+<h2 id="toc5"><span>Can SABnzbd run on NAS / Android / operating system XYZ / … ?</span></h2>
+<p>SABnzbd can run on an operating system that provides / runs:</p>
+<ol>
+    <li>Python (2.5, 2.6 or 2.7) and</li>
+    <li>the Python library Cheetah and</li>
+    <li>optionally the Python library yEnc and</li>
+    <li>par2 and unrar</li>
+</ol>
+<p>The creators of SABnzbd provide the source code of SABnzbd, plus ready-to-install-and-run packages for Windows and Mac OS X.<br>
+    Others provide (or don't provide) packages for other operating systems. If you want SABnzbd on another operating system, search for an existing package for that OS, or make it work yourself.<br>
+    On top of the above, SABnzbd requires some amount of RAM: more is better, especially for high-speed Internet connections and/or big downloads. 256MB of RAM (or less) without swap space will cause problems and crashes.
+</p>
+<p>As Python is not available on Android, SABnzbd cannot run on Android.</p>
+<hr>
+<h1 id="toc6"><span>Troubleshooting SABnzbd</span></h1>
+<h2 id="toc7"><span>Beware of Firewalls and Virus scanners</span></h2>
+<p>These are useful but many are too eager to interfere with our software.<br>
+    Firewalls are suspicious of Internet activity and surprise: SABnzbd does that.<br>
+    For more info see: <a href="/wiki/extra/firewalls-and-virus-scanners">How do I survive my firewall and virus scanner?</a>
+</p>
+<h2 id="toc8"><span>I just upgraded from 0.4, where did my queue and history go?!!?</span></h2>
+<p>0.5 introduces a new queue / history format that is incompatible with 0.4. If you didn't finish your queue before installing 0.5, <strong>your queue has not been deleted</strong>. Just reinstall 0.4.12, finish your queue, and reinstall 0.5 when you're done. Your 0.5 queue should be compatible with future versions, so we shouldn't run into this again.</p>
+<h2 id="toc9"><span>SABnzbd won't start!</span></h2>
+<p>This typically occurs because for some reason SABnzbd can't open port 8080, or whatever port you've set it to run on. Unfortunately, this could be caused by a wide variety of issues. Here are a few of them:</p>
+<ul>
+    <li>Something else is running on the port. Either stop it, or have SABnzbd run on another port.</li>
+    <li>Something is preventing SABnzbd from opening any port, like a firewall application, or antivirus, or something else that might be trying to "protect" you. Either whitelist SABnzbd or reconsider your antivirus software choice. (The very good and free <a href="http://www.microsoft.com/Security_Essentials/">Microsoft Security Essentials</a> has no problem with SABnzbd)</li>
+    <li>You lack the permissions to open the port you're trying. This tends to crop up on Linux systems, where ports under 1024 (like port 80) require root permissions to open.</li>
+</ul>
+<p>A way to discover what's going on, is to open a 'terminal' or 'cmd'-box, go to the directory that contains the SABnzbd executable, and start that. On Windows, you should start "sabnzbd-consolese.exe". You should now see the output in the terminal/cmd-box.<br>
+    Starting with SABnzbd 0.6.x, on Windows there's a "SABnzbd safe mode" which you should find in your Start menu; it can be useful to try that safe mode.
+</p>
+<h2 id="toc10"><span>I'm using Opera! Why doesn't it work?</span></h2>
+<p>Opera sometimes has a different interpretation of localhost than SABnzbd has. Try <a href="http://[::1]:8080/sabnzbd">http://[::1]:8080/sabnzbd</a> or <a href="http://127.0.0.1:8080/sabnzbd">http://127.0.0.1:8080/sabnzbd</a>, one of the two should work.<br>
+    This happens because many operating systems have an ambiguous definition of localhost. They list both 127.0.0.1 and [::1] has IP addresses (IPv4 and IPv6 respectively), while these are in reality two independent addresses.
+</p>
+<h2 id="toc11"><span>SABnzbd says "Out of your server's retention?". What does that mean?</span></h2>
+<p>This means the post you're trying to download is not available on the newsserver you're using. This might because the post is older than the your newsserver's retention time (number of days the post will stay on the newsserver, somewhere between 10 and 1000 days), or the specific post has been removed by the server's administrator<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup>.<br>
+    You can see the age of a post in the search engine (like binsearch) you use, and by hovering above the line containing the download while it's being downloaded.
+</p>
+<p>Solution: find a 'younger' post, or find a newsprovider with a longer retention.</p>
+<p>If you think it's SABnzbd's fault, you should try to download the same post with another program like Grabit (Windows) or nzbget (Linux) to see if that works.</p>
+<h2 id="toc12"><span>SABnzbd shows a very slow download speed, with a extremely high ETA, but is progressing quite fast through the post, and then fails.</span></h2>
+<p>These are the symptoms of a post that's not available on your newsserver. Easy check: during the download, hover your mouse above the item; it will show a high number of missing articles.</p>
+<h2 id="toc13"><span>SABnzbd is stuck repairing a file, how do I fix it?</span></h2>
+<p>SABnzbd processes files sequentially, so if Par2 stops working the rest of your downloaded files will get hung up. To fix this, open your operating system's task manager and manually kill the par2 process. The item it was working on will be marked as "failed", so you'll have to manually verify and unrar that job.</p>
+<h2 id="toc14"><span>An NZB just failed post-processing, how do I re-process it?</span></h2>
+<p>At the moment there is no method to do this automatically in SABnzbd. However, the only time doing this should actually accomplish anything is if you had to kill a stalled Par2 or Unrar process. In all other cases, having SABnzbd try to re-try a download shouldn't do anything, since if SABnzbd failed it likely failed for a <em>good reason</em>. However, at a future date we may implement re-try post-processing as part of a broader post-processing queue rewrite.</p>
+<h2 id="toc15"><span>An NZB died halfway through downloading. Do I really have to re-download all 600 gigs?</span></h2>
+<p>When you used a partial NZB or did not have enough par2 files, all is not lost.<br>
+    A failed job will have an entry in History. If it's just a case of a full destination disk, click Retry.<br>
+    If you now have a larger NZB with either more RAR files or just more PAR2 file, click Retry and enter the new NZB in the dialog.<br>
+    SABnzbd will skip each files that has already been downloaded and then proceed to download the additional files.<br>
+    Please note that SABnzbd cannot add missing articles to existing files.
+</p>
+<h2 id="toc16"><span>What are CRC errors, and how do I fix them?</span></h2>
+<p>This means for some reason the files you downloaded ended up broken in a manner that could not be repaired. See <a href="http://forums.sabnzbd.org/index.php?topic=3409.0">this thread</a> on our forums for more information.</p>
+<h2 id="toc17"><span>Where are are my files?</span></h2>
+<h3 id="toc18"><span>Downloads</span></h3>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td>Windows</td>
+            <td>%userprofile%\My Documents\downloads\complete</td>
+        </tr>
+        <tr>
+            <td>OSX / Linux</td>
+            <td>~/downloads/complete</td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="toc19"><span>Settings</span></h3>
+<p>The settings are stored in an ini file away from the location of the main program. This allows for easy upgrading and full vista compatibility.<br>
+    The default locations for the settings are:
+</p>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td>Windows XP/2003</td>
+            <td>%userprofile%\local data\application data\sabnzbd\sabnzbd.ini</td>
+        </tr>
+        <tr>
+            <td>Windows Vista or 7</td>
+            <td>%userprofile%\AppData\Local\sabnzbd\sabnzbd.ini</td>
+        </tr>
+        <tr>
+            <td>Unix</td>
+            <td>~/.sabnzbd/sabnzbd.ini</td>
+        </tr>
+        <tr>
+            <td>OSX</td>
+            <td>~/Library/Application Support/SABnzbd/sabnzbd.ini (Attention: this might be a hidden folder</td>
+        </tr>
+    </tbody>
+</table>
+<p>Note for windows users, you do not need to replace anything in those paths, just paste them into a folder location bar or the run menu (start&gt;run)</p>
+<p>Note for OSX users: Finder won't find the file sabnzbd.ini. Workaround: open a Terminal, and type:</p>
+<div class="code">
+    <pre><code>cd
+ls -al Library/Application\ Support/SABnzbd/sabnzbd.ini</code>
+</pre>
+</div>
+<p>That should show the file sabnzbd.ini</p>
+<p>If you are storing your settings in a different place, you can check the location by navigating to the Config page, or the Folders page within the config and the location will be displayed there.</p>
+<h3 id="toc20"><span>Logs</span></h3>
+<p>The log files are stored in the same the base folder as the ini, but inside another folder called "logs".</p>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td>Windows XP/2003</td>
+            <td>%userprofile%\local settings\application data\sabnzbd\logs</td>
+        </tr>
+        <tr>
+            <td>Windows Vista or 7</td>
+            <td>%userprofile%\AppData\Local\sabnzbd\logs</td>
+        </tr>
+        <tr>
+            <td>Unix</td>
+            <td>~/.sabnzbd/logs</td>
+        </tr>
+        <tr>
+            <td>OSX</td>
+            <td>~/Library/Application Support/SABnzbd/logs</td>
+        </tr>
+    </tbody>
+</table>
+<p>If you are storing your logs in a different place, you can check the location by navigating to the Folders page within the config and the location will be displayed there. You can also download your logging from your webbrowser by clicking "Download logging" on the connections page of sabnzbd.</p>
+<p><a name="why-login"></a></p>
+<h2 id="toc21"><span>SABnzbd is asking for a password and I didn't set one/forgotten the password, what do I do?</span></h2>
+<p>Shut down SABnzbd, find the file <a href="/configure-v2">sabnzbd.ini</a> and open it with an editor. Look for:</p>
+<div class="code">
+    <pre><code>username = user
+password = pass</code>
+</pre>
+</div>
+<p>and change the lines to:</p>
+<div class="code">
+    <pre><code>username = ""
+password = ""</code>
+</pre>
+</div>
+<p>Save the .ini and restart SABnzbd.</p>
+<p>In Windows if you can't access the web-ui then open up the task manager (ctrl+alt+del) go to the processors tab, find sabnzbd.exe select it and click end process. Then launch sabnzbd.exe again.</p>
+<p>In OSX / Linux simply kill the process and launch it again.</p>
+<h2 id="toc22"><span>Error: (10049, "Can't assign requested address")</span></h2>
+<p>If you start up SABnzbd, and you get 'error: (10049, "Can't assign requested address")', you very likely entered the IP address of your system in Config -&gt; General -&gt; Host and now your router has assigned another address.</p>
+<p>To set the host quickly on a Windows system: Open and CMD.EXE prompt (use Start menu) and type (including quotes):</p>
+<div class="code">
+    <pre><code>"c:\program files (x86)\sabnzbd\sabnzbd-console.exe" --server 0.0.0.0:8080</code>
+</pre>
+</div>
+<p>Then press Enter<br>
+    If you're using a 32-bit Windows system use:
+</p>
+<div class="code">
+    <pre><code>"c:\program files\sabnzbd\sabnzbd-console.exe" --server 0.0.0.0:8080</code>
+</pre>
+</div>
+<p>On Linux:</p>
+<div class="code">
+    <pre><code>sabnzbdplus --server 0.0.0.0:8080</code>
+</pre>
+</div>
+<br>
+or something like
+<div class="code">
+    <pre><code>./SABnzbd.py --server 0.0.0.0:8080</code>
+</pre>
+</div>
+<p>Technically the host is the <strong>first</strong> appearance of "host" in sabnzbd.ini:</p>
+<div class="code">
+    <pre><code>$ cat ~/.sabnzbd/sabnzbd.ini | grep -m1 host
+host = 0.0.0.0</code>
+</pre>
+</div>
+<br>
+So, if you know what you're doing and SABnzbd is not running, you can edit that entry, and start SABnzbd again.
+<hr>
+<h1 id="toc23"><span>Using SABnzbd</span></h1>
+<h2 id="toc24"><span>If I close my Internet browser does SABnzbd close too?</span></h2>
+<p>No, SABnzbd will continue to run in the background. Restart the browser to connect to SABnzbd again.<br>
+    You can only stop SABznbd by using the shutdown function in the web-interface or by manually killing the process.
+</p>
+<h2 id="toc25"><span>Why doesn't SABnzbd download all PARs for a post?</span></h2>
+<p>SABnzbd only downloads the PAR files it needs. It starts by downloading all normal files and the smallest par. If the files don't pass our QuickCheck function, we run a full par2 verification. Once SABnzbd determines how many files are broken or missing it will go back and intelligently download only however many pars it needs and repair.</p>
+<h2 id="toc26"><span>How can I download a set of PAR files without activating auto-par2 mode?</span></h2>
+<p>Select None as your PostProcess option while importing your nzb file.<br>
+    You will have to do your post-processing manually!
+</p>
+<h2 id="toc27"><span>How do I upgrade SABnzbd to a new version?</span></h2>
+<p>It's simple! All your settings are stored away from the main sabnzbd folder, and will be kept between upgrades.<br>
+    If you are moving between major versions (such as a 0.4 version to a 0.5 version) it is recommended that you finish your current queue. As major versions may create new queue files (your old queue file will still exist if you choose to go back to it and finish up downloading)<br>
+    <strong>For Windows</strong> just run the installer and it will replace your old version!<br>
+    <strong>For OSX / Linux</strong> just overwrite your current sabnzbd folder with the new files.
+</p>
+<h2 id="toc28"><span>What does R/U/D or Repair/Unpack/Delete mean?</span></h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <th>Long Name</th>
+            <th>Short Name</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>The blank option does nothing extra to the download files</td>
+        </tr>
+        <tr>
+            <td>+Repair</td>
+            <td>R</td>
+            <td>Verifies and repairs the downloaded files</td>
+        </tr>
+        <tr>
+            <td>+Unpack</td>
+            <td>U</td>
+            <td>Verifies and repairs the downloaded files<br>
+                +Unpacks downloaded files
+            </td>
+        </tr>
+        <tr>
+            <td>+Delete</td>
+            <td>D</td>
+            <td>Verifies and repairs the downloaded files<br>
+                +Unpacks downloaded files<br>
+                +Deletes the left over rar files
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="toc29"><span>How do I change my download folder to another drive?</span></h2>
+<p>Simply enter in the full path, such as D:\Downloads<br>
+    A tip for OSX users, to save to an external drive, enter /Volumes/nameofdrive/Downloads
+</p>
+<p>To save to a network share, make sure it has write access and enter \\NameOfPc\\Folder<br>
+    You currently cannot use this for the incomplete folder in windows due to a par2 bug.
+</p>
+<h2 id="toc30"><span>How do I run SABnzbd as a portable/self contained program?</span></h2>
+<p>Simply copy your sabnzbd.ini file (and the cache folder if you wish to keep your current queue/history) to your main sabnzbd folder. That is all, when SABnzbd starts up it first looks for the sabnzbd.ini in the same folder it is run from and uses those settings if available.</p>
+<p>If you wish for a clean install, run sabnzbd.exe with the command line parameter "-f sabnzbd.ini" and a blank settings file will be created in your sabnzbd installation folder.</p>
+<p>It is recommended you use relative paths for your incomplete and download folders to make sure SABnzbd will have write access. The default download dir setting is an example of a relative folder, just specify the name of the folder you wish to be created and not the path.</p>
+<h2 id="toc31"><span>"My Internet connection is 20&nbsp;Mbps, and SAB only downloads at 2MB/s"?</span></h2>
+<p>This is bits versus bytes: ISPs advertise in bits/sec, SABnzbd shows you bytes/sec.<br>
+    Multiply SABnzbd's results by 8 or 10 to get bits/sec.
+</p>
+<h2 id="toc32"><span>"Repair failed, not enough repair blocks (585 short) " … what does that mean?</span></h2>
+<p>If you get something like "Repair failed, not enough repair blocks (585 short)", there can be different causes:</p>
+<ul>
+    <li>the post is not available (anymore) on the newsserver you use because the post is older than the newsserver retention</li>
+    <li>the post is not available (anymore) on the newsserver you use because the post has been (partly) removed (possibly because of DMCA notices)</li>
+    <li>the post itself has too little repair block (par files)</li>
+    <li>the NZB you created did not include par files</li>
+    <li>The post has an unusual naming convention and SABnzbd doesn't understand the relation between RAR files and PAR2 files. Manual repair is the only solution (Windows users can use QuickPar).</li>
+</ul>
+<p>Things worth trying:</p>
+<ul>
+    <li>use another or - better an addional newsserver</li>
+    <li>find another post with the same contents</li>
+    <li>check on binsearch.info to see the post was completely available there</li>
+</ul>
+<h2 id="toc33"><span>"API Key incorrect, Use the api key from Config-&gt;General in your 3rd party program:" … what does that mean?</span></h2>
+<p>If you get "API Key incorrect, Use the api key from Config-&gt;General in your 3rd party program:" in your log file, it is probably caused by a program or by a browser plugin (for example SABconnect++) that is accessing SABnzbd's API interface without an API key or with an incorrect API key. This message is just a warning; you could ignore it if you want to.<br>
+    To get rid of this message you have to find the program or browser plugin, and configure it with the correct API key.
+</p>
+<h2 id="toc34"><span>After some time, SABnzbd is still running but its webinterface stops responding … what is going on?</span></h2>
+<p>If you can access SABnzbd's webinterface after a fresh startup, but you can't access it anymore after a while, it might be that too many connections are (half) open to SABnzbd's webinterface. This can be caused by tools or plugins accessing it. To check if this is the case, you can use the following commands (assuming SABnzbd is running on port 8080 and 9090):<br>
+    On Linux:
+</p>
+<div class="code">
+    <pre><code>netstat -apon | grep -e :8080 -e :9090</code>
+</pre>
+</div>
+<p>On Windows:</p>
+<div class="code">
+    <pre><code>netstat -aon | find ":8080"
+netstat -aon | find ":9090"</code>
+</pre>
+</div>
+<p>If you get a few dozen or even hundreds of lines (and thus SAB sessions), you have found the problem.<br>
+    Workaround: disable the plugins (or lower their polling frequency) and/or do not use HTTPS (it seems this problem occurs with HTTPS, and not HTTP).<br>
+    Especially the combination of SABnzbd, SABconnect++ and HTTPS seems to trigger this problem.
+</p>
+<h2 id="toc35"><span>"[Errno 111] Failed to connect: (110, 'timed out') -1 @news.example.com:119" when clicking on Test Server</span></h2>
+<p>You can test your connection to your newsserver by clicking on Test Server (in Config -&gt; Servers). If the popup says "[Errno 111] Failed to connect: (110, 'timed out') <span class="wiki-email" style="visibility: visible;"><a href="mailto:-1@news.example.com">-1@news.example.com</a></span>:119", SABnzbd cannot connect to the newserver you filled out. You should check two things: the correct name for the newsserver and the correct port (119 is the normal port).</p>
+<p>If you're sure everything is filled out OK and you still get the error message, as a test you can fill out an additional newsserver. You can use news.astraweb.com or newsreader.eweka.nl. After filling out and Save Change, you can click on Test Server. If you get "[Errno 111] Failed to connect: (110, 'timed out') <span class="wiki-email" style="visibility: visible;"><a href="mailto:-1@news.astraweb.com">-1@news.astraweb.com</a></span>:119" for this extra server too, the problem is local: possibly a firewall is blocking outgoing connections. So check your firewall. Or temporarily disable / deinstall your firewall. Then check again with Test Server.</p>
+<p>NB: after your own server is working, disable the extra setting, or you will see warnings in your log file of SABnzbd still trying to access this server for which you have no account.</p>
+<h2 id="toc36"><span>A download says "ENCRYPTED". What does that mean, and is there anything I can do?</span></h2>
+<p>"ENCRYPTED" means you're trying to download that has a password on it (on the rar files, to be precise). SABnzbd will detect this during the download and will stop the download.<br>
+    Often the ENCRYPTED posts are useless, as they are only trying to lure you towards useless websites. In the end you will probably not get a password at all.
+</p>
+<p>So, it is advised not to download these kind of posts.</p>
+<h2 id="toc37"><span>Do I need port forwarding for SABnzbd usage?</span></h2>
+<p>For normal usage of SABnzbd, you don't need any port forwarding in your modem/router/NAT-device. Reasons:<br>
+    - SABnzbd only uses outgoing connections for content downloading.<br>
+    - You can access SABnzbd's webinterface from the PC it's running on, and from other device on your LAN.
+</p>
+<p>You will only need port forwarding if you want to access SABnzbd's interface (Web or API) from a 'remote' device. 'Remote' means outside your LAN, or - more specifically - from the other side of your NAT-device.</p>
+<p>Port forwarding can be a bit tricky. Here are some hints:<br>
+    - Port forwarding is done in your NAT-device. How to do that depends on your specific NAT-device. The site <a href="http://portforward.com/">http://portforward.com/</a> could be useful<br>
+    - Port forwarding needs to know the internal IP address of the SABnzbd system. This often means the SABnzbd needs to have a fixed internal IP address<br>
+    - To check if your port forwarding is setup correctly, you can use <a href="http://www.whatsmyip.org/port-scanner/">http://www.whatsmyip.org/port-scanner/</a>
+</p>
+<div class="footnotes-footer">
+    <div class="title">Footnotes</div>
+    <div class="footnote-footer" id="footnote-1">1. Often administrators receive so-called DMCA notifications</div>
+</div>

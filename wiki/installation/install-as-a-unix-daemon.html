@@ -1,0 +1,36 @@
+---
+title: Install As A Unix Daemon
+---
+<p>Running SABnzbd directly from a shell or a desktop shortcut is not always practical, especially not on a server.<br>
+    It is important that SABnzbd is closed properly when a system goes down, otherwise data will be lost.
+</p>
+<p>Below is an example start/stop script that can also be called from <em>init.d</em> scripts.<br>
+    You need to replace <em>sabuser</em> with the proper user account and <em>HOSTADDRESS:PORT</em> by the proper address and port.<br>
+    This assumes that you have installed SABnzbd in folder /usr/local/src/SABnzbd.
+</p>
+<div class="code">
+        <pre><code>#!/bin/sh
+
+case "$1" in
+start)
+  echo "Starting SABnzbd."
+  /usr/bin/sudo -u sabuser -H /usr/local/src/SABnzbd/SABnzbd.py -d -f /home/sabuser/.sabnzbd/sabnzbd.ini
+;;
+stop)
+  echo "Shutting down SABnzbd."
+  /usr/bin/wget -q --delete-after "http://HOSTADDRESS:PORT/sabnzbd/api?mode=shutdown&amp;apikey=ENTERAPIKEYHERE"
+;;
+*)
+  echo "Usage: $0 {start|stop}"
+  exit 1
+esac
+
+exit 0</code>
+</pre>
+    </div>
+    <p>If you use a password to secure SABnzbd, modify the shutdown url to the following:</p>
+    <div class="code">
+        <pre><code>http://HOSTADDRESS:PORT/sabnzbd/api?mode=shutdown&amp;ma_username=USER&amp;ma_password=PASSWORD&amp;apikey=ENTERAPIKEYHER</code>
+</pre>
+</div>
+<p>Note: This may not be applicable for your distribution! Debian and Ubuntu have their own init script, see the <a href="/wiki/installation/install-ubuntu-repo">Ubuntu Install Docs</a>.</p>

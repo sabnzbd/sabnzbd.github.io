@@ -1,0 +1,86 @@
+---
+title: User Scripts
+---
+<p>SABnzbd can run a user-provided script to be executed when a job has completed without errors.</p>
+<p>You can do whatever you like with such a script.</p>
+<p>The script will receive the parameters described below. Use %1 in Windows scripts and $1 in Unix scripts.</p>
+<p>Please note that in Windows the parameters will be enclosed in double quotes ("my name").<br>
+    On Posix systems (OSX, Linux, Unix) the parameters will <strong>not</strong> have quotes at all.
+</p>
+<table class="table table-bordered table-hover table-not-fixed">
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>The final directory of the job (full path)</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>The original name of the NZB file</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Clean version of the job name (no path info and ".nzb" removed)</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Indexer's report number (if supported)</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>User-defined category</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Group that the NZB was posted in e.g. alt.binaries.x</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Status of post processing. 0 = OK, 1=failed verification, 2=failed unpack, 3=1+2<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup>, -1=failed download</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>URL to be called when job failed (if provided by the server, it is always sent, so check parameter 7!) The URL is provided by some indexers as the X-DNZB-Failure header.<sup class="footnoteref"><a id="footnoteref-2" href="#footnote-2">2</a></sup></td>
+        </tr>
+    </tbody>
+</table>
+<p>All parameters are properly quoted so that they may contain embedded spaces.</p>
+<p>The "return" code that your script itself returns should be 0 if all went well or non-zero if errors occurred. If the return code is something else than 0, SABnzbd's History will show that return code (also known as exit code) in green surrounded by "Exit(…)".</p>
+<p>The console output of the script is captured by SABnzbd and is saved in the so called "Script Log": to see that log, in the History overview, click on the "More" after the <strong>green</strong> text on the right hand side .<br>
+    The file will be added to the (optional) notification email and can be examined in the History page.
+</p>
+<p>A post-processing script will only run when the job has completed without errors.<br>
+    If you want to run the script always, you need to disable the option <a href="/wiki/configuration/1.0/switches">"Post-Process Only Verified Jobs"</a>.
+</p>
+<p>A script can return an exit code. SABnzbd will show a non-zero code in the download report, but the job will not be flagged as failed.<br>
+    Note: Release 0.8.0 has an option in <a href="/wiki/configuration/1.0/switches">Config-&gt;Switches</a> to let a non-zero code mark the job as failed.
+</p>
+<p>All scripts must be located in the script-directory, that can be specified in <a href="/wiki/configuration/1.0/folders">Config-&gt;Directories</a>. Furthermore, the script must be executable. On Linux this means the x-bit must be on. On Windows, the requirement is that the script's extension is listed in your system's PATHEXT environment variable.</p>
+<p>The scripts can be used in these contexts:</p>
+<ul>
+    <li>Associated with a job entry on the Main page</li>
+    <li>Changed for a job on the Queue page</li>
+    <li>Associated with a <a href="/wiki/configuration/1.0/categories">user-defined category</a></li>
+    <li>Associated with the empty-queue event on the Queue page</li>
+</ul>
+<h3 id="toc0"><span>Example Python script</span></h3>
+<p>The get the parameters in python, you can do this:</p>
+<div class="code">
+    <pre><code>import sys
+try:
+(scriptname,directory,orgnzbname,jobname,reportnumber,category,group,postprocstatus,url) = sys.argv
+except:
+try:
+    # are we testing only?
+    directory = sys.argv[1]
+except:
+    print "No commandline parameters found"
+    sys.exit(1)
+
+# continue script</code>
+</pre>
+</div>
+<div class="footnotes-footer">
+    <div class="title">Footnotes</div>
+    <div class="footnote-footer" id="footnote-1">1. Only in release 0.5.0+</div>
+    <div class="footnote-footer" id="footnote-2">2. Only in release 0.7.17+</div>
+</div>

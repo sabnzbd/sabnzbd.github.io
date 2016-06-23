@@ -1,0 +1,251 @@
+---
+title: NZB Format Specification
+---
+<p><em>Mirrored from the now defunct <a class="vglnk" href="http://docs.newzbin.com" rel="nofollow"><span>docs</span><span>.</span><span>newzbin</span><span>.</span><span>com</span></a>. References to "We" throughout the document should be assumed to be referring to Newzbin, not SABnzbd.</em></p>
+<h2 id="toc0"><span>NZB (Message-ID List) File Specification</span></h2>
+<p>Here follows a sample NZB for a single small file:</p>
+<div class="code">
+    <pre><code>&lt;?xml version="1.0" encoding="iso-8859-1" ?&gt;
+&lt;!DOCTYPE nzb PUBLIC "-//newzBin//DTD NZB 1.1//EN" "<a class="vglnk" href="http://www.newzbin.com/DTD/nzb/nzb-1.1.dtd" rel="nofollow"><span>http</span><span>://</span><span>www</span><span>.</span><span>newzbin</span><span>.</span><span>com</span><span>/</span><span>DTD</span><span>/</span><span>nzb</span><span>/</span><span>nzb</span><span>-</span><span>1</span><span>.</span><span>1</span><span>.</span><span>dtd</span></a>"&gt;
+&lt;nzb xmlns="<a class="vglnk" href="http://www.newzbin.com/DTD/2003/nzb" rel="nofollow"><span>http</span><span>://</span><span>www</span><span>.</span><span>newzbin</span><span>.</span><span>com</span><span>/</span><span>DTD</span><span>/</span><span>2003</span><span>/</span><span>nzb</span></a>"&gt;
+&lt;head&gt;
+&lt;meta type="title"&gt;Your File!&lt;/meta&gt;
+&lt;meta type="password"&gt;secret&lt;/meta&gt;
+&lt;meta type="tag"&gt;HD&lt;/meta&gt;
+&lt;meta type="category"&gt;TV&lt;/meta&gt;
+&lt;/head&gt;
+&lt;file poster="Joe Bloggs &amp;amp;lt;bloggs@nowhere.example&amp;amp;gt;" date="1071674882" subject="Here's your file!  abc-mr2a.r01 (1/2)"&gt;
+&lt;groups&gt;
+ &lt;group&gt;alt.binaries.newzbin&lt;/group&gt;
+ &lt;group&gt;alt.binaries.mojo&lt;/group&gt;
+&lt;/groups&gt;
+&lt;segments&gt;
+ &lt;segment bytes="102394" number="1"&gt;123456789abcdef@news.newzbin.com&lt;/segment&gt;
+ &lt;segment bytes="4501" number="2"&gt;987654321fedbca@news.newzbin.com&lt;/segment&gt;
+&lt;/segments&gt;
+&lt;/file&gt;
+&lt;/nzb&gt;</code>
+</pre>
+</div>
+<p>This example is for one file, consisting of two segments, which are 102,394 bytes and 4,501 bytes. The file is posted into two groups, alt.binaries.newzbin and alt.binaries.mojo; it was posted by Joe Bloggs, at unixtime 1071674882. The subject is slightly munged; the segment counter always starts at 1; but you can see it has 2 segments; confirmed by the segments tags below.</p>
+<p>This is a fully populated nzb file, all the tags and attributes you can expect to see are there, but clients are expected to cope should more be added.</p>
+<p>Since this is an XML format, clients are encouraged to use an XML parser to process it; minor changes to the nzb files we generate such as with attribute ordering, indentation, and even new tags and attributes must be taken into account. XML PI's and CDATA sections are not expected to be used, so clients should be free to cut some corners using lightweight parsers.</p>
+<p>We will, where possible, avoid changes which may break clients; even those which use simple pattern matchers. Significant changes to the format are unlikely at this point, but users of the format should try not to get too complacent.</p>
+<h2 id="toc1"><span>XML Tag breakdown</span></h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <th colspan="2">&lt;nzb&gt; .. &lt;/nzb&gt;</th>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>Root element for the NZB</td>
+        </tr>
+        <tr>
+            <td>Attributes</td>
+            <td>None</td>
+        </tr>
+        <tr>
+            <td>Body</td>
+            <td>None (placeholder)</td>
+        </tr>
+        <tr>
+            <td>Children</td>
+            <td>&lt;head&gt;, &lt;file&gt;</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <th colspan="2">&lt;head&gt; .. &lt;/head&gt;</th>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>Contains all metadata relating to contents of NZB</td>
+        </tr>
+        <tr>
+            <td>Attributes</td>
+            <td>None</td>
+        </tr>
+        <tr>
+            <td>Body</td>
+            <td>None</td>
+        </tr>
+        <tr>
+            <td>Children</td>
+            <td>&lt;meta&gt;</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <th colspan="2">&lt;meta&gt; .. &lt;/meta&gt;</th>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>Creator-definable metadata for the contents of the NZB (e.g. title)</td>
+        </tr>
+        <tr>
+            <td>Attributes</td>
+            <td><strong>type</strong> <em>string</em> - Identifier for the metadata content</td>
+        </tr>
+        <tr>
+            <td>Body</td>
+            <td><em>string</em> - The metadata content corresponding to the given type</td>
+        </tr>
+        <tr>
+            <td>Children</td>
+            <td>None</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <th colspan="3">&lt;file&gt; .. &lt;/file&gt;</th>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td></td>
+            <td>Represents a list of messageids that make up a file</td>
+        </tr>
+        <tr>
+            <td>Attributes</td>
+            <td><strong>poster</strong></td>
+            <td><em>string</em> - Copy of the From: field from the article header.</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><strong>date</strong></td>
+            <td><em>int</em> - Unixtime representation of the date the server saw this article. This is not completely reliable; timezones can break this value, and incorrectly configured news servers will make it almost useless.</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><strong>subject</strong></td>
+            <td><em>string</em> - A slightly munged copy of the article's subject. The segment counter (xx/yy) usually found at the end, is replaced with (1/yy). You can use the yy to confirm all segments are present.</td>
+        </tr>
+        <tr>
+            <td>Body</td>
+            <td></td>
+            <td>None (placeholder)</td>
+        </tr>
+        <tr>
+            <td>Children</td>
+            <td></td>
+            <td>&lt;groups&gt;, &lt;segments&gt;</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <th colspan="2">&lt;groups&gt; .. &lt;/groups&gt;</th>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>Placeholder element for a list of groups that reference the file</td>
+        </tr>
+        <tr>
+            <td>Attributes</td>
+            <td>None</td>
+        </tr>
+        <tr>
+            <td>Body</td>
+            <td>None (placeholder)</td>
+        </tr>
+        <tr>
+            <td>Children</td>
+            <td>&lt;group&gt;</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <th colspan="2">&lt;group&gt; .. &lt;/group&gt;</th>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>One &lt;group&gt; element represents a group, multiple may be used</td>
+        </tr>
+        <tr>
+            <td>Attributes</td>
+            <td>None</td>
+        </tr>
+        <tr>
+            <td>Body</td>
+            <td><em>string</em> - The name of the group (e.g. alt.binaries.newzbin)</td>
+        </tr>
+        <tr>
+            <td>Children</td>
+            <td>None</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <th colspan="2">&lt;segments&gt; .. &lt;/segments&gt;</th>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>Placeholder element for a list of segments that make up a file</td>
+        </tr>
+        <tr>
+            <td>Attributes</td>
+            <td>None</td>
+        </tr>
+        <tr>
+            <td>Body</td>
+            <td>None (placeholder)</td>
+        </tr>
+        <tr>
+            <td>Children</td>
+            <td>&lt;segment&gt;</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <th colspan="3">&lt;segment&gt; .. &lt;/segment&gt;</th>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td></td>
+            <td>One part segment of a file</td>
+        </tr>
+        <tr>
+            <td>Attributes</td>
+            <td><strong>bytes</strong></td>
+            <td><em>int</em> - Size of the article, in bytes, as a number, with no comma separation.</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><strong>number</strong></td>
+            <td><em>int</em> - Segment number of the article, gleaned by parsing (yy/zz)</td>
+        </tr>
+        <tr>
+            <td>Body</td>
+            <td></td>
+            <td><em>string</em> - The Message-ID of this article, without the surrounding &lt; and &gt; (e.g. <span class="wiki-email" style="visibility: visible;"><a href="mailto:123456789abcdef@news.newzbin.com">123456789abcdef@news.newzbin.com</a></span>)</td>
+        </tr>
+        <tr>
+            <td>Children</td>
+            <td></td>
+            <td>None</td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="toc2"><span>Metadata Defined Types</span></h2>
+<p>The meta tag (as a child of the head tag), added in NZB 1.1, is designed to allow posters to include arbitrary data in any NZB file, which decoders might find useful. It's a very simple key-value system, where the key is the 'type' attribute.</p>
+<p>In order to create some consistency, we define the following types; if you'd like one added, let us know so others will know of it's existence and may choose to use it. As per usual XML, these types are case sensitive so take care.</p>
+<ul>
+    <li>title - a human-readable identifiable title for the contents of the NZB, ie the body of a metadata tag with the title attribute could be "Ubuntu Linux 9.10&nbsp;64bit Desktop CD"</li>
+    <li>tag - An attribute, like h246 or SD (multiple tags allowed)</li>
+    <li>category - A category as used by your indexing service (preferably one)</li>
+    <li>password - if any password is required for the contents of the NZB, it can be specified in a password meta-tag. If there are multiple passwords, this tag could simply be specified more than once and they can all be tried. If it becomes a common requirement we may develop a way to associate a password tag (or indeed any meta tag) with a specific file block.</li>
+</ul>
+<p>If you'd like to create your own private type which will never clash with any that we define, prefix it with X- as per HTTP.. ie, X-Some-Private-Type</p>

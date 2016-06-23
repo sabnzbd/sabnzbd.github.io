@@ -1,0 +1,118 @@
+---
+title: Known issues
+---
+<p>These are known issues regarding the working of SABnzbd in its environment.<br>
+    They are not registered as bugs of SABnzbd, because we cannot solve them.<br>
+    It's more an incompatibility with other systems or outright bugs in these other systems.
+</p>
+
+<ul class="toc-list">
+    <li><a href="#toc0">Size limit</a></li>
+    <li><a href="#toc1">Hangup of post-processing</a></li>
+    <li><a href="#toc2">Firewall bug in Windows</a></li>
+    <li><a href="#toc3">Long paths in Windows</a></li>
+    <li><a href="#toc4">64bit Windows</a></li>
+    <li><a href="#toc5">Unreliable Usenet servers</a></li>
+    <li><a href="#toc6">OSX and foreign characters</a></li>
+    <li><a href="#toc7">Linux and foreign characters</a></li>
+    <li><a href="#toc8">Files remain in Watched Folder</a></li>
+    <li><a href="#toc9">Instability on OSX</a></li>
+    <li><a href="#toc10">Memory usage</a></li>
+    <li><a href="#toc11">Incompatible firewalls</a></li>
+    <li><a href="#toc12">Blocked email</a></li>
+    <li><a href="#toc13">Mounting external drives and network shares</a></li>
+    <li><a href="#toc14">Memory leaks</a></li>
+    <li><a href="#toc15">Logging stops</a></li>
+</ul>
+
+
+<h2 id="toc0"><span>Size limit</span></h2>
+<p>To prevent unexpectedly large NZBs from eating your quotum you can set the option "size_limit" in <a href="/wiki/configuration/1.0/special">"Config-&gt;Special"</a>.<br>
+    Any NZB larger than this size will be set to paused and get a low priority.
+</p>
+<h2 id="toc1"><span>Hangup of post-processing</span></h2>
+<p>When PAR2 or UNRAR hang up, you should never just stop SABnzbd.<br>
+    Instead use your operating system's task manager to stop the PAr2 or UNRAR program.<br>
+    Forcing SABnzbd to quit may damage your queues.<br>
+    <em>Windows-only:</em><br>
+    If you keep having trouble with par2 multicore you can disable it in Config-&gt;Switches.<br>
+    This will force the use of the old and tried, but slower par2-classic program.
+</p>
+<h2 id="toc2"><span>Firewall bug in Windows</span></h2>
+<p>A bug in Windows 7 may cause severe memory leaks when you use SABnzbd in combination with some virus scanners and firewals.<br>
+    Install this hotfix:<br>
+    Description: <a href="http://support.microsoft.com/kb/979223/en-us">http://support.microsoft.com/kb/979223/en-us</a><br>
+    Download location: <a href="http://support.microsoft.com/hotfix/KBHotfix.aspx?kbnum=979223&amp;kbln=en-us">http://support.microsoft.com/hotfix/KBHotfix.aspx?kbnum=979223&amp;kbln=en-us</a>
+</p>
+<h2 id="toc3"><span>Long paths in Windows</span></h2>
+<p>Windows cannot handle path names longer than 254 characters.<br>
+    Currently, SABnzbd release before 1.0.0 don't handle this problem gracefully.<br>
+    We have added a <a href="/wiki/configuration/1.0/special">"Special" option</a> "folder_length_max" in which you can set a maximum folder name size.<br>
+    For Windows the default is 128 and for others 256.<br>
+    A quite safe value for Windows would be 64.<br>
+    SABnzbd will take care of overlapping names.<br>
+    Release from 1.0.0 can handle long paths, although we still need to put some limits on the "temporary download path".
+</p>
+<h2 id="toc4"><span>64bit Windows</span></h2>
+<p>Some 64bit Windows systems have problems with the 64bit versions of par2 and unrar.<br>
+    There is an <a href="/wiki/configuration/1.0/special">"Special" option</a> "allow_64bit_tools" which, when set to 0, will force the use of 32bit versions.
+</p>
+<h2 id="toc5"><span>Unreliable Usenet servers</span></h2>
+<p>Some Usenet servers have intermittent login (or other) problems.<br>
+    For these, the server blocking method is not very favorable.<br>
+    There is an <a href="/wiki/configuration/1.0/special">"Special" option</a> "no_penalties" which, when set to 1, will limit blocks to 1 minute<br>
+    (No, 2 doesn't mean 2 minutes).
+</p>
+<h2 id="toc6"><span>OSX and foreign characters</span></h2>
+<p>On OSX you may encounter downloaded files with foreign characters (e.g. é and ä).<br>
+    The par2 repair may fail when the files were created on a Windows system.<br>
+    The problem is caused by the PAR2 utility and we cannot fix this now.<br>
+    This does not apply to files inside RAR files.
+</p>
+<h2 id="toc7"><span>Linux and foreign characters</span></h2>
+<p>On Linux when you download files they may have the wrong character encoding.<br>
+    You will see this only when downloaded files contain accented characters.<br>
+    You need to fix it yourself by running the <strong>convmv</strong> utility (available for most Linux platforms).
+</p>
+<h2 id="toc8"><span>Files remain in Watched Folder</span></h2>
+<p>The "Watched Folder" sometimes fails to delete the NZB files it has processed.<br>
+    This happens when other software still accesses these files.<br>
+    Some third-party utilities supporting SABnzbd are known to do this.<br>
+    We cannot solve this problem, because the Operating System (read Windows) prevents the removal.<br>
+    SABnzbd does try about 10 times with 5 second intervals, but after that it gives up.<br>
+    The NZB will not be processed again, unless changed or overwritten.
+</p>
+<h2 id="toc9"><span>Instability on OSX</span></h2>
+<p>A few people complained about long-term stability of SABnzbd on OSX Snow Leopard and Lion.<br>
+    We don't know the real cause, but the same people have reported success<br>
+    when they disable SABnzbd's icon in the top menu.<br>
+    Config-&gt;Special, item "osx_menu".
+</p>
+<h2 id="toc10"><span>Memory usage</span></h2>
+<p>Memory usage can sometimes have high peaks.<br>
+    This makes using SABnzbd on very low memory systems (eg a SAN device) a challenge.<br>
+    Your total system memory should be above 256 MByte (assuming a Linux variant is used).
+</p>
+<h2 id="toc11"><span>Incompatible firewalls</span></h2>
+<p>SABnzbd is not compatible with some software firewall versions.<br>
+    The Mircosoft Windows Firewall works fine, but remember to tell this firewall that SABnzbd is allowed to talk to other computers.
+</p>
+<h2 id="toc12"><span>Blocked email</span></h2>
+<p>When SABnzbd cannot send notification emails, check your virus scanner, firewall or security suite.<br>
+    It may be blocking outgoing email.
+</p>
+<h2 id="toc13"><span>Mounting external drives and network shares</span></h2>
+<p>When you are using external drives or network shares on OSX or Linux make sure that the drives are mounted.<br>
+    The operating system will simply redirect your files to alternative locations.<br>
+    You may have trouble finding the files when mounting the drive later.
+</p>
+<h2 id="toc14"><span>Memory leaks</span></h2>
+<p>Some users have complained about ever growing memory use by SABnzbd.<br>
+    So far we have not been able to reproduce this behaviour, but that doesn't mean it can never happen.<br>
+    We would like to receive information on how to reproduce this problem.
+</p>
+<h2 id="toc15"><span>Logging stops</span></h2>
+<p>Sometimes logging stops.<br>
+    This is a notorious bug in Python logging when running on Windows. SABnzbd will function as normal.<br>
+    When you run from sources or use the SABnzbd-console.exe file of the Win32-binary distribution, you will see that logging continues in the console window, but nothing will be written to the log-files.
+</p>

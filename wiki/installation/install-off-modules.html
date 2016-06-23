@@ -1,0 +1,62 @@
+---
+title: Install from source
+---
+Specific guides to install from source are available for:
+<ul>
+    <li><a href="/wiki/installation/install-from-source-windows">Windows</a></li>
+    <li><a href="/wiki/installation/install-osx-src">Apple OSX</a></li>
+</ul>
+
+<p>Below is a general list of all packages required to run SABnzbd.
+
+<h2 id="toc2"><span>Python</span></h2>
+
+<p><a href="http://www.python.org" target="_blank">Home Page</a><br>SABnzbd requires Python 2.7.<br>
+    Note: Python 3.x is <strong>not</strong> supported. Check python version with "python —version"
+</p>
+<h2 id="toc3"><span>Must-have Python modules</span></h2>
+Python comes included with a Python Packages Manager on many platforms. You can install the required Python modules by simply running the following commands after installing Python:
+<pre>
+pip install cheetah
+pip install pyopenssl
+pip install yenc # THIS WILL NOT WORK ON WINDOWS, FOR WINDOWS YENC SEE WINDOWS GUIDE
+pip install pypiwin32 # ONLY FOR WINDOWS
+</pre>
+<h3 id="toc4"><span>Cheetah</span></h3>
+<p><a href="http://pypi.python.org/packages/source/C/Cheetah/Cheetah-2.4.4.tar.gz">http://pypi.python.org/packages/source/C/Cheetah/Cheetah-2.4.4.tar.gz</a></p>
+<h2 id="toc5"><span>Optional Python modules</span></h2>
+<h3 id="toc6"><span>yEnc</span></h3>
+<p><a href="http://www.golug.it/yenc.html" target="_blank">Home page</a><br>
+    <a href="http://www.golug.it/pub/yenc/yenc-0.3.tar.gz">Direct download</a>
+</p>
+<h3 id="toc7"><span>PyOpenSSL 0.11 (or higher)</span></h3>
+<p><a href="https://launchpad.net/pyopenssl" target="_blank">Home page</a><br>
+    <a href="https://launchpad.net/pyopenssl/main/0.11/+download/pyOpenSSL-0.11.tar.gz">https://launchpad.net/pyopenssl/main/0.11/+download/pyOpenSSL-0.11.tar.gz</a>
+</p>
+<h2 id="toc8"><span>Must-have utilities</span></h2>
+<h3 id="toc9"><span>unrar</span></h3>
+<p>We recommend release 5.30Final or higher.<br>
+    Linux users should use the official 3.91 (or higher) release from the RarLab site.<br>
+    Of the package only the <strong>unrar</strong> part is free-ware!<br>
+    32bit: <a href="http://www.rarlab.com/rar/rarlinux-5.3.0.tar.gz">http://www.rarlab.com/rar/rarlinux-5.3.0.tar.gz</a><br>
+    64bit: <a href="http://www.rarlab.com/rar/rarlinux-x64-5.3.0.tar.gz">http://www.rarlab.com/rar/rarlinux-x64-5.3.0.tar.gz</a>
+</p>
+<p>There are many unrar binaries for other platforms:<br>
+    <a href="http://www.rarlab.com/rar_add.htm" target="_blank">http://www.rarlab.com/rar_add.htm</a>
+</p>
+<h3 id="toc10"><span>unzip</span></h3>
+<p>InfoZip's unzip program.<br>
+    <a href="http://gnuwin32.sourceforge.net/packages/unzip.htm" target="_blank">http://gnuwin32.sourceforge.net/packages/unzip.htm</a>
+</p>
+<h3 id="toc11"><span>par2cmdline 0.4</span></h3>
+<p>We recommend the original version by Peter Brian Clements.<br>
+    <a href="http://sourceforge.net/project/showfiles.php?group_id=30568&amp;package_id=82331" target="_blank">Official SourceForge archive</a>
+</p>
+<p>For some platforms (e.g. Centos 5.2) using the gcc4 compiler a patch is needed.<br>
+    We provide the patched sources for your convenience.<br>
+    <a href="http://sage.math.washington.edu/home/binegar/src/par2cmdline-0.4-gcc4.patch">Download original patch</a>
+</p>
+<p>SABnzbd for Windows ships with an alternative version by Chuchusoft, supporting multi-core processors.<br>
+    All support for it has stopped and the tool is no longer available for download.<br>
+    We are looking for a replacement.
+</p>

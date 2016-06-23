@@ -1,0 +1,147 @@
+---
+title: DirectNZB
+---
+<p><em>Mirrored from the now defunct <a class="vglnk" href="http://docs.newzbin.com" rel="nofollow"><span>docs</span><span>.</span><span>newzbin</span><span>.</span><span>com</span></a>. References to "We" throughout the document should be assumed to be referring to Newzbin, not SABnzbd.</em></p>
+<p><em>This document is primarily mirrored for historical reasons, but SABnzbd suggests indexers consider implementing the <a href="#toc5">X-DNZB response headers</a> X-DNZB response headers in their NZB download functionality, so the response headers are sent along with the NZB payload. This would be an acceptable alternative to implementing meta tags within the actual NZB.</em></p>
+<p><em>Additionally, indexers seeking to implement an API may want to consider using this as a model, or at least a good starting point.</em></p>
+<h1 id="toc0"><span>What is it?</span></h1>
+<p>DirectNZB is an interface to NZB files that is intended to be used by automated NZB fetchers.</p>
+<p>There are no pretty pages of HTML to wade through, simply a return code (and if successful, an NZB).</p>
+<p>Currently, you can only fetch an NZB for one entire report per request. It is not possible to fetch an NZB for a file, or part of a report. A valid Newzbin premium account is required.</p>
+<p>This document is intended for application authors/coders who wish to use the interface in their applications.</p>
+<h1 id="toc1"><span>Technical Specifications</span></h1>
+<p>DirectNZB is implemented on Newzbin v3 (<a href="http://v3.newzbin.com">http://v3.newzbin.com</a>) or (<a href="http://www.newzbin.com">http://www.newzbin.com</a>) only - it is not available on the old "v2" site, at <a href="http://v2.newzbin.com">http://v2.newzbin.com</a>.</p>
+<p>You access it by sending a standard application/x-www-form-urlencoded POST request to <a href="http://www.newzbin.com/api/dnzb/">http://www.newzbin.com/api/dnzb/</a></p>
+<p>You must supply three POST variables. Two of them are always required, username and password, and the third must either be reportid or fileid, depending on what you want to get.</p>
+<p>If you are familiar with Newzbin (if you're not, what are you doing here?) you will know that we have two significant sections; reports, and files. Reports are collections of files which our Editors have manually created. Files is a direct dump of all file data we've seen on Usenet.</p>
+<p>Thus, the valid POST string combinations are:</p>
+<ul>
+    <li>username=foo&amp;password=bar&amp;reportid=123</li>
+    <li>username=foo&amp;password=bar&amp;fileid=123,124,125</li>
+</ul>
+<p>Note that you can [optionally] supply more than one fileid, comma separated. This only applies to files, you can only get one report in one request.</p>
+<p>The reply you get will contain two arbitrary headers; X-DNZB-RCode and X-DNZB-RText. Note that the HTTP Response code is generally set to 400 on error (with a couple of exceptions, see below). For a more detailed error, you should investigate the X-DNZB-RCode header.</p>
+<p>It's strongly recommended that clients using this interface support HTTP content compression as described in RFC 2616 (see sections on <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3">Accept-Encoding</a> and <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11">Content-Encoding</a> headers); this will significantly reduce the wire traffic from a retrieved NZB.</p>
+<h3 id="toc2"><span>X-DNZB-RCode</span></h3>
+<p>This is a numeric return code, which closely emulates what you'd expect to see in a HTTP Return Code, with a couple of additions. Note that this is *just* the numeric part, so is easily machine parseable.</p>
+<h3 id="toc3"><span>X-DNZB-RText</span></h3>
+<p>This is a string return code which matches the RCode. You can display this to the user to tell them what's going on if the RCode indicates an error - or ignore it and make your own.</p>
+<h3 id="toc4"><span>List of Return Codes</span></h3>
+<ul>
+    <li>200 = OK, NZB content follows</li>
+    <li>
+        400 = Bad Request, please supply all parameters
+        <ul>
+            <li>(this generally means reportid or fileid is missing; missing user/pass gets you a 401)</li>
+        </ul>
+    </li>
+    <li>401 = Unauthorised, check username/password?</li>
+    <li>402 = Payment Required, not Premium</li>
+    <li>
+        404 = Not Found, data doesn't exist?
+        <ul>
+            <li>(only working for reportids, see Technical Limitations)</li>
+        </ul>
+    </li>
+    <li>
+        450 = Try Later, wait &lt;x&gt; seconds for counter to reset
+        <ul>
+            <li>(for an explanation of this, see DNZB Rate Limiting)</li>
+        </ul>
+    </li>
+    <li>500 = Internal Server Error, please report to Administrator</li>
+    <li>503 = Service Unavailable, site is currently down</li>
+</ul>
+<p>Full example:</p>
+<div class="code">
+    <pre><code>X-DNZB-RCode: 450
+X-DNZB-RText: Try Later, wait 22 seconds for counter to reset</code>
+</pre>
+</div>
+<h2 id="toc5"><span>Successful Response</span></h2>
+<p>A successful response will have a X-DNZB-RCode of 200 (to match HTTP OK) and the NZB will be sent in the body.</p>
+<p>There will be no HTML or other content. You can use the entire body response as the NZB.</p>
+<h3 id="toc6"><span>X-DNZB-Name</span></h3>
+<p>For a successful Report NZB request, the X-DNZB-Name header is also returned. This contains a mildly sanitised version of the report's title (by sanitised, we mean characters not in the valid range for HTTP headers have been removed; this basically means any ASCII character outside the 32-127 range). These characters are replaced with rough equivilents within the basic ASCII range where possible (e.g. © -&gt; e), otherwise they're replaced with _.</p>
+<p>You can use this to determine what to name the folder to store the decoded files in, or whatever. For example, you might see:</p>
+<div class="code">
+    <pre><code>X-DNZB-Name: Double Zero (2004)</code>
+</pre>
+</div>
+<p>In this case, an '©' was replaced since it is not a valid HTTP header character.</p>
+<h3 id="toc7"><span>X-DNZB-Category</span></h3>
+<p>For a successful Report NZB request, the X-DNZB-Category header is also returned. This contains a single word which is the category of the Report you have requested; ie, Apps, Movies, TV.</p>
+<p>for example:</p>
+<div class="code">
+    <pre><code>X-DNZB-Category: Movies</code>
+</pre>
+</div>
+<h3 id="toc8"><span>X-DNZB-MoreInfo</span></h3>
+<p>For a successful Report NZB request, the X-DNZB-MoreInfo header may also be returned. If the Report you are requesting has an External URL assigned to it by an Editor, it will be given to you here. If there is no URL, this header will not be present.</p>
+<p>for example:</p>
+<div class="code">
+    <pre><code>X-DNZB-MoreInfo: <a class="vglnk" href="http://www.imdb.com/title/tt0870090/" rel="nofollow"><span>http</span><span>://</span><span>www</span><span>.</span><span>imdb</span><span>.</span><span>com</span><span>/</span><span>title</span><span>/</span><span>tt0870090</span><span>/</span></a></code>
+</pre>
+</div>
+<h3 id="toc9"><span>X-DNZB-NFO</span></h3>
+<p>For a successful Report NZB request, the X-DNZB-NFO header may also be returned.<br>
+    This header contains the magic number you need to deduce the URL to view the NFO attached to the Report. If there is no NFO in the Report, this header is omitted.
+</p>
+<p>for example:</p>
+<div class="code">
+    <pre><code>X-DNZB-NFO: 188997659</code>
+</pre>
+</div>
+<p>The rest of the URL is <a href="http://www.newzbin.com/nfo/view/txt/$ID/">http://www.newzbin.com/nfo/view/txt/$ID/</a><br>
+    So replace $ID with 188997659 and you have the URL for the NFO.<br>
+    You can also replace txt with png for a png rendered version.
+</p>
+<p><em><strong>SABnzbd Note: If you're planning on implementing X-DNZB-NFO, we suggest sending a full URL.</strong></em></p>
+<p>None of X-DNZB-Name, X-DNZB-Category, X-DNZB-MoreInfo, or X-DNZB-NFO are returned for File NZB requests.</p>
+<h3 id="toc10"><span>X-DNZB-Failure</span></h3>
+<p>When the job fails for some reason, the client should make a call to the URL provided</p>
+<h3 id="toc11"><span>X-DNZB-Details</span></h3>
+<p>URL referring to the information page on the indexer that provided the NZB file.</p>
+<h3 id="toc12"><span>X-DNZB-Episodename</span></h3>
+<p>Proper name of the episode, overrides anything in the NZB file name.</p>
+<h3 id="toc13"><span>X-DNZB-Propername</span></h3>
+<p>Proper name of the series (or movie), overrides anything in the NZB file name.</p>
+<h3 id="toc14"><span>X-DNZB-Year</span></h3>
+<p>The correct year of the movie, overrides anything in the NZB file name.</p>
+<h2 id="toc15"><span>Failed Responses</span></h2>
+<p>A failed response will have a X-DNZB-RCode as per the list above (it won't be 200), and for the time being, no body response. We may use the body response in future but at the moment we have no need for it. The HTTP Response code is generally set to 400, to indicate 'Bad Request', unless specifically noted otherwise here (for 500 and 503).</p>
+<p>Error 400 indicates you have not supplied all required parameters. All three of username/password/reportid are required, and reportid must be numeric. Since a missing username/password will return an error 401, getting 400 usually means reportid is missing or not numeric.</p>
+<p>Error 401 indicates either the user has entered incorrect/no account details, or their account has been suspended/etc. Do not retry requests without prompting the user to fix the problem.</p>
+<p>Error 402 indicates the username/password combination is correct, but the account does not have any Premium Credit. A Topup is required to get any NZBs. Indicate to the user that the request will not work until they add some credit.</p>
+<p>Error 404 indicates the data trying to be fetched does not exist or is not accessible to the user. Do not retry the request, it will not magically become available.</p>
+<p>Error 450 indicates you should wait before retrying; see [[Newzbin:DirectNZB#DNZB_Rate_Limiting|DNZB Rate Limiting]].</p>
+<p>Error 500 indicates that something bad happened while generating the NZB, and we are unable to return it to you. This is generally our fault, and means something is broken. You can notify the application user that Newzbin Administration should be informed if these are persistent. In this error code, the HTTP Response is also set to 500, to indicate our end is broken.</p>
+<p>Error 503 indicates that Newzbin is down/undergoing maintenance. You can schedule a retry, but please be sensible with your retry interval; we suggest no more frequent than 5 minutes. In this error code, the HTTP Response is also set to 503, to indicate 'Service Unavailable' to all traditional HTTP clients.</p>
+<h1 id="toc16"><span>Technical Limitations</span></h1>
+<p>This section describes shortcomings in the current incarnation of the interface; ie things we'd like to fix in the future but we're not sure how to do it yet.</p>
+<ul>
+    <li>You can only ask for one reportid per request. This is unlikely to change for now.</li>
+    <li>You can only ask for a reportid, or [some] fileids at once. We're not sure if we really want to change this, it will just complicate the interface. If anyone has an overwhelming desire to be able to request a reportid and some fileids in the same request, contact us.</li>
+</ul>
+<h1 id="toc17"><span>DNZB Rate Limiting</span></h1>
+<p>NZBs fetched by this DirectNZB interface are limited to 5 NZBs per 60 seconds per IP. We use a rolling counter, so in order to get a code 200 (and thus an NZB) you must have fetched less than 5 NZBs in the previous 60 seconds.<br>
+    If you exceed this, you will get an RCode 450, and the RText will tell you how many seconds you have to wait before you can get an NZB again.<br>
+    This is currently the only restriction; there are no captchas, and no 350 NZB/week limit.
+</p>
+<p>If your application gets an error 450, you should at the very least wait 60 seconds before trying again. You can reduce the delay by parsing the RText and extracting the number of seconds you have to wait. &lt;x&gt; is replaced by an integer from 1-60 indicating number of seconds to wait. The 's' at the end of 'seconds' is not removed when &lt;x&gt; is 1 (looks a bit odd but will make your matching regexp simpler if you're using one).</p>
+<p>for example:</p>
+<ul>
+    <li>X-DNZB-RText: Try Later, wait 22 seconds for counter to reset</li>
+</ul>
+<p>IPs running an application which hammer the service trying to get NZBs will be banned from using the service. Coders, please have some respect for our servers and honour the time limits.</p>
+<h1 id="toc18"><span>Updates to Service/this Document</span></h1>
+<p>[newest entries at the top]</p>
+<ul>
+    <li>20131221 Added X-DNZB-Failure, X-DNZB-Details, X-DNZB-Episodename, X-DNZB-Propername, X-DNZB-Year</li>
+    <li>20080710 Added X-DNB-NFO header, and explanation of.</li>
+    <li>20080703 Added X-DNB-MoreInfo header, and explanation of.</li>
+    <li>20070527 DirectNZB URL has moved to <a href="http://v3.newzbin.com/api/dnzb/">http://v3.newzbin.com/api/dnzb/</a> - the old URL will remain active for compatibility.</li>
+    <li>20070112&nbsp;404 is now returned correctly in all cases (it sometimes wasn't).</li>
+    <li>20070110 Added capability to request files from the interface, and updated bits of documentation to explain how.</li>
+    <li>20070105 Added X-DNZB-Category header, and explanation of.</li>
+</ul>

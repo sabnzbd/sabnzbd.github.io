@@ -1,0 +1,39 @@
+---
+title: Install SABnzbd for Windows from source
+---
+<p>Running the source python (.py) files on a window box is not recommended unless you want to try the latest GitHub copy, or make changes yourself.
+
+
+<ol>
+    <li><p>Install Python 2.7.x from <a href="http://www.python.org/" target="_blank">Python.org</a><br/>
+    Make sure to select during the installation <em>Add python.exe to path</em>!</li>
+    <li><p>Install <a href="https://git-for-windows.github.io/" target="_blank">Git for Windows</a> on your system. Defaults options are OK
+    <li><p>After installing both, restart your computer and open a Command Prompt. <br/>
+    Run these commands:
+    <pre><code>pip install cheetah
+pip install pyopenssl
+pip install pypiwin32</pre></code></li>
+    
+    <li><p>Get a local copy (clone) of the SABnzbd source by opening Git Bash from the start menu and running: 
+    <pre><code>git clone https://github.com/sabnzbd/sabnzbd.git </pre></code>
+    Press "Insert" instead of "Ctrl+V" to paste into Git Bash. 
+    <p>You can specify the target directory as a second argument if you don’t want it in the default location (<em>C:\Users\USERNAME\sabnzbd\</em>).</li>
+    <li><p>To enable multi-language support type in the Git Bash you still have open:
+    <pre><code>cd sabnzbd
+python tools/make_mo.py</pre></code></li>
+    <li><p>Install yEnc by <a href="/wiki/installation/yenc-0.4_py2.7.rar" target="_blank">copying the compiled yEnc for Windows files</a> to your Python installation in:<br/>
+    <em>C:\Python27\Lib\site-packages\</em><br/>
+    Depending on the version you installed in step 1 you either copy the files from the 32bit or 64bit folder.</li>
+    <li><p>Open a Command Prompt. If you did not change the location of the Git clone, you can now start SABnzbd by running
+    <pre><code>python C:\Users\USERNAME\sabnzbd\SABnzbd.py</pre></code></li>
+</ol>
+<p>Optional to update the source files to the latest version, open Git Bash and type:
+<pre><code>cd sabnzbd
+git pull</pre></code>
+    
+
+<p>Optional (not show the DOS command line when SABnzbd is launched):
+<ul>
+    <li><p>Create a .cmd file to easily launch sabnzbd such as: python "path\to\folder\SABnzbd.py"</li>
+    <li><p>Put a shortcut to the .cmd file in your startup folder, and set it to start as minimized.</li>
+</ul>

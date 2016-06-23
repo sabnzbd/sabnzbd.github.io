@@ -1,0 +1,38 @@
+---
+title: Windows run from source
+---
+<p>Running the source python (.py) files on a window box is not recommended unless you want to try the latest GitHub copy, or make changes yourself.</p>
+<p>Here is a guide to getting it working [updated June 2013].</p>
+<ol>
+    <li>Install the latest 32bit <a href="http://www.activestate.com/activepython/downloads">ActivePython 2.7 from ActiveState</a>. ActivePython is a precompiled distribution of Python. Python 3.0 is not supported and the 64bit version does not come with all that we need.</li>
+    <li>Install <a href="http://download.microsoft.com/download/E/8/E/E8EEB394-7F42-4963-A2D8-29559B738298/VS2008ExpressWithSP1ENUX1504728.iso">Microsoft Visual C++ 2008 Express</a>. You can uncheck the SQL database option during insall. Later versions of Visual Studio (2010, 2012) WON'T WORK to compile yENC, you need the <span style="text-decoration: underline;">2008</span>.<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup></li>
+    <li>Download <a href="https://pypi.python.org/pypi/Cheetah">Cheetah</a>.<sup class="footnoteref"><a id="footnoteref-2" href="#footnote-2">2</a></sup> Extract it anywhere. <a href="http://www.sevenforums.com/tutorials/27778-open-command-window-here.html">Open a command prompt from the folder</a> where you extracted Cheetah and run: <strong>setup.py install</strong></li>
+    <li>Install <a href="http://msysgit.github.io/">Git</a> on your system.<sup class="footnoteref"><a id="footnoteref-3" href="#footnote-3">3</a></sup> Defaults options are OK.</li>
+    <li>Run "Git Bash" from the start menu<sup class="footnoteref"><a id="footnoteref-4" href="#footnote-4">4</a></sup></li>
+    <li>Create a repository clone: <strong><span style="white-space: pre-wrap;">git clone <a class="vglnk" href="https://github.com/sabnzbd/sabnzbd.git" rel="nofollow"><span>https</span><span>://</span><span>github</span><span>.</span><span>com</span><span>/</span><span>sabnzbd</span><span>/</span><span>sabnzbd</span><span>.</span><span>git</span></a> sabnzbd</span></strong> Press "Inser" instead of "Ctrl+V" to paste into Git bash. You can specify the target directory (otherwise it will be a folder called "sabnzbd" at the root of your personal files), e.g. <span style="white-space: pre-wrap;">git clone <a class="vglnk" href="https://github.com/sabnzbd/sabnzbd.git" rel="nofollow"><span>https</span><span>://</span><span>github</span><span>.</span><span>com</span><span>/</span><span>sabnzbd</span><span>/</span><span>sabnzbd</span><span>.</span><span>git</span></a> /c/myworkingdir/sabnzbd</span></li>
+    <li>In Git bash, go to the "sabnzbd" source folder: <strong>cd sabnzbd</strong> (or cd /c/myworkingdir/sabnzbd in our example)</li>
+    <li>In Git bash, select your favourite branch: <strong><span style="white-space: pre-wrap;">git checkout --track origin/develop</span></strong> for the development branch, or origin/master for the release branch. Now your sabnzbd source folder contains a copy of the branch.</li>
+    <li>"Compile" the sabnzbd translations. <a href="http://www.sevenforums.com/tutorials/27778-open-command-window-here.html">Open a command prompt from the folder</a> "sabnzbd" and run: <strong>tools\make_mo.py</strong></li>
+    <li>If not already present, copy the directory named "win" from <a href="http://sabnzbd.org/download/">sabnzbd windows binaries</a> to your "sabnzbd" source folder. This folder contains the par2, unrar and unzip executables.<sup class="footnoteref"><a id="footnoteref-5" href="#footnote-5">5</a></sup></li>
+    <li>Optional (for NNTP/HTTPS support): Download <a href="https://launchpad.net/pyopenssl/main/0.11" target="_blank">pyOpenSSL version 0.11</a> (or <a href="https://pypi.python.org/pypi/pyOpenSSL">higher</a> - version 0.13 has indeed been reported to work). Choose pyOpenSSL-0.13.winxp32-py2.7.msi for the 0.13 version of pyOpenSSL if you're running ActivePython version 2.7. Launch the msi and proceed through the installation wizard with the default options.</li>
+    <li>Optional (for performance improvement): Download <a href="https://bitbucket.org/kriswebdev/python-yenc-win32-and-still-unix/downloads#branch-downloads">yENC Win32 module for Python</a> (click on the "Branches" tab then "zip"). Extract it anywhere. <a href="http://www.sevenforums.com/tutorials/27778-open-command-window-here.html">Open a command prompt from the folder</a> where you extracted yENC and run: <strong>setup.py install</strong></li>
+    <li>Launch <strong>SABnzbd.py</strong></li>
+</ol>
+<p>Optional (not show the DOS command line when SABnzbd is launched):</p>
+<ul>
+    <li>Create a .cmd file to easily launch sabnzbd such as: python "path\to\folder\<strong>SABnzbd.py</strong>"</li>
+    <li>Put a shortcut to the .cmd file in your startup folder, and set it to start as minimized.</li>
+</ul>
+<p>Optional (later SABnzbd source updates):</p>
+<ul>
+    <li>To update your sabnzbd source code from the Github repository, run: git pull</li>
+</ul>
+<div class="footnotes-footer">
+    <div class="title">Footnotes</div>
+    <div class="footnote-footer" id="footnote-1">1. <a href="http://www.cygwin.com/">Cygwin</a> and <a href="http://www.golug.it/yenc.html">Allessandro Duca's original yEnc module for Python</a> could also be used instead of MS Visual C++ and the modified KrisWebDev's yEnc Win32 module for Python. This would require a longer install and tweaks. MinGW won't work to compile yENC or would require even more complex tweaking.</div>
+    <div class="footnote-footer" id="footnote-2">2. DON'T use pypm to install Cheetah. Cheetah's _namemapper.c will not compile if you use pypm. If you don't know what is pypm, forget about this footnote, you don't need to use it.</div>
+    <div class="footnote-footer" id="footnote-3">3. If you don't know Github, you should read <a href="http://stackoverflow.com/a/2917421/2227298">this short explaination</a></div>
+    <div class="footnote-footer" id="footnote-4">4. If you are behind a proxy, <a href="http://xinyustudio.wordpress.com/2012/02/03/using-git-command-with-proxy/">follow these steps</a> on Git bash.</div>
+    <div class="footnote-footer" id="footnote-5">5. You could also <a href="http://wiki.sabnzbd.org/install-off-modules">compile par2cmdline, unrar and unzip from source</a> but that's not the purpose of this tutorial.</div>
+</div>
+</div>

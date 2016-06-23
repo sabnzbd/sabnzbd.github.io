@@ -1,0 +1,36 @@
+---
+title: Install SABnzbd for Unix/Linux
+---
+
+<p>Official Repositories</p>
+<ul>
+    <li><a href="https://aur.archlinux.org/packages/sabnzbd" target="_blank">ArchLinux (Stable)</a></li>
+    <li><a href="https://aur.archlinux.org/packages/sabnzbd-git" target="_blank">ArchLinux (the latest Alpha, Beta or Stable)</a></li>
+    <li><a href="http://packages.ubuntu.com/search?keywords=sabnzbdplus" target="_blank">Ubuntu</a></li>
+    <li><a href="http://packages.debian.org/search?keywords=sabnzbdplus" target="_blank">Debian</a></li>
+    <li><a href="http://www.freebsd.org/cgi/cvsweb.cgi/ports/news/sabnzbdplus/" target="_blank">FreeBSD</a></li>
+</ul>
+<p>For some platforms people have created unofficial packages.</p>
+<ul>
+    <li><a href="/wiki/installation/install-ubuntu-repo">Ubuntu</a></li>
+    <li><a href="/wiki/installation/install-fedora-repo">Fedora 13-15</a></li>
+    <li><a href="/wiki/installation/install-fedora-repo">RHEL and clones (CentOS, Scientific Linux,...) 5-6</a></li>
+</ul>
+
+<p>We have a <a href="/wiki/advanced/unix-packaging">Guideline for Unix packaging</a>, meant for prospective porters.</p>
+<p>Assuming you have the Python package already installed, you need to install a number of Python modules.<br>
+    Often you can install these using apt-get commands (check your system's documentation).<br>
+    Otherwise you need to download and/or compile.<br>
+    See here for the <a href="/wiki/installation/install-off-modules">official download locations</a>.
+</p>
+<p>The next step is to unpack the SABnzbd.tar.gz file and install it somewhere appropriate. You don't have to be a system admin to install SABnzbd itself. It's just a bunch of text files (Python sources and HTML files).<br>
+    You start SABnzbd.py from the command line (check if the X bit is set, otherwise do "chmod +x SABnzbd.py" first).
+</p>
+<div class="code">
+    <pre><code> ./SABnzbd.py</code>
+</pre>
+</div>
+<br>
+SABnzbd will startup and will try to find a web browser to show you its web interface.
+<h2 id="toc0"><span>Install as a Unix daemon</span></h2>
+<p>See: <a href="/wiki/installation/install-as-a-unix-daemon">Install as a Unix Daemon</a></p>

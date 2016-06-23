@@ -1,0 +1,146 @@
+---
+title: Automation Support
+---
+<p>To help connect SABnzbd to other utilities, some automation functions are available through the web-interface.</p>
+
+</p>
+<p>In the commands, substitute elements in &lt;&gt; by proper values.<br>
+    Example: get an NZB from an indexer (using its full URL):<br>
+    <strong><span style="white-space: pre-wrap;"><a class="vglnk" href="http://host:port/sabnzbd/api?mode=addurl&amp;name=" rel="nofollow">http://host:port/sabnzbd/api?mode=addurl&amp;name=&lt;url&gt;&amp;cat=linux&amp;pp=3&amp;script=None</a></span></strong><br>
+    Where &lt;url&gt; is the URL of the indexer. Please note that this URL requires proper quoting.<br>
+    So <strong><span style="white-space: pre-wrap;"><a class="vglnk" href="http://indexer.org/get-nzb.php/123456" rel="nofollow">http://indexer.org/get-nzb.php/123456</a></span></strong> becomes <strong><span style="white-space: pre-wrap;">http%3A%2F%2Findexer.org%2Fget-nzb.php%2F123456</span></strong>
+</p>
+<p>These commands give a one line response. Either "ok\n" or "error\n".<br>
+    Only the shutdown command will give no response.
+</p>
+<p>When the web interface username and password are set, you need to add two extra parameters:<br>
+    <em>ma_username</em> and <em>ma_password</em>.<br>
+    So the above example will become:<br>
+    <strong><span style="white-space: pre-wrap;"><a class="vglnk" href="http://host:port/sabnzbd/api?mode=addid&amp;ma_username=USER&amp;ma_password=PASSWORD&amp;name=123456&amp;cat=&quot;movies" rel="nofollow">http://host:port/sabnzbd/api?mode=addid&amp;ma_username=USER&amp;ma_password=PASSWORD&amp;name=123456&amp;cat=movies</a></span></strong>
+</p>
+<h3 id="toc0"><span>Upload an NZB file, the &lt;name&gt; is the pathless name of the filename</span></h3>
+<p><span style="white-space: pre-wrap;"><a class="vglnk" href="http://host:port/sabnzbd/api?mode=addfile&amp;name=" rel="nofollow">http://host:port/sabnzbd/api?mode=addfile&amp;name=&lt;filename&gt;&amp;cat=&lt;category&gt;&amp;pp=&lt;job-option&gt;&amp;script=&lt;script&gt;</a></span></p>
+<p>Omitted parameters (<em>cat</em>, <em>pp</em> or <em>script</em>) will get default values.<br>
+    If you want to force an empty parameter, use an empty string, e.g. <em>script=""</em>.
+</p>
+<h3 id="toc1"><span>Send the URL from where SABnzbd must download an NZB file</span></h3>
+<p><span style="white-space: pre-wrap;"><a class="vglnk" href="http://host:port/sabnzbd/api?mode=addurl&amp;name=" rel="nofollow">http://host:port/sabnzbd/api?mode=addurl&amp;name=&lt;url&gt;&amp;cat=&lt;category&gt;&amp;pp=&lt;job-option&gt;&amp;script=&lt;script&gt;</a></span></p>
+<h3 id="toc2"><span>Pause the downloading of SABnzbd</span></h3>
+<p><span style="white-space: pre-wrap;"><a class="vglnk" href="http://host:port/sabnzbd/api?mode=pause" rel="nofollow">http://host:port/sabnzbd/api?mode=pause</a></span></p>
+<h3 id="toc3"><span>Resume the downloading of SABnzbd</span></h3>
+<p><span style="white-space: pre-wrap;"><a class="vglnk" href="http://host:port/sabnzbd/api?mode=resume" rel="nofollow">http://host:port/sabnzbd/api?mode=resume</a></span></p>
+<h3 id="toc4"><span>Shutdown SABnzbd</span></h3>
+<p><span style="white-space: pre-wrap;"><a class="vglnk" href="http://host:port/sabnzbd/api?mode=shutdown" rel="nofollow">http://host:port/sabnzbd/</a></span></p>
+<h3 id="toc5"><span>Brief queue status report (json or xml)</span></h3>
+<p><span style="white-space: pre-wrap;"><a class="vglnk" href="http://host:port/sabnzbd/api?mode=qstatus&amp;output=json|xml" rel="nofollow">http://host:port/sabnzbd/api?mode=qstatus&amp;output=json|xml</a></span></p>
+<p>Returns a JSON object containing:</p>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td>"paused"</td>
+            <td>&lt;pause-status&gt;,</td>
+        </tr>
+        <tr>
+            <td>"kbpersec"</td>
+            <td>&lt;downloadspeed in KB/sec&gt;,</td>
+        </tr>
+        <tr>
+            <td>"mbleft"</td>
+            <td>&lt;MB to be downloaded&gt;,</td>
+        </tr>
+        <tr>
+            <td>"mb"</td>
+            <td>&lt;MB that have been downloaded&gt;,</td>
+        </tr>
+        <tr>
+            <td>"noofslots"</td>
+            <td>&lt;number of jobs in the queue&gt;,</td>
+        </tr>
+        <tr>
+            <td>"diskspace1"</td>
+            <td>&lt;free space on download_dir disk&gt;,</td>
+        </tr>
+        <tr>
+            <td>"diskspace2"</td>
+            <td>&lt;free space on complete_dir disk&gt;,</td>
+        </tr>
+        <tr>
+            <td>"jobs"</td>
+            <td>&lt;queue object&gt;</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>where &lt;queue object&gt; is an array of the following objects:</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>"id"</td>
+            <td>&lt;job id&gt;,</td>
+        </tr>
+        <tr>
+            <td>"filename"</td>
+            <td>&lt;name of job&gt;,</td>
+        </tr>
+        <tr>
+            <td>"mb"</td>
+            <td>&lt;MB of job&gt;,</td>
+        </tr>
+        <tr>
+            <td>"mbleft"</td>
+            <td>&lt;MB left&gt;,</td>
+        </tr>
+        <tr>
+            <td>"msgid"</td>
+            <td>&lt;indexer's report number&gt;</td>
+        </tr>
+    </tbody>
+</table>
+<p>or return an XML object:</p>
+<div class="code">
+    <pre><code>&lt;qstatus&gt;
+&lt;paused&gt;&lt;/paused&gt;
+&lt;kbpersec&gt;&lt;/kbpersec&gt;
+&lt;mbleft&gt;&lt;/mbleft&gt;
+&lt;mb&gt;&lt;/mb&gt;
+&lt;noofslots&gt;&lt;/nofslots&gt;
+&lt;diskspace1&gt;&lt;/diskspace1&gt;
+&lt;diskspace2&gt;&lt;/diskspace2&gt;
+&lt;jobs&gt;
+    &lt;job&gt;
+        &lt;id&gt;&lt;/id&gt;
+        &lt;filename&gt;&lt;/filename&gt;
+        &lt;mb&gt;&lt;/mb&gt;
+        &lt;mbleft&gt;&lt;/mbleft&gt;
+        &lt;msgid&gt;&lt;/msgid&gt;
+    &lt;/job&gt;
+&lt;/jobs&gt;
+&lt;/qstatus&gt;</code>
+</pre>
+</div>
+<h3 id="toc6"><span>Set speed limit</span></h3>
+<p><span style="white-space: pre-wrap;"><a class="vglnk" href="http://host:port/sabnzbd/api?mode=config&amp;name=speedlimit&amp;value=400" rel="nofollow"><span>http</span><span>://</span><span>host</span><span>:</span><span>port</span><span>/</span><span>sabnzbd</span><span>/</span><span>api</span><span>?</span><span>mode</span><span>=</span><span>config</span><span>&amp;</span><span>name</span><span>=</span><span>speedlimit</span><span>&amp;</span><span>value</span><span>=</span><span>400</span></a></span></p>
+<p>Set the download speed limit.</p>
+<h3 id="toc7"><span>Set action for empty queue</span></h3>
+<p><span style="white-space: pre-wrap;"><a class="vglnk" href="http://host:port/sabnzbd/api?mode=queue&amp;name=change_complete_action&amp;value=" rel="nofollow"><span>http</span><span>://</span><span>host</span><span>:</span><span>port</span><span>/</span><span>sabnzbd</span><span>/</span><span>api</span><span>?</span><span>mode</span><span>=</span><span>queue</span><span>&amp;</span><span>name</span><span>=</span><span>change</span><span>_</span><span>complete</span><span>_</span><span>action</span><span>&amp;</span><span>value</span><span>=</span></a>&lt;action&gt;</span></p>
+<p>Action to be executed when the download queue becomes empty:</p>
+<ul>
+    <li>script_xxx, where 'xxx' is a script from the list returned by the api call <em>get_scripts</em>.</li>
+    <li>shutdown_pc</li>
+    <li>hibernate_pc</li>
+    <li>shutdown_program</li>
+</ul>
+<h3 id="toc8"><span>Warnings overview</span></h3>
+<p><span style="white-space: pre-wrap;"><a class="vglnk" href="http://host:port/sabnzbd/api?mode=warnings&amp;output=json|xml" rel="nofollow"><span>http</span><span>://</span><span>host</span><span>:</span><span>port</span><span>/</span><span>sabnzbd</span><span>/</span><span>api</span><span>?</span><span>mode</span><span>=</span><span>warnings</span><span>&amp;</span><span>output</span><span>=</span><span>json</span><span>|</span><span>xml</span></a></span></p>
+<p>Returns a JSON or XML object containing an array of warning strings.</p>
+<h3 id="toc9"><span>Category list</span></h3>
+<p><span style="white-space: pre-wrap;"><a class="vglnk" href="http://host:port/sabnzbd/api?mode=get_cats&amp;output=json|xml" rel="nofollow"><span>http</span><span>://</span><span>host</span><span>:</span><span>port</span><span>/</span><span>sabnzbd</span><span>/</span><span>api</span><span>?</span><span>mode</span><span>=</span><span>get</span><span>_</span><span>cats</span><span>&amp;</span><span>output</span><span>=</span><span>json</span><span>|</span><span>xml</span></a></span></p>
+<p>Returns a JSON or XML object containing an array of category strings.</p>
+<h3 id="toc10"><span>Script list</span></h3>
+<p><span style="white-space: pre-wrap;"><a class="vglnk" href="http://host:port/sabnzbd/api?mode=get_scripts&amp;output=json|xml" rel="nofollow"><span>http</span><span>://</span><span>host</span><span>:</span><span>port</span><span>/</span><span>sabnzbd</span><span>/</span><span>api</span><span>?</span><span>mode</span><span>=</span><span>get</span><span>_</span><span>scripts</span><span>&amp;</span><span>output</span><span>=</span><span>json</span><span>|</span><span>xml</span></a></span></p>
+<p>Returns a JSON or XML object containing an array of script strings.</p>
+<h3 id="toc11"><span>Version</span></h3>
+<p><span style="white-space: pre-wrap;"><a class="vglnk" href="http://host:port/sabnzbd/api?mode=version&amp;output=json|xml" rel="nofollow"><span>http</span><span>://</span><span>host</span><span>:</span><span>port</span><span>/</span><span>sabnzbd</span><span>/</span><span>api</span><span>?</span><span>mode</span><span>=</span><span>version</span><span>&amp;</span><span>output</span><span>=</span><span>json</span><span>|</span><span>xml</span></a></span></p>
+<p>Returns a JSON or XML object containing the version of SABnzbd.</p>

@@ -1,0 +1,45 @@
+---
+title: Configure
+---
+<p>SABnzbd comes with sensible defaults to work, however there are plenty of options and tweaks that may be done to get the most out of what sab can do.<br>
+    View the relevant page for more information on what an option does and more.
+</p>
+<p>All configuration data is stored in the so-called INI file. Which INI file used, you can see on the Configuration main page.<br>
+    The default location is:
+</p>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td>Windows XP/2003</td>
+            <td>c:\documents and settings\<strong>user</strong>\local data\application data\sabnzbd\sabnzbd.ini</td>
+        </tr>
+        <tr>
+            <td>Windows Vista, 7, 8 or 10</td>
+            <td>c:\Users\<strong>user</strong>\AppData\Local\sabnzbd\sabnzbd.ini</td>
+        </tr>
+        <tr>
+            <td>Unix</td>
+            <td>$HOME/.sabnzbd/sabnzbd.ini</td>
+        </tr>
+        <tr>
+            <td>OSX</td>
+            <td>/Users/<strong>user</strong>/Library/Application Support/SABnzbd/sabnzbd.ini</td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<p>Sab relies on using existing utilities to extract, repair, and process files once they have been downloaded.<br>
+    Some of these utilities are provided with sab while some require the user to install, also some may only be optional depending on how you use sab.
+</p>
+<p><a name="no_ssl"></a></p>
+<h2 id="toc1"><span>SSL</span></h2>
+<p>In order to connect to your newsserver using SSL you need to install pyOpenSSL and OpenSSL (sometimes provided in 1 package). Installation depends on your platform.<br>
+    Windows and OSX packages already include the required files and should work after installation of SABnzbd.<br>
+    Ubuntu: sudo apt-get install python-openssl<br>
+    Running from source: pip install pyopenssl
+</p>
+<p><a name="no_yenc"></a></p>
+<h2 id="toc2"><span>yEnc</span></h2>
+<p>Posts on usernet are coded in the yEnc format, decoding this during the downloading using Python is not very efficient. Therefore we implemented this part in C for a big gain in performance.<br>
+    For your system you might need to compile this module separately.
+</p>

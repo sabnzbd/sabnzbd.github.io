@@ -1,0 +1,70 @@
+---
+title: Ubuntu PPA Repository
+---
+<p>JCFP maintains an Ubuntu package which is stored in an unofficial repository<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup>.</p>
+<p>Attention: As of Ubuntu 10.04 Lucid, SABnzbd is part of the standard Ubuntu repository "multiverse". Installing SABnzbd is easy:</p>
+<ul>
+    <li>Start the Software Center and search "sabnzbd" (or "sabnzbdplus"). Then click Install.</li>
+    <li>Or, from the command line with "multiverse" enabled, type "sudo apt-get install sabnzbdplus".</li>
+</ul>
+<p>If you use this method, you can skip the first parts and jump to "How To Start"</p>
+<p>The below information handles installation from the PPA package. The PPA version can be useful as it is often more uptodate than the regular Ubuntu Multiverse version.</p>
+<p>The following part is (c) 2008 by JCF Ploemen</p>
+<h1 id="toc0"><span>How To PPA Setup</span></h1>
+<p>I've created a repository with the latest version of SABnzbd+. When using this repository, you will be able to easily install the program and its dependencies, and in case any new version of the program is released, you will be automatically notified just like with any other updated package. Reasonable efforts will be made to keep things as up-to-date as possible. Be patient.</p>
+<p>Currently <strong>hardy</strong> (8.04), <strong>lucid</strong> (10.04), <strong>maverick</strong> (10.10), <strong>natty</strong> (11.04), <strong>oneiric</strong> (11.10), <strong>precise</strong> (12.04) and <strong>quantal</strong> (12.10) are supported. Debian users: sabnzbdplus is in sid/unstable (contrib).</p>
+<p>As with any repository, this one too has to be added to your /etc/apt/sources.list. To do so, run the following command in a terminal:</p>
+<div class="code">
+    <pre><code>sudo add-apt-repository ppa:jcfp/ppa</code>
+</pre>
+</div>
+<p>If you are using an older version of Ubuntu and the above command fails, you will need to issue these commands instead:</p>
+<div class="code">
+    <pre><code>echo "deb <a class="vglnk" href="http://ppa.launchpad.net/jcfp/ppa/ubuntu" rel="nofollow"><span>http</span><span>://</span><span>ppa</span><span>.</span><span>launchpad</span><span>.</span><span>net</span><span>/</span><span>jcfp</span><span>/</span><span>ppa</span><span>/</span><span>ubuntu</span></a> $(lsb_release -c -s) main" | sudo tee -a /etc/apt/sources.list &amp;&amp; sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:11371 --recv-keys 0x98703123E0F52B2BE16D586EF13930B14BB9F05F</code>
+</pre>
+</div>
+<p>Next, tell apt to update, so it learns of the new package now available:</p>
+<div class="code">
+    <pre><code>sudo apt-get update</code>
+</pre>
+</div>
+<h1 id="toc1"><span>How To Install</span></h1>
+<p>Install the main program package. All dependencies will be automatically taken care of in this step as well:</p>
+<div class="code">
+    <pre><code>sudo apt-get install sabnzbdplus</code>
+</pre>
+</div>
+<h1 id="toc2"><span>How To Start</span></h1>
+<p>And that's it. To start the program, just execute:</p>
+<div class="code">
+    <pre><code>sabnzbdplus</code>
+</pre>
+</div>
+<p>If this is the first time you run SABnzbd (or, more exact, if there is no sabnzbd.ini in ~/.sabnzbd/), SABnzbd will start the wizard which lets you fill out the needed parameters.</p>
+<p>It's preferred to run SABnzbd as a normal user: SABnzbd does not need any special root rights, and it's safer to run as a normal user.</p>
+<h1 id="toc3"><span>How To Run as a Service</span></h1>
+<p>If you want the program to be started as a service (i.e., in the background on system boot), you will need to edit (as root) the file <tt>/etc/default/sabnzbdplus</tt> and set the "USER=" to the appropriate setting and the "HOST=" to 0.0.0.0 .</p>
+<p>Once configured correctly, you will be able to start and stop SABnzbd with the commands <tt>/etc/init.d/sabnzbdplus start</tt> and <tt>/etc/init.d/sabnzbdplus stop</tt>. On more recent Ubuntu versions, you can use</p>
+<div class="code">
+    <pre><code>sudo service sabnzbdplus start</code>
+</pre>
+</div>
+<br>
+and
+<div class="code">
+    <pre><code>sudo service sabnzbdplus stop</code>
+</pre>
+</div>
+<p>Although for obvious reasons no browser is auto-started when running the program like this, the web interface is still available at the usual location of <a href="http://localhost:8080/sabnzbd/">http://localhost:8080/sabnzbd/</a> (or whatever other host and port you configured).</p>
+<h1 id="toc4"><span>The Fine Print</span></h1>
+<ol>
+    <li>This is an unofficial package from an unofficial repository. Don't file bugs about packages installed from this repository in Ubuntu's bug tracker, instead complain right here in this topic.</li>
+    <li>Several small changes have been made compared to stock sabnzbd+; the only one relevant for everyday use is that the version from the package always tries to find and use the configuration in the home directory of the user starting it, even when run in the background. The standard one doesn't, instead - when run with the —daemon option - it always assumes its configuration is in the same directory as the executable. This is undesirable with a system-wide install on Linux, since it causes the program to attempt to store its configuration file in /usr/bin.</li>
+    <li>The sabnzbdplus package is also available from the official <a href="https://launchpad.net/ubuntu/+source/sabnzbdplus">Ubuntu</a> repositories (jaunty/9.04 and newer, in multiverse) as well as from <a href="http://packages.debian.org/search?keywords=sabnzbdplus">Debian</a> (sid/unstable, in contrib). It's safe to use the ppa and the official repositories side by side in Ubuntu; in case both have the same release the design of the package will cause the official repositories to take precedence.</li>
+</ol>
+<p>If you are interested in packaging, want to grab the source package, or just check out the build logs, visit the <a href="https://launchpad.net/~jcfp/+archive">launchpad ppa page</a> of the repository.</p>
+<p>Enjoy!</p>
+<div class="footnotes-footer">
+    <div class="title">Footnotes</div>
+    <div class="footnote-footer" id="footnote-1">1. Remember that this package is not created and therefore <strong>not</strong> supported by the SABnzbd team! But do feel free to ask questions on the forum, which is frequently vistited by JCFP.</div>
+</div>

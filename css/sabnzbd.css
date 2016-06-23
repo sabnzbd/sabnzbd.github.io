@@ -1,0 +1,435 @@
+
+* {
+    border-radius: 0 !important;
+}
+body {
+    background-color: #e7e7e7;
+    font-family: 'Lato', sans-serif;
+}
+code {
+    color: black;
+    background-color: #f5f5f5;
+}
+
+.padding-row {
+    padding: 25px 0px 30px;
+}
+
+.content-container a,
+footer a {
+    color: #727272;
+    text-decoration: none;
+    border-bottom: 1px solid #5A5A5A;
+}
+
+.content-container a:hover,
+footer a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-default {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: white;
+}
+
+.navbar-brand {
+    padding-top: 7px;
+    padding-bottom: 0;
+    display: none;
+}
+
+.navbar-brand img {
+    height: 36px;
+}
+
+#navbar>ul>li a {
+    font-size: 1.1em
+}
+
+#navbar>ul>li>a {
+    font-weight: bold;
+    color: black;
+    margin-right: 1px;
+} 
+
+#navbar>ul>li>a:hover {
+    background-color: #e7e7e7;
+}
+
+.navbar-default .navbar-toggle {
+    border: 0;
+    margin-top: 6px;
+    margin-right: 8px;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    height: 3px;
+    background-color: #373737
+}
+
+.navbar-default .navbar-toggle:focus, 
+.navbar-default .navbar-toggle:hover {
+    background-color: transparent;
+}
+
+
+/**** */
+.logo-text-pages h1 {
+    margin: 5px 0 15px;
+    font-weight: 500;
+    font-size: 2.2em;
+}
+
+.logo-text-pages img {
+    height: 45px;
+    margin-bottom: 15px;
+}
+
+.main-wrapper {
+    padding: 20px 0px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-width: 1px 0px;
+}
+
+
+/*** Frontpage ***/
+#frontpage-slogan {
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.downloads-row {
+    position: relative;
+    height: 230px;
+    text-align: center;
+}
+
+.download-buttons-wrapper {
+    position: absolute;
+    min-width: 380px;
+    top: 50%;   
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.downloads-container img {
+    width: 100%;
+    max-width: 500px;
+    margin: 40px auto;
+    display: block;
+}
+.show-after-load {
+    visibility: collapse;
+}
+.downloads-title {
+    margin: 20px;
+}
+
+.download-button {
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    border: 0 !important;
+    background-color: #F5B907;
+    padding: 5px 5px 10px !important;
+    color: white !important;
+    text-decoration: none;
+    box-shadow: 1px 1px 4px rgba(0,0,0,.3);
+    margin-bottom: 5px;
+    transition: .1s background-color ease-in-out;
+}
+
+.download-button span {
+    float: left;
+    font-size: 2em;
+    margin: 0.6em 0 0 5%;
+}
+
+.download-button h4 {
+    font-size: 2em;
+    margin-bottom: 0;
+}
+
+.download-button:hover {
+    background-color: #FFC400;
+}
+
+.download-extra {
+    margin: 0px 5px 15px 50px;
+    display: inline-block;
+}
+
+
+.linux-row {
+    display: none;
+}
+
+.linux-row .glyphicon {
+    top: 3px;
+}
+
+.highlights {
+    float: right;
+    height: 120px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+}
+
+.lSSlideOuter .lSPager.lSpg>li a {
+    border: 0 !important;
+    background-color: #666;
+    margin-bottom: 5px;
+    border-radius: 30px !important;
+}
+
+.lSSlideOuter .lSPager.lSpg>li.active a, 
+.lSSlideOuter .lSPager.lSpg>li:hover a {
+    background-color: #F5B907;
+}
+
+
+#frontpage-slideshow img {
+    width: 100%;
+    margin-bottom: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#frontpage-slideshow li {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/*** Downloads page ***/
+.container-download-page .downloads-row {
+    height: auto;
+}
+.container-download-page h2,
+.container-download-page p,
+.container-download-page .download-links {
+    text-align: left;
+}
+
+.container-download-page ul {
+    margin-top: 15px;
+}
+
+.container-download-page .download-button {
+    margin: 0;
+}
+
+/*** Wiki ****/
+.navbar-wiki-button,
+.navbar-wiki-button:focus {
+    background-color: white;
+    float: right;
+}
+.title-page {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.wiki-content table td:first-child {
+    width: 200px;
+}
+
+.wiki-content .table-not-fixed td:first-child {
+    width: auto;
+    min-width: 40px;
+}
+
+.wiki-content th {
+    background-color: #EDEDED
+}
+
+
+.wiki-content h1 {
+    font-size: 1.9em
+}
+
+.wiki-content h2 {
+    font-size: 1.6em
+}
+
+.wiki-content h3 {
+    font-size: 1.3em
+}
+
+#wiki-side-bar {
+    margin-bottom: 30px;
+}
+
+#wiki-side-bar a {
+    display: block;
+    border: 0;
+    padding: 7px;
+    color: black;
+}
+
+#wiki-side-bar .menu-spacer {
+    height: 25px;
+}
+
+#wiki-side-bar>a {
+    border-bottom: 1px solid #ddd;
+    font-weight: 700
+}
+
+#wiki-side-bar a:hover{
+    background-color: #F3F3F3
+}
+
+#wiki-side-bar .active-menu  {
+    background-color: #F3F3F3
+}
+
+#wiki-side-bar ul {
+    list-style: none;
+    padding-left: 0;
+    
+}
+
+#wiki-side-bar ul a {
+    padding-left: 20px;
+    margin-top: 2px;
+}
+
+.footnotes-footer {
+    border-top: 1px solid #ddd;
+    margin-top: 15px;
+    padding-top: 15px;
+}
+
+.footnotes-footer .title {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+blockquote {
+    font-size: 1em;
+}
+
+
+/*** */
+footer {
+    background-color: #e7e7e7;
+    padding: 20px;
+}
+
+aside {
+    display: none;
+    float: none;
+    clear: both;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 0;
+    height: 218px;
+    width: 218px;
+    text-align: right;
+}
+/***** */
+
+/* Not too much padding on top */
+@media only screen and (max-width: 999px) {
+    .downloads-container img {
+        margin: 10px auto;
+    }
+
+    .single-download {
+        height: 150px;
+    }
+
+    img.slideshow {
+        margin: 10px 0px;
+    }
+
+    
+    .navbar-wiki-button {
+        display: block;
+    }
+
+    .highlights-row .col-md-6 {
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+        padding-top: 20px;
+    }
+}
+
+@media only screen and (min-width: 999px) { 
+    #wiki-side-bar {
+        display: block !important;
+    }
+    .navbar-wiki-button {
+        display: none;
+    }
+}
+
+/* Special for phones */
+@media only screen and (max-width: 767px) {
+    .navbar-brand {
+        display: inline;
+    }
+
+    .main-logo,
+    .logo-text-pages img {
+        display: none
+    }
+
+    .downloads-row {
+        height: 160px;
+    }
+
+    .highlights {
+        float: none;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .wiki-content table td:first-child {
+        width: auto;
+    }
+
+    .logo-text-pages h1 {
+        margin-top: -5px;
+    }
+
+    .download-buttons-wrapper {
+        min-width: 100%;
+    }
+
+    .container-download-page .download-button {
+        margin: 0 -15px;
+        width: calc(100% + 30px);
+    }
+
+    /* Some overrides for the popup on mobile */
+    .featherlight .featherlight-content {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    .featherlight .featherlight-close-icon {
+        background-color: white;
+    }
+
+    /* So the ad doesn't block the menu */
+    aside {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 767px) {
+    #navbar {
+        padding-left: 0;
+        margin-left: -15px;
+    }
+
+    
+}

@@ -1,0 +1,41 @@
+---
+title: Using SABnzbd
+---
+<h1 id="toc0"><span>General Workflow</span></h1>
+<p>Here's how you'll generally be downloading things with SABnzbd.</p>
+<ul>
+    <li>Search for something you want to download at your <a href="/wiki/introduction/nzb-sources">usenet indexer</a> of choice.</li>
+    <li>Download an NZB describing that data</li>
+    <li>Give that NZB to SABnzbd in one of a wide variety of ways</li>
+    <li>
+        SABnzbd downloads from your usenet provider(s), and optionally does several things:
+        <ul>
+            <li>verifies files</li>
+            <li>repairs files if necessary</li>
+            <li>unrars</li>
+            <li>moves files into the correct directory (see <a href="/wiki/configuration/1.0/categories">Categories</a>)</li>
+            <li>postprocessing (see <a href="/wiki/configuration/1.0/categories">Categories</a> and <a href="/wiki/advanced/user-scripts">User Scripts</a>)</li>
+        </ul>
+    </li>
+</ul>
+<h1 id="toc1"><span>Adding an .nzb file to SABnzbd</span></h1>
+<ul>
+    <li><strong>Upload an NZB</strong> - On the index of the web interface there's a box to upload an NZB you've downloaded to your hard drive. You can upload the raw .NZB file, or an NZB that has been zipped, gzipped or rar'ed.</li>
+</ul>
+<ul>
+    <li><strong>Open With SABnzbd</strong> - SABnzbd includes the ability to associate NZBs with SABnzbd. Simply have your browser open the NZB with SABnzbd, or set your OS to associate NZBs with SABnzbd.</li>
+</ul>
+<ul>
+    <li><strong>Add by NZB Dropbox</strong> - In Config -&gt; Directories, you can set a folder to be "Watched" by SABnzbd for downloaded NZBs. Once you've specified a directory to be watched, any NZBs (zipped, gzipped or rar'ed ones) will be automatically added to SABnzbd and deleted.</li>
+</ul>
+<ul>
+    <li><strong>Add by RSS</strong> - Many <a href="/wiki/introduction/nzb-sources">Indexing Sites</a> offer RSS feeds of their content. Set one up under <a href="/wiki/configuration/rss">Config -&gt; RSS</a> and SABnzbd will automatically download from it.</li>
+</ul>
+<ul>
+    <li><strong>Add by URL</strong> - On the index of the web interface there's a box to enter the URL of an NZB file. Many indexing sites require that you enter an API Key as part of your URL, so this might not be the easiest method depending on your indexing site.</li>
+</ul>
+<ul>
+    <li>
+        <strong>Third-Party Tools</strong> - SABnzbd's <a href="/wiki/advanced/api">powerful API</a> allows developers to create tools that can directly add things to SABnzbd's queue. We have a <a href="http://forums.sabnzbd.org/index.php?board=6.0">forum for discussing third party tools</a>.
+    </li>
+</ul>

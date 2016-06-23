@@ -1,0 +1,97 @@
+---
+title: General
+---
+
+<h2 id="toc0"><span>Web server</span></h2>
+<p>The user interface of SABnzb is a web-site. You can modify some web site behaviour here.<br></p>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Host</strong></td>
+            <td>The hostname that will be used to access sabnzbd. The default of localhost will only allow access from the computer running sabnzbd. Change to 0.0.0.0 (unless using vista) or leave it empty (auto-finds local ip address) to be able to access from other pcs in your network. For more information see <a href="/wiki/advanced/command-line-parameters">command-line-parameters</a>.<br>
+                <br>
+                127.0.0.1 or [::1] or localhost = Access from this computer only<br>
+                empty = Finds and listens on your local (ipv4) ip address. Used for accessing from other computers. localhost will not work anymore so update your bookmarks.<br>
+                0.0.0.0 = Listens on multiple interfaces (both local IP and localhost). Recommended if you are not running vista. Vista prefers ipv6 so your ipv4 ip address (192.168.x.x) won't work which means forwarding the ports may not work. Note for Ubuntu users on Karmic (9.10): if 0.0.0.0 doesn't seem to work for you, try the actual internal or external IP you want to use.
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Port</strong></td>
+            <td>The internal webserver needs an IP port to listen on. The default port is 8080. Try another one if this address is already occupied by another program on your computer. (Note for linux users: ports below 1025 may require sabnzbd launched as root)</td>
+        </tr>
+        <tr>
+            <td><strong>Web username</strong></td>
+            <td>You may want to limit access to the web interface to people knowing a username and password for the interface. WARNING: this is not a very secure method!</td>
+        </tr>
+        <tr>
+            <td><strong>Web password</strong></td>
+            <td>See "username"</td>
+        </tr>
+        <tr>
+            <td><strong>Skin</strong></td>
+            <td>SABnzbd comes with a few different skins (web interface styles). Pick one here and click on save. For the skin to become active, you have to shutdown SABnzbd and restart it again. Some skins support multiple color schemas. </td>
+        </tr>
+        <tr>
+            <td><strong>Secondary Interface</strong></td>
+            <td>You can have a second user interface, using another skin. This will become visible as <span style="white-space: pre-wrap;"><a class="vglnk" href="http://host:port/sabnzbd/m" rel="nofollow"><span>http</span><span>://</span><span>host</span><span>:</span><span>port</span><span>/</span><span>sabnzbd</span><span>/</span><span>m</span></a></span></td>
+        </tr>
+        <tr>
+            <td><strong>Language</strong></td>
+            <td>The program supports more languages (currently: English, French, German, Swedish and Dutch)</td>
+        </tr>
+        <tr>
+            <td><strong>API Key</strong></td>
+            <td>This is the <em>secret key</em> that is needed in <a href="/wiki/advanced/automation-support">API calls</a>. Note that when you click the Change button, you'll need to tell your utilities the new key.</td>
+        </tr>
+        <tr>
+            <td><strong>Don't use API key</strong></td>
+            <td>Some utilities may not support the API key. This option remove the requirement. Be warned that this makes your system less secure!</td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="toc1"><span>HTTPS support</span></h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Allow HTTPS</strong></td>
+            <td>Enable the webserver to use HTTPS. For more information, see: <a href="/wiki/advanced/https">https</a></td>
+        </tr>
+        <tr>
+            <td><strong>HTTPS Port</strong></td>
+            <td>Port to be used for listening. Must be different from the normal HTTP port</td>
+        </tr>
+        <tr>
+            <td><strong>HTTPS Certificate</strong></td>
+            <td>File containing the HTTPS certificate</td>
+        </tr>
+        <tr>
+            <td><strong>HTTPS Key</strong></td>
+            <td>File containing the HTTPS key</td>
+        </tr>
+    </tbody>
+</table>
+<h2 id="toc2"><span>Tuning</span></h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Queue auto refresh interval</strong></td>
+            <td>If you want the queue display to be automatically refreshed, you can speify here the interval in seconds.</td>
+        </tr>
+        <tr>
+            <td><strong>RSS checking rate</strong></td>
+            <td>Interval in minutes between checking the RSS feeds (at least 15 min.)</td>
+        </tr>
+        <tr>
+            <td><strong>Download Speed Limit</strong></td>
+            <td>If your downloads block all other traffic, you can reduce the download speed. Specify the maximum download speed to limit by in kilobytes per second (KB/s)</td>
+        </tr>
+        <tr>
+            <td><strong>Article Cache Limit</strong></td>
+            <td>How much memory (RAM) can be used for caching (reducing disk access). 0=Disable Cache -1= Unlimited cache number = Maximum memory (in bytes) to use for cache. See "<a href="/wiki/advanced/highspeed-downloading">High speeds</a>" for more information. You enter the amount in bytes but you can use factors like K, M, G etc. eg: 70M = 70megabyte cache</td>
+        </tr>
+        <tr>
+            <td><strong>Cleanup List</strong></td>
+            <td>List of file (extensions) that should be deleted in the cleanup stage. Examples: .nfo, .nfo, .sfv (You can leave out the dots, so nfo, nzb, sfv will do the same.)</td>
+        </tr>
+    </tbody>
+</table>

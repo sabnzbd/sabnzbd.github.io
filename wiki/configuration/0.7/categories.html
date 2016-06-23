@@ -1,0 +1,47 @@
+---
+title: Categories
+---
+
+<p>User-defined categories allow precise control over groups of downloads. When queued up, downloads will be placed in the appropriate category. The download's category may also be manually applied later, on the Downloads page.</p>
+<p><strong>Properties that may be set for a category, as desired:</strong></p>
+<ul>
+    <li>What priority to give them.</li>
+    <li>How the file should be unpacked (nothing/repaired/repaired+unpack/repair+unpack+delete rars)</li>
+    <li>The user-script to execute after the download (script defined in <a href="/wiki/configuration/1.0/folders">configure directories</a> config&gt;folders]).</li>
+    <li>The Folder or full path for final storage (relative folders are based of your complete folder, full paths are also allowed). Ending the path with an asterisk * will prevent creation of job folders.</li>
+</ul>
+<p><strong>Categories are applied:</strong></p>
+<ul>
+    <li>When the Indexer tag or Group name matches the field for that category.</li>
+    <li>When an RSS feed specifically applies a particular category.</li>
+    <li>When a user changes the category, on the Downloads (main queue) page.</li>
+    <li>When a script adds a download via API (i.e., Sickbeard or other projects).</li>
+</ul>
+<h2 id="toc0"><span>Indexer tag or Group field</span></h2>
+<p>By default, downloads are automatically categorized by Group being downloaded from (i.e., alt.binaries.teevee) or by the Indexer providing the nzb download.</p>
+<h3 id="toc1"><span>Notes:</span></h3>
+<ul>
+    <li>Each row has its own save button. Remember to hit <strong>save</strong> after each category change!</li>
+    <li>Basic wildcards are supported. For example, nzb.su uses subcategories like <em>TV: Divx/Xvid</em>. Instead of listing all possible categories, you may simple use <em>TV*</em>. This is also possible with the news group being matched as well (i.e., <em>alt.bin*</em>).</li>
+    <li>The Watched Folder has support for categories too. This allows you to create a directory named after a category in your watched folder, saving an nzb/zip/rar there will apply that category to it. See the <a href="/wiki/configuration/1.0/folders">Watched Folder</a> page for more info.</li>
+</ul>
+<h3 id="toc2"><span>Popular Indexer Examples (<a href="/wiki/introduction/nzb-sources">see more</a>)</span></h3>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td>Site</td>
+            <td>Category Subcategory</td>
+            <td>Sab Match Pattern</td>
+        </tr>
+        <tr>
+            <td><a class="vglnk" href="http://DogNZB.com" rel="nofollow"><span>DogNZB</span><span>.</span><span>com</span></a></td>
+            <td><strong>TV Shows*HD</strong></td>
+            <td><strong>TV</strong>* to match all TV or <strong>TV Shows*HD</strong> to match only the subcat</td>
+        </tr>
+        <tr>
+            <td>Nzb.su</td>
+            <td><strong>TV*SD</strong></td>
+            <td><strong>TV</strong>* to match all TV or <strong>TV*SD</strong> to match only the subcat</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,321 @@
+---
+title: Command Line Parameters
+---
+<p>
+    You can start SABnzbd with options. You normally do this from a command prompt (Windows) or a shell (Unix).
+    <br>
+    An option is a combination of the option name and one parameter. For parameters that contain spaces, you must surround the parameter with double quotes (e.g. —config-file "/my very long path/SABnzbd.ini").
+</p>
+<table class="table table-bordered table-hover table-not-fixed">
+    <tbody>
+        <tr>
+            <td>-f</td>
+            <td>
+                <span style="white-space: pre-wrap;">--config-file</span>
+            </td>
+            <td>The name of the configuration file.</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                If you specify an INI file, all relative folders in Config-&gt;Folders will be relative to the location of the INI file. If you do not specify an INI file, SABnzbd will first check if the file <strong>sabnzbd.ini</strong>
+                is in the program directory and after that on the following "standard" location:
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Unix</td>
+            <td>~/.sabnzbd/sabnzbd.ini</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Windows XP/S2003</td>
+            <td>
+                %userprofile%\Local Settings\Application Data\sabnzbd\sabnzbd.ini
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Vista/S2008/Win7</td>
+            <td>%userprofile%\AppData\Local\sabnzbd\sabnzbd.ini</td>
+        </tr>
+
+        <tr>
+            <td>-p</td>
+            <td>
+                <span style="white-space: pre-wrap;">--pause</span>
+            </td>
+            <td>Start in paused mode</td>
+        </tr>
+
+        <tr>
+            <td>-t</td>
+            <td>
+                <span style="white-space: pre-wrap;">--templates</span>
+            </td>
+            <td>
+                Select another set of user interface templates. Use a name of a set in the <em>interfaces</em>
+                folder.
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                The name of a standard interface ("Classic", "Plush", "smpl" or "Mobile")
+            </td>
+        </tr>
+        <tr>
+            <td>-2</td>
+            <td></td>
+            <td>
+                Select the secondary user interface templates. Use a name of a set in the <em>interfaces</em>
+                folder.
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                The name of a standard interface ("Classic", "Plush", "smpl" or "Mobile")
+            </td>
+        </tr>
+        <tr>
+            <td>-c</td>
+            <td>
+                <span style="white-space: pre-wrap;">--clean</span>
+            </td>
+            <td>
+                Clear the cache and log directories. All queued downloads will be removed. The "download_dir" is <strong>not</strong>
+                cleared.
+            </td>
+        </tr>
+
+        <tr>
+            <td>-s</td>
+            <td>
+                <span style="white-space: pre-wrap;">--server</span>
+                host
+                <strong>:</strong>
+                port
+            </td>
+            <td>
+                Specify IP address and port that SABnzbd should listen on. Value will be stored in the INI file.
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>host</td>
+            <td>The name or IP of this computer</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>port</td>
+            <td>
+                The port number that the web interface uses. Value between 80 and 65000. Pick a free one. Typical values: 80, 8080, 8088, 9000 etc. You'll get an error message when the port is not free.
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Supported notations</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <strong>:</strong>
+                port
+            </td>
+            <td>
+                Use the host address of this system. Web interface will be available to other computers on the LAN
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                localhost
+                <strong>:</strong>
+                port
+            </td>
+            <td>
+                Use the special internal address of this computer. Web interface is only available on this computer
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                0.0.0.0
+                <strong>:</strong>
+                port
+            </td>
+            <td>
+                Use the host address
+                <em>and</em>
+                the internal address on this computer. Only needed in special cases.
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                address
+                <strong>:</strong>
+                port
+            </td>
+            <td>
+                You can also set a specific host name or numerical IP. Useful when a system has multiple network connections.
+            </td>
+        </tr>
+
+        <tr>
+            <td>-h</td>
+            <td>
+                <span style="white-space: pre-wrap;">--help</span>
+            </td>
+            <td>
+                Show short explanation of the commandline options and exit program (won't work with Win32 binary)
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <span style="white-space: pre-wrap;">--permissions</span>
+            </td>
+            <td>
+                Specify file permissions (Unix only). See
+                <a href="/wiki/advanced/unix-permissions">explanation</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>-b</td>
+            <td>
+                <span style="white-space: pre-wrap;">--browser</span>
+            </td>
+            <td>0 = Do not show the browser (recommended for servers).</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                1 = SABnzbd will start the system's default browser, showing the GUI of SABnznd (default).
+            </td>
+        </tr>
+
+        <tr>
+            <td>-l</td>
+            <td>
+                <span style="white-space: pre-wrap;">--logging</span>
+            </td>
+            <td>0 = Only show errors and warnings</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>1 = Also show info messages</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                2 = Also show debug messages (use only when analyzing problems)
+            </td>
+        </tr>
+
+        <tr>
+            <td>-w</td>
+            <td>
+                <span style="white-space: pre-wrap;">--weblogging</span>
+            </td>
+            <td>Logging of the webserver framework</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>0 = Logging off</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>1 = Logging on (use only when analyzing problems)</td>
+        </tr>
+
+        <tr>
+            <td>-v</td>
+            <td>
+                <span style="white-space: pre-wrap;">--version</span>
+            </td>
+            <td>
+                Show SABnzbd's version and exit program (won't work with Win32 binary)
+            </td>
+        </tr>
+
+        <tr>
+            <td>-d</td>
+            <td>
+                <span style="white-space: pre-wrap;">--daemon</span>
+            </td>
+            <td>
+                Start in daemon mode. Run without a terminal window and do not start the browser. Do NOT assume that the user profile can be used. You must use the
+                <strong>-f &lt;file&gt;</strong>
+                option.
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <span style="white-space: pre-wrap;">--https</span>
+                port
+            </td>
+            <td>
+                Set the HTTPS port number and enable HTTPS for the user interface
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <span style="white-space: pre-wrap;">--pid</span>
+                path
+            </td>
+            <td>
+                Create a file with the PID (process number) of the SABnznbd process. The file will exists as long as the instance of SABnzbd lives (unless it crashes). A full directory path is required. The file name will be sabnzbd_
+                <strong>port</strong>
+                .pid where
+                <strong>port</strong>
+                is the port number used for the web server. Only Unix/OSX and 0.6.1+
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <span style="white-space: pre-wrap;">--pidfile</span>
+                file-path
+            </td>
+            <td>
+                Use this to set a file (full path required) where SABnzbd can store its PID. The content of the file will be the process number (PID). Only Unix/OSX and 0.7.17+
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <span style="white-space: pre-wrap;">--new</span>
+            </td>
+            <td>
+                Normally SABnzbd checks if an instance of SABnzbd is already running. If so and the versions match, the second instance will just activate the web interface of the first instance or send an NZB to the first instance. If you really want to run multiple instances, you will need to use the
+                <span style="white-space: pre-wrap;">--new</span>
+                parameter. (0.6.3+)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <span style="white-space: pre-wrap;">--no_ipv6</span>
+            </td>
+            <td>
+                Use this when your system cannot handle ::1 (the IPv6 value of "localhost"). The setting will be stored in the sabnzbd.ini file (0.7.1+)
+            </td>
+        </tr>
+    </tbody>
+</table>

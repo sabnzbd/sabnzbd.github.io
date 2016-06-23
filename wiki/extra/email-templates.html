@@ -1,0 +1,169 @@
+---
+title: Email Templates
+---
+<p>SABnzbd can send a notification email on completion of a download job.</p>
+<p>There is a default format, but you can format your own email using a template.<br>
+    The formatting language used, is Cheetah. This is also used to create the web interface of SABnzbd.<br>
+    You need to make yourself familiar with this template language.<br>
+    Please, refer to the <a href="http://www.cheetahtemplate.org/index.html" target="_blank">Cheetah home page</a> and more specific its <a href="http://www.cheetahtemplate.org/docs/users_guide_html" target="_blank">User Guide</a>.
+</p>
+<p>SABnzbd makes these variables available for use in the email:</p>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td>$to</td>
+            <td></td>
+            <td>One or more recipients. Read footnote<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup></td>
+        </tr>
+        <tr>
+            <td>$from</td>
+            <td></td>
+            <td>Sender</td>
+        </tr>
+        <tr>
+            <td>$status</td>
+            <td></td>
+            <td>Job status: True for success</td>
+        </tr>
+        <tr>
+            <td>$name</td>
+            <td></td>
+            <td>Name of the job</td>
+        </tr>
+        <tr>
+            <td>$msgid</td>
+            <td></td>
+            <td>Indexer's report number (if supported)</td>
+        </tr>
+        <tr>
+            <td>$end_time</td>
+            <td></td>
+            <td>Time of job completion</td>
+        </tr>
+        <tr>
+            <td>$size</td>
+            <td></td>
+            <td>Size of the job, includes K/M/G postfix</td>
+        </tr>
+        <tr>
+            <td>$output</td>
+            <td></td>
+            <td>Output of the post-processing = Dictionary of stages</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>name</td>
+            <td>Name of the stage</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>actions</td>
+            <td>Results of the stage</td>
+        </tr>
+        <tr>
+            <td>$script</td>
+            <td></td>
+            <td>Script name (empty if no script has run)</td>
+        </tr>
+        <tr>
+            <td>$script_output</td>
+            <td></td>
+            <td>Output of the script</td>
+        </tr>
+        <tr>
+            <td>$cat</td>
+            <td></td>
+            <td>The category of the job</td>
+        </tr>
+    </tbody>
+</table>
+<p>You can create one or more of your own templates. In the <a href="/wiki/configuration/1.0/folders">Config-&gt;Folders</a> page you can specify a folder for the templates.<br>
+    SABnzbd will look for files ending with <strong>.tmpl</strong> and will send an email message for <em>every</em> template.<br>
+    If you want to use different email formats based on the email recipient, you can use conditional formatting (see example below).<br>
+    There are two different kinds of templates. "email-*.tmpl" will be used for normal notifications and "rss-*.tmpl" will be used for RSS notifications. Release 0.7.0+ will also have a "badfetch-*tmpl" files, used to report failed URL-based NZB retrievals.
+</p>
+<h1 id="toc0"><span>Standard template</span></h1>
+<p><strong>WARNING</strong>: do not modify the standard templates, but make a copy in your own template folder.<br>
+    If you modify the standard templates, they will be lost when uninstalling or when upgrading to a new SABnzbd release.
+</p>
+<p>Below is the standard template, called <strong>email-us-en.tmpl</strong>, which is located in the program folder of SABnzbd.<br>
+    In the template whitespace and line endings are significant.<br>
+    Note the empty line between the headers and the actual message. This is an essential element of the email protocol.<br>
+    Also, note the <strong>slurp</strong> command, this removes unwanted line endings in the <strong>for</strong>-loops.
+</p>
+<div class="code">
+    <pre><code>#encoding utf-8
+##
+## Default Email template for SABnzbd
+## This a Cheetah template
+## Documentation: <a class="vglnk" href="http://sabnzbd.wikidot.com/email-templates" rel="nofollow"><span>http</span><span>://</span><span>sabnzbd</span><span>.</span><span>wikidot</span><span>.</span><span>com</span><span>/</span><span>email</span><span>-</span><span>templates</span></a>
+##
+## Newlines and whitespace are significant!
+##
+## These are the email headers
+To: $to
+From: $from
+Date: $date
+Subject: SABnzbd has &lt;!--#if $status then "completed" else "failed" #--&gt; job $name
+X-priority: 5
+X-MS-priority: 5
+## After this comes the body, the empty line is required!
+
+Hi,
+&lt;!--#if $status #--&gt;
+SABnzbd has downloaded "$name" &lt;!--#if $msgid=="" then "" else "(newzbin #" + $msgid + ")"#--&gt;
+&lt;!--#else#--&gt;
+SABnzbd has failed to download "$name" &lt;!--#if $msgid=="" then "" else "(newzbin #" + $msgid + ")"#--&gt;
+&lt;!--#end if#--&gt;
+Finished at $end_time
+Downloaded $size
+
+Results of the job:
+&lt;!--#for $stage in $stages #--&gt;
+Stage $stage &lt;!--#slurp#--&gt;
+&lt;!--#for $result in $stages[$stage]#--&gt;
+    $result &lt;!--#slurp#--&gt;
+&lt;!--#end for#--&gt;
+&lt;!--#end for#--&gt;
+&lt;!--#if $script!="" #--&gt;
+Output from user script "$script" (Exit code = $script_ret):
+$script_output
+&lt;!--#end if#--&gt;
+&lt;!--#if $status #--&gt;
+Enjoy!
+&lt;!--#else#--&gt;
+Sorry!
+&lt;!--#end if#--&gt;</code>
+</pre>
+</div>
+<h2 id="toc1"><span>Languages</span></h2>
+<p>The email template is available in 5 languages. Given the UI language, the right template will be picked.<br>
+    Note that when you have your own email template folder, SABnzbd does not support multiple languages.<br>
+    It will just process all the templates in the folder, thereby assuming that you will write your templates<br>
+    in the desired language anyway.
+</p>
+<h2 id="toc2"><span>Conditional emails</span></h2>
+<p>Should you want to make a conditional template, you should place your test before any of the fields.<br>
+    When the end result is an empty email, SABnzbd will not send it.<br>
+    A very simplified example:
+</p>
+<div class="code">
+    <pre><code>#encoding utf-8
+&lt;!--#if $cat == "video" #--&gt;&lt;!--#slurp#--&gt;
+To: $to
+From: $from
+Date: $date
+Subject: SABnzbd has &lt;!--#if $status then "completed" else "failed" #--&gt; job $name
+X-priority: 5
+X-MS-priority: 5
+## After this comes the body, the empty line is required!
+
+Hi,
+rest of the message
+&lt;!--#end if#--&gt;</code>
+</pre>
+</div>
+<div class="footnotes-footer">
+    <div class="title">Footnotes</div>
+    <div class="footnote-footer" id="footnote-1">1. This field is not used to determine the actual recipient. So when you add your own fixed text, the email will still be sent to the address in the $to value.</div>
+</div>

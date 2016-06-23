@@ -1,0 +1,970 @@
+---
+title: API reference
+---
+
+<ul class="toc-list">
+    <li>
+        <a href="#toc0">Overview</a>
+        <ul>
+            <li><a href="#toc1">Two API types</a></li>
+            <li><a href="#toc2">API Key</a></li>
+            <li><a href="#toc3">Authentication</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#toc4">Queue XML/JSON Output</a>
+        <ul>
+            <li><a href="#toc5">Simple Queue Output - XML</a></li>
+            <li><a href="#toc6">Simple Queue Output - JSON</a></li>
+            <li><a href="#toc7">Advanced Queue Output - XML</a></li>
+            <li><a href="#toc8">Advanced Queue Output - JSON</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#toc9">History XML/JSON Output</a>
+        <ul>
+            <li><a href="#toc10">History Output - XML</a></li>
+            <li><a href="#toc11">History Output - JSON</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#toc12">Other output</a>
+        <ul>
+            <li><a href="#toc13">Return Version - XML</a></li>
+            <li><a href="#toc14">Return Version - JSON</a></li>
+            <li><a href="#toc15">Return Warning Data - XML</a></li>
+            <li><a href="#toc16">Return Warning Data - JSON</a></li>
+            <li><a href="#toc17">Return Categories - XML</a></li>
+            <li><a href="#toc18">Return Categories - JSON</a></li>
+            <li><a href="#toc19">Return Scripts - XML</a></li>
+            <li><a href="#toc20">Return Scripts - JSON</a></li>
+            <li><a href="#toc21">Restart SABnzbd</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#toc22">Queue Actions</a>
+        <ul>
+            <li><a href="#toc23">Delete</a></li>
+            <li><a href="#toc24">Move</a></li>
+            <li><a href="#toc25">Pause</a></li>
+            <li><a href="#toc26">Resume</a></li>
+            <li><a href="#toc27">Shutdown</a></li>
+            <li><a href="#toc28">Add by URL</a></li>
+            <li><a href="#toc29">Add by fileupload</a></li>
+            <li><a href="#toc30">Add by file path</a></li>
+            <li><a href="#toc31">Change Script</a></li>
+            <li><a href="#toc32">Change Category</a></li>
+            <li><a href="#toc33">Action on queue complete</a></li>
+            <li><a href="#toc34">Change Post Processing</a></li>
+            <li><a href="#toc35">Change Priority</a></li>
+            <li><a href="#toc36">Pause individual download</a></li>
+            <li><a href="#toc37">Resume individual download</a></li>
+            <li><a href="#toc38">Retrieve Contents of Queue item</a></li>
+            <li><a href="#toc39">Change item name</a></li>
+            <li><a href="#toc40">Pause post-processing</a></li>
+            <li><a href="#toc41">Resume post-processing</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#toc42">History Actions</a>
+        <ul>
+            <li><a href="#toc43">Delete</a></li>
+            <li><a href="#toc44">Retry</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#toc45">Config Actions</a>
+        <ul>
+            <li><a href="#toc46">Set Download Speed limit</a></li>
+            <li><a href="#toc47">Set Cleanup List</a></li>
+            <li><a href="#toc48">Regenerate new API Key</a></li>
+            <li>
+                <a href="#toc49">Set/get any configuration item</a>
+                <ul>
+                    <li><a href="#toc50">General form for individual settings.</a></li>
+                    <li><a href="#toc51">Setting a number of values in an RSS feed.</a></li>
+                    <li><a href="#toc52">Read configuration</a></li>
+                    
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><a href="#toc53">Prototyping with curl</a></li>
+</ul>
+
+<hr>
+<h1 id="toc0"><span>Overview</span></h1>
+<h2 id="toc1"><span>Two API types</span></h2>
+<p>Starting in 0.5 there are two ways to access the API for backwards compatibility, and ease of use.<br>
+    For external applications (the one you most likely want to be using):
+</p>
+<div class="code">
+    <pre><code><a class="vglnk" href="http://host:port/sabnzbd/api" rel="nofollow"><span>http</span><span>://</span><span>host</span><span>:</span><span>port</span><span>/</span><span>sabnzbd</span><span>/</span><span>api</span></a></code>
+</pre>
+</div>
+<br>
+For template creators:
+<div class="code">
+    <pre><code><a class="vglnk" href="http://host:port/sabnzbd/tapi" rel="nofollow"><span>http</span><span>://</span><span>host</span><span>:</span><span>port</span><span>/</span><span>sabnzbd</span><span>/</span><span>tapi</span></a></code>
+</pre>
+</div>
+<br>
+The reasons for this changed are explained in the authentication section below. You will most likely want to be using 'api' and not 'tapi' unless you are working with the .tmpl files sabnzbd uses for its web-ui.
+<h2 id="toc2"><span>API Key</span></h2>
+<p>As of version 0.4.9 the API now requires the users API Key to be supplied all API requests in order for it to work. The API Key is randomly generated and is static unless the user decides to change the key. The user can see their api key on the general page of the configuration pages.</p>
+<p>The API key is specified using &amp;apikey=KEY like so:</p>
+<div class="code">
+    <pre><code><a class="vglnk" href="http://localhost:8080/api?mode=qstatus&amp;output=xml&amp;apikey=711de66ca57dae90338267d05f70efe9" rel="nofollow"><span>http</span><span>://</span><span>localhost</span><span>:</span><span>8080</span><span>/</span><span>api</span><span>?</span><span>mode</span><span>=</span><span>qstatus</span><span>&amp;</span><span>output</span><span>=</span><span>xml</span><span>&amp;</span><span>apikey</span><span>=</span><span>711de66ca57dae90338267d05f70efe9</span></a></code>
+</pre>
+</div>
+<p>If the key is missing from the request it will return:</p>
+<div class="code">
+    <pre><code>error: API Key Required</code>
+</pre>
+</div>
+<p>And if if the api key is incorrect it will return:</p>
+<div class="code">
+    <pre><code>error: API Key Incorrect</code>
+</pre>
+</div>
+<p>The API key can be regenerated by the following command, the new api key is returned:</p>
+<div class="code">
+    <pre><code><a class="vglnk" href="http://localhost:8080/api?mode=config&amp;name=set_apikey&amp;apikey=EXISTINGAPIKEY" rel="nofollow"><span>http</span><span>://</span><span>localhost</span><span>:</span><span>8080</span><span>/</span><span>api</span><span>?</span><span>mode</span><span>=</span><span>config</span><span>&amp;</span><span>name</span><span>=</span><span>set</span><span>_</span><span>apikey</span><span>&amp;</span><span>apikey</span><span>=</span><span>EXISTINGAPIKEY</span></a></code>
+</pre>
+</div>
+<p>The <strong>version</strong> and <strong>auth</strong> functions do not require the API key.</p>
+<h2 id="toc3"><span>Authentication</span></h2>
+<p>The preferred way is to use the API key parameter.<br>
+    If for some reason the API key is disabled and a UI username/password is set, then you must use the ma_* parameters.
+</p>
+<p>The way authentication works changed with 0.5, however 'api' retains the same authentication as previous versions for backwards compatibility. 'tapi' will use a different authentication method, which will most likely be handled by your browser.</p>
+<div class="code">
+    <pre><code><a class="vglnk" href="http://host:port/sabnzbd/api?mode=queue&amp;output=xml&amp;ma_username=USERNAME&amp;ma_password=PASSWORD" rel="nofollow"><span>http</span><span>://</span><span>host</span><span>:</span><span>port</span><span>/</span><span>sabnzbd</span><span>/</span><span>api</span><span>?</span><span>mode</span><span>=</span><span>queue</span><span>&amp;</span><span>output</span><span>=</span><span>xml</span><span>&amp;</span><span>ma</span><span>_</span><span>username</span><span>=</span><span>USERNAME</span><span>&amp;</span><span>ma</span><span>_</span><span>password</span><span>=</span><span>PASSWORD</span></a></code>
+</pre>
+</div>
+<p>Missing or incorrect username and password will return "error : Missing authentication".</p>
+<p>If you want to find out which type of authentication is needed, use the <strong>auth</strong> function. It will return either "None", "apikey" or "login".</p>
+<div class="code">
+    <pre><code><a class="vglnk" href="http://host:port/sabnzbd/api?mode=auth" rel="nofollow"><span>http</span><span>://</span><span>host</span><span>:</span><span>port</span><span>/</span><span>sabnzbd</span><span>/</span><span>api</span><span>?</span><span>mode</span><span>=</span><span>auth</span></a></code>
+</pre>
+</div>
+<p>For /tapi you will most likely rely on your browser to handle the authentication. It will pop-up a user/password dialog when you first access your page. If for some reason you need to set the user/pass yourself use the following:</p>
+<div class="code">
+    <pre><code><a class="vglnk" href="http://username:password@host:port/sabnzbd/tapi?mode=queue&amp;output=xml" rel="nofollow"><span>http</span><span>://</span><span>username</span><span>:</span><span>password</span><span>@</span><span>host</span><span>:</span><span>port</span><span>/</span><span>sabnzbd</span><span>/</span><span>tapi</span><span>?</span><span>mode</span><span>=</span><span>queue</span><span>&amp;</span><span>output</span><span>=</span><span>xml</span></a></code>
+</pre>
+</div>
+<h1 id="toc4"><span>Queue XML/JSON Output</span></h1>
+<h2 id="toc5"><span>Simple Queue Output - XML</span></h2>
+<p><em>Added in 0.3</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=qstatus&amp;output=xml">api?mode=qstatus&amp;output=xml</a><br>
+    Description: Depreciated now by the advanced queue output, this is the old api that just provides limited details on the current queue and state of sabnzbd<br>
+    Example:
+</p>
+<div class="code">
+    <pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt; 
+&lt;queue&gt; 
+&lt;paused&gt;True&lt;/paused&gt; 
+&lt;kbpersec&gt;0.0&lt;/kbpersec&gt; 
+&lt;mbleft&gt;854.697840691&lt;/mbleft&gt; 
+&lt;mb&gt;854.697840691&lt;/mb&gt; 
+&lt;noofslots&gt;1&lt;/noofslots&gt; 
+&lt;diskspace1&gt;21.980682373&lt;/diskspace1&gt; 
+&lt;diskspace2&gt;21.980682373&lt;/diskspace2&gt; 
+&lt;timeleft&gt;0:00:00&lt;/timeleft&gt;     
+&lt;jobs&gt;
+    &lt;job&gt; 
+    &lt;id&gt;SABnzbd_nzo_zt2syz&lt;/id&gt; 
+    &lt;msgid&gt;3066202&lt;/msgid&gt; 
+    &lt;filename&gt;Ubuntu 8.04 (Hardy Heron) - Desktop CD x64&lt;/filename&gt; 
+    &lt;mbleft&gt;854.697840691&lt;/mbleft&gt; 
+    &lt;mb&gt;854.697840691&lt;/mb&gt; 
+    &lt;index&gt;0&lt;/index&gt; 
+    &lt;unpackopts&gt;3&lt;/unpackopts&gt; 
+    &lt;cat&gt;Apps&lt;/cat&gt; 
+    &lt;script&gt;snarl.exe&lt;/script&gt; 
+    &lt;status&gt;Queued&lt;/status&gt; 
+    &lt;percentage&gt;0&lt;/percentage&gt; 
+    &lt;bytes&gt;896215643.0&lt;/bytes&gt; 
+    &lt;/job&gt;
+&lt;/jobs&gt;
+&lt;/queue&gt;</code>
+</pre>
+</div>
+<h2 id="toc6"><span>Simple Queue Output - JSON</span></h2>
+<p><em>Added in 0.3</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=qstatus&amp;output=json">api?mode=qstatus&amp;output=json</a><br>
+    Description: Depreciated now by the advanced queue output, this is the old api that just provides limited details on the current queue and state of sabnzbd<br>
+    Example:
+</p>
+<div class="code">
+    <pre><code>{
+"timeleft":"0:00:00",
+"mb":854.697841,
+"noofslots":1,
+"paused":true,
+"mbleft":854.697841,
+"diskspace2":21.980682,
+"diskspace1":21.980682,
+"kbpersec":0.000000,
+"jobs":[
+    {"msgid":"3066202",
+    "filename":
+    "Ubuntu 8.04 (Hardy Heron) - Desktop CD x64",
+    "mbleft":854.697841,"id":"SABnzbd_nzo_zt2syz",
+    "mb":854.697841}
+]
+}</code>
+</pre>
+</div>
+<h2 id="toc7"><span>Advanced Queue Output - XML</span></h2>
+<p><em>Added in 0.5</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=queue&amp;output=xml">api?mode=queue&amp;start=START&amp;limit=LIMIT&amp;output=xml</a><br>
+    Description: A verbose output that as well as reporting items in the queue, will report on finished items being processed (verify/repaired/extracted) and other details such as categories, scripts.<br>
+    Example:
+</p>
+<div class="code">
+    <pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;queue&gt;
+    &lt;cache_limit&gt;-1&lt;/cache_limit&gt;
+    &lt;categories&gt;
+        &lt;category&gt;None&lt;/category&gt;
+        &lt;category&gt;apps&lt;/category&gt;
+        &lt;category&gt;books&lt;/category&gt;
+        &lt;category&gt;consoles&lt;/category&gt;
+        &lt;category&gt;emulation&lt;/category&gt;
+        &lt;category&gt;games&lt;/category&gt;
+        &lt;category&gt;misc&lt;/category&gt;
+        &lt;category&gt;movies&lt;/category&gt;
+        &lt;category&gt;music&lt;/category&gt;
+        &lt;category&gt;pda&lt;/category&gt;
+        &lt;category&gt;resources&lt;/category&gt;
+        &lt;category&gt;tv&lt;/category&gt;
+    &lt;/cat_list&gt;
+    &lt;scripts&gt;
+        &lt;script&gt;None&lt;/script&gt;
+    &lt;/script_list&gt;
+    &lt;paused&gt;True&lt;/paused&gt;
+    &lt;new_rel_url&gt;&lt;/new_rel_url&gt;
+    &lt;restart_req&gt;False&lt;/restart_req&gt;
+    &lt;slots&gt;
+        &lt;slot&gt;
+            &lt;status&gt;Queued&lt;/status&gt;
+            &lt;index&gt;0&lt;/index&gt;
+            &lt;eta&gt;unknown&lt;/eta&gt;
+            &lt;timeleft&gt;0:00:00&lt;/timeleft&gt;
+            &lt;avg_age&gt;43d&lt;/avg_age&gt;
+            &lt;script&gt;None&lt;/script&gt;
+            &lt;msgid&gt;4295398&lt;/msgid&gt;
+            &lt;verbosity&gt;&lt;/verbosity&gt;
+            &lt;mb&gt;785.89&lt;/mb&gt;
+            &lt;mbleft&gt;785.89&lt;/mbleft&gt;
+            &lt;filename&gt;Ubuntu v.8.10&lt;/filename&gt;
+            &lt;priority&gt;Normal&lt;/priority&gt;
+            &lt;cat&gt;Apps&lt;/cat&gt;
+            &lt;percentage&gt;0&lt;/percentage&gt;
+            &lt;nzo_id&gt;SABnzbd_nzo_wgmb1m&lt;/nzo_id&gt;
+            &lt;unpackopts&gt;3&lt;/unpackopts&gt;
+            &lt;size&gt;785.9 MB&lt;/size&gt;
+        &lt;/slot&gt;
+    &lt;/slots&gt;
+    &lt;helpuri&gt;<a class="vglnk" href="http://wiki.sabnzbd.org/" rel="nofollow"><span>http</span><span>://</span><span>wiki</span><span>.</span><span>sabnzbd</span><span>.</span><span>org</span><span>/</span></a>&lt;/helpuri&gt;
+    &lt;uptime&gt;33m&lt;/uptime&gt;
+    &lt;refresh_rate&gt;&lt;/refresh_rate&gt;
+    &lt;isverbose&gt;False&lt;/isverbose&gt;
+    &lt;start&gt;0&lt;/start&gt;
+    &lt;version&gt;trunk&lt;/version&gt;
+    &lt;diskspacetotal2&gt;503.32&lt;/diskspacetotal2&gt;
+    &lt;color_scheme&gt;&lt;/color_scheme&gt;
+    &lt;darwin&gt;False&lt;/darwin&gt;
+    &lt;nt&gt;True&lt;/nt&gt;
+    &lt;status&gt;Paused&lt;/status&gt;
+    &lt;last_warning&gt;&lt;/last_warning&gt;
+    &lt;have_warnings&gt;0&lt;/have_warnings&gt;
+    &lt;cache_art&gt;0&lt;/cache_art&gt;
+    &lt;finishaction&gt;None&lt;/finishaction&gt;
+    &lt;noofslots&gt;1&lt;/noofslots&gt;
+    &lt;cache_size&gt;0&lt;/cache_size&gt;
+    &lt;finish&gt;0&lt;/finish&gt;
+    &lt;new_release&gt;&lt;/new_release&gt;
+    &lt;pause_int&gt;0&lt;/pause_int&gt;
+    &lt;mbleft&gt;785.89&lt;/mbleft&gt;
+    &lt;diskspace2&gt;25.08&lt;/diskspace2&gt;
+    &lt;diskspace1&gt;25.08&lt;/diskspace1&gt;
+    &lt;diskspacetotal1&gt;503.32&lt;/diskspacetotal1&gt;
+    &lt;timeleft&gt;0:00:00&lt;/timeleft&gt;
+    &lt;mb&gt;785.89&lt;/mb&gt;
+    &lt;eta&gt;unknown&lt;/eta&gt;
+    &lt;nzb_quota&gt;&lt;/nzb_quota&gt;
+    &lt;loadavg&gt;&lt;/loadavg&gt;
+    &lt;limit&gt;0&lt;/limit&gt;
+    &lt;kbpersec&gt;0.00&lt;/kbpersec&gt;
+    &lt;speedlimit&gt;0&lt;/speedlimit&gt;
+    &lt;webdir&gt;path\to\templates&lt;/webdir&gt;
+    &lt;queue_details&gt;0&lt;/queue_details&gt;
+&lt;/queue&gt;</code>
+</pre>
+</div>
+<h2 id="toc8"><span>Advanced Queue Output - JSON</span></h2>
+<div class="code">
+    <pre><code>{
+"cache_limit":"-1",
+"categories":[
+        "None",
+        "apps",
+        "books",
+        "consoles",
+        "emulation",
+        "games",
+        "misc",
+        "movies",
+        "music",
+        "pda",
+        "resources",
+        "tv"
+        ],
+"scripts":[
+        "None"
+        ],
+"paused":true,
+"new_rel_url":"",
+"restart_req":false,
+"slots":[
+    {
+    "status":"Queued",
+    "index":0,
+    "eta":"unknown",
+    "timeleft":"0:00:00",
+    "avg_age":"43d",
+    "script":"None",
+    "msgid":"4295398",
+    "verbosity":"",
+    "mb":"785.89",
+    "filename":"Ubuntu v.8.10",
+    "priority":"Normal",
+    "cat":"Apps",
+    "mbleft":"785.89",
+    "percentage":"0",
+    "nzo_id":"SABnzbd_nzo_wgmb1m",
+    "unpackopts":"3",
+    "size":"785.9 MB"
+    }],
+"helpuri":"<a class="vglnk" href="http://wiki.sabnzbd.org/" rel="nofollow"><span>http</span><span>://</span><span>wiki</span><span>.</span><span>sabnzbd</span><span>.</span><span>org</span><span>/</span></a>",
+"uptime":"6m",
+"refresh_rate":"",
+"isverbose":false,
+"start":0,
+"version":"trunk",
+"diskspacetotal2":"503.32",
+"color_scheme":"",
+"darwin":false,
+"nt":true,
+"status":"Paused",
+"last_warning":"",
+"have_warnings":"0",
+"cache_art":"0",
+"finishaction":null,
+"noofslots":1,
+"cache_size":"0",
+"finish":0,
+"new_release":"",
+"pause_int":"0"
+,"mbleft":"785.89",
+"diskspace2":"25.08",
+"diskspace1":"25.08",
+"diskspacetotal1":"503.32",
+"timeleft":"0:00:00",
+"mb":"785.89",
+"eta":"unknown",
+"nzb_quota":"",
+"loadavg":"",
+"limit":0,
+"kbpersec":"0.00",
+"speedlimit":"0",
+"webdir":"path\\to\\templates",
+"queue_details":"0"
+}</code>
+</pre>
+</div>
+<hr>
+<h1 id="toc9"><span>History XML/JSON Output</span></h1>
+<h2 id="toc10"><span>History Output - XML</span></h2>
+<p><em>Added in 0.5</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=history&amp;output=xml">api?mode=history&amp;start=START&amp;limit=LIMIT&amp;failed_only=BOOL&amp;category=CATEGORY&amp;output=xml</a><br>
+    Release 0.8.0+ accepts one or more "category" parameters; these will select only items that have one of the specified categories.
+</p>
+<div class="code">
+    <pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt; 
+&lt;history&gt;
+&lt;total_size&gt;40.23 GB&lt;/total_size&gt;         **Since 0.5.2
+&lt;month_size&gt;20.12 GB&lt;/month_size&gt;     **Since 0.5.2
+&lt;week_size&gt; 5.15 GB&lt;/week_size&gt;        **Since 0.5.2
+&lt;cache_limit&gt;-1&lt;/cache_limit&gt;
+&lt;paused&gt;True&lt;/paused&gt;
+&lt;new_rel_url&gt;&lt;/new_rel_url&gt;
+&lt;restart_req&gt;False&lt;/restart_req&gt;
+&lt;slots&gt;
+    &lt;slot&gt;
+        &lt;action_line&gt;&lt;/action_line&gt;
+        &lt;show_details&gt;True&lt;/show_details&gt;
+        &lt;script_log&gt;&lt;/script_log&gt;
+        &lt;meta&gt;None&lt;/meta&gt;
+        &lt;fail_message&gt;&lt;/fail_message&gt;
+        &lt;loaded&gt;False&lt;/loaded&gt;
+        &lt;id&gt;605&lt;/id&gt;
+        &lt;size&gt;778.1 MB&lt;/size&gt;
+        &lt;category&gt;Movies&lt;/category&gt;
+        &lt;pp&gt;D&lt;/pp&gt;
+        &lt;completeness&gt;0&lt;/completeness&gt;
+        &lt;script&gt;&lt;/script&gt;
+        &lt;nzb_name&gt;Ubuntu.nzb&lt;/nzb_name&gt;
+        &lt;download_time&gt;567&lt;/download_time&gt;
+        &lt;storage&gt;X:\Apps\Ubuntu&lt;/storage&gt;
+        &lt;status&gt;Completed&lt;/status&gt;
+        &lt;script_line&gt;&lt;/script_line&gt;
+        &lt;completed&gt;1236646078&lt;/completed&gt;
+        &lt;nzo_id&gt;SABnzbd_nzo_ipet0h&lt;/nzo_id&gt;
+        &lt;downloaded&gt;815878352&lt;/downloaded&gt;
+        &lt;report&gt;00000000&lt;/report&gt;
+        &lt;path&gt;\Ubuntu&lt;/path&gt;
+        &lt;postproc_time&gt;368&lt;/postproc_time&gt;
+        &lt;name&gt;Ubuntu&lt;/name&gt;
+        &lt;url&gt;<a class="vglnk" href="https://nzbmatrix.com/blabla/" rel="nofollow"><span>https</span><span>://</span><span>nzbmatrix</span><span>.</span><span>com</span><span>/</span><span>blabla</span><span>/</span></a>&lt;/url&gt;
+        &lt;bytes&gt;815878352&lt;/bytes&gt;
+        &lt;url_info&gt;<a class="vglnk" href="http://www.google.com" rel="nofollow"><span>http</span><span>://</span><span>www</span><span>.</span><span>google</span><span>.</span><span>com</span></a>&lt;/url_info&gt;
+        &lt;stage_log&gt;
+            &lt;slot&gt;
+                &lt;name&gt;download&lt;/name&gt;
+                &lt;actions&gt;
+                    &lt;item&gt;Downloaded in 9 minutes 27 seconds at an average of 1404kB/s&lt;/item&gt;
+                &lt;/actions&gt;
+            &lt;/slot&gt;
+            &lt;slot&gt;
+                &lt;name&gt;repair&lt;/name&gt;
+                &lt;actions&gt;
+                    &lt;item&gt;[Ubuntu] Repaired in 4 minutes 24 seconds&lt;/item&gt;
+                    &lt;item&gt;[Ubuntu.sample] Quick Check OK&lt;/item&gt;
+                &lt;/actions&gt;
+            &lt;/slot&gt;
+            &lt;slot&gt;
+                &lt;name&gt;unpack&lt;/name&gt;
+                &lt;actions&gt;
+                    &lt;item&gt;[Ubuntu] Unpacked 1 file/folder in 36 seconds&lt;/item&gt;
+                &lt;/actions&gt;
+            &lt;/slot&gt;
+        &lt;/stage_log&gt;
+    &lt;/slot&gt;
+&lt;/slots&gt;
+&lt;helpuri&gt;<a class="vglnk" href="http://wiki.sabnzbd.org/" rel="nofollow"><span>http</span><span>://</span><span>wiki</span><span>.</span><span>sabnzbd</span><span>.</span><span>org</span><span>/</span></a>&lt;/helpuri&gt;
+&lt;uptime&gt;12m&lt;/uptime&gt;
+&lt;version&gt;trunk&lt;/version&gt;
+&lt;diskspacetotal2&gt;503.32&lt;/diskspacetotal2&gt;
+&lt;color_scheme&gt;&lt;/color_scheme&gt;
+&lt;darwin&gt;False&lt;/darwin&gt;
+&lt;nt&gt;True&lt;/nt&gt;
+&lt;status&gt;Paused&lt;/status&gt;
+&lt;last_warning&gt;&lt;/last_warning&gt;
+&lt;have_warnings&gt;0&lt;/have_warnings&gt;
+&lt;cache_art&gt;0&lt;/cache_art&gt;
+&lt;finishaction&gt;None&lt;/finishaction&gt;
+&lt;noofslots&gt;516&lt;/noofslots&gt;
+&lt;cache_size&gt;0&lt;/cache_size&gt;
+&lt;new_release&gt;&lt;/new_release&gt;
+&lt;pause_int&gt;0&lt;/pause_int&gt;
+&lt;mbleft&gt;785.89&lt;/mbleft&gt;
+&lt;diskspace2&gt;25.08&lt;/diskspace2&gt;
+&lt;diskspace1&gt;25.08&lt;/diskspace1&gt;
+&lt;diskspacetotal1&gt;503.32&lt;/diskspacetotal1&gt;
+&lt;timeleft&gt;0:00:00&lt;/timeleft&gt;
+&lt;mb&gt;785.89&lt;/mb&gt;
+&lt;eta&gt;unknown&lt;/eta&gt;
+&lt;nzb_quota&gt;&lt;/nzb_quota&gt;
+&lt;loadavg&gt;&lt;/loadavg&gt;
+&lt;kbpersec&gt;0.00&lt;/kbpersec&gt;
+&lt;speedlimit&gt;0&lt;/speedlimit&gt;
+&lt;webdir&gt;path\to\templates&lt;/webdir&gt;
+&lt;/history&gt;</code>
+</pre>
+</div>
+<h2 id="toc11"><span>History Output - JSON</span></h2>
+<p><em>Added in 0.5</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=history&amp;output=json">api?mode=history&amp;start=START&amp;limit=LIMIT&amp;output=json</a>
+</p>
+<div class="code">
+    <pre><code>{
+"total_size": 40.30 GB,       **Since 0.5.2
+"month_size": 20.23 GB,      **Since 0.5.2
+"week_size": 5.12 GB,         **Since 0.5.2
+"cache_limit":"-1",
+"paused":true,
+"new_rel_url":"",
+"restart_req":false,
+"slots":[
+{
+    "action_line":"",
+    "show_details":"True",
+    "script_log":"",
+    "meta":null,
+    "fail_message":"",
+    "loaded":false,
+    "id":605,
+    "size":"778.1 MB",
+    "category":"Apps",
+    "pp":"D",
+    "completeness":0,
+    "script":"",
+    "nzb_name":"Ubuntu.nzb",
+    "download_time":567,
+    "storage":"X:\\Apps\\Ubuntu",
+    "status":"Completed",
+    "script_line":"",
+    "completed":1236646078,
+    "nzo_id":"SABnzbd_nzo_ipet0h",
+    "downloaded":815878352,
+    "report":"000000",
+    "path":"Ubuntu",
+    "postproc_time":368,
+    "name":"Ubuntu",
+    "url":"<a class="vglnk" href="https://nzbmatrix.com/blabla/" rel="nofollow"><span>https</span><span>://</span><span>nzbmatrix</span><span>.</span><span>com</span><span>/</span><span>blabla</span><span>/</span></a>",
+    "bytes":815878352,
+    "url_info":"<a class="vglnk" href="http://google.com" rel="nofollow"><span>http</span><span>://</span><span>google</span><span>.</span><span>com</span></a>",
+    "stage_log":[
+        {"name":"download","actions":["Downloaded in 9 minutes 27 seconds at an average of 1404kB/s"]},
+        {"name":"repair","actions":["[ubuntu] Repaired in 4 minutes 24 seconds","[ubuntu.sample] Quick Check OK"]},
+        {"name":"unpack","actions":["[ubuntu] Unpacked 1 file/folder in 36 seconds"]}
+    ]
+}],
+"helpuri":"<a class="vglnk" href="http://wiki.sabnzbd.org/" rel="nofollow"><span>http</span><span>://</span><span>wiki</span><span>.</span><span>sabnzbd</span><span>.</span><span>org</span><span>/</span></a>",
+"uptime":"12m",
+"version":"trunk",
+"diskspacetotal2":"503.32",
+"color_scheme":"",
+"darwin":false,
+"nt":true,
+"status":"Paused",
+"last_warning":"",
+"have_warnings":"0",
+"cache_art":"0",
+"finishaction":null,
+"noofslots":516,
+"cache_size":"0",
+"new_release":"",
+"pause_int":"0",
+"mbleft":"785.89",
+"diskspace2":"25.08",
+"diskspace1":"25.08",
+"diskspacetotal1":"503.32",
+"timeleft":"0:00:00",
+"mb":"785.89",
+"eta":"unknown",
+"nzb_quota":"",
+"loadavg":"",
+"kbpersec":"0.00",
+"speedlimit":"0",
+"webdir":"path\\to\\templates"
+}</code>
+</pre>
+</div>
+<hr>
+<h1 id="toc12"><span>Other output</span></h1>
+<h2 id="toc13"><span>Return Version - XML</span></h2>
+<p><em>Added in 0.4</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=version&amp;output=xml">api?mode=version&amp;output=xml</a><br>
+    Example:
+</p>
+<div class="code">
+    <pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt; 
+&lt;versions&gt;
+    &lt;version&gt;0.4.6&lt;/version&gt;
+&lt;/versions&gt;</code>
+</pre>
+</div>
+<h2 id="toc14"><span>Return Version - JSON</span></h2>
+<p><em>Added in 0.4</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=version&amp;output=json">api?mode=version&amp;output=json</a><br>
+    Example:
+</p>
+<div class="code">
+    <pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt; 
+{"version":"0.4.6"}</code>
+</pre>
+</div>
+<h2 id="toc15"><span>Return Warning Data - XML</span></h2>
+<p><em>Added in 0.4</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=warnings&amp;output=xml">api?mode=warnings&amp;output=xml</a><br>
+    Example:
+</p>
+<div class="code">
+    <pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt; 
+&lt;warnings&gt;
+    &lt;warning&gt;
+    2008-12-26 19:53:42,567
+    WARNING
+    [decoder] Badly formed yEnc article in &amp;lt;Article: article=, bytes=, partnum=, art_id=;
+    &lt;/warning&gt;
+    &lt;warning&gt;
+    2008-12-26 19:54:45,861
+    WARNING
+    [assembler] &amp;lt;Article: article=, bytes=, partnum=, art_id=; missing
+    &lt;/warning&gt;
+    &lt;warning&gt;
+    2008-12-26 20:44:28,336
+    WARNING
+    [decoder] CRC Error in &amp;lt;Article: article=, bytes=, partnum=, art_id=; (4134546D -&amp;gt; A8F07173)
+    &lt;/warning&gt;
+    &lt;warning&gt;
+    2008-12-27 01:13:37,349
+    WARNING
+    [downloader] Thread 3@news.powerusenet.com:119: timed out
+    &lt;/warning&gt;
+    &lt;warning&gt;2008-12-27 01:13:38,365
+    WARNING
+    [downloader] Thread 2@news.powerusenet.com:119: timed out
+    &lt;/warning&gt;
+    &lt;warning&gt;2008-12-27 01:45:34,041
+    WARNING
+    [downloader] Thread 1@news.powerusenet.com:119: timed out
+    &lt;/warning&gt;
+&lt;/warnings&gt;</code>
+</pre>
+</div>
+<br>
+The version check does not require the API key.
+<h2 id="toc16"><span>Return Warning Data - JSON</span></h2>
+<p><em>Added in 0.4</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=warnings&amp;output=json">api?mode=warnings&amp;output=json</a><br>
+    Example:
+</p>
+<div class="code">
+    <pre><code>{
+"warnings":[
+    "2008-12-26 19:53:42,567\nWARNING\n[decoder] Badly formed yEnc article in &lt;Article: article=, bytes=, partnum=, art_id=&gt;",
+    "2008-12-26 19:54:45,861\nWARNING\n[assembler] &lt;Article: article=, bytes=, partnum=, art_id=&gt; missing",
+    "2008-12-26 20:44:28,336\nWARNING\n[decoder] CRC Error in &lt;Article: article=, bytes=, partnum=, art_id=&gt; (4134546D -&gt; A8F07173)",
+    "2008-12-27 01:13:37,349\nWARNING\n[downloader] Thread 3@news.powerusenet.com:119: timed out",
+    "2008-12-27 01:13:38,365\nWARNING\n[downloader] Thread 2@news.powerusenet.com:119: timed out",
+    "2008-12-27 01:45:34,041\nWARNING\n[downloader] Thread 1@news.powerusenet.com:119: timed out"
+]
+}</code>
+</pre>
+</div>
+<h2 id="toc17"><span>Return Categories - XML</span></h2>
+<p><em>Added in 0.4</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=get_cats&amp;output=xml">api?mode=get_cats&amp;output=xml</a><br>
+    Description:<br>
+    Example:
+</p>
+<div class="code">
+    <pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt; 
+&lt;categories&gt;
+    &lt;category&gt;
+        None
+    &lt;/category&gt;
+    &lt;category&gt;
+        Video
+    &lt;/category&gt;
+&lt;/categories&gt;</code>
+</pre>
+</div>
+<h2 id="toc18"><span>Return Categories - JSON</span></h2>
+<p><em>Added in 0.4</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=get_cats&amp;output=json">api?mode=get_cats&amp;output=json</a><br>
+    Description:<br>
+    Example:
+</p>
+<div class="code">
+    <pre><code>{"categories":["None","Video"]}</code>
+</pre>
+</div>
+<h2 id="toc19"><span>Return Scripts - XML</span></h2>
+<p><em>Added in 0.4</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=get_scripts&amp;output=xml">api?mode=get_scripts&amp;output=xml</a><br>
+    Description:<br>
+    Example:
+</p>
+<div class="code">
+    <pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt; 
+&lt;scripts&gt;
+    &lt;script&gt;
+        None
+    &lt;/script&gt;
+     &lt;script&gt;
+        examplescript.cmd
+    &lt;/script&gt;
+&lt;/scripts&gt;</code>
+</pre>
+</div>
+<h2 id="toc20"><span>Return Scripts - JSON</span></h2>
+<p><em>Added in 0.4</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=get_scripts&amp;output=json">api?mode=get_scripts&amp;output=json</a><br>
+    Description:<br>
+    Example:
+</p>
+<div class="code">
+    <pre><code>{"scripts":["None","examplescript.cmd"]}</code>
+</pre>
+</div>
+<h2 id="toc21"><span>Restart SABnzbd</span></h2>
+<p><em>Added in 0.5</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=restart">api?mode=restart</a><br>
+    Description: Restarts sabnzbd and the webserver, will return "ok\n" when restarting STARTS, not when it has completed restarting.<br>
+    Example Response:
+</p>
+<div class="code">
+    <pre><code>ok\n</code>
+</pre>
+</div>
+<hr>
+<h1 id="toc22"><span>Queue Actions</span></h1>
+<h2 id="toc23"><span>Delete</span></h2>
+<p>Deleting a single item:<br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=queue&amp;name=delete&amp;value=SABnzbd_nzo_zt2syz">api?mode=queue&amp;name=delete&amp;value=SABnzbd_nzo_zt2syz</a><br>
+    Deleting multiple items:<br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=queue&amp;name=delete&amp;value=SABnzbd_nzo_zt2syz,SABnzbd_nzo_df2hyd,SABnzbd_nzo_op3shfs">api?mode=queue&amp;name=delete&amp;value=SABnzbd_nzo_zt2syz,SABnzbd_nzo_df2hyd,SABnzbd_nzo_op3shf</a><br>
+    Deleting all items:<br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=queue&amp;name=delete&amp;value=all">api?mode=queue&amp;name=delete&amp;value=all</a><br>
+    Description:
+</p>
+<h2 id="toc24"><span>Move</span></h2>
+<p>Swapping two items<br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=switch&amp;value=SABnzbd_nzo_zt2syz&amp;value2=SABnzbd_nzo_df2hyd">api?mode=switch&amp;value=SABnzbd_nzo_zt2syz&amp;value2=SABnzbd_nzo_df2hyd</a><br>
+    Description: "value" is the item you want to move, "value2" is the name of the item where you want to put value one above, shifting value2 down.<br>
+    <em>0.5</em> - Will return the new position and priority (space separated, can be -1 if error occurs)
+</p>
+<p>Moving to a specific location in the queue.<br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=switch&amp;value=SABnzbd_nzo_zt2syz&amp;value2=0">api?mode=switch&amp;value=SABnzbd_nzo_zt2syz&amp;value2=0</a><br>
+    Description: "value2" is the position in the queue where you wish to move the object. 0 is the top of the queue, 1 is the second item, ect..
+</p>
+<h2 id="toc25"><span>Pause</span></h2>
+<p><em>Added in 0.3</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=pause">api?mode=pause</a><br>
+    Description: Pauses the whole queue (do not confuse this will pausing an individual download, this is a global pause)
+</p>
+<p>Temporary Pause<br>
+    //Added in 0.5/<br>
+    URL: [<a href="http://localhost:8080/sabnzbd/api?mode=config&amp;name=set_pause&amp;value=60&amp;apikey=00000">http://localhost:8080/sabnzbd/api?mode=config&amp;name=set_pause&amp;value=60&amp;apikey=00000</a><br>
+    api?mode=config&amp;name=set_pause&amp;value=60&amp;apikey=00000]<br>
+    Description: Pauses for a set amount of time (value is the time in minutes to pause the queue)
+</p>
+<h2 id="toc26"><span>Resume</span></h2>
+<p><em>Added in 0.3</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=resume">api?mode=resume</a><br>
+    Description: Resumes the whole queue (do not confuse this will resuming an individual download, this is a global resume)
+</p>
+<h2 id="toc27"><span>Shutdown</span></h2>
+<p><em>Added in 0.3</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=shutdown">api?mode=shutdown</a><br>
+    Description: Shuts down SABnzbd.
+</p>
+<h2 id="toc28"><span>Add by URL</span></h2>
+<p><em>Added in 0.3</em><br>
+    <em>Priority added in 0.5</em><br>
+    Shortest:<br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=addurl&amp;name=http://www.example.com/example.nzb&amp;nzbname=NiceName">api?mode=addurl&amp;name=http://www.example.com/example.nzb&amp;nzbname=NiceName</a><br>
+    Full:<br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=addurl&amp;name=http://www.example.com/example.nzb&amp;pp=3&amp;script=customscript.cmd&amp;cat=Example&amp;priority=-1&amp;nzbname=NiceName">api?mode=addurl&amp;name=http://www.example.com/example.nzb&amp;pp=3&amp;script=customscript.cmd&amp;cat=Example&amp;priority=-1&amp;nzbname=NiceName</a><br>
+    Description: pp, script, cat and priority are all optional. This example adds the nzb into the queue marked as low priority, assigned with a categoriy of "Example", to execute "customscript.cmd" once finished, and with the unpacking option 3 (Repair, Unpack and Delete)<br>
+    Starting from 0.8.0, the call will return the nzo_id values of the added jobs. These values are the same as the actual job after the NZB has been loaded.
+</p>
+<h2 id="toc29"><span>Add by fileupload</span></h2>
+<p><em>Added in 0.3</em><br>
+    <em>Priority added in 0.5</em><br>
+    Allows a file upload to be sent.<br>
+    URL: <a href="http://localhost:8080/sabnzbd/api">http://localhost:8080/sabnzbd/api</a><br>
+    Method : POST<br>
+    Arguments: output=json, mode=addfile, nzbname=&lt;FILENAME&gt;, nzbfile<em>(form file)</em>: filename=&lt;FILENAME&gt;.nzb <em>(application/x-nzb)</em>=&lt;NZB_CONTENT&gt;, apikey=&lt;API_KEY&gt;<br>
+    Raw additional headers example:
+</p>
+<div class="code">
+    <pre><code>Content-Type: multipart/form-data; charset=UTF-8; boundary=&lt;CUSTOM_BOUNDARY&gt;</code>
+</pre>
+</div>
+<br>
+Raw POST data example:
+<div class="code">
+    <pre><code>--&lt;CUSTOM_BOUNDARY&gt;\r\nContent-Disposition: form-data; name="output"\r\n\r\njson\r\n--&lt;CUSTOM_BOUNDARY&gt;\r\nContent-Disposition: form-data; name="mode"\r\n\r\naddfile\r\n--&lt;CUSTOM_BOUNDARY&gt;\r\nContent-Disposition: form-data; name="nzbname"\r\n\r\n&lt;FILENAME&gt;\r\n--&lt;CUSTOM_BOUNDARY&gt;\r\nContent-Disposition: form-data; name="nzbfile"; filename="&lt;FILENAME&gt;.nzb"\r\nContent-Type: application/x-nzb\r\n\r\n'&lt;NZB_CONTENT&gt;\r\n--&lt;CUSTOM_BOUNDARY&gt;\r\nContent-Disposition: form-data; name="apikey"\r\n\r\n&lt;API_KEY&gt;\r\n--&lt;CUSTOM_BOUNDARY&gt;--\r\n</code>
+</pre>
+</div>
+<h2 id="toc30"><span>Add by file path</span></h2>
+<p><em>Added in 0.3</em><br>
+    <em>Priority added in 0.5</em><br>
+    Allows uploading of nzb/rar/zip/gz files by simply providing a local path (has to be accessable by the machine running SABnzbd<br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=addlocalfile&amp;name=full/local/path/to/file.ext&amp;pp=1&amp;script=script.cmd&amp;priority=-1">api?mode=addlocalfile&amp;name=full/local/path/to/file.ext&amp;pp=1&amp;script=script.cmd&amp;priority=-1</a>
+</p>
+<h2 id="toc31"><span>Change Script</span></h2>
+<p><em>Added in 0.4</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=change_script&amp;value=SABnzbd_nzo_zt2syz&amp;value2=examplescript.cmd">api?mode=change_script&amp;value=SABnzbd_nzo_zt2syz&amp;value2=examplescript.cmd</a><br>
+    Description:
+</p>
+<h2 id="toc32"><span>Change Category</span></h2>
+<p><em>Added in 0.4</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=change_cat&amp;value=SABnzbd_nzo_zt2syz&amp;value2=Example">api?mode=change_cat&amp;value=SABnzbd_nzo_zt2syz&amp;value2=Example</a><br>
+    Description:
+</p>
+<h2 id="toc33"><span>Action on queue complete</span></h2>
+<p><em>Added in 0.4</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=queue&amp;name=change_complete_action&amp;value=hibernate_pc">api?mode=queue&amp;name=change_complete_action&amp;value=hibernate_pc</a><br>
+    Description:<br>
+    Set an end-of-queue action.<br>
+    - hibernate_pc<br>
+    - standby_pc<br>
+    - shutdown_program<br>
+    - Script: prefix the name of the script with "script_', e.g. "value=script_examplescript.cmd")<br>
+    Scripts must reside in the "scripts" folder set in Config-&gt;Folders.
+</p>
+<h2 id="toc34"><span>Change Post Processing</span></h2>
+<p><em>Added in 0.5</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=change_opts&amp;value=SABnzbd_nzo_zt2syz&amp;value2=0">api?mode=change_opts&amp;value=SABnzbd_nzo_zt2syz&amp;value2=0</a><br>
+    Description: Change value2 to control what post-processing option to use<br>
+    Skip: 0<br>
+    +Repair: 1<br>
+    +Repair/Unpack: 2<br>
+    +Repair/Unpack/Delete: 3
+</p>
+<h2 id="toc35"><span>Change Priority</span></h2>
+<p><em>Added in 0.5</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=queue&amp;name=priority&amp;value=SABnzbd_nzo_zt2syz&amp;value2=0">api?mode=queue&amp;name=priority&amp;value=SABnzbd_nzo_zt2syz&amp;value2=0</a><br>
+    Description:<br>
+    Default Priority: -100<br>
+    Paused: -2<br>
+    Low Priority: -1<br>
+    Normal Priority: 0<br>
+    High Priority: 1<br>
+    Force: 2<br>
+    Will return the new position in the queue if successful.
+</p>
+<h2 id="toc36"><span>Pause individual download</span></h2>
+<p><em>Added in 0.5</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=queue&amp;name=pause&amp;value=SABnzbd_nzo_zt2syz">api?mode=queue&amp;name=pause&amp;value=SABnzbd_nzo_zt2syz</a><br>
+    Description:
+</p>
+<h2 id="toc37"><span>Resume individual download</span></h2>
+<p><em>Added in 0.5</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=queue&amp;name=resume&amp;value=SABnzbd_nzo_zt2syz">api?mode=queue&amp;name=resume&amp;value=SABnzbd_nzo_zt2syz</a><br>
+    Description:
+</p>
+<h2 id="toc38"><span>Retrieve Contents of Queue item</span></h2>
+<p><em>Added in 0.5</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=get_files&amp;output=xml&amp;value=SABnzbd_nzo_zt2syz">api?mode=get_files&amp;output=xml&amp;value=SABnzbd_nzo_zt2syz</a><br>
+    Description:
+</p>
+<h2 id="toc39"><span>Change item name</span></h2>
+<p><em>Added in 0.5</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=queue&amp;name=rename&amp;value=SABnzbd_nzo_zt2syz&amp;value2=THENEWNAME">api?mode=queue&amp;name=rename&amp;value=SABnzbd_nzo_zt2syz&amp;value2=THENEWNAME</a><br>
+    Description: Changes the name of an item in the queue. The name is used for the final foldername, and input for any post-processing sorting, if used.
+</p>
+<h2 id="toc40"><span>Pause post-processing</span></h2>
+<p><em>Added in 0.7.18</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=pause_pp">api?mode=pause_pp</a><br>
+    Description: Pause post-processing (the current active job will be finished).
+</p>
+<h2 id="toc41"><span>Resume post-processing</span></h2>
+<p>URL: <a href="http://localhost:8080/sabnzbd/api?mode=resume_pp">api?mode=resume_pp</a><br>
+    Description: Resume post-processing.
+</p>
+<hr>
+<h1 id="toc42"><span>History Actions</span></h1>
+<h2 id="toc43"><span>Delete</span></h2>
+<p><em>Added in 0.3</em><br>
+    Deleting a single item:<br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=history&amp;name=delete&amp;value=SABnzbd_nzo_zt2syz">api?mode=history&amp;name=delete&amp;value=SABnzbd_nzo_zt2syz</a><br>
+    Deleting multiple items:<br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=history&amp;name=delete&amp;value=SABnzbd_nzo_zt2syz,SABnzbd_nzo_df2hyd,SABnzbd_nzo_op3shfs">api?mode=history&amp;name=delete&amp;value=SABnzbd_nzo_zt2syz,SABnzbd_nzo_df2hyd,SABnzbd_nzo_op3shf</a><br>
+    Deleting all items:<br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=history&amp;name=delete&amp;value=all">api?mode=history&amp;name=delete&amp;value=all</a><br>
+    Deleting all failed items:<br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=history&amp;name=delete&amp;value=failed">api?mode=history&amp;name=delete&amp;value=failed</a>
+</p>
+<p>Extra parameters:<br>
+    <em>failed_only</em>, when 1, delete only failed jobs<br>
+    <em>del_files</em> when 1, all files will be deleted too (only for failed jobs).
+</p>
+<p>Description:</p>
+<h2 id="toc44"><span>Retry</span></h2>
+<p><em>Added in 0.6.0</em><br>
+    Retry a single item, optionally with an new NZB file:<br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=retry&amp;value=SABnzbd_nzo_zt2syz">api?mode=retry&amp;value=SABnzbd_nzo_zt2syz</a><br>
+    You can optionally upload a file, like "Add by file upload".
+</p>
+<hr>
+<h1 id="toc45"><span>Config Actions</span></h1>
+<h2 id="toc46"><span>Set Download Speed limit</span></h2>
+<p><em>For 1.0.0 and up</em></p>
+<p>URL: <a href="http://localhost:8080/sabnzbd/api?mode=config&amp;name=speedlimit&amp;value=30">api?mode=config&amp;name=speedlimit&amp;value=30</a><br>
+    Description: Set speed limit to 30% of line speed (set by user in Config)
+</p>
+<p>URL: <a href="http://localhost:8080/sabnzbd/api?mode=config&amp;name=speedlimit&amp;value=2M">api?mode=config&amp;name=speedlimit&amp;value=2M</a><br>
+    Description: Set speed limit to 2M/s. K/M/G notation, so 400K would be 400KB/s.
+</p>
+<p><em>For 0.7.20 and below</em><br>
+    URL: <a href="http://localhost:8080/sabnzbd/api?mode=config&amp;name=speedlimit&amp;value=400">api?mode=config&amp;name=speedlimit&amp;value=400</a><br>
+    Description: Set speed limit to 400&nbsp;KB/s
+</p>
+<h2 id="toc47"><span>Set Cleanup List</span></h2>
+<p>URL: [<a href="http://localhost:8080/sabnzbd/api?mode=set_config&amp;apikey=APIKEY&amp;section=misc&amp;keyword=cleanup_list&amp;value=.sfv,.nzb,.nfo,.ext">http://localhost:8080/sabnzbd/api?mode=set_config&amp;apikey=APIKEY&amp;section=misc&amp;keyword=cleanup_list&amp;value=.sfv,.nzb,.nfo,.ext</a>]<br>
+    Description: Creates a new extension cleanup list, and returns it in JSON. Multiple values should be comma-delimited, with no trailing characters.<br>
+    Example response:
+</p>
+<div class="code">
+    <pre><code>{'misc': {'cleanup_list': ['.sfv', '.nzb', '.nfo', '.ext']}}</code>
+</pre>
+</div>
+<h2 id="toc48"><span>Regenerate new API Key</span></h2>
+<p><em>Added in 0.4.9</em><br>
+    URL: <a href="http://localhost:8080/api?mode=config&amp;name=set_apikey&amp;apikey=EXISTINGAPIKEY">api?mode=config&amp;name=set_apikey&amp;apikey=EXISTINGAPIKEY</a><br>
+    Description: Returns the new API Key
+</p>
+<h2 id="toc49"><span>Set/get any configuration item</span></h2>
+<p>All keywords in the sabnzbd.ini file can be set through the API.<br>
+    For readability the <em>apikey</em> and <em>output</em> parameters are omitted.
+</p>
+<h3 id="toc50"><span>General form for individual settings.</span></h3>
+<p><a href="http://localhost:8080/sabnzbd/api?mode=set_config&amp;section=SECTION&amp;keyword=KEYWORD&amp;value=VALUE">http://localhost:8080/sabnzbd/api?mode=set_config&amp;section=SECTION&amp;keyword=KEYWORD&amp;value=VALUE</a></p>
+<p>Examples:<br>
+    <a href="http://localhost:8080/sabnzbd/api?mode=set_config&amp;section=misc&amp;keyword=dirscan_speed&amp;value=5">http://localhost:8080/sabnzbd/api?mode=set_config&amp;section=misc&amp;keyword=dirscan_speed&amp;value=5</a>
+</p>
+<h3 id="toc51"><span>Setting a number of values in an RSS feed.</span></h3>
+<p><a href="http://localhost:8080/sabnzbd/api?mode=set_config&amp;section=rss&amp;keyword=MyFeed&amp;enable=1&amp;pp=3">http://localhost:8080/sabnzbd/api?mode=set_config&amp;section=rss&amp;keyword=MyFeed&amp;enable=1&amp;pp=3</a></p>
+<p>SABnzbd will return all the new settings for that feed as a result.</p>
+<h3 id="toc52"><span>Read configuration</span></h3>
+<p>You can read any subsection of the configuration.<br>
+    Note that you will never receive passwords, each character will be replaced by a * character.<br>
+    You can <em>set</em> new passwords through the <em>set_config call</em>.
+</p>
+<p>All values<br>
+    <a href="http://localhost:8080/sabnzbd/api?mode=get_config">http://localhost:8080/sabnzbd/api?mode=get_config</a>
+</p>
+<p>All elements in [misc]<br>
+    <a href="http://localhost:8080/sabnzbd/api?mode=get_config&amp;section=misc">http://localhost:8080/sabnzbd/api?mode=get_config&amp;section=misc</a>
+</p>
+<p>All elements of a server<br>
+    <a href="http://localhost:8080/sabnzbd/api?mode=get_config&amp;section=servers&amp;keyword=ServerName">http://localhost:8080/sabnzbd/api?mode=get_config&amp;section=servers&amp;keyword=ServerName</a>
+</p>
+<h1 id="toc53"><span>Prototyping with curl</span></h1>
+<p>Example prototype with curl, in this case showing the SABnzbd known categories (see above):</p>
+<div class="code">
+    <pre><code>curl http://localhost:8080/sabnzbd/api -F apikey=xxxx -F mode=get_cats -F output=json</code>
+</pre>
+</div>
+<br>
+Same command (but silent), with output parsed and pretty-printed:
+<div class="code">
+    <pre><code>curl -s http://localhost:8080/sabnzbd/api -F apikey=xxxx -F mode=get_cats -F output=json | python -mjson.tool</code>
+</pre>
+</div>
+<p>Adding by uploading a NZB:</p>
+<div class="code">
+    <pre><code>curl http://localhost:8080/sabnzbd/api -F apikey=dab2a318bblablablalbla -F mode=addfile -F output=json -F "name=@/home/user/somefile.nzb"</code>
+</pre>
+</div>
+<p>To see SABnzbd's output in a nice way:</p>
+<div class="code">
+    <pre><code>curl -s http://localhost:8080/sabnzbd/api -F apikey=dab2a318bblablablalbla -F mode=addfile -F output=json -F "name=@/home/user/somefile.nzb" | python -mjson.tool
+
+{
+"nzo_ids": [
+    "SABnzbd_nzo_0XPdFz"
+],
+"status": true
+}</code>
+</pre>
+</div>

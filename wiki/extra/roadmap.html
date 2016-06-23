@@ -1,0 +1,85 @@
+---
+title: Roadmap
+---
+<p>This is a limited overview of features that will be developed for future versions.<br>
+    The team has committed to these features, but we cannot give a time frame for all subjects.
+</p>
+<h3 id="toc0"><span>Unicode</span></h3>
+<p>Currently SABnzbd's code is an uncomfortable mix of 8bit ASCII (codepages!) and Unicode.<br>
+    This makes SABnzbd limited to handling texts in the Latin-1 character set (West European).<br>
+    A number of active users have translated SABnzbd into Serbian, Russian, Polish<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup> and Chinese<sup class="footnoteref"><a id="footnoteref-2" href="#footnote-2">2</a></sup>.<br>
+    but sadly we cannot handle these languages now. A full Unicode program can do this.
+</p>
+<p>Converting SABnzbd to full Unicode is not difficult, however it is a time-consuming task.<br>
+    The software has to be inspected from top to bottom to replace all 8bit ASCII handling<br>
+    with Unicode handling. It probably takes a few hundred (small) changes which for the most<br>
+    part must be done manually and another few dozen larger changes.<br>
+    After that comes a lot of testing.<br>
+    Also it's something can only be done with limited parallel development.
+</p>
+<p><strong>Status:</strong><br>
+    Implemented in release 1.0.0.
+</p>
+<h3 id="toc1"><span>7Zip support</span></h3>
+<p>Slowly the number of 7z posts is growing on Usenet, so it's time SABnzbd starts supporting it.<br>
+    Single 7z and multi-volume (7z.001, 7z.002 etc.) are supported.<br>
+    Binaries for Windows and OSX will be included.<br>
+    Other systems will need to have the "7za" tool available in the $PATH environment variable.<br>
+    Recommended version: 9.20 or higher
+</p>
+<p><strong>Status:</strong><br>
+    Implemented in release 1.0.0.
+</p>
+<h3 id="toc2"><span>Apple Bonjour</span></h3>
+<p>SABnzbd will support Apple's Bonjour protocol to some extent.<br>
+    Bonjour shows available network services without you having mess around with IP addresses and port numbers.<br>
+    All Apple devices support it and will therefore be able to find your SABnzbd server easily.<br>
+    The protocol is also known as ZeroConfig or Avahi on other platforms.<br>
+    More info: <a href="/wiki/extra/bonjour-support">Bonjour support</a>
+</p>
+<p><strong>Status:</strong><br>
+    Implemented in release 1.0.0.
+</p>
+<h3 id="toc3"><span>Optimal repair</span></h3>
+<p>SABnzbd first verifies a job using just the smallest par2 file.<br>
+    If that fails, it will download more par2 files and will try to repair the files.<br>
+    On slower systems that are faster at downloading than repairing, this is not optimal.<br>
+    par2-based repair is a very CPU intensive process and running a verify/repair cycle<br>
+    twice instead of once makes the whole process ever slower.<br>
+    So for people who have (1) a system and provider that allow rather fast downloading and<br>
+    (2) are not restricted by download caps, we will make an option to download ALL par2 files.<br>
+    If you have QuickCheck enabled a first (fast) verification will be done and if that fails<br>
+    all available par2 files will be downloaded.<br>
+    Without QuickCheck all par2 files will be downloaded even if not needed at all.<br>
+    This allows you to chose the optimal situation, which will not be the same for everyone.
+</p>
+<p><strong>Status:</strong><br>
+    Implemented in release 1.0.0.
+</p>
+<h3 id="toc4"><span>Server priorities</span></h3>
+<p>Currently SABnzbd works with primary and backup servers.<br>
+    The "primary" group and the "backup" group have internally no priorities.<br>
+    The plan is to drop the primary/backup system and use server priorities instead.<br>
+    This means that SABnzbd will first ask the highest priority server (0) and when that<br>
+    server doesn't have an article, the next lower priority server (1) will be asked.<br>
+    This continues until all (enabled) servers have been tried.
+</p>
+<p>The implementation of this goes into the heart of the SABnzbd downloader software<br>
+    and requires substantial changes to the way the download queue is handled.<br>
+    Therefore this feature will have a long lead time and will be developed in parallel.
+</p>
+<h3 id="toc5"><span>AutoSplit</span></h3>
+<p>Sometimes people have an NZB containing a whole season of shows and then miss the Sort capabilities.<br>
+    The (optional) AutoSplit will split such an NZB into separate jobs.<br>
+    This has two advantages: the first episode is completed sooner and the episodes are individually treated by Sort.
+</p>
+<p>Caveats:</p>
+<ul>
+    <li>Detecting season/episode material is based on the naming of the sub-posts, so activation of Sort depends on these names and not on the NZB name as is normally the case.</li>
+    <li>When multiple episodes share a single set of par2 files, AutoSplit will not activate.</li>
+</ul>
+<div class="footnotes-footer">
+    <div class="title">Footnotes</div>
+    <div class="footnote-footer" id="footnote-1">1. Polish is already in 0.7.0, but with a simplified character set, which doesn't really do justice to the language.</div>
+    <div class="footnote-footer" id="footnote-2">2. I.e. Simplified Chinese</div>
+</div>

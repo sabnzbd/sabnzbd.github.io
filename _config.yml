@@ -1,0 +1,22 @@
+name: SABnzbd.org
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+      name: SABnzbd.org
+  -
+    scope:
+      path: "wiki/configuration/0.7"
+    values:
+      layout: "wiki"
+      section: "Wiki"
+      depricated: True
+  -
+    scope:
+      path: "wiki"
+    values:
+      layout: "wiki"
+      section: "Wiki"

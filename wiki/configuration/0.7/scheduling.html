@@ -1,0 +1,104 @@
+---
+title: Scheduling
+---
+
+<h2 id="toc0"><span>Configure Scheduling</span></h2>
+<p>You may want to restrict downloading to specific time slots. This can be because your ISP or Usenet provider wants you to.<br>
+    Or maybe you don't want to download during peak usage of your family.<br>
+    SABnzbd allows you to specify moments to switch between PAUSE and RESUME mode, set a speedlimit or shutdown SABnzbd.<br>
+    Each schedule block is repeated one per week or every day.<br>
+    The four parameters of a schedule block are, from left to right:
+</p>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Hour</strong></td>
+            <td>The hour on which the switch occurs. Range is 0 to 23.</td>
+        </tr>
+        <tr>
+            <td><strong>Minutes</strong></td>
+            <td>The minute on which the switch occurs. Range is 0 to 59.</td>
+        </tr>
+        <tr>
+            <td><strong>Day</strong></td>
+            <td>The day of the week on which the switch occurs. Daily or only on each Monday, Tuesday, etc.</td>
+        </tr>
+        <tr>
+            <td><strong>Action</strong></td>
+            <td><em><strong>Pause</strong></em> will stop downloading</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><em><strong>Pause-all</strong></em> will stop downloading, <a href="/wiki/configuration/1.0/folders">Watched Folder</a> scanning and RSS feeds, stops all disk activity.</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><em><strong>Resume</strong></em> will continue downloading, Watched Folder scanning and RSS feeds</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><em><strong>Shutdown</strong></em> will exit the SABnzbd program</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><em><strong>Speedlimit</strong></em> will set the speedlimiter to the given value</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><em><strong>Restart</strong></em> will restart SABnzbd on the given time</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><em><strong>Pause post processing</strong></em> Will halt post processing (except active job), while downloading continues</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><em><strong>Resume post processing</strong></em> Will resume post processing, while downloading continues</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><em><strong>Scan watched folder</strong></em> Read watched folder (this will disable the interval in Config-&gt;Folders</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><em><strong>Read RSS feeds</strong></em> Read all RSS feeds (this will disable the intervalin Config-&gt;RSS)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><em><strong>Remove failed jobs</strong></em> Read all jobs in history that have failed to complete, including their files. Know what you are doing! (0.7.4+ only)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><em><strong>Server-name</strong></em> will enable or disable a server on the given time</td>
+        </tr>
+        <tr>
+            <td><strong>Argument</strong></td>
+            <td>Pass an argument to the scheduler. Number for a speed limit value. 0 or 1 for disabling or enabling a server</td>
+        </tr>
+    </tbody>
+</table>
+<h4 id="toc1"><span>Note</span></h4>
+<p>On startup, SABnzbd will evaluate all schedules and determine the current pause/resume state and speedlimit.<br>
+    The —pause <a href="/wiki/advanced/command-line-parameters">command-line parameter</a> will override this evaluation.<br>
+    Also on each schedule change, the schedule will be re-evaluated and the speedlimit will be set. If SABnzbd happened to be paused, it will NOT be resumed by the schedule evaluation. This is to prevent spontaneous resumption during schedule changes.
+</p>
+<h2 id="toc2"><span>Example</span></h2>
+<p>Suppose you only want to download on weekdays between 1:00AM and 5:30PM and in the weekend between 1:00 AM and 11:00AM.<br>
+    You set this up using four schedule blocks.
+</p>
+<p>Resume downloading every day at 1:00AM:<br>
+    01:00 Daily Resume
+</p>
+<p>Pause downloading every day at 5:30PM (= 17:30 military time):<br>
+    17:30 Daily Pause
+</p>
+<p>Pause downloading on Saturday 11:00AM:<br>
+    11:00 Saturday Pause
+</p>
+<p>Pause downloading on Sunday 11:00AM:<br>
+    11:00 Sunday Pause
+</p>
+<p>Enable server on Monday 6:00AM:<br>
+    06:00 <a class="vglnk" href="http://my.usenet.com" rel="nofollow"><span>my</span><span>.</span><span>usenet</span><span>.</span><span>com</span></a>:119&nbsp;1
+</p>
+

@@ -1,0 +1,90 @@
+---
+title: Home of SABnzbd+, the Full-Auto Newsreader
+---
+<script src="/js/lightslider.min.js"></script>
+<script src="/js/featherlight.min.js"></script>
+<script src="/js/sabnzbd.js"></script>
+
+<div class="container downloads-container content-container">
+    <div class="row">
+        <div class="col-md-6 main-logo">
+            <img src="/images/logo-full.svg">
+        </div>
+        <div class="col-md-6 downloads-row">
+            <div class="download-buttons-wrapper">
+                <div class="show-after-load download-stable">
+                    <a class="download-button">
+                        <span class="glyphicon glyphicon-circle-arrow-down"></span>
+                        <h4>Version</h4>
+                        <strong class="download-os"></strong>
+                    </a>
+                    <a class="download-extra" href="/downloads">Downloads for other platforms</a>
+                </div>
+                <div class="linux-row">
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                    <a href="/wiki/installation/install-ubuntu-repo">Intall via Ubuntu PPA Repository</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main-wrapper content-container">
+    <div id="main-container" class="container">
+        <div class="row text-center">
+            <h1 id="frontpage-slogan">Free and easy binary newsreader</h1>
+        </div>
+        <div class="row highlights-row">
+            <div class="col-md-6">
+                <img class="highlights" src="/images/landing/os-logos.png"/>
+                <h3>It runs anywhere</h3>
+                <p>SABnzbd runs on Windows, MacOS, Linux. And also on Unix, BSD, certain NAS devices (Synology, QNAP). 
+                You can access SABnzbd from any device with a webbrowser, so also iOS and Android phones and tablets.</p>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-6">
+                <img class="highlights" src="/images/landing/small-and-large-screens.png"/>
+                <h3>Small and large screens</h3>
+                <p>SABnzbd is responsive: With the Glitter interface, you can access SABnzbd and manage your downloads from any device: desktop, tablet or phone.</p>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="row highlights-row">
+            <div class="col-md-6">
+                <img class="highlights" src="/images/landing/integrates-with-other-tools.png"/>
+                <h3>Integrates with other tools</h3>
+                <p>Apps like <a href="https://sonarr.tv/" target="_blank">Sonarr</a>, <a href="https://sickrage.github.io/" target="_blank">Sickrage</a>, <a href="https://couchpota.to/" target="_blank">CouchPotato</a> and <a href="https://github.com/rembo10/headphones" target="_blank">Headphones</a> can integrate with SABnzbd and automate your download process.<br/>
+                SABnzbd can also read and process <a href="/wiki/configuration/1.0/rss">RSS feeds</a>, activate <a href="/wiki/advanced/user-scripts">custom scripts</a> and <a href="/wiki/configuration/1.0/notifications">notify</a> you via mail, growl, prowl, pushover and pushbullet.</p>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-6">
+                <img class="highlights" src="/images/landing/15-languages.png"/>
+                <h3>In 15 languages</h3>
+                <p>SABnzbd now ships with <strong>15 localizations</strong>: <br/>English, Dansk, Deutsch,  Español (castellano), Français, Nederlands, Norsk bokmål, Polski, Português Brasileiro, Româna, Suomi, Svenska, русский язык, српски, 简体中文.</p>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="row padding-row">
+            <div class="col-md-8 col-md-offset-2"> 
+                <h2 class="text-center">Screenshots</h2>
+                <ul id="frontpage-slideshow">
+                    {% for screenshot in site.data.screenshots %}
+                    <li>
+                        <a href="/images/landing/screenshots/{{ screenshot.file }}" data-featherlight="image">
+                            <img src="/images/landing/screenshots/{{ screenshot.file }}">
+                        </a>
+                        <strong>{{ screenshot.title }}</strong>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="row padding-row">
+            <div class="col-md-12 text-center">
+                <h4>SABnzbd is Open Source Software; it's free as in speech and free as in beer.<br/>
+                As it's open source you can inspect it, and develop your own code</h4>
+            </div>
+        </div>
+
+    </div>
+</div>

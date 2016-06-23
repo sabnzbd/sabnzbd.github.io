@@ -1,0 +1,109 @@
+---
+title: Introducing 1.0.0
+---
+<h3 id="toc0"><span>Note</span></h3>
+<p><em>We decided to rename 0.8.0 to 1.0.0, in order to start using a common <a href="/wiki/extra/release-numbering">release numbering method</a>.</em></p>
+<p>When you upgrade an existing 0.7.x installation, release 1.0.0 will NOT be able to finish the queue.<br>
+    It's best to empty your queue first using 0.7.x
+</p>
+<p>Alternatively, you can install 1.0.0 and then use "queue repair" on the Status page.<br>
+    Some information (like the order of the queue) will be lost.
+</p>
+<p>Note:</p>
+<blockquote>
+    <p>On Windows we corrected the base path, it's now c:\Users\USERNAME instead of c:\Users\USERNAME\Documents.<br>
+        SABnzbd 1.0.0 will find your old queue with the side-effect that the old location will be used until you change it in Config-&gt;Folders.
+    </p>
+</blockquote>
+<p>Note:</p>
+<blockquote>
+    <p>Breaking change in API: speed-limit is now either a percentage or an absolute number</p>
+    <ul>
+        <li>0-100 or anything with a '%' is a percentage</li>
+        <li>Absolute numbers no longer have an implicit "k" factor (1024)</li>
+        <li>Check third-party tools that set a speed for SABnzbd</li>
+    </ul>
+</blockquote>
+<p>Important to note: you can not switch easily between 0.7.x and 1.0.0 versions, at least not with the same queue.</p>
+<h3 id="toc1"><span>Known issues in 1.0.0</span></h3>
+<p>We have compiled a small list of <a href="/wiki/introduction/known-issues">known problems</a>.</p>
+<hr>
+<h1 id="toc2"><span>Highlights</span></h1>
+<h3 id="toc3"><span>Full Unicode</span></h3>
+<p>This means that more translations will be available, like Russian and Chinese.<br>
+    For Windows users it also means that there will be much less problems with long paths.
+</p>
+<h3 id="toc4"><span>New default skin: Glitter</span></h3>
+<p>A brand-new UI skin was developed based on more modern browser techniques.<br>
+    It is the new default skin for new users.<br>
+    "Plush" and "smpl" still remain, but it is unsure whether they will receive new features.<br>
+    The Config pages are the same for all skins.
+</p>
+<h3 id="toc5"><span>Server priorities</span></h3>
+<p>SABnzbd 0.7.20 and older works with primary and backup servers.<br>
+    The "primary" group and the "backup" group have internally no priorities.
+</p>
+<p>SABnzbd 1.0.0+ uses server priorities instead.<br>
+    This means that SABnzbd will first ask the highest priority server (0) and when that<br>
+    server doesn't have an article, the next lower priority server (1) will be asked.<br>
+    This continues until all (enabled) servers have been tried.<br>
+    Servers within the same priority group will be used in a round-robin way (faster servers will be used more).
+</p>
+<h3 id="toc6"><span>Server load balancing</span></h3>
+<p>Newsserver IPv6 load balancing aka Happy Eyeballs / RFC 6555</p>
+<h3 id="toc7"><span>7Zip support</span></h3>
+<p>Slowly the number of 7z posts is growing on Usenet, so it's time SABnzbd starts supporting it.<br>
+    Single 7z and multi-volume (7z.001, 7z.002 etc.) are supported.<br>
+    Binaries for Windows and OSX are included.<br>
+    Other systems will need to have the "7za" or "7z" tool available in the $PATH.<br>
+    Recommended version: 9.20 or higher
+</p>
+<h3 id="toc8"><span>Optimal repair</span></h3>
+<p><a name="OptimalRepair"></a> SABnzbd first verifies a job using just the smallest par2 file.<br>
+    If that fails, it will download more par2 files and will try to repair the files.<br>
+    On slower systems that are faster at downloading than repairing, this is not optimal.<br>
+    par2-based repair is a very CPU intensive process and running a verify/repair cycle<br>
+    twice instead of once makes the whole process ever slower.<br>
+    So for people who have (1) a system and provider that allow rather fast downloading and<br>
+    (2) are not restricted by download caps, there is the option to download ALL par2 files.<br>
+    If you have QuickCheck enabled a first (fast) verification will be done and if that fails<br>
+    all available par2 files will be downloaded.<br>
+    Without QuickCheck, all par2 files will be downloaded even if not needed at all.<br>
+    This allows you to chose the optimal situation, which will not be the same for everyone.
+</p>
+<h3 id="toc9"><span>Season/Episode handling</span></h3>
+<p>SABnzbd will now (optionally) analyse every title for show/season/episode data.<br>
+    This info is used to implement better duplicate detection.
+</p>
+<h3 id="toc10"><span>Duplicates detected using the History database</span></h3>
+<p>Previously SABnzbd used its nzb-backup folder to detect duplicates.<br>
+    1.0.0 will use the History database instead.<br>
+    It will check against the checksum of the NZB file, not just against the title.<br>
+    If you enable season/episode detection, it will use that also for duplicate detection.
+</p>
+<h3 id="toc11"><span>More notification platforms</span></h3>
+<p>First of all, the Notification system has been redesigned allowing you to specify per<br>
+    platform which events trigger notification with which priority (when supported).<br>
+    New: Prowl, PushBullet, PushOver
+</p>
+<h3 id="toc12"><span>Security zones</span></h3>
+<p>Access to the API and the web-interface can be limited for systems outside the "safe ranges".<br>
+    "Safe ranges" are IP ranges that you allow.<br>
+    Supposing all systems on your local network use IP addresses like 192.168.1.24,<br>
+    you would specify the safe range as "192.168.1.".<br>
+    You can add a list of safe ranges.
+</p>
+<h3 id="toc13"><span>Apple Bonjour</span></h3>
+<p>SABnzbd will support Apple's Bonjour protocol to some extent.<br>
+    Bonjour shows available network services without you having mess around with IP addresses and port numbers.<br>
+    All Apple devices support it and will therefore be able to find your SABnzbd server easily.<br>
+    The protocol is also known as ZeroConfig or Avahi on other platforms.<br>
+    Note: currently Bonjour support doesn't work in OSX El Capitan.
+</p>
+<h3 id="toc14"><span>RSS filter: From SxxEyy</span></h3>
+<p>Allow you to set the first season/episode of a series you're interested in.</p>
+<h3 id="toc15"><span>Other</span></h3>
+<ul>
+    <li>More Scheduling events</li>
+    <li>Speed limits in percentage of maximum line-speed</li>
+</ul>

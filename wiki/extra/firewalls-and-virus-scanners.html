@@ -1,0 +1,39 @@
+---
+title: Firewalls and Virus scanners
+---
+<h1 id="toc0"><span>Firewalls</span></h1>
+<p>Firewalls are only too happy to interfere with a program's Internet communication.<br>
+    Of course they don't tell you about this :)<br>
+    So check your Firewall logging and settings.
+</p>
+<p>SABnzbd uses the following types of communication:</p>
+<p><strong>Outgoing</strong>:<br>
+    DNS traffic: during startup it may communicate with an external DNS server to find out network information.<br>
+    It communicates with external Usenet servers (obviously!) (port 119 and maybe others).<br>
+    It may communicate with NZB sites (port 80 and 443).<br>
+    It may try to send email (port 25, 587 or others).<br>
+    It may access sourceforge.net to check for the latest release (port 80)
+</p>
+<p><strong>Incoming</strong>:<br>
+    Webserver: The user interface is a website, so SABnzbd has to "listen" on a port of your choise (default 8080).<br>
+    Some firewalls will even complain about the use of localhost.
+</p>
+<h1 id="toc1"><span>Virus scanners</span></h1>
+<p>Some virus scanner behave like firewalls, so look under "Firewalls".</p>
+<p>Some virus scanners see SABnzbd as a problematic program.<br>
+    Especially the sqlite3.dll file is disliked and some just remove that file.<br>
+    SABnzbd needs sqlite3.dll to maintain its history database.
+</p>
+<p>Further not all virus scanners handle large and growing files very well.<br>
+    Suppose you are downloading a large ISO file, the scanner may want to scan every time a piece is added to the ISO.<br>
+    It's probably better to disable the so-called on-access scan for all SABnzbd's working folders.<br>
+    Your scanner's scheduled system scan will check for viruses later.<br>
+    SABnzbd doesn't execute any downloaded file, so no viruses will be activated.
+</p>
+<h1 id="toc2"><span>Windows 7</span></h1>
+<p>There is a serious bug in Windows 7 and Server 2008 that can make the combination of SABnzbd<br>
+    and virus-scanners/firewalls problematic, due to heavy memory leaks.<br>
+    Microsoft has released a hotfix for this that is not in the monthly patches.<br>
+    Information: [<a href="http://support.microsoft.com/kb/979223/en-us" onclick="window.open(this.href, '_blank'); return false;">http://support.microsoft.com/kb/979223/en-us</a>]<br>
+    Download of the hotfix: [<a href="http://support.microsoft.com/hotfix/KBHotfix.aspx?kbnum=979223&amp;kbln=en-us" onclick="window.open(this.href, '_blank'); return false;">http://support.microsoft.com/hotfix/KBHotfix.aspx?kbnum=979223&amp;kbln=en-us</a>]
+</p>

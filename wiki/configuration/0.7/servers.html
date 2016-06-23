@@ -1,0 +1,174 @@
+---
+title: Servers
+---
+
+<h2 id="toc0"><span>Configure Servers</span></h2>
+<p>If you want to download anything, you need to have access to one or more Usenet servers.<br>
+    These servers can be your own ISP's Usenet server, a free public one or one of the many commercial servers.<br>
+    For each server you need to specify its parameters.
+</p>
+<h3 id="toc1"><span>Primary and backup servers</span></h3>
+<p>You can divide your servers in a primary and a backup group.<br>
+    SABnzbd will first try to get articles from the primary group.<br>
+    Within the primary group, the first server with a free connection will be tried.<br>
+    When the first tried server doesn't have an article, then another primary server is tried.<br>
+    When none of the primary servers has a specific article, the backup group is tried.<br>
+    Within the backup group the same method is used: the first server with a free slot is tried.
+</p>
+<p>Very unreliable servers can be marked as "Optional".<br>
+    This means that they will be ignored for 10 minutes when they cause too many time-outs.<br>
+    This is to prevent them from slowing down downloading.
+</p>
+<h3 id="toc2"><span>Settings</span></h3>
+<p><em><strong>Note</strong></em>: Check your Usenet provider's documentation for the proper values!</p>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Host</strong></td>
+            <td>The DNS name of the server. Example: <a class="vglnk" href="http://news.my-isp.com" rel="nofollow"><span>news</span><span>.</span><span>my</span><span>-</span><span>isp</span><span>.</span><span>com</span></a></td>
+        </tr>
+        <tr>
+            <td><strong>Port</strong></td>
+            <td>The standard port is 119. Some servers use a different port number. SSL is usually port 563 or 443</td>
+        </tr>
+        <tr>
+            <td><strong>Username</strong></td>
+            <td>Often you need to supply the user account of your news service subscription.</td>
+        </tr>
+        <tr>
+            <td><strong>Password</strong></td>
+            <td>Often you need to supply the password of your news service subscription.</td>
+        </tr>
+        <tr>
+            <td><strong>Timeout</strong></td>
+            <td>Time out in seconds for error recovery. Be careful, do not set this to a very low value, your news provider will not like that. A common value is 120.</td>
+        </tr>
+        <tr>
+            <td><strong>Connections</strong></td>
+            <td>News providers offer different amounts of simultaneous connections (sometimes referred to as slots or threads). You may need to specify the maximum amount allowed in order to get full speed.</td>
+        </tr>
+        <tr>
+            <td><strong>SSL</strong></td>
+            <td>Use a secure connection to the server. Note: not all servers provide this or charge extra. <strong>Check what address and port you need for SSL with your provider!</strong>. Most providers use port 563 for SSL, DO NOT USE PORT 119</td>
+        </tr>
+        <tr>
+            <td><strong>Backup Server</strong></td>
+            <td>(Renamed from "FillServer") You can specify additional servers, marked as <strong><em>backup</em></strong> that are only used when the main server(s) cannot download a piece of data (<em>see this footnote</em><sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup><em>)</em>. Sometimes it is useful to specify a primary server that SABnbzd should try to get its data from first, often this is a free server. A pay-per-GB server is the typical backup server. Note: you should at least have one primary (non-backup) server for downloading to start.</td>
+        </tr>
+        <tr>
+            <td><strong>Enable</strong></td>
+            <td>If you have multiple servers, you can use this field to quickly enable or disable servers. Note: this field can be set/reset by the <a href="/wiki/configuration/1.0/scheduling">Scheduler</a> too!</td>
+        </tr>
+        <tr>
+            <td><strong>Optional</strong></td>
+            <td>If you use multiple servers and some of these servers are not very reliable, you can declare them "optional". This means that if such a server causes too much problems (like time-outs) it will be ignored for some time. Warning: under some circumstances this may cause missed articles<sup class="footnoteref"><a id="footnoteref-2" href="#footnote-2">2</a></sup>.</td>
+        </tr>
+        <tr>
+            <td><strong>Retention</strong></td>
+            <td>Set here the maximum retention time<sup class="footnoteref"><a id="footnoteref-3" href="#footnote-3">3</a></sup> (in days) of your server. Zero means infinite retention. Only use this when you have multiple servers and you want to avoid that SABnzbd wastes time on asking servers for articles it cannot have. Be aware that retention times advertised by Usenet providers are not absolute. If you set it too low, your others servers will be used more intensely. There is no reason to set a retention time when you have only one server.</td>
+        </tr>
+    </tbody>
+</table>
+<p>An example setup using <a class="vglnk" href="http://Newsdemon.com" rel="nofollow"><span>Newsdemon</span><span>.</span><span>com</span></a>:</p>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Host</strong></td>
+            <td><a class="vglnk" href="http://europe.newsdemon.com" rel="nofollow"><span>europe</span><span>.</span><span>newsdemon</span><span>.</span><span>com</span></a></td>
+        </tr>
+        <tr>
+            <td><strong>Port</strong></td>
+            <td>119</td>
+        </tr>
+        <tr>
+            <td><strong>Username</strong></td>
+            <td>user</td>
+        </tr>
+        <tr>
+            <td><strong>Password</strong></td>
+            <td>*</td>
+        </tr>
+        <tr>
+            <td><strong>Timeout</strong></td>
+            <td>120</td>
+        </tr>
+        <tr>
+            <td><strong>Connections</strong></td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td><strong>SSL</strong></td>
+            <td>(No)</td>
+        </tr>
+        <tr>
+            <td><strong>Backup Server</strong></td>
+            <td>(No)</td>
+        </tr>
+        <tr>
+            <td><strong>Enable</strong></td>
+            <td>(Yes)</td>
+        </tr>
+        <tr>
+            <td><strong>Optional</strong></td>
+            <td>(No)</td>
+        </tr>
+        <tr>
+            <td><strong>Retention</strong></td>
+            <td>0</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Host</strong></td>
+            <td><a class="vglnk" href="http://us-secure.newsdemon.com" rel="nofollow"><span>us</span><span>-</span><span>secure</span><span>.</span><span>newsdemon</span><span>.</span><span>com</span></a></td>
+        </tr>
+        <tr>
+            <td><strong>Port</strong></td>
+            <td>563</td>
+        </tr>
+        <tr>
+            <td><strong>Username</strong></td>
+            <td>user</td>
+        </tr>
+        <tr>
+            <td><strong>Password</strong></td>
+            <td>*</td>
+        </tr>
+        <tr>
+            <td><strong>Timeout</strong></td>
+            <td>120</td>
+        </tr>
+        <tr>
+            <td><strong>Connections</strong></td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td><strong>SSL</strong></td>
+            <td>(Yes)</td>
+        </tr>
+        <tr>
+            <td><strong>Backup Server</strong></td>
+            <td>(Yes)</td>
+        </tr>
+        <tr>
+            <td><strong>Enable</strong></td>
+            <td>(Yes)</td>
+        </tr>
+        <tr>
+            <td><strong>Optional</strong></td>
+            <td>(No)</td>
+        </tr>
+        <tr>
+            <td><strong>Retention</strong></td>
+            <td>0</td>
+        </tr>
+    </tbody>
+</table>
+<div class="footnotes-footer">
+    <div class="title">Footnotes</div>
+    <div class="footnote-footer" id="footnote-1">1. The primary server has to state that the article is not available. When the primary server times-out, SABnzbd will just keep retrying. If you have a server that doesn't give a proper response for missing articles you should set the server to "optional". That way, SABnzbd will temporarily ignore the primary server and start using the backup server.</div>
+    <div class="footnote-footer" id="footnote-2">2. When you declare a server with a long retention time as optional and the server is temporary out-of-service, SABnzbd will fall back to another server. If the alternative server has a shorter retention time, you will miss articles if the articles are beyond the retention time of the alternative server. It is best to set your most reliable and longest retention time server as fill-server but not as optional. Secondary servers (cheaper, less reliable, shorter retention time) can be set as <em>not backup</em> and <em>optional</em>.</div>
+    <div class="footnote-footer" id="footnote-3">3. Retention means the number of days that articles are kept by the server, after this number of days, the server will start removing articles. Note that retention is an average number. In reality the server will start removing articles when its storage becomes too full.</div>
+</div>
