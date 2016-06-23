@@ -11,6 +11,8 @@ title: Bonjour support
     but there are add-ons for Firefox and Chrome, see: <a href="http://dnssd.me/" target="_blank">http://dnssd.me</a><br>
     From Mozilla's Firefox repository: <a href="https://addons.mozilla.org/en-US/firefox/addon/dnssd/" target="_blank">https://addons.mozilla.org/en-US/firefox/addon/dnssd/</a>
 </p>
+<p>Unfortunately our Bonjour implementation doesn't work on OSX El Capitan. We're not sure whether we can fix this.
+</p>
 <h3 id="toc0"><span>Limitation</span></h3>
 <p>Note that Bonjour will only work when you setup SABnzbd to communicate with other computers on your local network. A completely local installation (using 127.0.0.1 or localhost) will not be advertised on Bonjour. The protocol doesn't support this.</p>
 <p>The speed may be disappointing. For some reason Bonjour likes to communicate over IPv6, which can be slow on some browsers.</p>
