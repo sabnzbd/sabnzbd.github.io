@@ -323,7 +323,6 @@ footer {
 }
 
 aside {
-    display: none;
     float: none;
     clear: both;
     position: absolute;
@@ -336,7 +335,7 @@ aside {
 }
 /***** */
 
-/* Not too much padding on top */
+/* Special for tablets and small desktops */
 @media only screen and (max-width: 999px) {
     .downloads-container img {
         margin: 10px auto;
@@ -359,13 +358,9 @@ aside {
         border-top: 1px solid rgba(0, 0, 0, 0.2);
         padding-top: 20px;
     }
-}
 
-@media only screen and (min-width: 999px) { 
-    #wiki-side-bar {
-        display: block !important;
-    }
-    .navbar-wiki-button {
+    /* So the ad doesn't block the menu */
+    aside {
         display: none;
     }
 }
@@ -419,17 +414,23 @@ aside {
         background-color: white;
     }
 
-    /* So the ad doesn't block the menu */
-    aside {
-        display: none;
-    }
+    
 }
 
+/* Anything bigger than a phone */
 @media only screen and (min-width: 767px) {
     #navbar {
         padding-left: 0;
         margin-left: -15px;
     }
+}
 
-    
+/* Special for desktops */
+@media only screen and (min-width: 999px) { 
+    #wiki-side-bar {
+        display: block !important;
+    }
+    .navbar-wiki-button {
+        display: none;
+    }
 }
