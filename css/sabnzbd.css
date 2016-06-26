@@ -172,6 +172,10 @@ footer a:hover {
     top: 3px;
 }
 
+#giganews-wide {
+    display: none;
+}
+
 .highlights {
     float: right;
     height: 120px;
@@ -363,6 +367,16 @@ aside {
     aside {
         display: none;
     }
+
+    /* Show the horizontal ad */
+    #giganews-wide {
+        display: block;
+        font-weight: bold;
+    }
+
+    #giganews-wide img {
+        max-width: 100%
+    }
 }
 
 /* Special for phones */
@@ -413,8 +427,6 @@ aside {
     .featherlight .featherlight-close-icon {
         background-color: white;
     }
-
-    
 }
 
 /* Anything bigger than a phone */
