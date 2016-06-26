@@ -82,8 +82,9 @@ $(document).ready(function() {
             item:2,
             galleryMargin: 15,
             loop:true,
-            controls:false,
-            pause: 4000
+            pause: 4000,
+            nextHtml: '<span class="glyphicon glyphicon-menu-right"></span>',
+            prevHtml: '<span class="glyphicon glyphicon-menu-left"></span>'
         });  
     }
     

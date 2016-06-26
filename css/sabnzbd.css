@@ -196,6 +196,17 @@ footer a:hover {
     background-color: #F5B907;
 }
 
+.lSAction>a {
+    opacity: 1;
+    background: 0;
+    font-size: 1.6em;
+    border: 0 !important;
+    margin-top: -30px;
+}
+
+.lSNext {
+    text-align: right;
+}
 
 #frontpage-slideshow img {
     width: 100%;
@@ -319,7 +330,6 @@ blockquote {
     font-size: 1em;
 }
 
-
 /*** */
 footer {
     background-color: #e7e7e7;
@@ -372,6 +382,7 @@ aside {
     #giganews-wide {
         display: block;
         font-weight: bold;
+        padding-bottom: 15px;
     }
 
     #giganews-wide img {
