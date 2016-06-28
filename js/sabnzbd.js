@@ -70,6 +70,7 @@ $.getJSON('https://resources.sabnzbd.org/releases/json', function(data) {
     }
     
     // Show
+    $('.show-before-load').hide()
     $('.show-after-load').css('visibility', 'visible')
 });
 
