@@ -78,7 +78,7 @@ $.getJSON('https://resources.sabnzbd.org/releases/json', function(data) {
 // Slideshow only for frontpage
 $(document).ready(function() {
     if($("#frontpage-slideshow").length) {
-          $('#frontpage-slideshow').lightSlider({
+        $('#frontpage-slideshow').lightSlider({
             auto:true,
             item:2,
             galleryMargin: 15,

@@ -1,5 +1,6 @@
 name: SABnzbd.org
-
+gems:
+  - jekyll-redirect-from
 defaults:
   -
     scope:
