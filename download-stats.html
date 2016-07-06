@@ -1,0 +1,80 @@
+---
+title: Download statistics
+---
+
+{% include logo_container.html %}
+
+<div class="main-wrapper content-container">
+    <div id="main-container" class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <strong>Download statistics of recent releases provided by GitHub API.</strong>
+            </div>
+            <div class="col-md-9">
+                <div id="container-stats">Loading..</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script type="text/javascript">
+    function getStats() {
+        var theContainer = $('#container-stats');
+        
+        // Get the info
+        $.getJSON('http://api.github.com/repos/sabnzbd/sabnzbd/releases', function(data) {
+             // Clear the output box and loop over all the data
+            theContainer.html('')
+            $.each(data, function(key, release) {
+                // Title
+                theContainer.append('<h3>' +
+                                        '<a href="'+release.html_url+'" target="_blank">'+release.name+'</a> ' +
+                                        '<small>released '+moment().diff(moment(release.published_at), 'days')+' days ago</small>' +
+                                    '</h3>');
+            
+                // Table
+                var theReleaseTable = $('<table class="table table-stats table-striped table-hover">');
+                theReleaseTable.append('<thead><tr><th>#</th><th>File</th><th style="width: 100px">Hits</th></thead>');
+                
+                // Each file
+                var totalDownloads = 0;
+                $.each(release.assets, function(key, file) {
+                    theReleaseTable.append('<tr>' +
+                                                '<td>'+(key+1)+'</td>' +
+                                                '<td><a href="'+file.browser_download_url+'" target="_blank">'+file.name+'</a></td>' +
+                                                '<td>'+file.download_count+'</td>' +
+                                            '</tr>')
+                    // Don't count text files
+                    if(file.name.indexOf('.mkd') === -1 && file.name.indexOf('.txt') === -1) {
+                        totalDownloads += file.download_count;
+                    }
+                })
+                
+                /*
+                // Add total
+                theReleaseTable.append('<tr>' +
+                                            '<td></td>' +
+                                            '<td><strong>Downloads per day (average, since release)</strong></td>' +
+                                            '<td><strong>'+Math.round(totalDownloads/(moment(release.published_at).diff(moment(), 'days')))*-1+'</strong></td>' +
+                                        '</tr>')
+                */
+                // Add total
+                theReleaseTable.append('<tr class="success">' +
+                                            '<td></td>' +
+                                            '<td><strong>Total</strong></td>' +
+                                            '<td><strong>'+totalDownloads+'</strong></td>' +
+                                        '</tr>')
+                
+                
+                // Add this table
+                theContainer.append(theReleaseTable)
+                theContainer.append('<hr/>')
+            })
+        });
+        return false;
+    }
+
+    // Load now
+    $(document).ready(getStats)
+</script>

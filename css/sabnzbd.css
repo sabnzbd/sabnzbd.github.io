@@ -237,6 +237,16 @@ footer a:hover {
     margin: 0;
 }
 
+#container-stats a {
+    border: none;
+    text-decoration: underline;
+    color: black;
+}
+
+#container-stats h3:first-of-type {
+    margin-top: 0;
+}
+
 /*** Wiki ****/
 .navbar-wiki-button,
 .navbar-wiki-button:focus {
