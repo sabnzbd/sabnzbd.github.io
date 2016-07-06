@@ -23,7 +23,7 @@ title: Download statistics
         var theContainer = $('#container-stats');
         
         // Get the info
-        $.getJSON('http://api.github.com/repos/sabnzbd/sabnzbd/releases', function(data) {
+        $.getJSON('https://api.github.com/repos/sabnzbd/sabnzbd/releases', function(data) {
              // Clear the output box and loop over all the data
             theContainer.html('')
             $.each(data, function(key, release) {
