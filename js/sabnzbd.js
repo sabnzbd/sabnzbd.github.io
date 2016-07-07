@@ -30,9 +30,23 @@ try {
     parseGitHubResults(JSON.parse(sessionStorage.releases_data))
 } catch(e) {
     // If not available, get the data from Github
-    $.getJSON('https://api.github.com/repos/sabnzbd/sabnzbd/releases', function(releases) {
+    $.ajax('https://api.github.com/repos/sabnzbd/sabnzbd/releases', { 
+        timeout: 3000 
+    }).done(function(releases) {
+        // Store the data
         sessionStorage.releases_data = JSON.stringify(releases)
-        parseGitHubResults(releases)
+
+        // In case GitHub returns something weird
+        try {
+            parseGitHubResults(releases)
+        } catch(e) {
+            // Place backup links
+            backupLinks()
+        }
+    })
+    .fail(function() {
+        // Place backup links
+        backupLinks()
     })
 }
 
@@ -94,6 +108,7 @@ function parseGitHubResults(releases) {
     $('.show-after-load').css('visibility', 'visible')
 }
 
+// Parse download-assets
 function parseAssets(assets, platform, stable_release) {
     // Go over all the assets untill we find the right one
     $.each(assets, function(index, asset) {
@@ -120,6 +135,16 @@ function parseAssets(assets, platform, stable_release) {
             })
         }
     })
+}
+
+// Backup for failures
+function backupLinks() {
+    stableBox.attr('href', 'https://github.com/sabnzbd/sabnzbd/releases/')
+    stableBox.children('h4').text('Download SABnzbd')
+    $('.download-os').text(downloadTitle)
+    $('.show-before-load').hide()
+    $('.show-after-load').css('visibility', 'visible')
+    $('.download-beta, #download-links-stable, #download-links-beta').remove()
 }
 
 // Slideshow only for frontpage
