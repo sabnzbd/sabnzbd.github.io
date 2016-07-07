@@ -26,7 +26,8 @@ redirect_from: "/download"
                             <li><a class="download-link-osx" href="">OS X</a></li>
                             <li><a class="download-link-src" href="">Linux</a></li>
                             <li><a href="/wiki/installation/install-ubuntu-repo">Intall via Ubuntu PPA Repository</a></li>
-                            <li><a class="download-link-source" href="">Source Code and Changelog</a></li>
+                            <li><a class="download-link-source" href="">Source Code</a></li>
+                            <li><a class="download-link-changelog" href="#" data-featherlight="#stable-changelog">Changelog</a>
                         </ul>
                     </div>
                 </div>
@@ -50,7 +51,8 @@ redirect_from: "/download"
                             <li><a class="download-link-osx" href="">OS X</a></li>
                             <li><a class="download-link-src" href="">Linux</a></li>
                             <li><a href="/wiki/installation/install-ubuntu-repo">Intall via Ubuntu PPA Repository</a></li>
-                            <li><a class="download-link-source" href="">Source Code and Changelog</a></li>
+                            <li><a class="download-link-source" href="">Source Code</a></li>
+                            <li><a class="download-link-changelog" href="#" data-featherlight="#beta-changelog">Changelog</a>
                         </ul>
                     </div>
                 </div>
@@ -64,5 +66,16 @@ redirect_from: "/download"
             </div>
         </div>
     </div>
+    <div class="hidden">
+        <div id="stable-changelog">
+            <h2>Changelog</h2>
+            <span class="changelog-content"></span>
+        </div>
+        <div id="beta-changelog">
+            <h2>Changelog</h2>
+            <span class="changelog-content"></span>
+        </div>
+    </div>
 </div>
+<script src="/js/featherlight.min.js"></script>
 <script src="/js/sabnzbd.js"></script>

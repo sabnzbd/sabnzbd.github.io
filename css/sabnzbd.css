@@ -247,6 +247,11 @@ footer a:hover {
     margin-top: 0;
 }
 
+#stable-changelog,
+#beta-changelog {
+    padding: 0px 22px 22px;
+}
+
 /*** Wiki ****/
 .navbar-wiki-button,
 .navbar-wiki-button:focus {
@@ -372,7 +377,6 @@ aside {
     img.slideshow {
         margin: 10px 0px;
     }
-
     
     .navbar-wiki-button {
         display: block;

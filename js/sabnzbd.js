@@ -65,6 +65,9 @@ function parseGitHubResults(releases) {
             // Set link to source-code on Downloads page
             $('#download-links-stable .download-link-source').attr('href', release.html_url)
 
+            // Set the changelog info
+            $('#stable-changelog .changelog-content').html(release.body.replace(/(?:\r\n|\r|\n)/g, '<br />'))
+
             // General URL if no platform (mobile)
             if(!platform) {
                 stableBox.attr('href', release.html_url)
@@ -86,6 +89,10 @@ function parseGitHubResults(releases) {
 
             // Set link to source-code on Downloads page
             $('#download-links-beta .download-link-source').attr('href', release.html_url)
+
+            // Set the changelog info
+            $('#beta-changelog .changelog-content').html(release.body.replace(/(?:\r\n|\r|\n)/g, '<br />'))
+
 
             // General URL if no platform (mobile)
             if(!platform) {
