@@ -8,72 +8,119 @@
 
 // Determine platform
 var platform = '';
-var downloadTitle = '';
-if (navigator.appVersion.indexOf('Win')!=-1)    { platform = 'win32-setup'; downloadTitle = 'Windows'}
-if (navigator.appVersion.indexOf('Mac')!=-1)    { platform = 'osx'; downloadTitle = 'OS X'}
-if (navigator.appVersion.indexOf('X11')!=-1)    { platform = 'src'; downloadTitle = 'Linux'}
-if (navigator.appVersion.indexOf('Linux')!=-1)  { platform = 'src'; downloadTitle = 'Linux'}
+var downloadTitle = 'Browse packages';
+if (navigator.appVersion.indexOf('Win')!=-1)    { platform = 'win32-setup'; downloadTitle = 'For Windows'}
+if (navigator.appVersion.indexOf('Mac')!=-1)    { platform = 'osx'; downloadTitle = 'For OS X'}
+if (navigator.appVersion.indexOf('X11')!=-1)    { platform = 'src'; downloadTitle = 'For Linux'}
+if (navigator.appVersion.indexOf('Linux')!=-1)  { platform = 'src'; downloadTitle = 'For Linux'}
 
 // Ignore for mobile
 if(jQuery.browser.mobile) {
     platform = '';
-    downloadTitle = '';
+    downloadTitle = 'Browse packages';
 }
 
-// Get the info
-$.getJSON('https://resources.sabnzbd.org/releases/json', function(data) {
-    // Get the boxes
-    var stableBox = $('.download-stable .download-button');
-    var betaBox = $('.download-beta .download-button');
-    
-    // Fill the boxes
-    stableBox.children('h4').text('Download ' + data.stable.name.replace('SABnzbd', '').trim())
-    betaBox.children('h4').text('Download ' + data.beta.name.replace('SABnzbd', '').trim())
-    
-    // Links
-    if(platform) {
-        $('.download-os').text('For ' + downloadTitle)
-        stableBox.attr('href', data.stable.builds[platform])
-        betaBox.attr('href', data.beta.builds[platform])
+// Get the boxes
+var stableBox = $('.download-stable .download-button');
+var betaBox = $('.download-beta .download-button');
 
-    } else {
-        // Generic link
-        $('.download-os').text('Browse packages')
-        stableBox.attr('href', data.stable.permalink)
-        betaBox.attr('href', data.beta.permalink)
-    }
+// See if maybe we saved the data from the previous page
+// In try/catch in case it's not defined or blocked by security settings
+try {
+    parseGitHubResults(JSON.parse(sessionStorage.releases_data))
+} catch(e) {
+    // If not available, get the data from Github
+    $.getJSON('https://api.github.com/repos/sabnzbd/sabnzbd/releases', function(releases) {
+        sessionStorage.releases_data = JSON.stringify(releases)
+        parseGitHubResults(releases)
+    })
+}
 
-    // Update links on download-page
-    if($('.download-links').length) {
-        // Stable
-        $.each(data.stable.builds, function(platform, link) {
-            $('#download-links-stable .download-link-' + platform).attr('href', link)
-        })
-        // Beta
-        $.each(data.beta.builds, function(platform,link) {
-            $('#download-links-beta .download-link-' + platform).attr('href', link)
-        })
-        // Source code
-        $('#download-links-stable .download-link-source').attr('href', data.stable.permalink)
-        $('#download-links-beta .download-link-source').attr('href', data.beta.permalink)
-    }
-    
-    // Same?
-    if(Date.parse(data.stable.date) > Date.parse(data.beta.date)) {
-        $('.download-beta').remove()
-        $('.downloads-row').addClass('single-download')
-    }
+// Now parse it, going over each asset to see if it's the last stable
+function parseGitHubResults(releases) {
+    // Do we have a beta before a stable?
+    var have_beta = false
+
+    $.each(releases, function(index, release) {
+        // Is it a stable? We stop after the first stable
+        if(!release.prerelease) {
+            // Set the label and download-link for big button
+            parseAssets(release.assets, platform, true)
+            stableBox.children('h4').text('Download ' + release.name.replace('SABnzbd', '').trim())
+            
+            // Set link to source-code on Downloads page
+            $('#download-links-stable .download-link-source').attr('href', release.html_url)
+
+            // General URL if no platform (mobile)
+            if(!platform) {
+                stableBox.attr('href', release.html_url)
+            }
+
+            // If there's no newer beta than the last stable, remove the beta-column
+            if(!have_beta) {
+                $('.download-beta').remove()
+            }
+
+            // Stop iterating over releases
+            return false
+        } 
+        // Is this the first beta?
+        else if(!have_beta) {
+            // Set the label and download-link for big button
+            parseAssets(release.assets, platform, false)
+            betaBox.children('h4').text('Download ' + release.name.replace('SABnzbd', '').trim())
+
+            // Set link to source-code on Downloads page
+            $('#download-links-beta .download-link-source').attr('href', release.html_url)
+
+            // General URL if no platform (mobile)
+            if(!platform) {
+                betaBox.attr('href', release.html_url)
+            }
+
+            // Don't process beta's after this
+            have_beta = true
+        }
+    })
 
     // Linux?
     if(platform == 'src') {
         $('.linux-row').show()
     }
-    
+
     // Show
+    $('.download-os').text(downloadTitle)
     $('.show-before-load').hide()
     $('.show-after-load').css('visibility', 'visible')
-});
+}
 
+function parseAssets(assets, platform, stable_release) {
+    // Go over all the assets untill we find the right one
+    $.each(assets, function(index, asset) {
+        // The right one, put it in the box
+        if(platform && asset.name.indexOf(platform) !== -1) {
+            // Stable/beta
+            if(stable_release) {
+                stableBox.attr('href', asset.browser_download_url)
+            } else {
+                betaBox.attr('href', asset.browser_download_url)
+            }
+        }
+
+        // Update links on download-page
+        if($('.download-links').length) {
+            // Stable/beta box
+            var linksBox = stable_release ? $('#download-links-stable') : $('#download-links-beta')
+
+            // Have to search which one it is
+            $.each(['win32-setup', 'win32-bin', 'osx', 'src'], function(index, platform_search) {
+                if(asset.name.indexOf(platform_search) !== -1) {
+                    linksBox.find('.download-link-' + platform_search).attr('href', asset.browser_download_url)
+                }
+            })
+        }
+    })
+}
 
 // Slideshow only for frontpage
 $(document).ready(function() {
