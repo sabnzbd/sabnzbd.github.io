@@ -252,12 +252,6 @@ footer a:hover {
     padding: 0px 22px 22px;
 }
 
-#graph-iframe {
-    width: 100%;
-    border: 0;
-    height: 320px;
-}
-
 /*** Wiki ****/
 .navbar-wiki-button,
 .navbar-wiki-button:focus {
