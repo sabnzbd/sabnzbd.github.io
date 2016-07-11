@@ -1,4 +1,4 @@
-name: SABnzbd.org
+name: SABnzbd
 gems:
   - jekyll-redirect-from
 defaults:
