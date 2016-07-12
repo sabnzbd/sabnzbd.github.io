@@ -316,9 +316,7 @@ So, if you know what you're doing and SABnzbd is not running, you can edit that 
     You currently cannot use this for the incomplete folder in windows due to a par2 bug.
 </p>
 <h2 id="toc30"><span>How do I run SABnzbd as a portable/self contained program?</span></h2>
-<p>Simply copy your sabnzbd.ini file (and the cache folder if you wish to keep your current queue/history) to your main sabnzbd folder. That is all, when SABnzbd starts up it first looks for the sabnzbd.ini in the same folder it is run from and uses those settings if available.</p>
-<p>If you wish for a clean install, run sabnzbd.exe with the command line parameter "-f sabnzbd.ini" and a blank settings file will be created in your sabnzbd installation folder.</p>
-<p>It is recommended you use relative paths for your incomplete and download folders to make sure SABnzbd will have write access. The default download dir setting is an example of a relative folder, just specify the name of the folder you wish to be created and not the path.</p>
+<p>See <a href="/wiki/extra/howto-portable">How to make a portable installation</a>.
 <h2 id="toc31"><span>"My Internet connection is 20&nbsp;Mbps, and SAB only downloads at 2MB/s"?</span></h2>
 <p>This is bits versus bytes: ISPs advertise in bits/sec, SABnzbd shows you bytes/sec.<br>
     Multiply SABnzbd's results by 8 or 10 to get bits/sec.
