@@ -4,7 +4,6 @@ title: NZB Sources
 
 <p>SABnzbd only accepts <a href="http://en.wikipedia.org/wiki/NZB" target="_blank">NZB files</a> as download specifications<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup>.
     An NZB file contains a full specification of all Usenet articles that are needed for a download. You can get these files from sites listed below.<br>
-    Some of the listed websites are only search engines that search publicly available headers, others analyze each file and match it to known movie, show, music or software releases and provide reports on each file.
 </p>
 
 <p><strong>SABnzbd does not endorse or require the use of any specific indexer.</strong><br>
@@ -12,15 +11,48 @@ title: NZB Sources
     Before paying for an indexer please keep in mind that there are no guarantees and that any site could disappear at any time without notice.
 </p>
 
-<p><strong>Additional information</strong><br>
+<p class="sabnzbd-outbound"><strong>Additional information</strong><br>
     The following sites have further listings for indexers with commentary showing features etc.<br>
     <a href="https://www.reddit.com/r/usenet/wiki/indexers" target="_blank">Reddit /r/usenet</a><br>
-    <a href="http://www.ngprovider.com/usenet-indexing-sites.php">NGProvider.com</a><br>
+    <a href="http://www.ngprovider.com/usenet-indexing-sites.php" target="_blank">NGProvider.com</a><br>
     <a href="http://usenetreviewz.com/nzb-sites/" target="_blank">UsenetReviewz.com</a><br>
 </p>
 
-<h3>Indexers and search engines</h3>
-<table class="table table-bordered table-hover">
+<h2>Search engines</h2>
+<p>Only searching in pubically available headers, but they will not match obfuscated files to the releases they belong to or do any analysis on the files.</p>
+<table class="table table-bordered table-hover sabnzbd-outbound">
+    <tbody>
+        <tr>
+            <th>Site</th>
+            <th>RSS</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td><a href="http://www.binsearch.info" target="_blank">Binsearch</a></td>
+            <td><a href="http://www.binsearch.info/rssfeed.php" target="_blank">Limited</a></td>
+            <td>No "report" view, only supports manual searching of headers.</td>
+        </tr>
+        <tr>
+            <td><a href="http://findnzb.net/" target="_blank">findnzb.net</a></td>
+            <td>Limited</td>
+            <td>Generic search engine for Usenet</td>
+        </tr>
+        <tr>
+            <td><a href="http://nzbfriends.com/" target="_blank">nzbfriends.com</a></td>
+            <td>?</td>
+            <td>Search results more like binsearch.info than newznab</td>
+        </tr>
+        <tr>
+            <td><a href="http://www.nzbindex.nl" target="_blank">NZBIndex</a></td>
+            <td>Yes</td>
+            <td>No "report" view, only supports manual searching of headers.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Indexers</h2>
+<p>Indexers analyze each file and match it to known movie, show, music or software releases and provide reports on each NZB.</p>
+<table class="table table-bordered table-hover sabnzbd-outbound">
     <tbody>
         <tr>
             <th>Site</th>
@@ -46,14 +78,7 @@ title: NZB Sources
             <td>n/a</td>
             <td>Indexer focusing on anime and related content. (Formerly fanzub)</td>
         </tr>
-        <tr>
-            <td><a href="http://www.binsearch.info" target="_blank">Binsearch</a></td>
-            <td>Yes</td>
-            <td>Free</td>
-            <td><a href="http://www.binsearch.info/rssfeed.php" target="_blank">Limited</a></td>
-            <td>n/a</td>
-            <td>No "report" view, only supports manual searching of headers.</td>
-        </tr>
+        
         <tr>
             <td><a href="http://binzb.com/" target="_blank">binzb.com</a></td>
             <td>Yes</td>
@@ -86,14 +111,7 @@ title: NZB Sources
             <td>Cat*Subcat</td>
             <td>50 API calls and 50 NZB-grabs per day, Newznab compatible.</td>
         </tr>
-        <tr>
-            <td><a href="http://findnzb.net/" target="_blank">findnzb.net</a></td>
-            <td>Yes</td>
-            <td>Free</td>
-            <td>Limited</td>
-            <td>n/a</td>
-            <td>Generic search engine for Usenet</td>
-        </tr>
+        
         <tr>
             <td><a href="https://www.gingadaddy.com/" target="_blank">gingadaddy.com</a></td>
             <td>No</td>
@@ -126,14 +144,7 @@ title: NZB Sources
             <td>Cat*Subcat</td>
             <td>Free accounts have very low limits. Based on nZEDb. Most expensive account includes SpotWeb access.</td>
         </tr>
-        <tr>
-            <td><a href="http://nzbfriends.com/" target="_blank">nzbfriends.com</a></td>
-            <td>Yes</td>
-            <td>Free</td>
-            <td>?</td>
-            <td></td>
-            <td>Search results more like binsearch.info than newznab</td>
-        </tr>
+        
         <tr>
             <td><a href="https://nzbgeek.info" target="_blank">NZBgeek</a></td>
             <td>Yes</td>
@@ -150,14 +161,7 @@ title: NZB Sources
             <td>Cat*Subcat</td>
             <td>Another newznab indexer, no registration needed</td>
         </tr>
-        <tr>
-            <td><a href="http://www.nzbindex.nl" target="_blank">NZBIndex</a></td>
-            <td>Yes</td>
-            <td>Free</td>
-            <td>Yes</td>
-            <td>n/a</td>
-            <td>No "report" view, only supports manual searching of headers.</td>
-        </tr>
+        
         <tr>
             <td><a href="http://nzbplanet.net" target="_blank">nzbplanet.net</a></td>
             <td>Yes</td>
