@@ -166,6 +166,7 @@ footer a:hover {
 
 .linux-row {
     display: none;
+    padding-left: 30px;
 }
 
 .linux-row .glyphicon {

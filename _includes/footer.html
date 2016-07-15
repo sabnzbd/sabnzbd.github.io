@@ -11,7 +11,7 @@
         ga('send', 'pageview');
 
         // Add tracking to selected outbound links
-        $('.sabnzbd-outbound a[target="_blank"]').click(function() {
+        $('body a[target="_blank"]').click(function() {
             var theUrl = this.href
             ga('send', 'event', 'outbound', 'click', theUrl, {
                 'transport': 'beacon',
