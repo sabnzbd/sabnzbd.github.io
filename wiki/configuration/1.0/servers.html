@@ -2,24 +2,18 @@
 title: Servers
 ---
 <h2 id="toc0"><span>Configure Servers</span></h2>
-<p>If you want to download anything, you need to have access to one or more Usenet servers.<br>
-    These servers can be your own ISP's Usenet server, a free public one or one of the many commercial servers.<br>
+<p>If you want to download anything, you need to have access to one or more Usenet servers.
+    These servers can be your own ISP's Usenet server, a free public one or one of the many commercial servers.
     For each server you need to specify its parameters.
 </p>
-<h3 id="toc1"><span>Priorities</span></h3>
-<p>You assign each server a priority, a number between 0 and 99.<br>
-    The highest priority is 0 and 99 is the lowest.<br>
-    SABnzbd will first try to get articles from the group of servers with the highest priority.<br>
-    Within the priority group, the first server with a free connection will be tried.<br>
-    When the first tried server doesn't have an article, then another primary server is tried.<br>
-    When none of the primary servers has a specific article, a lower priority group is tried.<br>
-    Within the lower priority group, the same method is used: the first server with a free slot is tried.
+<h2 id="toc1"><span>Priorities</span></h2>
+<p>You assign each server a priority, a number between 0 (highest) and 99 (lowest).<br>
+    SABnzbd will first try to get articles from the group of servers with the highest priority.
+    Within the priority group, the first server with a free connection will be tried.
+    When the first tried server doesn't have an article, then another server with the same priority is tried.<br>
+    When none of the primary servers has a specific article, a lower priority group is tried.     Within the lower priority group, the same method is used: the first server with a free slot is tried.
 </p>
-<p>Very unreliable servers can be marked as "Optional".<br>
-    This means that they will be ignored for 10 minutes when they cause too many time-outs.<br>
-    This is to prevent them from slowing down downloading.
-</p>
-<h3 id="toc2"><span>Settings</span></h3>
+<h2 id="toc2"><span>Settings</span></h2>
 <p><em><strong>Note</strong></em>: Check your Usenet provider's documentation for the proper values!</p>
 <table class="table table-bordered table-hover">
     <tbody>
@@ -49,11 +43,11 @@ title: Servers
         </tr>
         <tr>
             <td><strong>Priority</strong></td>
-            <td>You can assign a priority to the server (<em>see this footnote</em><sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup><em>)</em>. Sometimes it is useful to specify a high priority server that SABnbzd should try to get its data from first, often this is a free server. A pay-per-GB server is the typical low priority server.</td>
+            <td>You can assign a priority to the server. Sometimes it is useful to specify a high priority server that SABnbzd should try to get its data from first, often this is a free server. A pay-per-GB server is the typical low priority server.</td>
         </tr>
         <tr>
             <td><strong>Retention</strong></td>
-            <td>Set here the maximum retention time<sup class="footnoteref"><a id="footnoteref-2" href="#footnote-2">2</a></sup> (in days) of your server. Zero means infinite retention. Only use this when you have multiple servers and you want to avoid that SABnzbd wastes time on asking servers for articles it cannot have. Be aware that retention times advertised by Usenet providers are not absolute. If you set it too low, your others servers will be used more intensely. There is no reason to set a retention time when you have only one server.</td>
+            <td>Set here the maximum retention time<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup> (in days) of your server. Zero means infinite retention. Only use this when you have multiple servers and you want to avoid that SABnzbd wastes time on asking servers for articles it cannot have. Be aware that retention times advertised by Usenet providers are not absolute. If you set it too low, your others servers will be used more intensely. There is no reason to set a retention time when you have only one server.</td>
         </tr>
         <tr>
             <td><strong>Timeout</strong></td>
@@ -61,7 +55,7 @@ title: Servers
         </tr>
         <tr>
             <td><strong>SSL</strong></td>
-            <td>Use a secure connection to the server. Note: not all servers provide this or charge extra. <strong>Check which address and port you need for SSL with your provider!</strong>. Most providers use port 563 for SSL, DO NOT USE PORT 119</td>
+            <td>Use a secure connection to the server. Note: not all servers provide this or charge extra. <strong>Check which address and port you need for SSL with your provider!</strong> Most providers use port 563 for SSL, DO NOT USE PORT 119</td>
         </tr>
         <tr>
             <td><strong>SSL Type</strong></td>
@@ -69,7 +63,7 @@ title: Servers
         </tr>
         <tr>
             <td><strong>Optional</strong></td>
-            <td>If you use multiple servers and some of these servers are not very reliable, you can declare them "optional". This means that if such a server causes too much problems (like time-outs) it will be ignored for some time. Warning: under some circumstances this may cause missed articles<sup class="footnoteref"><a id="footnoteref-3" href="#footnote-3">3</a></sup>.</td>
+            <td>If you use multiple servers and some of these servers are not very reliable, you can declare them "optional". This means that if such a server causes too much problems (like time-outs) it will be ignored for some time. Warning: under some circumstances this may cause missed articles<sup class="footnoteref"><a id="footnoteref-2" href="#footnote-2">2</a></sup>.</td>
         </tr>
         <tr>
             <td><strong>Send group</strong></td>
@@ -189,7 +183,6 @@ title: Servers
 </table>
 <div class="footnotes-footer">
     <div class="title">Footnotes</div>
-    <div class="footnote-footer" id="footnote-1">1. The higher pririty server has to state that the article is not available. When the high priority server times-out, SABnzbd will just keep retrying a number of times. If you have a server that doesn't give a proper response for missing articles you should set the server to "optional". That way, SABnzbd will temporarily ignore the server and start using a lower priority server.</div>
-    <div class="footnote-footer" id="footnote-2">2. Retention means the number of days that articles are kept by the server, after this number of days, the server will start removing articles. Note that retention is an average number. In reality the server will start removing articles when its storage becomes too full.</div>
-    <div class="footnote-footer" id="footnote-3">3. When you declare a server with a long retention time as optional and the server is temporary out-of-service, SABnzbd will fall back to another server. If the alternative server has a shorter retention time, you will miss articles if the articles are beyond the retention time of the alternative server. It is best to set your most reliable and longest retention time server as a lower priority server but not as optional. Secondary servers (cheaper, less reliable, shorter retention time) can be set as <em>high priority</em> and <em>optional</em>.</div>
+    <div class="footnote-footer" id="footnote-1">1. Retention means the number of days that articles are kept by the server, after this number of days, the server will start removing articles. Note that retention is an average number. In reality the server will start removing articles when its storage becomes too full.</div>
+    <div class="footnote-footer" id="footnote-2">2. When you declare a server with a long retention time as optional and the server is temporary out-of-service, SABnzbd will fall back to another server. If the alternative server has a shorter retention time, you will miss articles if the articles are beyond the retention time of the alternative server. It is best to set your most reliable and longest retention time server as a lower priority server but not as optional. Secondary servers (cheaper, less reliable, shorter retention time) can be set as <em>high priority</em> and <em>optional</em>.</div>
 </div>

@@ -77,14 +77,14 @@ title: FAQ
 <p>NZB Website</p>
 <p>Third Party tools</p>
 <h2 id="toc4"><span>Which versions of Python are supported?</span></h2>
-<p>We currently support Python Python 2.6.x and Python 2.7.x (recommended). Python 3.x is NOT supported.</p>
+<p>We currently support Python 2.7.x (recommended). Python 3.x is NOT supported.</p>
 <h2 id="toc5"><span>Can SABnzbd run on NAS / Android / operating system XYZ / … ?</span></h2>
 <p>SABnzbd can run on an operating system that provides / runs:</p>
 <ol>
-    <li>Python (2.5, 2.6 or 2.7) and</li>
-    <li>the Python library Cheetah and</li>
-    <li>optionally the Python library yEnc and</li>
+    <li>Python 2.7 and</li>
+    <li>the Python library Cheetah</li>
     <li>par2 and unrar</li>
+    <li>optionally the Python library yEnc</li>
 </ol>
 <p>The creators of SABnzbd provide the source code of SABnzbd, plus ready-to-install-and-run packages for Windows and Mac OS X.<br>
     Others provide (or don't provide) packages for other operating systems. If you want SABnzbd on another operating system, search for an existing package for that OS, or make it work yourself.<br>
@@ -207,7 +207,7 @@ ls -al Library/Application\ Support/SABnzbd/sabnzbd.ini</code>
 <p>If you are storing your logs in a different place, you can check the location by navigating to the Folders page within the config and the location will be displayed there. You can also download your logging from your webbrowser by clicking "Download logging" on the connections page of sabnzbd.</p>
 <p><a name="why-login"></a></p>
 <h2 id="toc21"><span>SABnzbd is asking for a password and I didn't set one/forgotten the password, what do I do?</span></h2>
-<p>Shut down SABnzbd, find the file <a href="/configure-v2">sabnzbd.ini</a> and open it with an editor. Look for:</p>
+<p>Shut down SABnzbd, find the file <a href="/wiki/configuration/1.0/configure">sabnzbd.ini</a> and open it with an editor. Look for:</p>
 <div class="code">
     <pre><code>username = user
 password = pass</code>

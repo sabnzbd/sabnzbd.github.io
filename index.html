@@ -4,7 +4,7 @@ title: The free and easy binary newsreader
 <div class="container downloads-container content-container">
     <div class="row">
         <div class="col-md-6 main-logo">
-            <img src="/images/logo-full.svg">
+            <img src="/images/logo-full.svg" alt="SABnzbd">
         </div>
         <div class="col-md-6 downloads-row">
             <div class="download-buttons-wrapper">
@@ -40,14 +40,14 @@ title: The free and easy binary newsreader
         </div>
         <div class="row highlights-row">
             <div class="col-md-6">
-                <img class="highlights" src="/images/landing/os-logos.png"/>
+                <img class="highlights" src="/images/landing/os-logos.png" alt="It runs anywhere" />
                 <h3>It runs anywhere</h3>
                 <p>SABnzbd runs on Windows, MacOS, Linux. And also on Unix, BSD, certain NAS devices (Synology, QNAP). 
                 You can access SABnzbd from any device with a webbrowser, so also iOS and Android phones and tablets.</p>
                 <div class="clearfix"></div>
             </div>
             <div class="col-md-6">
-                <img class="highlights" src="/images/landing/small-and-large-screens.png"/>
+                <img class="highlights" src="/images/landing/small-and-large-screens.png" alt="Small and large screens" />
                 <h3>Small and large screens</h3>
                 <p>SABnzbd is responsive: With the Glitter interface, you can access SABnzbd and manage your downloads from any device: desktop, tablet or phone.</p>
                 <div class="clearfix"></div>
@@ -55,14 +55,14 @@ title: The free and easy binary newsreader
         </div>
         <div class="row highlights-row">
             <div class="col-md-6">
-                <img class="highlights" src="/images/landing/integrates-with-other-tools.png"/>
+                <img class="highlights" src="/images/landing/integrates-with-other-tools.png" alt="Integrates with other tools" />
                 <h3>Integrates with other tools</h3>
                 <p>Apps like <a href="https://sonarr.tv/" target="_blank">Sonarr</a>, <a href="https://sickrage.github.io/" target="_blank">Sickrage</a>, <a href="https://couchpota.to/" target="_blank">CouchPotato</a> and <a href="https://github.com/rembo10/headphones" target="_blank">Headphones</a> can integrate with SABnzbd and automate your download process.<br/>
                 SABnzbd can also read and process <a href="/wiki/configuration/1.0/rss">RSS feeds</a>, activate <a href="/wiki/advanced/user-scripts">custom scripts</a> and <a href="/wiki/configuration/1.0/notifications">notify</a> you via mail, growl, prowl, pushover and pushbullet.</p>
                 <div class="clearfix"></div>
             </div>
             <div class="col-md-6">
-                <img class="highlights" src="/images/landing/15-languages.png"/>
+                <img class="highlights" src="/images/landing/15-languages.png" alt="In 15 languages"/>
                 <h3>In 15 languages</h3>
                 <p>SABnzbd now ships with <strong>15 localizations</strong>: <br/>English, Dansk, Deutsch,  Español (castellano), Français, Nederlands, Norsk bokmål, Polski, Português Brasileiro, Româna, Suomi, Svenska, русский язык, српски, 简体中文.</p>
                 <div class="clearfix"></div>
@@ -76,7 +76,7 @@ title: The free and easy binary newsreader
                     {% for screenshot in site.data.screenshots %}
                     <li>
                         <a href="/images/landing/screenshots/{{ screenshot.file }}" data-featherlight="image">
-                            <img src="/images/landing/screenshots/{{ screenshot.file }}">
+                            <img src="/images/landing/screenshots/{{ screenshot.file }}" alt="{{ screenshot.title | strip_html  }}">
                         </a>
                         <strong>{{ screenshot.title }}</strong>
                     </li>

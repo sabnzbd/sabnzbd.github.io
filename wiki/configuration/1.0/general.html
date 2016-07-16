@@ -8,12 +8,16 @@ The user interface of SABnzb is a web-site. You can modify some web site behavio
     <tbody>
         <tr>
             <td><strong>Host</strong></td>
-            <td>The hostname that will be used to access sabnzbd. The default of localhost will only allow access from the computer running sabnzbd. Change to 0.0.0.0 (unless using vista) or leave it empty (auto-finds local ip address) to be able to access from other pcs in your network. For more information see <a href="/wiki/advanced/command-line-parameters">command-line-parameters</a>.<br>
-                <br>
-                127.0.0.1 or [::1] or localhost = Access from this computer only<br>
-                empty = Finds and listens on your local (ipv4) ip address. Used for accessing from other computers. localhost will not work anymore so update your bookmarks.<br>
-                0.0.0.0 = Listens on multiple interfaces (both local IP and localhost). Recommended if you are not running vista. Vista prefers ipv6 so your ipv4 ip address (192.168.x.x) won't work which means forwarding the ports may not work. Note for Ubuntu users on Karmic (9.10): if 0.0.0.0 doesn't seem to work for you, try the actual internal or external IP you want to use.<br>
-                :: = Listen on both IPv4 and IPv6 addresses for local and network access.
+            <td>
+                The hostname that will be used to access sabnzbd.
+                
+                <ul>
+                    <li><code>127.0.0.1</code> or <code>[::1]</code> or <code>localhost</code> <em>(default)</em> = Access from this computer only</li>
+                    <li>empty = Finds and listens on your local (ipv4) ip address. Used for accessing from other computers. localhost will not work anymore so update your bookmarks.</li>
+                    <li><code>0.0.0.0</code> = Listens on multiple interfaces (both local IP and localhost).</li>
+                    <li><code>::</code> = Listen on both IPv4 and IPv6 addresses for local and network access.</li>
+                </ul>
+                For more information and option to overwrite this setting at startup see <a href="/wiki/advanced/command-line-parameters">Command Line Parameters</a>
             </td>
         </tr>
         <tr>
@@ -21,12 +25,8 @@ The user interface of SABnzb is a web-site. You can modify some web site behavio
             <td>The internal webserver needs an IP port to listen on. The default port is 8080. Try another one if this address is already occupied by another program on your computer. (Note for linux users: ports below 1025 may require sabnzbd launched as root)</td>
         </tr>
         <tr>
-            <td><strong>Web username</strong></td>
+            <td><strong>Web Username/Password</strong></td>
             <td>You may want to limit access to the web interface to people knowing a username and password for the interface. WARNING: this is not a very secure method!</td>
-        </tr>
-        <tr>
-            <td><strong>Web password</strong></td>
-            <td>See "username"</td>
         </tr>
         <tr>
             <td><strong>Web Interface</strong></td>
@@ -63,7 +63,7 @@ The user interface of SABnzb is a web-site. You can modify some web site behavio
     <tbody>
         <tr>
             <td><strong>Allow HTTPS</strong></td>
-            <td>Enable the webserver to use HTTPS. For more information, see: <a href="/wiki/advanced/https">https</a></td>
+            <td>Enable the webserver to use HTTPS. For more information, see: <a href="/wiki/advanced/https">HTTPS</a></td>
         </tr>
         <tr>
             <td><strong>HTTPS Port</strong></td>
@@ -92,7 +92,16 @@ The user interface of SABnzb is a web-site. You can modify some web site behavio
         </tr>
         <tr>
             <td><strong>Article Cache Limit</strong></td>
-            <td>How much memory (RAM) can be used for caching (reducing disk access). 0=Disable Cache -1= Unlimited cache number = Maximum memory (in bytes) to use for cache. See "<a href="/wiki/advanced/highspeed-downloading">High speeds</a>" for more information. You enter the amount in bytes but you can use factors like K, M, G etc. eg: 70M = 70megabyte cache</td>
+            <td>
+                How much memory (RAM) can be used for caching (reducing disk access). You enter the amount in bytes but you can use factors like K, M, G etc. eg: 70M = 70 MB cache
+                <ul>
+                    <li>number = Maximum memory (in bytes)</li>
+                    <li>0 = Disable Cache </li>
+                    <li>-1 = Unlimited cache  to use for cache.</li>
+                </ul>
+                 See <a href="/wiki/advanced/highspeed-downloading">High speeds</a> for more information. 
+
+            </td>
         </tr>
     </tbody>
 </table>
