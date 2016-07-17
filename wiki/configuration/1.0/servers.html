@@ -7,11 +7,11 @@ title: Servers
     For each server you need to specify its parameters.
 </p>
 <h2 id="toc1"><span>Priorities</span></h2>
-<p>You assign each server a priority, a number between 0 (highest) and 99 (lowest).<br>
+<p>You assign each server a priority, a number between <code>0</code> (highest) and <code>99</code> (lowest).<br>
     SABnzbd will first try to get articles from the group of servers with the highest priority.
     Within the priority group, the first server with a free connection will be tried.
     When the first tried server doesn't have an article, then another server with the same priority is tried.<br>
-    When none of the primary servers has a specific article, a lower priority group is tried.     Within the lower priority group, the same method is used: the first server with a free slot is tried.
+    When none of the primary servers has a specific article, a lower priority group is tried. Within the lower priority group, the same method is used: the first server with a free slot is tried.
 </p>
 <h2 id="toc2"><span>Settings</span></h2>
 <p><em><strong>Note</strong></em>: Check your Usenet provider's documentation for the proper values!</p>
@@ -23,11 +23,11 @@ title: Servers
         </tr>
         <tr>
             <td><strong>Host</strong></td>
-            <td>The DNS name of the server. Example: <a class="vglnk" href="http://news.my-isp.com" rel="nofollow"><span>news</span><span>.</span><span>my</span><span>-</span><span>isp</span><span>.</span><span>com</span></a></td>
+            <td>The DNS name of the server. Example: <code>news.my-isp.com</code></td>
         </tr>
         <tr>
             <td><strong>Port</strong></td>
-            <td>The standard port is 119. Some servers use a different port number. SSL is usually port 563 or 443</td>
+            <td>The standard port is <code>119</code>. Some servers use a different port number. SSL is usually port <code>563</code> or <code>443</code>.</td>
         </tr>
         <tr>
             <td><strong>Username</strong></td>
@@ -39,7 +39,7 @@ title: Servers
         </tr>
         <tr>
             <td><strong>Connections</strong></td>
-            <td>News providers offer different amounts of simultaneous connections (sometimes referred to as slots or threads). You may need to specify the maximum amount allowed in order to get full speed. Do not use a large number. Most servers work best with anything between 8 and 15.</td>
+            <td>News providers offer different amounts of simultaneous connections (sometimes referred to as slots or threads). You may need to specify the maximum amount allowed in order to get full speed. Do not use a large number. Most servers work best with anything between <code>8</code> and <code>15</code>.</td>
         </tr>
         <tr>
             <td><strong>Priority</strong></td>
@@ -51,11 +51,11 @@ title: Servers
         </tr>
         <tr>
             <td><strong>Timeout</strong></td>
-            <td>Time out in seconds for error recovery. Be careful, do not set this to a very low value, your news provider will not like that. A common value is 120.</td>
+            <td>Time out in seconds for error recovery. Be careful, do not set this to a very low value, your news provider will not like that. A common value is <code>120</code>.</td>
         </tr>
         <tr>
             <td><strong>SSL</strong></td>
-            <td>Use a secure connection to the server. Note: not all servers provide this or charge extra. <strong>Check which address and port you need for SSL with your provider!</strong> Most providers use port 563 for SSL, DO NOT USE PORT 119</td>
+            <td>Use a secure connection to the server. Note: not all servers provide this or charge extra. <strong>Check which address and port you need for SSL with your provider!</strong> Most providers use port <code>563</code> for SSL, DO NOT USE PORT <code>119</code></td>
         </tr>
         <tr>
             <td><strong>SSL Type</strong></td>
@@ -71,7 +71,7 @@ title: Servers
         </tr>
         <tr>
             <td><strong>Categories</strong></td>
-            <td>This server will only be used for the categories selected. When Default is selected, the server will be used for all categories and downloads.</td>
+            <td>This server will only be used for the <a href="/wiki/configuration/1.0/categories">Categories</a> selected. When Default is selected, the server will be used for all categories and downloads.</td>
         </tr>
         <tr>
             <td><strong>Server description</strong></td>
@@ -88,7 +88,7 @@ title: Servers
     <tbody>
         <tr>
             <td><strong>Host</strong></td>
-            <td><a class="vglnk" href="http://news.giganews.com" rel="nofollow"><span>news</span><span>.</span><span>giganews</span><span>.</span><span>com</span></a></td>
+            <td>news.my-isp.com</td>
         </tr>
         <tr>
             <td><strong>Port</strong></td>
@@ -137,7 +137,7 @@ title: Servers
     <tbody>
         <tr>
             <td><strong>Host</strong></td>
-            <td><a class="vglnk" href="http://news.giganews.com" rel="nofollow"><span>news</span><span>.</span><span>giganews</span><span>.</span><span>com</span></a></td>
+            <td>ssl-news.my-isp.com</td>
         </tr>
         <tr>
             <td><strong>Port</strong></td>

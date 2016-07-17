@@ -1,7 +1,7 @@
 ---
 title: Switches
 ---
-<h3 id="toc0"><span>General</span></h3>
+<h2 id="toc0"><span>General</span></h2>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -18,12 +18,12 @@ title: Switches
         </tr>
     </tbody>
 </table>
-<h3 id="toc1"><span>Server</span></h3>
+<h2 id="toc1"><span>Server</span></h2>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
             <td><strong>Maximum retries</strong></td>
-            <td>To prevent deadlock, SABnzbd will only try each server a limited amount of times. You can increase the value or set it to 0 to enable endless retries.</td>
+            <td>To prevent deadlock, SABnzbd will only try each server a limited amount of times. You can increase the value or set it to <code>0</code> to enable endless retries.</td>
         </tr>
         <tr>
             <td><strong>Only for optional servers</strong></td>
@@ -31,7 +31,13 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Server load-balancing</strong></td>
-            <td>A number of newsservers has multiple IP-addresses, these can be IPv4 or IPv6. <em>Prevent load-balancing:</em> the first IP-address returned will be used for all connections. <em>Allow load-balancing:</em> Each connection will be randomly selected from the available addresses <em>Allow load-balancing with optimization for IPv6:</em> For each connection the fastest IP-address is selected, where IPv6-addresses are given a slight head-start.</td>
+            <td>A number of newsservers has multiple IP-addresses, these can be IPv4 or IPv6. 
+            <ul>
+                <li><strong>Prevent load-balancing:</strong> the first IP-address returned will be used for all connections. </li>
+                <li><strong>Allow load-balancing:</strong> Each connection will be randomly selected from the available addresses.</li>
+                <li><strong>Allow load-balancing with optimization for IPv6:</strong> For each connection the fastest IP-address is selected, where IPv6-addresses are given a slight head-start.</li>
+            </ul>
+            </td>
         </tr>
         <tr>
             <td><strong>Disconnect on empty queue</strong></td>
@@ -39,12 +45,12 @@ title: Switches
         </tr>
     </tbody>
 </table>
-<h3 id="toc2"><span>Queue</span></h3>
+<h2 id="toc2"><span>Queue</span></h2>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
             <td><strong>Pre-queue user script</strong></td>
-            <td>See: <a href="/wiki/advanced/user-pre-queue-script">User's pre-queue script</a></td>
+            <td>See: <a href="/wiki/advanced/user-pre-queue-script">User's pre-queue script</a>.</td>
         </tr>
         <tr>
             <td><strong>Propagation delay</strong></td>
@@ -84,16 +90,16 @@ title: Switches
         </tr>
     </tbody>
 </table>
-<h3 id="toc3"><span>Post processing</span></h3>
+<h2 id="toc3"><span>Post processing</span></h2>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
             <td><strong>Pause downloading during post-processing</strong></td>
-            <td>Will pause the queue while verifying and repairing, only needed for resource-constrained systems (like NAS-devices)</td>
+            <td>Will pause the queue while verifying and repairing, only needed for resource-constrained systems (like NAS-devices).</td>
         </tr>
         <tr>
             <td><strong>Download all par2 files</strong></td>
-            <td>See <a href="/wiki/introducing-1-0#OptimalRepair">Optimal Repair</a></td>
+            <td>See <a href="/wiki/introducing-1-0#OptimalRepair">Optimal Repair</a>.</td>
         </tr>
         <tr>
             <td><strong>Enable QuickCheck</strong></td>
@@ -101,11 +107,11 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Enable MultiCore par2</strong></td>
-            <td>See <a href="#multi-core">Multi-core PAR2</a></td>
+            <td>See <a href="#multi-core">Multi-core PAR2</a>.</td>
         </tr>
         <tr>
             <td><strong>Extra PAR2 parameters</strong></td>
-            <td>See <a href="#multi-core">Multi-core PAR2</a></td>
+            <td>See <a href="#multi-core">Multi-core PAR2</a>.</td>
         </tr>
         <tr>
             <td><strong>Enable SFV-based checks</strong></td>
@@ -161,11 +167,11 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Nice parameters</strong></td>
-            <td>See <a href="#nice">Nice to reduce CPU priority</a></td>
+            <td>See <a href="#nice">Nice to reduce CPU priority</a>.</td>
         </tr>
         <tr>
             <td><strong>IONice parameters</strong></td>
-            <td>See <a href="#ionice">IONice to reduce disk priority</a></td>
+            <td>See <a href="#ionice">IONice to reduce disk priority</a>.</td>
         </tr>
         <tr>
             <td><strong>Ignore samples</strong></td>
@@ -173,16 +179,16 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Cleanup List</strong></td>
-            <td>List of file (extensions) that should be deleted in the cleanup stage. Examples: .nfo, .nfo, .sfv (You can leave out the dots, so nfo, nzb, sfv will do the same.)</td>
+            <td>List of file (extensions) that should be deleted in the cleanup stage. Examples: <code>.nfo, .nfo, .sfv</code> (You can leave out the dots, so nfo, nzb, sfv will do the same.)</td>
         </tr>
     </tbody>
 </table>
-<h3 id="toc4"><span>Naming <a name="rename"></a></span></h3>
+<h2 id="toc4"><span>Naming <a name="rename"></a></span></h2>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
             <td><strong>Enable folder rename</strong></td>
-            <td>When SABnzbd does unpacking it will do that in a folder prefixed with <span style="text-decoration: underline;">UNPACK</span>. This is to prevent users or other software from processing the file. Some Windows operating systems (most notably Windows Home Server) cannot handle this. Therefor it's possible to disable the feature.</td>
+            <td>When SABnzbd does unpacking it will do that in a folder prefixed with <code>_UNPACK_</code>. This is to prevent users or other software from processing the file. Some Windows operating systems (most notably Windows Home Server) cannot handle this. Therefor it's possible to disable the feature.</td>
         </tr>
         <tr>
             <td><strong>Replace Spaces in folder names</strong></td>
@@ -206,13 +212,13 @@ title: Switches
         </tr>
     </tbody>
 </table>
-<h3 id="toc5"><span>Quota <a name="quota"></a></span></h3>
+<h2 id="toc5"><span>Quota <a name="quota"></a></span></h2>
 If you're unlucky enough to have an ISP that uses strict download caps, you may want to set a monthly quota for SABnzb.<br>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
             <td><strong>Size</strong></td>
-            <td>Example: 5G or 1T</td>
+            <td>In bytes. Example: <code>5G</code> (for 5 GB) or <code>1T</code> (for 1 TB)</td>
         </tr>
         <tr>
             <td><strong>Period</strong></td>
@@ -220,7 +226,14 @@ If you're unlucky enough to have an ISP that uses strict download caps, you may 
         </tr>
         <tr>
             <td><strong>Reset day</strong></td>
-            <td>The day of the week or month when your ISP will reset your cap. Use 31 for the last day of the month. Optionally you can add a time of day, like 23:30. So for monthly you would enter <strong>20&nbsp;23:30</strong>, meaning the 20th of each month at 11:30PM. For weekly <strong>2&nbsp;4:00</strong>, meaning every Tuesday at 4AM. Even daily is possible: <strong>3:00</strong></td>
+            <td>The day of the week or month when your ISP will reset your cap. Use 31 for the last day of the month. 
+            Optionally you can add a time of day, like 23:30. 
+            <ul>
+                <li>So for monthly you would enter <code>20&nbsp;23:30</code>, meaning the 20th of each month at 11:30PM.</li>
+                <li>For weekly <code>2&nbsp;4:00</code>, meaning every Tuesday at 4AM.</li>
+                <li>Even daily is possible: <code>3:00</code></li>
+            </ul>
+            </td>
         </tr>
         <tr>
             <td><strong>Auto resume</strong></td>
@@ -234,7 +247,8 @@ If you're unlucky enough to have an ISP that uses strict download caps, you may 
     <li>Pausing is never immediate. All already requested articles will be received and processed. They probably would be counted by your ISP any way.</li>
     <li>Don't set the quota too high. Leave room for other Internet use.</li>
 </ul>
-<h3 id="toc6"><span>Indexing <a name="indexing"></a></span></h3>
+
+<h2 id="toc6"><span>Indexing <a name="indexing"></a></span></h2>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -255,33 +269,34 @@ If you're unlucky enough to have an ISP that uses strict download caps, you may 
         </tr>
     </tbody>
 </table>
+<hr>
 <h2 id="toc7"><span>Multi-core PAR2</span></h2>
 <p><a name="multi-core"></a> The Win32 distribution of SABnzbd now comes with a multi-core version of the PAR2 program which will see improvements for those with multi-core processors. For Linux you will need to locate the multi-core versions of par2 yourself, such <a href="https://forums.sabnzbd.org/viewtopic.php?f=16&amp;t=18793#p99702">as described here</a>.<br>
-    The behaviour of multi-core PAR2 can be influenced by an extra parameter.<br>
+    The behaviour of multi-core PAR2 can be influenced by an extra parameter.
     This option is only of use to users running the multi-core par2 version, so do not specify the value if you are running the normal (single-core) version of par2.<br>
     These are the choices:
 </p>
-<p><strong>-t-</strong> : Use it single-core<br>
-    <strong>-t0</strong> : Use multi-core for repairs but not for verify (prevents disk trashing)<br>
-    <strong>-t+</strong> : Always use multi-core<br>
-    <strong>-N</strong> : Extend the search for missing blocks (par2cmdline 0.6+, explanation <a href="https://github.com/Parchive/par2cmdline/issues/65">see here</a>)<br>
+<p><code>-t-</code> Use it single-core<br>
+    <code>-t0</code> Use multi-core for repairs but not for verify (prevents disk trashing)<br>
+    <code>-t+</code> Always use multi-core<br>
+    <code>-N</code> Extend the search for missing blocks (par2cmdline 0.6+, explanation <a href="https://github.com/Parchive/par2cmdline/issues/65">see here</a>)<br>
     You may need to experiment a bit to get the best behaviour for your system.
 </p>
 <p>Should you have another variant of PAR2, you specify its required parameters here.</p>
 <p><strong>Note:</strong> if your system has problems with this program, you can force the use of the classic version by unchecking "Enable MultiCore Par2"</p>
 <h2 id="toc8"><span>Nice to reduce CPU priority</span></h2>
-<p><a name="nice"></a> When SABnzbd runs external tools like <strong>par2</strong> and <strong>unrar</strong>, these tools may use up all CPU capacity.<br>
-    If you set parameters in the <strong>nice</strong> option box, the tool will be used (if installed).<br>
+<p><a name="nice"></a> When SABnzbd runs external tools like <strong>par2</strong> and <strong>unrar</strong>, these tools may use up all CPU capacity.
+    If you set parameters in the <strong>nice</strong> option box, the tool will be used (if installed).
     You will need to experiment with the parameters. Leaving the box empty will disable the use of <strong>nice</strong>.<br>
-    Popular parameters are <strong>-n10</strong>.<br>
+    Popular parameters are <code>-n10</code>.<br>
     For more info, see the <a href="http://linux.die.net/man/1/nice" target="_blank">nice man-page</a>
 </p>
 <h2 id="toc9"><span>IONice to reduce disk priority</span></h2>
-<p><a name="ionice"></a> When SABnzbd runs external tools like <strong>par2</strong> and <strong>unrar</strong>, these tools may use up all disk capacity.<br>
-    This can make simultaneous use of the system problematic, e.g. when you want to watch a movie.<br>
-    If you set parameters in the <strong>ionice</strong> option box, the tool will be used (if installed).<br>
+<p><a name="ionice"></a> When SABnzbd runs external tools like <strong>par2</strong> and <strong>unrar</strong>, these tools may use up all disk capacity
+    This can make simultaneous use of the system problematic, e.g. when you want to watch a movie.
+    If you set parameters in the <strong>ionice</strong> option box, the tool will be used (if installed).
     You will need to experiment with the parameters. Leaving the box empty will disable the use of <strong>ionice</strong>.<br>
-    Popular parameters are <strong>-c2 -n4</strong>.<br>
+    Popular parameters are <code>-c2 -n4</code>.<br>
     For more info, see the <a href="http://linux.die.net/man/1/ionice" target="_blank">ionice man-page</a>
 </p>
 <p>Be careful, using wrong parameters will make all external tools fail!</p>

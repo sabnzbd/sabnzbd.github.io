@@ -3,7 +3,6 @@ title: General
 ---
 
 <h2 id="toc0"><span>Web server</span></h2>
-The user interface of SABnzb is a web-site. You can modify some web site behaviour here.<br>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -22,11 +21,11 @@ The user interface of SABnzb is a web-site. You can modify some web site behavio
         </tr>
         <tr>
             <td><strong>Port</strong></td>
-            <td>The internal webserver needs an IP port to listen on. The default port is 8080. Try another one if this address is already occupied by another program on your computer. (Note for linux users: ports below 1025 may require sabnzbd launched as root)</td>
+            <td>The internal webserver needs an IP port to listen on. The default port is <code>8080</code>. Try another one if this address is already occupied by another program on your computer. <br>(Note for linux users: ports below <code>1025</code> may require sabnzbd launched as root)</td>
         </tr>
         <tr>
             <td><strong>Web Username/Password</strong></td>
-            <td>You may want to limit access to the web interface to people knowing a username and password for the interface. WARNING: this is not a very secure method!</td>
+            <td>You may want to limit access to the web interface to people knowing a username and password for the interface. <span class="label label-warning">WARNING</span> this is not a very secure method!</td>
         </tr>
         <tr>
             <td><strong>Web Interface</strong></td>
@@ -34,7 +33,7 @@ The user interface of SABnzb is a web-site. You can modify some web site behavio
         </tr>
         <tr>
             <td><strong>Secondary Interface</strong></td>
-            <td>You can have a second user interface, using another skin. This will become visible as <span style="white-space: pre-wrap;">http://host:port/sabnzbd/m</span></td>
+            <td>You can have a second user interface, using another skin. This will become visible as <code>http://host:port/sabnzbd/m</code></td>
         </tr>
         <tr>
             <td><strong>Language</strong></td>
@@ -42,7 +41,7 @@ The user interface of SABnzb is a web-site. You can modify some web site behavio
         </tr>
         <tr>
             <td><strong>List of local network ranges</strong></td>
-            <td>Specify a range of local network ranges on which the External internet access rule does not apply and the full interface is available to.</td>
+            <td>Specify a range of local network ranges on which the External internet access rule does not apply and the full interface is available to. All local network addresses start with these prefixes (often <code>192.168.1.</code>)</td>
         </tr>
         <tr>
             <td><strong>External internet access</strong></td>
@@ -63,7 +62,7 @@ The user interface of SABnzb is a web-site. You can modify some web site behavio
     <tbody>
         <tr>
             <td><strong>Allow HTTPS</strong></td>
-            <td>Enable the webserver to use HTTPS. For more information, see: <a href="/wiki/advanced/https">HTTPS</a></td>
+            <td>Enable the webserver to use HTTPS. For more information, see: <a href="/wiki/advanced/https">HTTPS</a>.</td>
         </tr>
         <tr>
             <td><strong>HTTPS Port</strong></td>
@@ -95,9 +94,9 @@ The user interface of SABnzb is a web-site. You can modify some web site behavio
             <td>
                 How much memory (RAM) can be used for caching (reducing disk access). You enter the amount in bytes but you can use factors like K, M, G etc. eg: 70M = 70 MB cache
                 <ul>
-                    <li>number = Maximum memory (in bytes)</li>
-                    <li>0 = Disable Cache </li>
-                    <li>-1 = Unlimited cache  to use for cache.</li>
+                    <li><code>number</code> = Maximum memory (in bytes)</li>
+                    <li><code>0</code> = Disable Cache </li>
+                    <li><code>-1</code> = Unlimited cache  to use for cache.</li>
                 </ul>
                  See <a href="/wiki/advanced/highspeed-downloading">High speeds</a> for more information. 
 

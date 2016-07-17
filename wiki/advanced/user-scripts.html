@@ -67,14 +67,14 @@ title: User Scripts
 <div class="code">
     <pre><code>import sys
 try:
-(scriptname,directory,orgnzbname,jobname,reportnumber,category,group,postprocstatus,url) = sys.argv
+    (scriptname,directory,orgnzbname,jobname,reportnumber,category,group,postprocstatus,url) = sys.argv
 except:
-try:
-    # are we testing only?
-    directory = sys.argv[1]
-except:
-    print "No commandline parameters found"
-    sys.exit(1)
+    try:
+        # are we testing only?
+        directory = sys.argv[1]
+    except:
+        print "No commandline parameters found"
+        sys.exit(1)
 
 # continue script</code>
 </pre>

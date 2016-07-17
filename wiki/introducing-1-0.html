@@ -11,7 +11,7 @@ title: Introducing 1.0.0
 </p>
 <p>Note:</p>
 <blockquote>
-    <p>On Windows we corrected the base path, it's now c:\Users\USERNAME instead of c:\Users\USERNAME\Documents.<br>
+    <p>On Windows we corrected the base path, it's now <code>C:\Users\USERNAME\</code> instead of <code>C:\Users\USERNAME\Documents\</code>.<br>
         SABnzbd 1.0.0 will find your old queue with the side-effect that the old location will be used until you change it in Config-&gt;Folders.
     </p>
 </blockquote>
@@ -20,7 +20,7 @@ title: Introducing 1.0.0
     <p>Breaking change in API: speed-limit is now either a percentage or an absolute number</p>
     <ul>
         <li>0-100 or anything with a '%' is a percentage</li>
-        <li>Absolute numbers no longer have an implicit "k" factor (1024)</li>
+        <li>Absolute numbers no longer have an implicit "K" (times 1024) factor </li>
         <li>Check third-party tools that set a speed for SABnzbd</li>
     </ul>
 </blockquote>
