@@ -20,8 +20,15 @@ Python comes included with a Python Packages Manager on many platforms. You can 
 <pre>
 pip install cheetah
 pip install pyopenssl
-pip install yenc # THIS WILL NOT WORK ON WINDOWS, FOR WINDOWS YENC SEE WINDOWS GUIDE
-pip install pypiwin32 # ONLY FOR WINDOWS
+</pre>
+Additionally, on Windows:
+<pre>
+pip install pypiwin32
+</pre>
+Installing yEnc to significantly improve performance can only be done when you have a C-compiler installed. This is usually the case on Unix systems, for <a href="/wiki/installation/install-from-source-windows">Windows</a> and <a href="/wiki/installation/install-osx-src">Apple OSX</a> see the specifc guides how to install yEnc.<br>
+With a compiler installed, you can simply run this command:
+<pre>
+pip install http://www.golug.it/pub/yenc/yenc-0.4.0.tar.gz # THIS WILL NOT WORK ON WINDOWS/OSX, READ THE GUIDES
 </pre>
 <h3 id="toc4"><span>Cheetah</span></h3>
 <p><a href="http://pypi.python.org/packages/source/C/Cheetah/Cheetah-2.4.4.tar.gz">http://pypi.python.org/packages/source/C/Cheetah/Cheetah-2.4.4.tar.gz</a></p>
