@@ -9,11 +9,11 @@ title: Ubuntu PPA Repository
 </ul>
 <p>If you use this method, you can skip the first parts and jump to "How To Start"</p>
 <p>The below information handles installation from the PPA package. The PPA version can be useful as it is often more uptodate than the regular Ubuntu Multiverse version.</p>
-<p>The following part is (c) 2008 by JCF Ploemen</p>
+<p>The following part is &copy; by JCF Ploemen</p>
 <hr>
-<h1 id="toc0"><span>How To PPA Setup</span></h1>
+<h1 id="toc0"><span>PPA Setup</span></h1>
 <p>I've created a repository with the latest version of SABnzbd+. When using this repository, you will be able to easily install the program and its dependencies, and in case any new version of the program is released, you will be automatically notified just like with any other updated package. Reasonable efforts will be made to keep things as up-to-date as possible. Be patient.</p>
-<p>Currently <strong>hardy</strong> (8.04), <strong>lucid</strong> (10.04), <strong>maverick</strong> (10.10), <strong>natty</strong> (11.04), <strong>oneiric</strong> (11.10), <strong>precise</strong> (12.04) and <strong>quantal</strong> (12.10) are supported. Debian users: sabnzbdplus is in sid/unstable (contrib).</p>
+
 
 <p>As with any repository, this one too has to be added to your <code>/etc/apt/sources.list</code>.<br>
 To receive <strong>all</strong> releases, including alpha/beta/RC's add this repository:
@@ -25,8 +25,6 @@ To receive <strong>all</strong> releases, including alpha/beta/RC's add this rep
     <pre><code>sudo add-apt-repository ppa:jcfp/nobeta</code></pre>
 </div>
 
-
-
 <p>If you are using an older version of Ubuntu and the above command fails, you will need to issue these commands instead:</p>
 <div class="code">
     <pre><code>echo "deb http://ppa.launchpad.net/jcfp/ppa/ubuntu $(lsb_release -c -s) main" | sudo tee -a /etc/apt/sources.list &amp;&amp; sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:11371 --recv-keys 0x98703123E0F52B2BE16D586EF13930B14BB9F05F</code>
@@ -37,6 +35,10 @@ To receive <strong>all</strong> releases, including alpha/beta/RC's add this rep
     <pre><code>sudo apt-get update</code>
 </pre>
 </div>
+<hr>
+<p>As of 08 July 2016 supported releases are precise (12.04 LTS), trusty (14.04 LTS), vivid (15.04), wily (15.10), xenial (16.04 LTS), and yakkety (16.10). In order to satisfy all dependencies, both Ubuntu's universe and multiverse repositories must be enabled on your system. 
+<p>Debian users: sabnzbdplus is readily available in squeeze and newer (in contrib); if you're looking to update your Debian install to the latest release please continue <a href="http://forums.sabnzbd.org/viewtopic.php?f=16&amp;t=9844">here</a>.
+
 <hr>
 <h1 id="toc1"><span>How To Install</span></h1>
 <p>Install the main program package. All dependencies will be automatically taken care of in this step as well:</p>
