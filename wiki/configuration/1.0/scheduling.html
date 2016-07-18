@@ -1,12 +1,10 @@
 ---
 title: Scheduling
 ---
-<h2 id="toc0"><span>Configure Scheduling</span></h2>
 <p>You may want to restrict downloading to specific time slots. This can be because your ISP or Usenet provider wants you to.<br>
     Or maybe you don't want to download during peak usage of your family.<br>
     SABnzbd allows you to specify moments to switch between PAUSE and RESUME mode, set a speedlimit or shutdown SABnzbd.<br>
     Each schedule block is repeated one per week or every day.<br>
-    The four parameters of a schedule block are, from left to right:
 </p>
 <table class="table table-bordered table-hover">
     <tbody>
@@ -22,89 +20,96 @@ title: Scheduling
             <td><strong>Day</strong></td>
             <td>The days of the week on which the switch will occur. On selected days of the week or all.</td>
         </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-hover">
+    <tbody>
         <tr>
-            <td><strong>Action</strong></td>
-            <td><em><strong>Pause</strong></em> will stop downloading</td>
+            <th><strong>Action</strong></th>
+            <th><strong>Description</strong></th>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Pause-all</strong></em> will stop downloading, <a href="/wiki/configuration/1.0/folders">Watched Folder</a> scanning and RSS feeds, stops all disk activity.</td>
+            <td><strong>Pause</strong></td><td> will stop downloading</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Resume</strong></em> will continue downloading, Watched Folder scanning and RSS feeds</td>
+            
+            <td><strong>Pause-all</strong></td><td> will stop downloading, <a href="/wiki/configuration/1.0/folders">Watched Folder</a> scanning and RSS feeds, stops all disk activity.</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Shutdown</strong></em> will exit the SABnzbd program</td>
+            
+            <td><strong>Resume</strong></td><td> will continue downloading, Watched Folder scanning and RSS feeds</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Speedlimit</strong></em> will set the speedlimiter to the given % value. This can also be in K/M/G notation, for example 4.5M would set the speedlimit to 4.5MB/s</td>
+            
+            <td><strong>Shutdown</strong></td><td> will exit the SABnzbd program</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Restart</strong></em> will restart SABnzbd on the given time</td>
+            
+            <td><strong>Speedlimit</strong></td><td> will set the speedlimiter to the given % value. This can also be in K/M/G notation, for example <code>4.5M</code> would set the speedlimit to 4.5MB/s</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Pause post processing</strong></em> Will halt post processing (except active job), while downloading continues</td>
+            
+            <td><strong>Restart</strong></td><td> will restart SABnzbd on the given time</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Resume post processing</strong></em> Will resume post processing, while downloading continues</td>
+            
+            <td><strong>Pause post processing</strong></td><td> Will halt post processing (except active job), while downloading continues</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Scan watched folder</strong></em> Read watched folder (this will disable the interval in Config-&gt;Folders</td>
+            
+            <td><strong>Resume post processing</strong></td><td> Will resume post processing, while downloading continues</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Read RSS feeds</strong></em> Read all RSS feeds (this will disable the intervalin Config-&gt;RSS)</td>
+            
+            <td><strong>Scan watched folder</strong></td><td> Read watched folder (this will disable the interval in <a href="/wiki/configuration/1.0/folders">Folders</a>)</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Remove failed jobs</strong></em> Remove all jobs in history that have failed to complete, including their files. Know what you are doing!</td>
+            
+            <td><strong>Read RSS feeds</strong></td><td> Read all RSS feeds (this will disable the interval in  <a href="/wiki/configuration/1.0/folders">RSS</a>)</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Remove completed jobs</strong></em> Remove all jobs in history that have completed successfully</td>
+            
+            <td><strong>Remove failed jobs</strong></td><td> Remove all jobs in history that have failed to complete, including their files. Know what you are doing!</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Pause low priority jobs</strong></em> All jobs with a low priority will set to paused mode</td>
+            
+            <td><strong>Remove completed jobs</strong></td><td> Remove all jobs in history that have completed successfully</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Pause normal priority jobs</strong></em> All jobs with a normal priority will set to paused mode</td>
+            
+            <td><strong>Pause low priority jobs</strong></td><td> All jobs with a low priority will set to paused mode</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Pause high priority jobs</strong></em> All jobs with a high priority will set to paused mode</td>
+            
+            <td><strong>Pause normal priority jobs</strong></td><td> All jobs with a normal priority will set to paused mode</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Resume low priority jobs</strong></em> All jobs with a low priority will set to active mode</td>
+            
+            <td><strong>Pause high priority jobs</strong></td><td> All jobs with a high priority will set to paused mode</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Resume normal priority jobs</strong></em> All jobs with a normal priority will set to active mode</td>
+            
+            <td><strong>Resume low priority jobs</strong></td><td> All jobs with a low priority will set to active mode</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Resume high priority jobs</strong></em> All jobs with a high priority will set to active mode</td>
+            
+            <td><strong>Resume normal priority jobs</strong></td><td> All jobs with a normal priority will set to active mode</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Enable quota management</strong></em> See <a href="/wiki/configuration/1.0/switches">Config-&gt;Switches-&gt;Quota</a></td>
+            
+            <td><strong>Resume high priority jobs</strong></td><td> All jobs with a high priority will set to active mode</td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Disable quota management</strong></em> See <a href="/wiki/configuration/1.0/switches">Config-&gt;Switches-&gt;Quota</a></td>
+            
+            <td><strong>Enable quota management</strong></td><td> See <a href="/wiki/configuration/1.0/switches">Quota</a></td>
         </tr>
         <tr>
-            <td></td>
-            <td><em><strong>Server-name</strong></em> will enable or disable a server on the given time</td>
+            
+            <td><strong>Disable quota management</strong></td><td> See <a href="/wiki/configuration/1.0/switches">Quota</a></td>
+        </tr>
+        <tr>
+            
+            <td><strong>Server-name</strong></td><td> will enable or disable a server on the given time</td>
         </tr>
         <tr>
             <td><strong>Argument</strong></td>
@@ -114,7 +119,7 @@ title: Scheduling
 </table>
 <h4 id="toc1"><span>Note</span></h4>
 <p>On startup, SABnzbd will evaluate all schedules and determine the current pause/resume state and speedlimit.<br>
-    The —pause <a href="/wiki/advanced/command-line-parameters">command-line parameter</a> will override this evaluation.<br>
+    The <code>-pause</code> <a href="/wiki/advanced/command-line-parameters">command-line parameter</a> will override this evaluation.<br>
     Also on each schedule change, the schedule will be re-evaluated and the speedlimit will be set. If SABnzbd happened to be paused, it will NOT be resumed by the schedule evaluation. This is to prevent spontaneous resumption during schedule changes.
 </p>
 <h2 id="toc2"><span>Example</span></h2>
@@ -122,17 +127,17 @@ title: Scheduling
     You set this up using four schedule blocks.
 </p>
 <p>Resume downloading every day at 1:00AM:<br>
-    01:00 Daily Resume
+    <code>01:00 Daily Resume</code>
 </p>
 <p>Pause downloading every day at 5:30PM (= 17:30 military time):<br>
-    17:30 Daily Pause
+    <code>17:30 Daily Pause</code>
 </p>
 <p>Pause downloading on Saturday 11:00AM:<br>
-    11:00 Saturday Pause
+    <code>11:00 Saturday Pause</code>
 </p>
 <p>Pause downloading on Sunday 11:00AM:<br>
-    11:00 Sunday Pause
+    <code>11:00 Sunday Pause</code>
 </p>
 <p>Enable server on Monday 6:00AM:<br>
-    06:00 my.usenet.com:119&nbsp;1
+    <code>06:00 my.usenet.com:119&nbsp;1</code>
 </p>
