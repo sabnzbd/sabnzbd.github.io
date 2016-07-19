@@ -146,7 +146,7 @@ function parseAssets(assets, platform, stable_release) {
 
 // Backup for failures
 function backupLinks() {
-    stableBox.attr('href', 'https://github.com/sabnzbd/sabnzbd/releases/')
+    stableBox.attr('href', 'https://github.com/sabnzbd/sabnzbd/releases/latest')
     stableBox.children('h4').text('Download SABnzbd')
     $('.download-os').text(downloadTitle)
     $('.show-before-load').hide()
