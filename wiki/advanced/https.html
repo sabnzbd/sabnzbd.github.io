@@ -19,7 +19,7 @@ Linux:
 <p>If you want trouble-free communication you need to buy a certificate from one of the many Certificate Authorities, for example from Verisign or Let’s Encrypt (see below).<br>
     Be warned that certificates come with different capabilities and hence, different prices. You probably only need a basic certificate, but even these are expensive not worth the price for just accessing SABnzbd.
 </p>
-<p>To turn on access using HTTPS, you need enable https and specify what port to listen on, this can be done in <a href="/wiki/configuration/1.0/generaltoc1">Config-&gt;General</a> or using the <code>--https</code> command (see <a href="/wiki/advanced/command-line-parameters">Command Line Parameters</a>). This enables HTTPS on the same host as specified in <code>-s host:port</code>. Please make sure the port is different from the one that is set for normal HTTP access.</p>
+<p>To turn on access using HTTPS, you need enable https and specify what port to listen on, this can be done in <a href="/wiki/configuration/1.0/generaltoc1">Config-&gt;General</a> or using the <code>--https sslport</code> command (see <a href="/wiki/advanced/command-line-parameters">Command Line Parameters</a>). This enables HTTPS on the same host as specified in <code>-s host:port</code>. Please make sure the port is different from the one that is set for normal HTTP access.</p>
 <p>You will then be able to access SABnzbd at <code>https://host:sslport/</code>.
 <p>If you expose SABnzbd to the Internet you can use 443 as port number, as this is the official number for HTTPS and allows you to not specify the port when accessing. Please note using a port number below 1024 requires running as root under linux.</p>
 <h2>Creating a valid certificate using Let’s Encrypt</h2>

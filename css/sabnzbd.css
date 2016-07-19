@@ -9,6 +9,7 @@ body {
 code {
     color: black;
     background-color: #f5f5f5;
+    white-space: nowrap;
 }
 
 .padding-row {
