@@ -1,34 +1,44 @@
 ---
 title: Use pre-queue script
 ---
-<h3 id="toc0"><span>Introduction</span></h3>
-<p>You can choose to let SABnzbd run a script just before an NZB enters the queue.<br>
+<h2 id="toc0"><span>Introduction</span></h2>
+<p>You can choose to let SABnzbd run a script just before an NZB enters the queue.
     This script will tell whether the NZB should be accepted or not and can modify some parameters.
 </p>
-<p>There will be a single script only, to be set in Config-&gt;Switches (picked from the general script folder).<br>
-    The sorting info is passed independent on the actual Sorting settings.<br>
+<p>Scripts can be Python scripts, bash scripts and BAT scripts. All scripts must be located in the scripts-directory, that can be specified in <a href="/wiki/configuration/1.0/folders">Config-&gt;Directories</a>. Furthermore, the script must be executable. On Linux this means the x-bit must be on. On Windows, the requirement is that the script's extension is listed in your system's PATHEXT environment variable.</p>
+<p>
+    The sorting info is passed independently to the actual <a href="/wiki/1.0/sorting">Sorting settings</a>.
     Only the SeasonSort method will be used for analysis.
 </p>
-<p>The script can be anything that is considered "executable" by the operating system.<br>
-    So on Windows is most likely a CMD or BAT file.<br>
-    On Linux is might be a shell script; make sure you set the X bit.
-</p>
-<p>The script must send results to the console.<br>
-    Exit code 0 will make SABnzbd inspect the returned output.<br>
+<p>The script must send results to the console.
+    Exit code 0 will make SABnzbd inspect the returned output.
     If the script has an exit code other than 0, it's assumed the script failed, and the NZB will be accepted without changes.
 </p>
-<h3 id="toc1"><span>Input parameters</span></h3>
+<h2 id="toc1"><span>Input parameters</span></h2>
 <p>All parameters (except 1) can be empty, meaning a default value.<br></p>
-
+<p>Please note: Use %1 in Windows scripts and $1 in Unix scripts. In Windows the parameters will be enclosed in double quotes ("my name").<br>
+    On Posix systems (OSX, Linux, Unix) the parameters will <strong>not</strong> have quotes at all. 
+</p>
 <table class="table table-bordered table-hover table-not-fixed">
     <tbody>
+        <tr>
+            <th>Position</th>
+            <th>Description</th>
+        </tr>
         <tr>
             <td>1</td>
             <td>Name of the NZB (no path, no ".nzb")</td>
         </tr>
         <tr>
             <td>2</td>
-            <td>Post Processing (PP) flags: 0 = Download, 1 = +Repair, 2 = +Unpack, 3 = +Delete</td>
+            <td>Post Processing (PP) flags: 
+                <ul>
+                    <li><code>0</code> = Download</li>
+                    <li><code>1</code> = +Repair</li>
+                    <li><code>2</code></code> = +Unpack</li>
+                    <li><code>3</code> = +Delete</li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td>3</td>
@@ -40,7 +50,16 @@ title: Use pre-queue script
         </tr>
         <tr>
             <td>5</td>
-            <td>Priority (-100 = Default, -2 = Paused, -1 = Low, 0 = Normal, 1 = High, 2 = Force)</td>
+            <td>Priority 
+                <ul>
+                    <li><code>-100</code> = Default</li>
+                    <li><code>-2</code> = Paused</li> 
+                    <li><code>-1</code> = Low</li> 
+                    <li><code>0</code> = Normal</li> 
+                    <li><code>1</code> = High</li> 
+                    <li><code>2</code> = Force</li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td>6</td>
@@ -70,20 +89,28 @@ title: Use pre-queue script
 </table>
 
 
-<p>Take note that on Windows, each parameter that contains a space will be embedded in quotes: "this example".<br>
-    Season and episode are numerical strings, without leading 0.
-</p>
+<h2 id="toc2"><span>Return parameters</span></h2>
 <p>The script can refuse or accept the NZB and it can also return alternative parameters.<br>
     When you want to manipulate the season parameters, you should assemble a new name and return a recognized format.
 </p>
-<h3 id="toc2"><span>Return parameters</span></h3>
 <p>The script writes the results to the console, each parameter on a separate line.<br>
+SABnzbd uses the first 7 lines of output, so they should only contain proper data (or be empty).
+    Anything after line 7 is ignored.
 </p>
 <table class="table table-bordered table-hover table-not-fixed">
     <tbody>
         <tr>
+            <th>Position</th>
+            <th>Description</th>
+        </tr>
+        <tr>
             <td>1</td>
-            <td>0=Refuse, 1=Accept</td>
+            <td>
+                <ul>
+                    <li>0 = Refuse</li>
+                    <li>1=Accept</li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td>2</td>
@@ -91,7 +118,14 @@ title: Use pre-queue script
         </tr>
         <tr>
             <td>3</td>
-            <td>Post Processing (PP) flags: 0 = Download, 1 = +Repair, 2 = +Unpack, 3 = +Delete</td>
+            <td>Post Processing (PP) flags: 
+                <ul>
+                    <li><code>0</code> = Download</li>
+                    <li><code>1</code> = +Repair</li>
+                    <li><code>2</code></code> = +Unpack</li>
+                    <li><code>3</code> = +Delete</li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td>4</td>
@@ -99,11 +133,20 @@ title: Use pre-queue script
         </tr>
         <tr>
             <td>5</td>
-            <td>Script (basename)</td>
+            <td>Script (no path)</td>
         </tr>
         <tr>
             <td>6</td>
-            <td>Priority (-100 = Default, -2 = Paused, -1 = Low, 0 = Normal, 1 = High, 2 = Force)</td>
+            <td>Priority 
+                <ul>
+                    <li><code>-100</code> = Default</li>
+                    <li><code>-2</code> = Paused</li> 
+                    <li><code>-1</code> = Low</li> 
+                    <li><code>0</code> = Normal</li> 
+                    <li><code>1</code> = High</li> 
+                    <li><code>2</code> = Force</li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td>7</td>
@@ -112,11 +155,9 @@ title: Use pre-queue script
     </tbody>
 </table>
 
-<p>SABnzbd uses the first 7 lines of output, so they should only contain proper data (or be empty).<br>
-    Anything after line 7 is ignored.
-</p>
-<h3 id="toc3"><span>Example Script</span></h3>
-<p>Example of a Windows batch file that forces high priority on anything smaller than 2G.</p>
+
+<h2 id="toc3"><span>Example Script</span></h2>
+<p>Example of a Windows batch file that forces high priority on anything smaller than 2GB.</p>
 <div class="code">
     <pre><code>@echo off
 echo 1
@@ -127,12 +168,11 @@ echo.
 if %6 LSS 2000000000 echo 1</code>
 </pre>
 </div>
-<p>Save it as file "size-checker.cmd" and put in the scripts folder.</p>
-<p>A python script to set prio to Force on downloads smaller than 50&nbsp;MB:</p>
-<div class="code">
-    <pre><code>#!/usr/bin/env python
+<p>Save it as file <code>size-checker.cmd</code> and put in the scripts folder.</p>
 
-import sys
+<p>A python script to set prio to Force on downloads smaller than 50MB:</p>
+<div class="code">
+    <pre><code>import sys
 
 try:
     (scriptname, nzbname, postprocflags, category, script, prio, downloadsize, grouplist, showname, season, episodenumber, episodename) = sys.argv
@@ -151,8 +191,7 @@ print
 print
 print prio    
 print
-
-sys.exit(0)    # 0 means OK</code>
+# 0 means OK
+sys.exit(0) </code>
 </pre>
 </div>
-<p>The python script should be set to executable (chmod +x …)</p>

@@ -4,14 +4,14 @@ title: Highspeed Downloading
 
 <p>If you are blessed with a fast connection (50MB/s and over) and are not getting the full speeds you require, you can try the following:</p>
 <ol>
-    <li>Set the <strong>article cache</strong> in Config -&gt; General. This will keep articles in memory and not write them to disk (which is slower). Depending on how much RAM you can spare two good values are 200M or 500M (the M denotes megabytes and is required). If you download a lot of rar files that are 200MB or larger then use the latter value.</li>
-    <li>Make sure <strong>python-yenc</strong> is installed (yenc-0.3.tar.gz or higher). If you are on windows it will already be present. This will speed up decoding as it will use C code instead of python code. The logging will say at startup whether this module has been installed ("_yenc module… found!"). If you have installed using a repository/pre-built package you will likely already have it.</li>
+    <li>Set the <strong>article cache</strong> in <a href="/wiki/1.0/general">Config-&gt;General</a>. This will keep articles in memory and not write them to disk (which is slower). Depending on how much RAM you can spare two good values are 200M or 500M (the M denotes megabytes and is required). If you download a lot of rar files that are 200MB or larger then use the latter value.</li>
+    <li>Make sure <strong>python-yenc</strong> is installed (yenc-0.3.tar.gz or higher). If you are on windows it will already be present. This will speed up decoding as it will use C code instead of python code. You can see on the first page of the Config if it is working properly. If you have installed using a repository/pre-built package you will likely already have it.</li>
     <li>Lower your <strong>connection count</strong> in Config -&gt; Servers. It may seem counter-intuitive, since more connections <em>should</em> be faster than fewer connections, but if you use the 50+ connections some hosts give you the overhead from constantly opening and closing connections can slow you down. So start at the max allowed connections and slowly lower your count until you max out your speed. Or do it the other way round: start with 5 connections, measure the speed, and raise to 7, measure again, 9, measure again, etc Normally 10 connections are enough.</li>
 </ol>
 <p>If none of the above methods make a difference, have a look at how much CPU is being used while downloading, if it is at 100% it is likely your processor is too slow to maintain high enough speeds. As of SABnzbd 0.7.20, with DEBUG logging turned<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup>, SABnzbd will show the available CPU performance. Example:</p>
 <div class="code">
     <pre><code>2014-12-05 19:26:00,801::DEBUG::[sabnzbdplus:1294] CPU Pystone available performance is 85733
-2014-12-05 19:26:00,802::DEBUG::[sabnzbdplus:1298] CPU model name is Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz</code>
+2014-12-05 19:26:00,802::DEBUG::[sabnzbdplus:1298] CPU model name is Intel(R) Core(TM) i3 CPU</code>
 </pre>
 </div>
 <br>
