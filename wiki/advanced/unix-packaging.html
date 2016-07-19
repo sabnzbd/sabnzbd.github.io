@@ -26,7 +26,7 @@ title: Tips for Unix packaging
     The Python code expects the templates to be in specific folders (relative to the location of SABnzbd.py), like shown above.
 </p>
 <h2 id="toc3"><span>Create a symlink to SABnzbd.py</span></h2>
-<p>Having sabnzbd in the path can be convenient. So provide a symlink in (e.g.) /usr/bin to the main module SABnzbd.py.<br>
+<p>Having SABnzbd in the path can be convenient. So provide a symlink in (e.g.) /usr/bin to the main module SABnzbd.py.<br>
     Maybe you want to create a shell script for launching it.
 </p>
 <h2 id="toc4"><span>SABnzbd is not a Python library</span></h2>
@@ -49,7 +49,7 @@ This will generate PYO files. Please note that SABnzbd.py itself does not get a 
     There is full separation of code and data and per-user storage.
 </p>
 <h2 id="toc7"><span>Add daemon support</span></h2>
-<p>If you want to give the user maximum support, consider creating support for starting and stopping sabnzbd through init.d.<br>
+<p>If you want to give the user maximum support, consider creating support for starting and stopping SABnzbd through init.d.<br>
     We already created an example start-stop script <a href="/wiki/installation/install-as-a-unix-daemon">here</a>.<br>
     This will need some work to become a good solution for your platform.
 </p>

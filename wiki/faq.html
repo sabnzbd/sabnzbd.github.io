@@ -48,7 +48,7 @@ title: FAQ
             <li><a href="#toc28">What does R/U/D or Repair/Unpack/Delete mean?</a></li>
             <li><a href="#toc29">How do I change my download folder to another drive?</a></li>
             <li><a href="#toc30">How do I run SABnzbd as a portable/self contained program?</a></li>
-            <li><a href="#toc31">"My Internet connection is 20&nbsp;Mbps, and SAB only downloads at 2MB/s"?</a></li>
+            <li><a href="#toc31">"My Internet connection is 20&nbsp;Mbps, and SABnzbd only downloads at 2MB/s"?</a></li>
             <li><a href="#toc32">"Repair failed, not enough repair blocks (585 short) " … what does that mean?</a></li>
             <li><a href="#toc33">"API Key incorrect, Use the api key from Config-&gt;General in your 3rd party program:" … what does that mean?</a></li>
             <li><a href="#toc34">After some time, SABnzbd is still running but its webinterface stops responding … what is going on?</a></li>
@@ -268,10 +268,10 @@ So, if you know what you're doing and SABnzbd is not running, you can edit that 
     You will have to do your post-processing manually!
 </p>
 <h2 id="toc27"><span>How do I upgrade SABnzbd to a new version?</span></h2>
-<p>It's simple! All your settings are stored away from the main sabnzbd folder, and will be kept between upgrades.<br>
+<p>It's simple! All your settings are stored away from the main SABnzbd folder, and will be kept between upgrades.<br>
     If you are moving between major versions (such as a 0.4 version to a 0.5 version) it is recommended that you finish your current queue. As major versions may create new queue files (your old queue file will still exist if you choose to go back to it and finish up downloading)<br>
     <strong>For Windows</strong> just run the installer and it will replace your old version!<br>
-    <strong>For OSX / Linux</strong> just overwrite your current sabnzbd folder with the new files.
+    <strong>For OSX / Linux</strong> just overwrite your current SABnzbd folder with the new files.
 </p>
 <h2 id="toc28"><span>What does R/U/D or Repair/Unpack/Delete mean?</span></h2>
 <table class="table table-bordered table-hover">
@@ -317,7 +317,7 @@ So, if you know what you're doing and SABnzbd is not running, you can edit that 
 </p>
 <h2 id="toc30"><span>How do I run SABnzbd as a portable/self contained program?</span></h2>
 <p>See <a href="/wiki/extra/howto-portable">How to make a portable installation</a>.
-<h2 id="toc31"><span>"My Internet connection is 20&nbsp;Mbps, and SAB only downloads at 2MB/s"?</span></h2>
+<h2 id="toc31"><span>"My Internet connection is 20&nbsp;Mbps, and SABnzbd only downloads at 2MB/s"?</span></h2>
 <p>This is bits versus bytes: ISPs advertise in bits/sec, SABnzbd shows you bytes/sec.<br>
     Multiply SABnzbd's results by 8 or 10 to get bits/sec.
 </p>
@@ -354,7 +354,7 @@ So, if you know what you're doing and SABnzbd is not running, you can edit that 
 netstat -aon | find ":9090"</code>
 </pre>
 </div>
-<p>If you get a few dozen or even hundreds of lines (and thus SAB sessions), you have found the problem.<br>
+<p>If you get a few dozen or even hundreds of lines (and thus SABnzbd sessions), you have found the problem.<br>
     Workaround: disable the plugins (or lower their polling frequency) and/or do not use HTTPS (it seems this problem occurs with HTTPS, and not HTTP).<br>
     Especially the combination of SABnzbd, SABconnect++ and HTTPS seems to trigger this problem.
 </p>
