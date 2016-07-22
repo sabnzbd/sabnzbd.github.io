@@ -1,39 +1,41 @@
 ---
 title: How to hide SABnzbd behind a webserver
 ---
-    <p>Assuming the server is already running correctly and SABnzbd is running on <code>http://localhost:8080</code></p>
-    <h2 id="toc0"><span>Apache 2</span></h2>
-    <p>Required modules: proxy.load and proxy_http.load</p>
-    <p>The following goes in Apache's <em>httpd.conf</em><sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup> file.</p>
-    <div class="code">
-        <pre><code>&lt;Location /sabnzbd&gt;
+<p>Assuming the server is already running correctly and SABnzbd is running on <code>http://localhost:8080</code>.</p>
+
+<h2>Apache 2</h2>
+<p>Required modules: <code>proxy.load</code> and <code>proxy_http.load</code></p>
+<p>The following goes in Apache's <code>httpd.conf</code> file. <br>For Linux: <code>/etc/apache2/httpd.conf</code> and for Windows: <code>C:\Program Files\Apache2.2\conf\httpd.conf</code>.</p>
+
+{% highlight apacheconf %}
+<Location /sabnzbd>
     order deny,allow
     deny from all
     allow from all
     ProxyPass http://localhost:8080/sabnzbd
     ProxyPassReverse http://localhost:8080/sabnzbd
-&lt;/Location&gt;</code>
-</pre>
-    </div>
-    <p>Note on Apache 2.4:<br>
-        Modules: a2enmod proxy proxy_http<br>
-        config files are /etc/apache2/sites-available/000-default.conf (for HTTP) and *ssl*.conf (for HTTPS)
-    </p>
-    <h2 id="toc1"><span>Nginx</span></h2>
-    <p>The following files go in the nginx conf.d directory<sup class="footnoteref"><a id="footnoteref-2" href="#footnote-2">2</a></sup></p>
-    <h3 id="toc2"><span>ssl.conf</span></h3>
-    <div class="code">
-        <pre><code>ssl_certificate      /etc/pki/tls/certs/example_com.crt;
+</Location>
+{% endhighlight %}
+
+<p><span class="label label-warning">Note on Apache 2.4</span>
+Config files for <code>a2enmod</code> and <code>proxy proxy_http</code> are located in:
+<code>/etc/apache2/sites-available/000-default.conf</code> (for HTTP) and <code>*ssl*.conf</code> (for HTTPS).</p>
+
+<h2 id="toc1"><span>Nginx</span></h2>
+<p>The following files go in the nginx <code>conf.d</code> directory <code>/etc/nginx/conf.d/</code>.</p>
+<h3 id="toc2"><span>ssl.conf</span></h3>
+{% highlight nginx %}
+ssl_certificate      /etc/pki/tls/certs/example_com.crt;
 ssl_certificate_key  /etc/pki/tls/private/example_com.key;
 ssl_session_timeout  5m;
 ssl_protocols  SSLv2 SSLv3 TLSv1;
 ssl_ciphers  HIGH:!aNULL:!MD5;
-ssl_prefer_server_ciphers   on;</code>
-</pre>
-    </div>
-    <h3 id="toc3"><span>proxy.conf</span></h3>
-    <div class="code">
-        <pre><code>client_max_body_size 10m;
+ssl_prefer_server_ciphers   on;
+{% endhighlight %}
+
+<h3 id="toc3"><span>proxy.conf</span></h3>
+{% highlight nginx %}
+client_max_body_size 10m;
 client_body_buffer_size 128k;
 
 #Timeout if the real server is dead
@@ -55,12 +57,12 @@ proxy_http_version 1.1;
 proxy_set_header Connection "";
 proxy_cache_bypass $cookie_session;
 proxy_no_cache $cookie_session;
-proxy_buffers 32 4k;</code>
-</pre>
-    </div>
-    <h3 id="toc4"><span>sabnzbd.conf</span></h3>
-    <div class="code">
-        <pre><code>upstream SABnzbd {
+proxy_buffers 32 4k;
+{% endhighlight %}
+
+<h3 id="toc4"><span>sabnzbd.conf</span></h3>
+{% highlight nginx %}
+upstream SABnzbd {
     server localhost:8080;
     keepalive 512;
 }
@@ -104,11 +106,6 @@ server {
         stub_status on;
         access_log off;
     }
-}</code>
-</pre>
-    </div>
-    <div class="footnotes-footer">
-        <div class="title">Footnotes</div>
-        <div class="footnote-footer" id="footnote-1">1. For Linux: <strong>/etc/apache2/httpd.conf</strong> and for Windows: <strong>"c:\Program Files\Apache2.2\conf\httpd.conf"</strong></div>
-        <div class="footnote-footer" id="footnote-2">2. <strong>/etc/nginx/conf.d/</strong></div>
-    </div>
+}
+{% endhighlight %}
+    
