@@ -7,7 +7,7 @@ title: How to hide SABnzbd behind a webserver
 <p>Required modules: <code>proxy.load</code> and <code>proxy_http.load</code></p>
 <p>The following goes in Apache's <code>httpd.conf</code> file. <br>For Linux: <code>/etc/apache2/httpd.conf</code> and for Windows: <code>C:\Program Files\Apache2.2\conf\httpd.conf</code>.</p>
 
-{% highlight apacheconf %}
+{% highlight aconf %}
 <Location /sabnzbd>
     order deny,allow
     deny from all
