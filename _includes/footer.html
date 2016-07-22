@@ -12,7 +12,8 @@
 
         // Add tracking to selected outbound links
         $(document.links).filter(function() {
-            return this.hostname != window.location.hostname;
+            // Only external and no download-links
+            return (this.hostname != window.location.hostname && this.href.indexOf('https://github.com/sabnzbd/sabnzbd/releases/download') === -1);
         }).click(function() {
             var theUrl = this.href
             ga('send', 'event', 'outbound', 'click', theUrl, {
