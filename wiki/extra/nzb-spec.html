@@ -4,29 +4,28 @@ title: NZB Format Specification
 <p><em>Mirrored from the now defunct <a class="vglnk" href="http://docs.newzbin.com" rel="nofollow"><span>docs</span><span>.</span><span>newzbin</span><span>.</span><span>com</span></a>. References to "We" throughout the document should be assumed to be referring to Newzbin, not SABnzbd.</em></p>
 <h2 id="toc0"><span>NZB (Message-ID List) File Specification</span></h2>
 <p>Here follows a sample NZB for a single small file:</p>
-<div class="code">
-    <pre><code>&lt;?xml version="1.0" encoding="iso-8859-1" ?&gt;
-&lt;!DOCTYPE nzb PUBLIC "-//newzBin//DTD NZB 1.1//EN" "<a class="vglnk" href="http://www.newzbin.com/DTD/nzb/nzb-1.1.dtd" rel="nofollow"><span>http</span><span>://</span><span>www</span><span>.</span><span>newzbin</span><span>.</span><span>com</span><span>/</span><span>DTD</span><span>/</span><span>nzb</span><span>/</span><span>nzb</span><span>-</span><span>1</span><span>.</span><span>1</span><span>.</span><span>dtd</span></a>"&gt;
-&lt;nzb xmlns="<a class="vglnk" href="http://www.newzbin.com/DTD/2003/nzb" rel="nofollow"><span>http</span><span>://</span><span>www</span><span>.</span><span>newzbin</span><span>.</span><span>com</span><span>/</span><span>DTD</span><span>/</span><span>2003</span><span>/</span><span>nzb</span></a>"&gt;
-&lt;head&gt;
-&lt;meta type="title"&gt;Your File!&lt;/meta&gt;
-&lt;meta type="password"&gt;secret&lt;/meta&gt;
-&lt;meta type="tag"&gt;HD&lt;/meta&gt;
-&lt;meta type="category"&gt;TV&lt;/meta&gt;
-&lt;/head&gt;
-&lt;file poster="Joe Bloggs &amp;amp;lt;bloggs@nowhere.example&amp;amp;gt;" date="1071674882" subject="Here's your file!  abc-mr2a.r01 (1/2)"&gt;
-&lt;groups&gt;
- &lt;group&gt;alt.binaries.newzbin&lt;/group&gt;
- &lt;group&gt;alt.binaries.mojo&lt;/group&gt;
-&lt;/groups&gt;
-&lt;segments&gt;
- &lt;segment bytes="102394" number="1"&gt;123456789abcdef@news.newzbin.com&lt;/segment&gt;
- &lt;segment bytes="4501" number="2"&gt;987654321fedbca@news.newzbin.com&lt;/segment&gt;
-&lt;/segments&gt;
-&lt;/file&gt;
-&lt;/nzb&gt;</code>
-</pre>
-</div>
+{% highlight xml %}
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE nzb PUBLIC "-//newzBin//DTD NZB 1.1//EN" "http://www.newzbin.com/DTD/nzb/nzb-1.1.dtd">
+<nzb xmlns="http://www.newzbin.com/DTD/2003/nzb">
+    <head>
+        <meta type="title">Your File!</meta>
+        <meta type="password">secret</meta>
+        <meta type="tag">HD</meta>
+        <meta type="category">TV</meta>
+    </head>
+    <file poster="Joe Bloggs <bloggs@nowhere.example>" date="1071674882" subject="Here's your file!  abc-mr2a.r01 (1/2)">
+        <groups>
+            <group>alt.binaries.newzbin</group>
+            <group>alt.binaries.mojo</group>
+        </groups>
+        <segments>
+            <segment bytes="102394" number="1">123456789abcdef@news.newzbin.com</segment>
+            <segment bytes="4501" number="2">987654321fedbca@news.newzbin.com</segment>
+        </segments>
+    </file>
+</nzb>
+{% endhighlight %}
 <p>This example is for one file, consisting of two segments, which are 102,394 bytes and 4,501 bytes. The file is posted into two groups, alt.binaries.newzbin and alt.binaries.mojo; it was posted by Joe Bloggs, at unixtime 1071674882. The subject is slightly munged; the segment counter always starts at 1; but you can see it has 2 segments; confirmed by the segments tags below.</p>
 <p>This is a fully populated nzb file, all the tags and attributes you can expect to see are there, but clients are expected to cope should more be added.</p>
 <p>Since this is an XML format, clients are encouraged to use an XML parser to process it; minor changes to the nzb files we generate such as with attribute ordering, indentation, and even new tags and attributes must be taken into account. XML PI's and CDATA sections are not expected to be used, so clients should be free to cut some corners using lightweight parsers.</p>
