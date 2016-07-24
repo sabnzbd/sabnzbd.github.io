@@ -1,10 +1,13 @@
 ---
 title: API reference
 ---
+<h3><span class="glyphicon glyphicon-star"></span> Jump quickly to: <a href="#queue_main">Queue functions</a>, <a href="#history_main">History functions</a> and <a href="#other_main">Other functions</a>.</h3>
+<hr>
+
 <h1>Introduction</h1>
 <p>The SABnzbd API can be reached via:</p>
 <pre><code>http://host:port/sabnzbd/api</code></pre>
-<p>For backwards compatibility you might see <code>tapi</code> used in some older templates, we recommend using <code>api</code>.
+<p>For backwards compatibility you might see <code>tapi</code> used in some of our templates, we recommend using <code>api</code>.
 
 <h2>Request types</h2>
 <p>Supported output types are <code>json</code>, <code>xml</code> and <code>text</code> and can be specified in the request:
@@ -30,7 +33,7 @@ title: API reference
 {% endhighlight %}
 <hr>
 
-<h1>Queue functions</h1>
+<h1 id="queue_main">Queue functions</h1>
 
 <table class="table table-bordered table-hover">
     <tbody>
@@ -549,7 +552,7 @@ title: API reference
 {% endhighlight %}
 
 <hr>
-<h2>History functions</h2>
+<h1 id="history_main">History functions</h1>
 
 <table class="table table-bordered table-hover">
     <tbody>
@@ -846,7 +849,7 @@ title: API reference
 <pre><code>api?mode=history&amp;name=delete&amp;value=failed</code></pre>
 
 <hr>
-<h2>Other functions</h2>
+<h1 id="other_main">Other functions</h1>
 <p><span class="label label-warning">NOTE</span> Other functions are listed below, some straightforward commands are described only in this table and can simply be activated by calling:</p> 
 <pre><code>api?mode=FUNCTION</code></pre>
 
@@ -943,6 +946,28 @@ title: API reference
     ]
 }
 {% endhighlight %}
+
+<h2 id="get_config">Get config item(s)</h2>
+<p>You can read the whole configuration, a sub-set or a single setting.</p>
+<p><span class="label label-warning">NOTE</span> You will never receive passwords, each character will be replaced by <code>***</code> characters. You can set new passwords through the <a href="#set_config">set_config</a> call.</p>
+<pre><code>api?mode=get_config</code></pre>
+
+All elements in <code>misc</code> section
+<pre><code>api?mode=get_config&amp;section=misc</code></pre>
+
+Example of filtering the server settings by keyword:
+<pre><code>api?mode=get_config&amp;section=servers&amp;keyword=ServerName</code></pre>
+
+<h2 id="set_config">Set config item</h2>
+<p>In order to change a setting, you need to provide the <code>section</code> and <code>keyword</code> of the setting:</p>
+<pre><code>api?mode=set_config&amp;section=SECTION&amp;keyword=KEYWORD&amp;value=VALUE</code></pre>
+<p>Returns the new setting when saved succesfully.</p>
+<p>For example, changing the Cleanup-list to <code>.sfv,.nzb,.nfo,.ext</code> would look like this:</p>
+<pre><code>api?mode=set_config&amp;section=misc&amp;keyword=cleanup_list&amp;value=.sfv,.nzb,.nfo,.ext</code></pre>
+
+<h2 id="set_config_default">Reset config item to default value</h2>
+<p><span class="label label-warning">NOTE</span> Currently only for settings in the <code>misc</code> section of the config. Can accept multiple keywords to reset.</p>
+<pre><code>api?mode=set_config_default&amp;keyword=SETTING_1&amp;keyword=SETTING_2</code></pre>
 
 <h2 id="warnings">Get all active warnings </h2>
 <pre><code>api?mode=warnings</code></pre>
