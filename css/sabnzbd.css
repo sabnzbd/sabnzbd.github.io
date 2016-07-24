@@ -11,6 +11,9 @@ code {
     background-color: #f5f5f5;
     white-space: nowrap;
 }
+pre {
+    max-height: 500px;
+}
 
 .padding-row {
     padding: 25px 0px 30px;
