@@ -78,10 +78,18 @@
                 </h2>
                 <div class="wiki-content">
                     {% if page.depricated %}
-                        <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-exclamation-sign"></span>
+                        <div class="alert alert-warning"><span class="glyphicon glyphicon-exclamation-sign"></span>
                             This Wiki page is for a version of SABnzbd that is no longer supported, please upgrade to the latest version on our <a href="/downloads">downloads</a> page.
                         </div>
                     {% endif %}
+
+                    <div class="alert alert-warning alert-sabnzbd alert-dismissible" style="display:none" id="alert-help-translate">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="localStorage.setItem('hide_translate',1)"><span aria-hidden="true">&times;</span></button>
+                        <p><strong>It seems you might speak another language than English! Do you want to help us translate SABnzbd in your language?</strong>
+                        <p>Translating is easy: just create an account <a href="https://translations.launchpad.net/sabnzbd/?v=w" target="_blank">here</a> and you can add or modify translations. 
+                        The majority of localizations only have a few untranslated texts left.<br>
+                        Thank you!
+                    </div>
 
                     {{ content }}
                 </div>
