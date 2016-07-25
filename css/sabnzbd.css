@@ -268,11 +268,6 @@ footer a:hover {
     padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
 }
-.alert-sabnzbd {
-    background-color: #FCE6A2;
-    border-color: #FFCA28;
-    color: inherit;
-}
 
 .wiki-content table td:first-child {
     width: 200px;

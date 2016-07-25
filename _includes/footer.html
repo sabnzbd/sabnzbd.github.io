@@ -24,24 +24,6 @@
             });
             return false;
         })
-
-        // Detect if this might be a foreign user
-        var isNotEnglish = false
-        var language = navigator.userLanguage || navigator.language;
-        if(language.toLowerCase().indexOf('en') !== 0) {
-            isNotEnglish = true
-        } else if(navigator.languages) {
-            // Chrome/FF report all the user's languages
-            $.map(navigator.languages, function(lang) {
-                if(lang.toLowerCase().indexOf('en') !== 0) {
-                    isNotEnglish = true
-                }
-            })
-        }
-        // Maybe already dismissed?
-        if(isNotEnglish && !localStorage.getItem('hide_translate')) {
-            $('#alert-help-translate').show()
-        }
     </script>
 </body>
 </html>
