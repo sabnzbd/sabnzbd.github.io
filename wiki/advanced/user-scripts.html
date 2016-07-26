@@ -78,8 +78,8 @@ title: Post-processing scripts
 
 <h2 id="toc0"><span>Example Python script</span></h2>
 <p>The get the parameters in python, you can do this:</p>
-<div class="code">
-    <pre><code>import sys
+{% highlight python %}
+import sys
 try:
     (scriptname,directory,orgnzbname,jobname,reportnumber,category,group,postprocstatus,url) = sys.argv
 except:
@@ -95,7 +95,7 @@ except:
 # Your code goes here
 
 # Success code
-sys.exit(0)</code>
-</pre>
-</div>
+sys.exit(0)
+{% endhighlight %}
+
 

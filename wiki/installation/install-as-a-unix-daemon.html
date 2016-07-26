@@ -8,8 +8,8 @@ title: Install As A Unix Daemon
     You need to replace <em>sabuser</em> with the proper user account and <em>HOSTADDRESS:PORT</em> by the proper address and port.<br>
     This assumes that you have installed SABnzbd in folder /usr/local/src/SABnzbd.
 </p>
-<div class="code">
-        <pre><code>#!/bin/sh
+{% highlight sh %}
+#!/bin/sh
 
 case "$1" in
 start)
@@ -25,9 +25,8 @@ stop)
   exit 1
 esac
 
-exit 0</code>
-</pre>
-    </div>
+exit 0
+{% endhighlight %}
     <p>If you use a password to secure SABnzbd, modify the shutdown url to the following:</p>
     <div class="code">
         <pre><code>http://HOSTADDRESS:PORT/sabnzbd/api?mode=shutdown&amp;ma_username=USER&amp;ma_password=PASSWORD&amp;apikey=ENTERAPIKEYHER</code>

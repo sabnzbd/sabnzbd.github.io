@@ -158,21 +158,21 @@ SABnzbd uses the first 7 lines of output, so they should only contain proper dat
 
 <h2 id="toc3"><span>Example Script</span></h2>
 <p>Example of a Windows batch file that forces high priority on anything smaller than 2GB.</p>
-<div class="code">
-    <pre><code>@echo off
+{% highlight dosbatch %}
+@echo off
 echo 1
 echo.
 echo.
 echo.
 echo.
-if %6 LSS 2000000000 echo 1</code>
-</pre>
-</div>
+if %6 LSS 2000000000 echo 1
+{% endhighlight %}
+
 <p>Save it as file <code>size-checker.cmd</code> and put in the scripts folder.</p>
 
 <p>A python script to set prio to Force on downloads smaller than 50MB:</p>
-<div class="code">
-    <pre><code>import sys
+{% highlight python %}
+import sys
 
 try:
     (scriptname, nzbname, postprocflags, category, script, prio, downloadsize, grouplist, showname, season, episodenumber, episodename) = sys.argv
@@ -192,6 +192,5 @@ print
 print prio    
 print
 # 0 means OK
-sys.exit(0) </code>
-</pre>
-</div>
+sys.exit(0) 
+{% endhighlight %}
