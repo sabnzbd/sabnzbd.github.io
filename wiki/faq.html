@@ -17,7 +17,6 @@ title: FAQ
         <a href="#toc6">Troubleshooting SABnzbd</a>
         <ul>
             <li><a href="#toc7">Beware of Firewalls and Virus scanners</a></li>
-            <li><a href="#toc8">I just upgraded from 0.4, where did my queue and history go?!!?</a></li>
             <li><a href="#toc9">SABnzbd won't start!</a></li>
             <li><a href="#toc10">I'm using Opera! Why doesn't it work?</a></li>
             <li><a href="#toc11">SABnzbd says "Out of your server's retention?". What does that mean?</a></li>
@@ -29,9 +28,9 @@ title: FAQ
             <li>
                 <a href="#toc17">Where are are my files?</a>
                 <ul>
-                    <li><a href="#toc18">Downloads</a></li>
-                    <li><a href="#toc19">Settings</a></li>
-                    <li><a href="#toc20">Logs</a></li>
+                    <li><a href="#toc17">Downloads</a></li>
+                    <li><a href="#toc17">Settings</a></li>
+                    <li><a href="#toc17">Logs</a></li>
                 </ul>
             </li>
             <li><a href="#toc21">SABnzbd is asking for a password and I didn't set one/forgotten the password, what do I do?</a></li>
@@ -59,7 +58,7 @@ title: FAQ
     </li>
 </ul>
 
-
+<hr>
 
 <h1 id="toc0"><span>About SABnzbd</span></h1>
 <h2 id="toc1"><span>What is SABnzbd?</span></h2>
@@ -98,8 +97,7 @@ title: FAQ
     Firewalls are suspicious of Internet activity and surprise: SABnzbd does that.<br>
     For more info see: <a href="/wiki/extra/firewalls-and-virus-scanners">How do I survive my firewall and virus scanner?</a>
 </p>
-<h2 id="toc8"><span>I just upgraded from 0.4, where did my queue and history go?!!?</span></h2>
-<p>0.5 introduces a new queue / history format that is incompatible with 0.4. If you didn't finish your queue before installing 0.5, <strong>your queue has not been deleted</strong>. Just reinstall 0.4.12, finish your queue, and reinstall 0.5 when you're done. Your 0.5 queue should be compatible with future versions, so we shouldn't run into this again.</p>
+
 <h2 id="toc9"><span>SABnzbd won't start!</span></h2>
 <p>This typically occurs because for some reason SABnzbd can't open port 8080, or whatever port you've set it to run on. Unfortunately, this could be caused by a wide variety of issues. Here are a few of them:</p>
 <ul>
@@ -111,7 +109,7 @@ title: FAQ
     Starting with SABnzbd 0.6.x, on Windows there's a "SABnzbd safe mode" which you should find in your Start menu; it can be useful to try that safe mode.
 </p>
 <h2 id="toc10"><span>I'm using Opera! Why doesn't it work?</span></h2>
-<p>Opera sometimes has a different interpretation of localhost than SABnzbd has. Try <a href="http://[::1]:8080/sabnzbd">http://[::1]:8080/sabnzbd</a> or <a href="http://127.0.0.1:8080/sabnzbd">http://127.0.0.1:8080/sabnzbd</a>, one of the two should work.<br>
+<p>Opera sometimes has a different interpretation of localhost than SABnzbd has. Try <code>http://[::1]:8080/sabnzbd</code> or <code>http://127.0.0.1:8080/sabnzbd</code>, one of the two should work.<br>
     This happens because many operating systems have an ambiguous definition of localhost. They list both 127.0.0.1 and [::1] has IP addresses (IPv4 and IPv6 respectively), while these are in reality two independent addresses.
 </p>
 <h2 id="toc11"><span>SABnzbd says "Out of your server's retention?". What does that mean?</span></h2>
@@ -136,76 +134,7 @@ title: FAQ
 <h2 id="toc16"><span>What are CRC errors, and how do I fix them?</span></h2>
 <p>This means for some reason the files you downloaded ended up broken in a manner that could not be repaired. See <a href="http://forums.sabnzbd.org/index.php?topic=3409.0">this thread</a> on our forums for more information.</p>
 <h2 id="toc17"><span>Where are are my files?</span></h2>
-<h3 id="toc18"><span>Downloads</span></h3>
-<table class="table table-bordered table-hover">
-    <tbody>
-        <tr>
-            <td>Windows</td>
-            <td>%userprofile%\My Documents\downloads\complete</td>
-        </tr>
-        <tr>
-            <td>OSX / Linux</td>
-            <td>~/downloads/complete</td>
-        </tr>
-    </tbody>
-</table>
-<h3 id="toc19"><span>Settings</span></h3>
-<p>The settings are stored in an ini file away from the location of the main program. This allows for easy upgrading and full vista compatibility.<br>
-    The default locations for the settings are:
-</p>
-<table class="table table-bordered table-hover">
-    <tbody>
-        <tr>
-            <td>Windows XP/2003</td>
-            <td>%userprofile%\local data\application data\sabnzbd\sabnzbd.ini</td>
-        </tr>
-        <tr>
-            <td>Windows Vista or 7</td>
-            <td>%userprofile%\AppData\Local\sabnzbd\sabnzbd.ini</td>
-        </tr>
-        <tr>
-            <td>Unix</td>
-            <td>~/.sabnzbd/sabnzbd.ini</td>
-        </tr>
-        <tr>
-            <td>OSX</td>
-            <td>~/Library/Application Support/SABnzbd/sabnzbd.ini (Attention: this might be a hidden folder</td>
-        </tr>
-    </tbody>
-</table>
-<p>Note for windows users, you do not need to replace anything in those paths, just paste them into a folder location bar or the run menu (start&gt;run)</p>
-<p>Note for OSX users: Finder won't find the file sabnzbd.ini. Workaround: open a Terminal, and type:</p>
-<div class="code">
-    <pre><code>cd
-ls -al Library/Application\ Support/SABnzbd/sabnzbd.ini</code>
-</pre>
-</div>
-<p>That should show the file sabnzbd.ini</p>
-<p>If you are storing your settings in a different place, you can check the location by navigating to the Config page, or the Folders page within the config and the location will be displayed there.</p>
-<h3 id="toc20"><span>Logs</span></h3>
-<p>The log files are stored in the same the base folder as the ini, but inside another folder called "logs".</p>
-<table class="table table-bordered table-hover">
-    <tbody>
-        <tr>
-            <td>Windows XP/2003</td>
-            <td>%userprofile%\local settings\application data\sabnzbd\logs</td>
-        </tr>
-        <tr>
-            <td>Windows Vista or 7</td>
-            <td>%userprofile%\AppData\Local\sabnzbd\logs</td>
-        </tr>
-        <tr>
-            <td>Unix</td>
-            <td>~/.sabnzbd/logs</td>
-        </tr>
-        <tr>
-            <td>OSX</td>
-            <td>~/Library/Application Support/SABnzbd/logs</td>
-        </tr>
-    </tbody>
-</table>
-<p>If you are storing your logs in a different place, you can check the location by navigating to the Folders page within the config and the location will be displayed there. You can also download your logging from your webbrowser by clicking "Download logging" on the connections page of sabnzbd.</p>
-<p><a name="why-login"></a></p>
+See: <a href="/wiki/advanced/directory-setup">Folder Setup</a>.
 <h2 id="toc21"><span>SABnzbd is asking for a password and I didn't set one/forgotten the password, what do I do?</span></h2>
 <p>Shut down SABnzbd, find the file <a href="/wiki/configuration/1.0/configure">sabnzbd.ini</a> and open it with an editor. Look for:</p>
 <div class="code">
@@ -359,8 +288,8 @@ netstat -aon | find ":9090"</code>
     Especially the combination of SABnzbd, SABconnect++ and HTTPS seems to trigger this problem.
 </p>
 <h2 id="toc35"><span>"[Errno 111] Failed to connect: (110, 'timed out') -1 @news.example.com:119" when clicking on Test Server</span></h2>
-<p>You can test your connection to your newsserver by clicking on Test Server (in Config -&gt; Servers). If the popup says "[Errno 111] Failed to connect: (110, 'timed out') <span class="wiki-email" style="visibility: visible;"><a href="mailto:-1@news.example.com">-1@news.example.com</a></span>:119", SABnzbd cannot connect to the newserver you filled out. You should check two things: the correct name for the newsserver and the correct port (119 is the normal port).</p>
-<p>If you're sure everything is filled out OK and you still get the error message, as a test you can fill out an additional newsserver. You can use news.astraweb.com or newsreader.eweka.nl. After filling out and Save Change, you can click on Test Server. If you get "[Errno 111] Failed to connect: (110, 'timed out') <span class="wiki-email" style="visibility: visible;"><a href="mailto:-1@news.astraweb.com">-1@news.astraweb.com</a></span>:119" for this extra server too, the problem is local: possibly a firewall is blocking outgoing connections. So check your firewall. Or temporarily disable / deinstall your firewall. Then check again with Test Server.</p>
+<p>You can test your connection to your newsserver by clicking on Test Server (in Config -&gt; Servers). If the popup says "[Errno 111] Failed to connect: (110, 'timed out') -1@news.example.com:119", SABnzbd cannot connect to the newserver you filled out. You should check two things: the correct name for the newsserver and the correct port (119 is the normal port).</p>
+<p>If you're sure everything is filled out OK and you still get the error message, as a test you can fill out an additional newsserver. You can use news.astraweb.com or newsreader.eweka.nl. After filling out and Save Change, you can click on Test Server. If you get "[Errno 111] Failed to connect: (110, 'timed out') -1@news.astraweb.com:119" for this extra server too, the problem is local: possibly a firewall is blocking outgoing connections. So check your firewall. Or temporarily disable / deinstall your firewall. Then check again with Test Server.</p>
 <p>NB: after your own server is working, disable the extra setting, or you will see warnings in your log file of SABnzbd still trying to access this server for which you have no account.</p>
 <h2 id="toc36"><span>A download says "ENCRYPTED". What does that mean, and is there anything I can do?</span></h2>
 <p>"ENCRYPTED" means you're trying to download that has a password on it (on the rar files, to be precise). SABnzbd will detect this during the download and will stop the download.<br>

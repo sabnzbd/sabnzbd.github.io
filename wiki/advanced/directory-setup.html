@@ -1,251 +1,115 @@
 ---
 title: Folder Setup
 ---
-<p>SABnzbd uses a number of folders for different purposes. Some are just for internal administration.<br>
+<p>SABnzbd uses a number of folders for different purposes, some are just for internal administration.
     Given that some folders can become very large, you may want to relocate them.
 </p>
-<p>The following table explains the purpose of each folder, its default location and its keyword in the INI file. All folders can be changed through the Web-GUI also.<br>
-    The expression %userprofile% is for Windows: your personal folder under "c:\Documents and Settings" (for Vista, these names are different).<br>
-    For Posix<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup> and OSX, <strong>~</strong> means your home folder.
+<p>The following table explains the purpose of each folder, its default location and its keyword in the INI file. All folders can be changed through the Web-GUI also.
+<p>
+    The expression <code>%userprofile%</code> is for Windows: your personal folder in <code>C:\Users\</code>. For Posix (Linux) <code>~</code>  means your home folder.
 </p>
-<p>NOTE for experienced users:<br>
-    The paths of the log_dir, nzb_backup_dir and cache_dir will be relative to the location of the INI file unless a fixed path is set.<br>
-    The download_dir (incomplete) complete_dir and dirscan_dir are relative from the current users home directlry (My Documents in windows).
+<p><span class="label label-warning">NOTE</span>     The paths of the <code>log_dir, admin_dir</code> will be relative to the location of the INI file unless a fixed path is set.<br>
+    The <code>download_dir, complete_dir, dirscan_dir</code> are relative from the current users home directory.
 </p>
-<p><strong>You CAN set fixed paths such as D:\Downloads, or /Volumes/nameofdrive/Downloads</strong> - however the path must be accessible to SABnzbd when it is launched otherwise it will be reset to the default path,</p>
+<p><span class="label label-warning">NOTE</span> You can set fixed paths such as <code>D:\Downloads</code>, or <code>/Volumes/nameofdrive/Downloads</code></strong>. However, the path <strong>must be accessible to SABnzbd when it is launched</strong> otherwise it will be reset to the default path.</p>
+
+<hr>
+<h3>Configuration file <code>sabnzbd.ini</code></h3>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td></td>
-            <td><strong>sabnzbd.ini</strong></td>
-        </tr>
-        <tr>
             <td>XP/2003</td>
-            <td>%userprofile%\local settings\application data\sabnzbd\sabnzbd.ini</td>
+            <td><code>%userprofile%\Local Settings\Application Data\sabnzbd\sabnzbd.ini</code></td>
         </tr>
         <tr>
-            <td>Vista +</td>
-            <td>%userprofile%\AppData\Local\sabnzbd\sabnzbd.ini</td>
+            <td>Vista/Win7/Win10</td>
+            <td><code>%userprofile%\AppData\Local\sabnzbd\sabnzbd.ini</code></td>
         </tr>
         <tr>
             <td>Posix</td>
-            <td>~/.sabnzbd/sabnzbd.ini</td>
+            <td><code>~/.sabnzbd/sabnzbd.ini</code></td>
         </tr>
         <tr>
             <td>OSX</td>
-            <td>~/.sabnzbd/sabnzbd.ini</td>
+            <td><code>~/Library/Application Support/SABnzbd/sabnzbd.ini</code></td>
         </tr>
     </tbody>
 </table>
+<h3>Temporary Download Folder <code>download_dir</code></h3>
+<p>Here SABnzbd collects the data for each download and error correction (par2) is done. When complete, the data is moved to the <code>complete_dir</code>. There should be enough space to contain the largest complete job + 10% for error correction data.</p>
 <table class="table table-bordered table-hover">
     <tbody>
-        <tr>
-            <td></td>
-            <td><strong>download_dir</strong></td>
-        </tr>
         <tr>
             <td>Windows</td>
-            <td>%userprofile%\My Documents\downloads\incomplete</td>
+            <td><code>%userprofile%\Downloads\incomplete</td>
         </tr>
         <tr>
             <td>Posix</td>
-            <td>~/.sabnzbd/downloads/incomplete</td>
+            <td><code>~/Downloads/incomplete</td>
         </tr>
         <tr>
             <td>OSX</td>
-            <td>~/.sabnzbd/downloads/incomplete</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>Here SABnzbd collects the data for each download and error correction (par2) is done. When complete, the data is moved to the "complete_dir". There should be enough space to contain the largest complete job + 10% for error correction data.</td>
+            <td><code>~/Downloads/complete</td>
         </tr>
     </tbody>
 </table>
+
+<h3>Complete Download Folder <code>complete_dir</code></h3>
+<p>Here all completed download jobs are stored. Each job is placed in a separate folder, named after the NZB file that started it. You want to put this on a volume with plenty of room.</p>
 <table class="table table-bordered table-hover">
     <tbody>
-        <tr>
-            <td></td>
-            <td><strong>complete_dir</strong></td>
-        </tr>
         <tr>
             <td>Windows</td>
-            <td>%userprofile%\My Documents\downloads\complete</td>
+            <td><code>%userprofile%\Downloads\complete</code></td>
         </tr>
         <tr>
             <td>Posix</td>
-            <td>~/downloads/complete</td>
+            <td><code>~/Downloads/complete</code></td>
         </tr>
         <tr>
             <td>OSX</td>
-            <td>~/downloads/complete</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>Here all completed download jobs are stored. Each job is placed in a separate folder, named after the NZB file that started it. You want to put this on a volume with plenty of room.</td>
+            <td><code>~/Downloads/complete</code></td>
         </tr>
     </tbody>
 </table>
+
+<h3>Administrative directory <code>admin_dir</code></h3>
+<p>Used for the internal administration of the job-queue and history.</p>
 <table class="table table-bordered table-hover">
     <tbody>
-        <tr>
-            <td></td>
-            <td><strong>dirscan_dir</strong></td>
-        </tr>
         <tr>
             <td>Windows</td>
-            <td>%userprofile%\My Documents\nzb</td>
+            <td><code>%userprofile%\Local Settings\Application Data\sabnzbd\admin</code></td>
         </tr>
         <tr>
             <td>Posix</td>
-            <td>~/nzb</td>
+            <td><code>~/.sabnzbd/admin</code></td>
         </tr>
         <tr>
             <td>OSX</td>
-            <td>~/nzb</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>Any NZB file you store in this folder will be picked up by SABnzbd and will start a download job. When the job is in the queue, the NZB file will be removed.</td>
+            <td><code>~/.sabnzbd/admin</code></td>
         </tr>
     </tbody>
 </table>
+
+
+
+<h3>Log directory <code>log_dir</code></h3>
+<p>Here SABnzbd's logging is stored. Altough only needed for troubleshooting, you must have this folder. Growth of this folder is normally limited to 5&nbsp;MB.</p>
 <table class="table table-bordered table-hover">
     <tbody>
-        <tr>
-            <td></td>
-            <td><strong>log_dir</strong></td>
-        </tr>
-        <tr>
-            <td>XP/2003</td>
-            <td>%userprofile%\local settings\application data\sabnzbd\log_dir</td>
-        </tr>
-        <tr>
-            <td>Vista +</td>
-            <td>%userprofile%\AppData\Local\sabnzbd\log_dir</td>
-        </tr>
-        <tr>
-            <td>Posix</td>
-            <td>~/.sabnzbd/log_dir</td>
-        </tr>
-        <tr>
-            <td>OSX</td>
-            <td>~/.sabnzbd/log_dir</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>Here SABnzbd's logging is stored. Altough only needed for troubleshooting, you must have this folder. Growth of this folder is normally limited to 5&nbsp;MB.</td>
-        </tr>
-    </tbody>
-</table>
-<table class="table table-bordered table-hover">
-    <tbody>
-        <tr>
-            <td></td>
-            <td><strong>nzb_backup_dir</strong></td>
-        </tr>
-        <tr>
-            <td>XP/2003</td>
-            <td>%userprofile%\local settings\application data\sabnzbd\nzb</td>
-        </tr>
-        <tr>
-            <td>Vista +</td>
-            <td>%userprofile%\AppData\Local\sabnzbd\nzb</td>
-        </tr>
-        <tr>
-            <td>Posix</td>
-            <td>~/.sabnzbd/nzb</td>
-        </tr>
-        <tr>
-            <td>OSX</td>
-            <td>~/.sabnzbd/nzb</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>Here all processed NZB files are stored. You may need them again, should a download fail. This folder will keep growing. If you don't specify a folder, the NZB files will not be saved.</td>
-        </tr>
-    </tbody>
-</table>
-<table class="table table-bordered table-hover">
-    <tbody>
-        <tr>
-            <td></td>
-            <td><strong>admin_dir</strong></td>
-        </tr>
-        <tr>
-            <td>XP/2003</td>
-            <td>%userprofile%\local settings\application data\sabnzbd\admin</td>
-        </tr>
-        <tr>
-            <td>Vista +</td>
-            <td>%userprofile%\AppData\Local\sabnzbd\admin</td>
-        </tr>
-        <tr>
-            <td>Posix</td>
-            <td>~/.sabnzbd/admin</td>
-        </tr>
-        <tr>
-            <td>OSX</td>
-            <td>~/.sabnzbd/admin</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>Used for the internal administration of the job-queue and history</td>
-        </tr>
-    </tbody>
-</table>
-<table class="table table-bordered table-hover">
-    <tbody>
-        <tr>
-            <td></td>
-            <td><strong>cache_dir</strong></td>
-        </tr>
-        <tr>
-            <td>XP/2003</td>
-            <td>%userprofile%\local settings\application data\sabnzbd\cache</td>
-        </tr>
-        <tr>
-            <td>Vista +</td>
-            <td>%userprofile%\AppData\Local\sabnzbd\cache</td>
-        </tr>
-        <tr>
-            <td>Posix</td>
-            <td>~/.sabnzbd/cache</td>
-        </tr>
-        <tr>
-            <td>OSX</td>
-            <td>~/.sabnzbd/cache</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>Used for the internal administration of the job-queue and history and article cache. Can grow large.</td>
-        </tr>
-    </tbody>
-</table>
-<table class="table table-bordered table-hover">
-    <tbody>
-        <tr>
-            <td></td>
-            <td><strong>web_dir</strong></td>
-        </tr>
         <tr>
             <td>Windows</td>
-            <td>&lt;SABnzbd-program-dir&gt;\interfaces\Default</td>
+            <td><code>%userprofile%\Local Settings\Application Data\sabnzbd\log_dir</code></td>
         </tr>
         <tr>
             <td>Posix</td>
-            <td>&lt;SABnzbd-program-dir&gt;/interfaces/Default</td>
+            <td><code>~/.sabnzbd/logs</code></td>
         </tr>
         <tr>
             <td>OSX</td>
-            <td>&lt;SABnzbd-program-dir&gt;/interfaces/Default</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>Location of the HTML templates of SABnzbd, defining the look of SABnzbd's web interface. You may add alternative interfaces here as long as they follow the structure of Default. So the main page of a new interface would actually be &lt;SABnzbd-program-dir&gt;/interfaces/MyThing/templates/main.tmpl</td>
+            <td><code>~/.sabnzbd/log_dir</code></td>
         </tr>
     </tbody>
 </table>
-<div class="footnotes-footer">
-    <div class="title">Footnotes</div>
-    <div class="footnote-footer" id="footnote-1">1. Posix is Unix, Linux, freeBSD, openBSD etc.</div>
-</div>
+
