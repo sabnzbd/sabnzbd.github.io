@@ -4,57 +4,42 @@ title: Command Line Parameters
 <p>
     You can start SABnzbd with options. You normally do this from a command prompt (Windows) or a shell (Unix).
     <br>
-    An option is a combination of the option name and one parameter. For parameters that contain spaces, you must surround the parameter with double quotes (e.g. —config-file "/my very long path/SABnzbd.ini").
+    An option is a combination of the option name and one parameter. For parameters that contain spaces, you must surround the parameter with double quotes (e.g. <code>--config-file "/my very long path/SABnzbd.ini"</code>).
 </p>
 <table class="table table-bordered table-hover table-not-fixed">
     <tbody>
         <tr>
-            <td>-f</td>
-            <td>
-                <span style="white-space: pre-wrap;">--config-file</span>
-            </td>
+            <th>Short</th>
+            <th>Long command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><code>-f</code></td>
+            <td><code>--config-file &lt;path-to-ini&gt;</code></td>
             <td>The name of the configuration file.</td>
         </tr>
         <tr>
             <td></td>
             <td></td>
             <td>
-                If you specify an INI file, all relative folders in Config-&gt;Folders will be relative to the location of the INI file. If you do not specify an INI file, SABnzbd will first check the following "standard" locations:
+                If you specify an INI file, all relative folders in Config-&gt;Folders will be relative to the location of the INI file. If you do not specify an INI file, SABnzbd will first check the <a href="/wiki/advanced/directory-setup">Default Locations</a>.
             </td>
         </tr>
         <tr>
-            <td></td>
-            <td>Unix</td>
-            <td>~/.sabnzbd/sabnzbd.ini</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>Windows XP/S2003</td>
+            <td><code>-p</code></td>
             <td>
-                %userprofile%\Local Settings\Application Data\sabnzbd\sabnzbd.ini
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>Vista/S2008/Win7</td>
-            <td>%userprofile%\AppData\Local\sabnzbd\sabnzbd.ini</td>
-        </tr>
-
-        <tr>
-            <td>-p</td>
-            <td>
-                <span style="white-space: pre-wrap;">--pause</span>
+                <code>--pause</code>
             </td>
             <td>Start in paused mode</td>
         </tr>
 
         <tr>
-            <td>-t</td>
+            <td><code>-t</code></td>
             <td>
-                <span style="white-space: pre-wrap;">--templates</span>
+                <code>--templates &lt;template&gt;</code>
             </td>
             <td>
-                Select another set of user interface templates. Use a name of a set in the <em>interfaces</em>
+                Select another set of user interface templates. Use a name of a set in the <code>interfaces</code>
                 folder.
             </td>
         </tr>
@@ -66,184 +51,114 @@ title: Command Line Parameters
             </td>
         </tr>
         <tr>
-            <td>-2</td>
-            <td></td>
+            <td><code>-2</code></td>
+            <td><code>--template2 &lt;template&gt;</code></td>
             <td>
-                Select the secondary user interface templates. Use a name of a set in the <em>interfaces</em>
+                Select the secondary user interface templates. Use a name of a set in the <code>interfaces</code>
                 folder.
             </td>
         </tr>
         <tr>
-            <td></td>
-            <td></td>
+            <td><code>-c</code></td>
             <td>
-                The name of a standard interface ("Glitter", "Plush" or "smpl")
-            </td>
-        </tr>
-        <tr>
-            <td>-c</td>
-            <td>
-                <span style="white-space: pre-wrap;">--clean</span>
+                <code>--clean</code>
             </td>
             <td>
-                Clear the cache and log directories. All queued downloads will be removed. The "download_dir" is <strong>not</strong>
+                Clear the cache and log directories. All queued downloads will be removed. The <code>download_dir</code> is <strong>not</strong>
                 cleared.
             </td>
         </tr>
 
         <tr>
-            <td>-s</td>
+            <td><code>-s</code></td>
             <td>
-                <span style="white-space: pre-wrap;">--server</span>
-                host
-                <strong>:</strong>
-                port
+                <code>--server &lt;host:port&gt;</code>
             </td>
             <td>
-                Specify IP address and port that SABnzbd should listen on. Value will be stored in the INI file.
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>host</td>
-            <td>The name or IP of this computer</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>port</td>
-            <td>
-                The port number that the web interface uses. Value between 80 and 65000. Pick a free one. Typical values: 80, 8080, 8088, 9000 etc. You'll get an error message when the port is not free.
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td>Supported notations</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <strong>:</strong>
-                port
-            </td>
-            <td>
-                Use the host address of this system. Web interface will be available to other computers on the LAN
+                <p>Specify IP address and port that SABnzbd should listen on. Value will be stored in the INI file.
+                <p>See <a href="/wiki/configuration/1.0/general">General - Host and Port</a> section for supported notations</p>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>
-                localhost
-                <strong>:</strong>
-                port
+                <code>--force</code>
             </td>
-            <td>
-                Use the special internal address of this computer. Web interface is only available on this computer
-            </td>
+            <td>Will wait forever to bind to the specified <code>host:port</code> in the INI or from command line.</td>
         </tr>
         <tr>
-            <td></td>
+            <td><code>-h</code></td>
             <td>
-                0.0.0.0
-                <strong>:</strong>
-                port
-            </td>
-            <td>
-                Use the host address
-                <em>and</em>
-                the internal address on this computer. Only needed in special cases.
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                address
-                <strong>:</strong>
-                port
-            </td>
-            <td>
-                You can also set a specific host name or numerical IP. Useful when a system has multiple network connections.
-            </td>
-        </tr>
-
-        <tr>
-            <td>-h</td>
-            <td>
-                <span style="white-space: pre-wrap;">--help</span>
+                <code>--help</code>
             </td>
             <td>
                 Show short explanation of the commandline options and exit program (won't work with Win32 binary)
             </td>
         </tr>
-
+        <tr>
+            <td></td>
+            <td><code>--repair</code></td>
+            <td>
+                Add orphaned jobs from the incomplete folder to the queue. Can also be performed from the GUI.
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><code>--repair-all</code></td>
+            <td>
+                Try to reconstruct the queue from the incomplete folder with full data reconstruction. Can also be performed from the GUI.
+            </td>
+        </tr>
         <tr>
             <td></td>
             <td>
-                <span style="white-space: pre-wrap;">--permissions</span>
+                <code>--permissions &lt;level&gt;</code>
             </td>
             <td>
                 Specify file permissions (Unix only). See
-                <a href="/wiki/advanced/unix-permissions">explanation</a>
+                <a href="/wiki/advanced/unix-permissions">Unix Permissions</a>.
             </td>
         </tr>
 
         <tr>
-            <td>-b</td>
+            <td><code>-b</code></td>
             <td>
-                <span style="white-space: pre-wrap;">--browser</span>
+                <code>--browser &lt;0|1&gt;</code>
             </td>
-            <td>0 = Do not show the browser (recommended for servers).</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
             <td>
-                1 = SABnzbd will start the system's default browser, showing the GUI of SABnznd (default).
+                <code>0</code> = Do not show the browser (recommended for servers).<br>
+                <code>1</code> = SABnzbd will start the system's default browser, showing the GUI of SABnznd (default).
             </td>
         </tr>
 
         <tr>
-            <td>-l</td>
+            <td><code>-l</code></td>
             <td>
-                <span style="white-space: pre-wrap;">--logging</span>
+                <code>--logging &lt;0..2&gt;</code>
             </td>
-            <td>0 = Only show errors and warnings</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td>1 = Also show info messages</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
             <td>
-                2 = Also show debug messages (use only when analyzing problems)
+                <code>0</code> = Only show errors and warnings<br>
+                <code>1</code> = Also show info messages<br>
+                <code>2</code> = Also show debug messages (use only when analyzing problems)
+            </td>
+        </tr>
+        <tr>
+            <td><code>-w</code></td>
+            <td>
+                <code>--weblogging &lt;0..2&gt;</code>
+            </td>
+            <td>
+                <p>Logging of the webserver framework:
+                <p><code>0</code> = Logging off<br>
+                <code>1</code> = Logging on (use only when analyzing problems)<br>
+                <code>2</code> = Logging on, only to log file (use only when analyzing problems)
             </td>
         </tr>
 
         <tr>
-            <td>-w</td>
+            <td><code>-v</code></td>
             <td>
-                <span style="white-space: pre-wrap;">--weblogging</span>
-            </td>
-            <td>Logging of the webserver framework</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td>0 = Logging off</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td>1 = Logging on (use only when analyzing problems)</td>
-        </tr>
-
-        <tr>
-            <td>-v</td>
-            <td>
-                <span style="white-space: pre-wrap;">--version</span>
+                <code>--version</code>
             </td>
             <td>
                 Show SABnzbd's version and exit program (won't work with Win32 binary)
@@ -251,22 +166,19 @@ title: Command Line Parameters
         </tr>
 
         <tr>
-            <td>-d</td>
+            <td><code>-d</code></td>
             <td>
-                <span style="white-space: pre-wrap;">--daemon</span>
+                <code>--daemon</code>
             </td>
             <td>
-                Start in daemon mode. Run without a terminal window and do not start the browser. Do NOT assume that the user profile can be used. You must use the
-                <strong>-f &lt;file&gt;</strong>
-                option.
+                Start in daemon mode. Run without a terminal window and do not start the browser. Do NOT assume that the user profile can be used. You must use the <code>-f &lt;path-to-ini&gt;</code> option.
             </td>
         </tr>
 
         <tr>
             <td></td>
             <td>
-                <span style="white-space: pre-wrap;">--https</span>
-                port
+                <code>--https &lt;port&gt;</code>
             </td>
             <td>
                 Set the HTTPS port number and enable HTTPS for the user interface
@@ -275,45 +187,48 @@ title: Command Line Parameters
         <tr>
             <td></td>
             <td>
-                <span style="white-space: pre-wrap;">--pid</span>
-                path
+                <code>--new</code>
             </td>
             <td>
-                Create a file with the PID (process number) of the SABnznbd process. The file will exists as long as the instance of SABnzbd lives (unless it crashes). A full directory path is required. The file name will be sabnzbd_
-                <strong>port</strong>
-                .pid where
-                <strong>port</strong>
-                is the port number used for the web server. Only Unix/OSX.
+                Normally SABnzbd checks if an instance of SABnzbd is already running. If so and the versions match, the second instance will just activate the web interface of the first instance or send an NZB to the first instance. If you really want to run multiple instances, you will need to use the <code>--new</code> parameter. 
             </td>
         </tr>
         <tr>
             <td></td>
             <td>
-                <span style="white-space: pre-wrap;">--pidfile</span>
-                file-path
+                <code>--ipv6_hosting &lt;0|1&gt;</code>
             </td>
             <td>
-                Use this to set a file (full path required) where SABnzbd can store its PID. The content of the file will be the process number (PID). Only Unix/OSX.
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <span style="white-space: pre-wrap;">--new</span>
-            </td>
-            <td>
-                Normally SABnzbd checks if an instance of SABnzbd is already running. If so and the versions match, the second instance will just activate the web interface of the first instance or send an NZB to the first instance. If you really want to run multiple instances, you will need to use the
-                <span style="white-space: pre-wrap;">--new</span>
-                parameter. 
+                Use <code>0</code> when your system cannot handle <code>::1</code> (the IPv6 value of <code>localhost</code>). The setting will be stored in the <code>sabnzbd.ini</code> file.
             </td>
         </tr>
         <tr>
             <td></td>
             <td>
-                <span style="white-space: pre-wrap;">--no_ipv6</span>
+                <code>--pid &lt;path-file&gt;</code>
             </td>
             <td>
-                Use this when your system cannot handle ::1 (the IPv6 value of "localhost"). The setting will be stored in the sabnzbd.ini file.
+                Create a file with the PID (process number) of the SABnznbd process. The file will exists as long as the instance of SABnzbd lives (unless it crashes). A full directory path is required. The file name will be <code>sabnzbd_port.pid</code> where
+                <code>port</code>
+                is the port number used for the web server. [Only Unix/OSX]
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <code>--pidfile &lt;path-file&gt;</code>
+            </td>
+            <td>
+                Use this to set a file (full path required) where SABnzbd can store its PID. The content of the file will be the process number (PID). [Only Unix/OSX]
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <code>--console</code>
+            </td>
+            <td>
+                Force console logging for OSX app.
             </td>
         </tr>
     </tbody>

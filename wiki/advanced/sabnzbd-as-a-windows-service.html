@@ -1,24 +1,20 @@
 ---
 title: SABnzbd as a Windows Service
 ---
-<p>It's possible to install SABnzbd as a real Windows Service.</p>
-<p>The Windows executable is SABnzbd-service.exe, the other EXE files do not have service support.<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup></p>
 <h1 id="toc0"><span>Service management</span></h1>
-<p>Note that you need administrative rights when you make any change to the services,<br>
-    although SABnzbd itself will run fine when in restricted user mode.
+<p>It's possible to install SABnzbd as a real Windows Service. The Windows executable is <code>SABnzbd-service.exe</code>, the other EXE files do not have service support.</p>
+<p><span class="label label-warning">NOTE</span> You need administrative rights when you make any change to the services, although SABnzbd itself will run fine when in restricted user mode.
 </p>
-<p>For the meaning of the various options required during service installation, see <a href="/wiki/advanced/command-line-parameters">"command-line-parameters"</a></p>
+<p>For the meaning of the various options required during service installation, see <a href="/wiki/advanced/command-line-parameters">Command Line Parameters</a>.</p>
 <h2 id="toc1"><span>Installing the service</span></h2>
-<p><pre><code>SABnzbd-service.exe -f &lt;path&gt; install</code></pre></p>
-<p>The -f parameter is required. When running as a service, SABnzbd will be in "daemon" mode<br>
-    and will not get the INI-file location from the user profile.<br>
-    You can add extra parameters, but any parameter you set here will block you from<br>
-    making changes in the configuration through the Web-UI.<br>
-    So, if you use -s host:port, SABnzbd will always use that as server address, disregarding what's in the INI file.<br>
-    Parameters like -b (start browser) will be ignored.
+<p><pre><code>SABnzbd-service.exe -f &lt;path-to-ini&gt; install</code></pre></p>
+<p>The <code>-f</code> parameter is required. When running as a service, SABnzbd will be in "daemon" mode and will not get the INI-file location from the user profile.<br>
+    You can add extra parameters, but any parameter you set here will block you from making changes to those parameters in the configuration through the Web-UI.<br>
+    So, if you use <code>-s host:port</code>, SABnzbd will always use that as server address, disregarding what's in the INI file.<br>
+    Parameters like <code>-b</code> (start browser) will be ignored.
 </p>
 <h2 id="toc2"><span>Updating the service</span></h2>
-<p><pre><code>SABnzbd-service.exe -f &lt;path&gt; update</code></pre></p>
+<p><pre><code>SABnzbd-service.exe -f &lt;path-to-ini&gt; update</code></pre></p>
 <p>Works the same as "install", but should be used to change settings.</p>
 <h2 id="toc3"><span>Removing the service</span></h2>
 <p><pre><code>SABnzbd-service.exe remove</code></pre></p>
@@ -28,18 +24,16 @@ title: SABnzbd as a Windows Service
 net stop SABnzbnd
 net stop SABHelper</code></pre>
 </p>
-<p>Use the Windows Service Manager to start and stop (command line or GUI).<br>
-    It's probably best to start in "Automatic" mode.<br>
-    On Windows 7 and Server2008 you can best use "Automatic (delayed)".<br>
-    Note that SABHelper must be stopped separately, <em>after</em> SABnzbd is stopped.<br>
-    Please note that you <strong>must</strong> have installed the SABHelper service first (see below), otherwise the SABnzbd will not start.<br>
+<p>Use the Windows Service Manager to start and stop (command line or GUI). It's probably best to start in <code>Automatic</code> mode. On Windows 7 and higher you can best use <code>Automatic (delayed)</code>.<br>
+    <span class="label label-warning">NOTE</span> SABHelper must be stopped separately, <em>after</em> SABnzbd is stopped.<br>
+    <span class="label label-warning">NOTE</span> You <strong>must</strong> have installed the SABHelper service first (see below), otherwise SABnzbd will not start.<br>
     When installed, the SABHelper service will be started when the SABnzbd service starts.
 </p>
 <h1 id="toc5"><span>Helper Service</span></h1>
-<p>Because a Windows Service cannot restart itself, we created the SABHelper service.<br>
-    It is controlled in the same way as SABnzbd-service.exe, only it needs no additional parameters.<br>
-    The service SABHelper will be created.<br>
-    Note that this service (unlike SABnzbd) needs to be run as "Local System" or as another account with administrative privileges.
+<p>Because a Windows Service cannot restart itself, we created the SABHelper service.
+    It is controlled in the same way as <code>SABnzbd-service.exe</code>, only it needs no additional parameters.<br>
+    The service SABHelper will be created automatically when installing the service.<br>
+    <span class="label label-warning">NOTE</span> This service (unlike SABnzbd) needs to be run as "Local System" or as another account with administrative privileges.
 </p>
 <p><pre><code>SABnzbd-helper.exe install
 SABnzbd-helper.exe remove
@@ -48,19 +42,16 @@ SABnzbd-helper.exe start
 SABnzbd-helper.exe stop</code></pre>
 </p>
 <h1 id="toc6"><span>Restrictions</span></h1>
-<p>Running as a service does pose some restrictions.</p>
+<p>Running as a service does pose some restrictions:</p>
 <ul>
     <li>The SABHelper Service <strong>must</strong> run as "Local System" or any account that has administrative privileges.</li>
     <li>By default the service runs as "Local System". This allows full access to the internal harddisk, but <strong>not</strong> to network shares.</li>
     <li>If you need network shares, you should tell the Service Manager to use an appropriate user account.</li>
-    <li>When using network shares, you must use network (UNC) paths ("\\server\share") instead of drive letters ("p:\").</li>
+    <li>When using network shares, you must use network (UNC) paths (<code>\\server\share</code>) instead of drive letters (<code>P:\</code>).</li>
     <li>Use only local drives for the admin, log and incomplete folders (par2 does not support UNC)</li>
-    <li>The Windows firewall will not warn you that it blocks SABnzbd-service.exe, you will have to add it to the exception list yourself.</li>
+    <li>The Windows firewall will not warn you that it blocks <code>SABnzbd-service.exe</code>, you will have to add it to the exception list yourself.</li>
     <li>You can upgrade SABnzbd without changing the service registrations, but you do need to stop both services first</li>
     <li>Upgrading without changing service registration only works when you install at the same location</li>
     <li>The Tray-menu (0.7.0+) will not be shown (a Service cannot do this)</li>
 </ul>
-<div class="footnotes-footer">
-    <div class="title">Footnotes</div>
-    <div class="footnote-footer" id="footnote-1">1. When running Python sources, this restriction does not apply.</div>
-</div>
+

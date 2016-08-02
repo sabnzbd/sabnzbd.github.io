@@ -2,16 +2,14 @@
 title: Folder Setup
 ---
 <p>SABnzbd uses a number of folders for different purposes, some are just for internal administration.
-    Given that some folders can become very large, you may want to relocate them.
-</p>
-<p>The following table explains the purpose of each folder, its default location and its keyword in the INI file. All folders can be changed through the Web-GUI also.
+    Given that some folders can become very large, you may want to relocate them. The following table explains the purpose of each folder, its default location and its keyword in the INI file. All folders can also be changed through the Web-GUI.
 <p>
     The expression <code>%userprofile%</code> is for Windows: your personal folder in <code>C:\Users\</code> which can be directly entered in Run (<code>WindowsKey+R</code>). For Posix (Linux) <code>~</code> means your home folder.
 </p>
 <p><span class="label label-warning">NOTE</span> The paths of the <code>log_dir, admin_dir</code> will be relative to the location of the INI file unless a fixed path is set.<br>
     The <code>download_dir, complete_dir, dirscan_dir</code> are relative from the current users home directory.
 </p>
-<p><span class="label label-warning">NOTE</span> You can set fixed paths such as <code>D:\Downloads</code>, or <code>/Volumes/nameofdrive/Downloads</code></strong>. However, the path <strong>must be accessible to SABnzbd when it is launched</strong> otherwise it will be reset to the default path.</p>
+<p><span class="label label-warning">NOTE</span> You can set fixed paths such as <code>D:\Downloads</code>, or <code>/Volumes/nameofdrive/Downloads</code></strong>. However, the path must be accessible to SABnzbd <strong>when it is launched</strong> otherwise it will be reset to the default path.</p>
 
 <hr>
 <h3>Configuration file <code>sabnzbd.ini</code></h3>
