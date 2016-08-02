@@ -2,25 +2,25 @@
 title: IPv6
 ---
 <p>SABnzbd is fully IPv6 enabled: it can download from IPv6 enabled news servers, and you can access SABnzbd's web-interface over IPv6.</p>
-<p>However, a requirement is that the underlying Operating System supports IPv6. Modern versions of Operating Systems like Linux, Windows Vista/7 and Mac OS X do support IPv6. Older versions (before 2005 or so) and embedded OSes (like those on NAS-devices) could lack IPv6-support.</p>
-<p>To have IPv6 contact with the outside world. you need to have an IPv6 connection to that outside world. This could be native an IPv6 connection, but also an IPv6 tunnel. Windows Vista and Windows 7 have a built-in IPv6 tunnel connection called Teredo, which will work on a plain Windows Vista/7 install in 'normal' at-home situation. To see if your system has an IPv6 connection to Internet, you can visit <a href="http://test-ipv6.com/">http://test-ipv6.com/</a> : that site will tell your level of IPv6. If you get 0/10, you have no IPv6 at all.</p>
+<p>However, a requirement is that the underlying Operating System supports IPv6. Modern versions of Operating Systems like Linux, Windows and Mac OS X do support IPv6. Embedded OSes (like those on NAS-devices) could lack IPv6-support.</p>
+<p>To have IPv6 contact with the outside world. you need to have an IPv6 connection to that outside world. This could be native an IPv6 connection, but also an IPv6 tunnel. Windows Vista and Windows 7 have a built-in IPv6 tunnel connection called Teredo, which will work on a plain Windows Vista/7 install in 'normal' at-home situation. 
+<p>To see if your system has an IPv6 connection to Internet, you can visit <a href="http://test-ipv6.com/">http://test-ipv6.com/</a>: that site will tell your level of IPv6. If you get 0/10, you have no IPv6 at all.</p>
 <p>There are a few news servers that provide free access over IPv6:</p>
 <ul>
-    <li>newszilla6.xs4all.nl (no account needed)</li>
-    <li>weathergirl-ipv6.tele2.net (no account needed)</li>
+    <li><code>newszilla6.xs4all.nl</code> (no account needed)</li>
+    <li><code>weathergirl-ipv6.tele2.net</code> (no account needed)</li>
 </ul>
-<p>Advice: keep the number of connections low: 2</p>
-<p><strong>Access SABnzbd's web-interface over IPv6</strong></p>
-<p>To access SABnzbd's web-interface over IPv6, you need to fill out "::" (without the quotes) in SABnzbd -&gt; Config -&gt; Server at the field "SABnzbd Host". Press Save Changes, and then restart SABnzbd.<br>
-    As a first test, you should be able to access SABnzbd via <a href="http://[::1]:8080/">http://[::1]:8080/</a> . If that works you can fill out the public IPv6 address of your system running SABnzbd, so something like <a href="http://[2001:dead:beef::b055]:8080/">http://[2001:dead:beef::b055]:8080/</a>
+
+<h3>Access SABnzbd's web-interface over IPv6</h3>
+<p>To access SABnzbd's web-interface over IPv6, you need to fill out <code>::</code> in <a href="/wiki/configuration/1.0/general">General</a> at the field "SABnzbd Host". Press Save Changes, and then restart SABnzbd.<br>
+    As a first test, you should be able to access SABnzbd via <code>http://[::1]:8080/</code>. If that works you can fill out the public IPv6 address of your system running SABnzbd, so something like <code>http://[2001:dead:beef::b055]:8080/</code>
 </p>
-<p>Note: By default both IPv6-enabled modems and Windows' IPv6 interface behave like IPv4-NAT-devices: drop unknown incoming connections. So, to make SABnzbd accessible over IPv6 from the outside world, you have to configure your modem and Windows to accept connections.</p>
-<p><strong>Setting up IPv6 based on Teredo/Miredo</strong></p>
+<p><span class="label label-warning">NOTE</span> By default both IPv6-enabled modems and Windows' IPv6 interface behave like IPv4-NAT-devices: drop unknown incoming connections. So, to make SABnzbd accessible over IPv6 from the outside world, you have to configure your modem and Windows to accept connections.</p>
+
+<h3>Setting up IPv6 based on Teredo/Miredo</h3>
 <p>Teredo (also implemented under the name Miredo) is an automatic IPv6 tunnel technology. Here's a description for operating system:</p>
 <ul>
-    <li>On Windows Vista and Windows 7 is activated by default, and in plain environment, the site <a class="vglnk" href="http://test-ipv6.com" rel="nofollow"><span>test</span><span>-</span><span>ipv6</span><span>.</span><span>com</span></a> should show you have IPv6 connectivity. Experience shows that corporate firewalls, non-Microsoft anti-virus-software and non-Microsoft firewall can block Teredo. Wit the command "netsh interface teredo show state" you can see the status of Teredo.</li>
-    <li>On Windows XP, you can install Teredo by hand using two commands on the terminal prompt: "netsh interface ipv6 install" and then</li>
-    <li>"netsh interface ipv6 set teredo client"</li>
-    <li>On Linux, you should install "miredo". On Ubuntu Linux, the command is "sudo apt-get install miredo"</li>
+    <li>On Windows Vista and Windows 7 is activated by default, and in plain environment, the site <a href="http://test-ipv6.com/">http://test-ipv6.com/</a> should show you have IPv6 connectivity. Experience shows that corporate firewalls, non-Microsoft anti-virus-software and non-Microsoft firewall can block Teredo. Wit the command <code>netsh interface teredo show state</code> you can see the status of Teredo.</li>
+    <li>On Linux, you should install <code>miredo</code>. On Ubuntu Linux, the command is <code>sudo apt-get install miredo</code></li>
     <li>On Mac OS X, you can install the miredo IPv6 driver from <a href="http://www.deepdarc.com/miredo-osx/">http://www.deepdarc.com/miredo-osx/</a></li>
 </ul>
