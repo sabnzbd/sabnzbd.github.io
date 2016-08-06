@@ -85,7 +85,7 @@
                 <div class="wiki-content">
                     {% if page.depricated %}
                         <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-exclamation-sign"></span>
-                            This Wiki page is for a version of SABnzbd that is no longer supported, please upgrade to the latest version on our <a href="/downloads">downloads</a> page.
+                            This Wiki page is for a version of SABnzbd that is no longer supported, please upgrade to the latest version on our <a href="/downloads" class="alert-link">downloads</a> page.
                         </div>
                     {% endif %}
 
@@ -97,7 +97,7 @@
 </div>
 <script type="text/javascript">
     // Highlight current item
-    $('#wiki-side-bar a[href="'+window.location.pathname+'"]').addClass('active-menu')
+    $('#wiki-side-bar a[href^="'+window.location.pathname.replace('.html', '')+'"]').addClass('active-menu')
     // Close the other menus when clicking a new one
     $(document).ready(function() {
         $('#wiki-side-bar .collapse').on('show.bs.collapse', function() {
