@@ -97,7 +97,7 @@
 </div>
 <script type="text/javascript">
     // Highlight current item
-    $('#wiki-side-bar a[href^="'+window.location.pathname.replace('.html', '')+'"]').addClass('active-menu')
+    $('#wiki-side-bar a[href="'+window.location.pathname.replace('.html', '')+'"]').addClass('active-menu')
     // Close the other menus when clicking a new one
     $(document).ready(function() {
         $('#wiki-side-bar .collapse').on('show.bs.collapse', function() {
