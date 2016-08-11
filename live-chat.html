@@ -14,14 +14,29 @@ title: Live Chat
                     <li><a href="/wiki/configuration/1.0/general" target="blank">How do I make SABnzbd accessible from another computer?</a></li>
                     <li><a href="/wiki/introduction/nzb-sources" target="blank">How do I search?</a></li>
                 </ul>
-                <p>If it&#8217;s something else, or the wiki wasn&#8217;t helpful: </p>
-                <h3 style="text-align: center"><a style="cursor: pointer;" onclick="javascript:$('#chat').show();$('#chat').attr('src','http://embed.mibbit.com/?server=irc.synirc.net&#038;channel=%23sabnzbd&#038;noServerNotices=true&#038;noServerMotd=true&#038;parseLinks=true&#038;chatOutputShowTimes=true')">Click Here to open the chat</a></h3>
-                <p><iframe id=chat width=500 height=400 scrolling=no style="border:0; display:none;" src=""></iframe></p>
+                
+                <h3><a href="#" id="chat-link" onclick="javascript:showChat()">Click Here to open the chat</a></h3>
+                
                 <p><b>Note:</b> While we try to respond promptly to whatever questions you may come in with, please keep in mind that we can&#8217;t always respond <i>instantaneously</i>. So please, stick around for a couple minutes and give us a chance to realize there&#8217;s channel activity before you give up.</p>
                 <p>(However, if we really all do seem asleep, feel free to ask your question <a href="http://forums.sabnzbd.org">over on the forums</a>.)</p>
-                <script language="JavaScript">
+
+                <p><iframe id="chat" width="100%" height="600" scrolling="no" style="border:0; display:none;" src=""></iframe></p>
+
+                <script type="text/javascript">
+                    var chatOpen = false
+                    function showChat() {
+                        chatOpen = true
+                        $('#chat').show();
+                        $('#chat').attr('src','https://embed.mibbit.com/?server=irc.synirc.net&channel=%23sabnzbd&noServerNotices=true&noServerMotd=true&parseLinks=true&chatOutputShowTimes=true'); 
+                        $('#chat-link').hide()
+                    }
+
                     window.onbeforeunload = confirmExit;
-                    function confirmExit(){ return "Closing this tab or navigating away from this page will close your connection to #SABnzbd on IRC."; }
+                    function confirmExit() { 
+                        if(chatOpen) {
+                            return "Closing this tab or navigating away from this page will close your connection to #SABnzbd on IRC."; 
+                        }
+                    }
                 </script>
             </div>
         </div>
