@@ -1,0 +1,324 @@
+---
+title: Sorting
+---
+<h1 id="toc0"><span>Series Sorting</span></h1>
+<p>For SABnzbd to know a downloaded nzb is part of a series, it needs to be named in a certain way. SABnzbd requires the show name followed by the episode number and series number in the name of the nzb. It should be either in the format <strong>1x01</strong> (Series<strong>x</strong>Episode) or <strong>S01E01</strong> (<strong>S</strong>series<strong>E</strong>episode)</p>
+<h3 id="toc2"><span>Examples</span></h3>
+<p><code>Show Name - 1x01 - Episode Name.nzb</code><br>
+    <code>Show.Name.S01E01.RLS.nzb</code><br>
+    <code>ShowName.1x01.nzb</code><br>
+    (Note: <code>ShowName1x01.nzb</code> will currently not work due to the support for specials (eg. Sx01))
+</p>
+<p>Episode Names are special in that they only work when separated after the series/episode number with a - such as in<br>
+    <code>Show Name - 1x01 - Episode Name.nzb</code>
+</p>
+<h2 id="toc3"><span>Sorting</span></h2>
+<p>Sorting is done using replaceable values such as <em>%sn</em> for the show name.</p>
+<h2 id="toc4"><span>Key</span></h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <th>Meaning</th>
+            <th>Pattern</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td>Show Name</td>
+            <td>%sn</td>
+            <td>Show Name</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%s.n</td>
+            <td>Show.Name</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%s_n</td>
+            <td>Show_Name</td>
+        </tr>
+        <tr>
+            <td>Season Number</td>
+            <td>%s</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%0s</td>
+            <td>01</td>
+        </tr>
+        <tr>
+            <td>Episode Number</td>
+            <td>%e</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%0e</td>
+            <td>05</td>
+        </tr>
+        <tr>
+            <td>Episode Name</td>
+            <td>%en</td>
+            <td>Episode Name</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%e.n</td>
+            <td>Episode.Name</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%e_n</td>
+            <td>Episode_Name</td>
+        </tr>
+        <tr>
+            <td>File Extension</td>
+            <td>%ext</td>
+            <td>avi</td>
+        </tr>
+        <tr>
+            <td>Lower Case</td>
+            <td>{TEXT}</td>
+            <td>text</td>
+        </tr>
+        <tr>
+            <td>Original Filename</td>
+            <td>%fn</td>
+            <td>filename</td>
+        </tr>
+    </tbody>
+</table>
+<p>You can use these values to construct any type of path/filename combination, however there are some recommended presets.</p>
+<h3 id="toc5"><span>Presets</span></h3>
+<p><strong>1x01 Season Folder:</strong><br>
+    <code>%sn/Season %s/%sn - %sx%0e - %en.%ext</code><br>
+    Example: Show Name/Season 1/Show Name - 1x05 - Episode Name.avi
+</p>
+<p><strong>S01E01 Season Folder:</strong><br>
+    <code>%sn/Season %s/%sn - S%0sE%0e - %en.%ext</code><br>
+    Example: Show Name/Season 1/Show Name - S01E05 - Episode Name.avi
+</p>
+<p><strong>1x01 Individual Episode Folder:</strong><br>
+    <code>%sn/%sx%0e - %en/%sn - %sx%0e - %en.%ext</code><br>
+    Example: Show Name/1x05 - Episode Name/Show Name - 1x05 - Episode Name.avi
+</p>
+<p><strong>S01E01 Individual Episode Folder:</strong><br>
+    <code>%sn/S%0sE%0e - %en/%sn - S%0sE%0e - %en.%ext</code><br>
+    Example: Show Name/S01E05 - Episode Name/Show Name - S01E05 - Episode Name.avi
+</p>
+<p>If you do not wish for any renaming to be done, just do not include that part of the path, such as instead of:<br>
+    <code>%sn/Season %s/%sn - S%0sE%0e - %en.%ext</code><br>
+    use:<br>
+    <code>%sn/Season %s</code>
+</p>
+<p><strong>Affected Categories</strong><br>
+    Control/Shift+Select the categories you want this sorting to be used in.
+</p>
+<hr>
+<h1 id="toc6"><span>Generic Sorting</span></h1>
+<p>This sorting will rename large files based on the nzb name. It has support for naming files in a sequence such as CD1/CD2/CD3&nbsp;A/B/C 1/2/3. Requires categories to be set-up and used.</p>
+<h2 id="toc7"><span>Key</span></h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <th>Meaning</th>
+            <th>Pattern</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td>%title</td>
+            <td>Movie Name</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%.title</td>
+            <td>Movie.Name</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%_title</td>
+            <td>Movie_Name</td>
+        </tr>
+        <tr>
+            <td>Year</td>
+            <td>%y</td>
+            <td>2000</td>
+        </tr>
+        <tr>
+            <td>Extension</td>
+            <td>%ext</td>
+            <td>avi</td>
+        </tr>
+        <tr>
+            <td>Part Number</td>
+            <td>%1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Decade</td>
+            <td>%decade</td>
+            <td>00</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%0decade</td>
+            <td>2000</td>
+        </tr>
+        <tr>
+            <td>Lower Case</td>
+            <td>{TEXT}</td>
+            <td>text</td>
+        </tr>
+        <tr>
+            <td>Original Filename</td>
+            <td>%fn</td>
+            <td>filename</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Keep loose downloads in extra folders</strong></td>
+            <td>If the download file contains an extra folder (such as VIDEO_TS ect), it will not move the final download to the parent folder. If your downloaded jobs do not end up in their own folders, but dumped in a single folder, then enable this. It is basically to stop messy downloads cluttering up your folder full of downloads</td>
+        </tr>
+        <tr>
+            <td><strong>Affected Categories</strong></td>
+            <td>Control/Shift+Select the categories you want this sorting to be used in.</td>
+        </tr>
+        <tr>
+            <td><strong>Sort String</strong></td>
+            <td>The naming to use, and any extra folders for the sorting, see examples below.</td>
+        </tr>
+        <tr>
+            <td><strong>Multi-part label</strong></td>
+            <td>If there is a sequence of files (such as CD1/CD2) what to to insert into sort string before .%ext. The default is " CD%1"(no quotes) which will add " CD1" before the extension for the first CD.</td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="toc8"><span>Presets</span></h3>
+<p><strong>In folders:</strong><br>
+    <code>%title (%y)/%title (%y).%ext</code><br>
+    <code>CD%1</code><br>
+    Example: Movie Name (2000)/Movie Name (2000) CD1.avi
+</p>
+<p><strong>No folders:</strong><br>
+    <code>%title (%y).%ext</code><br>
+    <code>CD%1</code><br>
+    Example: Movie Name (2000) CD1.avi
+</p>
+<p><strong>Decades 1:</strong><br>
+    <code>%0decade/%title (%y).%ext</code><br>
+    <code>CD%1</code><br>
+    Example: 2000/Movie Name (2000) CD1.avi
+</p>
+<p><strong>Decades 2:</strong><br>
+    <code>%decade/%title (%y).%ext</code><br>
+    <code>CD%1</code><br>
+    Example: 00/Movie Name (2000) CD1.avi
+</p>
+<hr>
+<h1 id="toc9"><span>Date Sorting</span></h1>
+<p>Date sorting will allow for renaming, and sorting of files that contain dates in their nzb name.</p>
+<h2 id="toc10"><span>Detection</span></h2>
+<p>Supports the following date naming:<br>
+    <code>MM-DD-YYYY/MM.DD.YYYY</code> or <code>YYYY-MM-DD/YYYY.MM.DD</code>
+</p>
+<p>Eg: <code>Show.Name.12.11.2008.HDTV-RLS.nzb</code></p>
+<h2 id="toc11"><span>Key</span></h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <th>Meaning</th>
+            <th>Pattern</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td>Show Name</td>
+            <td>%t</td>
+            <td>Show Name</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%.t</td>
+            <td>Show.Name</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%_t</td>
+            <td>Show_Name</td>
+        </tr>
+        <tr>
+            <td>Year</td>
+            <td>%y</td>
+            <td>2009</td>
+        </tr>
+        <tr>
+            <td>Month</td>
+            <td>%m</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%0m</td>
+            <td>01</td>
+        </tr>
+        <tr>
+            <td>Day of month</td>
+            <td>%d</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%0d</td>
+            <td>02</td>
+        </tr>
+        <tr>
+            <td>Decade</td>
+            <td>%decade</td>
+            <td>00</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%0decade</td>
+            <td>2000</td>
+        </tr>
+        <tr>
+            <td>Lower Case</td>
+            <td>{TEXT}</td>
+            <td>text</td>
+        </tr>
+        <tr>
+            <td>Original Filename</td>
+            <td>%fn</td>
+            <td>filename</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Affected Categories</strong></td>
+            <td>Control/Shift+Select the categories you want this sorting to be used in.</td>
+        </tr>
+        <tr>
+            <td><strong>Sort String</strong></td>
+            <td>The naming to use, and any extra folders for the sorting, see examples below.</td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="toc12"><span>Presets</span></h3>
+<p><strong>Show Name folder:</strong><br>
+    <code>%t/%t - %y-%0m-%0d - %desc.%ext</code><br>
+    Example: Show Name/Show Name - 2009-01-02 - Episode Name.avi
+</p>
+<p><strong>Year-Month folders:</strong><br>
+    <code>%y-%0m/%t - %y-%0m-%0d - %desc.%ext</code><br>
+    Example: 2009-01/Show Name - 2009-01-02 - Episode Name.avi
+</p>
+<p><strong>Daily folders:</strong><br>
+    <code>%y-%0m-%0d/%t - %y-%0m-%0d - %desc.%ext</code><br>
+    Example: 2009-01-02/Show Name - 2009-01-02 - Episode Name.avi
+</p>
