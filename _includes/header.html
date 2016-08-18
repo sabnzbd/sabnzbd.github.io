@@ -28,6 +28,11 @@
 
     <script src="/js/jquery-2.2.4.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+
+    {% assign url_bits = page.url | split: '/' %}
+    {% if url_bits[2] == 'configuration' and url_bits[3] < site.wiki_version %}
+    <meta name="robots" content="noindex" />
+    {% endif %}
 </head>
 <body> 
     <nav class="navbar navbar-default">
