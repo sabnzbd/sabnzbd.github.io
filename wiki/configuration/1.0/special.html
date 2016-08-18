@@ -46,16 +46,6 @@ title: Special settings
             <td>If your 64bit Windows system has problems running the 64bit releases of par2 and unrar, you can force the use of the 32bit releases.</td>
         </tr>
         <tr>
-            <td>ampm</td>
-            <td>0</td>
-            <td>Display ETA in AM/PM notation, only applicable to some locations in older skins.</td>
-        </tr>
-        <tr>
-            <td>prospective_par_download</td>
-            <td>1</td>
-            <td>When corrupt or missing articles are detected par2 repair blocks (if available) will be queued already during initial download, where 1 corrupt article = 1 par2 block. This might result in a slight over-estimation of required par2 blocks. [1.1.0+ only]</td>
-        </tr>
-        <tr>
             <td>never_repair</td>
             <td>0</td>
             <td>Only perform QuickCheck and par2-verify, but never par2-repair. Use this when your low-performance system has trouble running repairs. All available par2 files will be downloaded, so you can let another system do the repair. If the download verifies OK, post-processing will be done as usual.</td>
@@ -114,11 +104,6 @@ title: Special settings
             <td>empty_postproc</td>
             <td>0</td>
             <td>Do post-processing and run the user script even if nothing has been downloaded. This is useful in combination with tools like SickBeard, for which running the script on an empty or failed download is a trigger to try an alternative NZB. Note that the "Status" parameter for the script will be -1. [0.7.5+ only]</td>
-        </tr>
-        <tr>
-            <td>html_login</td>
-            <td>1</td>
-            <td>1 = HTML based login form, 0 = Basic authentication. Both offer similar security but password managers might not be able to fill basic authentication automatically. [1.1.0+ only]</td>
         </tr>
         <tr>
             <td>web_watchdog</td>

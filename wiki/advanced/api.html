@@ -15,7 +15,7 @@ redirect_from: "/wiki/advanced/automation-support"
 <pre><code>http://host:port/sabnzbd/api?output=json</code></pre>
 
 <h2>API Key and NZB key</h2>
-<p>API requires the users API key to be supplied all API requests in order for it to work. The API key is randomly generated and is static unless the user decides to change the key. The user can see their API key on the <a href="/wiki/configuration/1.0/general">General</a> page of the configuration pages.</p>
+<p>API requires the users API key to be supplied all API requests in order for it to work. The API key is randomly generated and is static unless the user decides to change the key. The user can see their API key on the <a href="/wiki/configuration/{{ site.wiki_version }}/general">General</a> page of the configuration pages.</p>
 
 <pre><code>http://host:port/sabnzbd/api?output=json&amp;apikey=APIKEY</code></pre>
 <p>If the API-key is missing the request will return <code>error: API Key Required</code>, if it is incorrect: <code>error: API Key Incorrect</code>.

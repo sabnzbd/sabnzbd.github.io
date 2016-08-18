@@ -12,10 +12,8 @@ title: Switches
             <td><strong>Check for new release</strong></td>
             <td>If enabled, SABnzbd will check once a week whether a new release has been published.</td>
         </tr>
-        <tr>
-            <td><strong>HTTPS certificate verification</strong></td>
-            <td>Verify certificates when connecting to indexers and RSS-sources using HTTPS. Requires Python 2.7.9+, can be enabled in most cases without problems, but some websites do not have proper certificates and some systems might not be configured correctly. [only 1.1.0+]</td>
-        </tr>
+            <td><strong>Use 12 hour clock (AM/PM)</strong></td>
+            <td>Show times in AM/PM notation (does not affect scheduler).</td>
     </tbody>
 </table>
 <h2 id="toc1"><span>Server</span></h2>
@@ -53,9 +51,6 @@ title: Switches
             <td>See: <a href="/wiki/scripts/pre-queue-scripts">User's pre-queue script</a>.</td>
         </tr>
         <tr>
-            <td><strong>Propagation delay</strong></td>
-            <td>If you experience very young posts failing due to missing blocks your server might still be in the process of receiving the posts. Delaying the these very young posts a few minutes might solve these issues. Posts will be paused untill they are at least this age. Setting job priority to Force will skip the delay. [only 1.1.0+]</td>
-        </tr>
         <tr>
             <td><strong>Only get articles for top of the queue</strong></td>
             <td>When a top-job stalls for some reason, start downloading segments for the next job (costs more memory). This prevents a job from blocking the queue when you have an unreliable Usenet server. If you need this behaviour, set the option off. If you have a reliable server (most paid servers), you might as well set this on.</td>
@@ -248,30 +243,20 @@ If you're unlucky enough to have an ISP that uses strict download caps, you may 
     <li>Don't set the quota too high. Leave room for other Internet use.</li>
 </ul>
 
-<h2 id="toc6"><span>Indexing <a name="indexing"></a></span></h2>
-<p><span class="label label-primary">INFORMATION</span> The protocol that SABnzbd uses can be found here if you want to implement this in your indexer: <a href="/wiki/extra/indexer-feedback">Indexer feedback</a>.</p>
-
+<h2 id="toc6"><span>Indexing </span></h2>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td><strong>Enable Indexer Integration</strong></td>
-            <td>Set this to enable enhanced functionality including ratings and extra status information is available when connected to a supported indexer.</td>
+            <td><strong>Enable OZnzb Integration</strong></td>
+            <td>Set this to enable enhanced functionality including ratings and extra status information is available when connected to OZnzb indexer.</td>
         </tr>
         <tr>
-            <td><strong>Server address</strong></td>
-            <td>Set this to the server address provided by your indexer. Not all indexers support this methods, check with your indexer. <span class="label label-warning">NOTE</span> Enter just the plain domain here, do not include <code>https://</code> at the start of the address.</td>
-        </tr>
-        <tr>
-            <td><strong>API Key</strong></td>
-            <td>Insert your Indexer API key in here. Check your profile on the indexer's website.</td>
+            <td><strong>Site API Key</strong></td>
+            <td>Insert your OZnzb API key in here, Your API Key can be found in your OZnzb user profile <a href="https://www.oznzb.com/profile" target="_blank">https://www.oznzb.com/profile</a>.</td>
         </tr>
         <tr>
             <td><strong>Enable Automatic Feedback</strong></td>
             <td>When this setting is enabled SABnzbd will send feedback on failed downloads back to the indexer.</td>
-        </tr>
-        <tr>
-            <td><strong>Enable Filtering</strong></td>
-            <td>Based on the rating supplied by the indexer at time the NZB is added, you can automatically pause or abort jobs that do not meet the specified criteria.</td>
         </tr>
     </tbody>
 </table>

@@ -36,17 +36,17 @@
                     Configuration <span class="caret"></span>
                 </a>
                 <ul id="wiki-menu-configure" class="collapse {% if page.url contains "/configuration/" %}in{% endif %}" >
-                    <li><a href="/wiki/configuration/1.0/configure">Configure</a></li>
-                    <li><a href="/wiki/configuration/1.0/general">General</a></li>
-                    <li><a href="/wiki/configuration/1.0/folders">Folders</a></li>
-                    <li><a href="/wiki/configuration/1.0/servers">Servers</a></li>
-                    <li><a href="/wiki/configuration/1.0/categories">Categories</a></li>
-                    <li><a href="/wiki/configuration/1.0/switches">Switches</a></li>
-                    <li><a href="/wiki/configuration/1.0/sorting">Sorting</a></li>
-                    <li><a href="/wiki/configuration/1.0/notifications">Notifications</a></li>
-                    <li><a href="/wiki/configuration/1.0/scheduling">Scheduling</a></li>
-                    <li><a href="/wiki/configuration/1.0/rss">RSS</a></li>
-                    <li><a href="/wiki/configuration/1.0/special">Special Settings</a></li>
+                    <li><a href="/wiki/configuration/{{ site.wiki_version }}/configure">Configure</a></li>
+                    <li><a href="/wiki/configuration/{{ site.wiki_version }}/general">General</a></li>
+                    <li><a href="/wiki/configuration/{{ site.wiki_version }}/folders">Folders</a></li>
+                    <li><a href="/wiki/configuration/{{ site.wiki_version }}/servers">Servers</a></li>
+                    <li><a href="/wiki/configuration/{{ site.wiki_version }}/categories">Categories</a></li>
+                    <li><a href="/wiki/configuration/{{ site.wiki_version }}/switches">Switches</a></li>
+                    <li><a href="/wiki/configuration/{{ site.wiki_version }}/sorting">Sorting</a></li>
+                    <li><a href="/wiki/configuration/{{ site.wiki_version }}/notifications">Notifications</a></li>
+                    <li><a href="/wiki/configuration/{{ site.wiki_version }}/scheduling">Scheduling</a></li>
+                    <li><a href="/wiki/configuration/{{ site.wiki_version }}/rss">RSS</a></li>
+                    <li><a href="/wiki/configuration/{{ site.wiki_version }}/special">Special Settings</a></li>
                 </ul>
 
                 <a href="#wiki-menu-scripts" data-toggle="collapse">
@@ -83,9 +83,10 @@
                     {{ page.title }}
                 </h2>
                 <div class="wiki-content">
-                    {% if page.depricated %}
-                        <div class="alert alert-info" role="alert"><span class="glyphicon glyphicon-exclamation-sign"></span>
-                            This Wiki page is for a version of SABnzbd that is no longer supported, please upgrade to the latest version on our <a href="/downloads" class="alert-link">downloads</a> page.
+                    {% assign url_bits = page.url | split: '/' %}
+                    {% if url_bits[2] == 'configuration' and url_bits[3] < site.wiki_version %}
+                        <div class="alert alert-warning" role="alert"><span class="glyphicon glyphicon-exclamation-sign"></span>
+                            This Wiki page is for a version of SABnzbd that is not the most recent stable.<br/> You can download the most recent stable version on our <a href="/downloads" class="alert-link">downloads</a> page.
                         </div>
                     {% endif %}
 

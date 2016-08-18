@@ -6,7 +6,7 @@ title: Unix Permissions
     Normally files that are created by a user account, are private. This is also true for the files, created by SABnzbd.<br>
     This is OK for the internal administration files, but not always for the downloaded files.
 </p>
-<p>In <a href="/wiki/configuration/1.0/folders">Config-&gt;Folders</a> you can specify which access rights SABnzbd should give the end result.<br>
+<p>In <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Config-&gt;Folders</a> you can specify which access rights SABnzbd should give the end result.<br>
     This parameter is passed to the <a href="http://en.wikipedia.org/wiki/Chmod" target="_blank">CHMOD</a> command. It uses the octal notation supported by CHMOD.<br>
     You need to specify the settings for <em>folders</em>, so with the X bits set, SABnzbd will automatically remove any X bits for the files.<br>
     Also note that folders and files will always have private access (SABnzbd does not allow blocking of private access).
@@ -32,5 +32,5 @@ Typical values:<br>
         </tr>
     </tbody>
 </table>
-<p>You can set the permissions in <a href="/wiki/configuration/1.0/folders">Config-&gt;Folders</a> or on the <a href="/wiki/advanced/command-line-parameters">command line</a>.</p>
+<p>You can set the permissions in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Config-&gt;Folders</a> or on the <a href="/wiki/advanced/command-line-parameters">command line</a>.</p>
 <p>Note: you cannot use the "readable" values that chmod supports. Use ony the octal format.</p>

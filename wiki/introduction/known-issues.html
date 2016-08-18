@@ -27,7 +27,7 @@ title: Known issues
 
 
 <h2 id="toc0"><span>Size limit</span></h2>
-<p>To prevent unexpectedly large NZBs from eating your quotum you can set the option "size_limit" in <a href="/wiki/configuration/1.0/special">"Config-&gt;Special"</a>.<br>
+<p>To prevent unexpectedly large NZBs from eating your quotum you can set the option "size_limit" in <a href="/wiki/configuration/{{ site.wiki_version }}/special">"Config-&gt;Special"</a>.<br>
     Any NZB larger than this size will be set to paused and get a low priority.
 </p>
 <h2 id="toc1"><span>Hangup of post-processing</span></h2>
@@ -47,7 +47,7 @@ title: Known issues
 <h2 id="toc3"><span>Long paths in Windows</span></h2>
 <p>Windows cannot handle path names longer than 254 characters.<br>
     Currently, SABnzbd release before 1.0.0 don't handle this problem gracefully.<br>
-    We have added a <a href="/wiki/configuration/1.0/special">"Special" option</a> "folder_length_max" in which you can set a maximum folder name size.<br>
+    We have added a <a href="/wiki/configuration/{{ site.wiki_version }}/special">"Special" option</a> "folder_length_max" in which you can set a maximum folder name size.<br>
     For Windows the default is 128 and for others 256.<br>
     A quite safe value for Windows would be 64.<br>
     SABnzbd will take care of overlapping names.<br>
@@ -55,12 +55,12 @@ title: Known issues
 </p>
 <h2 id="toc4"><span>64bit Windows</span></h2>
 <p>Some 64bit Windows systems have problems with the 64bit versions of par2 and unrar.<br>
-    There is an <a href="/wiki/configuration/1.0/special">"Special" option</a> "allow_64bit_tools" which, when set to 0, will force the use of 32bit versions.
+    There is an <a href="/wiki/configuration/{{ site.wiki_version }}/special">"Special" option</a> "allow_64bit_tools" which, when set to 0, will force the use of 32bit versions.
 </p>
 <h2 id="toc5"><span>Unreliable Usenet servers</span></h2>
 <p>Some Usenet servers have intermittent login (or other) problems.<br>
     For these, the server blocking method is not very favorable.<br>
-    There is an <a href="/wiki/configuration/1.0/special">"Special" option</a> "no_penalties" which, when set to 1, will limit blocks to 1 minute<br>
+    There is an <a href="/wiki/configuration/{{ site.wiki_version }}/special">"Special" option</a> "no_penalties" which, when set to 1, will limit blocks to 1 minute<br>
     (No, 2 doesn't mean 2 minutes).
 </p>
 <h2 id="toc6"><span>OSX and foreign characters</span></h2>
