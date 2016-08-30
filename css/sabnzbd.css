@@ -269,10 +269,12 @@ footer a:hover {
     border-bottom: 1px solid #ddd;
 }
 
-.alert-old-sabnzbd .glyphicon-exclamation-sign {
+.alert-old-sabnzbd .glyphicon,
+.alert-translate .glyphicon {
     float: left;
     font-size: 2.5em;
-    margin-right: 10px;
+    margin-right: 13px;
+    margin-top: 2px;
 }
 
 .wiki-content table td:first-child {

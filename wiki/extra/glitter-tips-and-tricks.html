@@ -1,6 +1,11 @@
 ---
 title: Glitter Tips and Tricks
 ---
+<div class="alert alert-info alert-translate" style="display: none;">
+    <span class="glyphicon glyphicon-globe"></span>
+    Help us translate SABnzbd in your language! <br>Add untranslated texts or improved existing translations here: <a href="https://sabnzbd.org/wiki/translate" target="_blank" class="alert-link">https://sabnzbd.org/wiki/translate</a>
+</div>
+
 <h2>Speed tips</h2>
 <p>Unrelated to Glitter, we have some tips and tricks in case SABnzbd is not hitting the limits of your connection: <a href="/wiki/advanced/highspeed-downloading">Highspeed Downloading</a>.
 
@@ -44,3 +49,24 @@ title: Glitter Tips and Tricks
 
 <hr><h2>Set action when all downloading is complete</h2>
 <p>In the menu ( <span class="glyphicon glyphicon-menu-hamburger"></span> ) you can set what needs to happen when all downloading (and post-processing) is complete. For example Shutdown PC, Standby PC or run a script. This option was always available, but somewhat hidden.
+
+<script type="text/javascript">
+    // Check the main language to show a message
+    var isNotEnglish = false
+    if(navigator.language.indexOf('en') === -1) {
+        isNotEnglish = true
+    } else {
+        // Check other languages
+        if(navigator.languages) {
+            $.map(navigator.languages, function(lang) {
+                if(lang.indexOf('en') === -1) {
+                    isNotEnglish = true
+                }
+            })
+        }
+    }
+    // Only now show
+    if(isNotEnglish) {
+        $('.alert-translate').show()
+    }
+</script>

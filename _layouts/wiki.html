@@ -85,7 +85,7 @@
                 <div class="wiki-content">
                     {% assign url_bits = page.url | split: '/' %}
                     {% if url_bits[2] == 'configuration' and url_bits[3] < site.wiki_version %}
-                        <div class="alert alert-warning alert-old-sabnzbd"><span class="glyphicon glyphicon-exclamation-sign"></span>
+                        <div class="alert alert-warning alert-old-sabnzbd"><span class="glyphicon glyphicon-refresh"></span>
                             This Wiki page is for an older version of SABnzbd.<br/> You can download the most recent stable version (SABnzbd {{ site.wiki_version }}) on our <a href="/downloads" class="alert-link">downloads</a> page.
                         </div>
                     {% endif %}
