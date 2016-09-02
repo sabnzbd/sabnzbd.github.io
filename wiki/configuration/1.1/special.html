@@ -51,6 +51,11 @@ title: Special settings
             <td>Display ETA in AM/PM notation, only applicable to some locations in older skins.</td>
         </tr>
         <tr>
+            <td>enable_unrar, enable_unzip, enable_7zip, enable_filejoin, enable_tsjoin</td>
+            <td>1</td>
+            <td>Enable or disable the UnRar, UnZip, 7zip, filejoin and TSJoin tools. If disabled, the archive/split files will not be unpacked.</td>
+        </tr>
+        <tr>
             <td>prospective_par_download</td>
             <td>1</td>
             <td>When corrupt or missing articles are detected par2 repair blocks (if available) will be queued already during initial download, where 1 corrupt article = 1 par2 block. This might result in a slight over-estimation of required par2 blocks. [1.1.0+ only]</td>
@@ -141,6 +146,11 @@ title: Special settings
             <td>1 will make announce itself on Apple's Bonjour protocol.</td>
         </tr>
         <tr>
+            <td>allow_duplicate_files</td>
+            <td>0</td>
+            <td>Some NZB's have the same file listed twice, SABnzbd will only add the largerst of the files with the same name by default. If you want both files, enable this.</td>
+        </tr>
+        <tr>
             <td>warn_dupl_jobs</td>
             <td>1</td>
             <td>1 will issue a warning when a duplicate job is detected and subsequently paused or deleted. Set to 0 if you find the warnings a nuisance [0.7.17+ only]</td>
@@ -154,11 +164,6 @@ title: Special settings
             <td>enable_par_cleanup</td>
             <td>1</td>
             <td>Normally SABnzbd will clean up par2 files after verify/repair. For testing purposes you can disable this by using 0.</td>
-        </tr>
-        <tr>
-            <td>enable_https_verification</td>
-            <td>1</td>
-            <td>1 will enable verification of HTTPS certificates used by indexing sites. When you may encounter indexers that do not use valid certificates, set it to 0.</td>
         </tr>
         <tr>
             <td>api_logging</td>
@@ -232,19 +237,14 @@ title: Special settings
             <td>Control the use of IPv6 Usenet server addresses. Only useful when you have an IPv6 capable ISP and connect to servers that (also) have IPv6 addresses. Meaning: 0 = don't use, 1 = use when available and reachable, 2 = force usage (when SABnzbd's detection fails) [0.7.6+ only]</td>
         </tr>
         <tr>
-            <td>rating_host</td>
-            <td>api.oznzb.com</td>
-            <td>Instead of OZnzbd, you can switch the host to connect to for rating. The indexer needs to support this! [0.7.20+ only]</td>
-        </tr>
-        <tr>
             <td>selftest_host</td>
             <td>self-test.sabnzbd.org</td>
-            <td>In order to check proper IPv6 connectivity and your external IPv4 address, SABnzbd needs to connect to a known external IPv6 address and a server that returns the external IP address. By default we use our own server for this (we don't send any data). You can choose to use another known IPv6 host, e.g. <a class="vglnk" href="http://ipv6.google.com" rel="nofollow"><span>ipv6</span><span>.</span><span>google</span><span>.</span><span>com</span></a>. However, this will cause the external IPv4 address detection to fail in the status window, this does not affect the functioning of SABnzbd.</td>
+            <td>In order to check proper IPv6 connectivity and your external IPv4 address, SABnzbd needs to connect to a known external IPv6 address and a server that returns the external IP address. By default we use our own server for this (we don't send any data). You can choose to use another known IPv6 host, e.g. <code>http://ipv6.google.com</code>. However, this will cause the external IPv4 address detection to fail in the status window, this does not affect the functioning of SABnzbd.</td>
         </tr>
         <tr>
             <td>rss_odd_titles</td>
             <td>see text</td>
-            <td>Some RSS feeds produce very awkward titles which are fine for filtering, but not as job titles. For all indexers that are listed here, the actual NZB file name will be used instead of the title. The default is a comma-separated list of URLs and the default is: nzbindex.nl/, <a class="vglnk" href="http://nzbindex.com/" rel="nofollow"><span>nzbindex</span><span>.</span><span>com</span><span>/</span></a>, <a class="vglnk" href="http://nzbclub.com/" rel="nofollow"><span>nzbclub</span><span>.</span><span>com</span><span>/</span></a> [0.7.4+ only])</td>
+            <td>Some RSS feeds produce very awkward titles which are fine for filtering, but not as job titles. For all indexers that are listed here, the actual NZB file name will be used instead of the title. The default is a comma-separated list of URLs and the default is: <code>nzbindex.nl/, nzbindex.com/, nzbclub.com/</code> [0.7.4+ only])</td>
         </tr>
         <tr>
             <td>prio_sort_list</td>
