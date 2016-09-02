@@ -55,6 +55,11 @@ function parseGitHubResults(releases) {
     // Do we have a beta before a stable?
     var have_beta = false
 
+    // Markdown converter
+    var converter = new showdown.Converter()
+    converter.setOption('headerLevelStart', 2);
+
+    // Loop over releases from GitHub
     $.each(releases, function(index, release) {
         // Is it a stable? We stop after the first stable
         if(!release.prerelease) {
@@ -66,7 +71,7 @@ function parseGitHubResults(releases) {
             $('#download-links-stable .download-link-source').attr('href', release.html_url)
 
             // Set the changelog info
-            $('#stable-changelog .changelog-content').html(release.body.replace(/(?:\r\n|\r|\n)/g, '<br />'))
+            $('#stable-changelog .changelog-content').html(converter.makeHtml(release.body))
 
             // General URL if no platform (mobile)
             if(!platform) {
@@ -91,7 +96,7 @@ function parseGitHubResults(releases) {
             $('#download-links-beta .download-link-source').attr('href', release.html_url)
 
             // Set the changelog info
-            $('#beta-changelog .changelog-content').html(release.body.replace(/(?:\r\n|\r|\n)/g, '<br />'))
+            $('#beta-changelog .changelog-content').html(converter.makeHtml(release.body))
 
 
             // General URL if no platform (mobile)
