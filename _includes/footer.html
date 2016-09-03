@@ -14,15 +14,14 @@
         $(document.links).filter(function() {
             // Only external and no download-links
             return (this.hostname != window.location.hostname && this.href.indexOf('https://github.com/sabnzbd/sabnzbd/releases/download') === -1);
-        }).click(function() {
+        })
+        .attr('target', '_blank')
+        .click(function() {
+            // Actual tracking code, while the page loads in new tab
             var theUrl = this.href
             ga('send', 'event', 'outbound', 'click', theUrl, {
-                'transport': 'beacon',
-                'hitCallback': function(){
-                    window.open(theUrl)
-                }
+                'transport': 'beacon'
             });
-            return false;
         })
     </script>
 </body>
