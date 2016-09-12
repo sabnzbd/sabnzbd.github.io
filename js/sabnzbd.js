@@ -10,7 +10,7 @@
 var platform = '';
 var downloadTitle = 'Browse packages';
 if (navigator.appVersion.indexOf('Win')!=-1)    { platform = 'win32-setup'; downloadTitle = 'For Windows'}
-if (navigator.appVersion.indexOf('Mac')!=-1)    { platform = 'osx'; downloadTitle = 'For OS X'}
+if (navigator.appVersion.indexOf('Mac')!=-1)    { platform = 'osx'; downloadTitle = 'For macOS'}
 if (navigator.appVersion.indexOf('X11')!=-1)    { platform = 'src'; downloadTitle = 'For Linux'}
 if (navigator.appVersion.indexOf('Linux')!=-1)  { platform = 'src'; downloadTitle = 'For Linux'}
 

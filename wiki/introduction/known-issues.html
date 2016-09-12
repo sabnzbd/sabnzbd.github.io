@@ -13,10 +13,10 @@ title: Known issues
     <li><a href="#toc3">Long paths in Windows</a></li>
     <li><a href="#toc4">64bit Windows</a></li>
     <li><a href="#toc5">Unreliable Usenet servers</a></li>
-    <li><a href="#toc6">OSX and foreign characters</a></li>
+    <li><a href="#toc6">macOS and foreign characters</a></li>
     <li><a href="#toc7">Linux and foreign characters</a></li>
     <li><a href="#toc8">Files remain in Watched Folder</a></li>
-    <li><a href="#toc9">Instability on OSX</a></li>
+    <li><a href="#toc9">Instability on macOS</a></li>
     <li><a href="#toc10">Memory usage</a></li>
     <li><a href="#toc11">Incompatible firewalls</a></li>
     <li><a href="#toc12">Blocked email</a></li>
@@ -63,8 +63,8 @@ title: Known issues
     There is an <a href="/wiki/configuration/{{ site.wiki_version }}/special">"Special" option</a> "no_penalties" which, when set to 1, will limit blocks to 1 minute<br>
     (No, 2 doesn't mean 2 minutes).
 </p>
-<h2 id="toc6"><span>OSX and foreign characters</span></h2>
-<p>On OSX you may encounter downloaded files with foreign characters (e.g. é and ä).<br>
+<h2 id="toc6"><span>macOS and foreign characters</span></h2>
+<p>On macOS you may encounter downloaded files with foreign characters (e.g. é and ä).<br>
     The par2 repair may fail when the files were created on a Windows system.<br>
     The problem is caused by the PAR2 utility and we cannot fix this now.<br>
     This does not apply to files inside RAR files.
@@ -82,8 +82,8 @@ title: Known issues
     SABnzbd does try about 10 times with 5 second intervals, but after that it gives up.<br>
     The NZB will not be processed again, unless changed or overwritten.
 </p>
-<h2 id="toc9"><span>Instability on OSX</span></h2>
-<p>A few people complained about long-term stability of SABnzbd on OSX Snow Leopard and Lion.<br>
+<h2 id="toc9"><span>Instability on macOS</span></h2>
+<p>A few people complained about long-term stability of SABnzbd on macOS Snow Leopard and Lion.<br>
     We don't know the real cause, but the same people have reported success<br>
     when they disable SABnzbd's icon in the top menu.<br>
     Config-&gt;Special, item "osx_menu".
@@ -102,7 +102,7 @@ title: Known issues
     It may be blocking outgoing email.
 </p>
 <h2 id="toc13"><span>Mounting external drives and network shares</span></h2>
-<p>When you are using external drives or network shares on OSX or Linux make sure that the drives are mounted.<br>
+<p>When you are using external drives or network shares on macOS or Linux make sure that the drives are mounted.<br>
     The operating system will simply redirect your files to alternative locations.<br>
     You may have trouble finding the files when mounting the drive later.
 </p>
