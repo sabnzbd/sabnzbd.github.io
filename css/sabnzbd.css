@@ -224,6 +224,17 @@ footer a:hover {
     text-align: center;
 }
 
+.featherlight .featherlight-close-icon {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: white;
+    border: 1px solid rgba(0,0,0,.1);
+    border-width: 0px 0px 1px 1px;
+}
+
 /*** Downloads page ***/
 .container-download-page .downloads-row {
     height: auto;
@@ -383,6 +394,9 @@ aside {
 
 /* Special for tablets and small desktops */
 @media only screen and (max-width: 999px) {
+    .downloads-row {
+        height: 130px;
+    }
     .downloads-container img {
         margin: 10px auto;
     }
@@ -464,10 +478,6 @@ aside {
         margin: 0;
         padding: 0;
         border: 0;
-    }
-
-    .featherlight .featherlight-close-icon {
-        background-color: white;
     }
 }
 
