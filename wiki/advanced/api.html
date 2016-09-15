@@ -970,12 +970,16 @@ redirect_from: "/wiki/advanced/automation-support"
             <td><span class="label label-primary">True/False</span> Reset the user defined quota to 0</td>
         </tr>
         <tr>
-            <td><code>set_apikey</code></td>
+            <td><code>mode=config</code> <code>name=set_apikey</code></td>
             <td>Reset the API key, returns the new key</td>
         </tr>
         <tr>
-            <td><code>set_nzbkey</code></td>
+            <td><code>mode=config</code> <code>name=set_nzbkey</code></td>
             <td>Reset the NZB key, returns the new key</td>
+        </tr>
+        <tr>
+            <td><code>mode=config</code> <code>name=regenerate_certs</code></td>
+            <td>Regenerate the self-signed certificate for HTTPS connection to interface, requires SABnzbd restart to take effect</td>
         </tr>
         <tr>
             <td><a href="#translate">translate</a></td>
