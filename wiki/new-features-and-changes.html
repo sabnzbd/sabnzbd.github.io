@@ -3,19 +3,19 @@ title: New features and changes
 ---
 <h3 id="toc0"><span>Note</span></h3>
 <p><em>We decided to rename 0.8.0 to 1.0.0, in order to start using a common <a href="/wiki/extra/release-numbering">release numbering method</a>.</em></p>
-<p>When you upgrade an existing 0.7.x installation, release 1.0.0 will NOT be able to finish the queue.<br>
-    It's best to empty your queue first using 0.7.x
+<p>When you upgrade an existing 0.7.x installation, release 1.1.0 will NOT be able to finish the queue.
+    It's best to empty your queue first using 0.7.x.
 </p>
-<p>Alternatively, you can install 1.0.0 and then use "queue repair" on the Status page.<br>
+<p>Alternatively, you can install 1.1.0 and then use "Queue Repair" on the Status page.
     Some information (like the order of the queue) will be lost.
 </p>
-<p>Note:</p>
+<p><strong>Note:</strong></p>
 <blockquote>
     <p>On Windows we corrected the base path, it's now <code>C:\Users\USERNAME\</code> instead of <code>C:\Users\USERNAME\Documents\</code>.<br>
         SABnzbd 1.0.0 will find your old queue with the side-effect that the old location will be used until you change it in Config-&gt;Folders.
     </p>
 </blockquote>
-<p>Note:</p>
+<p><strong>Note:</strong></p>
 <blockquote>
     <p>Breaking change in API: speed-limit is now either a percentage or an absolute number</p>
     <ul>
@@ -24,29 +24,40 @@ title: New features and changes
         <li>Check third-party tools that set a speed for SABnzbd</li>
     </ul>
 </blockquote>
-<p>Important to note: you can not switch easily between 0.7.x and 1.0.0 versions, at least not with the same queue.</p>
-<h3 id="toc1"><span>Known issues in 1.0.0</span></h3>
+<p>Important to note: you can not switch easily between 0.7.x and 1.1.0 versions, at least not with the same queue.</p>
+<h3 id="toc1"><span>Known issues in 1.1.0</span></h3>
 <p>We have compiled a small list of <a href="/wiki/introduction/known-issues">known problems</a>.</p>
 <hr>
 <h1 id="toc2"><span>Highlights</span></h1>
 <h3 id="toc3"><span>Full Unicode</span></h3>
-<p>This means that more translations will be available, like Russian and Chinese.<br>
+<p>This means that more translations will be available, like Russian and Chinese.
     For Windows users it also means that there will be much less problems with long paths.
 </p>
 <h3 id="toc4"><span>New default skin: Glitter</span></h3>
-<p>A brand-new UI skin was developed based on more modern browser techniques.<br>
+<p>A brand-new UI skin was developed based on more modern browser techniques.
     It is the new default skin for new users.<br>
-    "Plush" and "smpl" still remain, but it is unsure whether they will receive new features.<br>
+    "Plush" and "smpl" still remain, but it is unsure whether they will receive new features.
     The Config pages are the same for all skins.
 </p>
-<h3 id="toc5"><span>Server priorities</span></h3>
-<p>SABnzbd 0.7.20 and older works with primary and backup servers.<br>
-    The "primary" group and the "backup" group have internally no priorities.
+<h3><span>HTML login page</span></h3>
+<p>Instead of basic authentication, SABnzbd now offers an HTML login form that's easier to use in conjunction with password helpers.
 </p>
-<p>SABnzbd 1.0.0+ uses server priorities instead.<br>
-    This means that SABnzbd will first ask the highest priority server (0) and when that<br>
-    server doesn't have an article, the next lower priority server (1) will be asked.<br>
-    This continues until all (enabled) servers have been tried.<br>
+
+<h3><span>Performance optimizations</span></h3>
+<p>In SABnzbd 1.1.0 we started implementing performance optimzations for slower systems and reduction of CPU usage on faster systems. This work will be continued in upcoming releases.
+</p>
+
+<h3><span>Propagation delay</span></h3>
+<p>If you experience very young posts failing due to missing blocks your server might still be in the process of receiving the posts. Delaying the these very young posts a few minutes might solve these issues. Posts will be paused untill they are at least this age. Setting job priority to Force will skip the delay. 
+</p>
+
+<h3 id="toc5"><span>Server priorities</span></h3>
+<p>SABnzbd 0.7.20 and older works with primary and backup servers.
+    The "primary" group and the "backup" group have internally no priorities.
+    SABnzbd 1.0.0+ uses server priorities instead.<br>
+    This means that SABnzbd will first ask the highest priority server (0) and when that
+    server doesn't have an article, the next lower priority server (1) will be asked.
+    This continues until all (enabled) servers have been tried.
     Servers within the same priority group will be used in a round-robin way (faster servers will be used more).
 </p>
 <h3 id="toc6"><span>Server load balancing</span></h3>
@@ -59,14 +70,14 @@ title: New features and changes
     Recommended version: 9.20 or higher
 </p>
 <h3 id="toc8"><span>Optimal repair</span></h3>
-<p><a name="OptimalRepair"></a> SABnzbd first verifies a job using just the smallest par2 file.<br>
-    If that fails, it will download more par2 files and will try to repair the files.<br>
-    On slower systems that are faster at downloading than repairing, this is not optimal.<br>
-    par2-based repair is a very CPU intensive process and running a verify/repair cycle<br>
+<p><a name="OptimalRepair"></a> SABnzbd first verifies a job using just the smallest par2 file.
+    If that fails, it will download more par2 files and will try to repair the files.
+    On slower systems that are faster at downloading than repairing, this is not optimal.
+    par2-based repair is a very CPU intensive process and running a verify/repair cycle
     twice instead of once makes the whole process ever slower.<br>
-    So for people who have (1) a system and provider that allow rather fast downloading and<br>
-    (2) are not restricted by download caps, there is the option to download ALL par2 files.<br>
-    If you have QuickCheck enabled a first (fast) verification will be done and if that fails<br>
+    So for people who have (1) a system and provider that allow rather fast downloading and
+    (2) are not restricted by download caps, there is the option to download ALL par2 files.
+    If you have QuickCheck enabled a first (fast) verification will be done and if that fails
     all available par2 files will be downloaded.<br>
     Without QuickCheck, all par2 files will be downloaded even if not needed at all.<br>
     This allows you to chose the optimal situation, which will not be the same for everyone.
