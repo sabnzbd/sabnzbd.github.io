@@ -31,7 +31,7 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Server load-balancing</strong></td>
-            <td>A number of newsservers has multiple IP-addresses, these can be IPv4 or IPv6. 
+            <td>A number of newsservers has multiple IP-addresses, these can be IPv4 or IPv6.
             <ul>
                 <li><strong>Prevent load-balancing:</strong> the first IP-address returned will be used for all connections. </li>
                 <li><strong>Allow load-balancing:</strong> Each connection will be randomly selected from the available addresses.</li>
@@ -111,7 +111,7 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Extra PAR2 parameters</strong></td>
-            <td>See <a href="#multi-core">Multi-core PAR2</a>.</td>
+            <td>See <a href="#multi-core">Multi-core PAR2</a> and <a href="#par2cmdline">Par2cmdline</a>.</td>
         </tr>
         <tr>
             <td><strong>Enable SFV-based checks</strong></td>
@@ -206,8 +206,8 @@ If you're unlucky enough to have an ISP that uses strict download caps, you may 
         </tr>
         <tr>
             <td><strong>Reset day</strong></td>
-            <td>The day of the week or month when your ISP will reset your cap. Use 31 for the last day of the month. 
-            Optionally you can add a time of day, like 23:30. 
+            <td>The day of the week or month when your ISP will reset your cap. Use 31 for the last day of the month.
+            Optionally you can add a time of day, like 23:30.
             <ul>
                 <li>So for monthly you would enter <code>20&nbsp;23:30</code>, meaning the 20th of each month at 11:30PM.</li>
                 <li>For weekly <code>2&nbsp;4:00</code>, meaning every Tuesday at 4AM.</li>
@@ -265,11 +265,16 @@ If you're unlucky enough to have an ISP that uses strict download caps, you may 
 <p><code>-t-</code> Use it single-core<br>
     <code>-t0</code> Use multi-core for repairs but not for verify (prevents disk trashing)<br>
     <code>-t+</code> Always use multi-core<br>
-    <code>-N</code> Extend the search for missing blocks (par2cmdline 0.6+, explanation <a href="https://github.com/Parchive/par2cmdline/issues/65">see here</a>)<br>
+
     You may need to experiment a bit to get the best behaviour for your system.
 </p>
 <p>Should you have another variant of PAR2, you specify its required parameters here.</p>
 <p><strong>Note:</strong> if your system has problems with this program, you can force the use of the classic version by unchecking "Enable MultiCore Par2"</p>
+
+<h2 id="par2cmdline">Par2cmdline</h2>
+<p>On many Linux distributions, par2cmdline is used to repair jobs. However, in version 0.6.13 a 'feature' was introduced that causes less blocks to be found. In order to restore optimal behavior, users of par2cmdline should add to <strong>Extra PAR2 parameters</strong>:
+<p><code>-N</code> Extend the search for missing blocks (par2cmdline 0.6+, explanation <a href="https://github.com/Parchive/par2cmdline/issues/65">see here</a>)<br>
+
 <h2 id="toc8"><span>Nice to reduce CPU priority</span></h2>
 <p><a name="nice"></a> When SABnzbd runs external tools like <strong>par2</strong> and <strong>unrar</strong>, these tools may use up all CPU capacity.
     If you set parameters in the <strong>nice</strong> option box, the tool will be used (if installed).
