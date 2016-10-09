@@ -28,7 +28,7 @@ redirect_from: "/wiki/advanced/automation-support"
 
 <p><span class="label label-primary">True/False</span> Indicates the API will return the status, for some functions it's always <code>true</code>, even if the operation failed. Sorry about that!
 {% highlight json %}
-{  
+{
     "status":true
 }
 {% endhighlight %}
@@ -393,7 +393,7 @@ redirect_from: "/wiki/advanced/automation-support"
 <p>Returns the <code>nzo_id</code> of the job:</p>
 {% highlight json %}
 {
-    "status": true, 
+    "status": true,
     "nzo_ids": ["SABnzbd_nzo_kyt1f0"]
 }
 {% endhighlight %}
@@ -488,11 +488,11 @@ redirect_from: "/wiki/advanced/automation-support"
 <pre><code>api?mode=switch&amp;value=NZO_ID_1&amp;value2=NZO_ID_2</code></pre>
 <p>You can also move to a specific location in the queu, where <code>0</code> is the top of the queue:</p>
 <pre><code>api?mode=switch&amp;value=NZO_ID&amp;value2=2</code></pre>
-<p>Both commands will return the new position and priority, since a job's location is also dependent on its priority:</p> 
+<p>Both commands will return the new position and priority, since a job's location is also dependent on its priority:</p>
 {% highlight json %}
 {
     "result": {
-        "priority": 0, 
+        "priority": 0,
         "position": 2
     }
 }
@@ -530,8 +530,8 @@ redirect_from: "/wiki/advanced/automation-support"
 <pre><code>api?mode=change_opts&amp;value=NZO_ID&amp;value2=0</code></pre>
 
 <h2 id="rename">Change job name <span class="label label-primary">True/False</span></h2>
-<p>Change name and password of job with <code>nzo_id</code>. 
-<p><span class="label label-warning">NOTE</span> <code>value3</code> can be empty, but to set a password <code>value</code> and <code>value2</code> must also be filled, using the current name. 
+<p>Change name and password of job with <code>nzo_id</code>.
+<p><span class="label label-warning">NOTE</span> <code>value3</code> can be empty, but to set a password <code>value</code> and <code>value2</code> must also be filled, using the current name.
 <pre><code>api?mode=queue&amp;name=rename&amp;value=NZO_ID&amp;value2=NEW_NAME&amp;value3=PASSWORD</code></pre>
 <p>Or you can set a password as part of the new name in <code>value2</code>, see: <a href="/wiki/advanced/password-protected-rars">RAR with password</a>.
 {% raw %}<pre><code>api?mode=queue&amp;name=rename&amp;value=NZO_ID&amp;value2=NEW_NAME{{PASSWORD}}</code></pre>{% endraw %}
@@ -577,7 +577,7 @@ redirect_from: "/wiki/advanced/automation-support"
 {% endhighlight %}
 
 <h2 id="delete_nzf">Remove a file from a job</h2>
-<p>Remove a file using <code>nzo_id</code> of the job and <code>nzf_id</code> of the file. Returns the <code>nzf_id</code> of removed file. 
+<p>Remove a file using <code>nzo_id</code> of the job and <code>nzf_id</code> of the file. Returns the <code>nzf_id</code> of removed file.
 <pre><code>api?mode=queue&amp;name=delete_nzf&amp;value=NZO_ID&amp;value2=NZF_ID</code></pre>
 
 <hr>
@@ -867,8 +867,8 @@ redirect_from: "/wiki/advanced/automation-support"
 
 <h2 id="retry">Retry history item <span class="label label-primary">True/False</span></h2>
 <p>Retry history item(s) based on <code>nzo_id</code>. Optionally provide a <code>password</code> and an additional NZB as <code>POST multipart/form-data</code> in the <code>nzbfile</code> field.</p>
-<p><span class="label label-warning">NOTE</span> Pay attention to the different variable names used here: <code>job</code> and <code>nzbfile</code>.</p>
-<pre><code>api?mode=retry&amp;job=NZO_ID&amp;password=password</code></pre>
+<p><span class="label label-warning">NOTE</span> Pay attention to the different variable names used here: <code>value</code> and <code>nzbfile</code>.</p>
+<pre><code>api?mode=retry&amp;value=NZO_ID&amp;password=password</code></pre>
 
 <h2 id="retry_all">Retry all history items <span class="label label-primary">True/False</span></h2>
 <p>Will retry all failed jobs in the history. However, you are not able to supply passwords or extra NZB's.
@@ -888,7 +888,7 @@ redirect_from: "/wiki/advanced/automation-support"
 
 <hr>
 <h1 id="other_main">Other functions</h1>
-<p><span class="label label-warning">NOTE</span> Other functions are listed below, some straightforward commands are described only in this table and can simply be activated by calling:</p> 
+<p><span class="label label-warning">NOTE</span> Other functions are listed below, some straightforward commands are described only in this table and can simply be activated by calling:</p>
 <pre><code>api?mode=FUNCTION</code></pre>
 
 <table class="table table-bordered table-hover">
@@ -1019,13 +1019,13 @@ redirect_from: "/wiki/advanced/automation-support"
     </tbody>
 </table>
 {% highlight json %}
-{  
-    "status":{  
+{
+    "status":{
         "localipv4":"192.168.0.1",
         "ipv6":null,
         "publicipv4":"46.00.00.103",
         "dnslookup":"OK",
-        "folders":[  
+        "folders":[
             "Lost.Folder.BRRip.x264.1080p"
         ],
         "weblogfile":null,
@@ -1039,11 +1039,11 @@ redirect_from: "/wiki/advanced/automation-support"
         "loglevel":"0",
         "logfile":"C:\\Users\\xxx\\AppData\\Local\\sabnzbd\\logs\\sabnzbd.log",
         "configfn":"C:\\Users\\xxx\\AppData\\Local\\sabnzbd\\sabnzbd.ini",
-        "warnings":[  
+        "warnings":[
 
         ],
-        "servers":[  
-            {  
+        "servers":[
+            {
                 "servername":"Frugal",
                 "servertotalconn":25,
                 "serverssl":0,
@@ -1052,20 +1052,20 @@ redirect_from: "/wiki/advanced/automation-support"
                 "serveractive":true,
                 "servererror":"",
                 "serverpriority":0,
-                "serverconnections":[  
-                    {  
+                "serverconnections":[
+                    {
                         "thrdnum":1,
                         "nzo_name":"Movie.BRRip.x264.1080p",
                         "nzf_name":"93a4ec7c37752640deab48dabb46b164.01",
                         "art_name":"1467157804579212986$gps@gopoststuff"
                     },
-                    {  
+                    {
                         "thrdnum":2,
                         "nzo_name":"Movie.BRRip.x264.1080p",
                         "nzf_name":"93a4ec7c37752640deab48dabb46b164.02",
                         "art_name":"1467157807935349477$gps@gopoststuff"
                     },
-                    {  
+                    {
                         "thrdnum":3,
                         "nzo_name":"Movie.BRRip.x264.1080p",
                         "nzf_name":"93a4ec7c37752640deab48dabb46b164.03",
@@ -1073,7 +1073,7 @@ redirect_from: "/wiki/advanced/automation-support"
                     }
                 ]
             },
-            {  
+            {
                 "servername":"Nextgennews",
                 "servertotalconn":15,
                 "serverssl":0,
@@ -1117,19 +1117,19 @@ redirect_from: "/wiki/advanced/automation-support"
 <p>Return download statistics in bytes, total and per-server.
 <pre><code>api?mode=server_stats</code></pre>
 {% highlight json %}
-{  
+{
     "day":2352634799,
     "week":32934490677,
     "month":179983557488,
     "total":728426161290,
-    "servers":{  
-        "eunews.server.com":{  
+    "servers":{
+        "eunews.server.com":{
             "week":19783288936,
             "total":163741252273,
             "day":2352634799,
             "month":90478917031
         },
-        "News.server.net":{  
+        "News.server.net":{
             "week":13151201741,
             "total":165783396295,
             "day":0,
@@ -1164,8 +1164,8 @@ Example of filtering the server settings by keyword:
 <h2 id="warnings">Get all active warnings </h2>
 <pre><code>api?mode=warnings</code></pre>
 {% highlight json %}
-{  
-    "warnings":[  
+{
+    "warnings":[
         "2015-12-26 19:53:42,567\nWARNING\n[decoder] Badly formed yEnc article in <Article: article=, bytes=, partnum=, art_id=>",
         "2015-12-26 19:54:45,861\nWARNING\n[assembler] <Article: article=, bytes=, partnum=, art_id=> missing",
         "2015-12-26 20:44:28,336\nWARNING\n[decoder] CRC Error in <Article: article=, bytes=, partnum=, art_id=> (4134546D -> A8F07173)",
