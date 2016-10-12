@@ -7,7 +7,9 @@ title: Fedora and RHEL/CentOS/Scientific Linux RPM
     The team cannot support these packages!
 </p>
 
+
 <hr>
+<h2>RPM's</h2>
 <p>SABnzbd RPMs are prepared for Fedora and RHEL and clones (CentOS, Scientific Linux).<br>
     Once installed, you can start SABnzbd by typing SABnzbd in a terminal or in the application menu (Internet-&gt;SABnzbd).
 </p>
@@ -27,7 +29,73 @@ Another package is maintained by user thecubic, he provides src and bin RPMs fro
     For automatic updates, copy the <a href="https://dl.dropboxusercontent.com/u/14500830/SABnzbd/RHEL-CentOS/SABnzbd-5.repo">SABnzbd-5.repo (RHEL5)</a> or the <a href="https://dl.dropboxusercontent.com/u/14500830/SABnzbd/RHEL-CentOS/SABnzbd-6.repo">SABnzbd-6.repo (RHEL6)</a> file to your /etc/yum.repos.d/ directory. Then run "yum install SABnzbd".<br>
     Otherwise, browse the <a href="https://dl.dropboxusercontent.com/u/14500830/SABnzbd/index.html">repository</a> and install the rpm manually.
 </p>
-<hr>
+
 <p>For questions and further information, check <a href="http://forums.sabnzbd.org/index.php?topic=4305" target="_blank">the forum</a><br>
     Reach the author using the <a href="http://forums.sabnzbd.org/index.php?action=pm;sa=send;u=11709" target="_blank">forum's PM system</a>
 </p>
+<hr>
+
+<h2>From sources</h2>
+<p>Because the RPM's might not always be up-to-date, we include a guide to install from source, provided by user <strong>jpriddy</strong>.
+<ol>
+    <li>Make sure you have access to the default rpm channel.  For RHEL that means enabling the repos like so (you will of course need an active subscription that is subscribed):
+{% highlight sh %}
+subscription-manager repos --enable=rhel-7-server-rpms
+{% endhighlight %}
+        For CentOS there is no subscriptions to speak of, so just make sure you have not modified the default reop settings.
+    </li>
+    <li>For RHEL/CentOS add the nux repo for the 'bad' copyright/source encumbered rpms such as unrar.  <br>nux may also require you to have a source for its prereqs from EPEL:
+        <a href="http://fedoraproject.org/wiki/EPEL/FAQ#How_can_I_install_the_packages_from_the_EPEL_software_repository.3F">http://fedoraproject.org/wiki/EPEL/FAQ#How_can_I_install_the_packages_from_the_EPEL_software_repository.3F</a><br>
+        <a href="https://li.nux.ro/repos.html">https://li.nux.ro/repos.html</a>
+    </li>
+    <li>Install git: {% highlight sh %}yum install git{% endhighlight %}</li>
+
+    <li>Install the prereqs.  Example below (there may be more prereqs I neglected to track):
+        {% highlight sh %}yum install par2cmdline python-yenc unrar{% endhighlight %}
+    </li>
+    <li>Clone the sabnzbd git repo to <codee>/opt</code> or somewhere else applicable and switch to the <code>master</code> branch:
+{% highlight sh %}
+git clone https://github.com/sabnzbd/sabnzbd
+git checkout master
+{% endhighlight %}
+    </li>
+    <li>Optionally create a sab user/group, optionally add user to shared group, and change ownership of the sab install to said user/group.  Example:
+{% highlight sh %}
+useradd usenet
+chown -R usenet:usenet /opt/usenet
+{% endhighlight %}
+
+</code></pre>
+    </li>
+    <li>Optionally create a startup item for systemd and copy it to /etc/systemd/system/ .  Call it sabnzbd.service or something else applicable.  Note that I use uid/gid of usenet, make sure this matches with the user/group you set up:
+{% highlight sh %}
+[root@tools]# cat /etc/systemd/system/sabnzbd.service
+#
+# Systemd unit file for SABnzbd
+#
+
+[Unit]
+Description=SABnzbd Daemon
+
+[Service]
+Type=forking
+User=usenet
+Group=usenet
+ExecStart=/usr/bin/python /opt/sabnzbd/SABnzbd.py --daemon --config-file=/opt/sabnzbd/sabnzbd_config.ini -s 0.0.0.0
+GuessMainPID=no
+
+[Install]
+WantedBy=multi-user.target
+{% endhighlight %}
+
+    Be sure and run a systemctl daemon-reload after editing any systemd files.
+    </li>
+<li>Enable and start the newly created sabnzbd service:
+{% highlight sh %}
+systemctl enable sabnzbd
+systemctl start sabnzb
+{% endhighlight %}
+
+</li>
+<li>Browse to <code>$yourserver:8080</code>, Profit.</li>
+</ol>
