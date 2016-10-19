@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>{{ site.name }} - {{ page.title }}</title>
-    
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="/css/lightslider.min.css" type="text/css" />
     <link rel="stylesheet" href="/css/featherlight.min.css" type="text/css" />
-    <link rel="stylesheet" href="/css/sabnzbd.css" type="text/css" />
+    <link rel="stylesheet" href="/css/sabnzbd.css?v={{ site.time | date: '%d%m%Y' }}" type="text/css" />
 
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/ico" />
     <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76-precomposed.png" />
@@ -34,7 +34,7 @@
     <meta name="robots" content="noindex" />
     {% endif %}
 </head>
-<body> 
+<body>
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
@@ -76,5 +76,5 @@
         </div>
     </nav>
 
-    
-        
+
+

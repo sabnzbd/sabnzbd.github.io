@@ -55,7 +55,7 @@ footer a:hover {
     font-weight: bold;
     color: black;
     margin-right: 1px;
-} 
+}
 
 #navbar>ul>li>a:hover {
     background-color: #e7e7e7;
@@ -72,7 +72,7 @@ footer a:hover {
     background-color: #373737
 }
 
-.navbar-default .navbar-toggle:focus, 
+.navbar-default .navbar-toggle:focus,
 .navbar-default .navbar-toggle:hover {
     background-color: transparent;
 }
@@ -113,7 +113,7 @@ footer a:hover {
 .download-buttons-wrapper {
     position: absolute;
     min-width: 380px;
-    top: 50%;   
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -196,7 +196,7 @@ footer a:hover {
     border-radius: 30px !important;
 }
 
-.lSSlideOuter .lSPager.lSpg>li.active a, 
+.lSSlideOuter .lSPager.lSpg>li.active a,
 .lSSlideOuter .lSPager.lSpg>li:hover a {
     background-color: #F5B907;
 }
@@ -280,6 +280,18 @@ footer a:hover {
     border-bottom: 1px solid #ddd;
 }
 
+.title-page a {
+    float: right;
+    font-size: small;
+    text-decoration: none;
+    border: 0;
+    margin-top: 16px;
+}
+
+.title-page a span:first-of-type {
+    margin-right: 5px;
+}
+
 .alert-old-sabnzbd .glyphicon,
 .alert-translate .glyphicon {
     float: left;
@@ -345,7 +357,7 @@ footer a:hover {
 #wiki-side-bar ul {
     list-style: none;
     padding-left: 0;
-    
+
 }
 
 #wiki-side-bar ul a {
@@ -408,7 +420,7 @@ aside {
     img.slideshow {
         margin: 10px 0px;
     }
-    
+
     .navbar-wiki-button {
         display: block;
     }
@@ -444,6 +456,10 @@ aside {
     .main-logo,
     .logo-text-pages img {
         display: none
+    }
+
+    .title-page a span:first-of-type {
+        display: none;
     }
 
     .downloads-row {
@@ -490,7 +506,7 @@ aside {
 }
 
 /* Special for desktops */
-@media only screen and (min-width: 999px) { 
+@media only screen and (min-width: 999px) {
     #wiki-side-bar {
         display: block !important;
     }
