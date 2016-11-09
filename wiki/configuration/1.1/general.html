@@ -9,7 +9,7 @@ title: General
             <td><strong>Host</strong></td>
             <td>
                 The hostname that will be used to access sabnzbd.
-                
+
                 <ul>
                     <li><code>127.0.0.1</code> or <code>[::1]</code> or <code>localhost</code> <em>(default)</em> = Access from this computer only</li>
                     <li>empty = Finds and listens on your local (ipv4) ip address. Used for accessing from other computers. localhost will not work anymore so update your bookmarks.</li>
@@ -40,13 +40,14 @@ title: General
             <td>The program supports more languages.</td>
         </tr>
         <tr>
-            <td><strong>List of local network ranges</strong></td>
-            <td>Specify a range of local network ranges on which the External internet access rule does not apply and the full interface is available to. All local network addresses start with these prefixes (often <code>192.168.1.</code>)</td>
+            <td><strong>External internet access</strong></td>
+            <td>You can set access rights for systems outside your local network. <span class="label label-warning">NOTE</span> Requires List of local network ranges to be defined</td>
         </tr>
         <tr>
-            <td><strong>External internet access</strong></td>
-            <td>You can set access rights for systems outside your local network.</td>
+            <td><strong>List of local network ranges</strong></td>
+            <td>Specify a range of local network ranges (seperated by a comma) on which the External internet access rule does not apply and the full interface is available to. All local network addresses start with these prefixes (often <code>192.168.1.</code>)</td>
         </tr>
+
         <tr>
             <td><strong>API Key</strong></td>
             <td>This is the <em>secret key</em> that is needed in <a href="/wiki/advanced/automation-support">API calls</a>. Note that when you click the Change button, you'll need to tell your utilities the new key.</td>
@@ -98,7 +99,7 @@ title: General
                     <li><code>0</code> = Disable Cache </li>
                     <li><code>-1</code> = Unlimited cache  to use for cache.</li>
                 </ul>
-                 See <a href="/wiki/advanced/highspeed-downloading">High speeds</a> for more information. 
+                 See <a href="/wiki/advanced/highspeed-downloading">High speeds</a> for more information.
 
             </td>
         </tr>
