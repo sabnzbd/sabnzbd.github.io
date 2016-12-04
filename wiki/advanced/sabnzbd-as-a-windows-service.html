@@ -50,7 +50,7 @@ net start SABnzbd</code></pre>
     </li>
 </ol>
 
-<p>That’s it!  SABnzbd is now installed and running as an “always on” service!
+<p>That’s it!  SABnzbd is now installed and running as an "always on" service!
 If all you need is to run SABnzbd as a service using the same settings used in the SABnzbd web interface-and you are not using network shares for your downloaded files-your work here is done.</p>
 <p>However, if you want to customize the way that the service runs, or if you need to have SABnzbd access shared drives across the network, please read through the following sections for further information. </p>
 
@@ -90,13 +90,13 @@ net stop SABhelper</code></pre>
 
 <h2>Enabling Network Share Access</h2>
 <p>By default the SABnzbd service will be installed to run as the "Local System" account. This allows full access to local hard drives, but not to network shares.
-If you are using network shares within SABnzbd to save or process your downloads, the main SABnsdb-server service must run as a local user account with network privileges instead of “Local System”.  Here’s how to make that change:</p>
+If you are using network shares within SABnzbd to save or process your downloads, the main SABnsdb-server service must run as a local user account with network privileges instead of "Local System".  Here’s how to make that change:</p>
 <ul>
     <li>Install SABnzbd as a service using the instructions in the above Installation section.</li>
     <li>Launch the Windows Service Manager utility. (Typically that’s done by typing SERVICES into your Windows Start menu’s search and choosing SERVICES from the results list)</li>
-    <li>In the Windows Services Manager, find the SABnzbd-service (it will be displayed as “SABnzbd Binary Newsreader”)  in the list of services and double-click it to access its settings.</li>
+    <li>In the Windows Services Manager, find the SABnzbd-service (it will be displayed as "SABnzbd Binary Newsreader")  in the list of services and double-click it to access its settings.</li>
     <li>Click the Logon tab.</li>
-    <li>Specify a different “Log on” account. (Make sure it is one that has administrative privileges and access to network shares).</li>
+    <li>Specify a different "Log on" account. (Make sure it is one that has administrative privileges and access to network shares).</li>
     <li>Apply the changes and close the Service Manager window.  </li>
 </ul>
 <p><span class="label label-warning">NOTE</span>  When using network shares with the SABnzbd service, you must use network (UNC) paths (<code>\\server\share</code>) instead of drive letters (<code>P:\</code>).</p>

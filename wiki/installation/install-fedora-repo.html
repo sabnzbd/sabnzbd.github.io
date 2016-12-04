@@ -16,9 +16,13 @@ title: Fedora and RHEL/CentOS/Scientific Linux RPM
 
 <h3>Third-party repositories</h3>
 <p>
-    SABnzbd requires unrar from <a href="http://rpmfusion.org/Configuration">RPM Fusion</a>.
-    For RHEL5/6, SABnzbd requires packages available in EPEL (<a href="https://fedoraproject.org/wiki/EPEL/FAQ#What_is_EPEL.3F">what is EPEL?</a>, <a href="https://fedoraproject.org/wiki/EPEL/FAQ#howtouse">Using EPEL</a>): par2cmdline, python-yenc, python27 for RHEL5, etc.
+    SABnzbd requires <code>unrar</code> from <a href="http://rpmfusion.org/Configuration">RPM Fusion</a>.
+    For RHEL5/6, SABnzbd requires additional packages available in EPEL: <code>par2cmdline, python-yenc, python27</code> for RHEL5, etc. (<a href="https://fedoraproject.org/wiki/EPEL/FAQ#What_is_EPEL.3F">what is EPEL?</a>, <a href="https://fedoraproject.org/wiki/EPEL/FAQ#howtouse">Using EPEL</a>)
 </p>
+
+<h3>Alternative source</h3>
+<p><span class="label label-warning">NOTE</span> Because the main source listed below is falling behind, we provide an alternative source by <strong>thecubic</strong> and a guide to install from sources.
+<p><strong>thecubic</strong> provides src and bin RPMs from <a href="https://copr.fedorainfracloud.org/coprs/thecubic/SABnzbd/" target="_blank">CentOS 5-6 and Fedora 23 to 26</a>.</p>
 
 <h3>Fedora install instructions</h3>
 <p>
@@ -26,18 +30,10 @@ title: Fedora and RHEL/CentOS/Scientific Linux RPM
     Otherwise, browse the <a href="https://dl.dropboxusercontent.com/u/14500830/SABnzbd/index.html">repository</a> and install the rpm manually.
 </p>
 
-<h3>Alternative source</h3>
-<p>
-Another package is maintained by user thecubic, he provides src and bin RPMs from <a href="https://copr.fedorainfracloud.org/coprs/thecubic/SABnzbd/" target="_blank">CentOS 6 through Fedora Rawhide</a>.</p>
-
 <h3>RHEL/CentOS/Scientific Linux install instructions</h3>
 <p>
-    For automatic updates, copy the <a href="https://dl.dropboxusercontent.com/u/14500830/SABnzbd/RHEL-CentOS/SABnzbd-5.repo">SABnzbd-5.repo (RHEL5)</a> or the <a href="https://dl.dropboxusercontent.com/u/14500830/SABnzbd/RHEL-CentOS/SABnzbd-6.repo">SABnzbd-6.repo (RHEL6)</a> file to your /etc/yum.repos.d/ directory. Then run "yum install SABnzbd".<br>
+    For automatic updates, copy the <a href="https://dl.dropboxusercontent.com/u/14500830/SABnzbd/RHEL-CentOS/SABnzbd-5.repo">SABnzbd-5.repo (RHEL5)</a> or the <a href="https://dl.dropboxusercontent.com/u/14500830/SABnzbd/RHEL-CentOS/SABnzbd-6.repo">SABnzbd-6.repo (RHEL6)</a> file to your <code>/etc/yum.repos.d/</code> directory. Then run <code>yum install SABnzbd</code>.<br>
     Otherwise, browse the <a href="https://dl.dropboxusercontent.com/u/14500830/SABnzbd/index.html">repository</a> and install the rpm manually.
-</p>
-
-<p>For questions and further information, check <a href="http://forums.sabnzbd.org/index.php?topic=4305" target="_blank">the forum</a><br>
-    Reach the author using the <a href="http://forums.sabnzbd.org/index.php?action=pm;sa=send;u=11709" target="_blank">forum's PM system</a>
 </p>
 
 <h3>CentOS 7.x specific guide</h3>
