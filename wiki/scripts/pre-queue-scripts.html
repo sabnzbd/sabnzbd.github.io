@@ -18,7 +18,7 @@ redirect_from: "/wiki/advanced/user-pre-queue-script"
 <h2 id="toc1"><span>Input parameters</span></h2>
 <p>All parameters (except 1) can be empty, meaning a default value.<br></p>
 <p>Please note: Use %1 in Windows scripts and $1 in Unix scripts. In Windows the parameters will be enclosed in double quotes ("my name").<br>
-    On Posix systems (macOS, Linux, Unix) the parameters will <strong>not</strong> have quotes at all. 
+    On Posix systems (macOS, Linux, Unix) the parameters will <strong>not</strong> have quotes at all.
 </p>
 <table class="table table-bordered table-hover table-not-fixed">
     <tbody>
@@ -32,7 +32,7 @@ redirect_from: "/wiki/advanced/user-pre-queue-script"
         </tr>
         <tr>
             <td>2</td>
-            <td>Post Processing (PP) flags: 
+            <td>Post Processing (PP) flags:
                 <ul>
                     <li><code>0</code> = Download</li>
                     <li><code>1</code> = +Repair</li>
@@ -51,13 +51,13 @@ redirect_from: "/wiki/advanced/user-pre-queue-script"
         </tr>
         <tr>
             <td>5</td>
-            <td>Priority 
+            <td>Priority
                 <ul>
                     <li><code>-100</code> = Default</li>
-                    <li><code>-2</code> = Paused</li> 
-                    <li><code>-1</code> = Low</li> 
-                    <li><code>0</code> = Normal</li> 
-                    <li><code>1</code> = High</li> 
+                    <li><code>-2</code> = Paused</li>
+                    <li><code>-1</code> = Low</li>
+                    <li><code>0</code> = Normal</li>
+                    <li><code>1</code> = High</li>
                     <li><code>2</code> = Force</li>
                 </ul>
             </td>
@@ -110,7 +110,7 @@ SABnzbd uses the first 7 lines of output, so they should only contain proper dat
                 <ul>
                     <li><code>0</code> = Refuse</li>
                     <li><code>1</code> = Accept</li>
-                    <li><code>1</code> = Accept but fail, this way post-processing scripts for the job will be activated if necessary.</li>
+                    <li><code>2</code> = Accept but fail, this way post-processing scripts for the job will be activated if necessary.</li>
                 </ul>
             </td>
         </tr>
@@ -120,7 +120,7 @@ SABnzbd uses the first 7 lines of output, so they should only contain proper dat
         </tr>
         <tr>
             <td>3</td>
-            <td>Post Processing (PP) flags: 
+            <td>Post Processing (PP) flags:
                 <ul>
                     <li><code>0</code> = Download</li>
                     <li><code>1</code> = +Repair</li>
@@ -139,13 +139,13 @@ SABnzbd uses the first 7 lines of output, so they should only contain proper dat
         </tr>
         <tr>
             <td>6</td>
-            <td>Priority 
+            <td>Priority
                 <ul>
                     <li><code>-100</code> = Default</li>
-                    <li><code>-2</code> = Paused</li> 
-                    <li><code>-1</code> = Low</li> 
-                    <li><code>0</code> = Normal</li> 
-                    <li><code>1</code> = High</li> 
+                    <li><code>-2</code> = Paused</li>
+                    <li><code>-1</code> = Low</li>
+                    <li><code>0</code> = Normal</li>
+                    <li><code>1</code> = High</li>
                     <li><code>2</code> = Force</li>
                 </ul>
             </td>
@@ -183,7 +183,7 @@ except:
     sys.exit(1)    # exit with 1 causes SABnzbd to ignore the output of this script
 
 prio = -100    # Default
-if downloadsize &lt; 50111222:
+if downloadsize > 50111222:
     prio = 2
 
 print "1"    # Accept
@@ -191,8 +191,8 @@ print
 print
 print
 print
-print prio    
+print prio
 print
 # 0 means OK
-sys.exit(0) 
+sys.exit(0)
 {% endhighlight %}
