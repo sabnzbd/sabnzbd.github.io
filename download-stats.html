@@ -1,5 +1,5 @@
 ---
-title: Download statistics
+title: Older releases and download statistics
 ---
 
 {% include logo_container.html %}
@@ -25,8 +25,8 @@ title: Download statistics
         showStats(JSON.parse(sessionStorage.releases_data))
     } catch(e) {
         // If not available, get the data from Github
-        $.ajax('https://api.github.com/repos/sabnzbd/sabnzbd/releases', { 
-            timeout: 3000 
+        $.ajax('https://api.github.com/repos/sabnzbd/sabnzbd/releases', {
+            timeout: 3000
         }).done(function(releases) {
             // Store the data
             sessionStorage.releases_data = JSON.stringify(releases)
@@ -44,11 +44,11 @@ title: Download statistics
                                     '<a href="'+release.html_url+'" target="_blank">'+release.name+'</a> ' +
                                     '<small>released '+moment().diff(moment(release.published_at), 'days')+' days ago</small>' +
                                 '</h3>');
-        
+
             // Table
             var theReleaseTable = $('<table class="table table-stats table-striped table-hover">');
             theReleaseTable.append('<thead><tr><th>#</th><th>File</th><th style="width: 100px">Hits</th></thead>');
-            
+
             // Each file
             var totalDownloads = 0;
             $.each(release.assets, function(key, file) {
@@ -62,7 +62,7 @@ title: Download statistics
                     totalDownloads += file.download_count;
                 }
             })
-            
+
             /*
             // Add downloads/day
             theReleaseTable.append('<tr>' +
@@ -77,12 +77,12 @@ title: Download statistics
                                         '<td><strong>Total</strong></td>' +
                                         '<td><strong>'+totalDownloads+'</strong></td>' +
                                     '</tr>')
-            
-            
+
+
             // Add this table
             theContainer.append(theReleaseTable)
             theContainer.append('<hr/>')
         })
         return false;
-    }  
+    }
 </script>
