@@ -1,0 +1,24 @@
+---
+title: SSL Ciphers
+---
+<p><span class="label label-warning">NOTE</span> Only applicable to SABnzbd 1.2.0+</p>
+
+<h2>Summary</h2>
+<p>Setting SSL Ciphers to the following value will lower encryption strength, increase performance (download speed) and is supported by virtually all nesservers:</p>
+<pre><code>RC4-MD5</code></pre>
+<p>Increases in download speed are most notable (+20%) on systems where CPU power is the limiting factor.</p>
+
+<h2>What are SSL ciphers?</h2>
+
+<p>When you connect to a newsserver using SSL/TLS, the firsts step in the connection process is for SABnzbd and the server to agree how the connection will be secured. The SSL/TLS specifications, such as TLSv1.2 or SSLv3, define which protocols can and should be used. These protocols define how the security keys will be exchanged and how the actual data will be encrypted. As you can imagine, stronger encryption requires more CPU power to decode. </p>
+<p>During the initial stage of the connection, the handshake, SABnzbd and the server will let each other know which protocols they support and then use the strongest available on both. By modifying the SSL Ciphers setting, you can specify what SABnzbd should report as available protocols.
+<p>When there are active connections, you can see which protocol is being used for each server in the Status and Interface settings (<span class="glyphicon glyphicon-wrench"></span>, Connections). For example: <code>TLSv1.2 (DHE-RSA-AES128-SHA)</code>.
+
+<h2>What are the options?</h2>
+<p>SABnzbd will use the OpenSSL library that's available on your system or that's part of Python.
+<p>You can see which ciphers are available on your system by executing <code>openssl ciphers -v</code> on the command line. All the strings on the left of the table can be used as an SSL Ciphers setting.
+<p>It is also possible to specify multiple single cipher settings or a family of ciphers by specifying it in OpenSSL Cipher format. More information can be found here: <a href="https://www.openssl.org/docs/man1.0.2/apps/ciphers.html" target="_blanl">https://www.openssl.org/docs/man1.0.2/apps/ciphers.html</a>.
+
+<h2>What are the risks?</h2>
+<p>Setting your SSL Ciphers to <code>RC4-MD5</code> will not suddenly expose your traffic to the world. There is evidence that this and similar protocols can be decrypted, but it seems to require a large amount of resources. <a href="https://blog.cloudflare.com/killing-rc4-the-long-goodbye/">This article</a> describes the implications in more detail.</p>
+<p>It's up to you to decide how valuable your usenet data is. It should also be noted that your internet service provider will always be able to see to which IP-address you are connecting, with or without SSL. Enabling SSL only shields the contents of the connection, not the target.
