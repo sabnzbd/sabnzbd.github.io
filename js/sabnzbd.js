@@ -30,8 +30,8 @@ try {
     parseGitHubResults(JSON.parse(sessionStorage.releases_data))
 } catch(e) {
     // If not available, get the data from Github
-    $.ajax('https://api.github.com/repos/sabnzbd/sabnzbd/releases', { 
-        timeout: 3000 
+    $.ajax('https://api.github.com/repos/sabnzbd/sabnzbd/releases', {
+        timeout: 3000
     }).done(function(releases) {
         // Store the data
         sessionStorage.releases_data = JSON.stringify(releases)
@@ -66,7 +66,7 @@ function parseGitHubResults(releases) {
             // Set the label and download-link for big button
             parseAssets(release.assets, platform, true)
             stableBox.children('h4').text('Download ' + release.name.replace('SABnzbd', '').trim())
-            
+
             // Set link to source-code on Downloads page
             $('#download-links-stable .download-link-source').attr('href', release.html_url)
 
@@ -85,7 +85,7 @@ function parseGitHubResults(releases) {
 
             // Stop iterating over releases
             return false
-        } 
+        }
         // Is this the first beta?
         else if(!have_beta) {
             // Set the label and download-link for big button
@@ -97,7 +97,6 @@ function parseGitHubResults(releases) {
 
             // Set the changelog info
             $('#beta-changelog .changelog-content').html(converter.makeHtml(release.body))
-
 
             // General URL if no platform (mobile)
             if(!platform) {
@@ -143,6 +142,13 @@ function parseAssets(assets, platform, stable_release) {
             $.each(['win32-setup', 'win32-bin', 'osx', 'src'], function(index, platform_search) {
                 if(asset.name.indexOf(platform_search) !== -1) {
                     linksBox.find('.download-link-' + platform_search).attr('href', asset.browser_download_url)
+
+                    // Show message to beta-users that we want feedback
+                    if(!stable_release) {
+                        linksBox.find('.download-link-' + platform_search).click(function() {
+                            $.featherlight('#beta-please-report');
+                        })
+                    }
                 }
             })
         }
@@ -170,7 +176,7 @@ $(document).ready(function() {
             pause: 4000,
             nextHtml: '<span class="glyphicon glyphicon-menu-right"></span>',
             prevHtml: '<span class="glyphicon glyphicon-menu-left"></span>'
-        });  
+        });
     }
-    
+
 })

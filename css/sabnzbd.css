@@ -20,14 +20,16 @@ pre {
 }
 
 .content-container a,
-footer a {
+footer a,
+.featherlight-content a {
     color: #727272;
     text-decoration: none;
     border-bottom: 1px solid #5A5A5A;
 }
 
 .content-container a:hover,
-footer a:hover {
+footer a:hover,
+.featherlight-content a:hover {
     text-decoration: none;
     color: black;
 }
@@ -266,6 +268,12 @@ footer a:hover {
 #stable-changelog,
 #beta-changelog {
     padding: 0px 22px 22px;
+}
+
+#beta-please-report a,
+#beta-please-report span {
+    line-height: 1.7em;
+    margin-left: 5px;
 }
 
 /*** Wiki ****/
