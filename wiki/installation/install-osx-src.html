@@ -4,7 +4,7 @@ title: Install SABnzbd for macOS
 
 
 <h1 id="toc0"><span>The official App</span></h1>
-<p>If you just want to use SABnzbd, we provide a packaged application (for PPC/x86) available  <a href="/downloads">here</a>. <br/>Pick the right folder for your macOS version and drag SABnzbd to the Applications folder.</p>
+<p>If you just want to use SABnzbd, we provide a packaged application (x86-only) available  <a href="/downloads">here</a>. <br/>Pick the right folder for your macOS version and drag SABnzbd to the Applications folder.</p>
 <h1 id="toc1"><span>How to run from sources on macOS</span></h1>
 <p>If for some reason you don't want to use the app, you can install from source.</p>
 
@@ -50,6 +50,17 @@ then
 fi</code>
 </pre>
 </div>
+Should you ever need to run the compiled app from Terminal, this is the way:
+<div class="code">
+    <pre><code>/Applications/SABnzbd.app/Content/MacOS/SABnzbd"</code>
+    </pre>
+</div>
+If you need to see the logging output directly tro the console:
+<div class="code">
+    <pre><code>/Applications/SABnzbd.app/Content/MacOS/SABnzbd --console"</code>
+    </pre>
+</div>
+
 <div class="footnotes-footer">
     <div class="title">Footnotes</div>
     <div class="footnote-footer" id="footnote-1">1. This part has been contributed by [<a href="http://iwonder.be/index.php/2008/05/run-sabnzbd-in-daemon-mode-on-leopard/" target="_blank">http://iwonder.be/index.php/2008/05/run-sabnzbd-in-daemon-mode-on-leopard/</a>]</div>
