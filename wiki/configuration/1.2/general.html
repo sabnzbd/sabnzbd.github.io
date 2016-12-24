@@ -37,31 +37,6 @@ title: General
             <td>The program supports more languages.</td>
         </tr>
         <tr>
-            <td><strong>Web Username/Password</strong></td>
-            <td>You may want to limit access to the web interface to people knowing a username and password for the interface. <span class="label label-warning">WARNING</span> this is not a very secure method!</td>
-        </tr>
-        <tr>
-            <td><strong>External internet access</strong></td>
-            <td>You can set access rights for systems outside your local network. <span class="label label-warning">NOTE</span> Requires List of local network ranges to be defined</td>
-        </tr>
-        <tr>
-            <td><strong>List of local network ranges</strong></td>
-            <td>Specify a range of local network ranges (seperated by a comma) on which the External internet access rule does not apply and the full interface is available to. All local network addresses start with these prefixes (often <code>192.168.1.</code>)</td>
-        </tr>
-        <tr>
-            <td><strong>Don't use API key</strong></td>
-            <td>Some utilities may not support the API key. This option remove the requirement. Be warned that this makes your system less secure! </td>
-        </tr>
-        <tr>
-            <td><strong>API Key</strong></td>
-            <td>This is the <em>secret key</em> that is needed in <a href="/wiki/advanced/automation-support">API calls</a>. Note that when you click the Change button, you'll need to tell your utilities the new key.</td>
-        </tr>
-    </tbody>
-</table>
-<h2 id="toc1"><span>HTTPS support</span></h2>
-<table class="table table-bordered table-hover">
-    <tbody>
-        <tr>
             <td><strong>Enable HTTPS</strong></td>
             <td>Enable the webserver to use HTTPS. For more information, see: <a href="/wiki/advanced/https">HTTPS</a>.</td>
         </tr>
@@ -79,6 +54,46 @@ title: General
         </tr>
     </tbody>
 </table>
+<h2><span>Security</span></h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Web Username/Password</strong></td>
+            <td>You may want to limit access to the web interface to people knowing a username and password for the interface. <span class="label label-warning">WARNING</span> this is not a very secure method!</td>
+        </tr>
+        <tr>
+            <td><strong>External internet access</strong></td>
+            <td>You can set access rights for systems outside your local network. <span class="label label-warning">NOTE</span> Requires List of local network ranges to be defined</td>
+        </tr>
+        <tr>
+            <td><strong>List of local network ranges</strong></td>
+            <td>Specify a range of local network ranges (seperated by a comma) on which the External internet access rule does not apply and the full interface is available to. All local network addresses start with these prefixes (often <code>192.168.1.</code>)</td>
+        </tr>
+        <tr>
+            <td><strong>API Key</strong></td>
+            <td>This is the <em>secret key</em> that is needed in <a href="/wiki/advanced/automation-support">API calls</a>. Note that when you click the Change button, you'll need to tell your utilities the new key.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2><span>Switches</span></h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Launch browser on startup</strong></td>
+            <td>Enable to auto-launch of the browser when SABnzbd is opened.</td>
+        </tr>
+        <tr>
+            <td><strong>Check for new release</strong></td>
+            <td>If enabled, SABnzbd will check once a week whether a new release has been published.</td>
+        </tr>
+        <tr>
+            <td><strong>HTTPS certificate verification</strong></td>
+            <td>Verify certificates when connecting to indexers and RSS-sources using HTTPS. Requires Python 2.7.9+, can be enabled in most cases without problems, but some websites do not have proper certificates and some systems might not be configured correctly. [only 1.2.0+]</td>
+        </tr>
+    </tbody>
+</table>
+
 <h2 id="toc2"><span>Tuning</span></h2>
 <table class="table table-bordered table-hover">
     <tbody>
