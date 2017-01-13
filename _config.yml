@@ -1,6 +1,6 @@
 name: SABnzbd.org
 
-wiki_version: '1.1' # Needs to be a string, for string-comparison
+wiki_version: '1.2' # Needs to be a string, for string-comparison
 
 gems:
   - jekyll-redirect-from
