@@ -1,5 +1,6 @@
 ---
 title: Fedora and RHEL/CentOS/Scientific Linux RPM
+redirect_from: "/wiki/installation/install-fedora-repo"
 ---
 
 <p><strong>PLEASE NOTE:</strong><br>
@@ -10,35 +11,20 @@ title: Fedora and RHEL/CentOS/Scientific Linux RPM
 
 <hr>
 <h2>RPM's</h2>
-<p>SABnzbd RPMs are prepared for Fedora and RHEL and clones (CentOS, Scientific Linux).<br>
-    Once installed, you can start SABnzbd by typing SABnzbd in a terminal or in the application menu (Internet-&gt;SABnzbd).
+<p>SABnzbd RPMs are prepared for Fedora, RHEL and clones (CentOS, Scientific Linux).<br>
+    Once installed, you can start SABnzbd by typing <code>sabnzbd</code> in a terminal.
 </p>
 
 <h3>Third-party repositories</h3>
-<p>
-    SABnzbd requires <code>unrar</code> from <a href="http://rpmfusion.org/Configuration">RPM Fusion</a>.
-    For RHEL5/6, SABnzbd requires additional packages available in EPEL: <code>par2cmdline, python-yenc, python27</code> for RHEL5, etc. (<a href="https://fedoraproject.org/wiki/EPEL/FAQ#What_is_EPEL.3F">what is EPEL?</a>, <a href="https://fedoraproject.org/wiki/EPEL/FAQ#howtouse">Using EPEL</a>)
-</p>
 
-<h3>Alternative source</h3>
-<p><span class="label label-warning">NOTE</span> Because the main source listed below is falling behind, we provide an alternative source by <strong>thecubic</strong> and a guide to install from sources.
-<p><strong>thecubic</strong> provides src and bin RPMs from <a href="https://copr.fedorainfracloud.org/coprs/thecubic/SABnzbd/" target="_blank">CentOS 5-6 and Fedora 23 to 26</a>.</p>
+<p>The following repositories have been made available and work with RPM based distributions such as Fedora, Red Hat, CentOS, Scientific Linux, and Oracle Linux:</p>
+<ul>
 
-<h3>Fedora install instructions</h3>
-<p>
-    If you want to get updates automatically, you can install the <a href="https://dl.dropboxusercontent.com/u/14500830/SABnzbd/16/SABnzbd-release-1-3.noarch.rpm">SABnzbd-release RPM</a> and then run <code>yum install SABnzbd</code>.<br>
-    Otherwise, browse the <a href="https://dl.dropboxusercontent.com/u/14500830/SABnzbd/index.html">repository</a> and install the rpm manually.
-</p>
-
-<h3>RHEL/CentOS/Scientific Linux install instructions</h3>
-<p>
-    For automatic updates, copy the <a href="https://dl.dropboxusercontent.com/u/14500830/SABnzbd/RHEL-CentOS/SABnzbd-5.repo">SABnzbd-5.repo (RHEL5)</a> or the <a href="https://dl.dropboxusercontent.com/u/14500830/SABnzbd/RHEL-CentOS/SABnzbd-6.repo">SABnzbd-6.repo (RHEL6)</a> file to your <code>/etc/yum.repos.d/</code> directory. Then run <code>yum install SABnzbd</code>.<br>
-    Otherwise, browse the <a href="https://dl.dropboxusercontent.com/u/14500830/SABnzbd/index.html">repository</a> and install the rpm manually.
-</p>
-
-<h3>CentOS 7.x specific guide</h3>
-<a href="http://nuxref.com/2016/10/20/sabnzbd-installation-centos-7/">SABnzbd Installation for CentOS 7.x</a>
-<hr>
+    <li><strong>nuxref</strong> repository is available <a href="http://nuxref.com/nuxref-repository/" target="_blank">here</a>. More extensive guide can be found <a href="http://nuxref.com/2016/10/20/sabnzbd-installation-centos-7/" target="_blank">here</a>.<br>
+    After installing the repository run <code>yum install sabnzbd</code> or <code>dnf install sabnzbd</code> (Fedora).
+    </li>
+    <li><strong>thecubic</strong> provides src and bin RPMs <a href="https://copr.fedorainfracloud.org/coprs/thecubic/SABnzbd/" target="_blank">here</a>.</li>
+</ul>
 
 <h2>From sources</h2>
 <p>Because the RPM's might not always be up-to-date, we include a guide to install from source, provided by user <strong>jpriddy</strong>.
