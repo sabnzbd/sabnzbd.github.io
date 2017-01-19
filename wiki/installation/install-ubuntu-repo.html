@@ -15,8 +15,12 @@ title: Ubuntu PPA Repository
 <p>I've created a repository with the latest version of SABnzbd+. When using this repository, you will be able to easily install the program and its dependencies, and in case any new version of the program is released, you will be automatically notified just like with any other updated package. Reasonable efforts will be made to keep things as up-to-date as possible. Be patient.</p>
 
 
-<p>As with any repository, this one too has to be added to your <code>/etc/apt/sources.list</code>.<br>
-To receive <strong>all</strong> releases, including alpha/beta/RC's add this repository:
+<p>As with any repository, this one too has to be added to your <code>/etc/apt/sources.list</code>.<br/>
+First you need to prepare for alternative package repositories:
+<div class="code">
+    <pre><code>sudo apt-get install software-properties-common</code></pre>
+</div>
+<p>To receive <strong>all</strong> releases, including alpha/beta/RC's add this repository:
 <div class="code">
     <pre><code>sudo add-apt-repository ppa:jcfp/ppa</code></pre>
 </div>
