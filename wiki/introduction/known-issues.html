@@ -9,9 +9,7 @@ title: Known issues
 <ul class="toc-list">
     <li><a href="#toc0">Size limit</a></li>
     <li><a href="#toc1">Hangup of post-processing</a></li>
-    <li><a href="#toc2">Firewall bug in Windows</a></li>
     <li><a href="#toc3">Long paths in Windows</a></li>
-    <li><a href="#toc4">64bit Windows</a></li>
     <li><a href="#toc5">Unreliable Usenet servers</a></li>
     <li><a href="#toc6">macOS and foreign characters</a></li>
     <li><a href="#toc7">Linux and foreign characters</a></li>
@@ -38,12 +36,6 @@ title: Known issues
     If you keep having trouble with par2 multicore you can disable it in Config-&gt;Switches.<br>
     This will force the use of the old and tried, but slower par2-classic program.
 </p>
-<h2 id="toc2"><span>Firewall bug in Windows</span></h2>
-<p>A bug in Windows 7 may cause severe memory leaks when you use SABnzbd in combination with some virus scanners and firewals.<br>
-    Install this hotfix:<br>
-    Description: <a href="http://support.microsoft.com/kb/979223/en-us">http://support.microsoft.com/kb/979223/en-us</a><br>
-    Download location: <a href="http://support.microsoft.com/hotfix/KBHotfix.aspx?kbnum=979223&amp;kbln=en-us">http://support.microsoft.com/hotfix/KBHotfix.aspx?kbnum=979223&amp;kbln=en-us</a>
-</p>
 <h2 id="toc3"><span>Long paths in Windows</span></h2>
 <p>Windows cannot handle path names longer than 254 characters.<br>
     Currently, SABnzbd release before 1.0.0 don't handle this problem gracefully.<br>
@@ -53,10 +45,7 @@ title: Known issues
     SABnzbd will take care of overlapping names.<br>
     Release from 1.0.0 can handle long paths, although we still need to put some limits on the "temporary download path".
 </p>
-<h2 id="toc4"><span>64bit Windows</span></h2>
-<p>Some 64bit Windows systems have problems with the 64bit versions of par2 and unrar.<br>
-    There is an <a href="/wiki/configuration/{{ site.wiki_version }}/special">"Special" option</a> "allow_64bit_tools" which, when set to 0, will force the use of 32bit versions.
-</p>
+
 <h2 id="toc5"><span>Unreliable Usenet servers</span></h2>
 <p>Some Usenet servers have intermittent login (or other) problems.<br>
     For these, the server blocking method is not very favorable.<br>
@@ -93,10 +82,7 @@ title: Known issues
     This makes using SABnzbd on very low memory systems (eg a SAN device) a challenge.<br>
     Your total system memory should be above 256 MByte (assuming a Linux variant is used).
 </p>
-<h2 id="toc11"><span>Incompatible firewalls</span></h2>
-<p>SABnzbd is not compatible with some software firewall versions.<br>
-    The Mircosoft Windows Firewall works fine, but remember to tell this firewall that SABnzbd is allowed to talk to other computers.
-</p>
+
 <h2 id="toc12"><span>Blocked email</span></h2>
 <p>When SABnzbd cannot send notification emails, check your virus scanner, firewall or security suite.<br>
     It may be blocking outgoing email.
@@ -111,8 +97,4 @@ title: Known issues
     So far we have not been able to reproduce this behaviour, but that doesn't mean it can never happen.<br>
     We would like to receive information on how to reproduce this problem.
 </p>
-<h2 id="toc15"><span>Logging stops</span></h2>
-<p>Sometimes logging stops.<br>
-    This is a notorious bug in Python logging when running on Windows. SABnzbd will function as normal.<br>
-    When you run from sources or use the SABnzbd-console.exe file of the Win32-binary distribution, you will see that logging continues in the console window, but nothing will be written to the log-files.
-</p>
+
