@@ -285,8 +285,7 @@ netstat -aon | find ":9090"</code>
 </div>
 <p>If you get a few dozen or even hundreds of lines (and thus SABnzbd sessions), you have found the problem.<br>
     Workaround: disable the plugins (or lower their polling frequency) and/or do not use HTTPS (it seems this problem occurs with HTTPS, and not HTTP).<br>
-    Especially the combination of SABnzbd, SABconnect++ and HTTPS seems to trigger this problem.
-</p>
+    Especially the combination of SABnzbd, SABconnect++ and HTTPS seems to trigger this problem. However, never disable HTTPS if you expose SABnzbd's user interface to internet!</p>
 <h2 id="toc35"><span>"[Errno 111] Failed to connect: (110, 'timed out') -1 @news.example.com:119" when clicking on Test Server</span></h2>
 <p>You can test your connection to your newsserver by clicking on Test Server (in Config -&gt; Servers). If the popup says "[Errno 111] Failed to connect: (110, 'timed out') -1@news.example.com:119", SABnzbd cannot connect to the newserver you filled out. You should check two things: the correct name for the newsserver and the correct port (119 is the normal port).</p>
 <p>If you're sure everything is filled out OK and you still get the error message, as a test you can fill out an additional newsserver. You can use news.astraweb.com or newsreader.eweka.nl. After filling out and Save Change, you can click on Test Server. If you get "[Errno 111] Failed to connect: (110, 'timed out') -1@news.astraweb.com:119" for this extra server too, the problem is local: possibly a firewall is blocking outgoing connections. So check your firewall. Or temporarily disable / deinstall your firewall. Then check again with Test Server.</p>
