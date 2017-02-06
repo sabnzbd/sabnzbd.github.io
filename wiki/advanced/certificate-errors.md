@@ -27,11 +27,11 @@ Newsserver problems
 
 **You can do different things:**
 
-1. Easy but not secure: Make the problem go away by not using SSL (Server-settings, untick SSL)
-2. Easy but not secure: Ignore the problem, and instruct SABnzbd to ignore the problem: in SABnzbd’s Server-settings, under Advanced, set "Certificate verification" to Disabled. You have now an insecure SSL connection.
+1. Easy but not secure: Make the problem go away by not using SSL (untick SSL)
+2. Easy but not secure: Ignore the problem, and instruct SABnzbd to ignore the problem: in SABnzbd’s Server-settings, under Advanced, set `Certificate verification` to `Disabled`. You have now an insecure SSL connection.
 3. Hard, but secure: Try to find the cause of the problem: Check on [our Newsservers with SSL/TLS overview](https://www.appelboor.com/newsservers/newsservers-with-SSL.html) (and/or [online newsserver SSL/TLS check](https://www.appelboor.com/newsservers/check.html) ) the SSL/TLS-status of your newsserver. 
 
-    1. If that site appelboor says gives an error message, and `OK NOK NOK` or `NOK NOK NOK`, the problem is on the side of the newsserver. You can ask the newsserver provider to solve that problem. That could be a hard path; the provider could deny they have a problem. 
+    1. If the test or the overview shows an error message such as `OK NOK NOK` or `NOK NOK NOK`, the problem is on the side of the newsserver. You can ask the newsserver provider to solve that problem. That could be a hard path; the provider could deny they have a problem. 
 
     2. If that site says `OK OK OK` or `OK OK NOK`, the problem is on your own site (read: your computer/NAS): incorrect certificates, a virusscanner doing strange things, or something else. That is not something SABnzbd cannot solve for you. And it is OS-dependent how to solve that.
 
