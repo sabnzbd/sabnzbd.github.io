@@ -21,7 +21,7 @@ Newsserver problems
 -------------------
 **Q: I get this error message "untrusted certificate". What is going on? What can I do?**
 
-    [Errno 111] Failed to connect: Server news.someserver.com uses an untrusted certificate [[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:590)] [-1@news.someserver.com](mailto:-1@news.someserver.com):563
+    Failed to connect: Server news.someserver.com uses an untrusted certificate [[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:590)]
 
 **A: Your newsserver does not have valid certificates to verify it's identity. The certificates are self-signed and cannot be verified by a [trusted authority](https://en.wikipedia.org/wiki/Certificate_authority) or they are malicious.**
 
@@ -40,7 +40,7 @@ Newsserver problems
 
 **Q: I get this error message "hostname ... doesn't match"**
 
-    [Errno 111] Failed to connect: Server news.someserver.com uses an untrusted certificate [hostname 'news.someserver.com' doesn't match either of '*.othersite.com', 'othersite.com'] -1@news.someserver.com:563
+    Failed to connect: Server news.someserver.com uses an untrusted certificate [hostname 'news.someserver.com' doesn't match either of '*.othersite.com', 'othersite.com']
 
 **A: your newsserver provider has some level of SSL, but the setup is not fully correct: they are using the certificates that do not belong to the hostname you're using. That is not correct.**
 
