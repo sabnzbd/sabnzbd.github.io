@@ -49,7 +49,7 @@ As of this writing about 1/4th of the newsserver providers have this problem. Mo
 You can do different things:
 
 1. Easy and half/half-secure: in SABnzbd’s Server-settings, under Advanced, set `Certificate verification` to `Default`. Then try again.
-2. Ask your newsserver provider to use the correct SSL keys on their newsserver
+2. You can ask the newsserver provider to solve the problem. That could be a hard path; the provider could deny they have a problem. 
 
 * * *
 
