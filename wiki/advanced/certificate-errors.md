@@ -2,22 +2,20 @@
 title: SABnzbd and SSL/TLS security
 redirect_from: "/certificate-errors"
 ---
-Usenet (aka Newsservers) offers SSL/TLS security. It’s called NNTPS, or NNTP with SSL. 
-
-Just like HTTPS, it has two functions:
+Usenet (aka Newsservers) offers SSL/TLS security. It’s called NNTPS, or NNTP with SSL. Just like HTTPS, it has two functions:
 
 * Are you really talking to the server you want to talk to.
 * Others can’t see what is being sent between client and server. So others can’t see 1) your login credentials and 2) what you’re downloading.
 
 As of SABnzbd version 1.2.0, SABnzbd by default actively checks SSL/TLS security. 
 
-Currently there are still a lot of non-secure newsservers, most of them resellers of Highwinds / sslusenet. Apparently usenet administrators (and users) are not yet aware of the insecure setup.
-
-The default setting of SABnzbd checking is therefore not yet very strict. You can set it to Strict yourself in the Advanced settings on the Servers page.
+Currently there are still a lot of non-secure newsservers. The default setting of SABnzbd checking is therefore not yet very strict. You can set it to `Strict` yourself in the Advanced settings on the [Servers](/wiki/configuration/{{ site.wiki_version }}/servers) page.
 
 You can completely turn off SABnzbd’s security checking, but then your connection does not offer you the security of the two functions above.
 
 This page tells what to do in case of problems.
+
+-------------------
 
 Newsserver problems
 -------------------
@@ -25,7 +23,9 @@ Newsserver problems
 
     [Errno 111] Failed to connect: Server news.someserver.com uses an untrusted certificate [[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:590)] [-1@news.someserver.com](mailto:-1@news.someserver.com):563
 
-**A: You can do different things:**
+**A: Your newsserver does not have valid certificates to verify it's identity. The certificates are self-signed and cannot be verified by a [trusted authority](https://en.wikipedia.org/wiki/Certificate_authority) or they are malicious.**
+
+**You can do different things:**
 
 1. Easy but not secure: Make the problem go away by not using SSL (Server-settings, untick SSL)
 2. Easy but not secure: Ignore the problem, and instruct SABnzbd to ignore the problem: in SABnzbd’s Server-settings, under Advanced, set "Certificate verification" to Disabled. You have now an insecure SSL connection.
@@ -38,13 +38,13 @@ Newsserver problems
 * * *
 
 
-**Q: I get this error message "hostname … doesn't match"**
+**Q: I get this error message "hostname ... doesn't match"**
 
     [Errno 111] Failed to connect: Server news.someserver.com uses an untrusted certificate [hostname 'news.someserver.com' doesn't match either of '*.othersite.com', 'othersite.com'] -1@news.someserver.com:563
 
-**A: your newsserver provider has some level of SSL, but the setup is not fully correct: they are using the certificates that do not belong to the hostname you’re using. That is not correct.**
+**A: your newsserver provider has some level of SSL, but the setup is not fully correct: they are using the certificates that do not belong to the hostname you're using. That is not correct.**
 
-As of this writing about ⅓ of the newsserver provider have this problem. Most of them are resellers of Highwinds (which you can recognize by the error message `CertificateError: hostname 'news.someserver.com' doesn't match either of '*.sslusenet.com', 'sslusenet.com'`)
+As of this writing about 1/4th of the newsserver providers have this problem. Most of them are resellers of Highwinds (which you can recognize by the error message `CertificateError: hostname 'news.someserver.com' doesn't match either of '*.sslusenet.com', 'sslusenet.com'`)
 
 You can do different things:
 
@@ -61,10 +61,12 @@ You can do different things:
 
 **Q: I am a newsserver provider, what can I do?**
 
-That depends on how you do your newsserver:
+That depends on how your newsserver is set up:
 
 * If you are a (Highwinds, Xennanews, etc) reseller, contact your wholesale provider (Highwinds, Xennanews, etc) to solve this. You will most likely need to provide a certificate to your provider
 * If you are hosting your own newsserver, contact your newsserver administrator
+
+-------------------
 
 NZB / RSS Index site problems
 -----------------------------
@@ -84,6 +86,8 @@ Thinks you can do:
 3. Turn off `HTTPS certificate verification` in SABnzbd
 
 If Chrome does not complain, the problem might be on your side. That is not something SABnzbd cannot solve for you. And it is OS-dependent how to solve that.
+
+-------------------
 
 Tools to test SSL/TLS news servers and websites
 -----------------------------------------------
