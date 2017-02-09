@@ -1,7 +1,6 @@
 ---
 title: Webserver using HTTPS
 ---
-<p><strong>Requires: pyopenssl (listed as <code>python-openssl</code> under apt-get)</strong>
 
 <p>To make the communication between SABnzbd and your web browser private, you can enable HTTPS (secured HTTP). The purpose of a certificate is two-fold; one is to give you encrypted communication, the other is to authenticate the server. The certificate authority guarantees that you are actually talking to the website of your bank or similar service. Web browsers are very fussy about the authentication part, and by default will complain unless you buy your own certificate.</p>
 <p>By default SABnzbd will create self signed certificates for you to use. These however will give browser warnings when you try to connect however it is usually easy to make an exception for these certificates.</p>

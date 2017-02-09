@@ -7,7 +7,7 @@ Usenet (aka Newsservers) offers SSL/TLS security. It’s called NNTPS, or NNTP w
 * Are you really talking to the server you want to talk to.
 * Others can’t see what is being sent between client and server. So others can’t see 1) your login credentials and 2) what you’re downloading.
 
-As of SABnzbd version 1.2.0, SABnzbd by default actively checks SSL/TLS security. 
+As of SABnzbd version 1.2.0, SABnzbd by default actively checks SSL/TLS security.
 
 Currently there are still a lot of non-secure newsservers. The default setting of SABnzbd checking is therefore not yet very strict. You can set it to `Strict` yourself in the Advanced settings on the [Servers](/wiki/configuration/{{ site.wiki_version }}/servers) page.
 
@@ -29,9 +29,9 @@ Newsserver problems
 
 1. Easy but not secure: Make the problem go away by not using SSL (untick SSL)
 2. Easy but not secure: Ignore the problem, and instruct SABnzbd to ignore the problem: in SABnzbd’s Server-settings, under Advanced, set `Certificate verification` to `Disabled`. You have now an insecure SSL connection.
-3. Hard, but secure: Try to find the cause of the problem: Check on [our Newsservers with SSL/TLS overview](https://www.appelboor.com/newsservers/newsservers-with-SSL.html) (and/or [online newsserver SSL/TLS check](https://www.appelboor.com/newsservers/check.html) ) the SSL/TLS-status of your newsserver. 
+3. Hard, but secure: Try to find the cause of the problem: Check on [our Newsservers with SSL/TLS overview](https://www.appelboor.com/newsservers/newsservers-with-SSL.html) (and/or [online newsserver SSL/TLS check](https://www.appelboor.com/newsservers/check.html) ) the SSL/TLS-status of your newsserver.
 
-    1. If the test or the overview shows an error message such as `OK NOK NOK` or `NOK NOK NOK`, the problem is on the side of the newsserver. You can ask the newsserver provider to solve that problem. That could be a hard path; the provider could deny they have a problem. 
+    1. If the test or the overview shows an error message such as `OK NOK NOK` or `NOK NOK NOK`, the problem is on the side of the newsserver. You can ask the newsserver provider to solve that problem. That could be a hard path; the provider could deny they have a problem.
 
     2. If that site says `OK OK OK` or `OK OK NOK`, the problem is on your own site (read: your computer/NAS): incorrect certificates, a virusscanner doing strange things, or something else. That is not something SABnzbd cannot solve for you. And it is OS-dependent how to solve that.
 
@@ -49,7 +49,7 @@ As of this writing about 1/4th of the newsserver providers have this problem. Mo
 You can do different things:
 
 1. Easy and half/half-secure: in SABnzbd’s Server-settings, under Advanced, set `Certificate verification` to `Default`. Then try again.
-2. You can ask the newsserver provider to solve the problem. That could be a hard path; the provider could deny they have a problem. 
+2. You can ask the newsserver provider to solve the problem. That could be a hard path; the provider could deny they have a problem.
 
 * * *
 
@@ -98,7 +98,7 @@ Tools to test SSL/TLS news servers and websites
 
 * Tool gnutls-cli
     * gnutls-cli -p 563 newsreader.eweka.nl
-* Tool testssl.sh 
+* Tool testssl.sh
 * Tool curl
 * Tool wget
 * Python (2.7.9 or higher)
