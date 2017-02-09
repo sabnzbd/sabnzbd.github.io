@@ -37,8 +37,8 @@ title: Folders
             <td>Number of seconds between filesystem scans of the Watched Folder setting above.</td>
         </tr>
         <tr>
-            <td><strong>Post-Processing Scripts Folder</strong></td>
-            <td>This specifies the folder where user scripts (post-processing and pre-processing) are stored. Advanced users can specify a .cmd or .bat file (for Windows) or a shell-script (for Unix) here. Other extensions can be executed with the <code>PATHEXT</code> variable on Windows, and set with <code>chmod +x file</code> on linux. For more information on creating: <a href="/wiki/scripts/post-processing-scripts">Post-processing</a> / <a href="/wiki/scripts/pre-queue-scripts">Pre-processing</a> scripts.</td>
+            <td><strong>Scripts Folder</strong></td>
+            <td>This specifies the folder where user scripts (post-processing and pre-processing) are stored. On Windows, users may specify a .cmd or .bat file; other extensions can be executed with the <code>PATHEXT</code> variable. On Unix, any installed script type can be used, including common choices such as shell or Python, provided the file is executable (<code>chmod +x file</code>) and starts with a valid <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang line</a>. For more information on creating: <a href="/wiki/scripts/post-processing-scripts">Post-processing</a> / <a href="/wiki/scripts/pre-queue-scripts">Pre-processing</a> scripts.</td>
         </tr>
         <tr>
             <td><strong>Email Templates Folder</strong></td>
