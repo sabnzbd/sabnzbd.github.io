@@ -44,11 +44,9 @@ Newsserver problems
 
 **A: your newsserver provider has some level of SSL, but the setup is not fully correct: they are using the certificates that do not belong to the hostname you're using. That is not correct.**
 
-As of this writing about 1/4th of the newsserver providers have this problem. Most of them are resellers of Highwinds (which you can recognize by the error message `CertificateError: hostname 'news.someserver.com' doesn't match either of '*.sslusenet.com', 'sslusenet.com'`)
-
 You can do different things:
 
-1. Easy and half/half-secure: in SABnzbd’s Server-settings, under Advanced, set `Certificate verification` to `Default`. Then try again.
+1. Easy and half/half-secure: in SABnzbd’s Server-settings, under Advanced, set `Certificate verification` to `Default`. Then try again.<br> <span class="label label-warning">WARNING</span> Disabeling this check allows anyone to redirect and intercept your traffic using *any* valid certificate!
 2. You can ask the newsserver provider to solve the problem. That could be a hard path; the provider could deny they have a problem.
 
 * * *
