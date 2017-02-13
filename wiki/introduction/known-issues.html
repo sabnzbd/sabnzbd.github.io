@@ -9,7 +9,7 @@ title: Known issues
 <ul class="toc-list">
     <li><a href="#toc0">Size limit</a></li>
     <li><a href="#toc1">Hangup of post-processing</a></li>
-    <li><a href="#toc3">Long paths in Windows</a></li>
+    <li><a href="#toc2">Decoder failure: Out of memory</a></li>
     <li><a href="#toc5">Unreliable Usenet servers</a></li>
     <li><a href="#toc6">macOS and foreign characters</a></li>
     <li><a href="#toc7">Linux and foreign characters</a></li>
@@ -36,15 +36,12 @@ title: Known issues
     If you keep having trouble with par2 multicore you can disable it in Config-&gt;Switches.<br>
     This will force the use of the old and tried, but slower par2-classic program.
 </p>
-<h2 id="toc3"><span>Long paths in Windows</span></h2>
-<p>Windows cannot handle path names longer than 254 characters.<br>
-    Currently, SABnzbd release before 1.0.0 don't handle this problem gracefully.<br>
-    We have added a <a href="/wiki/configuration/{{ site.wiki_version }}/special">"Special" option</a> "folder_length_max" in which you can set a maximum folder name size.<br>
-    For Windows the default is 128 and for others 256.<br>
-    A quite safe value for Windows would be 64.<br>
-    SABnzbd will take care of overlapping names.<br>
-    Release from 1.0.0 can handle long paths, although we still need to put some limits on the "temporary download path".
-</p>
+<h2 id="toc2"><span>Decoder failure: Out of memory</span></h2>
+<p>If you get the <code>Decoder failure: Out of memory</code> error, try the following:</p>
+<ul>
+    <li>Reduce Article Cache to <code>450M</code></li>
+    <li>If you run SABnzbd as a Windows Service, try running it not as a Service but regular. When SABnzbd is used as a service, Windows can unpredictably limit the allocation of memory to SABnzbd when it thinks it's usage is too high.</li>
+</ul>
 
 <h2 id="toc5"><span>Unreliable Usenet servers</span></h2>
 <p>Some Usenet servers have intermittent login (or other) problems.<br>
