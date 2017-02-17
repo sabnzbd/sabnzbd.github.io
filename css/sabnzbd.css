@@ -392,6 +392,28 @@ h2 .label {
     font-size: 0.5em;
 }
 
+/*** Newsserver tester **/
+
+.newsserver-test .glyphicon {
+    top: 2px;
+}
+
+#newsserver-test-result {
+    width: 100%;
+    border: 0;
+    height: 500px;
+    display: none;
+}
+
+.newsserver-progress {
+    display: none;
+    margin-top: 1.5em;
+}
+
+.newsserver-progress .progress-bar {
+    width: 100%;
+}
+
 /*** */
 footer {
     background-color: #e7e7e7;

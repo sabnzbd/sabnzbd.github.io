@@ -17,6 +17,46 @@ This page tells what to do in case of problems.
 
 -------------------
 
+Online newsserver SSL/TLS check
+-------------------
+
+<form class="form-inline newsserver-test">
+  <div class="form-group">
+    <input type="text" class="form-control" id="newsserver-address" placeholder="Newsserver address">
+    <button type="submit" class="btn btn-success">Test server <span class="glyphicon glyphicon-chevron-right"></span></button>
+  </div>
+</form>
+
+<div class="progress newsserver-progress">
+    <div class="progress-bar progress-bar-success progress-bar-striped active"></div>
+</div>
+
+<iframe id="newsserver-test-result" src=""></iframe>
+
+<script type="text/javascript">
+    $('.newsserver-test').on('submit', function() {
+        // Clear first
+        $('#newsserver-test-result').attr('src', '')
+        // Show loading box
+        $('.progress').show()
+        // Fill the url
+        $('#newsserver-test-result').attr('src', 'https://www.appelboor.com/cgi-bin/check_newsserver.py?server=' + $('#newsserver-address').val())
+        // Track
+        ga('send', 'event', 'servercheck', 'click', $('#newsserver-address').val(), {
+                'transport': 'beacon'
+            });
+        return false
+    })
+    // Do the magic when done
+    $('#newsserver-test-result').on('load', function() {
+        $('.progress').hide()
+        $(this).show();
+    });
+
+</script>
+
+-------------------
+
 Newsserver problems
 -------------------
 **Q: I get this error message "untrusted certificate". What is going on? What can I do?**
@@ -29,7 +69,7 @@ Newsserver problems
 
 1. Easy but not secure: Make the problem go away by not using SSL (untick SSL)
 2. Easy but not secure: Ignore the problem, and instruct SABnzbd to ignore the problem: in SABnzbd’s Server-settings, under Advanced, set `Certificate verification` to `Disabled`. You have now an insecure SSL connection.
-3. Hard, but secure: Try to find the cause of the problem: Check on [our Newsservers with SSL/TLS overview](https://www.appelboor.com/newsservers/newsservers-with-SSL.html) (and/or [online newsserver SSL/TLS check](https://www.appelboor.com/newsservers/check.html) ) the SSL/TLS-status of your newsserver.
+3. Hard, but secure: Try to find the cause of the problem: Check on [our Newsservers with SSL/TLS overview](https://www.appelboor.com/newsservers/newsservers-with-SSL.html) (and/or online newsserver SSL/TLS check above) the SSL/TLS-status of your newsserver.
 
     1. If the test or the overview shows an error message such as `OK NOK NOK` or `NOK NOK NOK`, the problem is on the side of the newsserver. You can ask the newsserver provider to solve that problem. That could be a hard path; the provider could deny they have a problem.
 
