@@ -59,12 +59,13 @@ title: Servers
         <tr>
             <td><strong>Certificate verification</strong></td>
             <td>
-                SABnzbd can verify the certificates your newsserver uses to verify its identity. Python 2.7.9 or above, OpenSSL 1.0.2 or above and up-to-date local CA certificates are required.
+                <p>SABnzbd can verify the certificates your newsserver uses to verify its identity. Python 2.7.9 or above, OpenSSL 1.0.2 or above and up-to-date local CA certificates are required.</p>
                 <ul>
                     <li><code>None</code> = Certificates are not verified</li>
                     <li><code>Default</code> = Verify certificates before connecting</li>
                     <li><code>Strict</code> = Verify and enforce matching hostname. This setting can be problematic for some servers that use 1 certificate for multiple servers.</li>
                 </ul>
+                <p>Read more on <a href="/wiki/advanced/certificate-errors.html">Certificate verifications</a>.</p>
             </td>
         </tr>
         <tr>

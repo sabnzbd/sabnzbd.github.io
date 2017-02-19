@@ -26,6 +26,11 @@ title: Special settings
             <td>On Linux, SABnzbd checks whether the installed unrar or rar program is supported and issues a warning if not. Set this option if you think you know better.</td>
         </tr>
         <tr>
+            <td>overwrite_files</td>
+            <td>0</td>
+            <td>When unpacking, this will overwrite existing files instead of creating an alternative name.</td>
+        </tr>
+        <tr>
             <td>create_group_folders</td>
             <td>0</td>
             <td>Older versions of SABnzbd had the possibility to move downloads to folders named after the actual Usenet group. This option is made more or less obsolete by the category system. If you still want the old behaviour, remove all categories and set this option to 1</td>
@@ -34,6 +39,11 @@ title: Special settings
             <td>queue_complete_pers</td>
             <td>0</td>
             <td>Set this to 1 if you want end-of-queue actions Shutdown/Standby/Hibernate to be persistent (remembered) after restarts</td>
+        </tr>
+        <tr>
+            <td>quick_check</td>
+            <td>1</td>
+            <td>Normally par2-based downloads are verified and (if required) repaired by the external <em>par2</em> program. This takes a lot time. SABnzbd can check the correctness of downloaded files on the fly. A completely correct download does not have to be processed by par2 anymore. If there are any error in the files, the <em>par2</em> program is launched anyway. Normally you would always want this option on.</td>
         </tr>
         <tr>
             <td>api_warnings</td>
@@ -180,6 +190,13 @@ title: Special settings
             <td>0</td>
             <td>Setting the option to 1 will prevent SABnzbd from searching for a free web port, potentially causing a termination. Useful in debugging situations. [0.8.1+ only]</td>
         </tr>
+        <tr>
+            <td>enable_meta</td>
+            <td>1</td>
+            <td>Enable meta-tags coming from indexers or from the content of the NZB. These tags contain cleaned up versions of titles, episode names, etc. If you prefer that everything is derived from the NZB name, disable.</td>
+
+        </tr>
+
     </tbody>
 </table>
 <hr>
@@ -240,6 +257,11 @@ title: Special settings
             <td>ipv6_servers</td>
             <td>1</td>
             <td>Control the use of IPv6 Usenet server addresses. Only useful when you have an IPv6 capable ISP and connect to servers that (also) have IPv6 addresses. Meaning: 0 = don't use, 1 = use when available and reachable, 2 = force usage (when SABnzbd's detection fails) [0.7.6+ only]</td>
+        </tr>
+        <tr>
+            <td>rating_host</td>
+            <td>api.oznzb.com</td>
+            <td>Instead of OZnzbd, you can switch the host to connect to for rating. The indexer needs to support this!</td>
         </tr>
         <tr>
             <td>selftest_host</td>
