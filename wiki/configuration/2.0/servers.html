@@ -1,0 +1,194 @@
+---
+title: Servers
+---
+<p>If you want to download anything, you need to have access to one or more Usenet servers.
+    These servers can be your own ISP's Usenet server, a free public one or one of the many commercial servers.
+    For each server you need to specify its parameters.
+</p>
+<h2 id="toc1"><span>Priorities</span></h2>
+<p>You assign each server a priority, a number between <code>0</code> (highest) and <code>99</code> (lowest).<br>
+    SABnzbd will first try to get articles from the group of servers with the highest priority.
+    Within the priority group, the first server with a free connection will be tried.
+    When the first tried server doesn't have an article, then another server with the same priority is tried.<br>
+    When none of the primary servers has a specific article, a lower priority group is tried. Within the lower priority group, the same method is used: the first server with a free slot is tried.
+</p>
+<h2 id="toc2"><span>Settings</span></h2>
+<p><em><strong>Note</strong></em>: Check your Usenet provider's documentation for the proper values!</p>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Enable</strong></td>
+            <td>If you have multiple servers, you can use this field to quickly enable or disable servers. Note: this field can be set/reset by the <a href="/wiki/configuration/2.0/scheduling">Scheduler</a> too!</td>
+        </tr>
+        <tr>
+            <td><strong>Host</strong></td>
+            <td>The DNS name of the server. Example: <code>news.my-isp.com</code></td>
+        </tr>
+        <tr>
+            <td><strong>Port</strong></td>
+            <td>The standard port is <code>119</code>. Some servers use a different port number. SSL is usually port <code>563</code> or <code>443</code>.</td>
+        </tr>
+        <tr>
+            <td><strong>Username</strong></td>
+            <td>Often you need to supply the user account of your news service subscription.</td>
+        </tr>
+        <tr>
+            <td><strong>Password</strong></td>
+            <td>Often you need to supply the password of your news service subscription.</td>
+        </tr>
+        <tr>
+            <td><strong>Connections</strong></td>
+            <td>News providers offer different amounts of simultaneous connections (sometimes referred to as slots or threads). You may need to specify the maximum amount allowed in order to get full speed. Do not use a large number. Most servers work best with anything between <code>8</code> and <code>30</code>.</td>
+        </tr>
+        <tr>
+            <td><strong>Priority</strong></td>
+            <td>You can assign a priority to the server. Sometimes it is useful to specify a high priority server that SABnbzd should try to get its data from first, often this is a free server. A pay-per-GB server is the typical low priority server.</td>
+        </tr>
+        <tr>
+            <td><strong>Retention</strong></td>
+            <td>Set here the maximum retention time<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup> (in days) of your server. Zero means infinite retention. Only use this when you have multiple servers and you want to avoid that SABnzbd wastes time on asking servers for articles it cannot have. Be aware that retention times advertised by Usenet providers are not absolute. If you set it too low, your others servers will be used more intensely. There is no reason to set a retention time when you have only one server.</td>
+        </tr>
+        <tr>
+            <td><strong>Timeout</strong></td>
+            <td>Time out in seconds for error recovery. Be careful, do not set this to a very low value, your news provider will not like that. A common value is <code>120</code>.</td>
+        </tr>
+        <tr>
+            <td><strong>SSL</strong></td>
+            <td>Use a secure connection to the server. <br><span class="label label-warning">NOTE</span> <strong>Check which address and port you need for SSL with your provider!</strong> Most providers use port <code>563</code> for SSL, DO NOT USE PORT <code>119</code></td>
+        </tr>
+        <tr>
+            <td><strong>Certificate verification</strong></td>
+            <td>
+                SABnzbd can verify the certificates your newsserver uses to verify its identity. Python 2.7.9 or above, OpenSSL 1.0.2 or above and up-to-date local CA certificates are required.
+                <ul>
+                    <li><code>None</code> = Certificates are not verified</li>
+                    <li><code>Default</code> = Verify certificates before connecting</li>
+                    <li><code>Strict</code> = Verify and enforce matching hostname. This setting can be problematic for some servers that use 1 certificate for multiple servers.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Optional</strong></td>
+            <td>If you use multiple servers and some of these servers are not very reliable, you can declare them "optional". This means that if such a server causes too much problems (like time-outs) it will be ignored for some time. Warning: under some circumstances this may cause missed articles<sup class="footnoteref"><a id="footnoteref-2" href="#footnote-2">2</a></sup>.</td>
+        </tr>
+        <tr>
+            <td><strong>Send group</strong></td>
+            <td>Some news servers require the Usenet group to be sent before starting download. Only enable if your server has problems with downloading otherwise.</td>
+        </tr>
+        <tr>
+            <td><strong>Categories</strong></td>
+            <td>This server will only be used for the <a href="/wiki/configuration/2.0/categories">Categories</a> selected. When Default is selected, the server will be used for all categories and downloads.</td>
+        </tr>
+        <tr>
+            <td><strong>Server description</strong></td>
+            <td>The name of the server in the Config and download reports.</td>
+        </tr>
+        <tr>
+            <td><strong>Personal notes</strong></td>
+            <td>In case extra information is necessary to identify this server to you on this Configuration page.</td>
+        </tr>
+    </tbody>
+</table>
+<h3>Example using Giganews (without SSL)</h3>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Host</strong></td>
+            <td>news.my-isp.com</td>
+        </tr>
+        <tr>
+            <td><strong>Port</strong></td>
+            <td>119</td>
+        </tr>
+        <tr>
+            <td><strong>Username</strong></td>
+            <td>user</td>
+        </tr>
+        <tr>
+            <td><strong>Password</strong></td>
+            <td>*</td>
+        </tr>
+        <tr>
+            <td><strong>Timeout</strong></td>
+            <td>120</td>
+        </tr>
+        <tr>
+            <td><strong>Connections</strong></td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td><strong>SSL</strong></td>
+            <td>(No)</td>
+        </tr>
+        <tr>
+            <td><strong>SSL Type</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><strong>Priority</strong></td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td><strong>Optional</strong></td>
+            <td>(No)</td>
+        </tr>
+        <tr>
+            <td><strong>Retention</strong></td>
+            <td>0</td>
+        </tr>
+    </tbody>
+</table>
+<h3>Example using Giganews and SSL</h3>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Host</strong></td>
+            <td>ssl-news.my-isp.com</td>
+        </tr>
+        <tr>
+            <td><strong>Port</strong></td>
+            <td>563</td>
+        </tr>
+        <tr>
+            <td><strong>Username</strong></td>
+            <td>user</td>
+        </tr>
+        <tr>
+            <td><strong>Password</strong></td>
+            <td>*</td>
+        </tr>
+        <tr>
+            <td><strong>Timeout</strong></td>
+            <td>120</td>
+        </tr>
+        <tr>
+            <td><strong>Connections</strong></td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td><strong>SSL</strong></td>
+            <td>(Yes)</td>
+        </tr>
+        <tr>
+            <td><strong>SSL Type</strong></td>
+            <td>Default</td>
+        </tr>
+        <tr>
+            <td><strong>Priority</strong></td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td><strong>Optional</strong></td>
+            <td>(No)</td>
+        </tr>
+        <tr>
+            <td><strong>Retention</strong></td>
+            <td>0</td>
+        </tr>
+    </tbody>
+</table>
+<div class="footnotes-footer">
+    <div class="title">Footnotes</div>
+    <div class="footnote-footer" id="footnote-1">1. Retention means the number of days that articles are kept by the server, after this number of days, the server will start removing articles. Note that retention is an average number. In reality the server will start removing articles when its storage becomes too full.</div>
+    <div class="footnote-footer" id="footnote-2">2. When you declare a server with a long retention time as optional and the server is temporary out-of-service, SABnzbd will fall back to another server. If the alternative server has a shorter retention time, you will miss articles if the articles are beyond the retention time of the alternative server. It is best to set your most reliable and longest retention time server as a lower priority server but not as optional. Secondary servers (cheaper, less reliable, shorter retention time) can be set as <em>high priority</em> and <em>optional</em>.</div>
+</div>
