@@ -12,7 +12,7 @@ pip install sabyenc
 ```
 On Ubuntu/Debian this is the full sequence:
 ```
-sudo apt-get install python-dev
+sudo apt-get install python-dev python-pip
 sudo -H pip install sabyenc --upgrade
 ```
 The check if sabyenc is installed, run this:
