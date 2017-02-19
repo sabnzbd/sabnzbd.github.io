@@ -15,7 +15,7 @@ On Ubuntu/Debian this is the full sequence:
 sudo apt-get install python-dev python-pip
 sudo -H pip install sabyenc --upgrade
 ```
-The check if sabyenc is installed, run this:
+To check if sabyenc is installed, run this:
 ```
 python -c "import sabyenc ; print sabyenc.__version__ "
 ```
