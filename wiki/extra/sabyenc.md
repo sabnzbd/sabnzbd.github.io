@@ -18,8 +18,9 @@ Currently the module can only be installed via Python's packaging manager (pip) 
 ```
 pip install sabyenc
 ```
+We created pre-compiled packages for x86 and x64 platforms, if you use another platform you might need to install additional extra packages, `pip` will throw an error in those cases.
 
-On Ubuntu/Debian the full installation sequence is:
+On Ubuntu/Debian the full installation then becomes:
 ```
 sudo apt-get install python-dev python-pip
 sudo -H pip install sabyenc --upgrade
