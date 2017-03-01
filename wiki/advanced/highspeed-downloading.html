@@ -1,7 +1,7 @@
 ---
 title: Highspeed Downloading
 ---
-
+<div class="alert alert-success">We are testing SABnzbd 2.0.0, which is much faster than any previous release. <br>Get it now from the Downloads page!</div>
 <p>If you are blessed with a fast connection (50MB/s and over) and are not getting the full speeds you require, you can try the following:</p>
 <ol>
     <li>Set the <strong>Article Cache Limit</strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/general#toc2">Config-&gt;General</a>. This will keep articles in memory and not write them to disk (which is slower). Depending on how much RAM you can spare, two good values are <code>500M</code> (the M denotes megabytes and is required) or <code>1G</code> (1GB). If you download a lot of rar files that are 200MB or larger then use the latter value. The cache will only be used when nessecary, cache usages above 400MB are rare.</li>
