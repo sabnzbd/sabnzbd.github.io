@@ -37,13 +37,13 @@ title: SABnzbd as a Windows Service
         <p>Install the helper service, set it to automatically start, and launch it, by typing or pasting the following lines into the DOS command window and hitting RETURN after each.</p>
 
     <pre><code>SABnzbd-helper.exe install
-sc config SABhelper start=auto
+sc config SABhelper start= auto
 net start SABhelper</code></pre>
     </li>
     <li>
         <p>Install the SABnzbd-service, set it to automatically start, and launch it, by typing or pasting the below commands into the DOS command window and hitting RETURN after each.</p>
         <pre><code>SABnzbd-service.exe -f "%localappdata%\sabnzbd\sabnzbd.ini" install
-sc config SABnzbd start=auto
+sc config SABnzbd start= auto
 net start SABnzbd</code></pre>
 
         <p><span class="label label-warning">NOTE</span> The first command uses the <code>%localappdata%</code> system variable to point to the LOCAL  folder within your user's APPDATA folder, which should work on all versions of Windows. If for some reason that does not work on your system and you get a <code>sabnzbd.ini file not found</code> type error you will need to replace the path portion of the above command to explicitly point to your <code>sabnzbd.ini</code> file within your <code>C:\Users\USERNAME\APPDATA\Local\sabnzbd</code> folder.</p>
