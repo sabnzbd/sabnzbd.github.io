@@ -11,7 +11,16 @@ The Windows- and MacOS-packages of SABnzbd automatically contain that module.
 
 On other platforms (like Linux) you have to make sure the module is installed. The information below is for packagers and source code users on those platforms.
 
-## Installation
+## Installation on Ubuntu via PPA
+
+For Ubuntu there is a PPA with python-sabyenc, by the same creator as the SABnzbd PPA (jcfp). Install it like this:
+```
+sudo add-apt-repository ppa:jcfp/sab-addons
+sudo apt-get update
+sudo apt-get install python-sabyenc
+```
+
+## Installation on Linux in general
 
 Currently the module can only be installed via Python's packaging manager (pip) by running:
 
