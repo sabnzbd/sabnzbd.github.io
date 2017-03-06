@@ -57,7 +57,12 @@ We created pre-compiled packages for x86 and x64 platforms, if you use another p
 
 
 ```
-su pip install sabyenc
+su - <password>
+pkg install python
+pkg install python27-2.7.13_1
+pkg install py27-pip-9.0.1
+ln -s /usr/local/bin/python /usr/bin/python
+pip install --upgrade sabyenc
 ```
 
 ## Check if sabyenc is correctly installed
