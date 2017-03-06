@@ -33,6 +33,19 @@ Check with (as normal user):
 python -c "import sabyenc; print sabyenc.__version__"
 ```
 
+## Installation on OpenSuSE
+All as root
+```
+zypper install -y python python-pip python-devel gcc
+pip install --upgrade pip
+pip install sabyenc --upgrade
+```
+Check with (as normal user):
+```
+python -c "import sabyenc ; print sabyenc.__version__ "
+```
+
+
 ## Installation on Linux in general
 
 Currently the module can only be installed via Python's packaging manager (pip) by running:
