@@ -20,6 +20,19 @@ sudo apt-get update
 sudo apt-get install python-sabyenc
 ```
 
+## Installation on Fedora / RedHat
+
+All as root:
+```
+yum install -y python python-devel gcc redhat-rpm-config
+pip install --upgrade pip
+pip install sabyenc --upgrade
+```
+Check with (as normal user):
+```
+python -c "import sabyenc; print sabyenc.__version__"
+```
+
 ## Installation on Linux in general
 
 Currently the module can only be installed via Python's packaging manager (pip) by running:
