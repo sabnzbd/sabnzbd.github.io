@@ -55,9 +55,12 @@ We created pre-compiled packages for x86 and x64 platforms, if you use another p
 
 ## Installation on FreeBSD
 
+<!-- Info from github @gregf -->
+
 
 ```
 su - <password>
+
 pkg install python
 pkg install python27-2.7.13_1
 pkg install py27-pip-9.0.1
