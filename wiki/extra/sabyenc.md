@@ -38,6 +38,15 @@ pip install sabyenc --upgrade
 
 ## Installation on OpenSuSE
 All as root
+
+Short (with precompiled sabyenc):
+```
+zypper install -y python python-pip
+pip install --upgrade pip
+pip install sabyenc --upgrade
+```
+Long, with your own compiling:
+
 ```
 zypper install -y python python-pip python-devel gcc
 pip install --upgrade pip
