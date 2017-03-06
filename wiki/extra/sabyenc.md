@@ -13,11 +13,18 @@ On other platforms (like Linux) you have to make sure the module is installed. T
 
 ## Installation on Ubuntu via PPA
 
-For Ubuntu there is a PPA with python-sabyenc, by the same creator as the SABnzbd PPA (jcfp). Install it like this:
+For Ubuntu there is a PPA with python-sabyenc, by the same creator (jcfp) as the SABnzbd PPA. Install it like this:
 ```
 sudo add-apt-repository ppa:jcfp/sab-addons
 sudo apt-get update
 sudo apt-get install python-sabyenc
+```
+## Installation on Ubuntu (without PPA)
+
+On Ubuntu/Debian the full installation is:
+```
+sudo apt-get install python-dev python-pip
+sudo -H pip install sabyenc --upgrade
 ```
 
 ## Installation on Fedora / RedHat
@@ -28,10 +35,6 @@ yum install -y python python-devel gcc redhat-rpm-config
 pip install --upgrade pip
 pip install sabyenc --upgrade
 ```
-Check with (as normal user):
-```
-python -c "import sabyenc; print sabyenc.__version__"
-```
 
 ## Installation on OpenSuSE
 All as root
@@ -40,11 +43,6 @@ zypper install -y python python-pip python-devel gcc
 pip install --upgrade pip
 pip install sabyenc --upgrade
 ```
-Check with (as normal user):
-```
-python -c "import sabyenc ; print sabyenc.__version__ "
-```
-
 
 ## Installation on Linux in general
 
@@ -55,11 +53,15 @@ pip install sabyenc
 ```
 We created pre-compiled packages for x86 and x64 platforms, if you use another platform you might need to install additional extra packages, `pip` will throw an error in those cases.
 
-On Ubuntu/Debian the full installation then becomes:
+## Installation on FreeBSD
+
+
 ```
-sudo apt-get install python-dev python-pip
-sudo -H pip install sabyenc --upgrade
+su pip install sabyenc
 ```
+
+## Check if sabyenc is correctly installed
+
 To check if sabyenc is correctly installed, run this python oneliner:
 ```
 python -c "import sabyenc ; print sabyenc.__version__ "
@@ -79,7 +81,7 @@ Not having the `sabyenc` module installed will result in an error
 
 ```SABYenc module... NOT found! Expecting v2.7.0```
  
-on start-up to make users aware of the change.
+on start-up to make users aware of the change. You can still download, but not with the improved speed.
 
 ## Notes
 
