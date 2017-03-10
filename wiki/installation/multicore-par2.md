@@ -7,10 +7,17 @@ Installing these multicore versions of Par2 is easy for many platforms.
 
 There are 2 versions available:
 
-- `par2cmdline-tbb`: Based on Intel Thread Building blocks it is the fastest but can be harder (or impossible) to install on non-x86/x64 systems like ARM.
+- `par2cmdline-tbb`: Based on Intel Thread Building blocks it is the fastest but can be harder (or impossible) to install on non-x86/x64 systems like ARM or older Ubuntu releases.
 - `par2cmdline-mt` ([Github](https://github.com/jkansanen/par2cmdline-mt)): Easy to install on almost any platform, performance is better than single-threaded `par2` but less than `par2cmdline-tbb`.
 
 After installation and restarting SABnzbd you can specify additional options, such as the maximum number of cores to use, in the `Extra PAR2 Parameters` setting.
+
+This information does not apply to Windows or macOS, where Multicore par2 executables are included with SABnzbd.
+
+
+-------------------
+
+
 
 ## Installation on Ubuntu via PPA
 
@@ -29,6 +36,11 @@ For `par2cmdline-mt` change the last command to:
 ```
 sudo apt-get install par2-mt
 ```
+
+
+-------------------
+
+
 
 ## Installation on other distributions
 
