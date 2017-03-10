@@ -9,7 +9,7 @@
 // Determine platform
 var platform = '';
 var downloadTitle = 'Browse packages';
-if (navigator.appVersion.indexOf('Win')!=-1)    { platform = 'win32-setup'; downloadTitle = 'For Windows'}
+if (navigator.appVersion.indexOf('Win')!=-1)    { platform = 'win-setup'; downloadTitle = 'For Windows'}
 if (navigator.appVersion.indexOf('Mac')!=-1)    { platform = 'osx'; downloadTitle = 'For macOS'}
 if (navigator.appVersion.indexOf('X11')!=-1)    { platform = 'src'; downloadTitle = 'For Linux'}
 if (navigator.appVersion.indexOf('Linux')!=-1)  { platform = 'src'; downloadTitle = 'For Linux'}
@@ -139,7 +139,7 @@ function parseAssets(assets, platform, stable_release) {
             var linksBox = stable_release ? $('#download-links-stable') : $('#download-links-beta')
 
             // Have to search which one it is
-            $.each(['win32-setup', 'win32-bin', 'osx', 'src'], function(index, platform_search) {
+            $.each(['win32-setup', 'win-setup', 'win32-bin', 'win64-bin', 'osx', 'src'], function(index, platform_search) {
                 if(asset.name.indexOf(platform_search) !== -1) {
                     linksBox.find('.download-link-' + platform_search).attr('href', asset.browser_download_url)
 
