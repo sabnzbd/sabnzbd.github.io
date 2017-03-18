@@ -54,6 +54,7 @@ try {
 function parseGitHubResults(releases) {
     // Do we have a beta before a stable?
     var have_beta = false
+    var have_stable = false
 
     // Markdown converter
     var converter = new showdown.Converter()
@@ -62,7 +63,7 @@ function parseGitHubResults(releases) {
     // Loop over releases from GitHub
     $.each(releases, function(index, release) {
         // Is it a stable? We stop after the first stable
-        if(!release.prerelease) {
+        if(!release.prerelease && !have_stable) {
             // Set the label and download-link for big button
             parseAssets(release.assets, platform, true)
             stableBox.children('h4').text('Download ' + release.name.replace('SABnzbd', '').trim())
@@ -79,12 +80,12 @@ function parseGitHubResults(releases) {
             }
 
             // If there's no newer beta than the last stable, remove the beta-column
-            if(!have_beta) {
-                $('.download-beta').remove()
-            }
+            //if(!have_beta) {
+            //    $('.download-beta').remove()
+            //}
 
             // Stop iterating over releases
-            return false
+            have_stable = true
         }
         // Is this the first beta?
         else if(!have_beta) {
@@ -106,6 +107,8 @@ function parseGitHubResults(releases) {
             // Don't process beta's after this
             have_beta = true
         }
+        // Stop if we found both
+        if(have_beta && have_stable) return
     })
 
     // Linux?
