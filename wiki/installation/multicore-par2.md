@@ -52,7 +52,7 @@ Tools required: `git`, `automake` and `make` (install via your distribution's pa
 git clone https://github.com/jkansanen/par2cmdline-mt.git
 cd par2cmdline-mt
 aclocal
-automake --add-mising
+automake --add-missing
 autoconf
 ./configure
 make
