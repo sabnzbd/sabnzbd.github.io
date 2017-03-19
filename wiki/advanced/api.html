@@ -48,7 +48,7 @@ redirect_from: "/wiki/advanced/automation-support"
         </tr>
         <tr>
             <td><a href="#qstatus">qstatus</a></td>
-            <td>Simple Queue output</td>
+            <td>Simple Queue output <span class="label label-danger">To be deprecated in 2.1.0</span></td>
         </tr>
         <tr>
             <td><a href="#pause">pause</a> (queue)</td>
@@ -137,6 +137,7 @@ redirect_from: "/wiki/advanced/automation-support"
 <p>Full queue output with details about all jobs.</p>
 <pre><code>api?mode=queue&amp;start=START&amp;limit=LIMIT&amp;search=SEARCH</code></pre>
 <p><span class="label label-warning">NOTE</span> Some of the less obvious output paramaters are described below.</p>
+
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -182,23 +183,18 @@ redirect_from: "/wiki/advanced/automation-support"
             <td>See <a href="#change_opts">change_opts</a></td>
         </tr>
         <tr>
-            <td><code>darwin</code></td>
-            <td><code>true</code> when OS running SABnzbd is macOS</td>
-        </tr>
-        <tr>
-            <td><code>nt</code></td>
-            <td><code>true</code> when OS running SABnzbd is Windows</td>
-        </tr>
-        <tr>
             <td><code>loadavg</code></td>
             <td>On Linux this will contain a string with information about system load</td>
         </tr>
     </tbody>
 </table>
+
+<p><span class="label label-danger">NOTE</span> In 2.0.0+ many fields not related to the queue were deprecated. Only fields related to the queue remain. All those fields can still be found in <a href="#fullstatus">fullstatus</a>.</p>
+
 {% highlight json %}
 {
     "queue":{
-        "session":"APIKEY",
+        "status":"Downloading",
         "speedlimit":"9",
         "speedlimit_abs":"4718592.0",
         "paused":false,
@@ -275,29 +271,13 @@ redirect_from: "/wiki/advanced/automation-support"
         "diskspacetotal2":"465.21",
         "diskspace1_norm":"161.2 G",
         "diskspace2_norm":"161.2 G",
-        "active_lang":"en",
         "rating_enable":false,
-        "darwin":false,
-        "nt":true,
-        "last_warning":"",
         "have_warnings":"0",
         "pause_int":"0",
-        "pp_pause_event":false,
         "loadavg":"",
-        "webdir":"",
         "left_quota":"0 ",
-        "pid":3464,
-        "restart_req":false,
-        "power_options":true,
-        "helpuri":"https://sabnzbd.org/wiki/",
-        "uptime":"3h",
         "refresh_rate":"1",
-        "my_home":"C:\\Users\\xxx",
-        "version":"1.1.x",
-        "my_lcldata":"C:\\Users\\xxx\\AppData\\Local\\sabnzbd",
-        "color_scheme":"Default",
-        "new_release":"",
-        "status":"Downloading",
+        "version":"2.x.x",
         "finish":2,
         "cache_art":"16",
         "cache_size":"6 MB",
@@ -306,7 +286,6 @@ redirect_from: "/wiki/advanced/automation-support"
         "paused_all":false,
         "quota":"0 ",
         "have_quota":false,
-        "new_rel_url":"",
         "queue_details":"0"
     }
 }
@@ -314,6 +293,7 @@ redirect_from: "/wiki/advanced/automation-support"
 
 <h2 id="qstatus">Simple Queue output</h2>
 <p>Depreciated now by the Full Queue output, this is the old API that just provides limited details on the current queue and state of SABnzbd.</p>
+<p><span class="label label-danger">To be deprecated in 2.1.0</span></p>
 <pre><code>api?mode=qstatus</code></pre>
 {% highlight json %}
 {
@@ -540,27 +520,28 @@ redirect_from: "/wiki/advanced/automation-support"
 <p>Get files of job with <code>nzo_id</code>.</p>
 <pre><code>api?mode=get_files&amp;value=NZO_ID</code></pre>
 <p>The <code>status</code> indicates if a file was <code>finished</code>, in the process of being downloaded (<code>active</code>) or will only be downloaded when necessary (<code>queued</code>, like <code>.par2</code> files). The <code>set</code> shows to which part of the download the <code>.par2</code> files belong to, in case of multiple sets in 1 job.</p>
+<p><span class="label label-warning">NOTE</span> In 2.0.0 the <code>id</code> field was replaced by the unique <code>nzf_id</code> field for each file. Files are sorted in order: finished, active, queued.</p>
 {% highlight json %}
 {
     "files":[
         {
             "status":"finished",
+            "mbleft":"0.00",
             "mb":"0.05",
             "age":"25d",
             "bytes":"52161.00",
             "filename":"93a4ec7c37752640deab48dabb46b164.par2",
             "mbleft":"0.00",
-            "id":"0"
+            "nzf_id":"SABnzbd_nzf_1lk0ij"
         },
         {
             "status":"active",
             "mbleft":"20.58",
             "mb":"98.50",
-            "nzf_id":"SABnzbd_nzf_l5nz0c",
             "age":"25d",
             "bytes":"103287413.00",
-            "id":"1",
-            "filename":"93a4ec7c37752640deab48dabb46b164.01"
+            "filename":"93a4ec7c37752640deab48dabb46b164.01",
+            "nzf_id":"SABnzbd_nzf_zgx_gg"
         },
         {
             "status":"queued",
@@ -569,8 +550,8 @@ redirect_from: "/wiki/advanced/automation-support"
             "mb":"3.13",
             "age":"25d",
             "bytes":"3279083.00",
-            "id":"37",
-            "filename":"93a4ec7c37752640deab48dabb46b164.vol000+02.par2"
+            "filename":"93a4ec7c37752640deab48dabb46b164.vol000+02.par2",
+            "nzf_id":"SABnzbd_nzf_ee63r6"
         }
     ]
 }
@@ -682,15 +663,18 @@ redirect_from: "/wiki/advanced/automation-support"
         </tr>
     </tbody>
 </table>
+
+<p><span class="label label-danger">NOTE</span> In 2.0.0+ many fields not related to the history were deprecated. Only fields related to the history remain. All those fields can still be found in <a href="#fullstatus">fullstatus</a>.</p>
+
 {% highlight json %}
 {
     "history":{
         "noofslots":220,
-        "session":"APIKEY",
         "day_size":"1.9 G",
         "week_size":"30.4 G",
         "month_size":"167.3 G",
         "total_size":"678.1 G",
+        "last_history_update":1469210913,
         "slots":[
             {
                 "action_line":"",
@@ -717,6 +701,7 @@ redirect_from: "/wiki/advanced/automation-support"
                 "nzo_id":"SABnzbd_nzo_sdkoun",
                 "downloaded":2436906376,
                 "report":"",
+                "password":"",
                 "path":"\\\\?\\C:\\SABnzbd\\TV.Show.S04E02.720p.BluRay.x264-xHD",
                 "postproc_time":40,
                 "name":"TV.Show.S04E02.720p.BluRay.x264-xHD",
@@ -782,6 +767,7 @@ redirect_from: "/wiki/advanced/automation-support"
                 "nzo_id":"SABnzbd_nzo_gqhp63",
                 "downloaded":2491255137,
                 "report":"",
+                "password":"",
                 "path":"\\\\?\\C:\\SABnzbd\\TV.Show.S04E13.720p.BluRay.x264-xHD",
                 "postproc_time":82,
                 "name":"TV.Show.S04E13.720p.BluRay.x264-xHD",
@@ -822,45 +808,7 @@ redirect_from: "/wiki/advanced/automation-support"
                     }
                 ]
             }
-        ],
-        "diskspacetotal2":"465.21",
-        "darwin":false,
-        "last_warning":"",
-        "have_warnings":"0",
-        "diskspace2_norm":"182.0 G",
-        "speedlimit_abs":"10485760",
-        "active_lang":"en",
-        "pause_int":"0",
-        "pp_pause_event":false,
-        "diskspacetotal1":"465.21",
-        "loadavg":"",
-        "cache_max":"1073741824",
-        "speedlimit":"20",
-        "webdir":"",
-        "left_quota":"0 ",
-        "diskspace1_norm":"182.0 G",
-        "pid":9792,
-        "paused":true,
-        "restart_req":false,
-        "power_options":true,
-        "helpuri":"https://sabnzbd.org/wiki/",
-        "uptime":"1d",
-        "my_home":"C:\\Users\\xxx",
-        "last_history_update":1469210913,
-        "version":"1.1.x",
-        "my_lcldata":"C:\\Users\\xxx\\AppData\\Local\\sabnzbd",
-        "color_scheme":"Default",
-        "new_release":"",
-        "nt":true,
-        "cache_art":"0",
-        "finishaction":null,
-        "paused_all":false,
-        "quota":"0 ",
-        "cache_size":"0 B",
-        "diskspace2":"182.00",
-        "diskspace1":"182.00",
-        "have_quota":false,
-        "new_rel_url":""
+        ]
     }
 }
 {% endhighlight %}
@@ -1001,12 +949,16 @@ redirect_from: "/wiki/advanced/automation-support"
             <th>Description</th>
         </tr>
         <tr>
-            <td><code>folders</code></td>
-            <td>The orphaned job folder left in the Incomplete folder. Orphaned jobs can only be removed from a skin, not through the API</td>
+            <td><code>darwin</code></td>
+            <td><code>true</code> when OS running SABnzbd is macOS</td>
         </tr>
         <tr>
-            <td><code>cpumodel</code></td>
-            <td>Only available on Linux</td>
+            <td><code>nt</code></td>
+            <td><code>true</code> when OS running SABnzbd is Windows</td>
+        </tr>
+        <tr>
+            <td><code>folders</code></td>
+            <td>The orphaned job folder left in the Incomplete folder. Orphaned jobs can only be removed from a skin, not through the API</td>
         </tr>
         <tr>
             <td><code>dashrefreshcounter</code></td>
@@ -1028,8 +980,7 @@ redirect_from: "/wiki/advanced/automation-support"
         "folders":[
             "Lost.Folder.BRRip.x264.1080p"
         ],
-        "weblogfile":null,
-        "cpumodel":null,
+        "cpumodel":"Intel(R) Core(TM) i5-4200U CPU @ 1.60GHz",
         "pystone":88738,
         "downloaddir":"C:\\SABnzbd",
         "downloaddirspeed":0,
@@ -1039,6 +990,21 @@ redirect_from: "/wiki/advanced/automation-support"
         "loglevel":"0",
         "logfile":"C:\\Users\\xxx\\AppData\\Local\\sabnzbd\\logs\\sabnzbd.log",
         "configfn":"C:\\Users\\xxx\\AppData\\Local\\sabnzbd\\sabnzbd.ini",
+        "nt":true,
+        "darwin":false,
+        "helpuri":"https://sabnzbd.org/wiki/",
+        "uptime":"3h",
+        "color_scheme":"Default",
+        "webdir":"C:\\Program Files\\SABnzbd\\interfaces\\Glitter\\templates",
+        "active_lang":"en",
+        "restart_req":false,
+        "power_options":true,
+        "pp_pause_event":false,
+        "pid":123,
+        "weblogfile":null,
+        "new_release":false,
+        "new_rel_url":null,
+        "have_warnings":"0",
         "warnings":[
 
         ],
