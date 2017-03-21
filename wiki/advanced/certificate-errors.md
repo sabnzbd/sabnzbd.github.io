@@ -14,7 +14,7 @@ Currently there are still a lot of non-secure newsservers. The default setting o
 You can completely turn off SABnzbd’s security checking, but then your connection does not offer you the security of the two functions above.
 
 This page tells what to do in case of problems.
-<div style="display: none"> Disabled due to server problems
+
 -------------------
 
 Online newsserver SSL/TLS check
@@ -32,7 +32,7 @@ Online newsserver SSL/TLS check
 </div>
 
 <iframe id="newsserver-test-result" src=""></iframe>
-</div>
+
 <script type="text/javascript">
     $('.newsserver-test').on('submit', function() {
         // Clear first
