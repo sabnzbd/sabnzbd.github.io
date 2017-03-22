@@ -15,8 +15,10 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400italic,500,700" type="text/css" />
     <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+    {% if page.url == "/" or page.url contains "/downloads" %}
     <link rel="stylesheet" href="/css/lightslider.min.css" type="text/css" />
     <link rel="stylesheet" href="/css/featherlight.min.css" type="text/css" />
+    {% endif %}
     <link rel="stylesheet" href="/css/sabnzbd.css?v={{ site.time | date: '%d%m%Y' }}" type="text/css" />
 
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/ico" />
