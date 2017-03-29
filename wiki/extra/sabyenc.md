@@ -17,17 +17,21 @@ Jump to: [Ubuntu (via PPA)](#installation-on-ubuntu-via-ppa), [Ubuntu](#installa
 
 ### Installation in general
 
-With Linux on x86 and x86-64, the module can be installed via Python's packaging manager `pip` by running
+With Linux on x86 and x86-64, the latest version of the module can be installed via Python's packaging manager `pip` by running
 
-```
-pip install sabyenc
-```
-or more generic:
 ```
 pip install sabyenc --upgrade
 ```
 
 On other platforms (ARM, MIPS, etc), you need to first install the python-development module (`python-dev` or `python-devel`), and then run the above `pip` command.
+
+<hr/>
+
+<span class="label label-warning">NOTE</span> If you need to install a specific version to match your version of SABnzbd, you can specify this in the command:
+
+```
+pip install sabyenc==2.7.0
+```
 
 
 ### Installation on Ubuntu via PPA
