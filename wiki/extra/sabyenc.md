@@ -36,14 +36,14 @@ pip install sabyenc==2.7.0
 
 ### Installation on Ubuntu via PPA
 
-For Ubuntu there is a PPA with `python-sabyenc`, by the same creator (JCFP) as the SABnzbd PPA.
+For Ubuntu there is a PPA with `python-sabyenc`, by the same creator (JCFP) as the SABnzbd PPA. This will work on X86, X86-64, ARM (32bit) and ARM64 architectures.
 Install it like this:
 ```
 sudo add-apt-repository ppa:jcfp/sab-addons
 sudo apt-get update
 sudo apt-get install python-sabyenc
 ```
-This will work on both X86, X86-64 and ARM architectures.
+
 
 ### Installation on Ubuntu (without PPA)
 
