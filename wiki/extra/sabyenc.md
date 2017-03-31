@@ -126,8 +126,7 @@ If SAByenc is installed, and the version is correct, SABnzbd will print in the l
 SABYenc module (v2.7.0)... found!
 ```
 
-
-Not having the `sabyenc` module installed will result in a warning:
+If you have no `sabyenc` module installed, or an incorrect version (too low or too high (!)), you will get a warning:
 
 ```
 SABYenc module... NOT found! Expecting v2.7.0
