@@ -1,6 +1,8 @@
 ---
 title: SABYenc
-redirect_from: "/sabyenc"
+redirect_from:
+    - /sabyenc
+    - /wiki/extra/sabyenc.html
 ---
 
 # Introduction to SAByenc
