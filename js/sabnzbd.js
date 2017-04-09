@@ -80,9 +80,9 @@ function parseGitHubResults(releases) {
             }
 
             // If there's no newer beta than the last stable, remove the beta-column
-            //if(!have_beta) {
-            //    $('.download-beta').remove()
-            //}
+            if(!have_beta) {
+                $('.download-beta').remove()
+            }
 
             // Stop iterating over releases
             have_stable = true
