@@ -1,6 +1,6 @@
 name: SABnzbd.org
 
-wiki_version: '1.2' # Needs to be a string, for string-comparison
+wiki_version: '2.0' # Needs to be a string, for string-comparison
 
 gems:
   - jekyll-redirect-from
@@ -12,13 +12,6 @@ defaults:
     values:
       layout: "default"
       name: SABnzbd.org
-  -
-    scope:
-      path: "wiki/configuration/0.7"
-    values:
-      layout: "wiki"
-      section: "Wiki"
-      depricated: True
   -
     scope:
       path: "wiki"
