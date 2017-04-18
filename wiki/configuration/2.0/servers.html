@@ -60,12 +60,14 @@ title: Servers
             <td><strong>Certificate verification</strong></td>
             <td>
                 <p>SABnzbd can verify the certificates your newsserver uses to verify its identity. Python 2.7.9 or above, OpenSSL 1.0.2 or above and up-to-date local CA certificates are required.</p>
+                <p><span class="label label-danger">WARNING</span> Disabeling or setting this check to <code>Minimal</code> allows anyone to redirect and intercept your traffic using <em>any</em> valid certificate!  It is comparable to not using SSL at all.</p>
+                <p>Read more on <a href="/wiki/advanced/certificate-errors.html">Certificate verification</a>.</p>
                 <ul>
                     <li><code>None</code> = Certificates are not verified</li>
-                    <li><code>Minimal</code> = Verify certificates before connecting</li>
+                    <li><code>Minimal</code> = Verify certificates before connecting<br></li>
                     <li><code>Strict</code> = Verify and enforce matching hostname. This setting can be problematic for some servers that use 1 certificate for multiple servers.</li>
                 </ul>
-                <p>Read more on <a href="/wiki/advanced/certificate-errors.html">Certificate verifications</a>.</p>
+
             </td>
         </tr>
         <tr>

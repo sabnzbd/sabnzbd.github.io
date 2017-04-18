@@ -4,10 +4,8 @@ redirect_from: "/certificate-errors"
 ---
 Usenet (aka Newsservers) offers SSL/TLS security. It’s called NNTPS, or NNTP with SSL. Just like HTTPS, it has two functions:
 
-* Are you really talking to the server you want to talk to.
-* Others can’t see what is being sent between client and server. So others can’t see 1) your login credentials and 2) what you’re downloading.
-
-As of SABnzbd version 1.2.0, SABnzbd by default actively checks SSL/TLS security.
+- Are you really talking to the server you want to talk to.
+- Others can’t see what is being sent between client and server. So others can’t see 1) your login credentials and 2) what you’re downloading.
 
 Currently there are still [a lot of non-secure newsservers](https://www.appelboor.com/newsservers/newsservers-with-SSL.html). The default setting of SABnzbd for existing servers is therefore not very strict. You can set it to `Strict` yourself in the Advanced settings on the [Servers](/wiki/configuration/{{ site.wiki_version }}/servers) page. When you add a new server in SABnzbd 2.0.0+ it will be set to `Strict` by default.
 
@@ -66,8 +64,8 @@ Newsserver problems
 **You can do different things:**
 
 1. Easy but not secure: Make the problem go away by not using SSL (untick SSL).
-2. Easy but not secure: Ignore the problem, and instruct SABnzbd to ignore the problem: in SABnzbd’s Server-settings, under Advanced, set `Certificate verification` to `Disabled`. You have now an insecure SSL connection. <br> <span class="label label-warning">WARNING</span> Disabeling this check allows anyone to redirect and intercept your traffic using *any* certificate!
-3. Hard, but secure: Try to find the cause of the problem: Check on [our Newsservers with SSL/TLS overview](https://www.appelboor.com/newsservers/newsservers-with-SSL.html) (and/or online newsserver SSL/TLS check above) the SSL/TLS-status of your newsserver.
+2. Easy but not secure: Ignore the problem, and instruct SABnzbd to ignore the problem: in SABnzbd’s Server-settings, under Advanced, set `Certificate verification` to `Disabled`. You have now an insecure SSL connection. <br> <span class="label label-danger">WARNING</span> Disabeling this check allows anyone to redirect and intercept your traffic using *any* certificate! It is comparable to not using SSL at all.
+3. Hard, but secure: Check on [our Newsservers with SSL/TLS overview](https://www.appelboor.com/newsservers/newsservers-with-SSL.html) (and/or online newsserver SSL/TLS check above) the SSL/TLS-status of your newsserver.
 
     1. If the test or the overview shows an error message such as `OK NOK NOK` or `NOK NOK NOK`, the problem is on the side of the newsserver. You can ask the newsserver provider to solve that problem. That could be a hard path; the provider could deny they have a problem.
 
@@ -84,7 +82,7 @@ Newsserver problems
 
 You can do different things:
 
-1. Easy and half/half-secure: in SABnzbd’s Server-settings, under Advanced, set `Certificate verification` to `Default`/`Minimal`. Then try again.<br> <span class="label label-warning">WARNING</span> Disabeling this check allows anyone to redirect and intercept your traffic using *any* valid certificate!
+1. Easy and half/half-secure: in SABnzbd’s Server-settings, under Advanced, set `Certificate verification` to `Default`/`Minimal`. Then try again.<br> <span class="label label-danger">WARNING</span> Disabeling this check allows anyone to redirect and intercept your traffic using *any* valid certificate!  It is comparable to not using SSL at all.
 2. You can ask the newsserver provider to solve the problem. That could be a hard path; the provider could deny they have a problem.
 
 * * *

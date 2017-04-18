@@ -9,9 +9,9 @@ title: Email Templates
 <h3>SABnzbd makes these variables available for use in the relevant template files:</h3>
 <div>
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#templateEmail" aria-controls="templateEmail" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp; email-*</a></li>
-    <li role="presentation"><a href="#templateRss" aria-controls="templateRss" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-import" aria-hidden="true"></span>&nbsp;&nbsp; rss-*</a></li>
-    <li role="presentation"><a href="#templateBadFetch" aria-controls="templateBadFetch" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>&nbsp;&nbsp; badfetch-*</a></li>
+    <li role="presentation" class="active"><a href="#templateEmail" aria-controls="templateEmail" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp; <code>email-*.tmpl</code></a></li>
+    <li role="presentation"><a href="#templateRss" aria-controls="templateRss" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-import" aria-hidden="true"></span>&nbsp;&nbsp; <code>rss-*.tmpl</code></a></li>
+    <li role="presentation"><a href="#templateBadFetch" aria-controls="templateBadFetch" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>&nbsp;&nbsp; <code>badfetch-*.tmpl</code></a></li>
   </ul>
 
   <div class="tab-content">
@@ -22,16 +22,16 @@ title: Email Templates
                     <th colspan="2">Used for default (completed/failed) related events.</th>
                 </tr>
                 <tr>
-                    <th>variable</th>
-                    <th>description</th>
+                    <th>Variable</th>
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="warning">
+                <tr>
                     <td>$to</td>
                     <td>One or more recipients &nbsp;<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup></td>
                 </tr>
-                <tr class="warning">
+                <tr>
                     <td>$from</td>
                     <td>Sender</td>
                 </tr>
@@ -93,16 +93,16 @@ title: Email Templates
                     <th colspan="2">Used for RSS related events.</th>
                 </tr>
                 <tr>
-                    <th>variable</th>
-                    <th>description</th>
+                    <th>Variable</th>
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="warning">
+                <tr>
                     <td>$to</td>
                     <td>One or more recipients &nbsp;<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup></td>
                 </tr>
-                <tr class="warning">
+                <tr>
                     <td>$from</td>
                     <td>Sender</td>
                 </tr>
@@ -128,20 +128,20 @@ title: Email Templates
     <div role="tabpanel" class="tab-pane" id="templateBadFetch">
         <table class="table table-bordered table-hover">
             <thead>
-                <tr class="active">
-                    <th colspan="2"><span class="label  label-success">0.7.0+</span> Used to report failed URL-based NZB retrievals.</th>
+                <tr>
+                    <th colspan="2">Used to report failed URL-based NZB retrievals.</th>
                 </tr>
                 <tr>
-                    <th>variable</th>
-                    <th>description</th>
+                    <th>Variable</th>
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="warning">
+                <tr>
                     <td>$to</td>
                     <td>One or more recipients &nbsp;<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup></td>
                 </tr>
-                <tr class="warning">
+                <tr>
                     <td>$from</td>
                     <td>Sender</td>
                 </tr>
@@ -166,7 +166,7 @@ title: Email Templates
     If you want to use different email formats based on the email recipient, you can use conditional formatting (see example below).<br>
 </p>
 <h1 id="toc0"><span>Standard template</span></h1>
-<p><strong>WARNING</strong>: do not modify the standard templates, but make a copy in your own template folder.<br>
+<p><span class="label label-warning">WARNING</span> do not modify the standard templates, but make a copy in your own template folder.<br>
     If you modify the standard templates, they will be lost when uninstalling or when upgrading to a new SABnzbd release.
 </p>
 <p>Below is the standard template, called <code>email-us-en.tmpl</code>, which is located in the program folder of SABnzbd.<br>
