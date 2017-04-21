@@ -1,12 +1,12 @@
 ---
 title: Highspeed Downloading
 ---
-<div class="alert alert-success">We are testing SABnzbd 2.0.0, which is much faster than any previous release. <br>Get it now from the Downloads page!</div>
+
 <p>If you are blessed with a fast connection (50MB/s and over) and are not getting the full speeds you require, you can try the following:</p>
 <ol>
+    <li>Make sure <code>sabyenc</code> is installed by checking the first page of the Config. If you used the installers on Windows, macOS or a repository/pre-built package, this will be present. This will speed up decoding as it will use C code instead of python code. More information <a href="/wiki/extra/sabyenc">here</a>.</li>
     <li>Set the <strong>Article Cache Limit</strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/general#toc2">Config-&gt;General</a>. This will keep articles in memory and not write them to disk (which is slower). Depending on how much RAM you can spare, two good values are <code>500M</code> (the M denotes megabytes and is required) or <code>1G</code> (1GB). If you download a lot of rar files that are 200MB or larger then use the latter value. The cache will only be used when nessecary, cache usages above 400MB are rare.</li>
     <li>Check if logging is set to only <code>Errors/Warning</code> in the Status window. Especially the <code>+Debug</code> setting writes very frequently tiny bits of data to the disk. This increases CPU load for the writing and occupies the disk.</li>
-    <li>Make sure <strong>sabyenc</strong> is installed by checking the first page of the Config. If you used the installers on Windows, macOS or a repository/pre-built package, this will be present. This will speed up decoding as it will use C code instead of python code. More information <a href="/wiki/extra/sabyenc">here</a>.</li>
     <li>Investigate your <strong>connection count</strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/servers">Config-&gt;Servers</a>. It may seem counter-intuitive, since more connections <em>should</em> be faster than fewer connections, but if you use the 50+ connections some hosts give you the overhead from constantly opening and closing connections can slow you down. So start at the max allowed connections and slowly lower your count until you max out your speed. Or do it the other way round: start with 5 connections, measure the speed, and raise to 7, measure again, 9, measure again, etc. Normally 10 connections are enough.</li>
     <li>If you use SSL to connect to your newsserver, try changing the <a href="/wiki/advanced/ssl-ciphers">SSL Ciphers</a>. This will sightly lower encryption strength but can greatly increase download speeds.</li>
 </ol>
