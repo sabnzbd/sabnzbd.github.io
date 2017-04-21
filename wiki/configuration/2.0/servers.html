@@ -5,6 +5,7 @@ title: Servers
     These servers can be your own ISP's Usenet server, a free public one or one of the many commercial servers.
     For each server you need to specify its parameters.
 </p>
+<hr>
 <h2 id="toc1"><span>Priorities</span></h2>
 <p>You assign each server a priority, a number between <code>0</code> (highest) and <code>99</code> (lowest).<br>
     SABnzbd will first try to get articles from the group of servers with the highest priority.
@@ -12,13 +13,14 @@ title: Servers
     When the first tried server doesn't have an article, then another server with the same priority is tried.<br>
     When none of the primary servers has a specific article, a lower priority group is tried. Within the lower priority group, the same method is used: the first server with a free slot is tried.
 </p>
+<hr>
 <h2 id="toc2"><span>Settings</span></h2>
-<p><em><strong>Note</strong></em>: Check your Usenet provider's documentation for the proper values!</p>
+<p><span class="label label-warning">NOTE</span> Check your Usenet provider's documentation for the proper values!</p>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
             <td><strong>Enable</strong></td>
-            <td>If you have multiple servers, you can use this field to quickly enable or disable servers. Note: this field can be set/reset by the <a href="/wiki/configuration/2.0/scheduling">Scheduler</a> too!</td>
+            <td>If you have multiple servers, you can use this field to quickly enable or disable servers. <br> <span class="label label-warning">NOTE</span> This field can be set/reset by the <a href="/wiki/configuration/2.0/scheduling">Scheduler</a> too!</td>
         </tr>
         <tr>
             <td><strong>Host</strong></td>
@@ -92,104 +94,7 @@ title: Servers
         </tr>
     </tbody>
 </table>
-<h3>Example using Giganews (without SSL)</h3>
-<table class="table table-bordered table-hover">
-    <tbody>
-        <tr>
-            <td><strong>Host</strong></td>
-            <td>news.my-isp.com</td>
-        </tr>
-        <tr>
-            <td><strong>Port</strong></td>
-            <td>119</td>
-        </tr>
-        <tr>
-            <td><strong>Username</strong></td>
-            <td>user</td>
-        </tr>
-        <tr>
-            <td><strong>Password</strong></td>
-            <td>*</td>
-        </tr>
-        <tr>
-            <td><strong>Timeout</strong></td>
-            <td>120</td>
-        </tr>
-        <tr>
-            <td><strong>Connections</strong></td>
-            <td>8</td>
-        </tr>
-        <tr>
-            <td><strong>SSL</strong></td>
-            <td>(No)</td>
-        </tr>
-        <tr>
-            <td><strong>SSL Type</strong></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><strong>Priority</strong></td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td><strong>Optional</strong></td>
-            <td>(No)</td>
-        </tr>
-        <tr>
-            <td><strong>Retention</strong></td>
-            <td>0</td>
-        </tr>
-    </tbody>
-</table>
-<h3>Example using Giganews and SSL</h3>
-<table class="table table-bordered table-hover">
-    <tbody>
-        <tr>
-            <td><strong>Host</strong></td>
-            <td>ssl-news.my-isp.com</td>
-        </tr>
-        <tr>
-            <td><strong>Port</strong></td>
-            <td>563</td>
-        </tr>
-        <tr>
-            <td><strong>Username</strong></td>
-            <td>user</td>
-        </tr>
-        <tr>
-            <td><strong>Password</strong></td>
-            <td>*</td>
-        </tr>
-        <tr>
-            <td><strong>Timeout</strong></td>
-            <td>120</td>
-        </tr>
-        <tr>
-            <td><strong>Connections</strong></td>
-            <td>8</td>
-        </tr>
-        <tr>
-            <td><strong>SSL</strong></td>
-            <td>(Yes)</td>
-        </tr>
-        <tr>
-            <td><strong>SSL Type</strong></td>
-            <td>Default</td>
-        </tr>
-        <tr>
-            <td><strong>Priority</strong></td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td><strong>Optional</strong></td>
-            <td>(No)</td>
-        </tr>
-        <tr>
-            <td><strong>Retention</strong></td>
-            <td>0</td>
-        </tr>
-    </tbody>
-</table>
+
 <div class="footnotes-footer">
     <div class="title">Footnotes</div>
     <div class="footnote-footer" id="footnote-1">1. Retention means the number of days that articles are kept by the server, after this number of days, the server will start removing articles. Note that retention is an average number. In reality the server will start removing articles when its storage becomes too full.</div>
