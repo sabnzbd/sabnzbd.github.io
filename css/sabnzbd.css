@@ -317,10 +317,13 @@ footer a:hover,
     min-width: 40px;
 }
 
+.wiki-content .table-special td:nth-child(2) {
+    text-align: center;
+}
+
 .wiki-content th {
     background-color: #EDEDED
 }
-
 
 .wiki-content h1 {
     font-size: 1.9em
