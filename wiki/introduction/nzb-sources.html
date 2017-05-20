@@ -2,14 +2,16 @@
 title: NZB Sources
 ---
 
-<p>SABnzbd only accepts <a href="http://en.wikipedia.org/wiki/NZB" target="_blank">NZB files</a> as download specifications<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup>.
+<p>SABnzbd does not browser Usenet headers but instead only accepts <a href="http://en.wikipedia.org/wiki/NZB" target="_blank">NZB files</a> to process <sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup>.
     An NZB file contains a full specification of all Usenet articles that are needed for a download. You can get these files from sites listed below.<br>
 </p>
 
-<p><strong>SABnzbd does not endorse or require the use of any specific indexer.</strong><br>
-    They all work with SABnzbd perfectly fine so long as they generate NZBs, none of these sites require specific "SABnzbd integration".<br>
+<div class="panel panel-danger">
+    <div class="panel-heading">SABnzbd does not endorse or require the use of any specific indexer.</div>
+    <div class="panel-body">They all work with SABnzbd perfectly fine so long as they generate NZBs, none of these sites require specific "SABnzbd integration".<br>
     Before paying for an indexer please keep in mind that there are no guarantees and that any site could disappear at any time without notice.
-</p>
+    </div>
+</div>
 
 <p><strong>Additional information</strong><br>
     The following sites have further listings for indexers with commentary showing features etc.<br>
@@ -18,8 +20,9 @@ title: NZB Sources
     <a href="http://usenetreviewz.com/nzb-sites/" target="_blank">UsenetReviewz.com</a><br>
 </p>
 
-<h2>Search engines</h2>
-<p>Only searching in publicly available headers, but they will not match obfuscated files to the releases they belong to or do any analysis on the files.</p>
+<h2>Raw search engines</h2>
+<p>These are classic search engines that index and give you results by key words. No human influence, which means little to no logic on filtering out bad posts (spam/virus/password protected/etc) or un-obfuscating encrypted posts. Just an algorithm to search.</p>
+<div class="alert alert-danger" role="alert">Be careful when obtaining NZBs through this method - user discretion is advised.</div>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -28,19 +31,19 @@ title: NZB Sources
             <th>Notes</th>
         </tr>
         <tr>
-            <td><a href="http://www.binsearch.info" target="_blank">Binsearch</a></td>
-            <td>Limited</td>
-            <td>Only RSS on newsgroup basis</td>
-        </tr>
-        <tr>
-            <td><a href="http://binzb.com/" target="_blank">binzb.com</a></td>
+            <td><a href="https://www.binsearch.info" target="_blank">binsearch.info</a></td>
             <td>No</td>
             <td></td>
         </tr>
         <tr>
-            <td><a href="http://findnzb.net/" target="_blank">findnzb.net</a></td>
+            <td><a href="http://binzb.com/" target="_blank">BiNZB.com</a></td>
+            <td>No</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="http://findnzb.net/" target="_blank">FindNZB.net</a></td>
             <td>Limited</td>
-            <td>Newsgroup of post reported as Category</td>
+            <td>Newsgroup of NZB post reported as Category</td>
         </tr>
         <tr>
             <td><a href="http://nzbfriends.com/" target="_blank">nzbfriends.com</a></td>
@@ -48,174 +51,250 @@ title: NZB Sources
             <td></td>
         </tr>
         <tr>
-            <td><a href="http://www.nzbindex.nl" target="_blank">NZBIndex</a></td>
+            <td><a href="http://www.nzbindex.nl" target="_blank">NZBIndex.nl</a></td>
             <td>Yes</td>
-            <td></td>
+            <td>Newsgroup of NZB post reported as Category</td>
         </tr>
     </tbody>
 </table>
 
 <h2>Indexers</h2>
-<p>Indexers analyze each file and match it to known movie, show, music or software releases and provide reports on each NZB.</p>
-<table class="table table-bordered table-hover">
-    <tbody>
-        <tr>
-            <th>Site</th>
-            <th>Open</th>
-            <th>Cost</th>
-            <th>RSS</th>
-            <th><a href="/wiki/configuration/{{ site.wiki_version }}/categories">Indexer Tag</a><sup class="footnoteref"><a id="footnoteref-3" href="#footnote-3">3</a></sup> Format</th>
-            <th>Notes</th>
-        </tr>
-        <tr>
-            <td><a href="http://www.albumsindex.com" target="_blank">AlbumsIndex</a></td>
-            <td>Yes</td>
-            <td>Free</td>
-            <td>Yes</td>
-            <td>n/a</td>
-            <td>Music albums only.</td>
-        </tr>
-        <tr>
-            <td><a href="http://www.dognzb.cr" target="_blank">DogNZB</a></td>
-            <td>No</td>
-            <td>$15 yearly</td>
-            <td>Yes</td>
-            <td>Cat*Subcat</td>
-            <td>Paid account necessary to use full retention, API, and SABnzbd integration.</td>
-        </tr>
-        <tr>
-            <td><a href="https://drunkenslug.com/" target="_blank">drunkenslug.com</a></td>
-            <td>Yes</td>
-            <td>Free</td>
-            <td>Yes</td>
-            <td>Cat &gt; Sub</td>
-            <td>2500 API hits, add'l 2500 downloads. nn-tmux based.</td>
-        </tr>
-        <tr>
-            <td><a href="http://fastnzb.info/" target="_blank">fastnzb.info</a></td>
-            <td>Yes</td>
-            <td>Free</td>
-            <td>Yes</td>
-            <td>Cat*Subcat</td>
-            <td>50 API calls and 50 NZB-grabs per day, Newznab compatible.</td>
-        </tr>
+<p>Indexers parse headers to build releases to prevent a user friendly way to browse content.</p>
+<div class="alert alert-info" role="alert">Updated list from the <a href="https://www.reddit.com/r/usenet/wiki/indexers" target="_blank">Reddit /r/usenet</a> thread on May 1st 2017.<br>
+    If you see outdated information please let us know and we will be happy to make the necessary changes.
+</div>
+<table class="table table-bordered table-hover"><thead>
+<tr>
+<th align="left">Site</th>
+<th style="text-align: center">Code Base</th>
+<th style="text-align: center">Registrations</th>
+<th style="text-align: center">Free Account Limits</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left"><a href="https://abnzb.com/" target="_blank">abNZB</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
+<td align="center">Open</td>
+<td align="center">20 Downloads, 100 API hits/day</td>
+</tr>
+<tr>
+<td align="left"><a href="https://althub.co.za/" target="_blank">altHUB</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
+<td align="center">Invite Only</td>
+<td align="center">Free to use for 14 days, then unusable until you pay</td>
+</tr>
+<tr>
+<td align="left"><a href="http://anonzbs.com" target="_blank">anonzbs</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
+<td align="center">Open</td>
+<td align="center">3 NZBs, 10 API hits/day</td>
+</tr>
+<tr>
+<td align="left"><a href="https://dognzb.cr" target="_blank">DOGnzb</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
+<td align="center">Invite Only</td>
+<td align="center">Lite Tier only for former "Lifetime" account holders: 50 NZBs, 50 API hits/day, No Watchlist feature</td>
+</tr>
+<tr>
+<td align="left"><a href="https://drunkenslug.com/" target="_blank">DrunkenSlug</a></td>
+<td align="center"><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
+<td align="center">Open</td>
+<td align="center">5 NZBs, 100 API hits</td>
+</tr>
+<tr>
+<td align="left"><a href="http://fastnzb.info/" target="_blank">fastnzb.info</a></td>
+<td align="center"><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
+<td align="center">Invite Only</td>
+<td align="center">50 NZBs, 50 API hits</td>
+</tr>
+<tr>
+<td align="left"><a href="http://headphones.codeshy.com/vip" target="_blank">Headphones VIP Server</a></td>
+<td align="center"><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
+<td align="center">Donate Only</td>
+<td align="center">?</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.gingadaddy.com/" target="_blank">GingaDADDY</a></td>
+<td align="center">Custom</td>
+<td align="center">Open</td>
+<td align="center">3 downloads/day, no XXX</td>
+</tr>
+<tr>
+<td align="left"><a href="https://lulunzb.com/" target="_blank">LuluNZB</a></td>
+<td align="center"><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
+<td align="center">Invite Only</td>
+<td align="center">5 NZBs, 5 API hits/day</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.miatrix.com/" target="_blank">Miatrix</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
+<td align="center">Open</td>
+<td align="center">2 NZBs, 10 API hits/day</td>
+</tr>
+<tr>
+<td align="left"><a href="https://newztown.co.za/" target="_blank">NewzTown</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
+<td align="center">Open</td>
+<td align="center">?</td>
+</tr>
+<tr>
+<td align="left"><a href="http://nzb7.com/" target="_blank">NZB7.com</a></td>
+<td align="center"><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
+<td align="center">Open</td>
+<td align="center">No Api Usage</td>
+</tr>
+<tr>
+<td align="left"><a href="https://nzb.cat/" target="_blank">NZBCat</a></td>
+<td align="center"><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
+<td align="center">Donate/Invite Only</td>
+<td align="center">60 day trial period with 50 NZBs, 500 API hits/day</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.nzbnoob.com/" target="_blank">NzbNooB</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
+<td align="center">Open</td>
+<td align="center">5 downloads, 100 api hits/day</td>
+</tr>
+<tr>
+<td align="left"><a href="https://nzbplanet.net/" target="_blank">NzbPlanet</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
+<td align="center">Open</td>
+<td align="center">Reduced retention, no access to VIP NZBs, No API access for free accounts</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.nzbfinder.ws/" target="_blank">NZB Finder</a></td>
+<td align="center"><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
+<td align="center">Open</td>
+<td align="center">10 NZBs, 100 API hits/day</td>
+</tr>
+<tr>
+<td align="left"><a href="https://nzbgeek.info/" target="_blank">NZBgeek</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
+<td align="center">Open</td>
+<td align="center">14 day trial period</td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.nzbgrabit.cz/" target="_blank">NZBGrabit</a></td>
+<td align="center">Forum</td>
+<td align="center">Open</td>
+<td align="center">?</td>
+</tr>
+<tr>
+<td align="left"><a href="https://nzbindex.in/" target="_blank">NZBindex.in</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
+<td align="center">Open</td>
+<td align="center">5 NZBs, 25 API hits/day</td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.nzbmovieseeker.com/" target="_blank">NzbMovieSeeker.com</a></td>
+<td align="center">Custom</td>
+<td align="center">Open</td>
+<td align="center">?</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.nzbndx.com/" target="_blank">NZBNDX</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
+<td align="center">Open</td>
+<td align="center">2 week trial period</td>
+</tr>
+<tr>
+<td align="left"><a href="https://nzb.su/" target="_blank">NZB.su</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
+<td align="center">Invite Only</td>
+<td align="center">5 NZBs, 0 API hits/day</td>
+</tr>
+<tr>
+<td align="left"><a href="https://nzb.is/" target="_blank">nzb.is</a></td>
+<td align="center"><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
+<td align="center">Open</td>
+<td align="center">5 NZBs, 5 API hits/day</td>
+</tr>
+<tr>
+<td align="left"><a href="http://nzbid.org/" target="_blank">NZBid.org</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
+<td align="center">Open</td>
+<td align="center">?</td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.nzbporn.org/" target="_blank">nzbPorn</a></td>
+<td align="center">Custom</td>
+<td align="center">Open</td>
+<td align="center">NZBs no older than 24 hours</td>
+</tr>
+<tr>
+<td align="left"><a href="http://nzbs.org/" target="_blank">nzbs.org</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a> + Custom</td>
+<td align="center">Closed</td>
+<td align="center">?</td>
+</tr>
+<tr>
+<td align="left"><a href="https://nzbs.today/" target="_blank">nzbs.today</a></td>
+<td align="center"><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
+<td align="center">Open</td>
+<td align="center">3 NZBs, 12 API hits/day</td>
+</tr>
+<tr>
+<td align="left"><a href="http://nzbstars.com/" target="_blank">nzbstars.com</a></td>
+<td align="center"><a href="https://github.com/spotweb/spotweb" target="_blank">Spotweb</a></td>
+<td align="center">Open</td>
+<td align="center">?</td>
+</tr>
+<tr>
+<td align="left"><a href="https://nzbtv.net/" target="_blank">nzbTV.net</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
+<td align="center">Closed</td>
+<td align="center">10 NZBs, 15 API hits/day</td>
+</tr>
+<tr>
+<td align="left"><a href="https://omgwtfnzbs.me/" target="_blank">omgwtfnzbs</a></td>
+<td align="center">Custom + Newznab API</td>
+<td align="center">Donate/Invite Only</td>
+<td align="center">10 NZBs/day</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.oznzb.com/" target="_blank">OZnzb</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
+<td align="center">Closed</td>
+<td align="center">5 NZBs, 500 API hits/day</td>
+</tr>
+<tr>
+<td align="left"><a href="https://pfmonkey.com/" target="_blank">PFMonkey.com</a></td>
+<td align="center"><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
+<td align="center">Invite Only</td>
+<td align="center">10 downloads, 0 API hits/day, account might get deleted if inactive</td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.redusenet.com/" target="_blank">redusenet.com</a></td>
+<td align="center">Forum</td>
+<td align="center">Invite Only</td>
+<td align="center">No daily limits</td>
+</tr>
+<tr>
+<td align="left"><a href="https://simplynzbs.com/" target="_blank">SimplyNZBs (PirateNZB)</a></td>
+<td align="center"><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
+<td align="center">Donate/Invite Only</td>
+<td align="center">5 NZBs, 10 API hits/day</td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.tabula-rasa.pw/" target="_blank">Tabula-Rasa</a></td>
+<td align="center"><a href="https://github.com/DariusIII/newznab-tmux" target="_blank">NNTmux</a></td>
+<td align="center">Open</td>
+<td align="center">10 NZBs, 100 API hits/day</td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.usenet-town.com/" target="_blank">Town Indexer</a></td>
+<td align="center"><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
+<td align="center">Donate/Invite Only</td>
+<td align="center">?</td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.usenethub.com/" target="_blank">usenethub.com</a></td>
+<td align="center">Search Engine</td>
+<td align="center">-</td>
+<td align="center">?</td>
+</tr>
+</tbody></table>
 
-        <tr>
-            <td><a href="https://www.gingadaddy.com/" target="_blank">gingadaddy.com</a></td>
-            <td>No</td>
-            <td>£10 lifetime</td>
-            <td>Yes</td>
-            <td>n/a</td>
-            <td>Another paid indexer, free up to 5 NZB per day.</td>
-        </tr>
-        <tr>
-            <td><a href="http://nzb.cat/" target="_blank">nzb.cat</a></td>
-            <td>No</td>
-            <td>$15 Lifetime</td>
-            <td>Yes</td>
-            <td>Cat*Subcat</td>
-            <td>Free accounts limited to 100 api hits and 5 nzbs per day. Paid accounts limited to 1000 nzbs and 5000 api hits</td>
-        </tr>
-        <tr>
-            <td><a href="http://www.nzb.su" target="_blank">NZB.su</a></td>
-            <td>No</td>
-            <td>$8 yearly</td>
-            <td>Yes<sup class="footnoteref"><a id="footnoteref-4" href="#footnote-4">4</a></sup></td>
-            <td>Cat*Subcat</td>
-            <td>Free accounts are limited to 10 nzbs per day and 80 API hits. Paid accounts are limited to 400 nzbs and 5000 API hits</td>
-        </tr>
-        <tr>
-            <td><a href="http://NZBFinder.ws/" target="_blank">NZBFinder.ws</a></td>
-            <td>Yes</td>
-            <td>$10-$35/year</td>
-            <td>Yes</td>
-            <td>Cat*Subcat</td>
-            <td>Free accounts have very low limits. Based on nZEDb. Most expensive account includes SpotWeb access.</td>
-        </tr>
-
-        <tr>
-            <td><a href="https://nzbgeek.info" target="_blank">NZBgeek</a></td>
-            <td>Yes</td>
-            <td>$12 yearly</td>
-            <td>Yes</td>
-            <td>Cat*Subcat</td>
-            <td>Another Newznab-based indexer with forum integration. Free accounts are limited to 2 NZBs/day</td>
-        </tr>
-        <tr>
-            <td><a href="http://nzbid.org/" target="_blank">nzbid.org</a></td>
-            <td>Yes</td>
-            <td>Free</td>
-            <td>Yes</td>
-            <td>Cat*Subcat</td>
-            <td>Another newznab indexer, no registration needed</td>
-        </tr>
-
-        <tr>
-            <td><a href="http://nzbplanet.net" target="_blank">nzbplanet.net</a></td>
-            <td>Yes</td>
-            <td>Limited</td>
-            <td>Yes</td>
-            <td>Cat*Subcat</td>
-            <td>Bookmarks, TV and movie watchlist, screenshots, subtitles for movies, nzb request system and Advanced search filters, newznab+ features</td>
-        </tr>
-        <tr>
-            <td><a href="http://www.nzbs.org/" target="_blank">nzbs.org</a></td>
-            <td>No</td>
-            <td>Free</td>
-            <td>Yes</td>
-            <td>Cat-Subcat</td>
-            <td>Nice service (newznab-based), but no new registrations possible.</td>
-        </tr>
-        <tr>
-            <td><a href="http://www.nzbstars.com/" target="_blank">nzbstars.com</a></td>
-            <td>Yes</td>
-            <td>Free</td>
-            <td>No</td>
-            <td>n/a</td>
-            <td>Another Spotweb-based website.</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.oznzb.com" target="_blank">OZnzb</a></td>
-            <td>Yes</td>
-            <td>Limited</td>
-            <td>Yes</td>
-            <td>Cat*Subcat</td>
-            <td>Some great customization based on newznab platform, additional enhanced API features</td>
-        </tr>
-        <tr>
-            <td><a href="http://redusenet.com/" target="_blank">redusenet.com</a></td>
-            <td>No</td>
-            <td>Free</td>
-            <td>No</td>
-            <td>Cat*Subcat</td>
-            <td>Usenet forum with verified NZB files only. Free registration. No daily limits.</td>
-        </tr>
-        <tr>
-            <td><a href="https://simplynzbs.com/" target="_blank">simplynzbs.com</a></td>
-            <td>Yes</td>
-            <td>£5 year / £15 lifetime</td>
-            <td>Yes</td>
-            <td>Cat*Subcat</td>
-            <td>Free accounts limited to 5 API hits/NZB Downloads, VIP accounts have a limit of 5000 API Hits and 1000 NZBs per day</td>
-        </tr>
-        <tr>
-            <td><a href="http://www.usenet-crawler.com/" target="_blank">usenet-crawler.com</a></td>
-            <td>Yes</td>
-            <td>Free</td>
-            <td>Yes</td>
-            <td>Cat*Subcat</td>
-            <td>Another Newznab-based indexer. Free accounts are limited to 1k NZBs and 10k API hits per DAY</td>
-        </tr>
-        <tr>
-            <td><a href="http://usenethub.com/" target="_blank">usenethub.com</a></td>
-            <td>Yes</td>
-            <td>Free</td>
-            <td>No</td>
-            <td>Cat</td>
-            <td>Claims to check for completeness</td>
-        </tr>
-    </tbody>
-</table>
 
 <div class="footnotes-footer">
     <div class="title">Footnotes</div>
@@ -223,13 +302,5 @@ title: NZB Sources
         1. Usenet servers hold all kinds of material, sometimes of questionable origin and legality.<br>
         Please be careful and check if your downloading is legal in your country.<br>
         This is <strong>your</strong> responsibility, not that of the authors of SABnzbd or the sites offering the NZB files.
-    </div>
-    <div class="footnote-footer" id="footnote-3">
-        3. Indexer tags allow SABnzbd to automatically assign the correct categories. Cat is the category of the release (i.e. TV, Movies, etc.) and Subcat is the subcategory (XviD, x264, etc).
-    </div>
-    <div class="footnote-footer" id="footnote-4">
-        4. The RSS URL for NZB.su needs authentication data.<br>
-        Example: http://nzb.su/rss?t=-2&amp;dl=1&amp;i=UID&amp;r=HASH<br>
-        Both the <strong>i</strong> and <strong>r</strong> values are required and account-specific.
     </div>
 </div>
