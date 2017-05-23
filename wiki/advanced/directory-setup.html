@@ -16,12 +16,12 @@ title: Folder Setup
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td>XP/2003</td>
-            <td><code>%userprofile%\Local Settings\Application Data\sabnzbd\sabnzbd.ini</code></td>
-        </tr>
-        <tr>
             <td>Vista/Win7/Win10</td>
             <td><code>%userprofile%\AppData\Local\sabnzbd\sabnzbd.ini</code></td>
+        </tr>
+        <tr>
+            <td>XP/2003</td>
+            <td><code>%userprofile%\Local Settings\Application Data\sabnzbd\sabnzbd.ini</code></td>
         </tr>
         <tr>
             <td>Posix</td>
@@ -76,7 +76,11 @@ title: Folder Setup
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td>Windows</td>
+            <td>Vista/Win7/Win10</td>
+            <td><code>%userprofile%\AppData\Local\sabnzbd\admin</code></td>
+        </tr>
+        <tr>
+            <td>XP/2003</td>
             <td><code>%userprofile%\Local Settings\Application Data\sabnzbd\admin</code></td>
         </tr>
         <tr>
@@ -90,14 +94,16 @@ title: Folder Setup
     </tbody>
 </table>
 
-
-
 <h3>Log directory <code>log_dir</code></h3>
 <p>Here SABnzbd's logging is stored. Altough only needed for troubleshooting, you must have this folder. Growth of this folder is normally limited to 5&nbsp;MB.</p>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td>Windows</td>
+            <td>Vista/Win7/Win10</td>
+            <td><code>%userprofile%\AppData\Local\sabnzbd\log_dir</code></td>
+        </tr>
+        <tr>
+            <td>XP/2003</td>
             <td><code>%userprofile%\Local Settings\Application Data\sabnzbd\log_dir</code></td>
         </tr>
         <tr>
