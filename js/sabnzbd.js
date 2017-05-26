@@ -116,6 +116,14 @@ function parseGitHubResults(releases) {
         $('.linux-row').show()
     }
 
+    // Check if all assets filled
+    $(".download-links li>a").each(function(index, element) {
+        // Remove empty ones
+        if(!$(element).attr('href')) {
+            $(element).parent().hide()
+        }
+    })
+
     // Show
     $('.download-os').text(downloadTitle)
     $('.show-before-load').hide()
