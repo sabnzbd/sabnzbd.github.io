@@ -123,6 +123,10 @@ function parseGitHubResults(releases) {
             $(element).parent().hide()
         }
     })
+    // And the big button
+    if(!betaBox.attr('href')) {
+        betaBox.attr('href', 'https://github.com/sabnzbd/sabnzbd/releases')
+    }
 
     // Show
     $('.download-os').text(downloadTitle)
