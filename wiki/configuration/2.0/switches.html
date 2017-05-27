@@ -97,7 +97,7 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Extra PAR2 parameters</strong></td>
-            <td>See <a href="#multi-core">Multi-core PAR2</a> and <a href="#par2cmdline">Par2cmdline</a>.</td>
+            <td>See <a href="#multi-core">Multi-core PAR2</a>.</td>
         </tr>
         <tr>
             <td><strong>Enable SFV-based checks</strong></td>
@@ -224,24 +224,28 @@ If you're unlucky enough to have an ISP that uses strict download caps, you may 
 </table>
 <hr>
 <h2 id="toc7"><span>Multi-core PAR2</span></h2>
-<p><a name="multi-core"></a> The Windows distribution of SABnzbd include a multi-core version of the PAR2 program which will see improvements for those with multi-core processors.</p>
-<p>For Linux you will need to install the multi-core versions of <code>par2</code> yourself, <a href="https://sabnzbd.org/wiki/installation/multicore-par2">as described here</a>.<br>
+<p><a name="multi-core"></a> The Windows and macOS distribution of SABnzbd include a multi-core version of the PAR2 program which will see improvements for those with multi-core processors. For Linux you will need to install the multi-core versions of <code>par2</code> yourself, <a href="/wiki/installation/multicore-par2">as described here</a>.</p>
+<p>
     The behaviour of multi-core PAR2 can be influenced by an extra parameter.
     This option is only of use to users running the multi-core par2 version, so do not specify the value if you are running the normal (single-core) version of par2.<br>
     These are the choices:
 </p>
-<p><code>-t-</code> Use it single-core<br>
+<p>
+    <code>-t-</code> Use it single-core<br>
     <code>-t0</code> Use multi-core for repairs but not for verify (prevents disk trashing)<br>
     <code>-t+</code> Always use multi-core<br>
 
     You may need to experiment a bit to get the best behaviour for your system.
 </p>
-<p>Should you have another variant of PAR2, you specify its required parameters here.</p>
-<p><strong>Note:</strong> if your (Windows) system has problems with this program, you can force the use of the classic version by unchecking "Enable MultiCore Par2"</p>
+<p>If you use the <code>par2-tbb</code> version (default for Windows and macOS) then you can also set the process priority:<br>
+     <code>-pN</code> to process at normal priority [default]<br>
+     <code>-pL</code> to process at low priority<br>
+     <code>-pI</code> to process at idle priority<br>
+</p>
+<p><span class="label label-warning">NOTE</span> Specifying more than 1 extra parameter might not work on every platform.</p>
 
-<h2 id="par2cmdline">Par2cmdline</h2>
-<p>On many Linux distributions, par2cmdline is used to repair jobs. However, in version 0.6.13 a 'feature' was introduced that causes less blocks to be found. In order to restore optimal behavior, users of par2cmdline should add to <strong>Extra PAR2 parameters</strong>:
-<p><code>-N</code> Extend the search for missing blocks (par2cmdline 0.6+, explanation <a href="https://github.com/Parchive/par2cmdline/issues/65">see here</a>)<br>
+<p>Should you have another variant of PAR2, you specify its required parameters here.</p>
+
 
 <h2 id="toc8"><span>Nice to reduce CPU priority</span></h2>
 <p><a name="nice"></a> When SABnzbd runs external tools like <strong>par2</strong> and <strong>unrar</strong>, these tools may use up all CPU capacity.
