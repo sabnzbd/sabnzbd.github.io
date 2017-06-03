@@ -31,29 +31,14 @@ title: Special settings
             <td>When unpacking, this will overwrite existing files instead of creating an alternative name.</td>
         </tr>
         <tr>
-            <td><code>create_group_folders</code></td>
-            <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Older versions of SABnzbd had the possibility to move downloads to folders named after the actual Usenet group. This option is made more or less obsolete by the category system. If you still want the old behaviour, remove all categories and set this option to 1</td>
-        </tr>
-        <tr>
             <td><code>queue_complete_pers</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
             <td>Set this to 1 if you want end-of-queue actions Shutdown/Standby/Hibernate to be persistent (remembered) after restarts</td>
         </tr>
         <tr>
-            <td><code>quick_check</code></td>
-            <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Normally par2-based downloads are verified and (if required) repaired by the external <em>par2</em> program. This takes a lot time. SABnzbd can check the correctness of downloaded files on the fly. A completely correct download does not have to be processed by par2 anymore. If there are any error in the files, the <em>par2</em> program is launched anyway. Normally you would always want this option on.</td>
-        </tr>
-        <tr>
             <td><code>api_warnings</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>When the API is accessed by external tools without proper authentication, SABnzbd will show a warning. This is a security warning that you should take seriously. However, it seems that there are some security tools that try to access anything that looks like a webserver. If you cannot disable the cause of the warnings, you can choose to disable the warning.</td>
-        </tr>
-        <tr>
-            <td><code>allow_64bit_tools</code></td>
-            <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>If your 64bit Windows system has problems running the 64bit releases of par2 and unrar, you can force the use of the 32bit releases.</td>
         </tr>
         <tr>
             <td><code>ampm</code></td>
@@ -64,16 +49,6 @@ title: Special settings
             <td><code>enable_unrar</code>, <code>enable_unzip</code>, <code>enable_7zip</code>, <code>enable_filejoin</code>, <code>enable_tsjoin</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Enable or disable the UnRar, UnZip, 7zip, filejoin and TSJoin tools. If disabled, the archive/split files will not be unpacked.</td>
-        </tr>
-        <tr>
-            <td><code>prospective_par_download</code></td>
-            <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>When corrupt or missing articles are detected par2 repair blocks (if available) will be queued already during initial download, where 1 corrupt article = 1 par2 block. This might result in a slight over-estimation of required par2 blocks. [2.0.0+ only]</td>
-        </tr>
-        <tr>
-            <td><code>never_repair</code></td>
-            <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Only perform QuickCheck and par2-verify, but never par2-repair. Use this when your low-performance system has trouble running repairs. All available par2 files will be downloaded, so you can let another system do the repair. If the download verifies OK, post-processing will be done as usual.</td>
         </tr>
         <tr>
             <td><code>allow_streaming</code></td>
@@ -103,7 +78,7 @@ title: Special settings
         <tr>
             <td><code>use_pickle</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Only check this when there is a problem with one of the standard Python libs:  [0.6.15+ only]</td>
+            <td>Only check this when there is a problem with one of the standard Python libs.</td>
         </tr>
         <tr>
             <td><code>allow_incomplete_nzb</code></td>
@@ -123,22 +98,22 @@ title: Special settings
         <tr>
             <td><code>keep_awake</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>0 will disable SABnzbd's attempts to keep the system awake while the queue isn't empty.</td>
+            <td>Disable to stop SABnzbd's attempts to keep the system awake while the queue isn't empty.</td>
         </tr>
         <tr>
             <td><code>empty_postproc</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Do post-processing and run the user script even if nothing has been downloaded. This is useful in combination with tools like SickBeard, for which running the script on an empty or failed download is a trigger to try an alternative NZB. Note that the "Status" parameter for the script will be -1. [0.7.5+ only]</td>
+            <td>Do post-processing and run the user script even if nothing has been downloaded. This is useful in combination with tools like SickBeard, for which running the script on an empty or failed download is a trigger to try an alternative NZB. Note that the "Status" parameter for the script will be -1.</td>
         </tr>
         <tr>
             <td><code>html_login</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>HTML based login form, uncheck for basic authentication. Both offer similar security but password managers might not be able to fill basic authentication automatically. [1.2.0+ only]</td>
+            <td>HTML based login form, uncheck for basic authentication. Both offer similar security but password managers might not be able to fill basic authentication automatically.</td>
         </tr>
         <tr>
             <td><code>wait_for_dfolder</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Some people use external or network drives for the "temporary download folder". It can happen that such a drive isn't mounted yet when SABnzbd starts up, causing it to create a new folder at the default location. To prevent this, set the option to 1. This will make SABnzbd wait until the drive is available. Note that SABnzbd will hang until the drive is available! Also, the folder must already exist otherwise SABnzbd will hang until terminated. [0.7.8+ only]</td>
+            <td>Some people use external or network drives for the "temporary download folder". It can happen that such a drive isn't mounted yet when SABnzbd starts up, causing it to create a new folder at the default location. To prevent this, set the option to 1. This will make SABnzbd wait until the drive is available. Note that SABnzbd will hang until the drive is available! Also, the folder must already exist otherwise SABnzbd will hang until terminated.</td>
         </tr>
         <tr>
             <td><code>warn_empty_nzb</code></td>
@@ -158,17 +133,12 @@ title: Special settings
         <tr>
             <td><code>warn_dupl_jobs</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>If checked, will issue a warning when a duplicate job is detected and subsequently paused or deleted. Uncheck if you find the warnings a nuisance [0.7.17+ only]</td>
+            <td>If checked, will issue a warning when a duplicate job is detected and subsequently paused or deleted. Uncheck if you find the warnings a nuisance</td>
         </tr>
         <tr>
             <td><code>backup_for_duplicates</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Check to backup dectected duplicate NZB's.</td>
-        </tr>
-        <tr>
-            <td><code>enable_par_cleanup</code></td>
-            <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Normally SABnzbd will clean up par2 files after verify/repair. For testing purposes you can disable this by using 0.</td>
         </tr>
         <tr>
             <td><code>disable_api_key</code></td>
@@ -181,15 +151,9 @@ title: Special settings
             <td>Check to log all API calls.</td>
         </tr>
         <tr>
-            <td><code>fixed_ports</code></td>
-            <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Checking this option will prevent SABnzbd from searching for a free web port, potentially causing a termination. Useful in debugging situations. [Removed in 2.0.1]</td>
-        </tr>
-        <tr>
             <td><code>enable_meta</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Enable meta-tags coming from indexers or from the content of the NZB. These tags contain cleaned up versions of titles, episode names, etc. If you prefer that everything is derived from the NZB name, disable.</td>
-
         </tr>
 
     </tbody>
@@ -267,11 +231,6 @@ title: Special settings
             <td><code>rss_odd_titles</code></td>
             <td>see text</td>
             <td>Some RSS feeds produce very awkward titles which are fine for filtering, but not as job titles. For all indexers that are listed here, the actual NZB file name will be used instead of the title. The default is a comma-separated list of URLs and the default is: <code>nzbindex.nl/, nzbindex.com/, nzbclub.com/</code> [0.7.4+ only])</td>
-        </tr>
-        <tr>
-            <td><code>prio_sort_list</code></td>
-            <td></td>
-            <td>A list of file name extensions. Matching files will be the first to be downloaded within an NZB. <br>Example: <code>sfv, nfo</code> [0.7.5+ only]</td>
         </tr>
         <tr>
             <td><code>quick_check_ext_ignore</code></td>
