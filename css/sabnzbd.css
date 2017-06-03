@@ -308,6 +308,10 @@ footer a:hover,
     margin-top: 2px;
 }
 
+.alert-old-sabnzbd h1 {
+    margin: 0;
+}
+
 .wiki-content table td:first-child {
     width: 200px;
 }
