@@ -1,0 +1,130 @@
+---
+title: RSS
+---
+<p>SABnzbd can read RSS-feeds provided by indexers or public RSS websites.
+    These sites will offer you the latest downloads or return results based on some query. For a list of supported RSS sites <a href="/wiki/introduction/nzb-sources">see here.</a>
+</p>
+<p>Each feed is analysed using filters.
+    A filter looks for text pattern in the title of the entries.
+    A filter "matches" if the text it contains is found inside a title.
+    You can add <code>*</code> characters that will match arbitrary parts of the title.
+    There are accept and reject filters.
+    The filters are analysed in order and the first matching one will be selected.
+</p>
+<p><span class="label label-warning">NOTE</span> Some website feeds require the inclusion of authentication details in the URL. Please see the sites for details on connecting to your particular feed provider.</p>
+
+<h3>An example</h3>
+<p>
+    Suppose you subscribe to the feed <code>http://www.tvnzb.com/tvnzb_new.rss</code>.<br>
+    The output of titles in this feed could be:
+</p>
+<div class="code">
+    <pre><code>My first baby steps hdtv xvid Part 1
+You and me and the dog Part 1
+You and me and the dog Part 2
+My first teen steps hdtv xvid Part 1
+My first baby steps xvid Part 1
+My first baby steps hdtv xvid Part 2
+The making of My first baby steps xvid hdtv</code>
+</pre>
+</div>
+<p>Now suppose you want to get all "My ... first steps" episodes, but only when marked hdtv.<br>
+    And your not interested in "Making of".<br>
+    So, you set up these filters:
+</p>
+
+    <pre><code>Reject || making of
+Accept || first*steps*hdtv</code>
+</pre>
+
+<p>The <code>Reject</code> filter should come first, otherwise the <code>Accept</code> filter will also pick the "Making of".</p>
+<p>For each feed you can set a default <a href="/wiki/configuration/2.0/categories">category</a> or (when no categories are set up) the <a href="/wiki/extra/job-options">job-options</a>.<br>
+    Also, for each filter you override the defaults (also for <code>Reject</code> filter, but this has no use).
+</p>
+<p>It's also possible to setup a <code>Required</code> filter.<br>
+    This means that the following filters are only applied when a title matches the <code>Required</code> filter.<br>
+    Suppose you are only interested in the "hdtv" format, you setup this:
+</p>
+<div class="code">
+    <pre><code>Reject || making of
+Requires || hdtv
+Accept || first*steps
+Accept || second*steps</code>
+</pre>
+</div>
+<h3 id="toc0"><span>Filters</span></h3>
+<p>These are all the provided filters.<br>
+Please note that <code>From SxxEyy</code> will only work when SABnzbd recognizes the season/episode notation in the job title.<br>
+Note also that <code>RequireCat</code> only works for indexers that provide categories and whose categories have been mapped to your own (See <a href="/wiki/configuration/2.0/categories">Config-&gt;Categories</a>)</p>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td>Accept</td>
+            <td>Accept job when the expression matches the title</td>
+        </tr>
+        <tr>
+            <td>Requires</td>
+            <td>When the title contains the expression, continue to next filter. If not, stop trying.</td>
+        </tr>
+        <tr>
+            <td>Reject</td>
+            <td>When the title contains the expression, stop trying. If not, go to next filter.</td>
+        </tr>
+        <tr>
+            <td>RequiresCat</td>
+            <td>When the category matches, go to next filter. If not, stop trying.</td>
+        </tr>
+        <tr>
+            <td>At Least</td>
+            <td>The size of the job should be at least this. You can use <code>K/M/G</code> notation, where <code>100M</code> means at least 100Mbyte. If OK, proceed to next filter.</td>
+        </tr>
+        <tr>
+            <td>At Most</td>
+            <td>The size of the job should be at most this. You can use <code>K/M/G</code> notation, where <code>200M</code> means at most 200Mbyte. If OK, proceed to next filter.</td>
+        </tr>
+        <tr>
+            <td>From SxxEyy</td>
+            <td>Only this season/episode and later ones will be accepted, proceed to next filter.</td>
+        </tr>
+        <tr>
+            <td>From Show SxxEyy</td>
+            <td>Only this specific show's season/episode and later ones will be accepted, proceed to next filter.</td>
+        </tr>
+    </tbody>
+</table>
+<h3 id="toc1"><span>Feed buttons</span></h3>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td>Read feed</td>
+            <td>Read the RSS source again</td>
+        </tr>
+        <tr>
+            <td>Force download</td>
+            <td>Send all matching items to the queue</td>
+        </tr>
+        <tr>
+            <td>Clear download</td>
+            <td>Clear the list of items already sent to the queue</td>
+        </tr>
+    </tbody>
+</table>
+<p>Clicking <code>Read feed</code> will show a page with the current data collected from the feed.<br>
+    If you are not satisfied with the result, adjust the filters.<br>
+    In case you just want to download a non-matching job, just click the download link.
+</p>
+<p><span class="label label-danger">WARNING</span> The <code>,</code> (comma) and <code>#</code> characters are <strong>not</strong> allowed!.</p>
+<h3 id="toc2"><span>Regular expressions</span></h3>
+<p>If you prefix a filter with <code>re:</code> it will be interpreted as a Python regular expression.<br>
+    Here's a <a href="http://www.developer.com/lang/article.php/3330231" target="_blank">tutorial on regular expressions</a>.<br>
+    For all the details see <a href="http://docs.python.org/dev/howto/regex.html" target="_blank">the Python manual</a>.
+</p>
+<h3 id="toc3"><span>Automatic processing</span></h3>
+<p>If you check the checkbox next to the name of the feed, it will be automatically processed.<br>
+    The time between scans can be set with <code>RSS checking rate</code>.<br>
+    <span class="label label-warning">NOTE</span> You can also override this by using the Scheduler, in this case the  <code>RSS checking rate</code> will be ignored.
+</p>
+<h3 id="toc4"><span>First batch</span></h3>
+<p><span class="label label-warning">NOTE</span> to prevent the download of a (potentially) large backlog, the first batch of NZBs will not be downloaded automatically. These lines are marked with an asterisk <code>*</code>. Only new jobs in subsequent read-outs will be downloaded.<br>
+    If you still want the matches in the first batch to be downloaded, click on the <code>Force Download</code> button.
+</p>
