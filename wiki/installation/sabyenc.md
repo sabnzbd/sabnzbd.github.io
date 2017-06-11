@@ -98,10 +98,17 @@ pip install sabyenc --upgrade
 ```
 
 
-### Installation on FreeBSD
+### Installation on FreeBSD and NAS4Free
 
+<!-- Info from sabnzbd-forum amaroney-->
+Short: installation of pre-made sabyenc package
+```
+pkg install py27-sabyenc
+```
 <!-- Info from github @gregf -->
 
+
+Longer, with self compiling, thus needs cc:
 ```
 su - <password>
 
