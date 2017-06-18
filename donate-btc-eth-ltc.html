@@ -1,0 +1,43 @@
+---
+title: Donate using BTC, ETH, LTC
+redirect_from: "/contribute/donors"
+---
+{% include logo_container.html %}
+
+<div class="main-wrapper content-container">
+    <div id="main-container" class="container">
+        <div class="row">
+            <p>Thank you for donating! <br>We accept donations not just via PayPal but also through Bitcoin, Ethereum and Litecoin.</p>
+        </div>
+        <div class="row qr-codes">
+            <div class="col-md-4">
+                <h2>Bitcoin</h2>
+                <div id="qr-bitcoin"></div>
+                <input type="text" class="form-control" readonly name="btc" value="1KAf7dFEio5X9HS5Qv9SM9Z7484Mf7jNHm">
+            </div>
+            <div class="col-md-4">
+                <h2>Ethereum (ETH)</h2>
+                <div id="qr-ethereum"></div>
+                <input type="text" class="form-control" readonly name="eth" value="0xc9c424F21edbC2d200d38643C261407a3A3805F7">
+            </div>
+            <div class="col-md-4">
+                <h2>Litecoin</h2>
+                <div id="qr-litecoin"></div>
+                <input type="text" class="form-control" readonly name="ltc" value="LcToBHhN15VDornWjCgvHyFdvxYQTP36Zr">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/js/jquery.qrcode.js"></script>
+<script type="text/javascript">
+    $('#qr-bitcoin').html('').qrcode({
+        "text": "1KAf7dFEio5X9HS5Qv9SM9Z7484Mf7jNHm"
+    });
+    $('#qr-ethereum').html('').qrcode({
+        "text": "0xc9c424F21edbC2d200d38643C261407a3A3805F7"
+    });
+    $('#qr-litecoin').html('').qrcode({
+        "text": "LcToBHhN15VDornWjCgvHyFdvxYQTP36Zr"
+    });
+</script>

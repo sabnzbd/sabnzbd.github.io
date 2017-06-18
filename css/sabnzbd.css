@@ -277,6 +277,16 @@ footer a:hover,
     margin-left: 5px;
 }
 
+/*** Donate page ***/
+.qr-codes .col-md-4,
+.qr-codes .form-control {
+    text-align: center;
+}
+
+.qr-codes .form-control {
+    margin-top: 15px;
+}
+
 /*** Wiki ****/
 .navbar-wiki-button,
 .navbar-wiki-button:focus {
