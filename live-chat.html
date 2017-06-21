@@ -2,7 +2,9 @@
 title: Live Chat
 redirect_from: "/live-chat/"
 ---
+
 {% include logo_container.html %}
+
 <div class="main-wrapper content-container">
     <div id="main-container" class="container">
         <div class="row">
@@ -15,9 +17,9 @@ redirect_from: "/live-chat/"
                     <li><a href="/wiki/configuration/{{ site.wiki_version }}/general" target="blank">How do I make SABnzbd accessible from another computer?</a></li>
                     <li><a href="/wiki/introduction/nzb-sources" target="blank">How do I search?</a></li>
                 </ul>
-                
+
                 <h3><a href="#" id="chat-link" onclick="javascript:showChat()">Click Here to open the chat</a></h3>
-                
+
                 <p><b>Note:</b> While we try to respond promptly to whatever questions you may come in with, please keep in mind that we can&#8217;t always respond <i>instantaneously</i>. So please, stick around for a couple minutes and give us a chance to realize there&#8217;s channel activity before you give up.</p>
                 <p>(However, if we really all do seem asleep, feel free to ask your question <a href="http://forums.sabnzbd.org">over on the forums</a>.)</p>
 
@@ -28,14 +30,14 @@ redirect_from: "/live-chat/"
                     function showChat() {
                         chatOpen = true
                         $('#chat').show();
-                        $('#chat').attr('src','https://embed.mibbit.com/?server=irc.synirc.net&channel=%23sabnzbd&noServerNotices=true&noServerMotd=true&parseLinks=true&chatOutputShowTimes=true'); 
+                        $('#chat').attr('src','https://embed.mibbit.com/?server=irc.synirc.net&channel=%23sabnzbd&noServerNotices=true&noServerMotd=true&parseLinks=true&chatOutputShowTimes=true');
                         $('#chat-link').hide()
                     }
 
                     window.onbeforeunload = confirmExit;
-                    function confirmExit() { 
+                    function confirmExit() {
                         if(chatOpen) {
-                            return "Closing this tab or navigating away from this page will close your connection to #SABnzbd on IRC."; 
+                            return "Closing this tab or navigating away from this page will close your connection to #SABnzbd on IRC.";
                         }
                     }
                 </script>
