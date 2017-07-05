@@ -103,7 +103,7 @@ title: Switches
             <td><strong>Extra PAR2 parameters</strong></td>
             <td>
                 <p>Extra arguments that will be passed when running <code>par2</code> or MultiPar for verification and repair.</p>
-                <p>If you use macOS or <a href="/wiki/installation/multicore-par2">installed multicore-par2</a> on another platform you can for example <a href="#multi-core">specify the number of cores that should be used</a>.</p>
+                <p>Detailed information: <a href="#multi-core-multipar">Windows</a>, <a href="#multi-core">macOS and Linux</a>.</p>
             </td>
         </tr>
         <tr>
@@ -232,11 +232,11 @@ title: Switches
 
 <hr>
 
-<h2 id="multi-core"><span>Multi-core PAR2</span></h2>
-
+<h2 id="multi-core"><span>Extra Par2 Parameters for macOS and Linux</span></h2>
+<p><span class="label label-warning">NOTE</span> For Windows, see <a href="#multi-core-multipar">below</a>.</p>
 <p>The macOS distribution of SABnzbd includes a multi-core version of the PAR2 program which will see improvements for those with multi-core processors. On Linux you will need to install the multi-core versions of <code>par2</code> yourself, <a href="/wiki/installation/multicore-par2">as described here</a>.</p>
 
-<p>The behaviour of multi-core PAR2 can be influenced by an extra parameter. By default it will use all available cores.</p>
+<p>The behavior of multi-core PAR2 can be influenced by an extra parameter. By default it will use all available cores.</p>
 <ul>
     <li><code>-t1</code> Use it single-core</li>
     <li><code>-t&lt;n&gt;</code> Use <code>n</code> cores</li>
@@ -249,10 +249,46 @@ title: Switches
      <li><code>-pL</code> to process at low priority</li>
      <li><code>-pI</code> to process at idle (lowest) priority</li>
 </ul>
+<p><span class="label label-warning">NOTE</span> Specifying more than 1 extra parameter might not always work.</p>
 
-<p><span class="label label-warning">NOTE</span> Specifying more than 1 extra parameter might not work on every platform.</p>
 
-<p><span class="label label-warning">NOTE</span> Not applicable for MultiPar that's included in the Windows release!</p>
+<hr>
+<h2 id="multi-core-multipar"><span>Extra Par2 Parameters for Windows</span></h2>
+<p>The Windows version of SABnzbd has MultiPar integrated which allows you to specify the multi-core behavior and memory usage. Additionally, you can also enable the use of the GPU. Beware: GPU performance varies between systems and can also be slower on some systems.</p>
+
+<ul>
+    <li>
+        <p><code>/lc</code> Set this if you want to set number of using threads or want to disable extra feature (SSE2 is always used).</p>
+        <ul>
+            <li><code>/lc&lt;n&gt;</code> where <code>n</code> is from 1 to 11 for specific number of cores</li>
+            <li><code>/lc12</code> to use quarter number of physical cores</li>
+            <li><code>/lc13</code> to use half of physical cores</li>
+            <li><code>/lc14</code> to use 3/4 number of physical cores</li>
+            <li><code>/lc15</code> to use the number of physical cores (disable Hyper-Threading)</li>
+        </ul>
+        <p>You may set additional combinations by adding the following options to the already specified value:</p>
+        <ul>
+            <li><code>+16</code> to disable SSSE3</li>
+            <li><code>+128</code> to disable CLMUL</li>
+            <li><code>+256</code> to disable JIT</li>
+            <li><code>+512</code> to disable AVX2</li>
+            <li><code>+32</code> or <code>+64</code> (slower device) to enable GPU acceleration</li>
+        </ul>
+        <p><strong>For example:</strong> <code>/lc1</code> to use single core, <code>/lc32</code> to enable GPU usage or <code>/lc45</code> to use half cores and GPU usage.</p>
+    </li>
+    <li>
+        <p><code>/m</code> Set this if you want to set memory usage. Value is specified from 1 to 7 (1/7th to 7/8th):</p>
+        <ul>
+            <li><code>/m0</code> = Default (between 6/8 and 7/8 mostly)</li>
+            <li><code>/m1</code> = 1/8, 12.5%</li>
+            <li><code>/m4</code> = 4/8, 50%</li>
+            <li><code>/m7</code> = 7/8, 87.5%</li>
+        </ul>
+    </li>
+</ul>
+
+<p><span class="label label-warning">NOTE</span> Specifying more than 1 extra parameter might not always work.</p>
+
 
 <hr>
 <h2 id="toc8"><span>Nice to reduce CPU priority</span></h2>
