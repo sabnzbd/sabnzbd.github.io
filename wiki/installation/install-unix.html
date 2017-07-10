@@ -2,19 +2,15 @@
 title: Install SABnzbd for Unix/Linux
 ---
 
-<h2>Official Repositories</h2>
+<h2>Repositories and packages</h2>
 <ul>
-    <li><a href="https://aur.archlinux.org/packages/sabnzbd" target="_blank">ArchLinux</a> (Stable)</li>
-    <li><a href="https://aur.archlinux.org/packages/sabnzbd-git" target="_blank">ArchLinux</a> (the latest Alpha, Beta or Stable)</li>
-    <li><a href="http://packages.ubuntu.com/search?keywords=sabnzbdplus" target="_blank">Ubuntu</a></li>
-    <li><a href="/wiki/installation/install-ubuntu-repo">Ubuntu</a> (the latest Alpha, Beta or Stable)</li>
-    <li><a href="http://packages.debian.org/search?keywords=sabnzbdplus" target="_blank">Debian</a></li>
+    <li><a href="https://aur.archlinux.org/packages/sabnzbd" target="_blank">ArchLinux</a> (stable)</li>
+    <li><a href="https://aur.archlinux.org/packages/sabnzbd-git" target="_blank">ArchLinux</a> (the latest testing releases)</li>
+    <!--<li><a href="http://packages.ubuntu.com/search?keywords=sabnzbdplus" target="_blank">Ubuntu</a></li>-->
+    <li><a href="/wiki/installation/install-ubuntu-repo">Ubuntu</a> (repository with latest stable or testing releases, also works for Debian)</li>
+    <li><a href="http://packages.debian.org/search?keywords=sabnzbdplus" target="_blank">Debian</a> (official package, possibly outdated)</li>
     <li><a href="http://www.freebsd.org/cgi/cvsweb.cgi/ports/news/sabnzbdplus/" target="_blank">FreeBSD</a></li>
-</ul>
-
-<h2>Unofficial packages</h2>
-<ul>
-    <li><a href="/wiki/installation/install-fedora-centos-rhel">Fedora, RHEL and clones (CentOS, Scientific Linux, etc)</a></li>
+    <li><a href="/wiki/installation/install-fedora-centos-rhel">Fedora, RHEL and clones</a> (CentOS, Scientific Linux, etc)</li>
 </ul>
 
 <h2>Dockers</h2>
@@ -23,7 +19,7 @@ title: Install SABnzbd for Unix/Linux
     <li><a href="https://hub.docker.com/r/lsioarmhf/sabnzbd/" target="_blank">ARM Docker</a> by the linuxserver.io team</li>
     <li><a href="https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=1&q=sabnzbd&starCount=0" target="_blank">More Dockers</a></li>
 </ul>
-
+<hr>
 <h2>Unix packaging</h2>
 <p>We have a <a href="/wiki/advanced/unix-packaging">Guideline for Unix packaging</a>, meant for prospective porters.</p>
 <p>Assuming you have the Python package already installed, you need to install a number of Python modules.
@@ -31,8 +27,8 @@ title: Install SABnzbd for Unix/Linux
     Otherwise you need to download and/or compile.
     See here for the <a href="/wiki/installation/install-off-modules">official download locations</a>.
 </p>
-<p>The next step is to unpack the SABnzbd.tar.gz file and install it somewhere appropriate. You don't have to be a system admin to install SABnzbd itself. It's just a bunch of text files (Python sources and HTML files).<br>
-    You start SABnzbd.py from the command line (check if the X bit is set, otherwise do "chmod +x SABnzbd.py" first).
+<p>The next step is to unpack the <code>SABnzbd-version.tar.gz</code> file and install it somewhere appropriate. You don't have to be a system admin to install SABnzbd itself. It's just a bunch of text files (Python sources and HTML files).<br>
+    You start <code>SABnzbd.py</code> from the command line (check if the X bit is set, otherwise do <code>chmod +x SABnzbd.py</code> first).
 </p>
 <pre><code> ./SABnzbd.py</code></pre>
 
