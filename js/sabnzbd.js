@@ -140,11 +140,15 @@ function parseAssets(assets, platform, stable_release) {
     $.each(assets, function(index, asset) {
         // The right one, put it in the box
         if(platform && asset.name.indexOf(platform) !== -1) {
-            // Stable/beta
+            // Stable/beta and add redirects after the download
             if(stable_release) {
-                stableBox.attr('href', asset.browser_download_url)
+                stableBox.attr('href', asset.browser_download_url).attr('target', '_blank').click(function() {
+                    document.location = '/donate'
+                })
             } else {
-                betaBox.attr('href', asset.browser_download_url)
+                betaBox.attr('href', asset.browser_download_url).click(function() {
+                    $.featherlight('#beta-please-report');
+                })
             }
         }
 
