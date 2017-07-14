@@ -156,12 +156,18 @@ function parseAssets(assets, platform, stable_release) {
             // Have to search which one it is
             $.each(['win32-setup', 'win-setup', 'win32-bin', 'win64-bin', 'osx', 'src'], function(index, platform_search) {
                 if(asset.name.indexOf(platform_search) !== -1) {
-                    linksBox.find('.download-link-' + platform_search).attr('href', asset.browser_download_url)
+                    var downloadLink = linksBox.find('.download-link-' + platform_search)
+                    downloadLink.attr('href', asset.browser_download_url)
 
                     // Show message to beta-users that we want feedback
                     if(!stable_release) {
-                        linksBox.find('.download-link-' + platform_search).click(function() {
+                        downloadLink.click(function() {
                             $.featherlight('#beta-please-report');
+                        })
+                    } else {
+                        // Show donation page
+                        downloadLink.attr('target', '_blank').click(function() {
+                            document.location = '/donate'
                         })
                     }
                 }

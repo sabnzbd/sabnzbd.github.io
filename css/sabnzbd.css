@@ -283,9 +283,15 @@ footer a:hover,
 }
 
 /*** Donate page ***/
-.qr-codes .col-md-4,
+.glyphicon-heart {
+    color: #FFCA28;
+    top: 5px;
+}
+
+.qr-codes .col-md-3,
 .qr-codes .form-control {
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .qr-codes .form-control {

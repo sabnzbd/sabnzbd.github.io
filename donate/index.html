@@ -8,25 +8,29 @@ title: Donate
     <div id="main-container" class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Thank you for donating!</h1>
-                <p>We accept donations via PayPal and also through Bitcoin, Ethereum and Litecoin (see below).</p>
+                <h1>Support the development of SABnzbd</h1>
+                <p>Your donations will help the continued development of SABnzbd. <br>We accept donations via PayPal and also through Bitcoin, Ethereum and Litecoin (see below).</p>
+                <h3>Thank you <span class="glyphicon glyphicon-heart"></h3>
                 <hr>
-                <p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=670741" target="_blank"><img src="/images/paypal_donate.jpg" alt="Donate via PayPal"></a></p>
+                <p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=670741" target="_blank">
+                    Donate via PayPal or credit card (account not required)<br>
+                    <img src="/images/paypal_donate.jpg" alt="Donate via PayPal"></a>
+                </p>
                 <hr>
             </div>
         </div>
         <div class="row qr-codes">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <h2>Bitcoin</h2>
                 <div id="qr-bitcoin"></div>
                 <input type="text" class="form-control" readonly name="btc" value="1KAf7dFEio5X9HS5Qv9SM9Z7484Mf7jNHm">
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <h2>Ethereum (ETH)</h2>
                 <div id="qr-ethereum"></div>
                 <input type="text" class="form-control" readonly name="eth" value="0xc9c424F21edbC2d200d38643C261407a3A3805F7">
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <h2>Litecoin</h2>
                 <div id="qr-litecoin"></div>
                 <input type="text" class="form-control" readonly name="ltc" value="LcToBHhN15VDornWjCgvHyFdvxYQTP36Zr">
@@ -38,12 +42,18 @@ title: Donate
 <script type="text/javascript" src="/js/jquery.qrcode.js"></script>
 <script type="text/javascript">
     $('#qr-bitcoin').html('').qrcode({
-        "text": "1KAf7dFEio5X9HS5Qv9SM9Z7484Mf7jNHm"
+        text: "1KAf7dFEio5X9HS5Qv9SM9Z7484Mf7jNHm",
+        size: 170
     });
     $('#qr-ethereum').html('').qrcode({
-        "text": "0xc9c424F21edbC2d200d38643C261407a3A3805F7"
+        text: "0xc9c424F21edbC2d200d38643C261407a3A3805F7",
+        size: 170
     });
     $('#qr-litecoin').html('').qrcode({
-        "text": "LcToBHhN15VDornWjCgvHyFdvxYQTP36Zr"
+        text: "LcToBHhN15VDornWjCgvHyFdvxYQTP36Zr",
+        size: 170
     });
+    $('.qr-codes input').click(function() {
+        $(this).select()
+    })
 </script>
