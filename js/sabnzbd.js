@@ -143,11 +143,15 @@ function parseAssets(assets, platform, stable_release) {
             // Stable/beta and add redirects after the download
             if(stable_release) {
                 stableBox.attr('href', asset.browser_download_url).attr('target', '_blank').click(function() {
-                    document.location = '/donate'
+                    setTimeout(function() {
+                        document.location = '/donate'
+                    }, 1000)
+                    return True
                 })
             } else {
                 betaBox.attr('href', asset.browser_download_url).click(function() {
                     $.featherlight('#beta-please-report');
+                    return True
                 })
             }
         }
@@ -167,11 +171,15 @@ function parseAssets(assets, platform, stable_release) {
                     if(!stable_release) {
                         downloadLink.click(function() {
                             $.featherlight('#beta-please-report');
+                            return True
                         })
                     } else {
                         // Show donation page
                         downloadLink.attr('target', '_blank').click(function() {
-                            document.location = '/donate'
+                            setTimeout(function() {
+                                document.location = '/donate'
+                            }, 1000)
+                            return True
                         })
                     }
                 }
