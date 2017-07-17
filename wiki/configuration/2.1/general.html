@@ -59,7 +59,28 @@ title: General
         </tr>
         <tr>
             <td><strong>External internet access</strong></td>
-            <td>You can set access rights for systems outside your local network. <br><span class="label label-danger">WARNING</span> Requires List of local network ranges to be defined</td>
+            <td>
+                <p>You can set access rights for systems outside your local network. <br>
+                <span class="label label-danger">WARNING</span> Requires List of local network ranges to be defined</p>
+                <ul>
+                    <li>
+                        <strong>API:</strong>
+                        <ul>
+                            <li><code>No access</code> = No outside access is allowed at all.</li>
+                            <li><code>Add NZB files</code> = Only NZB's can be added via the API, nothing else.</li>
+                            <li><code>API (no config)</code> = API is fully available (queue/history/reading settings/add+remove NZB's/etc), except for methods that edit the configuration.</li>
+                            <li><code>Full API</code> = All API methods are available, inlcuding editing the configuration.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Full API &amp; Web Interface:</strong>
+                        <ul>
+                            <li><code>Full Web Interface</code> = The full API methods and the web interface are available. Users are always shown the login screen if username/password are set.</li>
+                            <li><code>Full Web interface - Only external access requires login</code> = Only users outside the local network ranges are shown the login screen if username/password are set.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td><strong>List of local network ranges</strong></td>
