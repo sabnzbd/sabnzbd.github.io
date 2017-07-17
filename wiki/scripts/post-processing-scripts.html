@@ -17,16 +17,15 @@ redirect_from: "/wiki/advanced/user-scripts"
 <p>The console output of the script is captured by SABnzbd and is saved in the so called "Script Log" which can be opened from the history details.
     The output will be added to the (optional) notification email and can be examined in the History page.
 </p>
-
+<hr>
 <h2>Parameters</h2>
 <p>The script will receive the parameters described below. </p>
 <p>Please note: Use %1 in Windows scripts and $1 in Unix scripts. In Windows the parameters will be enclosed in double quotes ("my name").<br>
     On Posix systems (macOS, Linux, Unix) the parameters will <strong>not</strong> have quotes at all.
 </p>
-<hr/>
 
-<span class="label label-warning">NOTE</span> In SABnzbd 2.0.0 and above more information is available to scripts via environment variables, <a href="#env_vars">see below</a>!
-<hr>
+<p><span class="label label-warning">NOTE</span> In SABnzbd 2.0.0 and above more information is available to scripts via environment variables, <a href="#env_vars">see below</a>!</p>
+
 <table class="table table-bordered table-hover table-not-fixed">
     <tbody>
         <tr>
@@ -80,6 +79,7 @@ redirect_from: "/wiki/advanced/user-scripts"
 <p>A script can return an exit code. SABnzbd will show a non-zero code in the download report, but the job will not be flagged as failed.<br>
     <strong>Note:</strong> Release 1.0.0 has an option in <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a> to let a non-zero code mark the job as failed.
 </p>
+<hr>
 
 <h2 id="toc0"><span>Example Python script</span></h2>
 <p>The get the parameters in python, you can do this:</p>
@@ -224,6 +224,7 @@ sys.exit(0)
     </tbody>
 </table>
 
+<hr>
 <h2>Example script using environment variables</h2>
 
 {% highlight python %}

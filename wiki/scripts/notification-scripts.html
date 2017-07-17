@@ -9,10 +9,11 @@ redirect_from: "/wiki/advanced/user-notification-scripts"
 
 <p><a href="https://github.com/caronc/nzb-notify" target="_blank">NZB-Notify</a>'s notification script provides a wide range of notification services, extending on the build-in providers of SABnzbd.</p>
 
+<hr>
 <h2>Parameters</h2>
 <p>The script will receive the parameters described below. </p>
 <p>Please note: Use %1 in Windows scripts and $1 in Unix scripts. In Windows the parameters will be enclosed in double quotes ("my name").<br>
-    On Posix systems (macOS, Linux, Unix) the parameters will <strong>not</strong> have quotes at all. 
+    On Posix systems (macOS, Linux, Unix) the parameters will <strong>not</strong> have quotes at all.
 </p>
 <table class="table table-bordered table-hover table-not-fixed">
     <tbody>
@@ -53,7 +54,7 @@ redirect_from: "/wiki/advanced/user-notification-scripts"
     </tbody>
 </table>
 <p>When all went well, SABnzbd expect's exit code 0. If an error occured or something else than 1 is returned, the output will be shown to the user as an error.
-
+<hr>
 <h2>Example Python script</h2>
 <p>The get the parameters in python, you can do this:</p>
 {% highlight python %}
