@@ -1,9 +1,9 @@
 ---
 title: Sorting
 ---
-<h1 id="toc0"><span>Series Sorting</span></h1>
+<h1 id="toc0">Series Sorting</h1>
 <p>For SABnzbd to know a downloaded nzb is part of a series, it needs to be named in a certain way. SABnzbd requires the show name followed by the episode number and series number in the name of the nzb. It should be either in the format <strong>1x01</strong> (Series<strong>x</strong>Episode) or <strong>S01E01</strong> (<strong>S</strong>series<strong>E</strong>episode)</p>
-<h3 id="toc2"><span>Examples</span></h3>
+<h3 id="toc2">Examples</h3>
 <p><code>Show Name - 1x01 - Episode Name.nzb</code><br>
     <code>Show.Name.S01E01.RLS.nzb</code><br>
     <code>ShowName.1x01.nzb</code><br>
@@ -12,9 +12,9 @@ title: Sorting
 <p>Episode Names are special in that they only work when separated after the series/episode number with a - such as in<br>
     <code>Show Name - 1x01 - Episode Name.nzb</code>
 </p>
-<h2 id="toc3"><span>Sorting</span></h2>
+<h2 id="toc3">Sorting</h2>
 <p>Sorting is done using replaceable values such as <em>%sn</em> for the show name.</p>
-<h2 id="toc4"><span>Key</span></h2>
+<h2 id="toc4">Key</h2>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -95,7 +95,7 @@ title: Sorting
     </tbody>
 </table>
 <p>You can use these values to construct any type of path/filename combination, however there are some recommended presets.</p>
-<h3 id="toc5"><span>Presets</span></h3>
+<h3 id="toc5">Presets</h3>
 <p><strong>1x01 Season Folder:</strong><br>
     <code>%sn/Season %s/%sn - %sx%0e - %en.%ext</code><br>
     Example: Show Name/Season 1/Show Name - 1x05 - Episode Name.avi
@@ -121,9 +121,9 @@ title: Sorting
     Control/Shift+Select the categories you want this sorting to be used in.
 </p>
 <hr>
-<h1 id="toc6"><span>Movie Sorting</span></h1>
+<h1 id="toc6">Movie Sorting</h1>
 <p>This sorting will rename large files based on the nzb name. It has support for naming files in a sequence such as CD1/CD2/CD3&nbsp;A/B/C 1/2/3. Requires categories to be set-up and used.</p>
-<h2 id="toc7"><span>Key</span></h2>
+<h2 id="toc7">Key</h2>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -208,7 +208,7 @@ title: Sorting
         </tr>
     </tbody>
 </table>
-<h3 id="toc8"><span>Presets</span></h3>
+<h3 id="toc8">Presets</h3>
 <p><strong>In folders:</strong><br>
     <code>%title (%y)/%title (%y).%ext</code><br>
     <code>CD%1</code><br>
@@ -230,14 +230,14 @@ title: Sorting
     Example: 00/Movie Name (2000) CD1.avi
 </p>
 <hr>
-<h1 id="toc9"><span>Date Sorting</span></h1>
+<h1 id="toc9">Date Sorting</h1>
 <p>Date sorting will allow for renaming, and sorting of files that contain dates in their nzb name.</p>
-<h2 id="toc10"><span>Detection</span></h2>
+<h2 id="toc10">Detection</h2>
 <p>Supports the following date naming:<br>
     <code>MM-DD-YYYY/MM.DD.YYYY</code> or <code>YYYY-MM-DD/YYYY.MM.DD</code>
 </p>
 <p>Eg: <code>Show.Name.12.12.0008.HDTV-RLS.nzb</code></p>
-<h2 id="toc11"><span>Key</span></h2>
+<h2 id="toc11">Key</h2>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -319,7 +319,7 @@ title: Sorting
         </tr>
     </tbody>
 </table>
-<h3 id="toc12"><span>Presets</span></h3>
+<h3 id="toc12">Presets</h3>
 <p><strong>Show Name folder:</strong><br>
     <code>%t/%t - %y-%0m-%0d - %desc.%ext</code><br>
     Example: Show Name/Show Name - 2009-01-02 - Episode Name.avi

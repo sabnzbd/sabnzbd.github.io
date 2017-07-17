@@ -2,7 +2,7 @@
 title: Switches
 ---
 
-<h2 id="toc1"><span>Server</span></h2>
+<h2 id="toc1">Server</h2>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -34,7 +34,7 @@ title: Switches
         </tr>
     </tbody>
 </table>
-<h2 id="toc2"><span>Queue</span></h2>
+<h2 id="toc2">Queue</h2>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -80,7 +80,7 @@ title: Switches
         </tr>
     </tbody>
 </table>
-<h2 id="toc3"><span>Post processing</span></h2>
+<h2 id="toc3">Post processing</h2>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -148,7 +148,7 @@ title: Switches
         </tr>
     </tbody>
 </table>
-<h2 id="toc4"><span>Naming <a name="rename"></a></span></h2>
+<h2 id="toc4">Naming <a name="rename"></a></h2>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -173,7 +173,7 @@ title: Switches
         </tr>
     </tbody>
 </table>
-<h2 id="toc5"><span>Quota <a name="quota"></a></span></h2>
+<h2 id="toc5">Quota <a name="quota"></a></h2>
 <p>If you're unlucky enough to have an ISP that uses strict download caps, you may want to set a monthly quota for SABnzb.</p>
 <table class="table table-bordered table-hover">
     <tbody>
@@ -209,7 +209,7 @@ title: Switches
     <li>Don't set the quota too high. Leave room for other Internet use.</li>
 </ul>
 
-<h2 id="toc6"><span>Indexing <a name="indexing"></a></span></h2>
+<h2 id="toc6">Indexing <a name="indexing"></a></h2>
 <p><span class="label label-primary">INFORMATION</span> The protocol that SABnzbd uses can be found here if you want to implement this in your indexer: <a href="/wiki/extra/indexer-feedback">Indexer feedback</a>.</p>
 
 <table class="table table-bordered table-hover">
@@ -232,7 +232,7 @@ title: Switches
 
 <hr>
 
-<h2 id="multi-core"><span>Extra Par2 Parameters for macOS and Linux</span></h2>
+<h2 id="multi-core">Extra Par2 Parameters for macOS and Linux</h2>
 <p><span class="label label-warning">NOTE</span> For Windows, see <a href="#multi-core-multipar">below</a>.</p>
 <p>The macOS distribution of SABnzbd includes a multi-core version of the PAR2 program which will see improvements for those with multi-core processors. On Linux you will need to install the multi-core versions of <code>par2</code> yourself, <a href="/wiki/installation/multicore-par2">as described here</a>.</p>
 
@@ -253,7 +253,7 @@ title: Switches
 
 
 <hr>
-<h2 id="multi-core-multipar"><span>Extra Par2 Parameters for Windows</span></h2>
+<h2 id="multi-core-multipar">Extra Par2 Parameters for Windows</h2>
 <p>The Windows version of SABnzbd has MultiPar integrated which allows you to specify the multi-core behavior and memory usage. Additionally, you can also enable the use of the GPU. Beware: GPU performance varies between systems and can also be slower on some systems.</p>
 
 <ul>
@@ -291,7 +291,7 @@ title: Switches
 
 
 <hr>
-<h2 id="toc8"><span>Nice to reduce CPU priority</span></h2>
+<h2 id="toc8">Nice to reduce CPU priority</h2>
 <p><a name="nice"></a> When SABnzbd runs external tools like <strong>par2</strong> and <strong>unrar</strong>, these tools may use up all CPU capacity.
     If you set parameters in the <strong>nice</strong> option box, the tool will be used (if installed).
     You will need to experiment with the parameters. Leaving the box empty will disable the use of <strong>nice</strong>.<br>
@@ -300,7 +300,7 @@ title: Switches
 </p>
 
 <hr>
-<h2 id="toc9"><span>IONice to reduce disk priority</span></h2>
+<h2 id="toc9">IONice to reduce disk priority</h2>
 <p><a name="ionice"></a> When SABnzbd runs external tools like <strong>par2</strong> and <strong>unrar</strong>, these tools may use up all disk capacity
     This can make simultaneous use of the system problematic, e.g. when you want to watch a movie.
     If you set parameters in the <strong>ionice</strong> option box, the tool will be used (if installed).

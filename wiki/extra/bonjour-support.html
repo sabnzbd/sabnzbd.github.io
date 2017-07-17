@@ -12,21 +12,21 @@ title: Bonjour support
 </p>
 <p>Unfortunately our Bonjour implementation doesn't work on macOS El Capitan. We're not sure whether we can fix this.
 </p>
-<h3 id="toc0"><span>Limitation</span></h3>
+<h3 id="toc0">Limitation</h3>
 <p>Note that Bonjour will only work when you setup SABnzbd to communicate with other computers on your local network. A completely local installation (using 127.0.0.1 or localhost) will not be advertised on Bonjour. The protocol doesn't support this.</p>
 <p>The speed may be disappointing. For some reason Bonjour likes to communicate over IPv6, which can be slow on some browsers.</p>
-<h3 id="toc1"><span>macOS</span></h3>
+<h3 id="toc1">macOS</h3>
 <p>There's nothing to install.<br>
     Start SABnzbd with the host name 0.0.0.0 (or empty) and it will advertise itself to all Bonjour clients on your local network.<br>
     Note that you need to enable Bonjour support in the Safari browser: Preferences-&gt;Bookmarks
 </p>
-<h3 id="toc2"><span>Windows</span></h3>
+<h3 id="toc2">Windows</h3>
 <p>If you have iTunes installed, then Bonjour is installed too.<br>
     Otherwise, you'll have to install <a href="http://support.apple.com/kb/DL999" target="_blank">Bonjour Print services for Windows</a> from Apple's website.<br>
     All Apple devices will be able to find your SABnzbd server.<br>
     On Windows itself, only Safari for Windows supports Bonjour.
 </p>
-<h3 id="toc3"><span>Debian/Ubuntu:</span></h3>
+<h3 id="toc3">Debian/Ubuntu:</h3>
 <p>Install two packages to get Bonjour working:</p>
 <div class="code">
     <pre><code>sudo apt-get install avahi-daemon libavahi-compat-libdnssd1</code>
@@ -37,5 +37,5 @@ title: Bonjour support
     On Linux, the Konqueror browser (part of KDE) has built-in support for Bonjour/Avahi.
 </p>
 <p>Some background info : <a href="http://www.enterprisenetworkingplanet.com/netos/article.php/3618026/Run-Zeroconf-for-Linux-in-a-Snap.htm" target="_blank">Zeroconf for Linux in a Snap</a></p>
-<h3 id="toc4"><span>Android</span></h3>
+<h3 id="toc4">Android</h3>
 <p>On Android you can see Bonjour services (like SABnzbd) on other devices on your LAN with "Bonjour Browser (see <a href="https://play.google.com/store/apps/details?id=com.grokkt.android.bonjour">https://play.google.com/store/apps/details?id=com.grokkt.android.bonjour</a> ) and "Zeronconf Browser" (see <a href="https://play.google.com/store/apps/details?id=com.melloware.zeroconf">https://play.google.com/store/apps/details?id=com.melloware.zeroconf</a> ). NB: you can only see them, not click on them</p>

@@ -165,7 +165,7 @@ title: Email Templates
     SABnzbd will look for files ending with <code>.tmpl</code> and will send an email message for <em>every</em> template.<br>
     If you want to use different email formats based on the email recipient, you can use conditional formatting (see example below).<br>
 </p>
-<h1 id="toc0"><span>Standard template</span></h1>
+<h1 id="toc0">Standard template</h1>
 <p><span class="label label-danger">WARNING</span> do not modify the standard templates, but make a copy in your own template folder.<br>
     If you modify the standard templates, they will be lost when uninstalling or when upgrading to a new SABnzbd release.
 </p>
@@ -219,13 +219,13 @@ Sorry!
 &lt;!--#end if#--&gt;</code>
 </pre>
 </div>
-<h2 id="toc1"><span>Languages</span></h2>
+<h2 id="toc1">Languages</h2>
 <p>The email template is available in 5 languages. Given the UI language, the right template will be picked.<br>
     Note that when you have your own email template folder, SABnzbd does not support multiple languages.<br>
     It will just process all the templates in the folder, thereby assuming that you will write your templates<br>
     in the desired language anyway.
 </p>
-<h2 id="toc2"><span>Conditional emails</span></h2>
+<h2 id="toc2">Conditional emails</h2>
 <p>Should you want to make a conditional template, you should place your test before any of the fields.<br>
     When the end result is an empty email, SABnzbd will not send it.<br>
     A very simplified example:

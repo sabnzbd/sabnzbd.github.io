@@ -4,7 +4,7 @@ title: Ubuntu PPA Repository
 
 <p><span class="label label-warning">NOTE</span> Debian users: <code>sabnzbdplus</code> is readily available in squeeze and newer (in contrib); if you're looking to update your Debian install to the latest release please refer to <a href="https://forums.sabnzbd.org/viewtopic.php?f=16&amp;t=9844">this forum thread</a>.</p>
 <hr>
-<h1 id="toc0"><span>PPA Setup</span></h1>
+<h1 id="toc0">PPA Setup</h1>
 <p>JCFP maintains an unofficial repository with the latest version of SABnzbd<sup class="footnoteref"><a href="#toc4">1</a></sup>. Whenever an even newer version of the program is released, you will be automatically notified the same as with any other package update.</p>
 <p>There are two channels on offer: regular or <code>nobetas</code>. The former includes most alpha/beta/rc releases, while the latter is a less risky option that only ever gets final releases. In order to satisfy all dependencies, both Ubuntu's universe and multiverse repositories must be enabled on your system.</p>
 
@@ -31,7 +31,7 @@ sudo apt-get install sabnzbdplus python-sabyenc</code></pre>
 <p>Optionally, you can also install <a href="/wiki/installation/multicore-par2">Multicore Par2</a> by executing:</p>
 <pre><code>sudo apt-get install par2-tbb</code></pre>
 <hr>
-<h1 id="toc2"><span>How To Start</span></h1>
+<h1 id="toc2">How To Start</h1>
 <p>To start the program, find the Sabnzbd+ item in the Networking section of your desktop menu, or from the command line just execute:</p>
 <div class="code">
     <pre><code>sabnzbdplus</code>
@@ -40,7 +40,7 @@ sudo apt-get install sabnzbdplus python-sabyenc</code></pre>
 <p>You should run SABnzbd as a normal user: the program does not need root access or any other special permissions.</p>
 
 <hr>
-<h1 id="toc3"><span>How To Run as a Service</span></h1>
+<h1 id="toc3">How To Run as a Service</h1>
 <p>If you want the program to be started as a service (i.e., in the background on system boot), edit (as root) the text file <code>/etc/default/sabnzbdplus</code> and set the required <code>USER= </code> and the optional settings to your liking.</p>
 <p>Once configured correctly, the service can be started and stopped with the commands <code>sudo /etc/init.d/sabnzbdplus start</code> and <code>sudo /etc/init.d/sabnzbdplus stop</code>. On recent Ubuntu versions, you can use</p>
 <div class="code">
@@ -54,7 +54,7 @@ sudo apt-get install sabnzbdplus python-sabyenc</code></pre>
 </div>
 <p>Although for obvious reasons no browser is auto-started when running the program like this, the web interface is still available at the usual location of <code>http://localhost:8080/sabnzbd/</code> (or whatever other host and port you configured).</p>
 <hr>
-<h1 id="toc4"><span>The Fine Print</span></h1>
+<h1 id="toc4">The Fine Print</h1>
 <ol>
     <li>Remember that this package is not created and therefore <strong>not</strong> supported by the SABnzbd team! But do feel free to ask questions on the forum, which is frequently vistited by JCFP.</li>
     <li>This is an unofficial package from an unofficial repository. Don't file bugs about packages installed from this repository in Ubuntu's bug tracker, instead complain in a <a href="https://forums.sabnzbd.org/">forum</a> topic.</li>

@@ -2,7 +2,7 @@
 title: NZB Format Specification
 ---
 <p><em>Mirrored from the now defunct <a class="vglnk" href="http://docs.newzbin.com" rel="nofollow"><span>docs</span><span>.</span><span>newzbin</span><span>.</span><span>com</span></a>. References to "We" throughout the document should be assumed to be referring to Newzbin, not SABnzbd.</em></p>
-<h2 id="toc0"><span>NZB (Message-ID List) File Specification</span></h2>
+<h2 id="toc0">NZB (Message-ID List) File Specification</h2>
 <p>Here follows a sample NZB for a single small file:</p>
 {% highlight xml %}
 <?xml version="1.0" encoding="iso-8859-1" ?>
@@ -30,7 +30,7 @@ title: NZB Format Specification
 <p>This is a fully populated nzb file, all the tags and attributes you can expect to see are there, but clients are expected to cope should more be added.</p>
 <p>Since this is an XML format, clients are encouraged to use an XML parser to process it; minor changes to the nzb files we generate such as with attribute ordering, indentation, and even new tags and attributes must be taken into account. XML PI's and CDATA sections are not expected to be used, so clients should be free to cut some corners using lightweight parsers.</p>
 <p>We will, where possible, avoid changes which may break clients; even those which use simple pattern matchers. Significant changes to the format are unlikely at this point, but users of the format should try not to get too complacent.</p>
-<h2 id="toc1"><span>XML Tag breakdown</span></h2>
+<h2 id="toc1">XML Tag breakdown</h2>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -238,7 +238,7 @@ title: NZB Format Specification
         </tr>
     </tbody>
 </table>
-<h2 id="toc2"><span>Metadata Defined Types</span></h2>
+<h2 id="toc2">Metadata Defined Types</h2>
 <p>The meta tag (as a child of the head tag), added in NZB 1.1, is designed to allow posters to include arbitrary data in any NZB file, which decoders might find useful. It's a very simple key-value system, where the key is the 'type' attribute.</p>
 <p>In order to create some consistency, we define the following types; if you'd like one added, let us know so others will know of it's existence and may choose to use it. As per usual XML, these types are case sensitive so take care.</p>
 <ul>

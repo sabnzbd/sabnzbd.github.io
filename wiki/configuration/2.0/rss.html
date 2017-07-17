@@ -52,7 +52,7 @@ Accept || first*steps
 Accept || second*steps</code>
 </pre>
 </div>
-<h3 id="toc0"><span>Filters</span></h3>
+<h3 id="toc0">Filters</h3>
 <p>These are all the provided filters.<br>
 Please note that <code>From SxxEyy</code> will only work when SABnzbd recognizes the season/episode notation in the job title.<br>
 Note also that <code>RequireCat</code> only works for indexers that provide categories and whose categories have been mapped to your own (See <a href="/wiki/configuration/2.0/categories">Config-&gt;Categories</a>)</p>
@@ -92,7 +92,7 @@ Note also that <code>RequireCat</code> only works for indexers that provide cate
         </tr>
     </tbody>
 </table>
-<h3 id="toc1"><span>Feed buttons</span></h3>
+<h3 id="toc1">Feed buttons</h3>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -114,17 +114,17 @@ Note also that <code>RequireCat</code> only works for indexers that provide cate
     In case you just want to download a non-matching job, just click the download link.
 </p>
 <p><span class="label label-danger">WARNING</span> The <code>,</code> (comma) and <code>#</code> characters are <strong>not</strong> allowed!.</p>
-<h3 id="toc2"><span>Regular expressions</span></h3>
+<h3 id="toc2">Regular expressions</h3>
 <p>If you prefix a filter with <code>re:</code> it will be interpreted as a Python regular expression.<br>
     Here's a <a href="http://www.developer.com/lang/article.php/3330231" target="_blank">tutorial on regular expressions</a>.<br>
     For all the details see <a href="http://docs.python.org/dev/howto/regex.html" target="_blank">the Python manual</a>.
 </p>
-<h3 id="toc3"><span>Automatic processing</span></h3>
+<h3 id="toc3">Automatic processing</h3>
 <p>If you check the checkbox next to the name of the feed, it will be automatically processed.<br>
     The time between scans can be set with <code>RSS checking rate</code>.<br>
     <span class="label label-warning">NOTE</span> You can also override this by using the Scheduler, in this case the  <code>RSS checking rate</code> will be ignored.
 </p>
-<h3 id="toc4"><span>First batch</span></h3>
+<h3 id="toc4">First batch</h3>
 <p><span class="label label-warning">NOTE</span> to prevent the download of a (potentially) large backlog, the first batch of NZBs will not be downloaded automatically. These lines are marked with an asterisk <code>*</code>. Only new jobs in subsequent read-outs will be downloaded.<br>
     If you still want the matches in the first batch to be downloaded, click on the <code>Force Download</code> button.
 </p>
