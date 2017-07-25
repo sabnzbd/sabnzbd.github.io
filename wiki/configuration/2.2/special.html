@@ -31,6 +31,11 @@ title: Special settings
             <td>When unpacking, this will overwrite existing files instead of creating an alternative name.</td>
         </tr>
         <tr>
+            <td><code>enable_par_cleanup</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Normally SABnzbd will clean up par2 files after verify/repair. You can disable this by using 0. Disabeling this will also force all par2 files to be downloaded</td>
+        </tr>
+        <tr>
             <td><code>queue_complete_pers</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
             <td>Set this to 1 if you want end-of-queue actions Shutdown/Standby/Hibernate to be persistent (remembered) after restarts</td>
@@ -61,9 +66,9 @@ title: Special settings
             <td>Normally unpacked files will get the date/time stamp they have in the archive. If you set this option, the files will get the date/time of unpacking.</td>
         </tr>
         <tr>
-            <td><code>par2_multicore</code></td>
-            <td><span class="glyphicon glyphicon-checked"></span></td>
-            <td>Windows/macOS only. Will switch between multicore and single-core variants of par2 on these platforms.<br>This switch does not affect multicore behavior on Linux.<br>Will be removed in the 2.2.0 release, if no major issues are found with MultiPar (introduced in 2.1.0). </td>
+            <td><code>multipar</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Windows only. Disable Multipar and use par2tbb instead. This is still supported, but special workarounds for Windows have been removed so can fail on special cases.</td>
         </tr>
         <tr>
             <td><code>osx_menu</code></td>
@@ -121,6 +126,11 @@ title: Special settings
             <td>Some people use external or network drives for the "temporary download folder". It can happen that such a drive isn't mounted yet when SABnzbd starts up, causing it to create a new folder at the default location. To prevent this, set the option to 1. This will make SABnzbd wait until the drive is available. Note that SABnzbd will hang until the drive is available! Also, the folder must already exist otherwise SABnzbd will hang until terminated.</td>
         </tr>
         <tr>
+            <td><code>max_art_opt</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>You can choose to use limited retries only for your "optional" servers. This will prevent "Out of retention" failures when your main server is inadvertently off-line</td>
+        </tr>
+        <tr>
             <td><code>warn_empty_nzb</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Will enable warnings about empty NZB files, uncheck to surpress warnings.</td>
@@ -141,6 +151,11 @@ title: Special settings
             <td>If checked, will issue a warning when a duplicate job is detected and subsequently paused or deleted. Uncheck if you find the warnings a nuisance</td>
         </tr>
         <tr>
+            <td><code>replace_illegal</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Replace illegal characters in folder names by equivalents. If you switch this off, illegal characters will be just removed.</td>
+        </tr>
+        <tr>
             <td><code>backup_for_duplicates</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Check to backup dectected duplicate NZB's.</td>
@@ -155,12 +170,6 @@ title: Special settings
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Check to log all API calls.</td>
         </tr>
-        <tr>
-            <td><code>enable_meta</code></td>
-            <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Enable meta-tags coming from indexers or from the content of the NZB. These tags contain cleaned up versions of titles, episode names, etc. If you prefer that everything is derived from the NZB name, disable.</td>
-        </tr>
-
     </tbody>
 </table>
 <hr>
@@ -205,7 +214,7 @@ title: Special settings
         <tr>
             <td><code>wait_ext_drive</code></td>
             <td><code>5</code></td>
-            <td>When SABnzbd wants to store files on the final destination, this destination might be an external drive. Especially USB drives can take considerable time to wake up after going into standby. SABnzbd will try 5 times with intervals of one second. You can increase this value if needed. [0.7.1+ only]</td>
+            <td>When SABnzbd wants to store files on the final destination, this destination might be an external drive. Especially USB drives can take considerable time to wake up after going into standby. SABnzbd will try 5 times with intervals of one second. You can increase this value if needed.</td>
         </tr>
         <tr>
             <td><code>history_limit</code></td>
@@ -215,32 +224,37 @@ title: Special settings
         <tr>
             <td><code>show_sysload</code></td>
             <td><code>2</code></td>
-            <td>When working on a Linux/Unix system you can have SABnzbd display no system information (0), Only the CPU load indicators (1) and also the memory usage (2)<sup class="footnoteref"><a id="footnoteref-2" href="#footnote-2">2</a></sup> [0.7.4+ only]</td>
+            <td>When working on a Linux/Unix system you can have SABnzbd display no system information (0), Only the CPU load indicators (1) and also the memory usage (2). <br>Linux memory usage "V" is total memory usage of SABnzbd, "R" is actually used physical memory</td>
+        </tr>
+        <tr>
+            <td><code>direct_unpack_threads</code></td>
+            <td><code>3</code></td>
+            <td>When Direct Unpack is enabled we only allow this amount of unpackers to be active at the same time. This is to limit strain on the system's disks. <br>Note that there can be an additional unpack active if a job is also being post-processed.</td>
         </tr>
         <tr>
             <td><code>ipv6_servers</code></td>
             <td><code>1</code></td>
-            <td>Control the use of IPv6 Usenet server addresses. Only useful when you have an IPv6 capable ISP and connect to servers that (also) have IPv6 addresses. Meaning: 0 = don't use, 1 = use when available and reachable, 2 = force usage (when SABnzbd's detection fails) [0.7.6+ only]</td>
-        </tr>
-        <tr>
-            <td><code>rating_host</code></td>
-            <td><code>api.oznzb.com</code></td>
-            <td>Instead of OZnzbd, you can switch the host to connect to for rating. The indexer needs to support this!</td>
+            <td>Control the use of IPv6 Usenet server addresses. Only useful when you have an IPv6 capable ISP and connect to servers that (also) have IPv6 addresses. Meaning: 0 = don't use, 1 = use when available and reachable, 2 = force usage (when SABnzbd's detection fails)</td>
         </tr>
         <tr>
             <td><code>selftest_host</code></td>
             <td><code>self-test.sabnzbd.org</code></td>
             <td>In order to check proper IPv6 connectivity and your external IPv4 address, SABnzbd needs to connect to a known external IPv6 address and a server that returns the external IP address. By default we use our own server for this (we don't send any data). You can choose to use another known IPv6 host, e.g. <code>http://ipv6.google.com</code>. However, this will cause the external IPv4 address detection to fail in the status window, this does not affect the functioning of SABnzbd.</td>
         </tr>
+         <tr>
+            <td><code>rating_host</code></td>
+            <td><code>api.oznzb.com</code></td>
+            <td>Instead of OZnzbd, you can switch the host to connect to for rating. The indexer needs to support this!</td>
+        </tr>
         <tr>
             <td><code>rss_odd_titles</code></td>
             <td>see text</td>
-            <td>Some RSS feeds produce very awkward titles which are fine for filtering, but not as job titles. For all indexers that are listed here, the actual NZB file name will be used instead of the title. The default is a comma-separated list of URLs and the default is: <code>nzbindex.nl/, nzbindex.com/, nzbclub.com/</code> [0.7.4+ only])</td>
+            <td>Some RSS feeds produce very awkward titles which are fine for filtering, but not as job titles. For all indexers that are listed here, the actual NZB file name will be used instead of the title. The default is a comma-separated list of URLs and the default is: <code>nzbindex.nl/, nzbindex.com/, nzbclub.com/</code>)</td>
         </tr>
         <tr>
             <td><code>quick_check_ext_ignore</code></td>
             <td><code>nfo, sfv, srr</code></td>
-            <td>A list of file name extensions that will be ignored during QuickCheck. If they are missing but all other files are correct, QuickCheck will still pass [2.0.0+ only]</td>
+            <td>A list of file name extensions that will be ignored during QuickCheck. If they are missing but all other files are correct, QuickCheck will still pass.</td>
         </tr>
     </tbody>
 </table>

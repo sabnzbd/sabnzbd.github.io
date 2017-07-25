@@ -21,7 +21,10 @@ title: General
         </tr>
         <tr>
             <td><strong>Port</strong></td>
-            <td>The internal webserver needs an IP port to listen on. The default port is <code>8080</code>. Try another one if this address is already occupied by another program on your computer. <br>(Note for linux users: ports below <code>1025</code> may require SABnzbd launched as root)</td>
+            <td>
+                The internal webserver needs an IP port to listen on. The default port is <code>8080</code>. Try another one if this address is already occupied by another program on your computer.
+                <br><span class="label label-warning">NOTE</span>  macOS and Linux users: ports below <code>1025</code> may require SABnzbd launched as root.
+            </td>
         </tr>
 
         <tr>
@@ -30,23 +33,23 @@ title: General
         </tr>
         <tr>
             <td><strong>Language</strong></td>
-            <td>The program supports more languages.</td>
+            <td>The program supports more languages.<br><span class="label label-warning">NOTE</span> Help us translate SABnzbd in your language! Add untranslated texts or improved existing translations here: https://sabnzbd.org/wiki/translate</td>
         </tr>
         <tr>
             <td><strong>Enable HTTPS</strong></td>
-            <td>Enable the webserver to use HTTPS. For more information, see: <a href="/wiki/advanced/https">HTTPS</a>.</td>
+            <td>Enable the webserver to use HTTPS.<br>For more information, see: <a href="/wiki/advanced/https">HTTPS</a>.</td>
         </tr>
         <tr>
-            <td><strong>HTTPS Port</strong></td>
-            <td>Port to be used for listening. Must be different from the normal HTTP port. If empty, the SABnzbd Port set above will only listen to HTTPS.</td>
+            <td><strong>HTTPS Port</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>Port to be used for listening. Must be different from the normal HTTP port. If empty, the SABnzbd Port set above will only listen to HTTPS (this is the default setting).</td>
         </tr>
         <tr>
-            <td><strong>HTTPS Certificate</strong></td>
-            <td>File containing the HTTPS certificate</td>
+            <td><strong>HTTPS Certificate</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>File containing the HTTPS certificate.</td>
         </tr>
         <tr>
-            <td><strong>HTTPS Key</strong></td>
-            <td>File containing the HTTPS key</td>
+            <td><strong>HTTPS Key</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>File containing the HTTPS key.</td>
         </tr>
     </tbody>
 </table>
@@ -88,7 +91,7 @@ title: General
         </tr>
         <tr>
             <td><strong>API Key</strong></td>
-            <td>This is the <em>secret key</em> that is needed in <a href="/wiki/advanced/automation-support">API calls</a>. Note that when you click the Change button, you'll need to tell your utilities the new key.</td>
+            <td>This is the <em>secret key</em> that is needed in <a href="/wiki/advanced/automation-support">API calls</a>.<br><span class="label label-warning">NOTE</span> When you click the Change button, you'll need to tell your utilities the new key.</td>
         </tr>
     </tbody>
 </table>
@@ -98,7 +101,7 @@ title: General
     <tbody>
         <tr>
             <td><strong>Launch browser on startup</strong></td>
-            <td>Enable to auto-launch of the browser when SABnzbd is opened.</td>
+            <td>Enable to auto-launch of the browser when SABnzbd is started.</td>
         </tr>
         <tr>
             <td><strong>Check for new release</strong></td>
@@ -106,7 +109,7 @@ title: General
         </tr>
         <tr>
             <td><strong>HTTPS certificate verification</strong></td>
-            <td>Verify certificates when connecting to indexers and RSS-sources using HTTPS. Requires Python 2.7.9+, can be enabled in most cases without problems, but some websites do not have proper certificates and some systems might not be configured correctly. [only 2.0.0+]</td>
+            <td>Verify certificates when connecting to indexers and RSS-sources using HTTPS. Some websites do not have proper certificates and some systems might not be configured correctly.</td>
         </tr>
     </tbody>
 </table>
@@ -116,7 +119,7 @@ title: General
     <tbody>
         <tr>
             <td><strong>Maximum line speed</strong></td>
-            <td>Set how fast your internet connection is, in bytes/sec. If you have an ISP-speed of 10Mbit/sec, you should enter 1M here.</td>
+            <td>Set how fast your internet connection is, in bytes/sec. If you have an ISP-speed of 10Mbit/sec, you should enter <code>1M</code> here.</td>
         </tr>
         <tr>
             <td><strong>Percentage of line speed</strong></td>

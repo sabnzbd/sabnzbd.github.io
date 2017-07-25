@@ -47,11 +47,11 @@ title: Servers
             <td>You can assign a priority to the server. Sometimes it is useful to specify a high priority server that SABnbzd should try to get its data from first, often this is a free server. A pay-per-GB server is the typical low priority server.</td>
         </tr>
         <tr>
-            <td><strong>Retention</strong></td>
+            <td><strong>Retention</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Set here the maximum retention time<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup> (in days) of your server. Zero means infinite retention. Only use this when you have multiple servers and you want to avoid that SABnzbd wastes time on asking servers for articles it cannot have. Be aware that retention times advertised by Usenet providers are not absolute. If you set it too low, your others servers will be used more intensely. There is no reason to set a retention time when you have only one server.</td>
         </tr>
         <tr>
-            <td><strong>Timeout</strong></td>
+            <td><strong>Timeout</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Time out in seconds for error recovery. Be careful, do not set this to a very low value, your news provider will not like that. A common value is <code>120</code>.</td>
         </tr>
         <tr>
@@ -59,7 +59,7 @@ title: Servers
             <td>Use a secure connection to the server. <br><span class="label label-warning">NOTE</span> <strong>Check which address and port you need for SSL with your provider!</strong> Most providers use port <code>563</code> for SSL, DO NOT USE PORT <code>119</code></td>
         </tr>
         <tr>
-            <td><strong>Certificate verification</strong></td>
+            <td><strong>Certificate verification</strong><br><span class="label label-primary">Advanced</span></td>
             <td>
                 <p>SABnzbd can verify the certificates your newsserver uses to verify its identity. Python 2.7.9 or above, OpenSSL 1.0.2 or above and up-to-date local CA certificates are required.</p>
                 <p><span class="label label-danger">WARNING</span> Disabeling or setting this check to <code>Minimal</code> allows anyone to redirect and intercept your traffic using <em>any</em> valid certificate!  It is comparable to not using SSL at all.</p>
@@ -73,23 +73,23 @@ title: Servers
             </td>
         </tr>
         <tr>
-            <td><strong>Optional</strong></td>
+            <td><strong>Optional</strong><br><span class="label label-primary">Advanced</span></td>
             <td>If you use multiple servers and some of these servers are not very reliable, you can declare them "optional". This means that if such a server causes too much problems (like time-outs) it will be ignored for some time. Warning: under some circumstances this may cause missed articles<sup class="footnoteref"><a id="footnoteref-2" href="#footnote-2">2</a></sup>.</td>
         </tr>
         <tr>
-            <td><strong>Send group</strong></td>
+            <td><strong>Send group</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Some news servers require the Usenet group to be sent before starting download. Only enable if your server has problems with downloading otherwise.</td>
         </tr>
         <tr>
-            <td><strong>Categories</strong></td>
+            <td><strong>Categories</strong><br><span class="label label-primary">Advanced</span></td>
             <td>This server will only be used for the <a href="/wiki/configuration/2.0/categories">Categories</a> selected. When Default is selected, the server will be used for all categories and downloads.</td>
         </tr>
         <tr>
-            <td><strong>Server description</strong></td>
+            <td><strong>Server description</strong><br><span class="label label-primary">Advanced</span></td>
             <td>The name of the server in the Config and download reports.</td>
         </tr>
         <tr>
-            <td><strong>Personal notes</strong></td>
+            <td><strong>Personal notes</strong><br><span class="label label-primary">Advanced</span></td>
             <td>In case extra information is necessary to identify this server to you on this Configuration page.</td>
         </tr>
     </tbody>

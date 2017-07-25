@@ -1,13 +1,14 @@
 ---
 title: Notifications
 ---
+<h2>Email notifications</h2>
 <p>SABnzbd can send you emails about completion of jobs and about disk almost full condition.
     You can send email through the SMTP server of your ISP. This is generally the easiest option, that doesn't require you to set a user account and password.
     SABnzbd will try to use SSL secured email when supported by the mail server (this normally requires an user account and password).
     Even Google mail (gmail.com) is possible.
 </p>
 <p>It's possible to create your own email format by using <a href="/wiki/extra/email-templates">templates</a>.</p>
-<h2 id="toc0">Email options</h2>
+<h3 id="toc0">Email options</h3>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -24,7 +25,7 @@ title: Notifications
         </tr>
     </tbody>
 </table>
-<h2 id="toc1">Email Account Settings</h2>
+<h3 id="toc1">Email Account Settings</h3>
 <p>Check your email provider's instructions for the proper values.</p>
 <table class="table table-bordered table-hover">
     <tbody>
@@ -50,7 +51,7 @@ title: Notifications
         </tr>
     </tbody>
 </table>
-<h3 id="toc2">How to setup for Google mail.</h3>
+<h3 id="toc2">Gmail example</h3>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -83,10 +84,13 @@ title: Notifications
     See: <a href="https://www.google.com/settings/security/lesssecureapps">https://www.google.com/settings/security/lesssecureapps</a>
 </p>
 <p>For security reasons we recommend that you create a separate email account, just to send SABnzbd emails.</p>
-<h3 id="toc3">Notification Services</h3>
-<p>SABnzbd can send notifications to several notification services.<br>
-    All events that can produce a notification are assigned to a group.<br>
-    Such groups can be enabled per notification services.
+
+<hr>
+<h2 id="toc3">Notification Services</h2>
+<p>SABnzbd can send notifications to several notification services.
+    All events that can produce a notification are assigned to a group.
+    Such groups can be enabled per notification services.<br>
+    Additionally, you can specify for the job related notifications if they only should be send for specific categories.
 </p>
 <table class="table table-bordered table-hover">
     <tbody>
@@ -103,7 +107,7 @@ title: Notifications
             <td>Add NZB, Pause, Resume</td>
         </tr>
         <tr>
-            <td>PP</td>
+            <td>Post-processing</td>
             <td>Post-processing started</td>
         </tr>
         <tr>
@@ -120,7 +124,7 @@ title: Notifications
         </tr>
         <tr>
             <td>User logged in</td>
-            <td>Successful login (HTML form only [only 2.0.0+])</td>
+            <td>Successful login (HTML form only)</td>
         </tr>
         <tr>
             <td>Warning</td>
@@ -136,30 +140,54 @@ title: Notifications
         </tr>
     </tbody>
 </table>
-<h4 id="toc4">Windows balloons</h4>
+<hr>
+<h3 id="toc4">Windows balloons</h3>
 <p>Windows will show a modest text balloon connected to SABnzbd's System Tray icon.</p>
-<h4 id="toc5">macOS Notification Center</h4>
+
+<h3 id="toc5">macOS Notification Center</h3>
 <p>Standard macOS Notification Service.<br>
     Only when you're using our signed app, you will see SABnzbd's icon.
 </p>
+
 <h3 id="toc6">NotifyOSD</h3>
 <p>Some Linux systems support the NotifyOSD protocol.<br>
     When SABnzbd detects support for this protocol, it will allow you to enable the service.
 </p>
-<h4 id="toc7">Growl</h4>
+
+<h3 id="toc7">Growl</h3>
 <p>When you enable Growl messages, they will be automatically be sent to the default local Growl server.<br>
     You can also set an external server by setting a host address and an optional password.<br>
     Should the server use another port than the standard 23053 you can use the host:port notation.
 </p>
-<h4 id="toc8">Prowl</h4>
+
+<h3 id="toc8">Prowl</h3>
 <p>You need a Prowl subsciption and an API-key.</p>
-<h4 id="toc9">Pushover</h4>
+
+<h3 id="toc9">Pushover</h3>
 <p>You need a Pushover subsciption and an API-key.<br>
     Currently we do not support selection of specific devices; messages will be sent to all devices.
 </p>
-<h4 id="toc10">Pushbullet</h4>
+
+<h3 id="toc10">Pushbullet</h3>
 <p>You need a Pushbullet subsciption and an API-key.</p>
-<h4 id="toc11">Notification script [1.1.0+ only]</h4>
+
+<h3 id="toc11">Notification script</h3>
 <p>Allows implementation of custom notification services. See <a href="/wiki/scripts/notification-scripts">Notification Scripts</a>.
 </p>
-<p><a href="https://github.com/caronc/nzb-notify" target="_blank">NZB-Notify</a>'s notification script provides a wide range of notification services, extending on the build-in providers of SABnzbd.</p>
+<p><a href="https://github.com/caronc/nzb-notify" target="_blank">NZB-Notify</a>'s notification script provides a wide range of notification services, extending on the build-in providers of SABnzbd. <br>These services are currently supported by <a href="https://github.com/caronc/nzb-notify" target="_blank">NZB-Notify</a>:</p>
+<ul>
+    <li>Boxcar</li>
+    <li>Faast</li>
+    <li>JSON (Simple)</li>
+    <li>KODI</li>
+    <li>Notify My Android</li>
+    <li>Join</li>
+    <li>Pushalot</li>
+    <li>Toasty</li>
+    <li>XBMC</li>
+    <li>Slack</li>
+    <li>MatterMost</li>
+    <li>Telegram</li>
+    <li>XML (Simple)</li>
+</ul>
+

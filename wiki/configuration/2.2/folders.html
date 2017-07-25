@@ -6,11 +6,12 @@ title: Folders
     <tbody>
         <tr>
             <td><strong>Temporary Download Folder</strong></td>
-            <td>Enter the path to a folder SABnzbd can use to store files as they are downloaded. Once the file is complete, it will verify then extract to the Complete Folder. You can just enter "Incomplete" to keep it relational to your home folder or enter the full path such as <code>C:\Incomplete</code> and it will create the folder.</td>
+            <td>Enter the path to a folder SABnzbd can use to store files as they are downloaded. Once the file is complete, it will verify then extract to the Complete Folder. You can just enter "Incomplete" to keep it relative to your Base Folder or enter the full path such as <code>C:\Incomplete</code> and SABnzbd will create the folder.</td>
         </tr>
         <tr>
             <td><strong>Minimum Free Space for Temporary Download Folder</strong></td>
-            <td>There should be enough space to contain the largest complete job + 10% for error correction data. When free space on the drive that holds the temporary folder is below this, SABnzbd is automatically pauses and an (optional) email is sent to the user. You enter the amount in bytes but you can use factors like K, M, G etc. Note: SABnzbd will not automatically resume downloading. You have to make diskspace available AND resume SABnzbd manually.</td>
+            <td>There should be enough space to contain the largest complete job + 10% to repair jobs. When free space on the drive that holds the temporary folder is below this, SABnzbd is automatically pauses. You enter the amount in bytes but you can use factors like <code>K, M, G</code> etc.
+            <br><span class="label label-warning">NOTE</span> SABnzbd will not automatically resume downloading. You have to make diskspace available AND resume SABnzbd manually.</td>
         </tr>
         <tr>
             <td><strong>Completed Download Folder</strong></td>
@@ -23,7 +24,7 @@ title: Folders
         <tr>
             <td><strong>Watched Folder</strong></td>
             <td>
-                <p>This is a folder that is periodically checked for new NZB files. When a file is stored in this folder, SABnzbd will consider this a download job. It processes the file, puts it in the queue and removes the NZB file. ZIP and RAR files that contain <em>only</em> NZB files will be processed too<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup>
+                <p>This is a folder that is periodically checked for new NZB files. When a file is stored in this folder, SABnzbd will consider this a download job. It processes the file, puts it in the queue and removes the NZB file. ZIP and RAR files that contain <em>only</em> NZB files are also imported (<code>.nfo</code> files are allowed too, but ignored).</p>
                 <p>The Watched Folder supports <a href="/wiki/configuration/2.0/categories">Categories</a> in two ways:
                 <ul>
                     <li><strong>Categories:</strong> Create a folder inside your watched folder with the same name as one of your categories. Placing a file inside that folder will add the category with the same name as the sub-folder when it is imported. <br>
@@ -38,7 +39,7 @@ title: Folders
         </tr>
         <tr>
             <td><strong>Scripts Folder</strong></td>
-            <td>This specifies the folder where user scripts (post-processing and pre-queue) are stored. On Windows, users may specify a .cmd or .bat file; other extensions can be executed with the <code>PATHEXT</code> variable. On Unix any installed script type can be used, including common choices such as shell or Python, provided the file is executable (<code>chmod +x file</code>) and starts with a valid <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang line</a>. For more information on creating: <a href="/wiki/scripts/post-processing-scripts">Post-processing</a> / <a href="/wiki/scripts/pre-queue-scripts">Pre-queue</a> scripts.</td>
+            <td>This specifies the folder where user scripts (post-processing and pre-queue) are stored. On Windows, users may specify a .cmd or .bat file; other extensions can be executed with the <code>PATHEXT</code> variable. On Unix any installed script type can be used, including common choices such as shell or Python, provided the file is executable (<code>chmod +x file</code>) and starts with a valid <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang line</a>. <br>Read more about creating <a href="/wiki/scripts/post-processing-scripts">Post-processing</a> and <a href="/wiki/scripts/pre-queue-scripts">Pre-queue</a> scripts.</td>
         </tr>
         <tr>
             <td><strong>Email Templates Folder</strong></td>
@@ -46,7 +47,7 @@ title: Folders
         </tr>
         <tr>
             <td><strong>Password File</strong></td>
-            <td>A text file of known passwords, one password per line, that should be attempted on passworded RAR files.</td>
+            <td>A text file of known passwords, one password per line, that should be attempted on passworded RAR files.<br><span class="label label-danger">WARNING</span> Checking passwords takes time, do not list more than ~20 passwords in this file!</td>
         </tr>
     </tbody>
 </table>
@@ -55,7 +56,7 @@ title: Folders
     <tbody>
         <tr>
             <td><strong>Administrative Folder</strong></td>
-            <td>Location for queue admin and history database.</td>
+            <td>Location for queue, admin and history database.</td>
         </tr>
         <tr>
             <td><strong>Log Folder</strong></td>
@@ -67,7 +68,3 @@ title: Folders
         </tr>
     </tbody>
 </table>
-<div class="footnotes-footer">
-    <div class="title">Footnotes</div>
-    <div class="footnote-footer" id="footnote-1">1. ".nfo" files are allowed too, but ignored.</div>
-</div>

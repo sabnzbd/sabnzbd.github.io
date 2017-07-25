@@ -9,9 +9,9 @@ title: Switches
             <td><strong>Server load-balancing</strong></td>
             <td>A number of newsservers has multiple IP-addresses, these can be IPv4 or IPv6.
             <ul>
-                <li><strong>Prevent load-balancing:</strong> the first IP-address returned will be used for all connections. </li>
-                <li><strong>Allow load-balancing:</strong> Each connection will be randomly selected from the available addresses.</li>
-                <li><strong>Allow load-balancing with optimization for IPv6:</strong> For each connection the fastest IP-address is selected, where IPv6-addresses are given a slight head-start.</li>
+                <li><code>Prevent load-balancing</code> = The first IP-address returned will be used for all connections. </li>
+                <li><code>Allow load-balancing</code> = Each connection will be randomly selected from the available addresses.</li>
+                <li><code>Allow load-balancing with optimization for IPv6</code> = For each connection the fastest IP-address is selected, where IPv6-addresses are given a slight head-start.</li>
             </ul>
             </td>
         </tr>
@@ -23,11 +23,6 @@ title: Switches
             <td><strong>Maximum retries</strong></td>
             <td>To prevent deadlock, SABnzbd will only try each server a limited amount of times. You can increase the value or set it to <code>0</code> to enable endless retries.</td>
         </tr>
-        <tr>
-            <td><strong>Only for optional servers</strong></td>
-            <td>You can choose to use limited retries only for your "optional" servers. This will prevent "Out of retention" failures when your main server is inadvertently off-line</td>
-        </tr>
-
         <tr>
             <td><strong>Disconnect on empty queue</strong></td>
             <td>Disconnect from Usenet server(s) when queue is empty or paused. This will help you switch between different systems. Set this option off when your server keeps complaining that you have too many connections open.</td>
@@ -43,11 +38,11 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Propagation delay</strong></td>
-            <td>If you experience very young posts failing due to missing blocks your server might still be in the process of receiving the posts. Delaying the these very young posts a few minutes might solve these issues. Posts will be paused untill they are at least this age. Setting job priority to Force will skip the delay. [only 2.0.0+]</td>
+            <td>If you experience very young posts failing due to missing blocks your server might still be in the process of receiving the posts. Delaying the these very young posts a few minutes might solve these issues. Posts will be paused untill they are at least this age. <br>Setting job priority to Force will skip the delay.</td>
         </tr>
         <tr>
             <td><strong>Only get articles for top of the queue</strong></td>
-            <td>When a top-job stalls for some reason, start downloading segments for the next job (costs more memory). This prevents a job from blocking the queue when you have an unreliable Usenet server. If you need this behaviour, set the option off. If you have a reliable server (most paid servers), you might as well set this on.</td>
+            <td>When a top-job stalls for some reason, start downloading segments for the next job. This prevents a job from blocking the queue when you have an unreliable Usenet server. If you need this behaviour, set the option off. If you have a reliable server (most paid servers), you might as well set this on.</td>
         </tr>
         <tr>
             <td><strong>Check before download</strong></td>
@@ -56,7 +51,7 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Abort jobs that cannot be completed</strong></td>
-            <td>If on, when during download it becomes clear that less than 99% of the total data can be downloaded, the job will be sent to History as a failed one. Should you retry the job, the check will not be done again, but the whole job will be tried instead. [0.7.8+ only]</td>
+            <td>If on, when during download it becomes clear that less than 99% of the total data can be downloaded, the job will be sent to History as a failed one. Should you retry the job, the check will not be done again, but the whole job will be tried instead.</td>
         </tr>
         <tr>
             <td><strong>Detect duplicate downloads</strong></td>
@@ -78,6 +73,10 @@ title: Switches
             <td><strong>Sort by age</strong></td>
             <td>When you use a server with a low retention time, you can choose to download the oldest parts of a job first. This way you have more chance on completing the download.</td>
         </tr>
+        <tr>
+            <td><strong>Direct Unpack</strong></td>
+            <td>Jobs will start unpacking during the downloading to reduce post-processing time. Only works for jobs that do not need repair and do not have strongly obfuscated filenames.<br> This feature is enabled automatically when your disk-speed is greater than 40MB/s. It will not be enabled automatically again if you manual disable it.</td>
+        </tr>
     </tbody>
 </table>
 <h2 id="toc3">Post processing</h2>
@@ -91,13 +90,6 @@ title: Switches
             <td><strong>Download all par2 files</strong></td>
             <td>Download all par2 files when (after verification) the job was damaged. Pevents multiple rounds of verification.<br>
             <span class="label label-warning">NOTE</span> SABnzbd will already download extra par2 files if it detects problems during the download, so usually this option is not required.</td>
-        </tr>
-        <tr>
-            <td><strong>Enable MultiPar</strong></td>
-            <td>
-                <p>Use MultiPar for verification and repair. MultiPar uses the latest optimizations, multiple cores and can utilize the GPU, resulting in repairs often being twice as fast. Created by <a href="http://hp.vector.co.jp/authors/VA021385/">Yutaka Sawada</a>.</p>
-                <p>GPU support is not enabled by default since it can also result in slower repair. To enable GPU support fill <code>/lc32</code> (fast GPU) or <code>/lc64</code> (slow GPU) at <code>Extra PAR2 parameters</code>.</p>
-            </td>
         </tr>
         <tr>
             <td><strong>Extra PAR2 parameters</strong></td>
@@ -128,7 +120,7 @@ title: Switches
         </tr>
         <tr>
             <td><strong>On failure, try alternative NZB</strong></td>
-            <td>Some servers provide an alternative NZB when a download fails and we can try that one!</td>
+            <td>Some servers provide an alternative NZB when a download fails and we can try that one.</td>
         </tr>
         <tr>
             <td><strong>Nice parameters</strong></td>
@@ -146,6 +138,19 @@ title: Switches
             <td><strong>Cleanup List</strong></td>
             <td>List of file (extensions) that should be deleted in the cleanup stage. Examples: <code>.nfo, .nfo, .sfv</code> (You can leave out the dots, so <code>nfo, nzb, sfv</code> will do the same.)</td>
         </tr>
+        <tr>
+            <td><strong>History Retention</strong></td>
+            <td>Automatically delete <strong>completed</strong> jobs from History when new jobs are added or every day at midnight.
+
+            <ul>
+                <li><code>Keep all jobs</code> = Do not auto-delete any history.</li>
+                <li><code>Keep maximum number of completed jobs</code> = Specify exact amount of jobs to keep, removing the oldest ones.</li>
+                <li><code>Keep completed jobs maximum number of days</code> = Delete jobs automatically when they are older than the set amount of days.</li>
+                <li><code>Do not keep any completed jobs</code> = No jobs are saved in the History. </li>
+            </ul>
+            <span class="label label-warning">NOTE</span> Beware that Duplicate Detection and some external tools rely on History information.<br>
+            </td>
+        </tr>
     </tbody>
 </table>
 <h2 id="toc4">Naming <a name="rename"></a></h2>
@@ -162,10 +167,6 @@ title: Switches
         <tr>
             <td><strong>Replace dots in folder names</strong></td>
             <td>Enable to replace dots with spaces in folder names.</td>
-        </tr>
-        <tr>
-            <td><strong>Replace illegal characters in folder names</strong></td>
-            <td>Replace illegal characters in folder names by equivalents. If you switch this off, illegal characters will be just removed.</td>
         </tr>
         <tr>
             <td><strong>Make Windows compatible</strong></td>
@@ -202,7 +203,7 @@ title: Switches
         </tr>
     </tbody>
 </table>
-<p>Please note file following:</p>
+<p><strong>Please note file following:</strong></p>
 <ul>
     <li>Jobs with "Force" priority will ignore the paused state.</li>
     <li>Pausing is never immediate. All already requested articles will be received and processed. They probably would be counted by your ISP any way.</li>
