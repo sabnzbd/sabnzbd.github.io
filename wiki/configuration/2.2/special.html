@@ -18,7 +18,7 @@ title: Special settings
         <tr>
             <td><code>no_penalties</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Some Usenet servers have intermittent login (or other) problems. For these the server blocking method is not very favourable. Setting this option will limit blocks to 1 minute.</td>
+            <td>Some Usenet servers have intermittent login (or other) problems. For these the server blocking method is not very favorable. Setting this option will limit blocks to 1 minute.</td>
         </tr>
         <tr>
             <td><code>ignore_wrong_unrar</code></td>
@@ -33,7 +33,7 @@ title: Special settings
         <tr>
             <td><code>enable_par_cleanup</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Normally SABnzbd will clean up par2 files after verify/repair. You can disable this by using 0. Disabeling this will also force all par2 files to be downloaded</td>
+            <td>Normally SABnzbd will clean up par2 files after verify/repair. You can disable this by using 0. Disabling this will also force all par2 files to be downloaded</td>
         </tr>
         <tr>
             <td><code>queue_complete_pers</code></td>
@@ -58,7 +58,7 @@ title: Special settings
         <tr>
             <td><code>allow_streaming</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Experimental option allowing streaming. You'll need a mediaplayer that can play from an incomplete set of unprocessed files. Jobs will not be post-processed, but remain in the temporary download folder and finally end up in History as "failed". From there you can either post-process the job after all or just delete everything.</td>
+            <td>Experimental option allowing streaming. You'll need a media player that can play from an incomplete set of unprocessed files. Jobs will not be post-processed, but remain in the temporary download folder and finally end up in History as "failed". From there you can either post-process the job after all or just delete everything.</td>
         </tr>
         <tr>
             <td><code>ignore_unrar_dates</code></td>
@@ -78,7 +78,7 @@ title: Special settings
         <tr>
             <td><code>osx_speed</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Uncheck this to prevent the display of download speed adjecent to SABnzbd's icon in the macOS menu bar</td>
+            <td>Uncheck this to prevent the display of download speed adjacent to SABnzbd's icon in the macOS menu bar</td>
         </tr>
         <tr>
             <td><code>win_menu</code></td>
@@ -133,7 +133,7 @@ title: Special settings
         <tr>
             <td><code>warn_empty_nzb</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Will enable warnings about empty NZB files, uncheck to surpress warnings.</td>
+            <td>Will enable warnings about empty NZB files, uncheck to supress warnings.</td>
         </tr>
         <tr>
             <td><code>enable_bonjour</code></td>
@@ -143,7 +143,7 @@ title: Special settings
         <tr>
             <td><code>allow_duplicate_files</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Some NZB's have the same file listed twice, SABnzbd will only add the largerst of the files with the same name by default. If you want both files, enable this.</td>
+            <td>Some NZB's have the same file listed twice, SABnzbd will only add the largest of the files with the same name by default. If you want both files, enable this.</td>
         </tr>
         <tr>
             <td><code>warn_dupl_jobs</code></td>
@@ -158,7 +158,7 @@ title: Special settings
         <tr>
             <td><code>backup_for_duplicates</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Check to backup dectected duplicate NZB's.</td>
+            <td>Check to backup duplicate NZB's.</td>
         </tr>
         <tr>
             <td><code>disable_api_key</code></td>
@@ -204,7 +204,7 @@ title: Special settings
         <tr>
             <td><code>nomedia_marker</code></td>
             <td></td>
-            <td>Just before unpacking of files into the final folder, SABnzbd will put a special marker file (e.g. ".nomedia") in the folder. Afterwards it will be deleted. This prevents some mediaplayer software from trying to index the folder while still incomplete. You can disable the feature by clearing the field, or you can set an alternative name. Check your media software's manual.<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup></td>
+            <td>Just before unpacking of files into the final folder, SABnzbd will put a special marker file (e.g. ".nomedia") in the folder. Afterwards it will be deleted. This prevents some media player software from trying to index the folder while still incomplete. You can disable the feature by clearing the field, or you can set an alternative name. Check your media software's manual.</td>
         </tr>
         <tr>
             <td><code>req_completion_rate</code></td>
@@ -219,7 +219,7 @@ title: Special settings
         <tr>
             <td><code>history_limit</code></td>
             <td><code>10</code></td>
-            <td>Some external tools query the full history repeatedly, without setting a limit to the amount of items. With a large history, this can lead to problems. Set this option to limit the history.</td>
+            <td>Some external tools query the full history repeatedly, without setting a limit to the number of items. With a large history, this can lead to problems. Set this option to limit the history.</td>
         </tr>
         <tr>
             <td><code>show_sysload</code></td>
@@ -229,7 +229,7 @@ title: Special settings
         <tr>
             <td><code>direct_unpack_threads</code></td>
             <td><code>3</code></td>
-            <td>When Direct Unpack is enabled we only allow this amount of unpackers to be active at the same time. This is to limit strain on the system's disks. <br>Note that there can be an additional unpack active if a job is also being post-processed.</td>
+            <td>When Direct Unpack is enabled we only allow this number of unpackers to be active at the same time. This is to limit strain on the system's disks. <br>Note that there can be an additional unpack active if a job is also being post-processed.</td>
         </tr>
         <tr>
             <td><code>ipv6_servers</code></td>
@@ -277,8 +277,3 @@ title: Special settings
         </tr>
     </tbody>
 </table>
-<div class="footnotes-footer">
-    <div class="title">Footnotes</div>
-    <div class="footnote-footer" id="footnote-1">1. This is an experimental feature, which hasn't had enough testing. It is possible that marker files stay behind.</div>
-    <div class="footnote-footer" id="footnote-2">2. Linux memory usage "V" is total memory usage of SABnzbd, "R" is actually used physical memory</div>
-</div>

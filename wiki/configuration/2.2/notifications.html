@@ -4,7 +4,7 @@ title: Notifications
 <h2>Email notifications</h2>
 <p>SABnzbd can send you emails about completion of jobs and about disk almost full condition.
     You can send email through the SMTP server of your ISP. This is generally the easiest option, that doesn't require you to set a user account and password.
-    SABnzbd will try to use SSL secured email when supported by the mail server (this normally requires an user account and password).
+    SABnzbd will try to use SSL secured email when supported by the mail server (this normally requires a user account and password).
     Even Google mail (gmail.com) is possible.
 </p>
 <p>It's possible to create your own email format by using <a href="/wiki/extra/email-templates">templates</a>.</p>
@@ -76,11 +76,11 @@ title: Notifications
         </tr>
     </tbody>
 </table>
-<p>Please note that gmail security has become a lot stricter.<br>
+<p>Please note that Gmail security has become a lot stricter.<br>
     If you are using two-factor authentication then you need to create an "application-specific" password for SABnzbd.<br>
     See: <a href="https://support.google.com/mail/answer/1173270?hl=en">https://support.google.com/mail/answer/1173270?hl=en</a>
 </p>
-<p>If not, then SABnzbd is only allowed to access gmail when you allow "less secure apps".<br>
+<p>If not, then SABnzbd is only allowed to access Gmail when you allow "less secure apps".<br>
     See: <a href="https://www.google.com/settings/security/lesssecureapps">https://www.google.com/settings/security/lesssecureapps</a>
 </p>
 <p>For security reasons we recommend that you create a separate email account, just to send SABnzbd emails.</p>
@@ -157,19 +157,19 @@ title: Notifications
 <h3 id="toc7">Growl</h3>
 <p>When you enable Growl messages, they will be automatically be sent to the default local Growl server.<br>
     You can also set an external server by setting a host address and an optional password.<br>
-    Should the server use another port than the standard 23053 you can use the host:port notation.
+    Should the server use another port than the standard 23053 you can use the <code>host:port</code> notation.
 </p>
 
 <h3 id="toc8">Prowl</h3>
-<p>You need a Prowl subsciption and an API-key.</p>
+<p>You need a Prowl subscription and an API-key.</p>
 
 <h3 id="toc9">Pushover</h3>
-<p>You need a Pushover subsciption and an API-key.<br>
+<p>You need a Pushover subscription and an API-key.<br>
     Currently we do not support selection of specific devices; messages will be sent to all devices.
 </p>
 
 <h3 id="toc10">Pushbullet</h3>
-<p>You need a Pushbullet subsciption and an API-key.</p>
+<p>You need a Pushbullet subscription and an API-key.</p>
 
 <h3 id="toc11">Notification script</h3>
 <p>Allows implementation of custom notification services. See <a href="/wiki/scripts/notification-scripts">Notification Scripts</a>.
