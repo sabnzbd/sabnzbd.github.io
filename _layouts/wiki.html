@@ -1,4 +1,9 @@
 {% include header.html %}
+
+{% if page.url contains "/nzb-sources" or page.url contains "/glitter-tips-and-tricks" %}
+    {% include giganews.html %}
+{% endif %}
+
 {% include logo_container.html %}
 <div class="main-wrapper content-container">
     <div id="main-container" class="container">
