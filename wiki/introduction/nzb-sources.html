@@ -63,10 +63,13 @@ title: NZB Sources
 <h2>Indexers</h2>
 <p>Indexers parse headers to build releases to prevent a user friendly way to browse content.</p>
 <div class="alert alert-info">
-    Updated list from the <a href="https://www.reddit.com/r/usenet/wiki/indexers" target="_blank" class="alert-link">Reddit /r/usenet</a> indexer listing on May 1st 2017.<br>
+    Updated list from the <a href="https://www.reddit.com/r/usenet/wiki/indexers" target="_blank" class="alert-link">Reddit /r/usenet</a> indexer listing on July 1st 2017.<br>
     If you see outdated information please let us know and we will be happy to make the necessary changes.
 </div>
-<table class="table table-bordered table-hover table-shuffle">
+
+<p><button class="btn" onclick="filterIndexers(); $(this).hide()"><span class="glyphicon glyphicon-eye-open"></span> Show closed indexers</button></p>
+
+<table class="table table-bordered table-hover table-shuffle" id="table-filter-open">
     <thead>
         <tr>
             <th>Site</th>
@@ -85,7 +88,7 @@ title: NZB Sources
         <tr>
             <td><a href="https://althub.co.za/" target="_blank">altHUB</a></td>
             <td><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
-            <td>Invite Only</td>
+            <td>Open</td>
             <td>Free to use for 14 days, then unusable until you pay</td>
         </tr>
         <tr>
@@ -199,7 +202,7 @@ title: NZB Sources
         <tr>
             <td><a href="https://nzb.su/" target="_blank">NZB.su</a></td>
             <td><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
-            <td>Invite Only</td>
+            <td>Open</td>
             <td>5 NZBs, 0 API hits/day</td>
         </tr>
         <tr>
@@ -265,13 +268,13 @@ title: NZB Sources
         <tr>
             <td><a href="http://www.redusenet.com/" target="_blank">redusenet.com</a></td>
             <td>Forum</td>
-            <td>Invite Only</td>
+            <td>Open</td>
             <td>No daily limits</td>
         </tr>
         <tr>
-            <td><a href="https://simplynzbs.com/" target="_blank">SimplyNZBs (PirateNZB)</a></td>
+            <td><a href="https://simplynzbs.com/" target="_blank">SimplyNZBs</a></td>
             <td><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
-            <td>Donate/Invite Only</td>
+            <td>Open</td>
             <td>5 NZBs, 10 API hits/day</td>
         </tr>
         <tr>
@@ -286,38 +289,43 @@ title: NZB Sources
             <td>Donate/Invite Only</td>
             <td>?</td>
         </tr>
-        <tr>
-            <td><a href="http://www.usenethub.com/" target="_blank">usenethub.com</a></td>
-            <td>Search Engine</td>
-            <td>-</td>
-            <td>?</td>
-        </tr>
     </tbody>
 </table>
 <script type="text/javascript">
     //Shuffle all rows, while keeping the first column
     //Requires: Shuffle
-    $.fn.shuffleRows = function () {
-        return this.each(function () {
+    $.fn.shuffleRows = function() {
+        return this.each(function() {
             var main = $(/table/i.test(this.tagName) ? this.tBodies[0] : this);
             main.shuffle();
         });
     }
     /* Shuffle is required */
-    $.fn.shuffle = function () {
-        return this.each(function () {
+    $.fn.shuffle = function() {
+        return this.each(function() {
             var items = $(this).children();
             return (items.length) ?
                 $(this).html($.shuffle(items)) :
                 this;
         });
     }
-    $.shuffle = function (arr) {
+    $.shuffle = function(arr) {
         for (
             var j, x, i = arr.length; i; j = parseInt(Math.random() * i),
             x = arr[--i], arr[i] = arr[j], arr[j] = x
         );
         return arr;
     }
+
     $(".table-shuffle").shuffleRows()
+
+    function filterIndexers() {
+        $('#table-filter-open tbody').find('tr').each(function() {
+            // Is it open?
+            if($(this).children().eq(2).text() != 'Open') {
+                $(this).toggle()
+            }
+        })
+    }
+    filterIndexers()
 </script>
