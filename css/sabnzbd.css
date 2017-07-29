@@ -286,6 +286,19 @@ footer a:hover,
 .donations-container h1 {
     margin-bottom: 20px;
 }
+
+.donations-container p {
+    margin-bottom: 0;
+}
+
+#code-stats-container {
+    visibility: hidden;
+}
+
+#commit-stats {
+    color: black;
+}
+
 .donations-container .glyphicon-heart {
     color: #FFCA28;
     top: 9px;
