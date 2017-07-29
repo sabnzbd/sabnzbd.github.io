@@ -288,7 +288,9 @@ footer a:hover,
 }
 .donations-container .glyphicon-heart {
     color: #FFCA28;
-    top: 5px;
+    top: 9px;
+    font-size: 1.2em;
+    animation: pulseheart 1.5s linear infinite;
 }
 
 .donations-container .col-md-3 h2 {
@@ -312,6 +314,15 @@ footer a:hover,
 
 .donations-container .paypal-link {
     font-size: 1.2em;
+}
+
+@keyframes pulseheart {
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 /*** Wiki ****/
