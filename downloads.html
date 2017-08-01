@@ -33,6 +33,10 @@ redirect_from: "/download"
                         </ul>
                     </div>
                 </div>
+                <div class="text-left">
+                    <span class="glyphicon glyphicon-equalizer"></span>
+                    <a href="/download-stats">Older versions and download statistics</a>
+                </div>
             </div>
             <div class="col-sm-6 download-beta">
                 <h2>Latest testing release</h2>
@@ -62,11 +66,8 @@ redirect_from: "/download"
                 <p class="show-after-load"><span class="label label-danger">NOTE</span> Due to changes in this release, the queue will be converted when 2.2.0 is started for the first time. Job order, settings and data will be preserved, but all jobs will be unpaused and URL's that did not finish fetching before the upgrade will be lost!</p>
             </div>
         </div>
-        <div class="row padding-row">
-            <div class="col-sm-6">
-                <span class="glyphicon glyphicon-equalizer"></span>
-                <a href="/download-stats">Older versions and download statistics</a>
-            </div>
+        <div class="row padding-row text-center">
+            {% include ad_giganews_supernews_banner.html %}
         </div>
     </div>
     <div class="hidden">

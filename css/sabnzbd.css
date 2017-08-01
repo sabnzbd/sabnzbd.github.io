@@ -189,6 +189,14 @@ footer a:hover,
     display: none;
 }
 
+.gn-sn-wide {
+    display: none;
+}
+
+.gn-sn-wide img {
+    max-width: 100%
+}
+
 .highlights {
     float: right;
     height: 120px;
@@ -303,7 +311,7 @@ footer a:hover,
     color: #FFCA28;
     top: 9px;
     font-size: 1.2em;
-    animation: pulseheart 1.5s linear infinite;
+    animation: pulseheart 1.2s linear infinite;
 }
 
 .donations-container .col-md-3 h2 {
@@ -539,10 +547,6 @@ aside {
         display: block;
         font-weight: bold;
         padding-bottom: 15px;
-    }
-
-    #giganews-wide img {
-        max-width: 100%
     }
 }
 
