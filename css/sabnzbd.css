@@ -444,7 +444,8 @@ footer a:hover,
 #wiki-side-bar .gn-sn-tall {
     margin-top: 20px;
     text-align: center;
-    border: 0
+    border: 0;
+    text-decoration: underline;
 }
 
 .footnotes-footer {
