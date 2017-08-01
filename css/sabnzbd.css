@@ -189,14 +189,6 @@ footer a:hover,
     display: none;
 }
 
-.gn-sn-wide {
-    display: none;
-}
-
-.gn-sn-wide img {
-    max-width: 100%
-}
-
 .highlights {
     float: right;
     height: 120px;
@@ -442,12 +434,17 @@ footer a:hover,
 #wiki-side-bar ul {
     list-style: none;
     padding-left: 0;
-
 }
 
 #wiki-side-bar ul a {
     padding-left: 20px;
     margin-top: 2px;
+}
+
+#wiki-side-bar .gn-sn-tall {
+    margin-top: 20px;
+    text-align: center;
+    border: 0
 }
 
 .footnotes-footer {
@@ -510,6 +507,15 @@ aside {
     text-align: right;
 }
 /***** */
+
+.gn-sn-wide,
+#wiki-side-bar .gn-sn-tall {
+    display: none;
+}
+
+.gn-sn-wide img {
+    max-width: 100%
+}
 
 /* Special for tablets and small desktops */
 @media only screen and (max-width: 999px) {
