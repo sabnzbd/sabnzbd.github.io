@@ -504,6 +504,8 @@ aside {
 .gn-sn-wide,
 #wiki-side-bar .gn-sn-tall {
     display: none;
+    font-weight: bold;
+    color: black !important;
 }
 
 .gn-sn-wide img {
