@@ -28,7 +28,6 @@ var betaBox = $('.download-beta .download-button');
 // In try/catch in case it's not defined or blocked by security settings
 try {
     parseGitHubResults(JSON.parse(sessionStorage.releases_data))
-    parseGitHubStats(JSON.parse(sessionStorage.stats_data))
 } catch(e) {
     // If not available, get the data from Github
     $.ajax('https://api.github.com/repos/sabnzbd/sabnzbd/releases', {
@@ -48,15 +47,6 @@ try {
     .fail(function() {
         // Place backup links
         backupLinks()
-    })
-
-    // Fetch the stats-data
-    $.ajax('https://api.github.com/repos/sabnzbd/sabnzbd/stats/code_frequency', {
-        timeout: 3000
-    }).done(function(stats_data) {
-        // Process the data
-        sessionStorage.stats_data = JSON.stringify(stats_data)
-        parseGitHubStats(stats_data)
     })
 }
 
@@ -206,27 +196,6 @@ function backupLinks() {
     $('.show-before-load').hide()
     $('.show-after-load').css('visibility', 'visible')
     $('.download-beta, #download-links-stable, #download-links-beta').remove()
-}
-
-// Parse github stats
-function parseGitHubStats(stats_data) {
-    // We start from the back
-    var commitCounter = 0
-    var stats_data_reversed = stats_data.reverse()
-    $.each(stats_data_reversed, function(index, stat) {
-
-        // Only 1 month
-        if(index >= 4) {
-            return
-        }
-        // Add to counter
-        commitCounter += parseInt(stat[1])
-    })
-    // Update the counter if it's a nice number ;-)
-    if(commitCounter > 100) {
-        $('#commit-stats').text(commitCounter)
-        $('#code-stats-container').css('visibility', 'visible')
-    }
 }
 
 // Slideshow only for frontpage

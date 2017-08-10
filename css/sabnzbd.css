@@ -288,15 +288,7 @@ footer a:hover,
 }
 
 .donations-container p {
-    margin-bottom: 0;
-}
-
-#code-stats-container {
-    visibility: hidden;
-}
-
-#commit-stats {
-    color: black;
+    margin-bottom: 3px;
 }
 
 .donations-container .glyphicon-heart {
