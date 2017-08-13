@@ -4,21 +4,15 @@ title: NZB Sources
 <p>SABnzbd does not browser Usenet headers but instead only accepts <a href="http://en.wikipedia.org/wiki/NZB" target="_blank">NZB files</a> to process</sup>.
     An NZB file contains a full specification of all Usenet articles that are needed for a download. You can get these files from sites listed below.<br>
 </p>
+<p><span class="label label-warning">NOTE</span> Usenet servers hold all kinds of material, sometimes of questionable origin and legality.
+    Please be careful and check if your downloading is legal in your country. This is <strong>your</strong> responsibility, not that of the authors of SABnzbd or the sites offering the NZB files.
+</p>
 <p><span class="label label-warning">NOTE</span> SABnzbd does not endorse or require the use of any specific indexer.
     They all work with SABnzbd perfectly fine so long as they generate NZBs, none of these sites require specific "SABnzbd integration".
     Before paying for an indexer please keep in mind that there are no guarantees and that any site could disappear at any time without notice.<br>
     <strong>The lists below are randomly sorted on every page-load to give each website equal exposure.</strong>
 </p>
-<p><span class="label label-warning">NOTE</span> Usenet servers hold all kinds of material, sometimes of questionable origin and legality.
-    Please be careful and check if your downloading is legal in your country. This is <strong>your</strong> responsibility, not that of the authors of SABnzbd or the sites offering the NZB files.
-</p>
-<hr>
-<p><strong>Additional information</strong><br>
-    The following sites have further listings for indexers with commentary showing features etc.<br>
-    <a href="https://www.reddit.com/r/usenet/wiki/indexers" target="_blank">Reddit /r/usenet</a><br>
-    <a href="http://www.ngprovider.com/usenet-indexing-sites.php" target="_blank">NGProvider.com</a><br>
-    <a href="http://usenetreviewz.com/nzb-sites/" target="_blank">UsenetReviewz.com</a><br>
-</p>
+
 <hr>
 <h2>Raw search engines</h2>
 <p>These are classic search engines that index and give you results by key words. No human influence, which means little to no logic on filtering out bad posts (spam/virus/password protected/etc) or un-obfuscating encrypted posts. Just an algorithm to search.</p>
@@ -59,15 +53,16 @@ title: NZB Sources
         </tr>
     </tbody>
 </table>
-<hr>
+
+<button class="btn pull-right" onclick="filterIndexers(); $(this).hide()"><span class="glyphicon glyphicon-eye-open"></span> Show closed indexers</button>
 <h2>Indexers</h2>
+
 <p>Indexers parse headers to build releases to prevent a user friendly way to browse content.</p>
 <div class="alert alert-info">
     Updated list from the <a href="https://www.reddit.com/r/usenet/wiki/indexers" target="_blank" class="alert-link">Reddit /r/usenet</a> indexer listing on July 1st 2017.<br>
     If you see outdated information please let us know and we will be happy to make the necessary changes.
 </div>
 
-<p><button class="btn" onclick="filterIndexers(); $(this).hide()"><span class="glyphicon glyphicon-eye-open"></span> Show closed indexers</button></p>
 
 <table class="table table-bordered table-hover table-shuffle" id="table-filter-open">
     <thead>
@@ -291,6 +286,13 @@ title: NZB Sources
         </tr>
     </tbody>
 </table>
+<hr>
+<p><strong>Additional information</strong><br>
+    The following sites have further listings for indexers with commentary showing features etc.<br>
+    <a href="https://www.reddit.com/r/usenet/wiki/indexers" target="_blank">Reddit /r/usenet</a><br>
+    <a href="http://www.ngprovider.com/usenet-indexing-sites.php" target="_blank">NGProvider.com</a><br>
+    <a href="http://usenetreviewz.com/nzb-sites/" target="_blank">UsenetReviewz.com</a><br>
+</p>
 <script type="text/javascript">
     //Shuffle all rows, while keeping the first column
     //Requires: Shuffle
