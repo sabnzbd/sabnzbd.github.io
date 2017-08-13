@@ -293,8 +293,8 @@ footer a:hover,
 
 .donations-container .glyphicon-heart {
     color: #FFCA28;
-    top: 9px;
-    font-size: 1.2em;
+    top: 10px;
+    font-size: 1.3em;
     animation: pulseheart 1.2s linear infinite;
 }
 
@@ -324,9 +324,11 @@ footer a:hover,
 @keyframes pulseheart {
     50% {
         transform: scale(0.8);
+        opacity: 0.8;
     }
     100% {
         transform: scale(1);
+        opacity: 1;
     }
 }
 
