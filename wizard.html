@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SABnzbd Wizard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="/js/jquery-2.2.4.min.js"></script>
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            background-color: #FFF;
+        }
+        .main-well {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #e3e3e3;
+            background-color: #F5F5F5;
+        }
+        .lang {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-well">
+        <div class="lang lang-en">
+            <b>Help</b><br/>
+            In order to download from usenet you will require access to a provider. Your ISP may provide you with access, however a premium provider is recommended.<br/><br/>
+            Don't have a Usenet provider? We recommend trying <a href="https://www.giganews.com/usenet-special/?a=SABnzbd:wizard" target="_blank">Giganews</a>.<br/><br/>
+        </div>
+
+        <div class="lang lang-da">
+            <b>Hjælp</b><br/>
+            For at hente fra usenet kræves der adgang fra en udbyder. Din internetudbyder kan give dig adgang, men en præmie udbyder anbefales.<br/><br/>
+            Har du ingen Usenet leverandør? Vi anbefaler at prøve <a href="https://www.giganews.com/usenet-special/?a=SABnzbd:wizard" target="_blank">Giganews</a>.<br/><br/>
+        </div>
+
+        <div class="lang lang-de">
+            <b>Hilfe</b><br/>
+            Um aus dem Usenet herunterladen zu können, benötigen Sie Zugriff auf einen Usenet-Provider. Ihr ISP bieten dies möglicherweise an, jedoch werden kostenpflichtige Provider empfohlen.<br/><br/>
+            Wenn Sie noch keinen Usenet-Provider haben, empfehlen wir Ihnen<a href="https://www.giganews.com/usenet-special/?a=SABnzbd:wizard" target="_blank">Giganews</a>.<br/><br/>
+        </div>
+
+        <div class="lang lang-fr">
+            <b>Aide</b><br/>
+            Pour pouvoir télécharger sur les newsgroups, il est nécessaire d'avoir un fournisseur usenet. Votre FAI peut vous en fournir un, un fournisseur usenet premium est tout de même recommandé.<br/><br/>
+            Vous n'avez pas de fournisseur Usenet ? Nous vous recommendons d'essayer <a href="https://www.giganews.com/usenet-special/?a=SABnzbd:wizard" target="_blank">Giganews</a>.<br/><br/>
+        </div>
+
+        <div class="lang lang-nb">
+            <b>Hjelp</b><br/>
+            For å laste ned fra usenet trenger du tilgang til en leverandør. Din internettleverandør kan gi deg tilgang, men en "proff" leverandør anbefales.<br/><br/>
+            Har du ikke noen usenet leverandør? Vi anbefaler å prøve <a href="https://www.giganews.com/usenet-special/?a=SABnzbd:wizard" target="_blank">Giganews</a>.<br/><br/>
+        </div>
+
+        <div class="lang lang-nl">
+            <b>Hulp</b><br/>
+            Om te kunnen downloaden van Usenet, heb je een provider nodig. Je Internet bedrijf heeft misschien een server, maar we bevelen een betaalde server aan.<br/><br/>
+            Heb je nog geen Usenet provider? Wij bevelen <a href="https://www.giganews.com/usenet-special/?a=SABnzbd:wizard" target="_blank">Giganews</a> aan.<br/><br/>
+        </div>
+
+        <div class="lang lang-sv">
+            <b>Hjälp</b><br/>
+            För att ladda ner från usenet du behöver tillgång till en leverantör. Din internetleverantör kan ge dig tillgång, men en premie leverantör rekommenderas.<br/><br/>
+            Har du inte någon usenet leverantör? Vi rekommenderar att prova <a href="https://www.giganews.com/usenet-special/?a=SABnzbd:wizard" target="_blank">Giganews</a>.<br/><br/>
+        </div>
+
+        <a href="https://www.giganews.com/usenet-special/?a=SABnzbd:wizard" target="_blank">
+            <img src="/images/specials/gn_diamond_special_banner_300x100.jpg" border="0">
+        </a>
+    </div>
+    <script type="text/javascript">
+        var lang = document.location.hash.replace('#', '')
+        if($('.lang-' + lang).length) {
+            // Specific
+            $('.lang-' + lang).show()
+        } else {
+            // English
+            $('.lang-en').show()
+        }
+
+        // Google Analytics
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-75649-16', 'auto');
+        ga('send', 'pageview');
+
+        // Add tracking to selected outbound links
+        $(document.links)
+        .attr('target', '_blank')
+        .click(function() {
+            // Actual tracking code, while the page loads in new tab
+            var theUrl = this.href
+            ga('send', 'event', 'outbound', 'click', theUrl, {
+                'transport': 'beacon'
+            });
+        })
+    </script>
+</body>
+</html>
