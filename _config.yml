@@ -1,6 +1,10 @@
 name: SABnzbd.org
 
-wiki_version: '2.2' # Needs to be a string, for string-comparison
+# Needs to be a string, for string-comparison
+wiki_version: '2.2'
+
+giganews_link: 'https://www.giganews.com/usenet-special/'
+supernews_link: 'https://www.supernews.com/special/usenet-special/'
 
 gems:
   - jekyll-redirect-from
