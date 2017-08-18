@@ -19,20 +19,15 @@ title: Older releases and download statistics
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 <script type="text/javascript">
-    // See if maybe we saved the data from the previous page
-    // In try/catch in case it's not defined or blocked by security settings
-    try {
-        showStats(JSON.parse(sessionStorage.releases_data))
-    } catch(e) {
-        // If not available, get the data from Github
-        $.ajax('https://api.github.com/repos/sabnzbd/sabnzbd/releases', {
-            timeout: 3000
-        }).done(function(releases) {
-            // Store the data
-            sessionStorage.releases_data = JSON.stringify(releases)
-            showStats(releases)
-        })
-    }
+    // Get all data from GitHub
+    $.ajax('https://api.github.com/repos/sabnzbd/sabnzbd/releases', {
+        timeout: 3000
+    }).done(function(releases) {
+        // Store the data
+        sessionStorage.releases_data = JSON.stringify(releases)
+        showStats(releases)
+    })
+
     // For download stats
     function showStats(data) {
         // Clear the output box and loop over all the data

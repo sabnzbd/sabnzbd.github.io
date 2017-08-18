@@ -30,7 +30,7 @@ try {
     parseGitHubResults(JSON.parse(sessionStorage.releases_data))
 } catch(e) {
     // If not available, get the data from Github
-    $.ajax('https://api.github.com/repos/sabnzbd/sabnzbd/releases', {
+    $.ajax('https://api.github.com/repos/sabnzbd/sabnzbd/releases?per_page=10', {
         timeout: 3000
     }).done(function(releases) {
         // Store the data
