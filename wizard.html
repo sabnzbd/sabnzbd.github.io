@@ -89,6 +89,7 @@ layout: null
         } else {
             // English
             $('.lang-en').show()
+            lang = 'en'
         }
 
         // Google Analytics
@@ -110,6 +111,9 @@ layout: null
                 'transport': 'beacon'
             });
         })
+
+        // Track the languages used (just for fun)
+        ga('send', 'event', 'wizard', 'click', lang);
     </script>
 </body>
 </html>
