@@ -95,7 +95,7 @@ title: Switches
             <td><strong>Extra PAR2 parameters</strong></td>
             <td>
                 <p>Extra arguments that will be passed when running <code>par2</code> or MultiPar for verification and repair.</p>
-                <p>Detailed information: <a href="#multi-core-multipar">Windows</a>, <a href="#multi-core">macOS and Linux</a>.</p>
+                <p>Detailed information: <a href="#multi-core-multipar">Windows</a> and <a href="#multi-core">Linux</a>. No extra parameters are available on macOS.</p>
             </td>
         </tr>
         <tr>
@@ -237,18 +237,18 @@ title: Switches
 
 <hr>
 
-<h2 id="multi-core">Extra Par2 Parameters for macOS and Linux</h2>
+<h2 id="multi-core">Extra Par2 Parameters for Linux</h2>
 <p><span class="label label-warning">NOTE</span> For Windows, see <a href="#multi-core-multipar">below</a>.</p>
-<p>The macOS distribution of SABnzbd includes a multi-core version of the PAR2 program which will see improvements for those with multi-core processors. On Linux you will need to install the multi-core versions of <code>par2</code> yourself, <a href="/wiki/installation/multicore-par2">as described here</a>.</p>
+<p>You will need to install the multi-core versions of <code>par2</code> yourself, <a href="/wiki/installation/multicore-par2">as described here</a>.</p>
 
 <p>The behavior of multi-core PAR2 can be influenced by an extra parameter. By default it will use all available cores.</p>
 <ul>
     <li><code>-t1</code> Use it single-core</li>
     <li><code>-t&lt;n&gt;</code> Use <code>n</code> cores</li>
-    <li><code>-t0</code> [par2tbb/macOS only] Use multi-core for repairs but not for verify (prevents disk trashing)</li>
+    <li><code>-t0</code> [par2tbb] Use multi-core for repairs but not for verify (prevents disk trashing)</li>
 </ul>
 
-<p>If you use the macOS release or the <code>par2-tbb</code> version on other platforms you can also set the process priority:</p>
+<p>If you use the <code>par2-tbb</code> version you can also set the process priority:</p>
 <ul>
      <li><code>-pN</code> to process at normal priority [default]</li>
      <li><code>-pL</code> to process at low priority</li>
