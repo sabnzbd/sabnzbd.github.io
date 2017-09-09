@@ -13,9 +13,12 @@
     <meta name="msapplication-navbutton-color" content="#FFFFFF" />
     <meta name="theme-color" content="#FFFFFF" />
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400italic,500,700" type="text/css" />
     <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+    {% if page.url == "/" or page.url contains "/downloads" %}
     <link rel="stylesheet" href="/css/lightslider.min.css" type="text/css" />
     <link rel="stylesheet" href="/css/featherlight.min.css" type="text/css" />
+    {% endif %}
     <link rel="stylesheet" href="/css/sabnzbd.css?v={{ site.time | date: '%d%m%Y' }}" type="text/css" />
 
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/ico" />
@@ -54,10 +57,13 @@
                         <ul class="dropdown-menu">
                             <li><a href="/wiki/">Wiki</a></li>
                             <li class="divider"></li>
+                            <li><a href="/wiki/faq">FAQ</a></li>
+                            <li class="divider"></li>
                             <li><a href="/wiki/introduction/quick-setup">Quick Setup</a></li>
                             <li><a href="/wiki/configuration/{{ site.wiki_version }}/configure">Configuration</a></li>
-                            <li><a href="/wiki/faq">FAQ</a></li>
-                            <li><a href="/wiki/advanced/api">API</a></li>
+                            <li><a href="/wiki/scripts/post-processing-scripts">Post-processing scripts</a></li>
+                            <li><a href="/wiki/extensions-for-sabnzbd">Extensions</a></li>
+                            <li><a href="/wiki/advanced/api">API reference</a></li>
                         </ul>
                     </li>
                     <li><a href="https://forums.sabnzbd.org/" target="_blank">Forum</a></li>
@@ -65,8 +71,10 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Donate <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=670741" target="_blank">Donate now!</a></li>
-                            <li><a href="/donors-list">Donors list</a></li>
+                            <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=670741" target="_blank">PayPal and Credit Card</a></li>
+                            <li><a href="/donate">Bitcoin, Ethereum and Litecoin</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/donate/donors-list">Donors list</a></li>
                         </ul>
                     </li>
                     <li><a href="https://github.com/sabnzbd/sabnzbd" target="_blank">GitHub</a></li>

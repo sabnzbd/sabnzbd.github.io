@@ -1,41 +1,39 @@
 ---
-title: Introduction
+title: User Manual
 ---
-<p>SABnzbd is a program to download binary files from Usenet servers. Many people upload all sorts of interesting material to Usenet and you need a special program to get this material with the least effort.<br>
-    If you are a beginner with Usenet, you should first find a website explaining the concepts<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup>.</p>
-    <p>You should especially find out about how to get the NZB files that define your downloads.</p>
-    <p>SABnzbd is certainly not the only program in its kind, but it does have some characteristics that make it attractive.</p>
-    <table class="table table-bordered table-hover">
-        <tbody><tr>
-            <td>Server-oriented</td>
-            <td>SABnzbd does not have a fancy Windows interface. Its typical use is for server-like installations, where SABnzbd happily runs in the background either on your desktop system or on a real server. You can run the program on one computer and access the user interface from another one.</td>
+<p>SABnzbd is a program to download binary files from Usenet servers. Many people upload all sorts of interesting material to Usenet and you need a special program to get this material with the least effort.</p>
+<p>If you are a beginner with Usenet, you should first find a website explaining the concepts (for example this <a href="http://www.binaries4all.com/beginners/" target="_blank">English</a> and <a href="http://www.binaries4all.nl" target="_blank">Dutch</a> website explains everything in great detail).
+    You should especially find out about how to get the NZB files that define your downloads. On this Wiki you can find all the information you would need to setup SABnzbd and customize it, if you have trouble please post on our <a href="http://forums.sabnzbd.org/" target="_blank">Forum</a>.
+</p>
+<p>SABnzbd is certainly not the only program in its kind, but it does have some characteristics that make it attractive.</p>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Server-oriented</strong></td>
+            <td>SABnzbd does not have a Windows or macOS specifc interface. SABnzbd happily runs in the background either on your desktop system or on a real server and you can access the interface through your browser. This way you can run the program on one computer and access the user interface <a href="/wiki/configuration/{{ site.wiki_version }}/general">from another one</a>.</td>
         </tr>
         <tr>
-            <td>Automated</td>
-            <td>SABnzbd takes care of all the hassle of downloading, verifying, repairing, unpacking and deleting garbage. You throw an NZB file at SABnzbd and some time later a complete and directly usable download is available. You can even throw in your own post-processing script to make it even more suited to your needs.</td>
+            <td><strong>Automated</strong></td>
+            <td>SABnzbd takes care of all the hassle of downloading, verifying, repairing, unpacking and deleting garbage. You throw an NZB file at SABnzbd and some time later a complete and directly usable download is available. You can even throw in your own <a href="/wiki/scripts/post-processing-scripts">post-processing script</a> to suit your needs.</td>
         </tr>
         <tr>
-            <td>Light-weight</td>
-            <td>SABnzbd has a relatively low impact on the computer it runs on. Only when PAR2 repairing and unpacking occurs, you will notice the heavy disk and CPU activity. You can for example you can run it on a <a href="/wiki/installation/install-nas">NAS device</a>.</td>
+            <td><strong>Light-weight</strong></td>
+            <td>SABnzbd has a relatively low impact on the computer it runs on. Only when PAR2 repairing and unpacking occurs, you will notice the heavy disk and CPU activity. You can for example run it on a <a href="/wiki/installation/install-nas">NAS device</a>.</td>
         </tr>
         <tr>
-            <td>Nice looking</td>
-            <td>We have multiple skins, but the main one is Glitter. It scales to any screen size, so you can manage your downloads on your desktop, tablet or phone. It has a Light and Dark mode and also offers Compact and Tabbed modes if you prefer that.</td>
+            <td><strong>Responsive design</strong></td>
+            <td>We have multiple skins, but the main one is Glitter. It scales to any screen size, so you can manage your downloads on your desktop, tablet or phone. It has a Light and Dark mode and also offers Compact and Tabbed modes if you prefer that. Other tips and tricks for working with Glitter can be found <a href="/wiki/extra/glitter-tips-and-tricks">here</a>. <br>Others have made Android (<a href="http://nzb360.com/" target="_blank">nzb360</a>) and iOS (<a href="http://sabmini.com/" target="_blank">SABmini</a>, <a href="https://nzbunity.dozenzb.com/" target="_blank">nzbUnity</a>) apps to manage SABnzbd.</td>
         </tr>
         <tr>
-            <td>Extensible</td>
-            <td>Several people have created utilities to support SABnzbd. Apps like <a href="https://sonarr.tv/" target="_blank">Sonarr</a>, <a href="https://sickrage.github.io/" target="_blank">Sickrage</a>, <a href="https://couchpota.to/" target="_blank">CouchPotato</a> and <a href="https://github.com/rembo10/headphones" target="_blank">Headphones</a> can integrate with SABnzbd and automate your download process.<br/>
-            Browser-extensions are also available for FireFox (<a href="https://addons.mozilla.org/addon/nzbfox?src=external-sabfront">nzbFox</a>) and Chrome (<a href="https://chrome.google.com/webstore/detail/sabconnect%2B%2B/okphadhbbjadcifjplhifajfacbkkbod">SABConnect++</a>)
+            <td><strong>Extensible</strong></td>
+            <td>Several people have created utilities to support SABnzbd. Apps like <a href="https://sonarr.tv/" target="_blank">Sonarr</a>, <a href="https://sickrage.github.io/" target="_blank">Sickrage</a>, <a href="https://radarr.video/" target="_blank">Radarr</a>, <a href="https://couchpota.to/" target="_blank">CouchPotato</a> and <a href="https://github.com/rembo10/headphones" target="_blank">Headphones</a> can integrate with SABnzbd and automate your download process.<br/>
+            Browser-extensions are also available for FireFox (<a href="https://addons.mozilla.org/addon/nzbfox?src=external-sabfront">nzbFox</a>) and Chrome (<a href="https://chrome.google.com/webstore/detail/sabconnect%2B%2B/okphadhbbjadcifjplhifajfacbkkbod">SABConnect++</a>).<br>
+            Full list of <a href="/wiki/extensions-for-sabnzbd">extensions</a>.
             </td>
         </tr>
         <tr>
-            <td>Well supported</td>
-            <td>There is an active <a href="http://forums.sabnzbd.org/" target="_blank">User's Forum</a> available</td>
+            <td><strong>Well supported</strong></td>
+            <td>There is an active <a href="http://forums.sabnzbd.org/" target="_blank">Forum</a> available and you can reach the developers correctly on <a href="https://github.com/sabnzbd/sabnzbd/issues">GitHub</a>.</td>
         </tr>
     </tbody>
 </table>
-
-<div class="footnotes-footer">
-    <div class="title">Footnotes</div>
-    <div class="footnote-footer" id="footnote-1">1. This <a href="http://www.binaries4all.com/beginners/" target="_blank">English</a> and <a href="http://www.binaries4all.nl" target="_blank">Dutch</a> website explains everything in great detail.</div>
-</div>

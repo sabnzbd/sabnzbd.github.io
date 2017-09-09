@@ -24,11 +24,11 @@ title: Known issues
 </ul>
 
 
-<h2 id="toc0"><span>Size limit</span></h2>
+<h2 id="toc0">Size limit</h2>
 <p>To prevent unexpectedly large NZBs from eating your quotum you can set the option "size_limit" in <a href="/wiki/configuration/{{ site.wiki_version }}/special">"Config-&gt;Special"</a>.<br>
     Any NZB larger than this size will be set to paused and get a low priority.
 </p>
-<h2 id="toc1"><span>Hangup of post-processing</span></h2>
+<h2 id="toc1">Hangup of post-processing</h2>
 <p>When PAR2 or UNRAR hang up, you should never just stop SABnzbd.<br>
     Instead use your operating system's task manager to stop the PAr2 or UNRAR program.<br>
     Forcing SABnzbd to quit may damage your queues.<br>
@@ -36,31 +36,31 @@ title: Known issues
     If you keep having trouble with par2 multicore you can disable it in Config-&gt;Switches.<br>
     This will force the use of the old and tried, but slower par2-classic program.
 </p>
-<h2 id="toc2"><span>Decoder failure: Out of memory</span></h2>
+<h2 id="toc2">Decoder failure: Out of memory</h2>
 <p>If you get the <code>Decoder failure: Out of memory</code> error, try the following:</p>
 <ul>
     <li>Reduce Article Cache to <code>450M</code></li>
     <li>If you run SABnzbd as a Windows Service, try running it not as a Service but regular. When SABnzbd is used as a service, Windows can unpredictably limit the allocation of memory to SABnzbd when it thinks it's usage is too high.</li>
 </ul>
 
-<h2 id="toc5"><span>Unreliable Usenet servers</span></h2>
+<h2 id="toc5">Unreliable Usenet servers</h2>
 <p>Some Usenet servers have intermittent login (or other) problems.<br>
     For these, the server blocking method is not very favorable.<br>
     There is an <a href="/wiki/configuration/{{ site.wiki_version }}/special">"Special" option</a> "no_penalties" which, when set to 1, will limit blocks to 1 minute<br>
     (No, 2 doesn't mean 2 minutes).
 </p>
-<h2 id="toc6"><span>macOS and foreign characters</span></h2>
+<h2 id="toc6">macOS and foreign characters</h2>
 <p>On macOS you may encounter downloaded files with foreign characters (e.g. é and ä).<br>
     The par2 repair may fail when the files were created on a Windows system.<br>
     The problem is caused by the PAR2 utility and we cannot fix this now.<br>
     This does not apply to files inside RAR files.
 </p>
-<h2 id="toc7"><span>Linux and foreign characters</span></h2>
+<h2 id="toc7">Linux and foreign characters</h2>
 <p>On Linux when you download files they may have the wrong character encoding.<br>
     You will see this only when downloaded files contain accented characters.<br>
     You need to fix it yourself by running the <strong>convmv</strong> utility (available for most Linux platforms).
 </p>
-<h2 id="toc8"><span>Files remain in Watched Folder</span></h2>
+<h2 id="toc8">Files remain in Watched Folder</h2>
 <p>The "Watched Folder" sometimes fails to delete the NZB files it has processed.<br>
     This happens when other software still accesses these files.<br>
     Some third-party utilities supporting SABnzbd are known to do this.<br>
@@ -68,28 +68,28 @@ title: Known issues
     SABnzbd does try about 10 times with 5 second intervals, but after that it gives up.<br>
     The NZB will not be processed again, unless changed or overwritten.
 </p>
-<h2 id="toc9"><span>Instability on macOS</span></h2>
+<h2 id="toc9">Instability on macOS</h2>
 <p>A few people complained about long-term stability of SABnzbd on macOS Snow Leopard and Lion.<br>
     We don't know the real cause, but the same people have reported success<br>
     when they disable SABnzbd's icon in the top menu.<br>
     Config-&gt;Special, item "osx_menu".
 </p>
-<h2 id="toc10"><span>Memory usage</span></h2>
+<h2 id="toc10">Memory usage</h2>
 <p>Memory usage can sometimes have high peaks.<br>
     This makes using SABnzbd on very low memory systems (eg a SAN device) a challenge.<br>
     Your total system memory should be above 256 MByte (assuming a Linux variant is used).
 </p>
 
-<h2 id="toc12"><span>Blocked email</span></h2>
+<h2 id="toc12">Blocked email</h2>
 <p>When SABnzbd cannot send notification emails, check your virus scanner, firewall or security suite.<br>
     It may be blocking outgoing email.
 </p>
-<h2 id="toc13"><span>Mounting external drives and network shares</span></h2>
+<h2 id="toc13">Mounting external drives and network shares</h2>
 <p>When you are using external drives or network shares on macOS or Linux make sure that the drives are mounted.<br>
     The operating system will simply redirect your files to alternative locations.<br>
     You may have trouble finding the files when mounting the drive later.
 </p>
-<h2 id="toc14"><span>Memory leaks</span></h2>
+<h2 id="toc14">Memory leaks</h2>
 <p>Some users have complained about ever growing memory use by SABnzbd.<br>
     So far we have not been able to reproduce this behaviour, but that doesn't mean it can never happen.<br>
     We would like to receive information on how to reproduce this problem.

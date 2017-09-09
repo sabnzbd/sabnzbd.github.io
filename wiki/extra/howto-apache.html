@@ -21,9 +21,9 @@ title: How to hide SABnzbd behind a webserver
 Config files for <code>a2enmod</code> and <code>proxy proxy_http</code> are located in:
 <code>/etc/apache2/sites-available/000-default.conf</code> (for HTTP) and <code>*ssl*.conf</code> (for HTTPS).</p>
 
-<h2 id="toc1"><span>Nginx</span></h2>
+<h2 id="toc1">Nginx</h2>
 <p>The following files go in the nginx <code>conf.d</code> directory <code>/etc/nginx/conf.d/</code>.</p>
-<h3 id="toc2"><span>ssl.conf</span></h3>
+<h3 id="toc2">ssl.conf</h3>
 {% highlight nginx %}
 ssl_certificate      /etc/pki/tls/certs/example_com.crt;
 ssl_certificate_key  /etc/pki/tls/private/example_com.key;
@@ -33,7 +33,7 @@ ssl_ciphers  HIGH:!aNULL:!MD5;
 ssl_prefer_server_ciphers   on;
 {% endhighlight %}
 
-<h3 id="toc3"><span>proxy.conf</span></h3>
+<h3 id="toc3">proxy.conf</h3>
 {% highlight nginx %}
 client_max_body_size 10m;
 client_body_buffer_size 128k;
@@ -60,7 +60,7 @@ proxy_no_cache $cookie_session;
 proxy_buffers 32 4k;
 {% endhighlight %}
 
-<h3 id="toc4"><span>sabnzbd.conf</span></h3>
+<h3 id="toc4">sabnzbd.conf</h3>
 {% highlight nginx %}
 upstream SABnzbd {
     server localhost:8080;
@@ -94,7 +94,7 @@ server {
 
     location /sabnzbd {
         include /etc/nginx/conf.d/proxy.conf;
-        proxy_pass http://localhost:8080/sabnzbd;        
+        proxy_pass http://localhost:8080/sabnzbd;
     }
 
     location /sickbeard {
@@ -108,4 +108,3 @@ server {
     }
 }
 {% endhighlight %}
-    

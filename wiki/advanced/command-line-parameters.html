@@ -40,22 +40,8 @@ title: Command Line Parameters
             </td>
             <td>
                 Select another set of user interface templates. Use a name of a set in the <code>interfaces</code>
-                folder.
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td>
+                folder.<br>
                 The name of a standard interface ("Glitter", "Plush" or "smpl")
-            </td>
-        </tr>
-        <tr>
-            <td><code>-2</code></td>
-            <td><code>--template2 &lt;template&gt;</code></td>
-            <td>
-                Select the secondary user interface templates. Use a name of a set in the <code>interfaces</code>
-                folder.
             </td>
         </tr>
         <tr>
@@ -78,13 +64,6 @@ title: Command Line Parameters
                 <p>Specify IP address and port that SABnzbd should listen on. Value will be stored in the INI file.
                 <p>See <a href="/wiki/configuration/{{ site.wiki_version }}/general">General - Host and Port</a> section for supported notations</p>
             </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <code>--force</code>
-            </td>
-            <td>Will wait forever to bind to the specified <code>host:port</code> in the INI or from command line.</td>
         </tr>
         <tr>
             <td><code>-h</code></td>
@@ -110,17 +89,6 @@ title: Command Line Parameters
             </td>
         </tr>
         <tr>
-            <td></td>
-            <td>
-                <code>--permissions &lt;level&gt;</code>
-            </td>
-            <td>
-                Specify file permissions (Unix only). See
-                <a href="/wiki/advanced/unix-permissions">Unix Permissions</a>.
-            </td>
-        </tr>
-
-        <tr>
             <td><code>-b</code></td>
             <td>
                 <code>--browser &lt;0|1&gt;</code>
@@ -145,13 +113,10 @@ title: Command Line Parameters
         <tr>
             <td><code>-w</code></td>
             <td>
-                <code>--weblogging &lt;0..2&gt;</code>
+                <code>--weblogging;</code>
             </td>
             <td>
-                <p>Logging of the webserver framework:
-                <p><code>0</code> = Logging off<br>
-                <code>1</code> = Logging on (use only when analyzing problems)<br>
-                <code>2</code> = Logging on, only to log file (use only when analyzing problems)
+                Logging of the webserver framework on (use only when analyzing problems)
             </td>
         </tr>
 
@@ -191,6 +156,15 @@ title: Command Line Parameters
             </td>
             <td>
                 Normally SABnzbd checks if an instance of SABnzbd is already running. If so and the versions match, the second instance will just activate the web interface of the first instance or send an NZB to the first instance. If you really want to run multiple instances, you will need to use the <code>--new</code> parameter.
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <code>--no-login</code>
+            </td>
+            <td>
+                Start SABnzbd and reset username and password.
             </td>
         </tr>
         <tr>

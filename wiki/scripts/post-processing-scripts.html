@@ -17,12 +17,15 @@ redirect_from: "/wiki/advanced/user-scripts"
 <p>The console output of the script is captured by SABnzbd and is saved in the so called "Script Log" which can be opened from the history details.
     The output will be added to the (optional) notification email and can be examined in the History page.
 </p>
-
+<hr>
 <h2>Parameters</h2>
 <p>The script will receive the parameters described below. </p>
 <p>Please note: Use %1 in Windows scripts and $1 in Unix scripts. In Windows the parameters will be enclosed in double quotes ("my name").<br>
-    On Posix systems (macOS, Linux, Unix) the parameters will <strong>not</strong> have quotes at all. 
+    On Posix systems (macOS, Linux, Unix) the parameters will <strong>not</strong> have quotes at all.
 </p>
+
+<p><span class="label label-warning">NOTE</span> In SABnzbd 2.0.0 and above more information is available to scripts via environment variables, <a href="#env_vars">see below</a>!</p>
+
 <table class="table table-bordered table-hover table-not-fixed">
     <tbody>
         <tr>
@@ -55,7 +58,7 @@ redirect_from: "/wiki/advanced/user-scripts"
         </tr>
         <tr>
             <td>7</td>
-            <td>Status of post processing. 
+            <td>Status of post processing.
             <ul>
                 <li><code>0</code> = OK</li>
                 <li><code>1</code> = Failed verification</li>
@@ -76,24 +79,162 @@ redirect_from: "/wiki/advanced/user-scripts"
 <p>A script can return an exit code. SABnzbd will show a non-zero code in the download report, but the job will not be flagged as failed.<br>
     <strong>Note:</strong> Release 1.0.0 has an option in <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a> to let a non-zero code mark the job as failed.
 </p>
+<hr>
 
-<h2 id="toc0"><span>Example Python script</span></h2>
+<h2 id="toc0">Example Python script</h2>
 <p>The get the parameters in python, you can do this:</p>
 {% highlight python %}
 import sys
 try:
     (scriptname,directory,orgnzbname,jobname,reportnumber,category,group,postprocstatus,url) = sys.argv
 except:
-    try:
-        # are we testing only?
-        directory = sys.argv[1]
-    except:
-        print "No commandline parameters found"
-        sys.exit(1)
+    print "No commandline parameters found"
+    sys.exit(1)
 
 # continue script
 
 # Your code goes here
+
+# Success code
+sys.exit(0)
+{% endhighlight %}
+
+<hr>
+<h2 id="env_vars">Enviroment variables available in SABnzbd 2.0.0+</h2>
+<p>Your script can now get extra information via environment variables:</p>
+<table class="table table-bordered table-hover table-not-fixed">
+    <tbody>
+        <tr>
+            <th>Position</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>SAB_SCRIPT</td>
+            <td>The name of the current script</td>
+        </tr>
+        <tr>
+            <td>SAB_NZO_ID</td>
+            <td>The unique ID assigned to the job</td>
+        </tr>
+        <tr>
+            <td>SAB_FILENAME</td>
+            <td>The NZB filename (after grabbing from the URL)</td>
+        </tr>
+        <tr>
+            <td>SAB_PP_STATUS</td>
+            <td>Was post-processing succesfull (repair/unpack)</td>
+        </tr>
+        <tr>
+            <td>SAB_BYTES</td>
+            <td>Total number of bytes</td>
+        </tr>
+        <tr>
+            <td>SAB_BYTES_TRIED</td>
+            <td>How many bytes of the total bytes were tried</td>
+        </tr>
+        <tr>
+            <td>SAB_BYTES_DOWNLOADED</td>
+            <td>How many bytes were recieved (can be more than tried, due to overhead)</td>
+        </tr>
+        <tr>
+            <td>SAB_DUPLICATE</td>
+            <td>Was it detected as duplicate</td>
+        </tr>
+
+        <tr>
+            <td>SAB_UNWANTED_EXT</td>
+            <td>Were there unwanted extensions</td>
+        </tr>
+        <tr>
+            <td>SAB_FINAL_NAME</td>
+            <td>The folder name for the end result</td>
+        </tr>
+        <tr>
+            <td>SAB_COMPLETE_DIR</td>
+            <td>The whole path to the output directory of the job</td>
+        </tr>
+        <tr>
+            <td>SAB_OVERSIZED</td>
+            <td>Was the job over the user's size limit</td>
+        </tr>
+        <tr>
+            <td>SAB_PASSWORD</td>
+            <td>What was the password supplied by the NZB or the user</td>
+        </tr>
+        <tr>
+            <td>SAB_ENCRYPTED</td>
+            <td>Was the job detected as encrypted</td>
+        </tr>
+        <tr>
+            <td>SAB_STATUS</td>
+            <td>Current status (completed/failed/running)</td>
+        </tr>
+        <tr>
+            <td>SAB_AGE</td>
+            <td>Average age of the articles in the post</td>
+        </tr>
+        <tr>
+            <td>SAB_URL</td>
+            <td>URL from which the NZB was retrieved</td>
+        </tr>
+        <tr>
+            <td>SAB_AVG_BPS</td>
+            <td>Average bytes/second speed during active downloading</td>
+        </tr>
+        <tr>
+            <td>SAB_DOWNLOAD_TIME</td>
+            <td>How many seconds did we download</td>
+        </tr>
+        <tr>
+            <td>SAB_CAT</td>
+            <td>What category was assigned</td>
+        </tr>
+        <tr>
+            <td>SAB_PP</td>
+            <td>What post-processing was activated (download/repair/unpack/delete)</td>
+        </tr>
+        <tr>
+            <td>SAB_REPAIR</td>
+            <td>Was repair selected by user</td>
+        </tr>
+        <tr>
+            <td>SAB_UNPACK</td>
+            <td>Was unpack selected by user</td>
+        </tr>
+        <tr>
+            <td>SAB_FAILURE_URL</td>
+            <td>Provided by some indexers as alternative NZB if download fails</td>
+        </tr>
+        <tr>
+            <td>SAB_PRIORITY</td>
+            <td>Priority set by user</td>
+        </tr>
+        <tr>
+            <td>SAB_FAIL_MSG</td>
+            <td>If job failed, why did it fail</td>
+        </tr>
+        <tr>
+            <td>SAB_GROUP</td>
+            <td>Newsgroup where most of the job's articles came from</td>
+        </tr>
+        <tr>
+            <td>SAB_VERSION</td>
+            <td>The version of SABnzbd used</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+<h2>Example script using environment variables</h2>
+
+{% highlight python %}
+import os
+
+print 'SABnzbd version: ', os.environ['SAB_VERSION']
+print 'Job location: ', os.environ['SAB_COMPLETE_DIR']
+print 'Fail msg: ', os.environ['SAB_FAIL_MSG']
+
+# Your code
 
 # Success code
 sys.exit(0)

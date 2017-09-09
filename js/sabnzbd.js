@@ -9,7 +9,7 @@
 // Determine platform
 var platform = '';
 var downloadTitle = 'Browse packages';
-if (navigator.appVersion.indexOf('Win')!=-1)    { platform = 'win32-setup'; downloadTitle = 'For Windows'}
+if (navigator.appVersion.indexOf('Win')!=-1)    { platform = 'win-setup'; downloadTitle = 'For Windows'}
 if (navigator.appVersion.indexOf('Mac')!=-1)    { platform = 'osx'; downloadTitle = 'For macOS'}
 if (navigator.appVersion.indexOf('X11')!=-1)    { platform = 'src'; downloadTitle = 'For Linux'}
 if (navigator.appVersion.indexOf('Linux')!=-1)  { platform = 'src'; downloadTitle = 'For Linux'}
@@ -30,7 +30,7 @@ try {
     parseGitHubResults(JSON.parse(sessionStorage.releases_data))
 } catch(e) {
     // If not available, get the data from Github
-    $.ajax('https://api.github.com/repos/sabnzbd/sabnzbd/releases', {
+    $.ajax('https://api.github.com/repos/sabnzbd/sabnzbd/releases?per_page=10', {
         timeout: 3000
     }).done(function(releases) {
         // Store the data
@@ -54,6 +54,7 @@ try {
 function parseGitHubResults(releases) {
     // Do we have a beta before a stable?
     var have_beta = false
+    var have_stable = false
 
     // Markdown converter
     var converter = new showdown.Converter()
@@ -62,7 +63,7 @@ function parseGitHubResults(releases) {
     // Loop over releases from GitHub
     $.each(releases, function(index, release) {
         // Is it a stable? We stop after the first stable
-        if(!release.prerelease) {
+        if(!release.prerelease && !have_stable) {
             // Set the label and download-link for big button
             parseAssets(release.assets, platform, true)
             stableBox.children('h4').text('Download ' + release.name.replace('SABnzbd', '').trim())
@@ -84,7 +85,7 @@ function parseGitHubResults(releases) {
             }
 
             // Stop iterating over releases
-            return false
+            have_stable = true
         }
         // Is this the first beta?
         else if(!have_beta) {
@@ -106,11 +107,25 @@ function parseGitHubResults(releases) {
             // Don't process beta's after this
             have_beta = true
         }
+        // Stop if we found both
+        if(have_beta && have_stable) return
     })
 
     // Linux?
     if(platform == 'src') {
         $('.linux-row').show()
+    }
+
+    // Check if all assets filled
+    $(".download-links li>a").each(function(index, element) {
+        // Remove empty ones
+        if(!$(element).attr('href')) {
+            $(element).parent().hide()
+        }
+    })
+    // And the big button
+    if(!betaBox.attr('href')) {
+        betaBox.attr('href', 'https://github.com/sabnzbd/sabnzbd/releases')
     }
 
     // Show
@@ -125,11 +140,19 @@ function parseAssets(assets, platform, stable_release) {
     $.each(assets, function(index, asset) {
         // The right one, put it in the box
         if(platform && asset.name.indexOf(platform) !== -1) {
-            // Stable/beta
+            // Stable/beta and add redirects after the download
             if(stable_release) {
-                stableBox.attr('href', asset.browser_download_url)
+                stableBox.attr('href', asset.browser_download_url).attr('target', '_blank').click(function() {
+                    setTimeout(function() {
+                        document.location = '/donate'
+                    }, 1000)
+                    return True
+                })
             } else {
-                betaBox.attr('href', asset.browser_download_url)
+                betaBox.attr('href', asset.browser_download_url).click(function() {
+                    $.featherlight('#beta-please-report');
+                    return True
+                })
             }
         }
 
@@ -139,14 +162,24 @@ function parseAssets(assets, platform, stable_release) {
             var linksBox = stable_release ? $('#download-links-stable') : $('#download-links-beta')
 
             // Have to search which one it is
-            $.each(['win32-setup', 'win32-bin', 'osx', 'src'], function(index, platform_search) {
+            $.each(['win32-setup', 'win-setup', 'win32-bin', 'win64-bin', 'osx', 'src'], function(index, platform_search) {
                 if(asset.name.indexOf(platform_search) !== -1) {
-                    linksBox.find('.download-link-' + platform_search).attr('href', asset.browser_download_url)
+                    var downloadLink = linksBox.find('.download-link-' + platform_search)
+                    downloadLink.attr('href', asset.browser_download_url)
 
                     // Show message to beta-users that we want feedback
                     if(!stable_release) {
-                        linksBox.find('.download-link-' + platform_search).click(function() {
+                        downloadLink.click(function() {
                             $.featherlight('#beta-please-report');
+                            return True
+                        })
+                    } else {
+                        // Show donation page
+                        downloadLink.attr('target', '_blank').click(function() {
+                            setTimeout(function() {
+                                document.location = '/donate'
+                            }, 1000)
+                            return True
                         })
                     }
                 }
@@ -178,5 +211,4 @@ $(document).ready(function() {
             prevHtml: '<span class="glyphicon glyphicon-menu-left"></span>'
         });
     }
-
 })

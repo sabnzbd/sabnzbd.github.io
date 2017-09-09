@@ -2,6 +2,7 @@
 title: Downloads
 redirect_from: "/download"
 ---
+
 {% include logo_container.html %}
 
 <div class="main-wrapper content-container">
@@ -21,15 +22,21 @@ redirect_from: "/download"
                     </a>
                     <div class="download-links" id="download-links-stable">
                         <ul>
-                            <li><a class="download-link-win32-setup" href="">Windows Installer</a></li>
-                            <li><a class="download-link-win32-bin" href="">Windows Standalone</a></li>
+                            <li><a class="download-link-win-setup" href="">Windows Installer</a></li>
+                            <li><a class="download-link-win64-bin" href="">Windows Standalone</a> (64bit)</li>
+                            <li><a class="download-link-win32-bin" href="">Windows Standalone</a> (32bit)</li>
                             <li><a class="download-link-osx" href="">macOS</a></li>
                             <li><a class="download-link-src" href="">Linux</a></li>
-                            <li><a href="/wiki/installation/install-ubuntu-repo">Install via Ubuntu PPA Repository</a></li>
+                            <li><a href="/wiki/installation/install-ubuntu-repo">Install via Ubuntu/Debian PPA Repository</a></li>
                             <li><a class="download-link-source" href="">Source Code</a></li>
                             <li><a class="download-link-changelog" href="#" data-featherlight="#stable-changelog">Changelog</a></li>
                         </ul>
                     </div>
+                </div>
+                <p class="show-after-load"><span class="label label-danger">NOTE</span> Due to changes in this release, the queue will be converted when 2.2.0 is started for the first time. Job order, settings and data will be preserved, but all jobs will be unpaused and URL's that did not finish fetching before the upgrade will be lost!</p>
+                <div class="text-left">
+                    <span class="glyphicon glyphicon-equalizer"></span>
+                    <a href="/download-stats">Older versions and download statistics</a>
                 </div>
             </div>
             <div class="col-sm-6 download-beta">
@@ -46,24 +53,21 @@ redirect_from: "/download"
                     </a>
                     <div class="download-links" id="download-links-beta">
                         <ul>
-                            <li><a class="download-link-win32-setup" href="">Windows Installer</a></li>
-                            <li><a class="download-link-win32-bin" href="">Windows Standalone</a></li>
+                            <li><a class="download-link-win-setup" href="">Windows Installer</a></li>
+                            <li><a class="download-link-win64-bin" href="">Windows Standalone</a> (64bit)</li>
+                            <li><a class="download-link-win32-bin" href="">Windows Standalone</a> (32bit)</li>
                             <li><a class="download-link-osx" href="">macOS</a></li>
                             <li><a class="download-link-src" href="">Linux</a></li>
-                            <li><a href="/wiki/installation/install-ubuntu-repo">Install via Ubuntu PPA Repository</a></li>
+                            <li><a href="/wiki/installation/install-ubuntu-repo">Install via Ubuntu/Debian PPA Repository</a></li>
                             <li><a class="download-link-source" href="">Source Code</a></li>
                             <li><a class="download-link-changelog" href="#" data-featherlight="#beta-changelog">Changelog</a></li>
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
-        <div class="row padding-row">
-            <div class="col-sm-6">
-                <span class="glyphicon glyphicon-equalizer"></span>
-                <a href="/download-stats">Older versions and download statistics</a>
-            </div>
+        <div class="row padding-row text-center">
+            {% include ad_giganews_supernews_banner.html %}
         </div>
     </div>
     <div class="hidden">
@@ -86,4 +90,4 @@ redirect_from: "/download"
 </div>
 <script src="/js/featherlight.min.js"></script>
 <script src="/js/showdown.min.js"></script>
-<script src="/js/sabnzbd.js"></script>
+<script src="/js/sabnzbd.js?v={{ site.time | date: '%d%m%Y' }}"></script>

@@ -4,16 +4,12 @@ redirect_from: "/certificate-errors"
 ---
 Usenet (aka Newsservers) offers SSL/TLS security. It’s called NNTPS, or NNTP with SSL. Just like HTTPS, it has two functions:
 
-* Are you really talking to the server you want to talk to.
-* Others can’t see what is being sent between client and server. So others can’t see 1) your login credentials and 2) what you’re downloading.
+- Are you really talking to the server you want to talk to.
+- Others can’t see what is being sent between client and server. So others can’t see 1) your login credentials and 2) what you’re downloading.
 
-As of SABnzbd version 1.2.0, SABnzbd by default actively checks SSL/TLS security.
-
-Currently there are still a lot of non-secure newsservers. The default setting of SABnzbd checking is therefore not yet very strict. You can set it to `Strict` yourself in the Advanced settings on the [Servers](/wiki/configuration/{{ site.wiki_version }}/servers) page.
+Currently there are still [a lot of non-secure newsservers](https://www.appelboor.com/newsservers/newsservers-with-SSL.html). The default setting of SABnzbd for existing servers is therefore not very strict. You can set it to `Strict` yourself in the Advanced settings on the [Servers](/wiki/configuration/{{ site.wiki_version }}/servers) page. When you add a new server in SABnzbd 2.0.0+ it will be set to `Strict` by default.
 
 You can completely turn off SABnzbd’s security checking, but then your connection does not offer you the security of the two functions above.
-
-This page tells what to do in case of problems.
 
 -------------------
 
@@ -52,8 +48,8 @@ Online newsserver SSL/TLS check
         $('.progress').hide()
         $(this).show();
     });
-
 </script>
+
 
 -------------------
 
@@ -67,9 +63,9 @@ Newsserver problems
 
 **You can do different things:**
 
-1. Easy but not secure: Make the problem go away by not using SSL (untick SSL)
-2. Easy but not secure: Ignore the problem, and instruct SABnzbd to ignore the problem: in SABnzbd’s Server-settings, under Advanced, set `Certificate verification` to `Disabled`. You have now an insecure SSL connection.
-3. Hard, but secure: Try to find the cause of the problem: Check on [our Newsservers with SSL/TLS overview](https://www.appelboor.com/newsservers/newsservers-with-SSL.html) (and/or online newsserver SSL/TLS check above) the SSL/TLS-status of your newsserver.
+1. Easy but not secure: Make the problem go away by not using SSL (untick SSL).
+2. Easy but not secure: Ignore the problem, and instruct SABnzbd to ignore the problem: in SABnzbd’s Server-settings, under Advanced, set `Certificate verification` to `Disabled`. You have now an insecure SSL connection. <br> <span class="label label-danger">WARNING</span> Disabeling this check allows anyone to redirect and intercept your traffic using *any* certificate! It is comparable to not using SSL at all.
+3. Hard, but secure: Check on [our Newsservers with SSL/TLS overview](https://www.appelboor.com/newsservers/newsservers-with-SSL.html) (and/or online newsserver SSL/TLS check above) the SSL/TLS-status of your newsserver.
 
     1. If the test or the overview shows an error message such as `OK NOK NOK` or `NOK NOK NOK`, the problem is on the side of the newsserver. You can ask the newsserver provider to solve that problem. That could be a hard path; the provider could deny they have a problem.
 
@@ -86,7 +82,7 @@ Newsserver problems
 
 You can do different things:
 
-1. Easy and half/half-secure: in SABnzbd’s Server-settings, under Advanced, set `Certificate verification` to `Default`. Then try again.<br> <span class="label label-warning">WARNING</span> Disabeling this check allows anyone to redirect and intercept your traffic using *any* valid certificate!
+1. Easy and half/half-secure: in SABnzbd’s Server-settings, under Advanced, set `Certificate verification` to `Default`/`Minimal`. Then try again.<br> <span class="label label-danger">WARNING</span> Disabeling this check allows anyone to redirect and intercept your traffic using *any* valid certificate!  It is comparable to not using SSL at all.
 2. You can ask the newsserver provider to solve the problem. That could be a hard path; the provider could deny they have a problem.
 
 * * *
@@ -119,9 +115,9 @@ NZB / RSS Index sites are HTTPS sites. HTTPS/SSL/TLS problems on the server side
 
 Thinks you can do:
 
-1. Check if there is another URL that is secure. For example: nzbindex.COM is secure
-2. Contact the site owner and tell him about the problem
-3. Turn off `HTTPS certificate verification` in SABnzbd
+1. Check if there is another URL that is secure. For example: nzbindex.COM is secure.
+2. Contact the site owner and tell him about the problem.
+3. Turn off `HTTPS certificate verification` in SABnzbd.
 
 If Chrome does not complain, the problem might be on your side. That is not something SABnzbd cannot solve for you. And it is OS-dependent how to solve that.
 
@@ -134,11 +130,11 @@ Tools to test SSL/TLS news servers and websites
 
 * SSLlabs (only HTTPS checking): [https://www.ssllabs.com/ssltest/analyze.html?d=api.oznzb.com&latest](https://www.ssllabs.com/ssltest/analyze.html?d=api.oznzb.com&latest)
 
-* Tool gnutls-cli
-    * gnutls-cli -p 563 newsreader.eweka.nl
-* Tool testssl.sh
-* Tool curl
-* Tool wget
+* Tool `gnutls-cli`
+    * `gnutls-cli -p 563 newsreader.eweka.nl`
+* Tool `testssl.sh`
+* Tool `curl`
+* Tool `wget`
 * Python (2.7.9 or higher)
     * `python -c "import urllib2; response = urllib2.urlopen('https://api.oznzb.com/') "`
 

@@ -42,7 +42,7 @@ subscription-manager repos --enable=rhel-7-server-rpms
     <li>Install git: {% highlight sh %}yum install git{% endhighlight %}</li>
 
     <li>Install the prereqs.  Example below (there may be more prereqs I neglected to track):
-        {% highlight sh %}yum install par2cmdline python-yenc unrar{% endhighlight %}
+        {% highlight sh %}yum install par2cmdline python-yenc python-cheetah unrar{% endhighlight %}
     </li>
     <li>Clone the sabnzbd git repo to <codee>/opt</code> or somewhere else applicable and switch to the <code>master</code> branch:
 {% highlight sh %}
@@ -50,7 +50,7 @@ git clone https://github.com/sabnzbd/sabnzbd
 git checkout master
 {% endhighlight %}
     </li>
-    <li>Optionally create a sab user/group, optionally add user to shared group, and change ownership of the sab install to said user/group.  Example:
+    <li>Optionally create a SABnzbd user/group, optionally add user to shared group, and change ownership of the SABnzbd install to said user/group.  Example:
 {% highlight sh %}
 useradd usenet
 chown -R usenet:usenet /opt/usenet
@@ -58,9 +58,8 @@ chown -R usenet:usenet /opt/usenet
 
 </code></pre>
     </li>
-    <li>Optionally create a startup item for systemd and copy it to /etc/systemd/system/ .  Call it sabnzbd.service or something else applicable.  Note that I use uid/gid of usenet, make sure this matches with the user/group you set up:
+    <li>Optionally create a startup item for systemd and copy it to <code>/etc/systemd/system/</code>.  Call it <code>sabnzbd.service</code> or something else applicable. Make sure to set the correct <code>User</code> and <code>Group</code> matching the account on your system.
 {% highlight sh %}
-[root@tools]# cat /etc/systemd/system/sabnzbd.service
 #
 # Systemd unit file for SABnzbd
 #
@@ -78,15 +77,35 @@ GuessMainPID=no
 [Install]
 WantedBy=multi-user.target
 {% endhighlight %}
+</li>
 
-    Be sure and run a systemctl daemon-reload after editing any systemd files.
-    </li>
+<li>Here we're going to setup the firewall rule to allow the service to be reachable over the network.
+{% highlight sh %}
+sudo vi /etc/firewalld/services/sabnzbd.xml
+{% endhighlight %}
+
+Then add the following code to the file:
+{% highlight xml %}
+<service>
+  <short>sabnzbd</short>
+  <description>SabNZBd Download Service</description>
+  <port protocol="tcp" port="8080"/>
+</service>
+{% endhighlight %}
+
+Use the following commands to activate the firewall rule:
+{% highlight sh %}
+sudo firewall-cmd --permanent --add-service=sabnzbd
+sudo firewall-cmd --reload
+{% endhighlight %}
+</li>
+
 <li>Enable and start the newly created sabnzbd service:
 {% highlight sh %}
 systemctl enable sabnzbd
 systemctl start sabnzb
 {% endhighlight %}
-
+Be sure to run a <code>systemctl daemon-reload</code> after editing any systemd files.
 </li>
-<li>Browse to <code>$yourserver:8080</code>, Profit.</li>
+<li>Browse to <code>$yourserver:8080</code>, profit.</li>
 </ol>

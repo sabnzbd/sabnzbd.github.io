@@ -4,6 +4,8 @@
 }
 body {
     background-color: #e7e7e7;
+    font-family: 'Lato', sans-serif;
+    color: black;
 }
 code {
     color: black;
@@ -76,6 +78,11 @@ footer a:hover,
 .navbar-default .navbar-toggle:focus,
 .navbar-default .navbar-toggle:hover {
     background-color: transparent;
+}
+
+.dropdown-menu {
+    border-color: #ccc;
+    box-shadow: 1px 1px 2px rgba(0,0,0,.2)
 }
 
 
@@ -275,6 +282,56 @@ footer a:hover,
     margin-left: 5px;
 }
 
+/*** Donate page ***/
+.donations-container h1 {
+    margin-bottom: 20px;
+}
+
+.donations-container p {
+    margin-bottom: 3px;
+}
+
+.donations-container .glyphicon-heart {
+    color: #FFCA28;
+    top: 10px;
+    font-size: 1.3em;
+    animation: pulseheart 1.2s linear infinite;
+}
+
+.donations-container .col-md-3 h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.donations-container .crypto-qrs {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.donations-container .col-md-3 {
+    margin-bottom: 30px;
+}
+
+.donations-container .input-group-btn .btn {
+    width: 2.7em;
+}
+
+.donations-container .paypal-link {
+    font-size: 1.2em;
+}
+
+@keyframes pulseheart {
+    50% {
+        transform: scale(0.8);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 /*** Wiki ****/
 .navbar-wiki-button,
 .navbar-wiki-button:focus {
@@ -307,6 +364,10 @@ footer a:hover,
     margin-top: 2px;
 }
 
+.alert-old-sabnzbd h1 {
+    margin: 0;
+}
+
 .wiki-content table td:first-child {
     width: 200px;
 }
@@ -316,10 +377,13 @@ footer a:hover,
     min-width: 40px;
 }
 
+.wiki-content .table-special td:nth-child(2) {
+    text-align: center;
+}
+
 .wiki-content th {
     background-color: #EDEDED
 }
-
 
 .wiki-content h1 {
     font-size: 1.9em
@@ -364,12 +428,18 @@ footer a:hover,
 #wiki-side-bar ul {
     list-style: none;
     padding-left: 0;
-
 }
 
 #wiki-side-bar ul a {
     padding-left: 20px;
     margin-top: 2px;
+}
+
+#wiki-side-bar .gn-sn-tall {
+    margin-top: 20px;
+    text-align: center;
+    border: 0;
+    text-decoration: underline;
 }
 
 .footnotes-footer {
@@ -433,6 +503,17 @@ aside {
 }
 /***** */
 
+.gn-sn-wide,
+#wiki-side-bar .gn-sn-tall {
+    display: none;
+    font-weight: bold;
+    color: black !important;
+}
+
+.gn-sn-wide img {
+    max-width: 100%
+}
+
 /* Special for tablets and small desktops */
 @media only screen and (max-width: 999px) {
     .downloads-row {
@@ -469,10 +550,6 @@ aside {
         display: block;
         font-weight: bold;
         padding-bottom: 15px;
-    }
-
-    #giganews-wide img {
-        max-width: 100%
     }
 }
 

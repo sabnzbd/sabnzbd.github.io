@@ -2,7 +2,7 @@
 title: Pre-queue scripts
 redirect_from: "/wiki/advanced/user-pre-queue-script"
 ---
-<h2 id="toc0"><span>Introduction</span></h2>
+<h2 id="toc0">Introduction</h2>
 <p>You can choose to let SABnzbd run a script just before an NZB enters the queue.
     This script will tell whether the NZB should be accepted or not and can modify some parameters.
 </p>
@@ -15,7 +15,8 @@ redirect_from: "/wiki/advanced/user-pre-queue-script"
     Exit code 0 will make SABnzbd inspect the returned output.
     If the script has an exit code other than 0, it's assumed the script failed, and the NZB will be accepted without changes.
 </p>
-<h2 id="toc1"><span>Input parameters</span></h2>
+<hr>
+<h2 id="toc1">Input parameters</h2>
 <p>All parameters (except 1) can be empty, meaning a default value.<br></p>
 <p>Please note: Use %1 in Windows scripts and $1 in Unix scripts. In Windows the parameters will be enclosed in double quotes ("my name").<br>
     On Posix systems (macOS, Linux, Unix) the parameters will <strong>not</strong> have quotes at all.
@@ -89,8 +90,8 @@ redirect_from: "/wiki/advanced/user-pre-queue-script"
     </tbody>
 </table>
 
-
-<h2 id="toc2"><span>Return parameters</span></h2>
+<hr>
+<h2 id="toc2">Return parameters</h2>
 <p>The script can refuse or accept the NZB and it can also return alternative parameters.<br>
     When you want to manipulate the season parameters, you should assemble a new name and return a recognized format.
 </p>
@@ -157,8 +158,9 @@ SABnzbd uses the first 7 lines of output, so they should only contain proper dat
     </tbody>
 </table>
 
+<hr>
 
-<h2 id="toc3"><span>Example Script</span></h2>
+<h2 id="toc3">Example Script</h2>
 <p>Example of a Windows batch file that forces high priority on anything smaller than 2GB.</p>
 {% highlight dosbatch %}
 @echo off

@@ -1,36 +1,39 @@
 ---
 title: Getting started
 ---
+<h2>Usenet basics</h2>
+<p>If you are a beginner with Usenet, you should first find a website explaining the concepts (for example this <a href="http://www.binaries4all.com/beginners/" target="_blank">English</a> and <a href="http://www.binaries4all.nl" target="_blank">Dutch</a> website explains everything in great detail).
+    You should especially find out about how to get the NZB files that define your downloads. On this Wiki you can find all the information you would need to setup SABnzbd and customize it, if you have trouble please post on our <a href="http://forums.sabnzbd.org/" target="_blank">Forum</a>.
+</p>
 
-<h2 id="toc1"><span>Windows &amp; macOS</span></h2>
+<hr>
+
+<h2 id="toc1">Windows &amp; macOS</h2>
 <p>Download the latest build listed on <a href="/downloads">our download page</a>. For Windows we suggest the installer exe, for macOS we suggest the dmg.</p>
-<h2 id="toc2"><span>Ubuntu Linux (Releases after 9.04 Jaunty)</span></h2>
-<p>Install from Apt:</p>
-<div class="code">
-    <pre><code>sudo apt-get install sabnzbdplus</code>
-</pre>
-</div>
-<p>If apt does not offer a recent enough version, <a href="/wiki/installation/install-ubuntu-repo">see here</a> for details on how to install from JCFP's unofficial repository. This method may also work for most other distributions using apt.</p>
-<h2 id="toc3"><span>Other Unix/Linux distributions</span></h2>
+
+<h2 id="toc2">Ubuntu/Debian via PPA</h2>
+<p><a href="/wiki/installation/install-ubuntu-repo">Installation guide</a>.</p>
+
+<h2 id="toc3">Other Unix/Linux distributions</h2>
 <p>Get the latest Python Source Zip listed on <a href="/downloads">our download page</a>.</p>
 <hr>
-<h1 id="toc4"><span>Installing SABnzbd</span></h1>
-<h2 id="toc5"><span>Windows</span></h2>
-<p>Run the installer, follow the prompts. When prompted for installation options, decide if you want SABnzbd to launch in the background when you log in, if you want it to be associated with .nzb files, and if you want a desktop icon created.</p>
-<h2 id="toc6"><span>macOS</span></h2>
-<p>Double-click the .dmg, drag the .app to Applications. You're done!</p>
-<h2 id="toc7"><span>Ubuntu Linux</span></h2>
-<p>You already installed it via apt. After installing, edit /etc/default/sabnzbdplus if you want SABnzbd to run at startup.</p>
+<h1 id="toc4">Installing SABnzbd</h1>
+<h2 id="toc5">Windows</h2>
+<p>Run the installer, follow the prompts. When prompted for installation options, decide if you want SABnzbd to launch in the background when you log in, if you want it to be associated with <code>.nzb</code> files, and if you want a desktop icon created.</p>
+<h2 id="toc6">macOS</h2>
+<p>Double-click the <code>.dmg</code>, drag the <code>.app</code> to Applications. You're done!</p>
+<h2 id="toc7">Ubuntu Linux</h2>
+<p>You already installed it via apt. After installing, edit <code>/etc/default/sabnzbdplus</code> if you want SABnzbd to run at startup.</p>
 <hr>
-<h1 id="toc8"><span>Upgrading SABnzbd</span></h1>
+<h1 id="toc8">Upgrading SABnzbd</h1>
 <p>For all operating systems, to upgrade SABnzbd simply shut down SABnzbd and re-install. In it's a major release (Eg: from 0.7.20 to 1.1.0), it's always better to first finish the queue before updating.</p>
 <hr>
-<h1 id="toc9"><span>The Wizard</span></h1>
+<h1 id="toc9">The Wizard</h1>
 <p>On all operating systems, on first-launch of SABnzbd you'll be presented with our quick-start wizard, which will hopefully get you up and running as soon as possible. Here's a quick walk through the steps of the wizard. All settings in the wizard can be changed later on under the various Configuration pages.</p>
 
-<h2 id="toc13"><span>Server Setup</span></h2>
+<h2 id="toc13">Server Setup</h2>
 <p>On this page, enter the server information provided by your news host. If you are using SSL, be sure to tick the SSL checkbox. Once you've entered your server details, click the "Test Server" button to determine if the connection works.</p>
 
-<h2 id="toc15"><span>Restart</span></h2>
+<h2 id="toc15">Restart</h2>
 <p>You've reached the end of the wizard! Once you've reached this page, SABnzbd will automatically restart. Please wait for it to finish. After a few seconds you'll be presented with a link to <code>http://localhost:8080/sabnzbd</code>. You should bookmark this link, as it's how you'll access SABnzbd in the future.</p>
 <div style="clear:both; height: 0px; font-size: 1px"></div>

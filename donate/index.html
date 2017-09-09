@@ -1,0 +1,82 @@
+---
+title: Donate
+---
+
+{% include logo_container.html %}
+
+<div class="main-wrapper content-container">
+    <div id="main-container" class="container donations-container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Support the development of SABnzbd</h1>
+                <p>We work on this project in our spare time, your donations will help us to continue developing SABnzbd.</p>
+                <p>Donations can be send via PayPal or credit card and through Bitcoin, Ethereum and Litecoin (see below).</p>
+                <p>It is not required to donate in order to use SABnzbd or any of its features.</p>
+                <h2>Thank you <span class="glyphicon glyphicon-heart"></h2>
+                <hr>
+                <p>
+                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=670741" target="_blank" class="paypal-link">
+                        Donate via PayPal or credit card (account not required)<br>
+                        <img src="/images/paypal_donate.jpg" alt="Donate via PayPal">
+                    </a>
+                </p>
+                <hr>
+            </div>
+        </div>
+        <div class="row qr-codes">
+            <div class="col-md-3">
+                <h2>Bitcoin</h2>
+                <div class="input-group">
+                    <input type="text" class="form-control" readonly name="btc" value="1KAf7dFEio5X9HS5Qv9SM9Z7484Mf7jNHm">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-qrcode"></span></button>
+                    </span>
+                </div>
+                <div id="qr-bitcoin" class="crypto-qrs"></div>
+            </div>
+            <div class="col-md-3">
+                <h2>Ethereum</h2>
+                <div class="input-group">
+                    <input type="text" class="form-control" readonly name="eth" value="0xc9c424F21edbC2d200d38643C261407a3A3805F7">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-qrcode"></span></button>
+                    </span>
+                </div>
+                <div id="qr-ethereum" class="crypto-qrs"></div>
+            </div>
+            <div class="col-md-3">
+                <h2>Litecoin</h2>
+                <div class="input-group">
+                    <input type="text" class="form-control" readonly name="ltc" value="LcToBHhN15VDornWjCgvHyFdvxYQTP36Zr">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-qrcode"></span></button>
+                    </span>
+                </div>
+                <div id="qr-litecoin" class="crypto-qrs"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/js/jquery.qrcode.js"></script>
+<script type="text/javascript">
+    $('#qr-bitcoin').html('').qrcode({
+        text: "1KAf7dFEio5X9HS5Qv9SM9Z7484Mf7jNHm",
+        size: 170
+    });
+    $('#qr-ethereum').html('').qrcode({
+        text: "0xc9c424F21edbC2d200d38643C261407a3A3805F7",
+        size: 170
+    });
+    $('#qr-litecoin').html('').qrcode({
+        text: "LcToBHhN15VDornWjCgvHyFdvxYQTP36Zr",
+        size: 170
+    });
+    $('.qr-codes input').click(function() {
+        $(this).select()
+    })
+    // Only show QR on-click
+    $('.input-group-btn button').click(function(evnt) {
+        $(evnt.delegateTarget).parent().parent().siblings('.crypto-qrs').show()
+    })
+</script>

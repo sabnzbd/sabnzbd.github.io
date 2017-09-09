@@ -1,44 +1,37 @@
 ---
-title: Ubuntu PPA Repository
+title: Ubuntu/Debian PPA Repository
 ---
-<p>Since Ubuntu jaunty (9.04), SABnzbd has been part of the standard Ubuntu "multiverse" repository. With multiverse enabled, installing SABnzbd is easy: search for <i>sabnzbdplus</i> in the Software Center and click the Install button; or from the command line by running: <code>sudo apt-get install sabnzbdplus</code></p>
-<p>If you use this method, you can skip the PPA Setup part and jump to <a id="tocref-1" href="#toc2">How To Start</a>.</p>
-<p>The information below handles installation from a Personal Package Archive (PPA), which is recommended if you want a more up-to-date version than that available via the official Ubuntu repositories.</p>
 
+<p><span class="label label-warning">NOTE</span> Debian users: <code>sabnzbdplus</code> is readily available in squeeze and newer (in contrib); if you're looking to update your Debian install to the latest release please refer to <a href="https://forums.sabnzbd.org/viewtopic.php?f=16&amp;t=9844">this forum thread</a>.</p>
 <hr>
-<p>Debian users: sabnzbdplus is readily available in squeeze and newer (in contrib); if you're looking to update your Debian install to the latest release please refer to <a href="https://forums.sabnzbd.org/viewtopic.php?f=16&amp;t=9844">this forum thread</a>.</p>
-
-<hr>
-<h1 id="toc0"><span>PPA Setup</span></h1>
-<p>JCFP maintains an unofficial repository<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup> with the latest version of the program. Whenever an even newer version of the program is released, you will be automatically notified the same as with any other package update.</p>
-<p>There are two channels on offer: <i>regular</i> or <i>"no betas"</i>. The former includes most alpha/beta/rc releases, while the latter is a less risky option that only ever gets final releases. In order to satisfy all dependencies, both Ubuntu's universe and multiverse repositories must be enabled on your system.</p>
+<h1 id="toc0">PPA Setup</h1>
+<p>JCFP maintains an unofficial repository with the latest version of SABnzbd<sup class="footnoteref"><a href="#toc4">1</a></sup>. Whenever an even newer version of the program is released, you will be automatically notified the same as with any other package update.</p>
+<p>There are two channels on offer: regular or <code>nobetas</code>. The former includes most alpha/beta/rc releases, while the latter is a less risky option that only ever gets final releases. In order to satisfy all dependencies, both Ubuntu's universe and multiverse repositories must be enabled on your system.</p>
 
 <p>First, some preparation to make sure your system can handle extra repositories:</p>
 <div class="code">
     <pre><code>sudo apt-get install software-properties-common</code></pre>
 </div>
 
-<p>Now add the repository. Choose either the regular channel, to receive <strong>all</strong> releases:
-<div class="code">
-    <pre><code>sudo add-apt-repository ppa:jcfp/ppa</code></pre>
-</div>
-<p>...or (if you wish to avoid installing alpha/beta/rc releases) go for the nobetas option:
+<p>Now add the repository. Choose either the <code>nobetas</code> channel, to receive <strong>only final stable releases</strong>:
 <div class="code">
     <pre><code>sudo add-apt-repository ppa:jcfp/nobetas</code></pre>
 </div>
-
-<p>Next, tell apt to update so it learns of the new package now available:</p>
+<p><strong>Or</strong> if you wish to recieve alpha/beta/rc releases, go for the regular option:
 <div class="code">
-    <pre><code>sudo apt-get update && sudo apt-get dist-upgrade</code></pre>
+    <pre><code>sudo add-apt-repository ppa:jcfp/ppa</code></pre>
 </div>
 
-<p>In case you already had an older version of the sabnzbdplus package installed, you're now fully up-to-date. Otherwise, proceed to install the program and its dependencies:</p>
+<p>Next, we add the repository with <a href="/wiki/installation/sabyenc.html">SABYenc</a>, tell <code>apt</code> to update so it learns of the new packages and proceed to install the program and its dependencies:</p>
 <div class="code">
-    <pre><code>sudo apt-get install sabnzbdplus</code></pre>
+<pre><code>sudo add-apt-repository ppa:jcfp/sab-addons
+sudo apt-get update && sudo apt-get dist-upgrade
+sudo apt-get install sabnzbdplus python-sabyenc</code></pre>
 </div>
-
+<p>Optionally, you can also install <a href="/wiki/installation/multicore-par2">Multicore Par2</a> by executing:</p>
+<pre><code>sudo apt-get install par2-tbb</code></pre>
 <hr>
-<h1 id="toc2"><span>How To Start</span></h1>
+<h1 id="toc2">How To Start</h1>
 <p>To start the program, find the Sabnzbd+ item in the Networking section of your desktop menu, or from the command line just execute:</p>
 <div class="code">
     <pre><code>sabnzbdplus</code>
@@ -47,28 +40,26 @@ title: Ubuntu PPA Repository
 <p>You should run SABnzbd as a normal user: the program does not need root access or any other special permissions.</p>
 
 <hr>
-<h1 id="toc3"><span>How To Run as a Service</span></h1>
+<h1 id="toc3">How To Run as a Service</h1>
 <p>If you want the program to be started as a service (i.e., in the background on system boot), edit (as root) the text file <code>/etc/default/sabnzbdplus</code> and set the required <code>USER= </code> and the optional settings to your liking.</p>
 <p>Once configured correctly, the service can be started and stopped with the commands <code>sudo /etc/init.d/sabnzbdplus start</code> and <code>sudo /etc/init.d/sabnzbdplus stop</code>. On recent Ubuntu versions, you can use</p>
 <div class="code">
     <pre><code>sudo service sabnzbdplus start</code>
 </pre>
 </div>
-and
+<p>and</p>
 <div class="code">
     <pre><code>sudo service sabnzbdplus stop</code>
 </pre>
 </div>
 <p>Although for obvious reasons no browser is auto-started when running the program like this, the web interface is still available at the usual location of <code>http://localhost:8080/sabnzbd/</code> (or whatever other host and port you configured).</p>
 <hr>
-<h1 id="toc4"><span>The Fine Print</span></h1>
+<h1 id="toc4">The Fine Print</h1>
 <ol>
+    <li>Remember that this package is not created and therefore <strong>not</strong> supported by the SABnzbd team! But do feel free to ask questions on the forum, which is frequently vistited by JCFP.</li>
     <li>This is an unofficial package from an unofficial repository. Don't file bugs about packages installed from this repository in Ubuntu's bug tracker, instead complain in a <a href="https://forums.sabnzbd.org/">forum</a> topic.</li>
-    <li>The sabnzbdplus package is also available from the official <a href="https://launchpad.net/ubuntu/+source/sabnzbdplus">Ubuntu</a> repositories (jaunty/9.04 and newer, in multiverse) as well as from <a href="http://packages.debian.org/search?keywords=sabnzbdplus">Debian</a> (debian 6.0/squeeze and newer, in contrib). In case the PPA and the official repositories both have the same release the design of the package will cause the official repositories to take precedence.</li>
+    <li>The <code>sabnzbdplus</code> package is also available from the official <a href="https://launchpad.net/ubuntu/+source/sabnzbdplus">Ubuntu</a> repositories (jaunty/9.04 and newer, in multiverse) as well as from <a href="http://packages.debian.org/search?keywords=sabnzbdplus">Debian</a> (debian 6.0/squeeze and newer, in contrib). In case the PPA and the official repositories both have the same release the design of the package will cause the official repositories to take precedence.</li>
 </ol>
 <p>If you are interested in packaging, want to grab the source package, or just check out the build logs, visit the <a href="https://launchpad.net/~jcfp/+archive">launchpad ppa page</a> of the repository.</p>
 
-<div class="footnotes-footer">
-    <div class="title">Footnotes</div>
-    <div class="footnote-footer" id="footnote-1">1. Remember that this package is not created and therefore <strong>not</strong> supported by the SABnzbd team! But do feel free to ask questions on the forum, which is frequently vistited by JCFP.</div>
-</div>
+

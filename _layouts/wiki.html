@@ -1,4 +1,9 @@
 {% include header.html %}
+
+{% if page.url contains "/nzb-sources" or page.url contains "/servers" or page.url contains "/glitter-tips-and-tricks" or page.url contains "/downloads-cannot-be-completed" %}
+    {% include ad_giganews_corner.html %}
+{% endif %}
+
 {% include logo_container.html %}
 <div class="main-wrapper content-container">
     <div id="main-container" class="container">
@@ -6,7 +11,10 @@
             <div class="col-md-3 collapse" id="wiki-side-bar">
                 <a href="/wiki/">User Manual</a>
                 <a href="/wiki/faq">FAQ</a>
+                <a href="/wiki/contact">Contact</a>
+                <!-- Disabled for now, untill we have something to write
                 <a href="/wiki/new-features-and-changes">New features and changes</a>
+                -->
 
                 <div class="menu-spacer"></div>
 
@@ -27,7 +35,7 @@
                 <ul id="wiki-menu-installation" class="collapse {% if page.url contains "/installation/" %}in{% endif %}" >
                     <li><a href="/wiki/installation/install-windows">Windows</a></li>
                     <li><a href="/wiki/installation/install-unix">Unix</a></li>
-                    <li><a href="/wiki/installation/install-osx-src">Apple macOS</a></li>
+                    <li><a href="/wiki/installation/install-macos">Apple macOS</a></li>
                     <li><a href="/wiki/installation/install-nas">NAS</a></li>
                     <li><a href="/wiki/installation/install-off-modules">From source</a></li>
                 </ul>
@@ -75,9 +83,12 @@
                     <li><a href="/wiki/advanced/ssl-ciphers">SSL Ciphers</a></li>
                     <li><a href="/wiki/advanced/sabnzbd-as-a-windows-service">Windows Service</a></li>
                 </ul>
+
                 <div class="menu-spacer"></div>
-                <a href="/wiki/extra/roadmap">Roadmap</a>
-                <a href="/wiki/contact">Contact</a>
+
+                <a href="/wiki/extensions-for-sabnzbd">Extensions for SABnzbd</a>
+
+                {% include ad_giganews_supernews_tall.html %}
             </div>
             <div class="col-md-9">
                 <h2 class="title-page">

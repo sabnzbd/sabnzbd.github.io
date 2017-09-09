@@ -1,0 +1,73 @@
+---
+title: Folders
+---
+<h2>User Folders</h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Temporary Download Folder</strong></td>
+            <td>Enter the path to a folder SABnzbd can use to store files as they are downloaded. Once the file is complete, it will verify then extract to the Complete Folder. You can just enter "Incomplete" to keep it relational to your home folder or enter the full path such as <code>C:\Incomplete</code> and it will create the folder.</td>
+        </tr>
+        <tr>
+            <td><strong>Minimum Free Space for Temporary Download Folder</strong></td>
+            <td>There should be enough space to contain the largest complete job + 10% for error correction data. When free space on the drive that holds the temporary folder is below this, SABnzbd is automatically pauses and an (optional) email is sent to the user. You enter the amount in bytes but you can use factors like K, M, G etc. Note: SABnzbd will not automatically resume downloading. You have to make diskspace available AND resume SABnzbd manually.</td>
+        </tr>
+        <tr>
+            <td><strong>Completed Download Folder</strong></td>
+            <td>The completed download folder is the default download location for all items, unless indicated otherwise from the <a href="/wiki/configuration/{{ site.wiki_version }}/categories">Categories</a> page.</td>
+        </tr>
+        <tr>
+            <td><strong>Permissions for completed downloads</strong></td>
+            <td>Set permissions pattern for completed files/folders using octal notation, for macOS and Linux only.<br>Example: <code>755</code> or <code>777</code>, see: <a href="/wiki/advanced/unix-permissions">Unix permissions</a></td>
+        </tr>
+        <tr>
+            <td><strong>Watched Folder</strong></td>
+            <td>
+                <p>This is a folder that is periodically checked for new NZB files. When a file is stored in this folder, SABnzbd will consider this a download job. It processes the file, puts it in the queue and removes the NZB file. ZIP and RAR files that contain <em>only</em> NZB files will be processed too<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup>
+                <p>The Watched Folder supports <a href="/wiki/configuration/{{ site.wiki_version }}/categories">Categories</a> in two ways:
+                <ul>
+                    <li><strong>Categories:</strong> Create a folder inside your watched folder with the same name as one of your categories. Placing a file inside that folder will add the category with the same name as the sub-folder when it is imported. <br>
+                    Example: If you have a category called <code>Random</code>, place a file inside <code>C:\WatchedFolder\Random</code> and it will be picked up and assigned to the <code>Random</code> category (if it exists). </li>
+                    <li><strong>Filename Prefix:</strong> If an NZB file has a prefix, for example {% raw %}<code>{{movies}}My favorite movie.nzb</code>{% endraw %}, it will be handled as the file <code>My favorite movie.nzb</code>, having category <code>movies</code>.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Watched Folder Scan Speed</strong></td>
+            <td>Number of seconds between filesystem scans of the Watched Folder setting above.</td>
+        </tr>
+        <tr>
+            <td><strong>Scripts Folder</strong></td>
+            <td>This specifies the folder where user scripts (post-processing and pre-queue) are stored. On Windows, users may specify a .cmd or .bat file; other extensions can be executed with the <code>PATHEXT</code> variable. On Unix any installed script type can be used, including common choices such as shell or Python, provided the file is executable (<code>chmod +x file</code>) and starts with a valid <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang line</a>. For more information on creating: <a href="/wiki/scripts/post-processing-scripts">Post-processing</a> / <a href="/wiki/scripts/pre-queue-scripts">Pre-queue</a> scripts.</td>
+        </tr>
+        <tr>
+            <td><strong>Email Templates Folder</strong></td>
+            <td>You can define your own <a href="/wiki/extra/email-templates">Email Templates</a>.</td>
+        </tr>
+        <tr>
+            <td><strong>Password File</strong></td>
+            <td>A text file of known passwords, one password per line, that should be attempted on passworded RAR files.</td>
+        </tr>
+    </tbody>
+</table>
+<h2>System Folders</h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Administrative Folder</strong></td>
+            <td>Location for queue admin and history database.</td>
+        </tr>
+        <tr>
+            <td><strong>Log Folder</strong></td>
+            <td>This folder holds error/warning/info/debug logging data.</td>
+        </tr>
+        <tr>
+            <td><strong>.nzb Backup Folder</strong></td>
+            <td>When SABnzbd adds an nzb to the queue it creates a local of the NZB file in this folder. If you leave this box empty, no files will be saved.</td>
+        </tr>
+    </tbody>
+</table>
+<div class="footnotes-footer">
+    <div class="title">Footnotes</div>
+    <div class="footnote-footer" id="footnote-1">1. ".nfo" files are allowed too, but ignored.</div>
+</div>

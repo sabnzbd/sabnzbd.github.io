@@ -5,7 +5,7 @@ title: Tips for Unix packaging
     Given it's portability, it should be easy to port SABnzbd.
 </p>
 <p>The following tips may make life easier.</p>
-<h2 id="toc0"><span>SABnzbd requires a specific folder layout</span></h2>
+<h2 id="toc0">SABnzbd requires a specific folder layout</h2>
 <p>The source distribution contains a specific folder structure that is required for the proper working. You cannot disturb this structure without changing the Python code also.<br>
     The source part could be stored like this (the <strong>/usr/local/src/sabnzbd</strong> part is just an example):
 </p>
@@ -18,23 +18,23 @@ title: Tips for Unix packaging
 </pre>
 </div>
 <p>This would mean that people can start the program with <strong>/usr/local/src/sabnzbd/SABnzbd.py</strong>.</p>
-<h2 id="toc1"><span>SABnzbd comes with its own CherryPy copy</span></h2>
+<h2 id="toc1">SABnzbd comes with its own CherryPy copy</h2>
 <p>We use a non-standard release of CherryPy. It's a specific snapshot of the development tree for 3.2.0 with some patches applied. You must use this version and not an installed Python module.</p>
-<h2 id="toc2"><span>Be careful when splitting Python code and the Skins</span></h2>
+<h2 id="toc2">Be careful when splitting Python code and the Skins</h2>
 <p>The code and the skins are tightly coupled. It is not possible to combine code and templates from different versions.<br>
     If it is necessary for technical reasons to split the skins, make sure that you define dependencies properly.<br>
     The Python code expects the templates to be in specific folders (relative to the location of SABnzbd.py), like shown above.
 </p>
-<h2 id="toc3"><span>Create a symlink to SABnzbd.py</span></h2>
+<h2 id="toc3">Create a symlink to SABnzbd.py</h2>
 <p>Having SABnzbd in the path can be convenient. So provide a symlink in (e.g.) /usr/bin to the main module SABnzbd.py.<br>
     Maybe you want to create a shell script for launching it.
 </p>
-<h2 id="toc4"><span>SABnzbd is not a Python library</span></h2>
+<h2 id="toc4">SABnzbd is not a Python library</h2>
 <p>Although many Python-related packages install themselves in the Python installation hierarchy, SABnzbd was not designed as such.<br>
     It is possible to install SABnzbd in the <em>site-specific</em> part of Python, but we do not provide a setup.py script.<br>
     Instead we consider SABnzbd to be a program on its own, that just happens to be written in Python (and thus needs Python installed).
 </p>
-<h2 id="toc5"><span>Pre-compile the code</span></h2>
+<h2 id="toc5">Pre-compile the code</h2>
 <p>Although not strictly required, pre-compiling improves startup time and uses a bit less memory.<br>
     After installation you could do a dry-run this way:
 </p>
@@ -44,19 +44,19 @@ title: Tips for Unix packaging
 </div>
 <br>
 This will generate PYO files. Please note that SABnzbd.py itself does not get a PYO file, but all other PY files do.
-<h2 id="toc6"><span>Use the default locations for data storage</span></h2>
+<h2 id="toc6">Use the default locations for data storage</h2>
 <p>The above hierarchy does not need to be writable. By default SABnzbd will store all data in $HOME/.sabnzbd and $HOME.<br>
     There is full separation of code and data and per-user storage.
 </p>
-<h2 id="toc7"><span>Add daemon support</span></h2>
+<h2 id="toc7">Add daemon support</h2>
 <p>If you want to give the user maximum support, consider creating support for starting and stopping SABnzbd through init.d.<br>
     We already created an example start-stop script <a href="/wiki/installation/install-as-a-unix-daemon">here</a>.<br>
     This will need some work to become a good solution for your platform.
 </p>
-<h2 id="toc8"><span>Licensing</span></h2>
+<h2 id="toc8">Licensing</h2>
 <p>SABnzbd is released under GPL2 or later (meaning that you can assume either GLP2 or GPL3 at your own convenience).<br>
     The source distribution contains a large number of modules from other people and some modules come with different licenses.<br>
     We have been advised that you should assume GPL3 in order to prevent incompatibility with the other licenses.
 </p>
-<h2 id="toc9"><span>Questions</span></h2>
+<h2 id="toc9">Questions</h2>
 <p>If you have any questions, please don't hesitate to contact the development team.</p>

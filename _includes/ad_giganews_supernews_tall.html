@@ -1,0 +1,13 @@
+<a href="{{ site.giganews_link }}?a=SABnzbd:wiki" class="gn-sn-tall" target="_blank">
+    <img src="https://www.giganews.com/banners/SABnzbd:wiki/160x235a.gif" alt="Giganews Specials"><br>
+    Giganews special deals
+</a>
+<a href="{{ site.supernews_link }}?r=sabnzbd_sn" class="gn-sn-tall" target="_blank">
+    <img src="https://www.supernews.com/ads/sabnzbd_sn/dollar_sn_160x235.gif" alt="Supernews Specials"><br>
+    Supernews special deals
+</a>
+<script type="text/javascript">
+    // Randomly select 1 of 2 banners
+    var random_nr = Math.floor(Math.random()*2)
+    $('.gn-sn-tall').eq(random_nr).css('display', 'block')
+</script>

@@ -32,7 +32,7 @@ title: Scheduling
         </tr>
         <tr>
 
-            <td><strong>Pause-all</strong></td><td> will stop downloading, <a href="/wiki/configuration/2.0/folders">Watched Folder</a> scanning and RSS feeds, stops all disk activity.</td>
+            <td><strong>Pause-all</strong></td><td> will stop downloading, <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Watched Folder</a> scanning and RSS feeds, stops all disk activity.</td>
         </tr>
         <tr>
 
@@ -60,11 +60,11 @@ title: Scheduling
         </tr>
         <tr>
 
-            <td><strong>Scan watched folder</strong></td><td> Read watched folder (this will disable the interval in <a href="/wiki/configuration/2.0/folders">Folders</a>)</td>
+            <td><strong>Scan watched folder</strong></td><td> Read watched folder (this will disable the interval in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Folders</a>)</td>
         </tr>
         <tr>
 
-            <td><strong>Read RSS feeds</strong></td><td> Read all RSS feeds (this will disable the interval in  <a href="/wiki/configuration/2.0/folders">RSS</a>)</td>
+            <td><strong>Read RSS feeds</strong></td><td> Read all RSS feeds (this will disable the interval in  <a href="/wiki/configuration/{{ site.wiki_version }}/folders">RSS</a>)</td>
         </tr>
         <tr>
 
@@ -100,11 +100,11 @@ title: Scheduling
         </tr>
         <tr>
 
-            <td><strong>Enable quota management</strong></td><td> See <a href="/wiki/configuration/2.0/switches">Quota</a></td>
+            <td><strong>Enable quota management</strong></td><td> See <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Quota</a></td>
         </tr>
         <tr>
 
-            <td><strong>Disable quota management</strong></td><td> See <a href="/wiki/configuration/2.0/switches">Quota</a></td>
+            <td><strong>Disable quota management</strong></td><td> See <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Quota</a></td>
         </tr>
         <tr>
 
@@ -116,12 +116,12 @@ title: Scheduling
         </tr>
     </tbody>
 </table>
-<h4 id="toc1"><span>Note</span></h4>
+<h4 id="toc1">Note</h4>
 <p>On startup, SABnzbd will evaluate all schedules and determine the current pause/resume state and speedlimit.<br>
     The <code>-pause</code> <a href="/wiki/advanced/command-line-parameters">command-line parameter</a> will override this evaluation.<br>
     Also on each schedule change, the schedule will be re-evaluated and the speedlimit will be set. If SABnzbd happened to be paused, it will NOT be resumed by the schedule evaluation. This is to prevent spontaneous resumption during schedule changes.
 </p>
-<h2 id="toc2"><span>Example</span></h2>
+<h2 id="toc2">Example</h2>
 <p>Suppose you only want to download on weekdays between 1:00AM and 5:30PM and in the weekend between 1:00 AM and 11:00AM.<br>
     You set this up using four schedule blocks.
 </p>
