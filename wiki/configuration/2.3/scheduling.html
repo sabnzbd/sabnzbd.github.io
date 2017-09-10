@@ -116,11 +116,12 @@ title: Scheduling
         </tr>
     </tbody>
 </table>
-<h4 id="toc1">Note</h4>
-<p>On startup, SABnzbd will evaluate all schedules and determine the current pause/resume state and speedlimit.<br>
+
+<p><span class="label label-warning">NOTE</span> On startup, SABnzbd will evaluate all schedules and determine the current pause/resume state and speedlimit.<br>
     The <code>-pause</code> <a href="/wiki/advanced/command-line-parameters">command-line parameter</a> will override this evaluation.<br>
     Also on each schedule change, the schedule will be re-evaluated and the speedlimit will be set. If SABnzbd happened to be paused, it will NOT be resumed by the schedule evaluation. This is to prevent spontaneous resumption during schedule changes.
 </p>
+<hr>
 <h2 id="toc2">Example</h2>
 <p>Suppose you only want to download on weekdays between 1:00AM and 5:30PM and in the weekend between 1:00 AM and 11:00AM.<br>
     You set this up using four schedule blocks.

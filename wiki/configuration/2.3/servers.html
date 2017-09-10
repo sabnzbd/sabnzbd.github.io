@@ -14,13 +14,13 @@ title: Servers
     When none of the primary servers has a specific article, a lower priority group is tried. Within the lower priority group, the same method is used: the first server with a free slot is tried.
 </p>
 <hr>
-<h2 id="toc2">Settings</h2>
+<h2 id="toc2">Basic settings</h2>
 <p><span class="label label-warning">NOTE</span> Check your Usenet provider's documentation for the proper values!</p>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
             <td><strong>Enable</strong></td>
-            <td>If you have multiple servers, you can use this field to quickly enable or disable servers. <br> This field can be set/reset by the <a href="/wiki/configuration/{{ site.wiki_version }}/scheduling">Scheduler</a> too!</td>
+            <td>If you have multiple servers, you can use this field to quickly enable or disable servers. <br> This field can be set/reset by the <a href="/wiki/configuration/{{ site.wiki_version }}/scheduling">Scheduler</a>.</td>
         </tr>
         <tr>
             <td><strong>Host</strong></td>
@@ -29,6 +29,10 @@ title: Servers
         <tr>
             <td><strong>Port</strong></td>
             <td>The standard port is <code>119</code>. Some servers use a different port number. SSL is usually port <code>563</code> or <code>443</code>.</td>
+        </tr>
+        <tr>
+            <td><strong>SSL</strong></td>
+            <td>Use a secure connection to the server. <br><span class="label label-warning">NOTE</span> <strong>Check which address and port you need for SSL with your provider.</strong> Most providers use port <code>563</code> for SSL, do not use port <code>119</code>.</td>
         </tr>
         <tr>
             <td><strong>Username</strong></td>
@@ -40,41 +44,42 @@ title: Servers
         </tr>
         <tr>
             <td><strong>Connections</strong></td>
-            <td>News providers offer different amounts of simultaneous connections (sometimes referred to as slots or threads). You may need to specify the maximum amount allowed in order to get full speed. Do not use a large number. Most servers work best with anything between <code>8</code> and <code>30</code>.</td>
+            <td>News providers offer different amounts of simultaneous connections (sometimes referred to as slots or threads). You may need to specify the maximum amount allowed in order to get full speed. Do not use a large number. Most servers work best with anything between <code>8</code> and <code>30</code>.<br>See <a href="/wiki/advanced/highspeed-downloading">High speed downloading</a> for more information.</td>
         </tr>
         <tr>
             <td><strong>Priority</strong></td>
-            <td>You can assign a priority to the server. Sometimes it is useful to specify a high priority server that SABnbzd should try to get its data from first, often this is a free server. A pay-per-GB server is the typical low priority server.</td>
+            <td>See Priorities section above.</td>
         </tr>
+    </tbody>
+</table>
+<h2>Advanced settings</h2>
+<table class="table table-bordered table-hover">
+    <tbody>
         <tr>
             <td><strong>Retention</strong></td>
-            <td>Set here the maximum retention time<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup> (in days) of your server. Zero means infinite retention. Only use this when you have multiple servers and you want to avoid that SABnzbd wastes time on asking servers for articles it cannot have. Be aware that retention times advertised by Usenet providers are not absolute. If you set it too low, your others servers will be used more intensely. There is no reason to set a retention time when you have only one server.</td>
+            <td>Set here the maximum retention time of your server. Retention means the number of days that articles are kept by the server. <code>0</code> means infinite retention. <br>Only use this when you have multiple servers and you want to avoid that SABnzbd wastes time on asking servers for articles it cannot have. Be aware that retention times advertised by Usenet providers are not absolute. If you set it too low, your others servers will be used more intensely. There is no reason to set a retention time when you have only one server.</td>
         </tr>
         <tr>
             <td><strong>Timeout</strong></td>
             <td>Time out in seconds for error recovery. Be careful, do not set this to a very low value, your news provider will not like that. A common value is <code>120</code>.</td>
         </tr>
         <tr>
-            <td><strong>SSL</strong></td>
-            <td>Use a secure connection to the server. <br><span class="label label-warning">NOTE</span> <strong>Check which address and port you need for SSL with your provider!</strong> Most providers use port <code>563</code> for SSL, DO NOT USE PORT <code>119</code></td>
-        </tr>
-        <tr>
             <td><strong>Certificate verification</strong></td>
             <td>
                 <p>SABnzbd can verify the certificates your newsserver uses to verify its identity. Python 2.7.9 or above, OpenSSL 1.0.2 or above and up-to-date local CA certificates are required.</p>
-                <p><span class="label label-danger">WARNING</span> Disabeling or setting this check to <code>Minimal</code> allows anyone to redirect and intercept your traffic using <em>any</em> valid certificate!  It is comparable to not using SSL at all.</p>
+                <p><span class="label label-danger">WARNING</span> Disabling or setting this check to <code>Minimal</code> allows anyone to redirect and intercept your traffic using <em>any</em> valid certificate!  It is comparable to not using SSL at all.</p>
                 <p>Read more on <a href="/wiki/advanced/certificate-errors.html">Certificate verification</a>.</p>
                 <ul>
                     <li><code>None</code> = Certificates are not verified</li>
                     <li><code>Minimal</code> = Verify certificates before connecting<br></li>
-                    <li><code>Strict</code> = Verify and enforce matching hostname. This setting can be problematic for some servers that use 1 certificate for multiple servers.</li>
+                    <li><code>Strict</code> = Verify and enforce matching hostname</li>
                 </ul>
 
             </td>
         </tr>
         <tr>
             <td><strong>Optional</strong></td>
-            <td>If you use multiple servers and some of these servers are not very reliable, you can declare them "optional". This means that if such a server causes too much problems (like time-outs) it will be ignored for some time. Warning: under some circumstances this may cause missed articles<sup class="footnoteref"><a id="footnoteref-2" href="#footnote-2">2</a></sup>.</td>
+            <td>If you use multiple servers and some of these servers are not very reliable, you can declare them "optional". This means that if such a server causes too much problems (like time-outs) it will be ignored for some time. <br>When you declare a server with a long retention time as optional and the server is temporary out-of-service, SABnzbd will fall back to another server. If the alternative server has a shorter retention time, you will miss articles if the articles are beyond the retention time of the alternative server. It is best to set your most reliable and longest retention time server as a lower priority server but not as optional. Secondary servers (cheaper, less reliable, shorter retention time) can be set as <em>high priority</em> and <em>optional</em>.</td>
         </tr>
         <tr>
             <td><strong>Send group</strong></td>
@@ -82,7 +87,7 @@ title: Servers
         </tr>
         <tr>
             <td><strong>Categories</strong></td>
-            <td>This server will only be used for the <a href="/wiki/configuration/{{ site.wiki_version }}/categories">Categories</a> selected. When Default is selected, the server will be used for all categories and downloads.</td>
+            <td>This server will only be used for the <a href="/wiki/configuration/{{ site.wiki_version }}/categories">Categories</a> selected. When Default is selected, the server will be used for all categories and downloads.<br><span class="label label-danger">WARNING</span> <strong>This option is scheduled to be removed in the next release of SABnzbd.</strong></td>
         </tr>
         <tr>
             <td><strong>Server description</strong></td>
@@ -94,9 +99,3 @@ title: Servers
         </tr>
     </tbody>
 </table>
-
-<div class="footnotes-footer">
-    <div class="title">Footnotes</div>
-    <div class="footnote-footer" id="footnote-1">1. Retention means the number of days that articles are kept by the server, after this number of days, the server will start removing articles. Note that retention is an average number. In reality the server will start removing articles when its storage becomes too full.</div>
-    <div class="footnote-footer" id="footnote-2">2. When you declare a server with a long retention time as optional and the server is temporary out-of-service, SABnzbd will fall back to another server. If the alternative server has a shorter retention time, you will miss articles if the articles are beyond the retention time of the alternative server. It is best to set your most reliable and longest retention time server as a lower priority server but not as optional. Secondary servers (cheaper, less reliable, shorter retention time) can be set as <em>high priority</em> and <em>optional</em>.</div>
-</div>

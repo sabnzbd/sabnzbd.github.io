@@ -9,9 +9,9 @@ title: Switches
             <td><strong>Server load-balancing</strong></td>
             <td>A number of newsservers has multiple IP-addresses, these can be IPv4 or IPv6.
             <ul>
-                <li><strong>Prevent load-balancing:</strong> the first IP-address returned will be used for all connections. </li>
-                <li><strong>Allow load-balancing:</strong> Each connection will be randomly selected from the available addresses.</li>
-                <li><strong>Allow load-balancing with optimization for IPv6:</strong> For each connection the fastest IP-address is selected, where IPv6-addresses are given a slight head-start.</li>
+                <li><code>Prevent load-balancing</code> = The first IP-address returned will be used for all connections. </li>
+                <li><code>Allow load-balancing</code> = Each connection will be randomly selected from the available addresses.</li>
+                <li><code>Allow load-balancing with optimization for IPv6</code> = For each connection the fastest IP-address is selected, where IPv6-addresses are given a slight head-start.</li>
             </ul>
             </td>
         </tr>
@@ -23,11 +23,6 @@ title: Switches
             <td><strong>Maximum retries</strong></td>
             <td>To prevent deadlock, SABnzbd will only try each server a limited amount of times. You can increase the value or set it to <code>0</code> to enable endless retries.</td>
         </tr>
-        <tr>
-            <td><strong>Only for optional servers</strong></td>
-            <td>You can choose to use limited retries only for your "optional" servers. This will prevent "Out of retention" failures when your main server is inadvertently off-line</td>
-        </tr>
-
         <tr>
             <td><strong>Disconnect on empty queue</strong></td>
             <td>Disconnect from Usenet server(s) when queue is empty or paused. This will help you switch between different systems. Set this option off when your server keeps complaining that you have too many connections open.</td>
@@ -43,19 +38,20 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Propagation delay</strong></td>
-            <td>If you experience very young posts failing due to missing blocks your server might still be in the process of receiving the posts. Delaying the these very young posts a few minutes might solve these issues. Posts will be paused untill they are at least this age. Setting job priority to Force will skip the delay. [only 2.0.0+]</td>
+            <td>If you experience very young posts failing due to missing blocks your server might still be in the process of receiving the posts. Delaying the these very young posts a few minutes might solve these issues. Posts will be paused until they are at least this age. <br>Setting job priority to Force will skip the delay.</td>
         </tr>
         <tr>
             <td><strong>Only get articles for top of the queue</strong></td>
-            <td>When a top-job stalls for some reason, start downloading segments for the next job (costs more memory). This prevents a job from blocking the queue when you have an unreliable Usenet server. If you need this behaviour, set the option off. If you have a reliable server (most paid servers), you might as well set this on.</td>
+            <td>When a top-job stalls for some reason, start downloading segments for the next job. This prevents a job from blocking the queue when you have an unreliable Usenet server. If you need this behavior, set the option off. If you have a reliable server (most paid servers), you might as well set this on.</td>
         </tr>
         <tr>
             <td><strong>Check before download</strong></td>
-            <td>To prevent wasteful downloading, you can let SABnzbd check the presence of a job on the server, before actually downloading it. If less than 100.2% of the total available data (including par2 files) is available, the job will be send to History as failed. When you click "Retry", SABnzbd will attempt the download anyway. Note that the check slows down the total download considerably, use only when you're not in a hurry but wish not to waste your quota instead. Also it cannot be completely reliable, due to the way some servers remove posts.</td>
+            <td><p>To prevent wasteful downloading, you can let SABnzbd check the presence of a job on the server, before actually downloading it. If less than 100.2% of the total available data (including par2 files) is available, the job will be send to History as failed. When you click "Retry", SABnzbd will attempt the download anyway. </p>
+            <p><span class="label label-warning">NOTE</span> The check slows down the total download considerably, use only when you're not in a hurry but wish not to waste your quota instead. Also it cannot be completely reliable, due to the way some servers remove posts.</p></td>
         </tr>
         <tr>
             <td><strong>Abort jobs that cannot be completed</strong></td>
-            <td>If on, when during download it becomes clear that less than 99% of the total data can be downloaded, the job will be sent to History as a failed one. Should you retry the job, the check will not be done again, but the whole job will be tried instead. [0.7.8+ only]</td>
+            <td>If on, when during download it becomes clear that less than 99% of the total data can be downloaded, the job will be sent to History as a failed one. Should you retry the job, the check will not be done again, but the whole job will be tried instead.</td>
         </tr>
         <tr>
             <td><strong>Detect duplicate downloads</strong></td>
@@ -63,19 +59,23 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Detect duplicate episodes in series</strong></td>
-            <td>This option will analyse NZB titles for Series/Season/Episode information and will check whether the episode has already been downloaded. It will check against the History database.</td>
+            <td>This option will analyze NZB titles for Series/Season/Episode information and will check whether the episode has already been downloaded. It will check against the History database.</td>
         </tr>
         <tr>
             <td><strong>Action when encrypted RAR is downloaded</strong></td>
-            <td>For more info see <a href="/wiki/advanced/password-protected-rars">Password-protected RARs</a> You can choose to either continue, abort or pause the download.</td>
+            <td>For more info see <a href="/wiki/advanced/password-protected-rars">Password-protected RARs</a>. You can choose to either continue, abort or pause the download.</td>
         </tr>
         <tr>
             <td><strong>Action when unwanted extension detected</strong></td>
-            <td>The presence of .exe files is often a sign of a troyan horse or virus being part of the post. You can abort or pause downloads that contain files with the listed extensions. Example exe,com,cmd,bat will trigger on the most used Windows executable content.</td>
+            <td>The presence of .exe files is often a sign of a trojan horse or virus being part of the post. You can abort or pause downloads that contain files with the listed extensions. Example exe,com,cmd,bat will trigger on the most used Windows executable content.</td>
         </tr>
         <tr>
             <td><strong>Sort by age</strong></td>
             <td>When you use a server with a low retention time, you can choose to download the oldest parts of a job first. This way you have more chance on completing the download.</td>
+        </tr>
+        <tr>
+            <td><strong>Direct Unpack</strong></td>
+            <td>Jobs will start unpacking during the downloading to reduce post-processing time. Only works for jobs that do not need repair and do not have strongly obfuscated filenames.<br> This feature is enabled automatically when your disk-speed is greater than 40MB/s. It will not be enabled automatically again if you manual disable it.</td>
         </tr>
     </tbody>
 </table>
@@ -88,16 +88,15 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Download all par2 files</strong></td>
-            <td>Download all par2 files when (after verification) the job was damaged. Pevents multiple rounds of verification.<br>
+            <td>Download all par2 files when (after verification) the job was damaged. Prevents multiple rounds of verification.<br>
             <span class="label label-warning">NOTE</span> SABnzbd will already download extra par2 files if it detects problems during the download, so usually this option is not required.</td>
         </tr>
         <tr>
-            <td><strong>Enable MultiCore par2</strong></td>
-            <td>See <a href="#multi-core">Multi-core PAR2</a>.</td>
-        </tr>
-        <tr>
             <td><strong>Extra PAR2 parameters</strong></td>
-            <td>See <a href="#multi-core">Multi-core PAR2</a>.</td>
+            <td>
+                <p>Extra arguments that will be passed when running <code>par2</code> or MultiPar for verification and repair.</p>
+                <p>Detailed information: <a href="#multi-core-multipar">Windows</a> and <a href="#multi-core">Linux</a>. No extra parameters are available on macOS.</p>
+            </td>
         </tr>
         <tr>
             <td><strong>Enable SFV-based checks</strong></td>
@@ -121,7 +120,7 @@ title: Switches
         </tr>
         <tr>
             <td><strong>On failure, try alternative NZB</strong></td>
-            <td>Some servers provide an alternative NZB when a download fails and we can try that one!</td>
+            <td>Some servers provide an alternative NZB when a download fails and we can try that one.</td>
         </tr>
         <tr>
             <td><strong>Nice parameters</strong></td>
@@ -136,8 +135,25 @@ title: Switches
             <td>If enabled, delete anything that looks like sample files after completion of post-processing.</td>
         </tr>
         <tr>
+            <td><strong>Use tags from indexer</strong></td>
+            <td>Enable meta-tags coming from indexers or from the content of the NZB. These tags contain cleaned up versions of titles, episode names, etc. If you prefer that everything is derived from the NZB name, disable.</td>
+        </tr>
+        <tr>
             <td><strong>Cleanup List</strong></td>
-            <td>List of file (extensions) that should be deleted in the cleanup stage. Examples: <code>.nfo, .nfo, .sfv</code> (You can leave out the dots, so nfo, nzb, sfv will do the same.)</td>
+            <td>List of file (extensions) that should be deleted in the cleanup stage. Examples: <code>.nfo, .nfo, .sfv</code> (You can leave out the dots, so <code>nfo, nzb, sfv</code> will do the same.)</td>
+        </tr>
+        <tr>
+            <td><strong>History Retention</strong></td>
+            <td>Automatically delete <strong>completed</strong> jobs from History when new jobs are added or every day at midnight.
+
+            <ul>
+                <li><code>Keep all jobs</code> = Do not auto-delete any history.</li>
+                <li><code>Keep maximum number of completed jobs</code> = Specify exact amount of jobs to keep, removing the oldest ones.</li>
+                <li><code>Keep completed jobs maximum number of days</code> = Delete jobs automatically when they are older than the set amount of days.</li>
+                <li><code>Do not keep any completed jobs</code> = No jobs are saved in the History. </li>
+            </ul>
+            <span class="label label-warning">NOTE</span> Beware that Duplicate Detection and some external tools rely on History information.<br>
+            </td>
         </tr>
     </tbody>
 </table>
@@ -157,17 +173,13 @@ title: Switches
             <td>Enable to replace dots with spaces in folder names.</td>
         </tr>
         <tr>
-            <td><strong>Replace illegal characters in folder names</strong></td>
-            <td>Replace illegal characters in folder names by equivalents. If you switch this off, illegal characters will be just removed.</td>
-        </tr>
-        <tr>
             <td><strong>Make Windows compatible</strong></td>
             <td>Especially useful for servers and sometimes external disks. Make sure names are compatible with Windows.</td>
         </tr>
     </tbody>
 </table>
 <h2 id="toc5">Quota <a name="quota"></a></h2>
-If you're unlucky enough to have an ISP that uses strict download caps, you may want to set a monthly quota for SABnzb.<br>
+<p>If you're unlucky enough to have an ISP that uses strict download caps, you may want to set a monthly quota for SABnzb.</p>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -195,7 +207,7 @@ If you're unlucky enough to have an ISP that uses strict download caps, you may 
         </tr>
     </tbody>
 </table>
-<p>Please note file following:</p>
+<p><strong>Please note file following:</strong></p>
 <ul>
     <li>Jobs with "Force" priority will ignore the paused state.</li>
     <li>Pausing is never immediate. All already requested articles will be received and processed. They probably would be counted by your ISP any way.</li>
@@ -222,31 +234,68 @@ If you're unlucky enough to have an ISP that uses strict download caps, you may 
         </tr>
     </tbody>
 </table>
+
 <hr>
-<h2 id="toc7">Multi-core PAR2</h2>
-<p><a name="multi-core"></a> The Windows and macOS distribution of SABnzbd include a multi-core version of the PAR2 program which will see improvements for those with multi-core processors. For Linux you will need to install the multi-core versions of <code>par2</code> yourself, <a href="/wiki/installation/multicore-par2">as described here</a>.</p>
-<p>
-    The behaviour of multi-core PAR2 can be influenced by an extra parameter.
-    This option is only of use to users running the multi-core par2 version, so do not specify the value if you are running the normal (single-core) version of par2.<br>
-    These are the choices:
-</p>
-<p>
-    <code>-t-</code> Use it single-core<br>
-    <code>-t0</code> Use multi-core for repairs but not for verify (prevents disk trashing)<br>
-    <code>-t+</code> Always use multi-core<br>
 
-    You may need to experiment a bit to get the best behaviour for your system.
-</p>
-<p>If you use the <code>par2-tbb</code> version (default for Windows and macOS) then you can also set the process priority:<br>
-     <code>-pN</code> to process at normal priority [default]<br>
-     <code>-pL</code> to process at low priority<br>
-     <code>-pI</code> to process at idle priority<br>
-</p>
-<p><span class="label label-warning">NOTE</span> Specifying more than 1 extra parameter might not work on every platform.</p>
+<h2 id="multi-core">Extra Par2 Parameters for Linux</h2>
+<p><span class="label label-warning">NOTE</span> For Windows, see <a href="#multi-core-multipar">below</a>.</p>
+<p>You will need to install the multi-core versions of <code>par2</code> yourself, <a href="/wiki/installation/multicore-par2">as described here</a>.</p>
 
-<p>Should you have another variant of PAR2, you specify its required parameters here.</p>
+<p>The behavior of multi-core PAR2 can be influenced by an extra parameter. By default it will use all available cores.</p>
+<ul>
+    <li><code>-t1</code> Use it single-core</li>
+    <li><code>-t&lt;n&gt;</code> Use <code>n</code> cores</li>
+    <li><code>-t0</code> [par2tbb] Use multi-core for repairs but not for verify (prevents disk trashing)</li>
+</ul>
+
+<p>If you use the <code>par2-tbb</code> version you can also set the process priority:</p>
+<ul>
+     <li><code>-pN</code> to process at normal priority [default]</li>
+     <li><code>-pL</code> to process at low priority</li>
+     <li><code>-pI</code> to process at idle (lowest) priority</li>
+</ul>
+<p><span class="label label-warning">NOTE</span> Specifying more than 1 extra parameter might not always work.</p>
 
 
+<hr>
+<h2 id="multi-core-multipar">Extra Par2 Parameters for Windows</h2>
+<p>The Windows version of SABnzbd has MultiPar integrated which allows you to specify the multi-core behavior and memory usage. Additionally, you can also enable the use of the GPU. Beware: GPU performance varies between systems and can also be slower on some systems.</p>
+
+<ul>
+    <li>
+        <p><code>/lc</code> Set this if you want to set number of using threads or want to disable extra feature (SSE2 is always used).</p>
+        <ul>
+            <li><code>/lc&lt;n&gt;</code> where <code>n</code> is from 1 to 11 for specific number of cores</li>
+            <li><code>/lc12</code> to use quarter number of physical cores</li>
+            <li><code>/lc13</code> to use half of physical cores</li>
+            <li><code>/lc14</code> to use 3/4 number of physical cores</li>
+            <li><code>/lc15</code> to use the number of physical cores (disable Hyper-Threading)</li>
+        </ul>
+        <p>You may set additional combinations by adding the following options to the already specified value:</p>
+        <ul>
+            <li><code>+16</code> to disable SSSE3</li>
+            <li><code>+128</code> to disable CLMUL</li>
+            <li><code>+256</code> to disable JIT</li>
+            <li><code>+512</code> to disable AVX2</li>
+            <li><code>+32</code> or <code>+64</code> (slower device) to enable GPU acceleration</li>
+        </ul>
+        <p><strong>For example:</strong> <code>/lc1</code> to use single core, <code>/lc32</code> to enable GPU usage or <code>/lc45</code> to use half cores and GPU usage.</p>
+    </li>
+    <li>
+        <p><code>/m</code> Set this if you want to set memory usage. Value is specified from 1 to 7 (1/7th to 7/8th):</p>
+        <ul>
+            <li><code>/m0</code> = Default (between 6/8 and 7/8 mostly)</li>
+            <li><code>/m1</code> = 1/8, 12.5%</li>
+            <li><code>/m4</code> = 4/8, 50%</li>
+            <li><code>/m7</code> = 7/8, 87.5%</li>
+        </ul>
+    </li>
+</ul>
+
+<p><span class="label label-warning">NOTE</span> Specifying more than 1 extra parameter might not always work.</p>
+
+
+<hr>
 <h2 id="toc8">Nice to reduce CPU priority</h2>
 <p><a name="nice"></a> When SABnzbd runs external tools like <strong>par2</strong> and <strong>unrar</strong>, these tools may use up all CPU capacity.
     If you set parameters in the <strong>nice</strong> option box, the tool will be used (if installed).
@@ -254,6 +303,8 @@ If you're unlucky enough to have an ISP that uses strict download caps, you may 
     Popular parameters are <code>-n10</code>.<br>
     For more info, see the <a href="http://linux.die.net/man/1/nice" target="_blank">nice man-page</a>
 </p>
+
+<hr>
 <h2 id="toc9">IONice to reduce disk priority</h2>
 <p><a name="ionice"></a> When SABnzbd runs external tools like <strong>par2</strong> and <strong>unrar</strong>, these tools may use up all disk capacity
     This can make simultaneous use of the system problematic, e.g. when you want to watch a movie.
