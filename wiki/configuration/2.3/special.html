@@ -133,12 +133,12 @@ title: Special settings
         <tr>
             <td><code>enable_bonjour</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Will announce itself on Apple's Bonjour protocol.</td>
+            <td>Will announce itself on Apple's Bonjour protocol. <a href="/wiki/extra/bonjour-support">Read more here</a>.</td>
         </tr>
         <tr>
-            <td><code>allow_duplicate_files</code></td>
+            <td><code>reject_duplicate_files</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Some NZB's have the same file listed twice, SABnzbd will only add the largest of the files with the same name by default. If you want both files, enable this.</td>
+            <td>Some NZB's have the same file listed twice, SABnzbd will only add the largest of the files with the same name if this is enabled.</td>
         </tr>
         <tr>
             <td><code>warn_dupl_jobs</code></td>
@@ -212,14 +212,14 @@ title: Special settings
             <td>When SABnzbd wants to store files on the final destination, this destination might be an external drive. Especially USB drives can take considerable time to wake up after going into standby. SABnzbd will try 5 times with intervals of one second. You can increase this value if needed.</td>
         </tr>
         <tr>
-            <td><code>history_limit</code></td>
-            <td><code>10</code></td>
-            <td>Some external tools query the full history repeatedly, without setting a limit to the number of items. With a large history, this can lead to problems. Set this option to limit the history.</td>
-        </tr>
-        <tr>
             <td><code>show_sysload</code></td>
             <td><code>2</code></td>
             <td>When working on a Linux/Unix system you can have SABnzbd display no system information (0), Only the CPU load indicators (1) and also the memory usage (2). <br>Linux memory usage "V" is total memory usage of SABnzbd, "R" is actually used physical memory</td>
+        </tr>
+        <tr>
+            <td><code>url_base</code></td>
+            <td><code>/sabnzbd</code></td>
+            <td>When using a reverse proxy (or just if you feel like it), you can change the base-URL of SABnzbd that is used during redirects. Requires restart of SABnzbd.</td>
         </tr>
         <tr>
             <td><code>direct_unpack_threads</code></td>
