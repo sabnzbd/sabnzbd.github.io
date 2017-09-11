@@ -191,6 +191,8 @@ redirect_from: "/wiki/advanced/automation-support"
 
 <p><span class="label label-danger">NOTE</span> In 2.0.0+ many fields not related to the queue were deprecated. Only fields related to the queue remain. All those fields can still be found in <a href="#fullstatus">fullstatus</a>.</p>
 
+<p><span class="label label-danger">NOTE</span> In 2.3.0+ the <code>missing</code> field was removed and replaced by <code>mbmissing</code> to actually list the amount of missing data instead of the non-specific number of articles.</p>
+
 {% highlight json %}
 {
     "queue":{
@@ -215,12 +217,12 @@ redirect_from: "/wiki/advanced/automation-support"
                 "status":"Downloading",
                 "index":0,
                 "password":"",
-                "missing":4,
                 "avg_age":"2895d",
                 "script":"None",
                 "has_rating":false,
                 "mb":"1277.65",
                 "mbleft":"1271.59",
+                "mbmissing":"0.0",
                 "size":"1.2 GB",
                 "sizeleft":"1.2 GB",
                 "filename":"TV.Show.S04E11.720p.HDTV.x264",
@@ -236,12 +238,12 @@ redirect_from: "/wiki/advanced/automation-support"
                 "status":"Paused",
                 "index":1,
                 "password":"",
-                "missing":0,
                 "avg_age":"2895d",
                 "script":"None",
                 "has_rating":false,
                 "mb":"1277.76",
                 "mbleft":"1277.76",
+                "mbmissing":"0.0",
                 "size":"1.2 GB",
                 "sizeleft":"1.2 GB",
                 "filename":"TV.Show.S04E12.720p.HDTV.x264",
@@ -961,10 +963,6 @@ redirect_from: "/wiki/advanced/automation-support"
             <td>The orphaned job folder left in the Incomplete folder. Orphaned jobs can only be removed from a skin, not through the API</td>
         </tr>
         <tr>
-            <td><code>dashrefreshcounter</code></td>
-            <td>How often the disk speed was calculated</td>
-        </tr>
-            <tr>
             <td><code>pystone</code></td>
             <td>Indication of CPU speed, see <a href="/wiki/advanced/highspeed-downloading">Highspeed Downloading</a></td>
         </tr>
@@ -986,7 +984,6 @@ redirect_from: "/wiki/advanced/automation-support"
         "downloaddirspeed":0,
         "completedir":"C:\\Users\\xxx\\Videos\\Complete",
         "completedirspeed":0,
-        "dashrefreshcounter":0,
         "loglevel":"0",
         "logfile":"C:\\Users\\xxx\\AppData\\Local\\sabnzbd\\logs\\sabnzbd.log",
         "configfn":"C:\\Users\\xxx\\AppData\\Local\\sabnzbd\\sabnzbd.ini",
@@ -1129,15 +1126,22 @@ Example of filtering the server settings by keyword:
 
 <h2 id="warnings">Get all active warnings </h2>
 <pre><code>api?mode=warnings</code></pre>
+
+<p><span class="label label-danger">NOTE</span> In 2.3.0+ this API call was changed to now return an array and timestamp to allow for more flexibility. Before 2.3.0 a single-line result was returned for each warning.</p>
+
 {% highlight json %}
 {
     "warnings":[
-        "2015-12-26 19:53:42,567\nWARNING\n[decoder] Badly formed yEnc article in <Article: article=, bytes=, partnum=, art_id=>",
-        "2015-12-26 19:54:45,861\nWARNING\n[assembler] <Article: article=, bytes=, partnum=, art_id=> missing",
-        "2015-12-26 20:44:28,336\nWARNING\n[decoder] CRC Error in <Article: article=, bytes=, partnum=, art_id=> (4134546D -> A8F07173)",
-        "2015-12-27 01:13:37,349\nWARNING\n[downloader] Thread 3@news.powerusenet.com:119: timed out",
-        "2015-12-27 01:13:38,365\nWARNING\n[downloader] Thread 2@news.powerusenet.com:119: timed out",
-        "2015-12-27 01:45:34,041\nWARNING\n[downloader] Thread 1@news.powerusenet.com:119: timed out"
+        {
+            "text": "API key missing, please enter the API key from Config->General into your 3rd party program",
+            "type": "WARNING",
+            "time": 1505153489
+        },
+        {
+            "text": "Thread 3@news.powerusenet.com:119: login failed",
+            "type": "ERROR",
+            "time": 1505139501
+        }
     ]
 }
 {% endhighlight %}
