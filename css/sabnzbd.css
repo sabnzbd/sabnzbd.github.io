@@ -282,6 +282,10 @@ footer a:hover,
     margin-left: 5px;
 }
 
+.form-stable-only {
+    margin-top: 20px;
+}
+
 /*** Donate page ***/
 .donations-container h1 {
     margin-bottom: 20px;

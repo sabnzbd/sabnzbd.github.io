@@ -9,6 +9,11 @@ title: Older releases and download statistics
         <div class="row">
             <div class="col-md-3">
                 <strong>Download statistics of recent releases provided by the GitHub API.</strong>
+                <div class="form-group form-stable-only">
+                    <label class="form-control" for="stable-only" id="stable-only-label">
+                        <input type="checkbox" name="stable-only" id="stable-only" value="1" checked="checked" onchange="triggerStatsLookup()" /> <span>Hide testing releases</span>
+                    </label>
+                </div>
             </div>
             <div class="col-md-9">
                 <div id="container-stats">Loading..</div>
@@ -19,21 +24,29 @@ title: Older releases and download statistics
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 <script type="text/javascript">
-    // Get all data from GitHub
-    $.ajax('https://api.github.com/repos/sabnzbd/sabnzbd/releases', {
-        timeout: 3000
-    }).done(function(releases) {
-        // Store the data
-        sessionStorage.releases_data = JSON.stringify(releases)
-        showStats(releases)
-    })
+    function triggerStatsLookup() {
+        // Get all data from GitHub
+        $.ajax('https://api.github.com/repos/sabnzbd/sabnzbd/releases', {
+            timeout: 3000
+        }).done(function(releases) {
+            // Store the data
+            sessionStorage.releases_data = JSON.stringify(releases)
+            showStats(releases)
+        })
+    }
+    triggerStatsLookup()
 
     // For download stats
     function showStats(data) {
         // Clear the output box and loop over all the data
         var theContainer = $('#container-stats');
         theContainer.html('')
+        // Stable only?
+        var onlyStable = $('input[type="checkbox"]').is(':checked')
         $.each(data, function(key, release) {
+            // Stable only?
+            if(onlyStable && release.prerelease) return
+
             // Title
             theContainer.append('<h3>' +
                                     '<a href="'+release.html_url+'" target="_blank">'+release.name+'</a> ' +
