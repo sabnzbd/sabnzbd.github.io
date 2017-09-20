@@ -274,6 +274,7 @@ footer a:hover,
 #stable-changelog,
 #beta-changelog {
     padding: 0px 22px 22px;
+    max-width: 750px;
 }
 
 #beta-please-report a,
