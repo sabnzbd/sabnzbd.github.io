@@ -293,12 +293,12 @@ footer a:hover,
 
 .donations-container .glyphicon-heart {
     color: #FFCA28;
-    top: 10px;
-    font-size: 1.3em;
+    top: 13px;
+    font-size: 1.4em;
     animation: pulseheart 1.2s linear infinite;
 }
 
-.donations-container .col-md-3 h2 {
+.donations-container .col-md-2 h3 {
     text-align: center;
     margin-bottom: 10px;
 }
@@ -309,7 +309,7 @@ footer a:hover,
     text-align: center;
 }
 
-.donations-container .col-md-3 {
+.donations-container .col-md-2 {
     margin-bottom: 30px;
 }
 
@@ -323,7 +323,7 @@ footer a:hover,
 
 @keyframes pulseheart {
     50% {
-        transform: scale(0.8);
+        transform: scale(0.7);
         opacity: 0.8;
     }
     100% {
