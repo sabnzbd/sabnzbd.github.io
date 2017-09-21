@@ -1,7 +1,7 @@
 name: SABnzbd.org
 
 # Needs to be a string, for string-comparison
-wiki_version: '2.2'
+wiki_version: '2.3'
 
 giganews_link: 'https://www.giganews.com/usenet-special/'
 supernews_link: 'https://www.supernews.com/special/usenet-special/'
