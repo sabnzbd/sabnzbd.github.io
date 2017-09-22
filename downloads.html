@@ -2,7 +2,6 @@
 title: Downloads
 redirect_from:
     - /download/
-    - /downloads/
 ---
 
 {% include logo_container.html %}
@@ -13,59 +12,51 @@ redirect_from:
             <div class="col-sm-6 download-stable">
                 <h2>Latest stable release</h2>
                 <p>Mature and stable. <br/><br/></p>
-                <div class="show-before-load">
-                    Loading..
-                </div>
-                <div class="show-after-load">
-                    <a class="download-button">
-                        <span class="glyphicon glyphicon-circle-arrow-down"></span>
-                        <h4>Version</h4>
-                        <strong class="download-os"></strong>
-                    </a>
-                    <div class="download-links" id="download-links-stable">
-                        <ul>
-                            <li><a class="download-link-win-setup" href="">Windows Installer</a></li>
-                            <li><a class="download-link-win64-bin" href="">Windows Standalone</a> (64bit)</li>
-                            <li><a class="download-link-win32-bin" href="">Windows Standalone</a> (32bit)</li>
-                            <li><a class="download-link-osx" href="">macOS</a></li>
-                            <li><a class="download-link-src" href="">Linux</a></li>
-                            <li><a href="/wiki/installation/install-ubuntu-repo">Install via Ubuntu/Debian PPA Repository</a></li>
-                            <li><a class="download-link-source" href="">Source Code</a></li>
-                            <li><a class="download-link-changelog" href="#" data-featherlight="#stable-changelog">Changelog</a></li>
-                        </ul>
-                    </div>
+                <a class="download-button" href="https://github.com/sabnzbd/sabnzbd/releases/tag/{{ site.latest_stable }}">
+                    <span class="glyphicon glyphicon-circle-arrow-down"></span>
+                    <h4>SABnzbd {{ site.latest_stable }}</h4>
+                    <strong class="download-os">Browse packages</strong>
+                </a>
+                <div class="download-links" id="download-links-stable">
+                    <ul>
+                        <li><a class="download-link-win-setup" href="https://github.com/sabnzbd/sabnzbd/releases/download/{{ site.latest_stable }}/SABnzbd-{{ site.latest_stable }}-win-setup.exe">Windows Installer</a></li>
+                        <li><a class="download-link-win64-bin" href="https://github.com/sabnzbd/sabnzbd/releases/download/{{ site.latest_stable }}/SABnzbd-{{ site.latest_stable }}-win64-bin.zip">Windows Standalone</a> (64bit)</li>
+                        <li><a class="download-link-win32-bin" href="https://github.com/sabnzbd/sabnzbd/releases/download/{{ site.latest_stable }}/SABnzbd-{{ site.latest_stable }}-win32-bin.zip">Windows Standalone</a> (32bit)</li>
+                        <li><a class="download-link-osx" href="https://github.com/sabnzbd/sabnzbd/releases/download/{{ site.latest_stable }}/SABnzbd-{{ site.latest_stable }}-osx.dmg">macOS</a></li>
+                        <li><a class="download-link-src" href="https://github.com/sabnzbd/sabnzbd/releases/download/{{ site.latest_stable }}/SABnzbd-{{ site.latest_stable }}-src.tar.gz">Linux</a></li>
+                        <li><a href="/wiki/installation/install-ubuntu-repo">Install via Ubuntu/Debian PPA Repository</a></li>
+                        <li><a class="download-link-source" href="https://github.com/sabnzbd/sabnzbd/archive/{{ site.latest_stable }}.zip">Source Code</a></li>
+                        <li><a class="link-changelog" href="#">Changelog</a></li>
+                    </ul>
                 </div>
                 <div class="text-left">
                     <span class="glyphicon glyphicon-equalizer"></span>
                     <a href="/download-stats">Older versions and download statistics</a>
                 </div>
             </div>
+            {% if site.latest_testing != '' %}
             <div class="col-sm-6 download-beta">
                 <h2>Latest testing release</h2>
                 <p>Latest features but still in development. <br>Can contain bugs, please <a href="http://forums.sabnzbd.org/viewforum.php?f=11">report them</a>!</p>
-                <div class="show-before-load">
-                    Loading..
-                </div>
-                <div class="show-after-load">
-                    <a class="download-button">
-                        <span class="glyphicon glyphicon-circle-arrow-down"></span>
-                        <h4>Version</h4>
-                        <strong class="download-os"></strong>
-                    </a>
-                    <div class="download-links" id="download-links-beta">
-                        <ul>
-                            <li><a class="download-link-win-setup" href="">Windows Installer</a></li>
-                            <li><a class="download-link-win64-bin" href="">Windows Standalone</a> (64bit)</li>
-                            <li><a class="download-link-win32-bin" href="">Windows Standalone</a> (32bit)</li>
-                            <li><a class="download-link-osx" href="">macOS</a></li>
-                            <li><a class="download-link-src" href="">Linux</a></li>
-                            <li><a href="/wiki/installation/install-ubuntu-repo">Install via Ubuntu/Debian PPA Repository</a></li>
-                            <li><a class="download-link-source" href="">Source Code</a></li>
-                            <li><a class="download-link-changelog" href="#" data-featherlight="#beta-changelog">Changelog</a></li>
-                        </ul>
-                    </div>
+                <a class="download-button" href="https://github.com/sabnzbd/sabnzbd/releases/tag/{{ site.latest_testing }}">
+                    <span class="glyphicon glyphicon-circle-arrow-down"></span>
+                    <h4>SABnzbd {{ site.latest_testing }}</h4>
+                    <strong class="download-os">Browse packages</strong>
+                </a>
+                <div class="download-links" id="download-links-beta">
+                    <ul>
+                        <li><a class="download-link-win-setup" href="https://github.com/sabnzbd/sabnzbd/releases/download/{{ site.latest_testing }}/SABnzbd-{{ site.latest_testing }}-win-setup.exe">Windows Installer</a></li>
+                        <li><a class="download-link-win64-bin" href="https://github.com/sabnzbd/sabnzbd/releases/download/{{ site.latest_testing }}/SABnzbd-{{ site.latest_testing }}-win64-bin.zip">Windows Standalone</a> (64bit)</li>
+                        <li><a class="download-link-win32-bin" href="https://github.com/sabnzbd/sabnzbd/releases/download/{{ site.latest_testing }}/SABnzbd-{{ site.latest_testing }}-win32-bin.zip">Windows Standalone</a> (32bit)</li>
+                        <li><a class="download-link-osx" href="https://github.com/sabnzbd/sabnzbd/releases/download/{{ site.latest_testing }}/SABnzbd-{{ site.latest_testing }}-osx.dmg">macOS</a></li>
+                        <li><a class="download-link-src" href="https://github.com/sabnzbd/sabnzbd/releases/download/{{ site.latest_testing }}/SABnzbd-{{ site.latest_testing }}-src.tar.gz">Linux</a></li>
+                        <li><a href="/wiki/installation/install-ubuntu-repo">Install via Ubuntu/Debian PPA Repository</a></li>
+                        <li><a class="download-link-source" href="https://github.com/sabnzbd/sabnzbd/archive/{{ site.latest_testing }}.zip">Source Code</a></li>
+                        <li><a class="link-changelog" href="#">Changelog</a></li>
+                    </ul>
                 </div>
             </div>
+            {% endif %}
         </div>
         <div class="row padding-row text-center">
             {% include ad_giganews_supernews_banner.html %}
@@ -73,10 +64,14 @@ redirect_from:
     </div>
     <div class="hidden">
         <div id="stable-changelog">
-            <span class="changelog-content"></span>
+            <span class="changelog-content">
+                Loading changelog...
+            </span>
         </div>
         <div id="beta-changelog">
-            <span class="changelog-content"></span>
+            <span class="changelog-content">
+                Loading changelog...
+            </span>
         </div>
         <div id="beta-please-report">
             <h3>Thank you for trying our pre-release version!</h3>
@@ -89,6 +84,8 @@ redirect_from:
         </div>
     </div>
 </div>
+
+{% include download_buttons.html %}
+
 <script src="/js/featherlight.min.js"></script>
 <script src="/js/showdown.min.js"></script>
-<script src="/js/sabnzbd.js?v={{ site.time | date: '%d%m%Y' }}"></script>

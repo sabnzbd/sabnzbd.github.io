@@ -1,14 +1,23 @@
+# For in the <title>
 name: SABnzbd.org
 
 # Needs to be a string, for string-comparison
 wiki_version: '2.3'
 
+# For downloads page. Needs the full x.x.x notation!
+# Needs to be a string, for string-comparison
+latest_stable: '2.3.0'
+latest_testing: ''
+
+# AD-links
 giganews_link: 'https://www.giganews.com/usenet-special/'
 supernews_link: 'https://www.supernews.com/special/usenet-special/'
 
+# Extra plugins
 gems:
   - jekyll-redirect-from
 
+# Template settings
 defaults:
   -
     scope:

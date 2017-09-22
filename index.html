@@ -8,14 +8,11 @@ title: The free and easy binary newsreader
         </div>
         <div class="col-md-6 downloads-row">
             <div class="download-buttons-wrapper">
-                <div class="show-before-load">
-                    Loading..
-                </div>
-                <div class="show-after-load download-stable">
-                    <a class="download-button">
+                <div class="download-stable">
+                    <a class="download-button" href="https://github.com/sabnzbd/sabnzbd/releases/tag/{{ site.latest_stable }}">
                         <span class="glyphicon glyphicon-circle-arrow-down"></span>
-                        <h4>Version</h4>
-                        <strong class="download-os"></strong>
+                        <h4>SABnzbd {{ site.latest_stable }}</h4>
+                        <strong class="download-os">Browse packages</strong>
                     </a>
                     <a class="download-extra" href="/downloads">Downloads for other platforms</a>
                 </div>
@@ -27,6 +24,9 @@ title: The free and easy binary newsreader
         </div>
     </div>
 </div>
+
+{% include download_buttons.html %}
+
 <div class="main-wrapper content-container">
     <div id="main-container" class="container">
         <div class="row text-center" id="giganews-wide">
@@ -91,5 +91,20 @@ title: The free and easy binary newsreader
 </div>
 <script src="/js/lightslider.min.js"></script>
 <script src="/js/featherlight.min.js"></script>
-<script src="/js/showdown.min.js"></script>
-<script src="/js/sabnzbd.js?v={{ site.time | date: '%d%m%Y' }}"></script>
+
+<script type="text/javascript">
+    // Slideshow only for frontpage
+    $(document).ready(function() {
+        if($("#frontpage-slideshow").length) {
+            $('#frontpage-slideshow').lightSlider({
+                auto:true,
+                item:2,
+                galleryMargin: 15,
+                loop:true,
+                pause: 4000,
+                nextHtml: '<span class="glyphicon glyphicon-menu-right"></span>',
+                prevHtml: '<span class="glyphicon glyphicon-menu-left"></span>'
+            });
+        }
+    })
+</script>
