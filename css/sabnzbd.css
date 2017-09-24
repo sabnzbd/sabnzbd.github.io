@@ -296,8 +296,8 @@ footer a:hover,
 
 .donations-container .glyphicon-heart {
     color: #FFCA28;
-    top: 13px;
-    font-size: 1.4em;
+    top: 10px;
+    font-size: 1.3em;
     animation: pulseheart 1.2s linear infinite;
 }
 
@@ -312,6 +312,10 @@ footer a:hover,
     text-align: center;
 }
 
+.donations-container .qr-codes {
+    margin-bottom: 20px;
+}
+
 .donations-container .col-md-2 {
     margin-bottom: 30px;
 }
@@ -324,6 +328,10 @@ footer a:hover,
     font-size: 1.2em;
 }
 
+.donations-container .paypal-row {
+    display: none;
+}
+
 @keyframes pulseheart {
     50% {
         transform: scale(0.7);
@@ -334,6 +342,90 @@ footer a:hover,
         opacity: 1;
     }
 }
+
+.donate-icon-row img {
+    width: 70px;
+    margin: 10px 20px 25px;
+}
+
+.donate-icon-row .glyphicon {
+    display: inline-block;
+    width: 110px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+}
+
+#donate-amount {
+    font-size: 1.7em;
+    font-weight: bold;
+    display: block;
+    float: left;
+    line-height: 40px;
+    width: 60px;
+}
+
+.donate-wrapper {
+    background-color: #f2f2f2;
+    padding: 10px 10px 10px;
+    min-height: 58px;
+    box-shadow: 0px 1px 2px rgba(0,0,0,.2);
+    max-width: 555px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.donate-wrapper a {
+    float: right;
+    font-size: 1.3em;
+    margin-left: 20px;
+    margin-top: 2px;
+    display: block;
+    color: white;
+    border: 0;
+    box-shadow: 0px 1px 2px rgba(0,0,0,.2);
+}
+
+.donate-wrapper a:hover {
+    color: white;
+}
+
+.donate-wrapper .glyphicon-chevron-right {
+    top: 3px;
+}
+
+.donations-container .filled-circle {
+    border-radius: 50% !important;
+    width: 17px;
+    height: 17px;
+    display: inline-block;
+    background-color: #FFCA28;
+    vertical-align: top;
+}
+
+.donations-container .connect-dash {
+    display: inline-block;
+    width: 90px;
+    height: 18px;
+    background-color: #FFCA28;
+    border-top: 8px solid white;
+    border-bottom: 8px solid white;
+}
+
+.donate-icon-row img,
+.donations-container .connect-dash,
+.donations-container .filled-circle {
+    filter: grayscale(100%);
+    opacity: 0.8;
+}
+
+.donate-icon-row img.selected,
+.donations-container .connect-dash.selected,
+.donations-container .filled-circle.selected {
+    filter: grayscale(0);
+    opacity: 1.0;
+}
+
 
 /*** Wiki ****/
 .navbar-wiki-button,
@@ -596,6 +688,14 @@ aside {
     .container-download-page .download-button {
         margin: 0 -15px;
         width: calc(100% + 30px);
+    }
+
+    .donations-container .paypal-row {
+        display: block;
+    }
+
+    .donations-container .slider-row {
+        display: none;
     }
 
     /* Some overrides for the popup on mobile */

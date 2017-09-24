@@ -17,12 +17,67 @@ redirect_from:
                 <p>It is not required to donate in order to use SABnzbd or any of its features.</p>
                 <h2>Thank you <span class="glyphicon glyphicon-heart"></h2>
                 <hr>
-                <p>
-                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=670741" target="_blank" class="paypal-link">
-                        Donate via PayPal or credit card (account not required)<br>
-                        <img src="/images/paypal_donate.jpg" alt="Donate via PayPal">
-                    </a>
-                </p>
+            </div>
+        </div>
+        <div class="row paypal-row">
+            <div class="col-md-12 text-center">
+                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=670741" target="_blank" class="paypal-link">
+                    Donate via PayPal or credit card (PayPal account not required)<br>
+                    <img src="/images/donate/paypal_donate.jpg" alt="Donate via PayPal">
+                </a>
+            </div>
+        </div>
+        <div class="row slider-row">
+            <div class="col-md-12 text-center donate-icon-row">
+                <img src="/images/donate/gift.svg" alt="You encourage us to keep working on SABnzbd and buy ourselves a coffee to keep going." data-amount="5" class="selected">
+                <img src="/images/donate/server.svg" alt="With the help of your donation we can pay our webhosting fees and get test accounts." data-amount="10" class="selected">
+                <img src="/images/donate/chocolate_cheese.svg" alt="Some of us live in very expensive Switzerland.. <br>Now we can keep buying Swiss cheese and chocolate!" data-amount="15">
+                <img src="/images/donate/coding.svg" alt="Now we can start saving up for some new hardware to code on and still get our cheese and chocolate!" data-amount="25">
+                <img src="/images/donate/love.svg" alt="For this amount you can ask us (almost) anything! SABnzbd feature-related of course.." data-amount="50">
+                <br/>
+                <span class="filled-circle" data-amount="5" class="selected"></span>
+                <span class="connect-dash" data-amount="10" class="selected"></span>
+                <span class="filled-circle" data-amount="10" class="selected"></span>
+                <span class="connect-dash" data-amount="15"></span>
+                <span class="filled-circle" data-amount="15"></span>
+                <span class="connect-dash" data-amount="25"></span>
+                <span class="filled-circle" data-amount="25"></span>
+                <span class="connect-dash" data-amount="50"></span>
+                <span class="filled-circle" data-amount="50"></span>
+            </div>
+        </div>
+        <div class="row slider-row">
+            <div class="donate-text-row">
+                <div class="donate-wrapper">
+                    <a class="btn btn-success" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=670741" target="_blank" title="Donate via PayPal or credit card (PayPal account not required)" data-toggle="tooltip" data-placement="bottom">
+                        Donate <span class="glyphicon glyphicon-chevron-right">
+                    </span></a>
+                    <span id="donate-amount">$ 10</span>
+                    <span id="donate-text"></span>
+                </div>
+
+                <script type="text/javascript">
+                    $('.donate-icon-row img, .slider-row .filled-circle, .slider-row .connect-dash').hover(function() {
+                        var hoverAmount = $(this).data('amount')
+
+                        // Update text
+                        $('#donate-amount').text('$ ' + hoverAmount)
+                        $('#donate-text').html($('.donate-icon-row img[data-amount="' + hoverAmount + '"]').attr('alt'))
+
+                        // Update the dash
+                        $('.filled-circle, .connect-dash, .donate-icon-row img').removeClass('selected').each(function() {
+                            if($(this).data('amount') <= hoverAmount) {
+                                $(this).addClass('selected')
+                            }
+                        })
+                    })
+                    $('.donate-icon-row img.selected').trigger('mouseover')
+                    $('[data-toggle="tooltip"]').tooltip();
+                </script>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <hr>
             </div>
         </div>
