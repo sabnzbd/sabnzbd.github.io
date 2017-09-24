@@ -69,7 +69,7 @@ redirect_from: "/wiki/advanced/user-scripts"
         </tr>
         <tr>
             <td>8</td>
-            <td>URL to be called when job failed (if provided by the server, it is always sent, so check parameter 7!). <br>The URL is provided by some indexers as the X-DNZB-Failure header.</td>
+            <td>URL to be called when job failed (if provided by the server, it is always sent, so check parameter 7!). <br>The URL is provided by some indexers as the X-DNZB-Failure header</td>
         </tr>
     </tbody>
 </table>
@@ -103,11 +103,13 @@ sys.exit(0)
 <h2 id="env_vars">Enviroment variables available in SABnzbd 2.0.0+</h2>
 <p>Your script can now get extra information via environment variables:</p>
 <table class="table table-bordered table-hover table-not-fixed">
-    <tbody>
+    <thead>
         <tr>
             <th>Position</th>
             <th>Description</th>
         </tr>
+    </thead>
+    <tbody>
         <tr>
             <td>SAB_SCRIPT</td>
             <td>The name of the current script</td>
@@ -122,7 +124,7 @@ sys.exit(0)
         </tr>
         <tr>
             <td>SAB_PP_STATUS</td>
-            <td>Was post-processing succesfull (repair/unpack)</td>
+            <td>Was post-processing succesfully completed (repair and/or unpack, if enabled by user)</td>
         </tr>
         <tr>
             <td>SAB_BYTES</td>
@@ -170,6 +172,10 @@ sys.exit(0)
             <td>Current status (completed/failed/running)</td>
         </tr>
         <tr>
+            <td>SAB_FAIL_MSG</td>
+            <td>If job failed, why did it fail</td>
+        </tr>
+        <tr>
             <td>SAB_AGE</td>
             <td>Average age of the articles in the post</td>
         </tr>
@@ -209,10 +215,7 @@ sys.exit(0)
             <td>SAB_PRIORITY</td>
             <td>Priority set by user</td>
         </tr>
-        <tr>
-            <td>SAB_FAIL_MSG</td>
-            <td>If job failed, why did it fail</td>
-        </tr>
+
         <tr>
             <td>SAB_GROUP</td>
             <td>Newsgroup where most of the job's articles came from</td>
@@ -221,8 +224,34 @@ sys.exit(0)
             <td>SAB_VERSION</td>
             <td>The version of SABnzbd used</td>
         </tr>
+        <tr>
+            <td>SAB_PROGRAM_DIR</td>
+            <td><lThe directory where the current SABnzbd instance is located</td>
+        </tr>
+        <tr>
+            <td>SAB_PAR2_COMMAND</td>
+            <td><span class="label label-warning">v2.3.1+</span> The path to the <code>par2</code> command on the system that SABnzbd uses</td>
+        </tr>
+        <tr>
+            <td>SAB_MULTIPAR_COMMAND</td>
+            <td><span class="label label-warning">v2.3.1+</span> Windows-only (empty on other systems). The path to the MultiPar command on the system that SABnzbd uses</td>
+        </tr>
+        <tr>
+            <td>SAB_RAR_COMMAND</td>
+            <td><span class="label label-warning">v2.3.1+</span> The path to the <code>unrar</code> command on the system that SABnzbd uses</td>
+        </tr>
+        <tr>
+            <td>SAB_ZIP_COMMAND</td>
+            <td><span class="label label-warning">v2.3.1+</span> The path to the <code>unzip</code> command on the system that SABnzbd uses</td>
+        </tr>
+        <tr>
+            <td>SAB_7ZIP_COMMAND</td>
+            <td><span class="label label-warning">v2.3.1+</span> The path to the <code>7z</code> command on the system that SABnzbd uses. Not all systems have 7zip installed (it's optional for SABnzbd), so this can also be empty</td>
+        </tr>
     </tbody>
 </table>
+
+
 
 <hr>
 <h2>Example script using environment variables</h2>
