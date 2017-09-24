@@ -75,12 +75,16 @@ redirect_from: "/wiki/advanced/user-scripts"
         </tr>
     </tbody>
 </table>
-<p>All parameters are properly quoted so that they may contain embedded spaces.</p>
-<p>The "return" code that your script itself returns should be 0 if all went well or non-zero if errors occurred. If the return code is something else than 0, SABnzbd's History will show that return code (also known as exit code) in green surrounded by "Exit(...)".</p>
 
-<p>A script can return an exit code. SABnzbd will show a non-zero code in the download report, but the job will not be flagged as failed.<br>
-    <strong>Note:</strong> Release 1.0.0 has an option in <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a> to let a non-zero code mark the job as failed.
+<p>All parameters are properly quoted so that they may contain embedded spaces.</p>
+<p>
+    The "return" code that your script itself returns should be 0 if all went well or non-zero if errors occurred. If the return code is something else than 0, SABnzbd's History will show that return code (also known as exit code) in green surrounded by "Exit(...)".
 </p>
+
+<p>
+    A script can return an exit code. SABnzbd will show a non-zero code in the download report, but by default the job will not be flagged as failed. In <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a> there is the option to let a non-zero code mark the job as failed.
+</p>
+
 <hr>
 
 <h2 id="toc0">Example Python script</h2>

@@ -4,34 +4,34 @@ title: How to make a portable installation
 <p><em>Only for Windows</em></p>
 <p>Portable means that you can:</p>
 <ul>
-    <li>Have an installation on an external medium (USB-harddisk)</li>
+    <li>Have an installation on an external medium (USB-harddisk).</li>
     <li>You can plug in to any PC as is.</li>
-    <li>You don't need to install anything on the PC</li>
-    <li>You don't need to change the setup</li>
+    <li>You don't need to install anything on the PC.</li>
+    <li>You don't need to change the setup.</li>
 </ul>
 <p>All you need to do is:</p>
 <ul>
-    <li>Create a folder for SABnzbd to put its data</li>
-    <li>Make sure that all directories are relative paths starting from the directory where the INI file is</li>
-    <li>Tell SABnzbd where the INI file is, using the -f parameter</li>
-    <li>Use 127.0.0.1 or 0.0.0.0 as the web server address</li>
-    <li>Choose a port number that is free on all systems (8080 or 8088 is good choice)</li>
+    <li>Create a folder for SABnzbd to put its data.</li>
+    <li>Make sure that all directories are relative paths starting from the directory where the INI file is.</li>
+    <li>Tell SABnzbd where the INI file is, using the <code>-f</code> parameter. If left empty, the <a href="/wiki/advanced/directory-setup">default location</a> will be used on each system.</li>
+    <li>Use <code>127.0.0.1</code>, <code>localhost</code> or <code>0.0.0.0</code> as the web server address.</li>
+    <li>Choose a port number that is free on all systems (<code>8080</code> or <code>8088</code> is good choice)</li>
 </ul>
-<p><strong>Notes</strong>:<br>
-    The easiest way is to use the "portable.cmd" script<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup>.
+<hr>
+<p>
+    <span class="label label-warning">NOTE</span>
+    The easiest way is to use the <code>portable.cmd</code> script included with SABnzbd:
 </p>
 <div class="code">
-    <pre><code>portable.cmd -s 127.0.0.1:8080</code>
+    <pre><code>portable.cmd -s 127.0.0.1:8080 -f path/to/sabnzbd.ini</code>
 </pre>
 </div>
-<br>
-You replace 8080 with a correct port number for the particular PC.<br>
-The -s parameter is just a one time requirement.
-<p>You may encounter software firewalls which you will have to teach about SABnzbd.<br>
-    SABnzbd has two types of Internet access: port 119 or 443 for communicating with the Usenet server and port 8080 (or whatever else you choose) to communicate with the web browser.
+
+<p>You replace <code>8080</code> with a correct port number for the particular PC.<br>
+    The <code>-s</code> parameter is just a one time requirement.
 </p>
-<p>Choose the "Default" user interface, since only that one is compatible with all web browsers.</p>
-<div class="footnotes-footer">
-    <div class="title">Footnotes</div>
-    <div class="footnote-footer" id="footnote-1">1. Included since release 1.0.1+</div>
-</div>
+
+<p>You may encounter software firewalls which you will have to teach about SABnzbd.<br>
+    SABnzbd has two types of Internet access: port 119 or 563 for communicating with the Usenet server and port 8080 (or whatever else you choose) to communicate with the web browser.
+</p>
+

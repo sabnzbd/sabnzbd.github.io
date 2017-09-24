@@ -14,6 +14,12 @@ title: Folder Setup
 <hr>
 <h3>Configuration file <code>sabnzbd.ini</code></h3>
 <table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Operating System</th>
+            <th>Path</th>
+        </tr>
+    </thead>
     <tbody>
         <tr>
             <td>Vista/Win7/Win10</td>
@@ -33,9 +39,16 @@ title: Folder Setup
         </tr>
     </tbody>
 </table>
+<hr>
 <h3>Temporary Download Folder <code>download_dir</code></h3>
 <p>Here SABnzbd collects the data for each download and error correction (par2) is done. When complete, the data is moved to the <code>complete_dir</code>. There should be enough space to contain the largest complete job + 10% for error correction data.</p>
 <table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Operating System</th>
+            <th>Path</th>
+        </tr>
+    </thead>
     <tbody>
         <tr>
             <td>Windows</td>
@@ -51,10 +64,16 @@ title: Folder Setup
         </tr>
     </tbody>
 </table>
-
+<hr>
 <h3>Complete Download Folder <code>complete_dir</code></h3>
 <p>Here all completed download jobs are stored. Each job is placed in a separate folder, named after the NZB file that started it. You want to put this on a volume with plenty of room.</p>
 <table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Operating System</th>
+            <th>Path</th>
+        </tr>
+    </thead>
     <tbody>
         <tr>
             <td>Windows</td>
@@ -70,10 +89,16 @@ title: Folder Setup
         </tr>
     </tbody>
 </table>
-
+<hr>
 <h3>Administrative directory <code>admin_dir</code></h3>
 <p>Used for the internal administration of the job-queue and history.</p>
 <table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Operating System</th>
+            <th>Path</th>
+        </tr>
+    </thead>
     <tbody>
         <tr>
             <td>Vista/Win7/Win10</td>
@@ -93,11 +118,17 @@ title: Folder Setup
         </tr>
     </tbody>
 </table>
-
+<hr>
 <h3>Log directory <code>log_dir</code></h3>
 <p>Here SABnzbd's logging is stored. Altough only needed for troubleshooting, you must have this folder. Growth of this folder is normally limited to 5&nbsp;MB.</p>
 <table class="table table-bordered table-hover">
-    <tbody>
+    <thead>
+        <tr>
+            <th>Operating System</th>
+            <th>Path</th>
+        </tr>
+    </thead>
+   <tbody>
         <tr>
             <td>Vista/Win7/Win10</td>
             <td><code>%userprofile%\AppData\Local\sabnzbd\logs</code></td>
