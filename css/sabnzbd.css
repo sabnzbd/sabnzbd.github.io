@@ -463,6 +463,11 @@ footer a:hover,
     margin: 0;
 }
 
+.alert code {
+    background-color: transparent !important;
+    color: inherit !important;
+}
+
 .wiki-content table td:first-child {
     width: 200px;
 }

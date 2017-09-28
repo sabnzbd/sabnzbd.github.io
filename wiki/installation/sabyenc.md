@@ -21,6 +21,8 @@ The Windows- and macOS-packages of SABnzbd automatically contain that module. On
 
 ### Installation in general
 
+
+
 With Linux on x86 and x86-64, the latest version of the module can be installed via Python's packaging manager `pip` by running
 
 ```
@@ -29,14 +31,17 @@ pip install sabyenc --upgrade
 
 On other platforms (ARM, MIPS, etc), you need to first install the python-development module (`python-dev` or `python-devel`), and then run the above `pip` command.
 
-<hr/>
-
-<span class="label label-warning">NOTE</span> If you need to install a specific version to match your version of SABnzbd, you can specify this in the command:
+If you need to install a specific version to match your version of SABnzbd, you can specify this in the command:
 
 ```
 pip install sabyenc==3.3.1
 ```
 
+<div class="alert alert-warning">
+    These instructions assume that <code>python</code> and <code>pip</code> refer to the Python 2.7 installation on your system.<br>On some systems Python 3 is the default <code>python</code> and you should instead use the <code>python2</code> and <code>pip2</code> commands.
+</div>
+
+<hr/>
 
 ### Installation on Ubuntu via PPA
 
