@@ -124,6 +124,17 @@ pip install --upgrade sabyenc
 ```
 <hr/>
 
+## Multiple installations of python 
+
+If you have multiple installations of python on your machine (python/python2 versus python3, or different versions of python 2.7), you have to make sure SAByenc is installed into the correct python enviroment. And 'correct' means the python installation used by SABnzbd (see SAB's logfile). The command is then:
+
+```
+/path/to/correct/python /path/to/pip install sabyenc
+```
+
+
+
+
 ## Check if sabyenc is correctly installed
 
 To check if sabyenc is correctly installed, run this Python oneliner:
