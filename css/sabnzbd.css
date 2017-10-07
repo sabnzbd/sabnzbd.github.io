@@ -590,6 +590,15 @@ footer {
     padding: 20px;
 }
 
+footer img {
+    width: 1.2em;
+    margin-left: 8px;
+}
+
+footer a[href="https://twitter.com/sabnzbd"] {
+    border: 0;
+}
+
 aside {
     float: none;
     clear: both;
