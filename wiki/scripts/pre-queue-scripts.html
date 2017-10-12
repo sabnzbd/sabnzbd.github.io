@@ -2,25 +2,21 @@
 title: Pre-queue scripts
 redirect_from: "/wiki/advanced/user-pre-queue-script"
 ---
-<h2 id="toc0">Introduction</h2>
+
 <p>You can choose to let SABnzbd run a script just before an NZB enters the queue.
     This script will tell whether the NZB should be accepted or not and can modify some parameters.
 </p>
-<p>Scripts can be Python scripts, bash scripts and BAT scripts. All scripts must be located in the scripts-directory, that can be specified in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Config-&gt;Folders</a>. Furthermore, the script must be executable. On Linux this means the x-bit must be on. On Windows, the requirement is that the script's extension is listed in your system's PATHEXT environment variable.</p>
 <p>
-    The sorting info is passed independently to the actual <a href="/wiki/configuration/{{ site.wiki_version }}/sorting">Sorting settings</a>.
-    Only the SeasonSort method will be used for analysis.
+    Scripts can be Python scripts, bash scripts and BAT scripts. All scripts must be located in the scripts-directory, that can be specified in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Config-&gt;Folders</a>. Furthermore, the script must be executable. On Linux this means the x-bit must be on. On Windows, the requirement is that the script's extension is listed in your system's <code>PATHEXT</code> environment variable.
 </p>
-<p>The script must send results to the console.
-    Exit code 0 will make SABnzbd inspect the returned output.
-    If the script has an exit code other than 0, it's assumed the script failed, and the NZB will be accepted without changes.
+<p>
+    The script must write results to the console.
+    Exit code <code>0</code> will make SABnzbd inspect the returned output.
+    If the script has an exit code other than <code>0</code>, it's assumed the script failed, and the NZB will be accepted without changes.
 </p>
 <hr>
 <h2 id="toc1">Input parameters</h2>
-<p>All parameters (except 1) can be empty, meaning a default value.<br></p>
-<p>Please note: Use %1 in Windows scripts and $1 in Unix scripts. In Windows the parameters will be enclosed in double quotes ("my name").<br>
-    On Posix systems (macOS, Linux, Unix) the parameters will <strong>not</strong> have quotes at all.
-</p>
+<p>All parameters (except 1) can be empty, meaning a default value. Use <code>%1</code> in Windows scripts and <code>$1</code> in Unix scripts. </p>
 <table class="table table-bordered table-hover table-not-fixed">
     <thead>
         <tr>
@@ -94,13 +90,13 @@ redirect_from: "/wiki/advanced/user-pre-queue-script"
 
 <hr>
 <h2 id="toc2">Return parameters</h2>
-<p>The script can refuse or accept the NZB and it can also return alternative parameters.<br>
-    When you want to manipulate the season parameters, you should assemble a new name and return a recognized format.
-</p>
-<p>The script writes the results to the console, each parameter on a separate line.<br>
+<p>The script can refuse or accept the NZB and it can also return alternative parameters. These parameters should be written to the console, each parameter on a separate line.
 SABnzbd uses the first 7 lines of output, so they should only contain proper data (or be empty).
     Anything after line 7 is ignored.
 </p>
+
+<p>When you want to manipulate the show/season/episode parameters, you should assemble a new name and return a recognized format.</p>
+
 <table class="table table-bordered table-hover table-not-fixed">
     <thead>
         <tr>
@@ -164,7 +160,7 @@ SABnzbd uses the first 7 lines of output, so they should only contain proper dat
 
 <hr>
 
-<h2 id="toc3">Example Script</h2>
+<h2 id="toc3">Example Script 1</h2>
 <p>Example of a Windows batch file that forces high priority on anything smaller than 2GB.</p>
 {% highlight dosbatch %}
 @echo off
@@ -178,6 +174,7 @@ if %6 LSS 2000000000 echo 1
 
 <p>Save it as file <code>size-checker.cmd</code> and put in the scripts folder.</p>
 
+<h2 id="toc3">Example Script 2</h2>
 <p>A python script to set prio to Force on downloads smaller than 50MB:</p>
 {% highlight python %}
 import sys
