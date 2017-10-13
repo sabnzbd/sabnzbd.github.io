@@ -3,14 +3,14 @@ title: RSS
 ---
 <p>
     SABnzbd can read RSS-feeds provided by indexers or public RSS websites.
-    These sites will offer you the latest downloads or return results based on some query. For a list of supported RSS sites <a href="/wiki/introduction/nzb-sources">see here.</a>
+    These sites offer the latest downloads or return results based on a query. For a list of supported RSS sites, <a href="/wiki/introduction/nzb-sources">see here.</a>
 </p>
 <p>
     Each feed is analyzed using filters.
-    A filter looks for text pattern in the title of the entries and based on that rejects or accepts a job.
-    A filter "matches" if the text it contains is found inside a title.
-    You can add <code>*</code> to match arbitrary parts of the title or <code>?</code> for 1 arbitrary character at that place.
-    The filters are analyzed in order and the first matching one will be selected.
+    A filter looks for a text-pattern in the title of entries and will reject or accept a job based on that pattern.
+    A filter "matches" a title if the filter text is found inside that title.
+    You can add <code>*</code> to match arbitrary parts of the title or <code>?</code> for one arbitrary character at that place.
+    The filters are analyzed in order and the first one matched will be selected.
 </p>
 
 
@@ -30,17 +30,18 @@ The making of My first baby steps xvid hdtv</code>
 </pre>
 </div>
 
-<p>Now suppose you want to get all <code>My ... first steps</code> episodes, but only when marked <code>hdtv</code> and your not interested in <code>Making of</code>:</p>
+<p>Now, suppose you want to get all <code>My ... first steps</code> episodes, but only when marked <code>hdtv</code> and you're not interested in <code>Making of</code>:</p>
 <pre><code>Reject || making of
 Accept || first*steps*hdtv</code>
 </pre>
 
-<p>The <code>Reject</code> filter should come first, otherwise the <code>Accept</code> filter will also pick the <code>Making of</code>.</p>
-
+<p>The <code>Reject</code> filter should be placed first, otherwise the <code>Accept</code> filter will also pick the <code>Making of</code>.</p>
 <p>
     It's also possible to setup a <code>Required</code> filter.
     This means that the following filters are only applied when a title matches the <code>Required</code> filter.<br>
-    Suppose you are only interested in <code>hdtv</code> format, you setup this:
+</p>
+<p>
+    For example: if you are only interested in <code>hdtv</code> format, you would create filters like this:
 </p>
 <div class="code">
     <pre><code>Reject || making of
@@ -54,7 +55,9 @@ Accept || second*steps</code>
 <h2>Categories</h2>
 <p>
     For each feed you can set the category or the <a href="/wiki/extra/job-options">job options</a> for all jobs in the feed in the top row, or for each <code>Accept</code> filter specifically.<br>
-    If all category settings are left to <code>Default</code> and the indexer category matches one of your categories (by category name or by <a href="/wiki/configuration/{{ site.wiki_version }}/categories">custom <code>Indexer tag</code></a>), it will be automatically assigned to that category. <br>
+    If all category settings are left as <code>Default</code> and the indexer category matches one of your categories (by category name or by <a href="/wiki/configuration/{{ site.wiki_version }}/categories">custom <code>Indexer tag</code></a>), it will be automatically assigned to that category. <br>
+</p>
+<p>
     The assigned or automatically matched category is shown in the Category column.
 </p>
 
@@ -76,7 +79,7 @@ Accept || second*steps</code>
         </tr>
         <tr>
             <td><code>Requires</code></td>
-            <td>Require job title to contain this expression. <br>If matched, go to next filer. If not matched, reject job.</td>
+            <td>Require job title to contain this expression. <br>If matched, go to next filter. If not matched, reject job.</td>
         </tr>
         <tr>
             <td><code>Reject</code></td>
@@ -84,7 +87,7 @@ Accept || second*steps</code>
         </tr>
         <tr>
             <td><code>RequiresCat</code></td>
-            <td>Require job to have this category (<strong>after</strong> mapping indexer category to your own categories). <br>If matched, go to next filer. If not matched, reject job.</td>
+            <td>Require job to have this category (<strong>after</strong> mapping the indexer category to your own categories). <br>If matched, go to next filter. If not matched, reject job.</td>
         </tr>
         <tr>
             <td><code>At Least</code></td>
@@ -96,13 +99,13 @@ Accept || second*steps</code>
         </tr>
         <tr>
             <td><code>From SxxEyy</code></td>
-            <td>Only this season/episode and newer ones will be accepted. <br>If matched, go to next filer. If not matched, reject job.</td>
+            <td>Only this season/episode and newer will be accepted. <br>If matched, go to next filter. If not matched, reject job.</td>
         </tr>
         <tr>
             <td><code>From Show SxxEyy</code></td>
             <td>
                 Accept this and newer episodes of this specific show. <br>Accept if matched. If not matched, go to next filter.<br>
-                Directly accepts job, this is to allows to have multiple shows in 1 feed.
+                Directly accepts job, this permits multiple shows in a single feed.
             </td>
         </tr>
     </tbody>
@@ -139,23 +142,27 @@ Accept || second*steps</code>
 <hr>
 <h2>Regular expressions</h2>
 <p>
-    If you prefix a filter with <code>re:</code> it will be interpreted as a Python regular expression (case-insensitive).<br>
+    If you prefix a filter with <code>re:</code> it will be interpreted as a Python regular expression (case-insensitive).
+</p>
+<p>
     Here's a <a href="http://www.developer.com/lang/article.php/3330231" target="_blank">tutorial on regular expressions</a>.
     For all the details see <a href="http://docs.python.org/dev/howto/regex.html" target="_blank">the Python manual</a>.
 </p>
-<p>Simple example: <code>re: this|that</code> will match all jobs containing <code>this</code> or <code>that</code> in the title.</p>
+<p>
+    Simple example: <code>re: this|that</code> will match all jobs containing <code>this</code> or <code>that</code> in the title.
+</p>
 
 <hr>
 <h2>Automatic processing</h2>
 <p>
-    If you check the checkbox next to the name of the feed, it will be automatically processed.<br>
-    The time between scans can be set with <code>RSS checking rate</code>.<br>
-    You can also override this by using the Scheduler, in this case the  <code>RSS checking rate</code> will be ignored.
+    If you check the checkbox next to the name of the feed, it will be automatically processed. The time between scans can be set with <code>RSS checking rate</code>. This can be overridden by using the Scheduler.
 </p>
 
 <hr>
 <h2>First batch</h2>
 <p>
-    To prevent the download of a (potentially) large backlog, the first batch of NZBs will not be downloaded automatically. These lines are marked with an asterisk <code>*</code>. Only new jobs in subsequent read-outs will be downloaded automatically (if the feed is enabled).<br>
-    If you still want the matches in the first batch to be downloaded, click on the <code>Force Download</code> button.
+    To prevent the download of a (potentially) large backlog, the first batch of NZBs will <b>not</b> automatically download. These lines are marked with an asterisk <code>*</code>. If you want these matched feed items in this first batch to download, click the <code>Force Download</code> button.
+</p>
+<p>
+    Then, new feed items in subsequent RSS reads will download automatically (if the feed is enabled).
 </p>
