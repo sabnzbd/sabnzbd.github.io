@@ -128,11 +128,11 @@ title: General
         <tr>
             <td><strong>Article Cache Limit</strong></td>
             <td>
-                How much memory (RAM) can be used for caching (reducing disk access). You enter the amount in bytes but you can use factors like K, M, G etc. eg: 70M = 70 MB cache. Article Cache is limited to 1GB, even if a higher value is set.
+                How much memory (RAM) can be used for caching (reducing disk access). You enter the amount in bytes but you can use factors like K, M, G etc. eg: 70M = 70 MB cache. Article Cache is limited to <code>1G</code> on 32bit systems. Starting from SABnzbd 2.3.1 you can set up to <code>4G</code> on 64bit systems .
                 <ul>
                     <li><code>number</code> = Maximum memory (in bytes)</li>
                     <li><code>0</code> = Disable Cache </li>
-                    <li><code>-1</code> = Unlimited cache  to use for cache.</li>
+                    <li><code>-1</code> = Unlimited, up to maximum for your system (1 or 4GB).</li>
                 </ul>
                 <p>See <a href="/wiki/advanced/highspeed-downloading">High speed downloading</a> for more information.</p>
             </td>
