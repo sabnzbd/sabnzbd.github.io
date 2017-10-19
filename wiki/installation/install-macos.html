@@ -12,12 +12,12 @@ title: Install SABnzbd for macOS
 
 <ol>
     <li>Install <code>pip</code>, if it's not already installed, by running:<br>
-    <pre><code>sudo easy_install pip</code></pre> (or without <code>sudo</code>, if you have the right permissions)
+    <pre><code>sudo -H easy_install pip</code></pre> (or without <code>sudo</code>, if you have the right permissions)
     </li>
     <li>Install the depenencies by running:<br>
-    <pre><code>sudo pip install cheetah
-sudo pip install cryptography
-sudo pip install sabyenc</code></pre></li>
+    <pre><code>sudo -H pip install cheetah
+sudo -H pip install cryptography
+sudo -H pip install sabyenc</code></pre></li>
     <li>Finally, download the <a href="/downloads">source code</a>, unpack into any folder (e.g. ~/SABnzbd).<br>
     Don't compile or anything, just run from source:
     <pre><code>cd SABnzbd/
