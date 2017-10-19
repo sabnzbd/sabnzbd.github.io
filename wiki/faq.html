@@ -35,6 +35,7 @@ title: FAQ
             </li>
             <li><a href="#toc21">SABnzbd is asking for a password and I didn't set one/forgotten the password, what do I do?</a></li>
             <li><a href="#toc22">Error: (10049, "Can't assign requested address")</a></li>
+            <li><a href="#freshstart">Starting SABnzbd with default settings</a>
         </ul>
     </li>
     <li>
@@ -184,6 +185,19 @@ host = 0.0.0.0</code>
 </div>
 <br>
 So, if you know what you're doing and SABnzbd is not running, you can edit that entry, and start SABnzbd again.
+
+<h2 id="freshstart">Starting SABnzbd with default settings</h2>
+<p>When troubleshooting, we might ask you to start SABnzbd with basic settings.<br> This is what we would like you to do:</p>
+<ul>
+    <li>Shutdown SABnzbd.</li>
+    <li>Make a backup of your <code>sabnzbd.ini</code> file, the location is listed on the first page of the Config or can be found <a href="/wiki/advanced/directory-setup">here</a>.</li>
+    <li>Delete both the <code>sabnzbd.ini</code> and the <code>sabnzbd.ini.bak</code> file.</li>
+    <li>Start SABnzbd.</li>
+    <li>The wizard will be shown, fill only the requested info.</li>
+    <li>Download a file, for example a <a href="https://nzbindex.nl/search/?q=ubuntu+iso&age=&max=25&minsize=2000">Linux ISO</a>.</li>
+</ul>
+
+
 <hr>
 <h1 id="toc23">Using SABnzbd</h1>
 <h2 id="toc24">If I close my Internet browser does SABnzbd close too?</h2>
