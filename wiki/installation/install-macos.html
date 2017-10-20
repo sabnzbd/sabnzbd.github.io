@@ -3,7 +3,7 @@ title: Install SABnzbd for macOS
 ---
 
 <h2>The official App</h2>
-<p>If you just want to use SABnzbd, we provide a packaged application (x86-only) available  <a href="/downloads">here</a>. <br/>Pick the right folder for your macOS version and drag SABnzbd to the Applications folder.</p>
+<p>If you just want to use SABnzbd, we provide a packaged application (64bit-only) available  <a href="/downloads">here</a>. <br/>Pick the right folder for your macOS version and drag SABnzbd to the Applications folder.</p>
 
 
 <hr>
@@ -17,7 +17,11 @@ title: Install SABnzbd for macOS
     <li>Install the depenencies by running:<br>
     <pre><code>sudo -H pip install cheetah
 sudo -H pip install cryptography
-sudo -H pip install sabyenc</code></pre></li>
+sudo -H pip install sabyenc</code></pre>
+
+    It could be that SABYenc does not get recognized, try the following commands (requires Xcode):
+<pre><code>sudo -H pip uninstall sabyenc -y
+sudo -H pip install git+git://github.com/sabnzbd/sabyenc</code></pre></li>
     <li>Finally, download the <a href="/downloads">source code</a>, unpack into any folder (e.g. ~/SABnzbd).<br>
     Don't compile or anything, just run from source:
     <pre><code>cd SABnzbd/
