@@ -7,7 +7,7 @@ wiki_version: '2.3'
 # For downloads page. Needs the full x.x.x notation!
 # Needs to be a string, for string-comparison
 latest_stable: '2.3.0'
-latest_testing: '2.3.1RC1'
+latest_testing: '2.3.1RC2'
 
 # AD-links
 giganews_link: 'https://www.giganews.com/usenet-special/'
