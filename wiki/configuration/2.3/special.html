@@ -63,6 +63,11 @@ title: Special settings
             <td>Normally unpacked files will get the date/time stamp they have in the archive. If you set this option, the files will get the date/time of unpacking.</td>
         </tr>
         <tr>
+            <td><code>debug_log_decoding</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Log the decoding of each article in <code>+Debug</code> logging mode. Disabled by default to make debug logs more readable. Requires restart of SABnzbd.</td>
+        </tr>
+        <tr>
             <td><code>multipar</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Windows only. Disable Multipar and use par2tbb instead. This is still supported, but special workarounds for Windows have been removed so can fail on special cases.</td>
@@ -188,7 +193,7 @@ title: Special settings
         <tr>
             <td><code>folder_max_length</code></td>
             <td><code>128</code></td>
-            <td>On Windows, the total path is limited to 255 characters. A combination of long folder names and long file names may lead to problems. Set this option to limit each element of the total path. Each element will be truncated to the specified number. 64 is a safe value. The option will also work for other operating systems.</td>
+            <td>On Windows, the total path is limited to 255 characters. A combination of long folder names and long file names may lead to problems. Set this option to limit each element of the total path. Each element will be truncated to the specified number. 64 is a safe value. The option will also work for other operating systems but is only usefull on Windows.</td>
         </tr>
         <tr>
             <td><code>fsys_type</code></td>
