@@ -25,17 +25,13 @@ title: FAQ
             <li><a href="#toc14">An NZB just failed post-processing, how do I re-process it?</a></li>
             <li><a href="#toc15">An NZB died halfway through downloading. Do I really have to re-download all 600 gigs?</a></li>
             <li><a href="#toc16">What are CRC errors, and how do I fix them?</a></li>
-            <li>
-                <a href="#toc17">Where are are my files?</a>
-                <ul>
-                    <li><a href="#toc17">Downloads</a></li>
-                    <li><a href="#toc17">Settings</a></li>
-                    <li><a href="#toc17">Logs</a></li>
-                </ul>
-            </li>
+            <li><a href="#toc17">Where are are my files?</a></li>
             <li><a href="#toc21">SABnzbd is asking for a password and I didn't set one/forgotten the password, what do I do?</a></li>
             <li><a href="#toc22">Error: (10049, "Can't assign requested address")</a></li>
-            <li><a href="#freshstart">Starting SABnzbd with default settings</a>
+            <li><a href="#toc33">"API Key incorrect, Use the api key from Config-&gt;General in your 3rd party program" what does that mean?</a></li>
+            <li><a href="#toc35">[Errno 111] Failed to connect: (110, 'timed out') -1 @news.example.com:119" when clicking on Test Server</a></li>
+            <li><a href="#endslow">SABnzbd slows down when getting very close to the end of a job - News server timeouts</a></li>
+            <li><a href="#freshstart">Starting SABnzbd with default settings</a></li>
         </ul>
     </li>
     <li>
@@ -48,11 +44,8 @@ title: FAQ
             <li><a href="#toc28">What does R/U/D or Repair/Unpack/Delete mean?</a></li>
             <li><a href="#toc29">How do I change my download folder to another drive?</a></li>
             <li><a href="#toc30">How do I run SABnzbd as a portable/self contained program?</a></li>
-            <li><a href="#toc31">"My Internet connection is 20&nbsp;Mbps, and SABnzbd only downloads at 2MB/s"?</a></li>
-            <li><a href="#toc32">"Repair failed, not enough repair blocks (585 short) " … what does that mean?</a></li>
-            <li><a href="#toc33">"API Key incorrect, Use the api key from Config-&gt;General in your 3rd party program:" … what does that mean?</a></li>
-            <li><a href="#toc34">After some time, SABnzbd is still running but its webinterface stops responding … what is going on?</a></li>
-            <li><a href="#toc35">"[Errno 111] Failed to connect: (110, 'timed out') -1 @news.example.com:119" when clicking on Test Server</a></li>
+            <li><a href="#toc31">"My Internet connection is 20Mbps, and SABnzbd only downloads at 2MB/s"?</a></li>
+            <li><a href="#toc32">"Repair failed, not enough repair blocks (585 short)" what does that mean?</a></li>
             <li><a href="#toc36">A download says "ENCRYPTED". What does that mean, and is there anything I can do?</a></li>
             <li><a href="#toc37">Do I need port forwarding for SABnzbd usage?</a></li>
         </ul>
@@ -132,8 +125,7 @@ title: FAQ
     SABnzbd will skip each files that has already been downloaded and then proceed to download the additional files.<br>
     Please note that SABnzbd cannot add missing articles to existing files.
 </p>
-<h2 id="toc16">What are CRC errors, and how do I fix them?</h2>
-<p>This means for some reason the files you downloaded ended up broken in a manner that could not be repaired. See <a href="http://forums.sabnzbd.org/index.php?topic=3409.0">this thread</a> on our forums for more information.</p>
+
 <h2 id="toc17">Where are are my files?</h2>
 See: <a href="/wiki/advanced/directory-setup">Folder Setup</a>.
 <h2 id="toc21">SABnzbd is asking for a password and I didn't set one/forgotten the password, what do I do?</h2>
@@ -163,7 +155,7 @@ password = ""</code>
     If you're using a 32-bit Windows system use:
 </p>
 <div class="code">
-    <pre><code>"c:\program files\sabnzbd\sabnzbd-console.exe" --server 0.0.0.0:8080</code>
+    <pre><code>"C:\Program Files (x86)\SABnzbd\SABnzbd-console.exe" --server 0.0.0.0:8080</code>
 </pre>
 </div>
 <p>On Linux:</p>
@@ -171,20 +163,31 @@ password = ""</code>
     <pre><code>sabnzbdplus --server 0.0.0.0:8080</code>
 </pre>
 </div>
-<br>
-or something like
-<div class="code">
-    <pre><code>./SABnzbd.py --server 0.0.0.0:8080</code>
-</pre>
-</div>
-<p>Technically the host is the <strong>first</strong> appearance of "host" in sabnzbd.ini:</p>
-<div class="code">
-    <pre><code>$ cat ~/.sabnzbd/sabnzbd.ini | grep -m1 host
-host = 0.0.0.0</code>
-</pre>
-</div>
-<br>
-So, if you know what you're doing and SABnzbd is not running, you can edit that entry, and start SABnzbd again.
+<p>Or you can edit the <code>host</code> field in your <code>sabnzbd.ini</code> file to <code>0.0.0.0</code>.</p>
+
+
+<h2 id="toc33">"API Key incorrect, Use the api key from Config-&gt;General in your 3rd party program:" … what does that mean?</h2>
+<p>If you get "API Key incorrect, Use the api key from Config-&gt;General in your 3rd party program:" in your log file, it is probably caused by a program or by a browser plugin (for example SABconnect++) that is accessing SABnzbd's API interface without an API key or with an incorrect API key. This message is just a warning; you could ignore it if you want to.<br>
+    To get rid of this message you have to find the program or browser plugin, and configure it with the correct API key.
+</p>
+
+<h2 id="toc35">"[Errno 111] Failed to connect: (110, 'timed out') -1 @news.example.com:119" when clicking on Test Server</h2>
+<p>You can test your connection to your newsserver by clicking on Test Server (in Config -&gt; Servers). If the popup says "[Errno 111] Failed to connect: (110, 'timed out') -1@news.example.com:119", SABnzbd cannot connect to the newserver you filled out. You should check two things: the correct name for the newsserver and the correct port (119 is the normal port).</p>
+<p>If you're sure everything is filled out OK and you still get the error message, as a test you can fill out an additional newsserver. You can use news.astraweb.com or newsreader.eweka.nl. After filling out and Save Change, you can click on Test Server. If you get "[Errno 111] Failed to connect: (110, 'timed out') -1@news.astraweb.com:119" for this extra server too, the problem is local: possibly a firewall is blocking outgoing connections. So check your firewall. Or temporarily disable / deinstall your firewall. Then check again with Test Server.</p>
+<p>NB: after your own server is working, disable the extra setting, or you will see warnings in your log file of SABnzbd still trying to access this server for which you have no account.</p>
+
+<h2 id="endslow">SABnzbd slows down when getting very close to the end of a job - News server timeouts</h2>
+
+<p>You might see instances where a job is 99% completed but still not done and your download speed might be very slow. If you hover over the job and click the <span class="glyphicon glyphicon-folder-open"></span> &nbsp; icon you can list the files still waiting. You might see 1 or 2 files that are not done. Additionally, in Connections tab of the Status and Interface settings (<span class="glyphicon glyphicon-wrench"></span>) you can see that 1 article is still being fetched from one of your servers.</p>
+<p>You are experiencing news server timeouts, somehow the connection between you and the server was lost while SABnzbd was getting the article. <br>You have these options:</p>
+<ul>
+    <li>If you experience this very often, consider checking all parts in your connection. The QoS-settings of your router/modem, throttling by your ISP, wrong VPN settings (if you use one) or the geographical location of your server. SABnzbd cannot force the connection to become alive again if network packets get lost in transit.</li>
+    <li>Try a different hostname of your provider.</li>
+    <li>Reduce timeout for your server in Config -&gt; Servers, click Advanced.</li>
+    <li>Reduce Maximum Retries in Config -&gt; Switches.</li>
+    <li>Enable <code>no_penalties</code> in Config -&gt; Specials.</li>
+</ul>
+<p><span class="label label-warning">NOTE</span> Connections work both ways: if it times out on your side, the server might still consider the connection alive until it reaches the timeout defined by the server's internal configuration. If SABnzbd reconnects before this internal server timeout, the server might count this new connection towards your connection limit, this can result in getting "Connection limit reached" errors.</p>
 
 <h2 id="freshstart">Starting SABnzbd with default settings</h2>
 <p>When troubleshooting, we might ask you to start SABnzbd with basic settings.<br> This is what we would like you to do:</p>
@@ -283,31 +286,7 @@ So, if you know what you're doing and SABnzbd is not running, you can edit that 
     <li>find another post with the same contents</li>
     <li>check on binsearch.info to see the post was completely available there</li>
 </ul>
-<h2 id="toc33">"API Key incorrect, Use the api key from Config-&gt;General in your 3rd party program:" … what does that mean?</h2>
-<p>If you get "API Key incorrect, Use the api key from Config-&gt;General in your 3rd party program:" in your log file, it is probably caused by a program or by a browser plugin (for example SABconnect++) that is accessing SABnzbd's API interface without an API key or with an incorrect API key. This message is just a warning; you could ignore it if you want to.<br>
-    To get rid of this message you have to find the program or browser plugin, and configure it with the correct API key.
-</p>
-<h2 id="toc34">After some time, SABnzbd is still running but its webinterface stops responding … what is going on?</h2>
-<p>If you can access SABnzbd's webinterface after a fresh startup, but you can't access it anymore after a while, it might be that too many connections are (half) open to SABnzbd's webinterface. This can be caused by tools or plugins accessing it. To check if this is the case, you can use the following commands (assuming SABnzbd is running on port 8080 and 9090):<br>
-    On Linux:
-</p>
-<div class="code">
-    <pre><code>netstat -apon | grep -e :8080 -e :9090</code>
-</pre>
-</div>
-<p>On Windows:</p>
-<div class="code">
-    <pre><code>netstat -aon | find ":8080"
-netstat -aon | find ":9090"</code>
-</pre>
-</div>
-<p>If you get a few dozen or even hundreds of lines (and thus SABnzbd sessions), you have found the problem.<br>
-    Workaround: disable the plugins (or lower their polling frequency) and/or do not use HTTPS (it seems this problem occurs with HTTPS, and not HTTP).<br>
-    Especially the combination of SABnzbd, SABconnect++ and HTTPS seems to trigger this problem. However, never disable HTTPS if you expose SABnzbd's user interface to internet!</p>
-<h2 id="toc35">"[Errno 111] Failed to connect: (110, 'timed out') -1 @news.example.com:119" when clicking on Test Server</h2>
-<p>You can test your connection to your newsserver by clicking on Test Server (in Config -&gt; Servers). If the popup says "[Errno 111] Failed to connect: (110, 'timed out') -1@news.example.com:119", SABnzbd cannot connect to the newserver you filled out. You should check two things: the correct name for the newsserver and the correct port (119 is the normal port).</p>
-<p>If you're sure everything is filled out OK and you still get the error message, as a test you can fill out an additional newsserver. You can use news.astraweb.com or newsreader.eweka.nl. After filling out and Save Change, you can click on Test Server. If you get "[Errno 111] Failed to connect: (110, 'timed out') -1@news.astraweb.com:119" for this extra server too, the problem is local: possibly a firewall is blocking outgoing connections. So check your firewall. Or temporarily disable / deinstall your firewall. Then check again with Test Server.</p>
-<p>NB: after your own server is working, disable the extra setting, or you will see warnings in your log file of SABnzbd still trying to access this server for which you have no account.</p>
+
 <h2 id="toc36">A download says "ENCRYPTED". What does that mean, and is there anything I can do?</h2>
 <p>"ENCRYPTED" means you're trying to download that has a password on it (on the rar files, to be precise). SABnzbd will detect this during the download and will stop the download.<br>
     Often the ENCRYPTED posts are useless, as they are only trying to lure you towards useless websites. In the end you will probably not get a password at all.
