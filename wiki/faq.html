@@ -99,15 +99,16 @@ title: FAQ
     <li>Something is preventing SABnzbd from opening any port, like a firewall application, or antivirus, or something else that might be trying to "protect" you. Either whitelist SABnzbd or reconsider your antivirus software choice. (The very good and free <a href="http://www.microsoft.com/Security_Essentials/">Microsoft Security Essentials</a> has no problem with SABnzbd)</li>
     <li>You lack the permissions to open the port you're trying. This tends to crop up on Linux systems, where ports under 1024 (like port 80) require root permissions to open.</li>
 </ul>
-<p>A way to discover what's going on, is to open a 'terminal' or 'cmd'-box, go to the directory that contains the SABnzbd executable, and start that. On Windows, you should start "sabnzbd-consolese.exe". You should now see the output in the terminal/cmd-box.<br>
+<p>A way to discover what's going on, is to open a 'terminal' or 'cmd'-box, go to the directory that contains the SABnzbd executable, and start that. On Windows, you should start <code>SABnzbd-consolese.exe</code>. You should now see the output in the terminal/cmd-box.<br>
     Starting with SABnzbd 0.6.x, on Windows there's a "SABnzbd safe mode" which you should find in your Start menu; it can be useful to try that safe mode.
 </p>
 <h2 id="toc10">I'm using Opera! Why doesn't it work?</h2>
 <p>Opera sometimes has a different interpretation of localhost than SABnzbd has. Try <code>http://[::1]:8080/sabnzbd</code> or <code>http://127.0.0.1:8080/sabnzbd</code>, one of the two should work.<br>
-    This happens because many operating systems have an ambiguous definition of localhost. They list both 127.0.0.1 and [::1] has IP addresses (IPv4 and IPv6 respectively), while these are in reality two independent addresses.
+    This happens because many operating systems have an ambiguous definition of localhost. They list both <code>127.0.0.1</code> and <code>[::1]</code> has IP addresses (IPv4 and IPv6 respectively), while these are in reality two independent addresses.
 </p>
 <h2 id="toc11">SABnzbd says "Out of your server's retention?". What does that mean?</h2>
-<p>This means the post you're trying to download is not available on the newsserver you're using. This might because the post is older than the your newsserver's retention time (number of days the post will stay on the newsserver, somewhere between 10 and 1000 days), or the specific post has been removed by the server's administrator<sup class="footnoteref"><a id="footnoteref-1" href="#footnote-1">1</a></sup>.<br>
+<p>This means the post you're trying to download is not available on the newsserver you're using. This might because the post is older than the your newsserver's retention time (number of days the post will stay on the newsserver, somewhere between 10 and 1000 days), or the specific post has been removed by the server's administrator. Also read our information about <a href="/wiki/introduction/downloads-cannot-be-completed.html">Downloads cannot be completed
+</a>.<br>
     You can see the age of a post in the search engine (like binsearch) you use, and by hovering above the line containing the download while it's being downloaded.
 </p>
 <p>Solution: find a 'younger' post, or find a newsprovider with a longer retention.</p>
