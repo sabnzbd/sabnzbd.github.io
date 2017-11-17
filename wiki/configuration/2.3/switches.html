@@ -267,13 +267,13 @@ title: Switches
 
 <ul>
     <li>
-        <p><code>/lc</code> Set this if you want to set number of using threads or want to disable extra feature (SSE2 is always used).</p>
+        <p><code>-lc</code> Set this if you want to set number of using threads or want to disable extra feature (SSE2 is always used).</p>
         <ul>
-            <li><code>/lc&lt;n&gt;</code> where <code>n</code> is from 1 to 11 for specific number of cores</li>
-            <li><code>/lc12</code> to use quarter number of physical cores</li>
-            <li><code>/lc13</code> to use half of physical cores</li>
-            <li><code>/lc14</code> to use 3/4 number of physical cores</li>
-            <li><code>/lc15</code> to use the number of physical cores (disable Hyper-Threading)</li>
+            <li><code>-lc&lt;n&gt;</code> where <code>n</code> is from 1 to 11 for specific number of cores</li>
+            <li><code>-lc12</code> to use quarter number of physical cores</li>
+            <li><code>-lc13</code> to use half of physical cores</li>
+            <li><code>-lc14</code> to use 3/4 number of physical cores</li>
+            <li><code>-lc15</code> to use the number of physical cores (disable Hyper-Threading)</li>
         </ul>
         <p>You may set additional combinations by adding the following options to the already specified value:</p>
         <ul>
@@ -283,15 +283,15 @@ title: Switches
             <li><code>+512</code> to disable AVX2</li>
             <li><code>+32</code> or <code>+64</code> (slower device) to enable GPU acceleration</li>
         </ul>
-        <p><strong>For example:</strong> <code>/lc1</code> to use single core, <code>/lc32</code> to enable GPU usage or <code>/lc45</code> to use half cores and GPU usage.</p>
+        <p><strong>For example:</strong> <code>-lc1</code> to use single core, <code>-lc32</code> to enable GPU usage or <code>-lc45</code> to use half cores and GPU usage.</p>
     </li>
     <li>
-        <p><code>/m</code> Set this if you want to set memory usage. Value is specified from 1 to 7 (1/7th to 7/8th):</p>
+        <p><code>-m</code> Set this if you want to set memory usage. Value is specified from 1 to 7 (1/7th to 7/8th):</p>
         <ul>
-            <li><code>/m0</code> = Default (between 6/8 and 7/8 mostly)</li>
-            <li><code>/m1</code> = 1/8, 12.5%</li>
-            <li><code>/m4</code> = 4/8, 50%</li>
-            <li><code>/m7</code> = 7/8, 87.5%</li>
+            <li><code>-m0</code> = Default (between 6/8 and 7/8 mostly)</li>
+            <li><code>-m1</code> = 1/8, 12.5%</li>
+            <li><code>-m4</code> = 4/8, 50%</li>
+            <li><code>-m7</code> = 7/8, 87.5%</li>
         </ul>
     </li>
 </ul>
