@@ -32,24 +32,27 @@ Online news server SSL/TLS check
 <iframe id="newsserver-test-result" src=""></iframe>
 
 <script type="text/javascript">
-    $('.newsserver-test').on('submit', function() {
-        // Clear first
-        $('#newsserver-test-result').attr('src', '')
-        // Show loading box
-        $('.progress').show()
-        // Fill the url
-        $('#newsserver-test-result').attr('src', 'https://www.appelboor.com/cgi-bin/check_newsserver.py?server=' + $('#newsserver-address').val())
-        // Track
-        ga('send', 'event', 'servercheck', 'click', $('#newsserver-address').val(), {
-                'transport': 'beacon'
-            });
-        return false
-    })
-    // Do the magic when done
-    $('#newsserver-test-result').on('load', function() {
-        $('.progress').hide()
-        $(this).show();
-    });
+    // After loading, otherwise it's get triggered when element has loaded
+    setTimeout(function() {
+        $('.newsserver-test').on('submit', function() {
+            // Clear first
+            $('#newsserver-test-result').attr('src', '')
+            // Show loading box
+            $('.progress').show()
+            // Fill the url
+            $('#newsserver-test-result').attr('src', 'https://www.appelboor.com/cgi-bin/check_newsserver.py?server=' + $('#newsserver-address').val())
+            // Track
+            ga('send', 'event', 'servercheck', 'click', $('#newsserver-address').val(), {
+                    'transport': 'beacon'
+                });
+            return false
+        })
+        // Do the magic when done
+        $('#newsserver-test-result').on('load', function() {
+            $('.progress').hide()
+            $(this).show();
+        });
+    }, 200)
 </script>
 
 
