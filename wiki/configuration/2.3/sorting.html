@@ -85,7 +85,7 @@ title: Sorting
             <td>filename</td>
         </tr>
         <tr>
-            <td>Original Folder Name</td>
+            <td>Original Job Name</td>
             <td>%dn</td>
             <td>foldername</td>
         </tr>
@@ -100,19 +100,23 @@ title: Sorting
 <h3 id="toc5">Presets</h3>
 <p><strong>1x01 Season Folder:</strong><br>
     <code>%sn/Season %s/%sn - %sx%0e - %en.%ext</code><br>
-    Example: Show Name/Season 1/Show Name - 1x05 - Episode Name.avi
+    Example: Show Name/Season 1/Show Name - 1x05 - Episode Name.mkv
 </p>
 <p><strong>S01E01 Season Folder:</strong><br>
     <code>%sn/Season %s/%sn - S%0sE%0e - %en.%ext</code><br>
-    Example: Show Name/Season 1/Show Name - S01E05 - Episode Name.avi
+    Example: Show Name/Season 1/Show Name - S01E05 - Episode Name.mkv
 </p>
 <p><strong>1x01 Individual Episode Folder:</strong><br>
     <code>%sn/%sx%0e - %en/%sn - %sx%0e - %en.%ext</code><br>
-    Example: Show Name/1x05 - Episode Name/Show Name - 1x05 - Episode Name.avi
+    Example: Show Name/1x05 - Episode Name/Show Name - 1x05 - Episode Name.mkv
 </p>
 <p><strong>S01E01 Individual Episode Folder:</strong><br>
     <code>%sn/S%0sE%0e - %en/%sn - S%0sE%0e - %en.%ext</code><br>
-    Example: Show Name/S01E05 - Episode Name/Show Name - S01E05 - Episode Name.avi
+    Example: Show Name/S01E05 - Episode Name/Show Name - S01E05 - Episode Name.mkv
+</p>
+<p><strong>Job Name as Folder Name:</strong><br>
+    <code>%dn.%ext</code><br>
+    Example: Job Name.mkv
 </p>
 <p>If you do not wish for any renaming to be done, just do not include that part of the path, such as instead of:<br>
     <code>%sn/Season %s/%sn - S%0sE%0e - %en.%ext</code><br>
@@ -177,9 +181,9 @@ title: Sorting
             <td>filename</td>
         </tr>
         <tr>
-            <td>Original Folder Name</td>
+            <td>Original Job Name</td>
             <td>%dn</td>
-            <td>foldername</td>
+            <td></td>
         </tr>
         <tr>
             <td>Lower Case</td>
@@ -217,22 +221,26 @@ title: Sorting
 <p><strong>In folders:</strong><br>
     <code>%title (%y)/%title (%y).%ext</code><br>
     <code>CD%1</code><br>
-    Example: Movie Name (2000)/Movie Name (2000) CD1.avi
+    Example: Movie Name (2000)/Movie Name (2000) CD1.mkv
 </p>
 <p><strong>No folders:</strong><br>
     <code>%title (%y).%ext</code><br>
     <code>CD%1</code><br>
-    Example: Movie Name (2000) CD1.avi
+    Example: Movie Name (2000) CD1.mkv
 </p>
 <p><strong>Decades 1:</strong><br>
     <code>%0decade/%title (%y).%ext</code><br>
     <code>CD%1</code><br>
-    Example: 2000/Movie Name (2000) CD1.avi
+    Example: 2000/Movie Name (2000) CD1.mkv
 </p>
 <p><strong>Decades 2:</strong><br>
     <code>%decade/%title (%y).%ext</code><br>
     <code>CD%1</code><br>
-    Example: 00/Movie Name (2000) CD1.avi
+    Example: 00/Movie Name (2000) CD1.mkv
+</p>
+<p><strong>Job Name as Folder Name:</strong><br>
+    <code>%dn.%ext</code><br>
+    Example: Job Name.mkv
 </p>
 <hr>
 <h1 id="toc9">Date Sorting</h1>
@@ -308,9 +316,9 @@ title: Sorting
             <td>filename</td>
         </tr>
         <tr>
-            <td>Original Folder Name</td>
+            <td>Original Job Name</td>
             <td>%dn</td>
-            <td>foldername</td>
+            <td></td>
         </tr>
         <tr>
             <td>Lower Case</td>
@@ -334,13 +342,17 @@ title: Sorting
 <h3 id="toc12">Presets</h3>
 <p><strong>Show Name folder:</strong><br>
     <code>%t/%t - %y-%0m-%0d - %desc.%ext</code><br>
-    Example: Show Name/Show Name - 2009-01-02 - Episode Name.avi
+    Example: Show Name/Show Name - 2009-01-02 - Episode Name.mkv
 </p>
 <p><strong>Year-Month folders:</strong><br>
     <code>%y-%0m/%t - %y-%0m-%0d - %desc.%ext</code><br>
-    Example: 2009-01/Show Name - 2009-01-02 - Episode Name.avi
+    Example: 2009-01/Show Name - 2009-01-02 - Episode Name.mkv
 </p>
 <p><strong>Daily folders:</strong><br>
     <code>%y-%0m-%0d/%t - %y-%0m-%0d - %desc.%ext</code><br>
-    Example: 2009-01-02/Show Name - 2009-01-02 - Episode Name.avi
+    Example: 2009-01-02/Show Name - 2009-01-02 - Episode Name.mkv
+</p>
+<p><strong>Job Name as Folder Name:</strong><br>
+    <code>%dn.%ext</code><br>
+    Example: Job Name.mkv
 </p>
