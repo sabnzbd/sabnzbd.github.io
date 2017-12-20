@@ -13,7 +13,7 @@ redirect_from:
             <div class="col-md-12 text-center">
                 <h1>Support the development of SABnzbd</h1>
                 <p>We work on this project in our spare time, your donations will help us to continue developing SABnzbd.</p>
-                <p>Donations can be send via PayPal or credit card and through Bitcoin, Ethereum and Litecoin (see below).</p>
+                <p>Donations can be send via PayPal or credit card and through Bitcoin (Cash), Ethereum and Litecoin.</p>
                 <p>It is not required to donate in order to use SABnzbd or any of its features.</p>
                 <h2>Thank you <span class="glyphicon glyphicon-heart"></h2>
                 <hr>
@@ -22,7 +22,7 @@ redirect_from:
         <div class="row paypal-row">
             <div class="col-md-12 text-center">
                 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=670741" target="_blank" class="paypal-link">
-                    Donate via PayPal or credit card (PayPal account not required)<br>
+                    Donate via PayPal or credit card <br>(PayPal account not required)<br>
                     <img src="/images/donate/paypal_donate.jpg" alt="Donate via PayPal">
                 </a>
             </div>
@@ -82,7 +82,7 @@ redirect_from:
             </div>
         </div>
         <div class="row qr-codes">
-            <div class="col-md-2 col-md-offset-3">
+            <div class="col-sm-3 col-sm-offset-3">
                 <h3>Bitcoin</h3>
                 <div class="input-group">
                     <input type="text" class="form-control" readonly name="btc" value="1KAf7dFEio5X9HS5Qv9SM9Z7484Mf7jNHm">
@@ -91,8 +91,17 @@ redirect_from:
                     </span>
                 </div>
                 <div id="qr-bitcoin" class="crypto-qrs"></div>
+
+                <h3>Bitcoin Cash</h3>
+                <div class="input-group">
+                    <input type="text" class="form-control" readonly name="btccash" value="14gJ2ThAsBUzb4CpifUj9aDEvsYDqasbjV">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-qrcode"></span></button>
+                    </span>
+                </div>
+                <div id="qr-bitcoincash" class="crypto-qrs"></div>
             </div>
-            <div class="col-md-2">
+            <div class="col-sm-3">
                 <h3>Ethereum</h3>
                 <div class="input-group">
                     <input type="text" class="form-control" readonly name="eth" value="0xc9c424F21edbC2d200d38643C261407a3A3805F7">
@@ -101,8 +110,7 @@ redirect_from:
                     </span>
                 </div>
                 <div id="qr-ethereum" class="crypto-qrs"></div>
-            </div>
-            <div class="col-md-2">
+
                 <h3>Litecoin</h3>
                 <div class="input-group">
                     <input type="text" class="form-control" readonly name="ltc" value="LcToBHhN15VDornWjCgvHyFdvxYQTP36Zr">
@@ -120,6 +128,10 @@ redirect_from:
 <script type="text/javascript">
     $('#qr-bitcoin').html('').qrcode({
         text: "1KAf7dFEio5X9HS5Qv9SM9Z7484Mf7jNHm",
+        size: 170
+    });
+    $('#qr-bitcoincash').html('').qrcode({
+        text: "14gJ2ThAsBUzb4CpifUj9aDEvsYDqasbjV",
         size: 170
     });
     $('#qr-ethereum').html('').qrcode({
