@@ -1,5 +1,5 @@
 # For in the <title>
-name: SABnzbd.org
+name: SABnzbd
 
 # Needs to be a string, for string-comparison
 wiki_version: '2.3'
