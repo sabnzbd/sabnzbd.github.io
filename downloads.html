@@ -9,7 +9,7 @@ redirect_from:
 <div class="main-wrapper content-container">
     <div id="main-container" class="container container-download-page">
         <div class="row downloads-row">
-            <div class="col-sm-6 download-stable">
+            <div class="col-sm-6 download-stable {% if site.latest_testing == '' %}col-sm-offset-3{% endif %}">
                 <h2>Latest stable release</h2>
                 <p>Mature and stable. <br/><br/></p>
                 <a class="download-button" href="https://github.com/sabnzbd/sabnzbd/releases/tag/{{ site.latest_stable }}">
