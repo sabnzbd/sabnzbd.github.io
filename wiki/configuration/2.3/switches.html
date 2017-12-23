@@ -6,7 +6,7 @@ title: Switches
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td><strong>Server load-balancing</strong></td>
+            <td><strong>Server load-balancing</strong><br><span class="label label-primary">Advanced</span></td>
             <td>A number of newsservers has multiple IP-addresses, these can be IPv4 or IPv6.
             <ul>
                 <li><code>Prevent load-balancing</code> = The first IP-address returned will be used for all connections. </li>
@@ -16,15 +16,15 @@ title: Switches
             </td>
         </tr>
         <tr>
-            <td><strong>SSL Ciphers</strong></td>
+            <td><strong>SSL Ciphers</strong><br><span class="label label-primary">Advanced</span></td>
             <td>See <a href="/wiki/advanced/ssl-ciphers">SSL Ciphers</a>.</td>
         </tr>
         <tr>
-            <td><strong>Maximum retries</strong></td>
+            <td><strong>Maximum retries</strong><br><span class="label label-primary">Advanced</span></td>
             <td>To prevent deadlock, SABnzbd will only try each server a limited amount of times. You can increase the value or set it to <code>0</code> to enable endless retries.</td>
         </tr>
         <tr>
-            <td><strong>Disconnect on empty queue</strong></td>
+            <td><strong>Disconnect on empty queue</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Disconnect from Usenet server(s) when queue is empty or paused. This will help you switch between different systems. Set this option off when your server keeps complaining that you have too many connections open.</td>
         </tr>
     </tbody>
@@ -45,7 +45,7 @@ title: Switches
             <td>When a top-job stalls for some reason, start downloading segments for the next job. This prevents a job from blocking the queue when you have an unreliable Usenet server. If you need this behavior, set the option off. If you have a reliable server (most paid servers), you might as well set this on.</td>
         </tr>
         <tr>
-            <td><strong>Check before download</strong></td>
+            <td><strong>Check before download</strong><br><span class="label label-primary">Advanced</span></td>
             <td><p>To prevent wasteful downloading, you can let SABnzbd check the presence of a job on the server, before actually downloading it. If less than 100.2% of the total available data (including par2 files) is available, the job will be send to History as failed. When you click "Retry", SABnzbd will attempt the download anyway. </p>
             <p><span class="label label-warning">NOTE</span> The check slows down the total download considerably, use only when you're not in a hurry but wish not to waste your quota instead. Also it cannot be completely reliable, due to the way some servers remove posts.</p></td>
         </tr>
@@ -62,7 +62,7 @@ title: Switches
             <td>This option will analyze NZB titles for Series/Season/Episode information and will check whether the episode has already been downloaded. It will check against the History database.</td>
         </tr>
         <tr>
-            <td><strong>Allow proper releases</strong></td>
+            <td><strong>Allow proper releases</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Bypass series duplicate detection if PROPER, REAL or REPACK is detected in the download name to allow for better quality releases to still be downloaded.</td>
         </tr>
         <tr>
@@ -74,7 +74,7 @@ title: Switches
             <td>The presence of .exe files is often a sign of a trojan horse or virus being part of the post. You can abort or pause downloads that contain files with the listed extensions. Example exe,com,cmd,bat will trigger on the most used Windows executable content.</td>
         </tr>
         <tr>
-            <td><strong>Sort by age</strong></td>
+            <td><strong>Sort by age</strong><br><span class="label label-primary">Advanced</span></td>
             <td>When you use a server with a low retention time, you can choose to download the oldest parts of a job first. This way you have more chance on completing the download.</td>
         </tr>
         <tr>
@@ -91,47 +91,47 @@ title: Switches
             <td>Will pause the queue while verifying and repairing, only needed for resource-constrained systems (like NAS-devices).</td>
         </tr>
         <tr>
-            <td><strong>Download all par2 files</strong></td>
+            <td><strong>Download all par2 files</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Download all par2 files when (after verification) the job was damaged. Prevents multiple rounds of verification.<br>
             <span class="label label-warning">NOTE</span> SABnzbd will already download extra par2 files if it detects problems during the download, so usually this option is not required.</td>
         </tr>
         <tr>
-            <td><strong>Extra PAR2 parameters</strong></td>
+            <td><strong>Extra PAR2 parameters</strong><br><span class="label label-primary">Advanced</span></td>
             <td>
                 <p>Extra arguments that will be passed when running <code>par2</code> or MultiPar for verification and repair.</p>
                 <p>Detailed information: <a href="#multi-core-multipar">Windows</a> and <a href="#multi-core">Linux</a>. No extra parameters are available on macOS.</p>
             </td>
         </tr>
         <tr>
-            <td><strong>Enable SFV-based checks</strong></td>
+            <td><strong>Enable SFV-based checks</strong><br><span class="label label-primary">Advanced</span></td>
             <td>If no par2 files are available, SFV files (if present) will be used to check files</td>
         </tr>
         <tr>
-            <td><strong>Process only verified jobs</strong></td>
+            <td><strong>Process only verified jobs</strong><br><span class="label label-primary">Advanced</span></td>
             <td>When the download is incorrect and not repairable it may be safer to skip further post-processing.</td>
         </tr>
         <tr>
-            <td><strong>Enable recursive unpacking</strong></td>
+            <td><strong>Enable recursive unpacking</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Unpack archives (rar, zip, 7z) within archives.</td>
         </tr>
         <tr>
-            <td><strong>Ignore any folders inside archives</strong></td>
+            <td><strong>Ignore any folders inside archives</strong><br><span class="label label-primary">Advanced</span></td>
             <td>All files will go into a single folder.</td>
         </tr>
         <tr>
-            <td><strong>User script can flag job as failed</strong></td>
+            <td><strong>User script can flag job as failed</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Some scripts will return a non-zero exit code when they encounter a problem. You can opt to let a non-zero exit code mark the job as failed. This can be useful when you're using an indexer that offers alternative NZB files or use a front-end (like SickBeard) that will look for alternatives when a job fails.</td>
         </tr>
         <tr>
-            <td><strong>On failure, try alternative NZB</strong></td>
+            <td><strong>On failure, try alternative NZB</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Some servers provide an alternative NZB when a download fails and we can try that one.</td>
         </tr>
         <tr>
-            <td><strong>Nice parameters</strong></td>
+            <td><strong>Nice parameters</strong><br><span class="label label-primary">Advanced</span></td>
             <td>See <a href="#nice">Nice to reduce CPU priority</a>.</td>
         </tr>
         <tr>
-            <td><strong>IONice parameters</strong></td>
+            <td><strong>IONice parameters</strong><br><span class="label label-primary">Advanced</span></td>
             <td>See <a href="#ionice">IONice to reduce disk priority</a>.</td>
         </tr>
         <tr>
@@ -139,7 +139,7 @@ title: Switches
             <td>If enabled, delete anything that looks like sample files (containing the words <code>sample</code> or <code>proof</code>) after completion of post-processing.</td>
         </tr>
         <tr>
-            <td><strong>Use tags from indexer</strong></td>
+            <td><strong>Use tags from indexer</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Enable meta-tags coming from indexers or from the content of the NZB. These tags contain cleaned up versions of titles, episode names, etc. If you prefer that everything is derived from the NZB name, disable.</td>
         </tr>
         <tr>
@@ -165,19 +165,19 @@ title: Switches
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td><strong>Enable folder rename</strong></td>
+            <td><strong>Enable folder rename</strong><br><span class="label label-primary">Advanced</span></td>
             <td>When SABnzbd does unpacking it will do that in a folder prefixed with <code>_UNPACK_</code>. This is to prevent users or other software from processing the file. Some Windows operating systems (most notably Windows Home Server) cannot handle this. Therefor it's possible to disable the feature.</td>
         </tr>
         <tr>
-            <td><strong>Replace Spaces in folder names</strong></td>
+            <td><strong>Replace Spaces in folder names</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Enable to replace spaces with underscores in folder names.</td>
         </tr>
         <tr>
-            <td><strong>Replace dots in folder names</strong></td>
+            <td><strong>Replace dots in folder names</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Enable to replace dots with spaces in folder names.</td>
         </tr>
         <tr>
-            <td><strong>Make Windows compatible</strong></td>
+            <td><strong>Make Windows compatible</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Especially useful for servers and sometimes external disks. Make sure names are compatible with Windows.</td>
         </tr>
     </tbody>

@@ -50,21 +50,16 @@ title: Servers
             <td><strong>Priority</strong></td>
             <td>See Priorities section above.</td>
         </tr>
-    </tbody>
-</table>
-<h2>Advanced settings</h2>
-<table class="table table-bordered table-hover">
-    <tbody>
         <tr>
-            <td><strong>Retention</strong></td>
+            <td><strong>Retention</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Set here the maximum retention time of your server. Retention means the number of days that articles are kept by the server. <code>0</code> means infinite retention. <br>Only use this when you have multiple servers and you want to avoid that SABnzbd wastes time on asking servers for articles it cannot have. Be aware that retention times advertised by Usenet providers are not absolute. If you set it too low, your others servers will be used more intensely. There is no reason to set a retention time when you have only one server.</td>
         </tr>
         <tr>
-            <td><strong>Timeout</strong></td>
+            <td><strong>Timeout</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Time out in seconds for error recovery. Be careful, do not set this to a very low value, your news provider will not like that. A common value is <code>60</code>.</td>
         </tr>
         <tr>
-            <td><strong>Certificate verification</strong></td>
+            <td><strong>Certificate verification</strong><br><span class="label label-primary">Advanced</span></td>
             <td>
                 <p>SABnzbd can verify the certificates your newsserver uses to verify its identity. Python 2.7.9 or above, OpenSSL 1.0.2 or above and up-to-date local CA certificates are required.</p>
                 <p><span class="label label-danger">WARNING</span> Disabling or setting this check to <code>Minimal</code> allows anyone to redirect and intercept your traffic using <em>any</em> valid certificate!  It is comparable to not using SSL at all.</p>
@@ -78,19 +73,19 @@ title: Servers
             </td>
         </tr>
         <tr>
-            <td><strong>Optional</strong></td>
+            <td><strong>Optional</strong><br><span class="label label-primary">Advanced</span></td>
             <td>If you use multiple servers and some of these servers are not very reliable, you can declare them "optional". This means that if such a server causes too much problems (like time-outs) it will be ignored for some time. <br>When you declare a server with a long retention time as optional and the server is temporary out-of-service, SABnzbd will fall back to another server. If the alternative server has a shorter retention time, you will miss articles if the articles are beyond the retention time of the alternative server. It is best to set your most reliable and longest retention time server as a lower priority server but not as optional. Secondary servers (cheaper, less reliable, shorter retention time) can be set as <em>high priority</em> and <em>optional</em>.</td>
         </tr>
         <tr>
-            <td><strong>Send group</strong></td>
+            <td><strong>Send group</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Some news servers require the Usenet group to be sent before starting download. Only enable if your server has problems with downloading otherwise.</td>
         </tr>
         <tr>
-            <td><strong>Server description</strong></td>
+            <td><strong>Server description</strong><br><span class="label label-primary">Advanced</span></td>
             <td>The name of the server in the Config and download reports.</td>
         </tr>
         <tr>
-            <td><strong>Personal notes</strong></td>
+            <td><strong>Personal notes</strong><br><span class="label label-primary">Advanced</span></td>
             <td>In case extra information is necessary to identify this server to you on this Configuration page.</td>
         </tr>
     </tbody>
