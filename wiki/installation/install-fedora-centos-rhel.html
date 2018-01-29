@@ -36,7 +36,7 @@ subscription-manager repos --enable=rhel-7-server-rpms
     <li>Install the prereqs.  Example below (there may be more prereqs I neglected to track):
         {% highlight sh %}yum install par2cmdline python-yenc python-cheetah unrar{% endhighlight %}
     </li>
-    <li>Clone the sabnzbd git repo to <codee>/opt</code> or somewhere else applicable and switch to the <code>master</code> branch:
+    <li>Clone the sabnzbd git repo to <code>/opt</code> or somewhere else applicable and switch to the <code>master</code> branch:
 {% highlight sh %}
 git clone https://github.com/sabnzbd/sabnzbd
 git checkout master
@@ -47,8 +47,6 @@ git checkout master
 useradd usenet
 chown -R usenet:usenet /opt/usenet
 {% endhighlight %}
-
-</code></pre>
     </li>
     <li>Optionally create a startup item for systemd and copy it to <code>/etc/systemd/system/</code>.  Call it <code>sabnzbd.service</code> or something else applicable. Make sure to set the correct <code>User</code> and <code>Group</code> matching the account on your system.
 {% highlight sh %}

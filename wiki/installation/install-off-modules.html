@@ -30,6 +30,10 @@ pip install pypiwin32
 
 <p>In case <code>sabyenc</code> installation fails, you can read more <a href="/wiki/extra/sabyenc.html">here</a>.</p>
 
+<h2>Multi-language support</h2>
+<p>To enable multi-language support (and fix mistakes in English texts) you will need to run this command once before starting SABnzbd for the first time and after each major update:</p>
+<pre>python tools/make_mo.py</pre>
+
 <h2 id="toc8">Must-have utilities</h2>
 <h3 id="toc9">unrar</h3>
 <p>We recommend release 5.5 or higher from the RarLab site or your package manager:<br>
@@ -39,6 +43,7 @@ pip install pypiwin32
 <h3 id="toc11">par2cmdline</h3>
 <p>Available through package managers as <code>par2</code>, <code>par2cmdline</code> or via <a href="https://github.com/Parchive/par2cmdline/releases">GitHub</a>. <br>Faster multicore versions of <code>par2</code> can also be installed, read more <a href="/wiki/installation/multicore-par2">here</a>.
 </p>
+
 
 <h2 id="toc8">Optional utilities</h2>
 <h3 id="toc10">unzip</h3>
