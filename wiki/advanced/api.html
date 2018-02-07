@@ -1146,6 +1146,10 @@ Example of filtering the server settings by keyword:
 <p>For example, changing the Cleanup-list to <code>.sfv,.nzb,.nfo,.ext</code> would look like this:</p>
 <pre><code>api?mode=set_config&amp;section=misc&amp;keyword=cleanup_list&amp;value=.sfv,.nzb,.nfo,.ext</code></pre>
 
+<h2>Setting Server settings</h2>
+<p>Changing settings for Servers is a bit different and requires you to specify the correct <code>name</code> of the server. This <code>name</code> you can find in your <code>sabnzbd.ini</code>, where it will for example say <code>[news.giganews.com]</code>.</p>
+<pre><code>api?mode=set_config&amp;section=servers&amp;name=SERVER_NAME&amp;username=VALUE_1&amp;connections=VALUE_2</code></pre>
+
 <h2 id="set_config_default">Reset config item to default value</h2>
 <p><span class="label label-warning">NOTE</span> Currently only for settings in the <code>misc</code> section of the config. Can accept multiple keywords to reset.</p>
 <pre><code>api?mode=set_config_default&amp;keyword=SETTING_1&amp;keyword=SETTING_2</code></pre>
