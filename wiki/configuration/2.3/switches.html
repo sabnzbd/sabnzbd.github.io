@@ -75,7 +75,7 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Sort by age</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>When you use a server with a low retention time, you can choose to download the oldest parts of a job first. This way you have more chance on completing the download.</td>
+            <td>Every time a job is added to the queue, the oldest jobs (posting time) are put at the beginning of the queue. In case you have a server with low retention time, there is a higher chance of completing it. Additionally, the files inside each new job are also sorted by age. Beware that custom sorting of the queue is lost every time a new job is added.</td>
         </tr>
         <tr>
             <td><strong>Direct Unpack</strong></td>
