@@ -14,6 +14,11 @@ title: Categories
     <li>The Folder or full path for final storage (relative folders are based of your complete folder, full paths are also allowed). <br>Ending the path with an asterisk <code>*</code> will prevent creation of job folders.</li>
 </ul>
 
+<p>
+    <span class="label label-warning">NOTE</span> Each row has its own save button. Remember to hit <strong>Save</strong> after each category change!
+</p>
+
+
 <h3>Categories are applied:</h3>
 <ul>
     <li>When the indexer category tag or newsgroup of the download matches the field for that category. </li>
@@ -25,40 +30,8 @@ title: Categories
 
 <h3 id="toc0">Indexer tag or Group field</h3>
 <p>
-    By default, downloads are automatically categorized by the indexer providing a category inside the nzb or the newsgroup in which the job is located (i.e., alt.binaries.teevee). Categories can be re-ordered to set the order in which matching should happen. For example this way you can put <code>Movies > 4K</code> in a special category and the rest of the movies in a categorie with just the indexer tag <code>Movies</code>.
+    By default, downloads are automatically categorized by the indexer providing a category inside the nzb or the newsgroup in which the job is located (i.e., <code>alt.binaries.teevee</code>). Categories can be re-ordered to set the order in which matching should happen. For example this way you can put <code>Movies &gt; 4K</code> in a special category and the rest of the movies in a categorie with just the indexer tag <code>Movies</code>.
 </p>
 <p>
-    Basic wildcards are supported. For example, some <a href="/wiki/introduction/nzb-sources">indexers</a> uses sub-categories like <code>TV: HD/x264</code>. Instead of listing all possible categories, you may simply use <code>TV*</code>. The same applies to newsgroups (i.e., <code>alt.bin*</code>).
+    Basic wildcards are supported. For example, some <a href="/wiki/introduction/nzb-sources">indexers</a> uses sub-categories like <code>TV &gt; HD</code>. Instead of listing all possible categories, you may simply use <code>TV*</code>. The same applies to newsgroups (i.e., <code>alt.bin*</code>).
 </p>
-<p>
-    <span class="label label-warning">NOTE</span> Each row has its own save button. Remember to hit <strong>Save</strong> after each category change!
-</p>
-
-<h3 id="toc2">Popular Indexer Examples</h3>
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Site</th>
-            <th>Category Subcategory</th>
-            <th>Sab Match Pattern</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>DogNZB</td>
-            <td><strong>TV Shows*HD</strong></td>
-            <td><strong>TV</strong>* to match all TV or <strong>TV Shows*HD</strong> to match only the subcat</td>
-        </tr>
-        <tr>
-            <td>NZBGeek</td>
-            <td><strong>TV Shows*HD</strong></td>
-            <td><strong>TV</strong>* to match all TV or <strong>TV Shows*HD</strong> to match only the subcat</td>
-        </tr>
-        <tr>
-            <td>Nzb.su</td>
-            <td><strong>TV*SD</strong></td>
-            <td><strong>TV</strong>* to match all TV or <strong>TV*SD</strong> to match only the subcat</td>
-        </tr>
-    </tbody>
-</table>
-
