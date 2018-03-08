@@ -1,24 +1,25 @@
 ---
 title: Job options
 ---
-<p>For each download job you can set post-processing options. While the download is still in the queue, you can even change them on-the-fly.</p>
+<p>For each download job you can set post-processing options. While the download is still in the queue, you can change them on-the-fly.</p>
+
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td>Download</td>
-            <td>No post processing at all. Just download all the files (including PAR2). The user has to do any post-processing.</td>
+            <td><code>Download</code></td>
+            <td>No post-processing at all. Just download all the files (including all PAR2) and move them to the final folder. The user has to do all post-processing manually.</td>
         </tr>
         <tr>
-            <td>+Repair</td>
+            <td><code>+Repair</code></td>
             <td>Download files and do a PAR2 verification. If the verification fails, download more PAR2 files and attempt to repair the files.</td>
         </tr>
         <tr>
-            <td>+Unpack</td>
-            <td>Download in <strong><em>repair</em></strong> mode and unpack any RAR and ZIP files.</td>
+            <td><code>+Unpack</code></td>
+            <td>Download all files, do a PAR2 verification and unpack the files. The final folder will also include the RAR and ZIP files.</td>
         </tr>
         <tr>
-            <td>+Delete</td>
-            <td>Download in <em><strong>unpack</strong></em> mode and delete the RAR and ZIP files that were unpacked</td>
+            <td><code>+Delete</code></td>
+            <td>Download all files, do a PAR2 verification, unpack the files to the final folder and delete the source files.</td>
         </tr>
     </tbody>
 </table>
