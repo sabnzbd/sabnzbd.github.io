@@ -14,7 +14,7 @@ giganews_link: 'https://www.giganews.com/usenet-special/'
 supernews_link: 'https://www.supernews.com/special/usenet-special/'
 
 # Extra plugins
-gems:
+plugins:
   - jekyll-redirect-from
 
 # Template settings
