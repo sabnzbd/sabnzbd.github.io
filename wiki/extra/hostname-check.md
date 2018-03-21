@@ -18,6 +18,6 @@ To prevent this, in SABnzbd 2.3.3 measures were taken and a new [Special](/wiki/
 
 # How can I access my setup again from a custom URL?
 
-1. Add your host to `host_whitelist` in the [Specials](/wiki/configuration/{{ site.wiki_version }}/special) page of the Config. You can also edit the `sabnzbd.ini` [directly](wiki/advanced/directory-setup). <br>Only include the hostname, separate multiple values by `,`.
+1. Add your host to `host_whitelist` in the [Specials](/wiki/configuration/{{ site.wiki_version }}/special) page of the Config. You can also edit the `sabnzbd.ini` [directly](/wiki/advanced/directory-setup). <br>Only include the hostname, separate multiple values by `,`.
 2. Enable a Username and Password in the [General](/wiki/configuration/{{ site.wiki_version }}/general) page of the Config.
 3. Access SABnzbd directly through it's IP address (if exposed).
