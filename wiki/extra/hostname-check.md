@@ -22,7 +22,18 @@ This attack path was identified in January 2018 in other software ([CVE-2018-570
 
 # Why do I get an `Access denied` error?
 
+If SABnzbd is accessed via an unexpected name, this will happen:
+
+In your webbrowser you'll see
+```
+Access denied - Hostname verification failed: https://sabnzbd.org/hostname-check
+```
+
+Once in the SABnzbd GUI you will see
+```Refused connection with hostname "blabla" from: ::1>Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36
+```
 See below how to solve that.
+
 
 # How can I access my setup again from a custom URL?
 
