@@ -16,10 +16,6 @@ title: Switches
             </td>
         </tr>
         <tr>
-            <td><strong>SSL Ciphers</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>See <a href="/wiki/advanced/ssl-ciphers">SSL Ciphers</a>.</td>
-        </tr>
-        <tr>
             <td><strong>Maximum retries</strong><br><span class="label label-primary">Advanced</span></td>
             <td>To prevent deadlock, SABnzbd will only try each server a limited amount of times. You can increase the value or set it to <code>0</code> to enable endless retries.</td>
         </tr>
@@ -103,6 +99,19 @@ title: Switches
             </td>
         </tr>
         <tr>
+            <td><strong>Nice parameters</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>Linux-only. See <a href="#nice">Nice to reduce CPU priority</a>.</td>
+        </tr>
+        <tr>
+            <td><strong>IONice parameters</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>Linux-only. See <a href="#ionice">IONice to reduce disk priority</a>.</td>
+        </tr>
+        <tr>
+            <td><strong>External process priority</strong><br><span class="label label-primary">Advanced</span></td>
+            <td><p>Windows-only. Set process priority of programs started by SABnzbd, like the repair and unpack processes.</p>
+                <p><span class="label label-warning">NOTE</span> Setting <code>High</code> could result in significant slowdown of the system during processing!</p></td>
+        </tr>
+        <tr>
             <td><strong>Enable SFV-based checks</strong><br><span class="label label-primary">Advanced</span></td>
             <td>If no par2 files are available, SFV files (if present) will be used to check files</td>
         </tr>
@@ -125,14 +134,6 @@ title: Switches
         <tr>
             <td><strong>On failure, try alternative NZB</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Some servers provide an alternative NZB when a download fails and we can try that one.</td>
-        </tr>
-        <tr>
-            <td><strong>Nice parameters</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>See <a href="#nice">Nice to reduce CPU priority</a>.</td>
-        </tr>
-        <tr>
-            <td><strong>IONice parameters</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>See <a href="#ionice">IONice to reduce disk priority</a>.</td>
         </tr>
         <tr>
             <td><strong>Ignore samples</strong></td>
