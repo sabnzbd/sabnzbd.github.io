@@ -44,6 +44,6 @@ If you want to accept connections via that host / domain name, see below how to 
 
 You can choose one of the following methods to allow access:
 
-1. Add your host to `host_whitelist` in the [Specials](/wiki/configuration/{{ site.wiki_version }}/special) page of the Config. You can also edit the `sabnzbd.ini` [directly](/wiki/advanced/directory-setup).<br>Only include the hostname, separate multiple values by `,` <br>If you use for example `http://sabnzbd.special.com:8080/`, add `sabnzbd.special.com` to `host_whitelist`.
-2. Enable a Username and Password in the [General](/wiki/configuration/{{ site.wiki_version }}/general) page of the Config.
-3. Access SABnzbd directly through it's IP address (if exposed).
+- Add your host to `host_whitelist` in the [Specials](/wiki/configuration/{{ site.wiki_version }}/special) page of the Config. You can also edit the `sabnzbd.ini` [directly](/wiki/advanced/directory-setup).<br>Only include the hostname, separate multiple values by `,` <br>If you use for example `http://sabnzbd.special.com:8080/`, add `sabnzbd.special.com` to `host_whitelist`.
+- Enable a Username and Password in the [General](/wiki/configuration/{{ site.wiki_version }}/general) page of the Config.
+- Access SABnzbd directly through it's IP address (if exposed).
