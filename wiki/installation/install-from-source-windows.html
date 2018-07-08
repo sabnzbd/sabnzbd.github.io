@@ -10,7 +10,7 @@ title: Install SABnzbd for Windows from source
     <li><p>Install <a href="https://git-for-windows.github.io/" target="_blank">Git for Windows</a> on your system. Defaults options are OK
     <li><p>After installing both, restart your computer and open a Command Prompt. <br/>
     Run these commands:
-    <pre><code>pip install cheetah
+    <pre><code>pip install cheetah3
 pip install cryptography
 pip install subprocessww
 pip install pypiwin32
@@ -23,9 +23,6 @@ pip install sabyenc</pre></code></li>
     <li><p>To enable multi-language support type in the Git Bash you still have open:
     <pre><code>cd sabnzbd
 python tools/make_mo.py</pre></code></li>
-    <!--<li><p>Install yEnc by <a href="/wiki/installation/yenc-0.4_py2.7.rar" target="_blank">copying the compiled yEnc for Windows files</a> to your Python installation in:<br/>
-    <em>C:\Python27\Lib\site-packages\</em><br/>
-    Depending on the version you installed in step 1 you either copy the files from the 32bit or 64bit folder.</li>-->
     <li><p>Open a Command Prompt. If you did not change the location of the Git clone, you can now start SABnzbd by running
     <pre><code>python C:\Users\USERNAME\sabnzbd\SABnzbd.py</pre></code></li>
 </ol>
