@@ -17,6 +17,9 @@ redirect_from: "/wiki/advanced/user-pre-queue-script"
 <hr>
 <h2 id="toc1">Input parameters</h2>
 <p>All parameters (except 1) can be empty, meaning a default value. Use <code>%1</code> in Windows scripts and <code>$1</code> in Unix scripts. Note that on Windows the input parameters are surrounded by quotes (e.g. <code>"job name"</code>).</p>
+
+<p><strong>Much more information is available to scripts via environment variables, <a href="#env_vars">see below</a>!</strong></p>
+
 <table class="table table-bordered table-hover table-not-fixed">
     <thead>
         <tr>
@@ -154,6 +157,101 @@ SABnzbd uses the first 7 lines of output, so they should only contain proper dat
         <tr>
             <td>7</td>
             <td>Group to be used (in case your provider doesn't carry all groups and there are multiple groups in the NZB)</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+<h2 id="env_vars">Enviroment variables</h2>
+<p><span class="label label-warning">v2.3.5+</span> Enviroment variables were added in SABnzbd 2.3.5.</p>
+<p>Your script can get extra information via environment variables (return information should still be send as plain output):</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Position</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SAB_SCRIPT</td>
+            <td>The name of the current script</td>
+        </tr>
+        <tr>
+            <td>SAB_FINAL_NAME</td>
+            <td>The name of the job in the queue and of the final folder</td>
+        </tr>
+        <tr>
+            <td>SAB_FILENAME</td>
+            <td>The NZB filename (after grabbing from the URL)</td>
+        </tr>
+        <tr>
+            <td>SAB_CAT</td>
+            <td>What category was assigned</td>
+        </tr>
+        <tr>
+            <td>SAB_BYTES</td>
+            <td>Total number of bytes</td>
+        </tr>
+        <tr>
+            <td>SAB_DUPLICATE</td>
+            <td>Was it detected as duplicate</td>
+        </tr>
+        <tr>
+            <td>SAB_PASSWORD</td>
+            <td>What was the password supplied by the NZB or the user</td>
+        </tr>
+        <tr>
+            <td>SAB_STATUS</td>
+            <td>Current status (completed/failed/running)</td>
+        </tr>
+        <tr>
+            <td>SAB_PP</td>
+            <td>What post-processing was activated (download/repair/unpack/delete)</td>
+        </tr>
+        <tr>
+            <td>SAB_REPAIR</td>
+            <td>Was repair selected by user</td>
+        </tr>
+        <tr>
+            <td>SAB_UNPACK</td>
+            <td>Was unpack selected by user</td>
+        </tr>
+        <tr>
+            <td>SAB_PRIORITY</td>
+            <td>Priority set by user</td>
+        </tr>
+        <tr>
+            <td>SAB_GROUPS</td>
+            <td>Newsgroups listed in the NZB</td>
+        </tr>
+        <tr>
+            <td>SAB_VERSION</td>
+            <td>The version of SABnzbd used</td>
+        </tr>
+        <tr>
+            <td>SAB_PROGRAM_DIR</td>
+            <td>The directory where the current SABnzbd instance is located</td>
+        </tr>
+        <tr>
+            <td>SAB_PAR2_COMMAND</td>
+            <td>The path to the <code>par2</code> command on the system that SABnzbd uses</td>
+        </tr>
+        <tr>
+            <td>SAB_MULTIPAR_COMMAND</td>
+            <td>Windows-only (empty on other systems). The path to the MultiPar command on the system that SABnzbd uses</td>
+        </tr>
+        <tr>
+            <td>SAB_RAR_COMMAND</td>
+            <td>The path to the <code>unrar</code> command on the system that SABnzbd uses</td>
+        </tr>
+        <tr>
+            <td>SAB_ZIP_COMMAND</td>
+            <td>The path to the <code>unzip</code> command on the system that SABnzbd uses</td>
+        </tr>
+        <tr>
+            <td>SAB_7ZIP_COMMAND</td>
+            <td>The path to the <code>7z</code> command on the system that SABnzbd uses. Not all systems have 7zip installed (it's optional for SABnzbd), so this can also be empty</td>
         </tr>
     </tbody>
 </table>
