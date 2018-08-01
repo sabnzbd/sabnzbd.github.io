@@ -4,6 +4,8 @@ redirect_from:
     - /hostname-check
 ---
 
+This article is about the message 'Refused connection with hostname "sabnzbd.special.com"', and how to solve it.
+
 # Introduction
 
 Due to something called [DNS hijacking](https://en.wikipedia.org/wiki/DNS_hijacking), attackers could access your SABnzbd installation even if you have not exposed it to the internet.
@@ -11,6 +13,15 @@ Due to something called [DNS hijacking](https://en.wikipedia.org/wiki/DNS_hijack
 To prevent this, in SABnzbd 2.3.3 measures were taken and a new [Special](/wiki/configuration/{{ site.wiki_version }}/special) setting was introduced called `host_whitelist` where you can specify what URL's that are allowed to represent your SABnzbd.
 
 For normal usage (ie access from your LAN), SABnzbd will fill out this setting automatically with your hostname and you don't have to do anything at all.
+
+# How can I access my setup again from a custom URL, or: How can I get can rid of the error message?
+
+You can choose **one** of the following methods to allow access:
+
+- Just add the host name or the full name ('FQDN') shown in the error message to `host_whitelist` in the [Specials](/wiki/configuration/{{ site.wiki_version }}/special) page of the Config. You can also edit the `sabnzbd.ini` [directly](/wiki/advanced/directory-setup). So, if you use for example `http://sabnzbd.special.com:8080/` to access SABnzbd, then add `sabnzbd.special.com` to `host_whitelist`, **or**
+- Access SABnzbd directly through it's IP address, **or**
+- Enable a Username and Password in the [General](/wiki/configuration/{{ site.wiki_version }}/general) page of the Config.
+
 
 # Technical background
 
@@ -37,13 +48,7 @@ or
 ```
 Refused connection with hostname "mysabhost.duckdns.org" from: ::ffff:2.14.253.70>Mozilla/5.0 (Linux; Android 7.0; SM-G930F Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.109 Mobile Safari/537.36
 ```
-If you want to accept connections via that host / domain name, see below how to do that.
 
 
-# How can I access my setup again from a custom URL?
 
-You can choose one of the following methods to allow access:
 
-- Add your host to `host_whitelist` in the [Specials](/wiki/configuration/{{ site.wiki_version }}/special) page of the Config. You can also edit the `sabnzbd.ini` [directly](/wiki/advanced/directory-setup).<br>Only include the hostname, separate multiple values by `,` <br>If you use for example `http://sabnzbd.special.com:8080/`, add `sabnzbd.special.com` to `host_whitelist`.
-- Enable a Username and Password in the [General](/wiki/configuration/{{ site.wiki_version }}/general) page of the Config.
-- Access SABnzbd directly through it's IP address (if exposed).
