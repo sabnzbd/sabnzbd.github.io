@@ -10,7 +10,7 @@ This article is about the message 'Refused connection with hostname "sabnzbd.spe
 
 Due to something called [DNS hijacking](https://en.wikipedia.org/wiki/DNS_hijacking), attackers could access your SABnzbd installation even if you have not exposed it to the internet.
 
-To prevent this, in SABnzbd 2.3.3 measures were taken and a new [Special](/wiki/configuration/{{ site.wiki_version }}/special) setting was introduced called `host_whitelist` where you can specify what URL's that are allowed to represent your SABnzbd.
+To prevent this, in SABnzbd 2.3.3 measures were taken and a new [Special](/wiki/configuration/{{site.wiki_version}}/special) setting was introduced called `host_whitelist` where you can specify what URL's that are allowed to represent your SABnzbd.
 
 For normal usage (ie access from your LAN), SABnzbd will fill out this setting automatically with your hostname and you don't have to do anything at all.
 
@@ -18,9 +18,9 @@ For normal usage (ie access from your LAN), SABnzbd will fill out this setting a
 
 You can choose **one** of the following methods to allow access:
 
-- Just add the host name or the full name ('FQDN') shown in the error message to `host_whitelist` in the [Specials](/wiki/configuration/{{ site.wiki_version }}/special) page of the Config. You can also edit the `sabnzbd.ini` [directly](/wiki/advanced/directory-setup). So, if you use for example `http://sabnzbd.special.com:8080/` to access SABnzbd, then add `sabnzbd.special.com` to `host_whitelist`, **or**
+- Just add the host name or the full name ('FQDN') shown in the error message to `host_whitelist` in the [Specials](/wiki/configuration/{{site.wiki_version}}/special) page of the Config. You can also edit the `sabnzbd.ini` [directly](/wiki/advanced/directory-setup). So, if you use for example `http://sabnzbd.special.com:8080/` to access SABnzbd, then add `sabnzbd.special.com` to `host_whitelist` (separate multiple hostnames by a comma), **or**
 - Access SABnzbd directly through it's IP address, **or**
-- Enable a Username and Password in the [General](/wiki/configuration/{{ site.wiki_version }}/general) page of the Config.
+- Enable a Username and Password in the [General](/wiki/configuration/{{site.wiki_version}}/general) page of the Config.
 
 
 # Technical background
