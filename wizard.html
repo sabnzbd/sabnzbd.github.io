@@ -231,7 +231,7 @@ redirect_from:
             ga('send', 'event', 'outbound', 'click', theUrl, {
                 'transport': 'beacon'
             });
-        })
+        });
 
         // No language detected?
         if(!lang) {
@@ -240,6 +240,9 @@ redirect_from:
 
         // Track the languages used (just for fun)
         ga('send', 'event', 'wizard', 'click', lang);
+
+        // Save it in localStorage to update the corner ad
+        localStorage.setItem('user_lang', lang);
     </script>
 </body>
 </html>
