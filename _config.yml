@@ -10,8 +10,8 @@ latest_stable: '2.3.5'
 latest_testing: ''
 
 # AD-links
-giganews_link: 'https://www.giganews.com/usenet-special/'
-supernews_link: 'https://www.supernews.com/special/usenet-special/'
+giganews_link: 'https://www.giganews.com/usenet-special/?a=sabd1'
+supernews_link: 'https://www.supernews.com/special/usenet-special/?r=sabnzbd_sn'
 
 # Extra plugins
 plugins:
