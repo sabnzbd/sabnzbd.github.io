@@ -6,7 +6,7 @@ Packages maintained by the community.
 
 ## Synology
 
-* [Synology package from SynoCommunity](http://www.synocommunity.com/packages)
+* [Add SynoCommunity to your Package Center](https://synocommunity.com/#easy-install) and search for `SABnzbd`
 
 ## QNAP
 
