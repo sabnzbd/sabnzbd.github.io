@@ -229,7 +229,12 @@ title: Special settings
         <tr>
             <td><code>req_completion_rate</code></td>
             <td><code>100.2</code></td>
-            <td>Minimum percentage to allow pre-check to continue downloading. </td>
+            <td>
+                Minimum percentage to allow pre-check to continue downloading. <br>
+                A perfect download (with the usual 10% par2 files) would have 110%.<br>
+                100% means that the rar files and the par2-files combined are the same amount of bytes as only the rar-set, if it was fully complete.<br>
+                Anything less than 100% is by definition not repairable.
+            </td>
         </tr>
         <tr>
             <td><code>wait_ext_drive</code></td>
