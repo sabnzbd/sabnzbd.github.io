@@ -48,6 +48,7 @@ title: FAQ
             <li><a href="#toc32">"Repair failed, not enough repair blocks (585 short)" what does that mean?</a></li>
             <li><a href="#toc36">A download says "ENCRYPTED". What does that mean, and is there anything I can do?</a></li>
             <li><a href="#toc37">Do I need port forwarding for SABnzbd usage?</a></li>
+            <li><a href="#deobfuscate">Some of the files after unpacking have very strange names (deobfuscation)</a></li>
         </ul>
     </li>
 </ul>
@@ -304,6 +305,15 @@ password = ""</code>
     - Port forwarding needs to know the internal IP address of the SABnzbd system. This often means the SABnzbd needs to have a fixed internal IP address<br>
     - To check if your port forwarding is setup correctly, you can use <a href="http://www.whatsmyip.org/port-scanner/">http://www.whatsmyip.org/port-scanner/</a>
 </p>
+
+<h2 id="deobfuscate">Some of the files after unpacking have very strange names (deobfuscation)</h2>
+<p>Some posters hide the content of their uploads by naming the files within them randomly, for example <code>5a93f7298ba2465c98010207642bb0cf.mkv</code>. There are 2 ways to let SABnzbd fix this for you:
+    <ul>
+        <li>The <code>Deobfuscate.py</code> script is included with SABnzbd in the scripts folder of the installation directory. Place it in your Scripts Folder and on Linux systems add execute permission.The script will check in the completed job folder if maybe there are <code>.par2</code> files, for example <code>rename.par2</code>, and use those to rename the files. If there is no <code>rename.par2</code> available, it will rename the largest file to the job-name in the queue.</li>
+        <li>In Cofnig Sorting <strong>and</strong> enable each of the sorting options for the right category. Then select the preset <code>Job Name as Filename</code>. This doesn't always work perfectly, if it cannot correctly parse the name of the job.</li>
+    </ul>
+</p>
+
 <div class="footnotes-footer">
     <div class="title">Footnotes</div>
     <div class="footnote-footer" id="footnote-1">1. Often administrators receive so-called DMCA notifications</div>
