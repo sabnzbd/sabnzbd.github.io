@@ -1,0 +1,41 @@
+{% if page.url contains "donate" %}
+    {% assign ad_tag = "dcb" %}
+{% elsif page.url contains "wiki" %}
+    {% assign ad_tag = "wc" %}
+{% elsif page.url contains "downloads" %}
+    {% assign ad_tag = "dc" %}
+{% else %}
+    {% assign ad_tag = "hc" %}
+{% endif %}
+
+<aside>
+    <a href="{{ site.ad_link }}&chan={{ ad_tag }}1" target="_blank">
+        <img src="/images/specials/nh_corner_trial.png" width="180" height="180" alt="Special Newshosting offer for SABnzbd users" />
+    </a>
+    <a href="{{ site.ad_link }}&chan={{ ad_tag }}2" target="_blank">
+        <img src="/images/specials/nh_corner_discount.png" width="180" height="180" alt="Special Newshosting offer for SABnzbd users" />
+    </a>
+</aside>
+<script type="text/javascript">
+    // Randomly select 1 of 2 banners
+    var random_nr = Math.floor(Math.random()*2)
+    $('aside a').eq(random_nr).show()
+
+    /*
+    NOT USED RIGHT NOW
+    // Do we maybe know the language of the user?
+    var user_lang = localStorage.getItem('user_lang');
+    var corner_langs = ['pt_BR', 'zh_CN', 'de', 'es', 'fr', 'nl'];
+
+    // Maybe from the browser? Worth a try
+    if(!user_lang) {
+        user_lang = window.navigator.userLanguage || window.navigator.language;
+        user_lang = user_lang.substring(0,2);
+    }
+
+    // Update if we have it
+    if(corner_langs.indexOf(user_lang) !== -1) {
+        $('aside img').attr('src', '/images/specials/gn_tng_180x180_tri_' + user_lang + '.gif')
+    }
+    */
+</script>

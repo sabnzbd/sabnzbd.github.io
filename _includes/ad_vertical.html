@@ -1,0 +1,13 @@
+<div class="banner-tall">
+    <script type="text/javascript">
+        // Randomly select 1 of 2 banners
+        var random_nr = Math.floor(Math.random()*2)
+        if(random_nr == 1) {
+            document.write("<iframe name='banner' src='https://www.usenetjunction.com/scripts/7b141aw?a_aid=sabnzbd&amp;a_bid=1bbf7dd9&amp;chan=wl&amp;w=1' framespacing='0' frameborder='no' scrolling='no' width='160' height='235' allowtransparency='true'><a href='https://www.newshosting.com/usenet/partners/sabnzbd/?a_aid=sabnzbd&amp;a_bid=1bbf7dd9&amp;chan=wl' target='_top'>NH 160x235 Banner - 65% Off Headline</a></iframe>");
+        } else {
+            document.write("<iframe name='banner' src='https://www.usenetjunction.com/scripts/7b141aw?a_aid=sabnzbd&amp;a_bid=fcb06d0c&amp;chan=wl&amp;w=1' framespacing='0' frameborder='no' scrolling='no' width='160' height='235' allowtransparency='true'><a href='https://www.newshosting.com/usenet/partners/sabnzbd/?a_aid=sabnzbd&amp;a_bid=fcb06d0c&amp;chan=wl' target='_top'>NH 160x235 Banner - Free Trial Headline</a></iframe>");
+        }
+    </script>
+
+    <a href="{{ site.ad_link }}&chan=wt" target="_blank" class="banner-tall-text">Special Newshosting offer <br/>for SABnzbd users</a>
+</div>

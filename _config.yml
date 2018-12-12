@@ -9,9 +9,8 @@ wiki_version: '2.3'
 latest_stable: '2.3.5'
 latest_testing: '2.3.6Beta1'
 
-# AD-links
-giganews_link: 'https://www.giganews.com/usenet-special/?a=sabd1'
-supernews_link: 'https://www.supernews.com/special/usenet-special/?r=sabd1'
+# Basic ad-URL
+ad_link: 'https://www.newshosting.com/usenet/partners/sabnzbd/?a_aid=sabnzbd'
 
 # Extra plugins
 plugins:
