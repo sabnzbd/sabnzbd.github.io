@@ -33,92 +33,43 @@ redirect_from:
             border: 1px solid #e3e3e3;
             background-color: #F5F5F5;
         }
-        .lang,
+        .lang {
+            margin-bottom: 10px;
+        }
         .wizard-ad-img {
             display: none;
+        }
+        p {
+            margin: 0px 0px 6px;
+        }
+        a {
+            color: black !important;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="main-well">
+        <!-- See Git-history for multi-language version! -->
         <div class="lang lang-en">
-            <strong>Help:</strong> Don't have a Usenet provider? We recommend trying <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a>.
+            <p>
+                <strong>Tip:</strong><br>
+                In order to download from Usenet, you need access to a premium Usenet provider. For the fastest downloads, longest retention and best value, we recommend <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a>.
+            </p>
+            <p>
+                <a href="{{ site.ad_link }}&chan=it" target="_blank">[65% Off]</a> Newshosting (Official Promotion) - Get 65% off SABnzbd's Top Rated Usenet Provider.
+                <a href="{{ site.ad_link }}&chan=it" target="_blank">Limited Time Offer</a>
+            </p>
         </div>
 
-        <div class="lang lang-da">
-            <strong>Hjælp:</strong> Har du ingen Usenet leverandør? Vi anbefaler at prøve <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a>.
-        </div>
-
-        <div class="lang lang-de">
-            <strong>Hilfe:</strong> Noch keinen Usenet-Provider? Wir empfehlen, <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a> zu versuchen.
-        </div>
-
-        <div class="lang lang-fr">
-            Vous n'avez pas de fournisseur Usenet? Nous vous recommandons d'essayer <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a>.
-        </div>
-
-        <div class="lang lang-nb">
-            <strong>Hjelp:</strong> Har du ikke noen usenet leverandør? Vi anbefaler å prøve <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a>.
-        </div>
-
-        <div class="lang lang-nl">
-            <strong>Hulp:</strong> Heb je nog geen Usenet-provider? Wij bevelen <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a> aan.
-        </div>
-
-        <div class="lang lang-sv">
-            <strong>Hjälp:</strong> Har du inte någon usenet leverantör? Vi rekommenderar att prova <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a>.
-        </div>
-
-        <div class="lang lang-sr">
-            <strong>Помоћ:</strong> Немате 'usenet' провајдер? Препоручујемо Вам <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a>.
-        </div>
-
-        <div class="lang lang-es">
-            <strong>Ayuda:</strong> ¿No tienes proveedor de Usenet? Nosotros recomendamos probar <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a>.
-        </div>
-
-        <div class="lang lang-pt_BR">
-            <strong>Ajuda:</strong> Não tem um provedor usenet? Recomendamos testar <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a>.
-        </div>
-
-        <div class="lang lang-pl">
-            <strong>Pomoc:</strong> Nie masz dostawcy Usenet? Polecamy spróbować <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a>.
-        </div>
-
-        <div class="lang lang-fi">
-            <strong>Ohje:</strong> Eikö sinulla ole usenet tarjoajaa? Suosittelemme kokeilemaan <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a>.
-        </div>
-
-        <div class="lang lang-ro">
-            <strong>Ajutor:</strong> Nu aveţi un furnizor usenet? Vă recomandăm să încercaţi <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a>.
-        </div>
-
-        <div class="lang lang-ru">
-            У вас ещё нет поставщика услуг Usenet? Рекомендуем попробовать <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a>.
-        </div>
-
-        <div class="lang lang-zh_CN">
-            <strong>帮助</strong> 还没有 usenet 提供商r? 我们推荐试试 <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a>。
-        </div>
-
-        <br/>
         <a class="wizard-ad-img" href="{{ site.ad_link }}&chan=ib1" target="_blank">
-            <img src="/images/specials/nh_wizard_trial.png" border="0" alt="Special Newshosting offer for SABnzbd users">
+            <img src="/images/specials/nh_wizard_trial_small.png" border="0" alt="Special Newshosting offer for SABnzbd users">
         </a>
         <a class="wizard-ad-img" href="{{ site.ad_link }}&chan=ib2" target="_blank">
-            <img src="/images/specials/nh_wizard_discount.png" border="0" alt="Special Newshosting offer for SABnzbd users">
+            <img src="/images/specials/nh_wizard_discount_small.png" border="0" alt="Special Newshosting offer for SABnzbd users">
         </a>
     </div>
     <script type="text/javascript">
-        var lang = document.location.hash.replace('#', '')
-        if($('.lang-' + lang).length) {
-            // Specific
-            $('.lang-' + lang).show()
-        } else {
-            // English
-            $('.lang-en').show()
-        }
-
         // Google Analytics
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -128,7 +79,7 @@ redirect_from:
         ga('create', 'UA-75649-16', 'auto');
         ga('send', 'pageview');
 
-        // Add tracking to selected outbound links
+        // Add tracking to outbound links
         $(document.links)
         .attr('target', '_blank')
         .click(function() {
@@ -139,6 +90,8 @@ redirect_from:
             });
         });
 
+        // Fetch installer-language
+        var lang = document.location.hash.replace('#', '');
         // No language detected?
         if(!lang) {
             lang = 'en'
@@ -147,7 +100,7 @@ redirect_from:
         // Track the languages used (just for fun)
         ga('send', 'event', 'wizard', 'click', lang);
 
-        // Save it in localStorage to update the corner ad
+        // Save it in localStorage to use when people return
         localStorage.setItem('user_lang', lang);
 
         // Randomly select 1 of 2 banners
