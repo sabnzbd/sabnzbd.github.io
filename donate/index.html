@@ -122,6 +122,9 @@ redirect_from:
                 <div id="qr-litecoin" class="crypto-qrs"></div>
             </div>
         </div>
+        <div class="row text-center">
+            {% include ad_horizontal.html %}
+        </div>
     </div>
 </div>
 
@@ -148,6 +151,6 @@ redirect_from:
     })
     // Only show QR on-click
     $('.input-group-btn button').click(function(evnt) {
-        $(evnt.delegateTarget).parent().parent().siblings('.crypto-qrs').show()
+        $(evnt.delegateTarget).parent().parent().next('.crypto-qrs').show()
     })
 </script>
