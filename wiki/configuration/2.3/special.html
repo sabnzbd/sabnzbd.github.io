@@ -182,11 +182,15 @@ title: Special settings
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
             <td>Do not show a warning when the added NZB defines files to download that have no articles. This is usually a problem of the NZB-source.</td>
         </tr>
-
         <tr>
             <td><code>x_frame_options</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Includes HTTP header with every request that prevents SABnzbd to be included in another site within the browser. Disable when trying to use SABnzbd with tools that let you control your HTPC from a single interface.</td>
+        </tr>
+        <tr>
+            <td><code>require_modern_tls</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Enforce TLSv1.2+ for SSL-connections to Usenet servers. Older protocol versions (SSLv2, SSLv3, and TLS <= 1.1) will be disallowed.</td>
         </tr>
     </tbody>
 </table>
