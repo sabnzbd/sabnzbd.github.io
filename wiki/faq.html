@@ -309,8 +309,10 @@ password = ""</code>
 <h2 id="deobfuscate">Some of the files after unpacking have very strange names (deobfuscation)</h2>
 <p>Some posters hide the content of their uploads by naming the files within them randomly, for example <code>5a93f7298ba2465c98010207642bb0cf.mkv</code>. There are 2 ways to let SABnzbd fix this for you:
     <ul>
+        <li>In Config <a href="/wiki/configuration/{{ site.wiki_version }}/sorting">Sorting</a> <strong>and</strong> enable each of the sorting options for the right category. So enable Series Sorting for the <code>tv</code> category and Movie Sorting for the <code>movies</code> category. Hold Ctrl-button to select multiple categories.<br>
+            Then select the preset <code>Job Name as Filename</code> for each Sorting. <br>
+            This doesn't always work perfectly, if it cannot correctly parse the name of the job.</li>
         <li>The <code>Deobfuscate.py</code> script is included with SABnzbd in the scripts folder of the installation directory. Place it in your Scripts Folder and on Linux systems add execute permission.The script will check in the completed job folder if maybe there are <code>.par2</code> files, for example <code>rename.par2</code>, and use those to rename the files. If there is no <code>rename.par2</code> available, it will rename the largest file to the job-name in the queue.</li>
-        <li>In Cofnig Sorting <strong>and</strong> enable each of the sorting options for the right category. Then select the preset <code>Job Name as Filename</code>. This doesn't always work perfectly, if it cannot correctly parse the name of the job.</li>
     </ul>
 </p>
 
