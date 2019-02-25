@@ -18,19 +18,11 @@ After the switch we can once again look at ways to increase performance by utili
 
 ## How to get the Python 3 version to work
 
-We officially support Python 3.5 and above. While older versions might work for now, we intend on using features available on Python 3.5 and above.
-
-You will need `pip` installed (the Python 3 version is sometimes linked to `pip3`) and a build toolchain.
-We hope to so soon remove the need for the build toolchain, when we release pre-build packages for `sabyenc3`.
+We support Python 3.5 and above. You will need `pip` installed (the Python 3 version is sometimes linked to `pip3`).
 
 Then you should run from within the `sabnzbd` directory:
 ```
-pip install -r requirements.txt
-```
-
-If you are on Windows, you also need to run:
-```
-pip install pypiwin32
+pip install -r requirements.txt -U
 ```
 
 After this you can just run SABnzbd regularly (on some platforms you should use `python3`):
