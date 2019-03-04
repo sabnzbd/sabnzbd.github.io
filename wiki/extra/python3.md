@@ -18,16 +18,39 @@ After the switch we can once again look at ways to increase performance by utili
 
 ## How to get the Python 3 version to work
 
-We support Python 3.5 and above. You will need `pip` installed (the Python 3 version is sometimes linked to `pip3`).
+We support Python 3.5 and above.
+
+You will need `pip` installed (the Python 3 version is sometimes linked to `pip3`).
 
 Then you should run from within the `sabnzbd` directory:
 ```
 pip install -r requirements.txt -U
 ```
 
+#### Ubuntu specific instruction
+
+On Ubuntu (and probably Debian), the Howto is:
+
+```
+sudo apt install python3-pip
+pip3 install -r requirements.txt -U
+```
+
+### Run
+
 After this you can just run SABnzbd regularly (on some platforms you should use `python3`):
 ```
 python SABnzbd.py
+```
+#### Ubuntu specific instruction
+
+On Ubuntu
+```
+python3 SABnzbd.py
+```
+or
+```
+./SABnzbd.py
 ```
 
 ## Something is broken on the Python 3 version?
