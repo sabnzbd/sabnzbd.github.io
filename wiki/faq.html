@@ -100,9 +100,11 @@ title: FAQ
     <li>Something is preventing SABnzbd from opening any port, like a firewall application, or antivirus, or something else that might be trying to "protect" you. Either whitelist SABnzbd or reconsider your antivirus software choice. (The very good and free <a href="http://www.microsoft.com/Security_Essentials/">Microsoft Security Essentials</a> has no problem with SABnzbd)</li>
     <li>You lack the permissions to open the port you're trying. This tends to crop up on Linux systems, where ports under 1024 (like port 80) require root permissions to open.</li>
 </ul>
-<p>A way to discover what's going on, is to open a 'terminal' or 'cmd'-box, go to the directory that contains the SABnzbd executable, and start that. On Windows, you should start <code>SABnzbd-consolese.exe</code>. You should now see the output in the terminal/cmd-box.<br>
-    Starting with SABnzbd 0.6.x, on Windows there's a "SABnzbd safe mode" which you should find in your Start menu; it can be useful to try that safe mode.
-</p>
+<p>A way to discover what's going on, is to open a command prompt or terminal and go to the directory that contains the SABnzbd executable, and start that. <br>On Windows, you should run <code>.\SABnzbd-consolese.exe</code>. On MacOS you should run <code>/Applications/SABnzbd.app/Contents/MacOS/SABnzbd --console</code>. You should now see the output in the command prompt or terminal.</p>
+
+<p>If somehow the host and/or port was changed, you can reset them by starting <code>SABnzbd - SafeMode</code> on Windows or clicking the SABnzbd icon in the top bar and use the <code>Troubleshoot</code> options.<br>On other systems you can edit <code>sabnzbd.ini</code>.</p>
+
+
 <h2 id="toc10">I'm using Opera! Why doesn't it work?</h2>
 <p>Opera sometimes has a different interpretation of localhost than SABnzbd has. Try <code>http://[::1]:8080/sabnzbd</code> or <code>http://127.0.0.1:8080/sabnzbd</code>, one of the two should work.<br>
     This happens because many operating systems have an ambiguous definition of localhost. They list both <code>127.0.0.1</code> and <code>[::1]</code> has IP addresses (IPv4 and IPv6 respectively), while these are in reality two independent addresses.
@@ -130,8 +132,14 @@ title: FAQ
 
 <h2 id="toc17">Where are are my files?</h2>
 See: <a href="/wiki/advanced/directory-setup">Folder Setup</a>.
+
 <h2 id="why-login">SABnzbd is asking for a password and I didn't set one/forgotten the password, what do I do?</h2>
-<p>Shut down SABnzbd, find the file <a href="/wiki/configuration/{{ site.wiki_version }}/configure">sabnzbd.ini</a> and open it with an editor. Look for:</p>
+
+<p>Most likely your browser or password manager automatically filled your newsserver username and password as the main SABnzbd username and password. You can reset them by starting <code>SABnzbd - SafeMode</code> on Windows or clicking the SABnzbd icon in the top bar and use the <code>Troubleshoot</code> options.</p>
+
+<p>On other systems you can edit <code>sabnzbd.ini</code>.</p>
+
+<p>Shut down SABnzbd, find the file <a href="/wiki/advanced/directory-setup">sabnzbd.ini</a> and open it with an editor. Look for:</p>
 <div class="code">
     <pre><code>username = user
 password = pass</code>
@@ -144,8 +152,7 @@ password = ""</code>
 </pre>
 </div>
 <p>Save the .ini and restart SABnzbd.</p>
-<p>In Windows, if you can't access the web-ui then open up the task manager (ctrl+alt+del) go to the processors tab, find sabnzbd.exe select it and click end process. Then launch sabnzbd.exe again.</p>
-<p>In macOS / Linux, simply kill the process and launch it again.</p>
+
 <h2 id="toc22">Error: (10049, "Can't assign requested address")</h2>
 <p>If you start up SABnzbd, and you get 'error: (10049, "Can't assign requested address")', you very likely entered the IP address of your system in Config -&gt; General -&gt; Host and now your router has assigned another address.</p>
 <p>To set the host quickly on a Windows system: Open and CMD.EXE prompt (use Start menu) and type (including quotes):</p>
