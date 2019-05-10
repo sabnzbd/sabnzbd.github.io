@@ -56,6 +56,28 @@ pip3 install -r requirements.txt -U
 
 ```
 
+#### Fedora (docker) instruction
+```
+sudo docker run -it fedora:latest /bin/bash
+```
+In the docker:
+```
+dnf install git-all
+git clone https://github.com/sabnzbd/sabnzbd.git
+cd sabnzbd/
+git checkout py3
+pip3 install -r requirements.txt -U
+./SABnzbd.py -b0
+```
+PS: to add unrar and par2:
+```
+dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm 
+dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+dnf install unrar
+dnf install par2
+```
+
+
 
 ### Run
 
