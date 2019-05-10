@@ -56,7 +56,7 @@ pip3 install -r requirements.txt -U
 
 ```
 
-#### Fedora (docker) instruction
+#### fresh Fedora (docker) instruction
 ```
 sudo docker run -it fedora:latest /bin/bash
 ```
@@ -76,6 +76,24 @@ dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-rel
 dnf install unrar
 dnf install par2cmdline
 ```
+
+#### fresh OpenSuSE (docker) instruction
+
+We tumbleweed for Python 3.5+
+
+```
+sudo docker run -it opensuse/tumbleweed /bin/bash
+```
+and then
+```
+zypper install git python3-pip
+git clone https://github.com/sabnzbd/sabnzbd.git
+cd sabnzbd/
+git checkout py3
+pip3 install -r requirements.txt -U
+./SABnzbd.py -b0
+```
+
 
 
 
