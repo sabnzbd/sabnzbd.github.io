@@ -36,6 +36,27 @@ sudo apt install python3-pip
 pip3 install -r requirements.txt -U
 ```
 
+#### Ubuntu docker instruction
+Start the Ubuntu docker:
+```
+sudo docker run -it ubuntu:latest /bin/bash
+```
+in the Ubuntu docker:
+```
+apt-get update
+apt-get install git par2 rar python3-setuptools python3-pip
+
+git clone https://github.com/sabnzbd/sabnzbd.git 
+cd sabnzbd/
+
+git checkout py3
+pip3 install -r requirements.txt -U
+
+./SABnzbd.py -b0
+
+```
+
+
 ### Run
 
 After this you can just run SABnzbd regularly (on some platforms you should use `python3`):
