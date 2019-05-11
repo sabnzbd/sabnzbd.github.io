@@ -51,7 +51,7 @@ cd sabnzbd/
 
 git checkout py3
 pip3 install -r requirements.txt -U
-
+tools/make_mo.py 
 ./SABnzbd.py -b0
 
 ```
