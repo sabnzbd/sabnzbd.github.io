@@ -44,7 +44,8 @@ sudo docker run -it ubuntu:latest /bin/bash
 in the Ubuntu docker:
 ```
 apt-get update
-apt-get install git par2 rar python3-setuptools python3-pip
+apt-get install git par2 unrar python3-setuptools python3-pip
+apt-get install libffi-dev libssl-dev
 
 git clone https://github.com/sabnzbd/sabnzbd.git 
 cd sabnzbd/
