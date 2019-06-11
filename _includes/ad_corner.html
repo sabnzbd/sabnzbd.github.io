@@ -1,19 +1,31 @@
 {% if page.url contains "donate" %}
-    {% assign ad_tag = "dcb" %}
+    {% assign ad_tag1 = "dcb1" %}
+    {% assign ad_tag2 = "dcb1" %}
+    {% assign ad_img1 = "nh_corner_trial" %}
+    {% assign ad_img2 = "nh_corner_trial" %}
 {% elsif page.url contains "wiki" %}
-    {% assign ad_tag = "wc" %}
+    {% assign ad_tag = "wc1" %}
+    {% assign ad_tag = "wc2" %}
+    {% assign ad_img1 = "nh_corner_trial" %}
+    {% assign ad_img2 = "nh_corner_discount" %}
 {% elsif page.url contains "downloads" %}
-    {% assign ad_tag = "dc" %}
+    {% assign ad_tag = "dc1" %}
+    {% assign ad_tag = "dc1" %}
+    {% assign ad_img1 = "nh_corner_trial" %}
+    {% assign ad_img2 = "nh_corner_trial" %}
 {% else %}
-    {% assign ad_tag = "hc" %}
+    {% assign ad_tag = "hc2" %}
+    {% assign ad_tag = "hc2" %}
+    {% assign ad_img1 = "nh_corner_discount" %}
+    {% assign ad_img2 = "nh_corner_discount" %}
 {% endif %}
 
 <aside>
-    <a href="{{ site.ad_link }}&chan={{ ad_tag }}1" target="_blank">
-        <img src="/images/specials/nh_corner_trial.png" width="180" height="180" alt="Special Newshosting offer for SABnzbd users" />
+    <a href="{{ site.ad_link }}&chan={{ ad_tag1 }}" target="_blank">
+        <img src="/images/specials/{{ ad_img1 }}.png" width="180" height="180" alt="Special Newshosting offer for SABnzbd users" />
     </a>
-    <a href="{{ site.ad_link }}&chan={{ ad_tag }}2" target="_blank">
-        <img src="/images/specials/nh_corner_discount.png" width="180" height="180" alt="Special Newshosting offer for SABnzbd users" />
+    <a href="{{ site.ad_link }}&chan={{ ad_tag2 }}" target="_blank">
+        <img src="/images/specials/{{ ad_img2 }}.png" width="180" height="180" alt="Special Newshosting offer for SABnzbd users" />
     </a>
 </aside>
 <script type="text/javascript">
