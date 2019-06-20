@@ -35,6 +35,7 @@ redirect_from:
         }
         .lang {
             margin-bottom: 10px;
+            display: none;
         }
         .wizard-ad-img {
             display: none;
@@ -58,7 +59,38 @@ redirect_from:
             </p>
             <p>
                 <a href="{{ site.ad_link }}&chan=it" target="_blank">[65% Off]</a> Newshosting (Official Promotion) - Get 65% off SABnzbd's Top Rated Usenet Provider.
-                <a href="{{ site.ad_link }}&chan=it" target="_blank">Limited Time Offer</a>
+                <a href="{{ site.ad_link }}&chan=it" target="_blank">Limited Time Offer</a>.
+            </p>
+        </div>
+
+        <div class="lang lang-nl">
+            <p>
+                <strong>Tip:</strong><br>
+                Om te downloaden met Usenet hebt u toegang nodig tot een premium Usenet-provider. Voor de snelste downloads, hoogste retentie en beste prijs, raden we <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a> aan.
+            </p>
+            <p>
+                <a href="{{ site.ad_link }}&chan=it" target="_blank">[65% korting]</a> Newshosting (Officiële promotie) - Krijg 65% korting bij SABnzbd's best beoordeelde usenet provider.
+                <a href="{{ site.ad_link }}&chan=it" target="_blank">Tijdelijke aanbieding</a>.
+            </p>
+        </div>
+
+        <div class="lang lang-de">
+            <p>
+                Für die schnellsten Downloads, die längste Speicherung und das beste Preis-Leistungs-Verhältnis empfehlen wir <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a>.
+            </p>
+            <p>
+                <a href="{{ site.ad_link }}&chan=it" target="_blank">[65% Rabatt]</a> Newshosting (offizielle Promotion) - Holen Sie sich 65% Rabatt auf den nach SABnzbd bestbewerteten Usenet-Provider.
+                <a href="{{ site.ad_link }}&chan=it" target="_blank">Zeitlich befristetes Angebot</a>.
+            </p>
+        </div>
+
+        <div class="lang lang-fr">
+            <p>
+                Pour les téléchargements les plus rapides, le délai de rétention le plus long et le meilleur rapport qualité-prix, nous vous recommandons <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a>.
+            </p>
+            <p>
+                <a href="{{ site.ad_link }}&chan=it" target="_blank">[65% de rabais]</a> sur Newshosting (Promotion officielle) - Obtenez 65 % de rabais sur le fournisseur Usenet le mieux noté de SABnzbd.
+                <a href="{{ site.ad_link }}&chan=it" target="_blank">Offre limitée dans le temps</a>.
             </p>
         </div>
 
@@ -91,10 +123,19 @@ redirect_from:
         });
 
         // Fetch installer-language
-        var lang = document.location.hash.replace('#', '');
+        var lang = document.location.hash.replace('#', '')
+
         // No language detected?
         if(!lang) {
             lang = 'en'
+        }
+
+        if($('.lang-' + lang).length) {
+            // Specific
+            $('.lang-' + lang).show()
+        } else {
+            // English
+            $('.lang-en').show()
         }
 
         // Track the languages used (just for fun)
