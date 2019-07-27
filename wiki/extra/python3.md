@@ -77,7 +77,7 @@ dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-rel
 dnf install unrar
 dnf install par2cmdline
 ```
-### Centos 7
+#### Centos 7
 ```
 yum -y install https://centos7.iuscommunity.org/ius-release.rpm
 yum -y install git python36 python36-pip
