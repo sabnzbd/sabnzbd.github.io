@@ -129,6 +129,31 @@ or
 
 ## Something is broken on the Python 3 version?
 
-Please create an issue at [Github](https://github.com/sabnzbd/sabnzbd/issues/new).
+Please create an issue at [Github](https://github.com/sabnzbd/sabnzbd/issues/new). Please check if the issue is unique for sabnzbd-python3, or also happens with sabnzbd-python2.
 
 If you don't report the bugs, we can't fix them!
+
+### Switching back to Python 2 version
+
+If you want to switch back to the python2 version of sabnzbd, in the git/sabnzbd directory type:
+
+```
+git checkout develop
+```
+or
+```
+git checkout master
+```
+If you want to see which version ("branch") you're using, type
+```
+git branch
+```
+Example output:
+```
+~/git/sabnzbd$ git branch 
+  develop
+* py3
+~/git/sabnzbd$
+```
+
+
