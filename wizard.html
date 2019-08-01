@@ -29,12 +29,11 @@ redirect_from:
         }
         .main-well {
             width: 300px;
-            padding: 7px;
+            padding: 7px 7px 4px;
             border: 1px solid #e3e3e3;
             background-color: #F5F5F5;
         }
         .lang {
-            margin-bottom: 10px;
             display: none;
         }
         .wizard-ad-img {
@@ -51,7 +50,6 @@ redirect_from:
 </head>
 <body>
     <div class="main-well">
-        <!-- See Git-history for multi-language version! -->
         <div class="lang lang-en">
             <p>
                 <strong>Tip:</strong><br>
@@ -61,6 +59,13 @@ redirect_from:
                 <a href="{{ site.ad_link }}&chan=it" target="_blank">[65% Off]</a> Newshosting (Official Promotion) - Get 65% off SABnzbd's Top Rated Usenet Provider.
                 <a href="{{ site.ad_link }}&chan=it" target="_blank">Limited Time Offer</a>.
             </p>
+
+            <a class="wizard-ad-img" href="{{ site.ad_link }}&chan=ib1" target="_blank">
+                <img src="/images/specials/nh_wizard_trial_small.png" border="0" alt="Special Newshosting offer for SABnzbd users">
+            </a>
+            <a class="wizard-ad-img" href="{{ site.ad_link }}&chan=ib2" target="_blank">
+                <img src="/images/specials/nh_wizard_discount_small.png" border="0" alt="Special Newshosting offer for SABnzbd users">
+            </a>
         </div>
 
         <div class="lang lang-nl">
@@ -72,6 +77,13 @@ redirect_from:
                 <a href="{{ site.ad_link }}&chan=it" target="_blank">[65% korting]</a> Newshosting (Officiële promotie) - Krijg 65% korting bij SABnzbd's best beoordeelde usenet provider.
                 <a href="{{ site.ad_link }}&chan=it" target="_blank">Tijdelijke aanbieding</a>.
             </p>
+
+            <a class="wizard-ad-img" href="{{ site.ad_link }}&chan=ib1" target="_blank">
+                <img src="/images/specials/nh_wizard_trial_small_nl.png" border="0" alt="Newshosting (Officiële promotie) - Krijg 65% korting bij SABnzbd's best beoordeelde usenet provider">
+            </a>
+            <a class="wizard-ad-img" href="{{ site.ad_link }}&chan=ib2" target="_blank">
+                <img src="/images/specials/nh_wizard_discount_small_nl.png" border="0" alt="Newshosting (Officiële promotie) - Krijg 65% korting bij SABnzbd's best beoordeelde usenet provider">
+            </a>
         </div>
 
         <div class="lang lang-de">
@@ -82,6 +94,13 @@ redirect_from:
                 <a href="{{ site.ad_link }}&chan=it" target="_blank">[65% Rabatt]</a> Newshosting (offizielle Promotion) - Holen Sie sich 65% Rabatt auf den nach SABnzbd bestbewerteten Usenet-Provider.
                 <a href="{{ site.ad_link }}&chan=it" target="_blank">Zeitlich befristetes Angebot</a>.
             </p>
+
+            <a class="wizard-ad-img" href="{{ site.ad_link }}&chan=ib1" target="_blank">
+                <img src="/images/specials/nh_wizard_trial_small_de.png" border="0" alt="Newshosting (offizielle Promotion) - Holen Sie sich 65% Rabatt auf den nach SABnzbd bestbewerteten Usenet-Provider">
+            </a>
+            <a class="wizard-ad-img" href="{{ site.ad_link }}&chan=ib2" target="_blank">
+                <img src="/images/specials/nh_wizard_discount_small_de.png" border="0" alt="Newshosting (offizielle Promotion) - Holen Sie sich 65% Rabatt auf den nach SABnzbd bestbewerteten Usenet-Provider">
+            </a>
         </div>
 
         <div class="lang lang-fr">
@@ -92,14 +111,14 @@ redirect_from:
                 <a href="{{ site.ad_link }}&chan=it" target="_blank">[65% de rabais]</a> sur Newshosting (Promotion officielle) - Obtenez 65 % de rabais sur le fournisseur Usenet le mieux noté de SABnzbd.
                 <a href="{{ site.ad_link }}&chan=it" target="_blank">Offre limitée dans le temps</a>.
             </p>
-        </div>
 
-        <a class="wizard-ad-img" href="{{ site.ad_link }}&chan=ib1" target="_blank">
-            <img src="/images/specials/nh_wizard_trial_small.png" border="0" alt="Special Newshosting offer for SABnzbd users">
-        </a>
-        <a class="wizard-ad-img" href="{{ site.ad_link }}&chan=ib2" target="_blank">
-            <img src="/images/specials/nh_wizard_discount_small.png" border="0" alt="Special Newshosting offer for SABnzbd users">
-        </a>
+            <a class="wizard-ad-img" href="{{ site.ad_link }}&chan=ib1" target="_blank">
+                <img src="/images/specials/nh_wizard_trial_small_fr.png" border="0" alt="Newshosting (Promotion officielle) - Obtenez 65 % de rabais sur le fournisseur Usenet le mieux noté de SABnzbd">
+            </a>
+            <a class="wizard-ad-img" href="{{ site.ad_link }}&chan=ib2" target="_blank">
+                <img src="/images/specials/nh_wizard_discount_small_fr.png" border="0" alt="Newshosting (Promotion officielle) - Obtenez 65 % de rabais sur le fournisseur Usenet le mieux noté de SABnzbd">
+            </a>
+        </div>
     </div>
     <script type="text/javascript">
         // Google Analytics
@@ -145,8 +164,11 @@ redirect_from:
         localStorage.setItem('user_lang', lang);
 
         // Randomly select 1 of 2 banners
-        var random_nr = Math.floor(Math.random()*2)
-        $('.wizard-ad-img').eq(random_nr).show()
+        if(Math.floor(Math.random()*2)) {
+            $('.wizard-ad-img:even').show()
+        } else {
+            $('.wizard-ad-img:odd').show()
+        }
     </script>
 </body>
 </html>
