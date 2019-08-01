@@ -4,18 +4,18 @@
     {% assign ad_img1 = "nh_corner_trial" %}
     {% assign ad_img2 = "nh_corner_trial" %}
 {% elsif page.url contains "wiki" %}
-    {% assign ad_tag = "wc1" %}
-    {% assign ad_tag = "wc2" %}
+    {% assign ad_tag1 = "wc1" %}
+    {% assign ad_tag2 = "wc2" %}
     {% assign ad_img1 = "nh_corner_trial" %}
     {% assign ad_img2 = "nh_corner_discount" %}
 {% elsif page.url contains "downloads" %}
-    {% assign ad_tag = "dc1" %}
-    {% assign ad_tag = "dc1" %}
+    {% assign ad_tag1 = "dc1" %}
+    {% assign ad_tag2 = "dc1" %}
     {% assign ad_img1 = "nh_corner_trial" %}
     {% assign ad_img2 = "nh_corner_trial" %}
 {% else %}
-    {% assign ad_tag = "hc2" %}
-    {% assign ad_tag = "hc2" %}
+    {% assign ad_tag1 = "hc2" %}
+    {% assign ad_tag2 = "hc2" %}
     {% assign ad_img1 = "nh_corner_discount" %}
     {% assign ad_img2 = "nh_corner_discount" %}
 {% endif %}
