@@ -30,14 +30,12 @@
 </aside>
 <script type="text/javascript">
     // Randomly select 1 of 2 banners
-    var random_nr = Math.floor(Math.random()*2)
-    $('aside a').eq(random_nr).show()
+    var random_nr = Math.floor(Math.random()*2);
+    $('aside a').eq(random_nr).show();
 
-    /*
-    NOT USED RIGHT NOW
     // Do we maybe know the language of the user?
     var user_lang = localStorage.getItem('user_lang');
-    var corner_langs = ['pt_BR', 'zh_CN', 'de', 'es', 'fr', 'nl'];
+    var corner_langs = ['de', 'fr', 'nl'];
 
     // Maybe from the browser? Worth a try
     if(!user_lang) {
@@ -47,7 +45,11 @@
 
     // Update if we have it
     if(corner_langs.indexOf(user_lang) !== -1) {
-        $('aside img').attr('src', '/images/specials/gn_tng_180x180_tri_' + user_lang + '.gif')
+        var active_image = $('aside a:visible img');
+        if(active_image.length) {
+            // If mobile, it's not visible
+            var cur_image =  active_image.attr('src');
+            active_image.attr('src', cur_image.replace('.png', '_' + user_lang + '.png'));
+        }
     }
-    */
 </script>
