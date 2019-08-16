@@ -92,18 +92,22 @@ python3 -m pip install -r requirements.txt -U
 
 #### fresh OpenSuSE (docker) instruction
 
-We tumbleweed for Python 3.5+
+OpenSuSE Tumbleweed
 
 ```
 sudo docker run -it opensuse/tumbleweed /bin/bash
 ```
+or OpenSuSE Leap:
+```
+sudo docker run -p 8080:8080 -it opensuse/leap:15.1 /bin/bash
+```
 and then
 ```
-zypper install git python3-pip
+zypper install -y git python3-pip
 git clone https://github.com/sabnzbd/sabnzbd.git
 cd sabnzbd/
 git checkout py3
-pip3 install -r requirements.txt -U
+pip3 install -r requirements.txt
 ./SABnzbd.py -b0
 ```
 
