@@ -20,6 +20,7 @@ redirect_from: "/wiki/installation/install-fedora-repo"
 
 <h2>From sources</h2>
 <p>Because the RPM's might not always be up-to-date, we include a guide to install from source, provided by user <strong>jpriddy</strong>.
+<p>All commands to be run with a user with sudo privileges or prefixed with the 'sudo' command.</p>
 <ol>
     <li>Make sure you have access to the default rpm channel.  For RHEL that means enabling the repos like so (you will of course need an active subscription that is subscribed):
 {% highlight sh %}
@@ -38,13 +39,14 @@ subscription-manager repos --enable=rhel-7-server-rpms
     <li>Clone the sabnzbd git repo to <code>/opt</code> or somewhere else applicable and switch to the <code>master</code> branch:
 {% highlight sh %}
 git clone https://github.com/sabnzbd/sabnzbd
+cd /opt/sabnzbd
 git checkout master
 {% endhighlight %}
     </li>
     <li>Optionally create a SABnzbd user/group, optionally add user to shared group, and change ownership of the SABnzbd install to said user/group.  Example:
 {% highlight sh %}
-useradd usenet
-chown -R usenet:usenet /opt/usenet
+useradd sabnzbd
+chown -R sabnzbd:sabnzbd /opt/sabnzbd
 {% endhighlight %}
     </li>
     <li>Optionally create a startup item for systemd and copy it to <code>/etc/systemd/system/</code>.  Call it <code>sabnzbd.service</code> or something else applicable. Make sure to set the correct <code>User</code> and <code>Group</code> matching the account on your system.
@@ -58,8 +60,8 @@ Description=SABnzbd Daemon
 
 [Service]
 Type=forking
-User=usenet
-Group=usenet
+User=sabnzbd
+Group=sabnzbd
 ExecStart=/usr/bin/python /opt/sabnzbd/SABnzbd.py --daemon --config-file=/opt/sabnzbd/sabnzbd_config.ini -s 0.0.0.0
 GuessMainPID=no
 
@@ -70,22 +72,22 @@ WantedBy=multi-user.target
 
 <li>Here we're going to setup the firewall rule to allow the service to be reachable over the network.
 {% highlight sh %}
-sudo vi /etc/firewalld/services/sabnzbd.xml
+vi /etc/firewalld/services/sabnzbd.xml
 {% endhighlight %}
 
 Then add the following code to the file:
 {% highlight xml %}
 <service>
   <short>sabnzbd</short>
-  <description>SabNZBd Download Service</description>
+  <description>SABnzbd Service</description>
   <port protocol="tcp" port="8080"/>
 </service>
 {% endhighlight %}
 
 Use the following commands to activate the firewall rule:
 {% highlight sh %}
-sudo firewall-cmd --permanent --add-service=sabnzbd
-sudo firewall-cmd --reload
+firewall-cmd --permanent --add-service=sabnzbd
+firewall-cmd --reload
 {% endhighlight %}
 </li>
 
