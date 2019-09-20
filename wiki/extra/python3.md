@@ -79,8 +79,7 @@ dnf install par2cmdline
 ```
 #### Centos 7
 ```
-yum -y install https://centos7.iuscommunity.org/ius-release.rpm
-yum -y install git python36 python36-pip
+yum -y install git python3-pip
 python3 -m pip install --upgrade pip
 git clone https://github.com/sabnzbd/sabnzbd.git
 cd sabnzbd/
