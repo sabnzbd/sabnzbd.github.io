@@ -48,7 +48,7 @@ sudo apt-get install sabnzbdplus python-sabyenc</code></pre>
 
 <hr>
 <h1 id="toc3">How To Run as a Service</h1>
-<p>If you want the program to be started as a service (i.e., in the background on system boot), edit (as root) the text file <code>/etc/default/sabnzbdplus</code> and set the required <code>USER= </code> and the optional settings to your liking. If your system uses systemd, run: <code>sudo systemctl daemon-reload</code> after modifying the settings.</p>
+<p>If you want the program to be started as a service (i.e., in the background on system boot), edit (as root) the text file <code>/etc/default/sabnzbdplus</code> and set the required <code>USER= </code> and the optional settings to your liking. If your system uses systemd, which has been the default since Ubuntu 15.04, run <code>sudo systemctl daemon-reload</code> after modifying the settings.</p>
 <p>Once configured correctly, the service can be started and stopped with the usual commands:</p>
 <div class="code">
     <pre><code>sudo service sabnzbdplus start</code>
