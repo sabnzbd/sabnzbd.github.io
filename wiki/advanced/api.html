@@ -442,7 +442,7 @@ redirect_from: "/wiki/advanced/automation-support"
 </table>
 
 <h2 id="addfile">Add NZB by file upload</h2>
-<p>Upload NZB using <code>POST multipart/form-data</code>. The file data should be in the field <code>name</code>. <br>For other parameters and output see <a href="#addurl">addurl</a>.
+<p>Upload NZB using <code>POST multipart/form-data</code>. In your form, set the value of the field <code>mode</code> to <code>addfile</code>; the file data should be in the field <code>name</code>. <br>For other parameters and output see <a href="#addurl">addurl</a>.
 
 <h2 id="addlocalfile">Add NZB by file upload</h2>
 <p>Upload NZB from a location on the file system that SABnzbd can access. The path should be <a href="http://www.w3schools.com/tags/ref_urlencode.asp" target="_blank">URL-encoded</a>. <br>For other parameters and output see <a href="#addurl">addurl</a>.
