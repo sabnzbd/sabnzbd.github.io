@@ -50,7 +50,6 @@ apt-get install libffi-dev libssl-dev
 git clone https://github.com/sabnzbd/sabnzbd.git 
 cd sabnzbd/
 
-git checkout py3
 pip3 install -r requirements.txt -U
 tools/make_mo.py 
 ./SABnzbd.py -b0
@@ -66,7 +65,6 @@ In the docker:
 dnf install git-all
 git clone https://github.com/sabnzbd/sabnzbd.git
 cd sabnzbd/
-git checkout py3
 pip3 install -r requirements.txt -U
 ./SABnzbd.py -b0
 ```
@@ -83,7 +81,6 @@ yum -y install git python3-pip
 python3 -m pip install --upgrade pip
 git clone https://github.com/sabnzbd/sabnzbd.git
 cd sabnzbd/
-git checkout py3
 python3 -m pip install -r requirements.txt -U
 ./SABnzbd.py -b0
 ```
@@ -105,7 +102,6 @@ and then
 zypper install -y git python3-pip
 git clone https://github.com/sabnzbd/sabnzbd.git
 cd sabnzbd/
-git checkout py3
 pip3 install -r requirements.txt
 ./SABnzbd.py -b0
 ```
@@ -136,27 +132,6 @@ Please create an issue at [Github](https://github.com/sabnzbd/sabnzbd/issues/new
 
 If you don't report the bugs, we can't fix them!
 
-### Switching back to Python 2 version
 
-If you want to switch back to the python2 version of sabnzbd, in the git/sabnzbd directory type:
-
-```
-git checkout develop
-```
-or
-```
-git checkout master
-```
-If you want to see which version ("branch") you're using, type
-```
-git branch
-```
-Example output:
-```
-~/git/sabnzbd$ git branch 
-  develop
-* py3
-~/git/sabnzbd$
-```
 
 
