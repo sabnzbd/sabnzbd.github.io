@@ -16,7 +16,19 @@ The good news is that after the transition is complete, we are future proof and 
 The not so good news is that for a regular user, not much changes. We are not expecting any real increases in performance or adding any new features as of now.
 After the switch we can once again look at ways to increase performance by utilizing new features of Python 3.
 
-## How to get the Python 3 version to work
+## How to get SABnzbd 3.x.x for Python 3 to work prebuilt
+
+SABnzbd 3.x.x for Python 3 is prebuilt available for the following platforms:
+
+- Ubuntu Linux 18.04: via jcfp's private PPA. See https://forums.sabnzbd.org/viewtopic.php?f=16&t=24447
+- Linuxserver SABnzbd docker image under the tag `unstable`: see https://hub.docker.com/r/linuxserver/sabnzbd/
+- Windows: to be announced
+
+There is not yet a prebuilt image for MacOS
+
+## How to get SABnzbd 3.x.x for Python 3 to work from source
+
+If you know how to run SABnzbd "from source", you can run SABnzbd 3 as described below.
 
 We support Python 3.5 and above.
 
