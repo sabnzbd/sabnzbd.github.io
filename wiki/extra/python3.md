@@ -28,7 +28,7 @@ There is not yet a prebuilt image for MacOS
 
 ## How to get SABnzbd 3.x.x for Python 3 to work from source
 
-If you know how to run SABnzbd "from source" (so `git clone clone https://github.com/sabnzbd/sabnzbd.git`), you can run SABnzbd 3 as described below.
+If you know how to run SABnzbd "from source" (so `git clone https://github.com/sabnzbd/sabnzbd.git`), you can run SABnzbd 3 as described below.
 
 We support Python 3.5 and above.
 
