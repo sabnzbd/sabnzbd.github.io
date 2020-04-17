@@ -41,6 +41,11 @@ Check your python3 and python3's pip with this one command:
 python3 -m pip
 ```
 which should not give an error.
+More specifically, on Linux/Macos/Unix/BSD: python3 must be in /usr/bin/python3, so test like this:
+```
+/usr/bin/python3  -m pip
+```
+
 
 Installation:
 ```
