@@ -32,12 +32,28 @@ If you know how to run SABnzbd "from source" (so `git clone https://github.com/s
 
 We support Python 3.5 and above.
 
-You will need `pip` installed (the Python 3 version is sometimes linked to `pip3`).
+### General Setup
 
-Then you should run from within the `sabnzbd` directory:
+You will need `pip` installed (the Python 3 version is sometimes linked to `pip3`). 
+Checkyour  python3 and python3's pip (aka pip3) with:
 ```
-pip install -r requirements.txt -U
+python3 -m pip
 ```
+which should not give an error.
+
+Full setup:
+```
+git clone https://github.com/sabnzbd/sabnzbd.git
+cd sabnzbd/
+python3 -m pip install -r requirements.txt -U
+tools/make_mo.py
+./SABnzbd.py
+```
+
+### MacOS
+
+Install python3 and the module pip, for example via homebrew.
+Then follow the General Setup instructions
 
 #### Ubuntu specific instruction
 
