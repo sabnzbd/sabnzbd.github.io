@@ -53,7 +53,9 @@ tools/make_mo.py
 ### MacOS
 
 Install python3 and the module pip, for example via homebrew.
+Make sure python3 is in /usr/bin/python3, or that is link to the python3 binary.
 Then follow the General Setup instructions
+
 
 #### Ubuntu specific instruction
 
