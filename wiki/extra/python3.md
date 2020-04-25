@@ -62,6 +62,7 @@ Install python3 and the module pip, for example via homebrew.
 Make sure python3 is in /usr/bin/python3, or that is a link to the python3 binary in some other location.
 Then follow the General Installation instructions
 
+## Linux
 
 #### Ubuntu specific instruction
 
@@ -70,7 +71,7 @@ On Ubuntu (and probably Debian), the Howto is:
 From the `sabnzbd` directory of the github source:
 ```
 sudo apt install python3-pip
-pip3 install -r requirements.txt -U
+python3 -m pip install -r requirements.txt -U
 tools/make_mo.py
 ```
 
@@ -100,10 +101,10 @@ sudo docker run -it fedora:latest /bin/bash
 ```
 In the docker:
 ```
-dnf install git-all
+dnf install git-core python3-pip
 git clone https://github.com/sabnzbd/sabnzbd.git
 cd sabnzbd/
-pip3 install -r requirements.txt -U
+python3 -m pip install -r requirements.txt -U
 ./SABnzbd.py -b0
 ```
 PS: to add unrar and par2:
@@ -149,20 +150,16 @@ pip3 install -r requirements.txt
 
 ### Run
 
-After this you can just run SABnzbd regularly (on some platforms you should use `python3`):
-```
-python SABnzbd.py
-```
-#### Ubuntu specific instruction
-
-On Ubuntu
+After this you can just run SABnzbd regularly:
 ```
 python3 SABnzbd.py
 ```
-or
+or (from the sabnzbd directory):
 ```
 ./SABnzbd.py
 ```
+
+
 
 ## Something is broken on the Python 3 version?
 
