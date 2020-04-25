@@ -1,0 +1,120 @@
+---
+title: Scheduling
+---
+<p>You can use the scheduler to set up tasks to be performed at specific days and times. Each schedule block is repeated one per week or every day.</p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Pause</strong></td>
+            <td>Stop downloading</td>
+        </tr>
+        <tr>
+
+            <td><strong>Pause-all</strong></td>
+            <td>Stop downloading, <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Watched Folder</a> scanning and RSS feeds, stops all disk activity.</td>
+        </tr>
+        <tr>
+
+            <td><strong>Resume</strong></td>
+            <td>Continue downloading, Watched Folder scanning and RSS feed readouts.</td>
+        </tr>
+        <tr>
+
+            <td><strong>Shutdown</strong></td>
+            <td>Exit SABnzbd.</td>
+        </tr>
+        <tr>
+
+            <td><strong>Speedlimit</strong></td>
+            <td>Set the speedlimiter to the given <code>%</code> value. This can also be in <code>K/M/G</code> notation, for example <code>4.5M</code> will set the speedlimit to 4.5MB/s.</td>
+        </tr>
+        <tr>
+
+            <td><strong>Restart</strong></td>
+            <td>Restart SABnzbd.</td>
+        </tr>
+        <tr>
+
+            <td><strong>Pause post processing</strong></td>
+            <td>Halt post-processing (except active job), while downloading continues.</td>
+        </tr>
+        <tr>
+
+            <td><strong>Resume post processing</strong></td>
+            <td>Will resume post-processing, while downloading continues.</td>
+        </tr>
+        <tr>
+
+            <td><strong>Scan watched folder</strong></td>
+            <td> Read watched folder (this will disable the interval in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Folders</a>).</td>
+        </tr>
+        <tr>
+
+            <td><strong>Read RSS feeds</strong></td>
+            <td> Read all RSS feeds (this will disable the interval in  <a href="/wiki/configuration/{{ site.wiki_version }}/folders">RSS</a>).</td>
+        </tr>
+        <tr>
+
+            <td><strong>Remove failed jobs</strong></td>
+            <td> Remove all jobs in history that have failed to complete, including their files.</td>
+        </tr>
+        <tr>
+
+            <td><strong>Remove completed jobs</strong></td>
+            <td> Remove all jobs in history that have completed successfully.</td>
+        </tr>
+        <tr>
+
+            <td><strong>Pause low/normal/high priority jobs</strong></td>
+            <td> All jobs with a low/normal/high  priority will set to paused mode.</td>
+        </tr>
+        <tr>
+            <td><strong>Resume low/normal/high priority jobs</strong></td>
+            <td> All jobs with a low/normal/high  priority will be resumed.</td>
+        </tr>
+        <tr>
+
+            <td><strong>Enable/Disable quota management</strong></td>
+            <td> See <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Quota</a>.</td>
+        </tr>
+        <tr>
+            <td><strong>Server-name</strong></td>
+            <td> Enable or disable a server on the given time.</td>
+        </tr>
+        <tr>
+            <td><strong>Pause/Resume Category-name</strong></td><td>All jobs within the selected category will be paused/unpaused.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><span class="label label-warning">NOTE</span> On startup, SABnzbd will evaluate all schedules and determine the current pause/resume state and speedlimit. The <code>-pause</code> <a href="/wiki/advanced/command-line-parameters">command-line parameter</a> will override this evaluation.</p>
+
+<p><span class="label label-warning">NOTE</span> On each schedule change, the schedule will be re-evaluated and the speedlimit will be set. If SABnzbd happened to be paused, it will NOT be resumed by the schedule evaluation. This is to prevent spontaneous resumption during schedule changes.
+</p>
+<hr>
+<h2 id="toc2">Example</h2>
+<p>Suppose you only want to download on weekdays between 1:00AM and 5:30PM and in the weekend between 1:00 AM and 11:00AM.<br>
+    You set this up using four schedule blocks.
+</p>
+<p>Resume downloading every day at 1:00AM:<br>
+    <code>01:00 Daily Resume</code>
+</p>
+<p>Pause downloading every day at 5:30PM (= 17:30 military time):<br>
+    <code>17:30 Daily Pause</code>
+</p>
+<p>Pause downloading on Saturday 11:00AM:<br>
+    <code>11:00 Saturday Pause</code>
+</p>
+<p>Pause downloading on Sunday 11:00AM:<br>
+    <code>11:00 Sunday Pause</code>
+</p>
+<p>Enable server on Monday 6:00AM:<br>
+    <code>06:00 my.usenet.com:119&nbsp;1</code>
+</p>

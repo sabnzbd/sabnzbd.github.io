@@ -1,0 +1,320 @@
+---
+title: Special settings
+---
+
+<h2 id="toc0">Switches</h2>
+<table class="table table-bordered table-hover table-special">
+    <thead>
+        <tr>
+            <th>Field name</th>
+            <th>Default</th>
+            <th>Meaning</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>start_paused</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>If checked SABnzbd will always start up in "Paused" mode</td>
+        </tr>
+        <tr>
+            <td><code>no_penalties</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Some Usenet servers have intermittent login (or other) problems. For these the server blocking method is not very favorable. Setting this option will limit blocks to 1 minute.</td>
+        </tr>
+        <tr>
+            <td><code>fast_fail</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>When starting a download, the first article of each file is downloaded. If <code>Abort jobs that cannot be completed</code> is turned on, there are more than 10 files and more than 80% of the first articles is missing the job will be failed. If turned off, it will only be failed if availability is below <code>req_completion_rate</code>.</td>
+        </tr>
+        <tr>
+            <td><code>ignore_wrong_unrar</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>On Linux, SABnzbd checks whether the installed unrar or rar program is supported and issues a warning if not. Set this option if you think you know better.</td>
+        </tr>
+        <tr>
+            <td><code>overwrite_files</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>When unpacking, this will overwrite existing files instead of creating an alternative name.</td>
+        </tr>
+        <tr>
+            <td><code>enable_par_cleanup</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Normally SABnzbd will clean up par2 files after verify/repair. You can disable this by using 0. Disabling this will also force all par2 files to be downloaded</td>
+        </tr>
+        <tr>
+            <td><code>queue_complete_pers</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Set this to 1 if you want end-of-queue actions Shutdown/Standby/Hibernate to be persistent (remembered) after restarts</td>
+        </tr>
+        <tr>
+            <td><code>api_warnings</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>When the API is accessed by external tools without proper authentication, SABnzbd will show a warning. This is a security warning that you should take seriously. However, it seems that there are some security tools that try to access anything that looks like a webserver. If you cannot disable the cause of the warnings, you can choose to disable the warning.</td>
+        </tr>
+        <tr>
+            <td><code>ampm</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Display ETA in AM/PM notation, only applicable to some locations in older skins.</td>
+        </tr>
+        <tr>
+            <td><code>enable_unrar</code>, <code>enable_unzip</code>, <code>enable_7zip</code>, <code>enable_filejoin</code>, <code>enable_tsjoin</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Enable or disable the UnRar, UnZip, 7zip, filejoin and TSJoin tools. If disabled, the archive/split files will not be unpacked.</td>
+        </tr>
+        <tr>
+            <td><code>ignore_unrar_dates</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Normally unpacked files will get the date/time stamp they have in the archive. If you set this option, the files will get the date/time of unpacking.</td>
+        </tr>
+        <tr>
+            <td><code>debug_log_decoding</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Log the decoding of each article in <code>+Debug</code> logging mode. Disabled by default to make debug logs more readable. Requires restart of SABnzbd.</td>
+        </tr>
+        <tr>
+            <td><code>multipar</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Windows only. Disable Multipar and use par2tbb instead. This is still supported, but special workarounds for Windows have been removed so can fail on special cases.</td>
+        </tr>
+        <tr>
+            <td><code>osx_menu</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Uncheck this to remove the SABnzbd icon in the macOS menu bar</td>
+        </tr>
+        <tr>
+            <td><code>osx_speed</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Uncheck this to prevent the display of download speed adjacent to SABnzbd's icon in the macOS menu bar</td>
+        </tr>
+        <tr>
+            <td><code>win_menu</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Uncheck this to remove the SABnzbd icon from the Windows systray</td>
+        </tr>
+        <tr>
+            <td><code>use_pickle</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Only check this when there is a problem with one of the standard Python libs.</td>
+        </tr>
+        <tr>
+            <td><code>allow_incomplete_nzb</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Sometimes you get an incomplete NZB file (partial content, incorrect syntax etc.) You can enable this option to allow SABnzbd to salvage as much as possible from the NZB. The job will enter the queue in paused mode.</td>
+        </tr>
+        <tr>
+            <td><code>rss_filenames</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Normally the RSS titles are used to name jobs. If you prefer the (usually) more compact NZB file names that are generated by index sites, check this. The RSS matching still occurs on titles only!</td>
+        </tr>
+        <tr>
+            <td><code>ipv6_hosting</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Some systems have problems dealing with the IPv6 equivalent of "localhost" for SABnzbd host. Therefore SABnzbd will not try to bind to the IPv6 localhost by default when the SABnzbd host is set to "localhost". Enabling this will binding to all addresses of localhost. Alternatively you can also set the SABnzbd host to ::1 to only bind to the IPv6 localhost.</td>
+        </tr>
+        <tr>
+            <td><code>keep_awake</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Disable to stop SABnzbd's attempts to keep the system awake while the queue isn't empty.</td>
+        </tr>
+        <tr>
+            <td><code>empty_postproc</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Do post-processing and run the user script even if nothing has been downloaded. This is useful in combination with tools like SickBeard, for which running the script on an empty or failed download is a trigger to try an alternative NZB. Note that the "Status" parameter for the script will be -1.</td>
+        </tr>
+        <tr>
+            <td><code>html_login</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>HTML based login form, uncheck for basic authentication. Both offer similar security but password managers might not be able to fill basic authentication automatically.</td>
+        </tr>
+        <tr>
+            <td><code>wait_for_dfolder</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Some people use external or network drives for the "temporary download folder". It can happen that such a drive isn't mounted yet when SABnzbd starts up, causing it to create a new folder at the default location. To prevent this, set the option to 1. This will make SABnzbd wait until the drive is available. Note that SABnzbd will hang until the drive is available! Also, the folder must already exist otherwise SABnzbd will hang until terminated.</td>
+        </tr>
+        <tr>
+            <td><code>max_art_opt</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>You can choose to use limited retries only for your "optional" servers. This will prevent "Out of retention" failures when your main server is inadvertently off-line</td>
+        </tr>
+        <tr>
+            <td><code>warn_empty_nzb</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Will enable warnings about empty NZB files, uncheck to supress warnings.</td>
+        </tr>
+        <tr>
+            <td><code>enable_bonjour</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Will announce itself on Apple's Bonjour protocol. <a href="/wiki/extra/bonjour-support">Read more here</a>.</td>
+        </tr>
+        <tr>
+            <td><code>reject_duplicate_files</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Some NZB's have the same file listed twice, SABnzbd will only add the largest of the files with the same name if this is enabled.</td>
+        </tr>
+        <tr>
+            <td><code>warn_dupl_jobs</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>If checked, will issue a warning when a duplicate job is detected and subsequently paused or deleted. Uncheck if you find the warnings a nuisance</td>
+        </tr>
+        <tr>
+            <td><code>replace_illegal</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Replace illegal characters in folder names by equivalents. If you switch this off, illegal characters will be just removed.</td>
+        </tr>
+        <tr>
+            <td><code>backup_for_duplicates</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Check to backup duplicate NZB's.</td>
+        </tr>
+        <tr>
+            <td><code>disable_api_key</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>If checked API calls don't require the API key.</td>
+        </tr>
+        <tr>
+            <td><code>api_logging</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Check to log all API calls.</td>
+        </tr>
+        <tr>
+            <td><code>ignore_empty_files</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Do not show a warning when the added NZB defines files to download that have no articles. This is usually a problem of the NZB-source.</td>
+        </tr>
+        <tr>
+            <td><code>x_frame_options</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Includes HTTP header with every request that prevents SABnzbd to be included in another site within the browser. Disable when trying to use SABnzbd with tools that let you control your HTPC from a single interface.</td>
+        </tr>
+        <tr>
+            <td><code>require_modern_tls</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Enforce TLSv1.2+ for SSL-connections to Usenet servers. Older protocol versions (SSLv2, SSLv3, and TLS <= 1.1) will be disallowed.</td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<h2 id="toc1">Values</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Field name</th>
+            <th>Default</th>
+            <th>Meaning</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>size_limit</code></td>
+            <td><code>0</code></td>
+            <td>Any download that exceeds this value will be paused and get priority "low". You can use the K/M/G notation, so e.g. 4.7G</td>
+        </tr>
+        <tr>
+            <td><code>folder_max_length</code></td>
+            <td><code>128</code></td>
+            <td>On Windows, the total path is limited to 255 characters. A combination of long folder names and long file names may lead to problems. Set this option to limit each element of the total path. Each element will be truncated to the specified number. 64 is a safe value. The option will also work for other operating systems but is only usefull on Windows.</td>
+        </tr>
+        <tr>
+            <td><code>fsys_type</code></td>
+            <td><code>0</code></td>
+            <td>Only for Unix/Linux systems. 0 = Determine automatically, 1 = Names are stored as 8-bit ASCII characters, 2 = Names are stored as UTF-8. Use this <strong>only</strong> when the names created by SABnzbd look distorted! It will only work for folders created by SABnzbd itself, not files and folders created by unzip and unrar.</td>
+        </tr>
+        <tr>
+            <td><code>movie_rename_limit</code></td>
+            <td><code>100M</code></td>
+            <td>The minimum size of a file to trigger file renaming in the Sort functions</td>
+        </tr>
+        <tr>
+            <td><code>nomedia_marker</code></td>
+            <td></td>
+            <td>Just before unpacking of files into the final folder, SABnzbd will put a special marker file (e.g. ".nomedia") in the folder. Afterwards it will be deleted. This prevents some media player software from trying to index the folder while still incomplete. You can disable the feature by clearing the field, or you can set an alternative name. Check your media software's manual.</td>
+        </tr>
+        <tr>
+            <td><code>max_url_retries</code></td>
+            <td><code>10</code></td>
+            <td>How many times failed NZB fetches will be retried. Each retry increases the waiting interval (60, 120, 180, etc seconds). Only applies to errors that might be resolved when trying again later, like a server being temporarily unresponsive.</td>
+        </tr>
+        <tr>
+            <td><code>req_completion_rate</code></td>
+            <td><code>100.2</code></td>
+            <td>
+                Minimum percentage to allow pre-check to continue downloading. <br>
+                A perfect download (with the usual 10% par2 files) would have 110%.<br>
+                100% means that the rar files and the par2-files combined are the same amount of bytes as only the rar-set, if it was fully complete.<br>
+                Anything less than 100% is by definition not repairable.
+            </td>
+        </tr>
+        <tr>
+            <td><code>wait_ext_drive</code></td>
+            <td><code>5</code></td>
+            <td>When SABnzbd wants to store files on the final destination, this destination might be an external drive. Especially USB drives can take considerable time to wake up after going into standby. SABnzbd will try 5 times with intervals of one second. You can increase this value if needed.</td>
+        </tr>
+        <tr>
+            <td><code>show_sysload</code></td>
+            <td><code>2</code></td>
+            <td>When working on a Linux/Unix system you can have SABnzbd display no system information (0), Only the CPU load indicators (1) and also the memory usage (2). <br>Linux memory usage "V" is total memory usage of SABnzbd, "R" is actually used physical memory</td>
+        </tr>
+        <tr>
+            <td><code>url_base</code></td>
+            <td><code>/sabnzbd</code></td>
+            <td>When using a reverse proxy (or just if you feel like it), you can change the base-URL of SABnzbd that is used during redirects. Requires restart of SABnzbd.</td>
+        </tr>
+        <tr>
+            <td><code>direct_unpack_threads</code></td>
+            <td><code>3</code></td>
+            <td>When Direct Unpack is enabled we only allow this number of unpackers to be active at the same time. This is to limit strain on the system's disks. <br>Note that there can be an additional unpack active if a job is also being post-processed.</td>
+        </tr>
+        <tr>
+            <td><code>ipv6_servers</code></td>
+            <td><code>1</code></td>
+            <td>Control the use of IPv6 Usenet server addresses. Only useful when you have an IPv6 capable ISP and connect to servers that (also) have IPv6 addresses. Meaning: 0 = don't use, 1 = use when available and reachable, 2 = force usage (when SABnzbd's detection fails)</td>
+        </tr>
+        <tr>
+            <td><code>selftest_host</code></td>
+            <td><code>self-test.sabnzbd.org</code></td>
+            <td>In order to check proper IPv6 connectivity and your external IPv4 address, SABnzbd needs to connect to a known external IPv6 address and a server that returns the external IP address. By default we use our own server for this (we don't send any data). You can choose to use another known IPv6 host, e.g. <code>http://ipv6.google.com</code>. However, this will cause the external IPv4 address detection to fail in the status window, this does not affect the functioning of SABnzbd.</td>
+        </tr>
+         <tr>
+            <td><code>rating_host</code></td>
+            <td></td>
+            <td>You can switch the host to connect to for rating. The indexer needs to support this!</td>
+        </tr>
+        <tr>
+            <td><code>rss_odd_titles</code></td>
+            <td><code>nzbindex.nl/</code>, <code>nzbindex.com/</code>, <code>nzbclub.com/</code></td>
+            <td>Some RSS feeds produce very awkward titles which are fine for filtering, but not as job titles. For all indexers that are listed here, the actual NZB file name will be used instead of the title. </td>
+        </tr>
+        <tr>
+            <td><code>quick_check_ext_ignore</code></td>
+            <td><code>nfo, sfv, srr</code></td>
+            <td>A list of file name extensions that will be ignored during QuickCheck. If they are missing but all other files are correct, QuickCheck will still pass.</td>
+        </tr>
+        <tr>
+            <td><code>host_whitelist </code></td>
+            <td><code>hostname</code></td>
+            <td>See <a href="/wiki/extra/hostname-check.html">Hostname verification</a>.</td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<h2 id="toc2">Very special option</h2>
+<p>Below is one option that cannot be set from the Web UI, because it would defeat its security purpose.<br>
+    You can only access it by directly editing the sabnzbd.ini file, while SABnzbd is not running.
+</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Field name</th>
+            <th>Default</th>
+            <th>Meaning</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>config_lock</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>If 1, forbids all access to the Config pages.</td>
+        </tr>
+    </tbody>
+</table>
