@@ -18,42 +18,15 @@ You can completely turn-off SABnzbd's security checks and encryption, but you wo
 Online news server SSL/TLS check
 -------------------
 
-<form class="form-inline newsserver-test">
+Verify the SSL/TLS security of your newsserver using the tool provided by [sanderjo](https://github.com/sanderjo).
+
+<form class="form-inline newsserver-test" action="https://www.appelboor.com/cgi-bin/check_newsserver.py" method="GET" target="_blank">
   <div class="form-group">
-    <input type="text" class="form-control" id="newsserver-address" placeholder="News server address">
+    <input type="text" class="form-control" placeholder="News server address" name="server">
     <button type="submit" class="btn btn-success">Test server <span class="glyphicon glyphicon-chevron-right"></span></button>
   </div>
 </form>
 
-<div class="progress newsserver-progress">
-    <div class="progress-bar progress-bar-success progress-bar-striped active"></div>
-</div>
-
-<iframe id="newsserver-test-result" src=""></iframe>
-
-<script type="text/javascript">
-    // After loading, otherwise it's get triggered when element has loaded
-    setTimeout(function() {
-        $('.newsserver-test').on('submit', function() {
-            // Clear first
-            $('#newsserver-test-result').attr('src', '')
-            // Show loading box
-            $('.progress').show()
-            // Fill the url
-            $('#newsserver-test-result').attr('src', 'https://www.appelboor.com/cgi-bin/check_newsserver.py?server=' + $('#newsserver-address').val())
-            // Track
-            ga('send', 'event', 'servercheck', 'click', $('#newsserver-address').val(), {
-                    'transport': 'beacon'
-                });
-            return false
-        })
-        // Do the magic when done
-        $('#newsserver-test-result').on('load', function() {
-            $('.progress').hide()
-            $(this).show();
-        });
-    }, 200)
-</script>
 
 
 -------------------
