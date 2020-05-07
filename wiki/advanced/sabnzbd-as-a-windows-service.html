@@ -5,7 +5,6 @@ redirect_from:
 ---
 <h2>Introduction</h2>
 <p>Running SABnzbd as a Windows Service can be helpful to those needing the program to operate in an "always on" state.  When installed this way, SABnzbd will start automatically as soon as Windows starts, even when no user account is logged in, and will remain running even when all users have logged out. </p>
-<p>Two executables are necessary to install SABnzbd as a service:  <code>SABnzbd-service.exe</code> (the main program) plus a "helper" service:  <code>SABnzbd-helper.exe</code>.  Both will need to be installed via a DOS command line that has administrative (elevated) privileges. </p>
 <p><span class="label label-warning">NOTE</span> While the functionality of SABnzbd is generally the same when running as a service, there are some restrictions and limitations.  Most importantly, you will need to take additional steps after installing the service if you use network shares for your download folders.  Details on these steps, and other considerations when running SABnzbd as a service, can be found after the basic installation instructions, below.
 
 <h2>Basic Installation</h2>
@@ -13,21 +12,11 @@ redirect_from:
 
 <ol>
     <li>
-        <p>Open a DOS window with Administrative (elevated) privileges</p>
+        Open a DOS window with Administrative (elevated) privileges<br>
         <ul>
-            <li>
-                <strong>Windows 7, Vista, XP</strong><br>
-                Click your Windows Start button.<br>
-                Click All Programs<br>
-                Click Accessories<br>
-                Right click "Command Prompt" and choose "Run as Administrator" in the drop-down menu.
-            </li>
-            <li>
-                <strong>Windows 8, 10</strong><br>
-                Click your Windows Start button<br>
-                Type <code>cmd</code><br>
-                Right click "Command Prompt" in the search window and choose "Run As Administrator" in the drop-down menu that appears.<br>
-            </li>
+            <li>Click your Windows Start button</li>
+            <li>Type <code>cmd</code></li>
+            <li>Right click "Command Prompt" in the search window and choose "Run As Administrator" in the drop-down menu that appears.</li>
         </ul>
     </li>
     <li>
@@ -37,16 +26,35 @@ redirect_from:
     </li>
     <li>
         <p>Install the helper service, set it to automatically start, and launch it, by typing or pasting the following lines into the DOS command window and hitting RETURN after each.</p>
-
-    <pre><code>SABnzbd-helper.exe install
+        <ul>
+            <li>
+                <strong>SABnzbd 3:</strong><br>
+                Skip this step! It is no longer needed.
+            </li>
+            <li>
+                <strong>SABnzbd 2:</strong><br>
+                <pre><code>SABnzbd-helper.exe install
 sc config SABhelper start= auto
 net start SABhelper</code></pre>
+            </li>
+        </ul>
     </li>
     <li>
-        <p>Install the SABnzbd-service, set it to automatically start, and launch it, by typing or pasting the below commands into the DOS command window and hitting RETURN after each.</p>
-        <pre><code>SABnzbd-service.exe -f "%localappdata%\sabnzbd\sabnzbd.ini" install
+        <p>Install SABnzbd service, set it to automatically start, and launch it, by typing or pasting the below commands into the DOS command window and hitting RETURN after each.</p>
+        <ul>
+            <li>
+                <strong>SABnzbd 3:</strong>
+                <pre><code>SABnzbd-console.exe -f "%localappdata%\sabnzbd\sabnzbd.ini" install
 sc config SABnzbd start= auto
 net start SABnzbd</code></pre>
+            </li>
+            <li>
+                <strong>SABnzbd 2:</strong>
+                <pre><code>SABnzbd-service.exe -f "%localappdata%\sabnzbd\sabnzbd.ini" install
+sc config SABnzbd start= auto
+net start SABnzbd</code></pre>
+            </li>
+        </ul>
 
         <p><span class="label label-warning">NOTE</span> The first command uses the <code>%localappdata%</code> system variable to point to the LOCAL  folder within your user's APPDATA folder, which should work on all versions of Windows. If for some reason that does not work on your system and you get a <code>sabnzbd.ini file not found</code> type error you will need to replace the path portion of the above command to explicitly point to your <code>sabnzbd.ini</code> file within your <code>C:\Users\USERNAME\APPDATA\Local\sabnzbd</code> folder.</p>
         <p><span class="label label-danger">NOTE</span> If you used Powershell instead of Command Prompt you will need to use <code>$env:LOCALAPPDATA</code> instead of <code>%localappdata%</code>!</p>
@@ -60,7 +68,7 @@ If all you need is to run SABnzbd as a service using the same settings used in t
 <ul>
     <li><span class="label label-warning">NOTE</span> SABnzbd will not present an icon in the Notification (lower right) area of the Windows screen when run as a service.  This will not affect normal operation of the software.</li>
 
-    <li><span class="label label-warning">NOTE</span> The Windows firewall will not warn you if it blocks the SABnzbd-service.exe as it does when blocking SABnzbd when running "normally", so you may need to add it to the firewall exception list using the normal procedures for your version of Windows if you run into an access problem.  However, if you have already run SABnzbd successfully before installing it as a service, using the same port number, it is likely the exception will already be in effect.</li>
+    <li><span class="label label-warning">NOTE</span> The Windows firewall will not warn you if it blocks SABnzbd as it does when blocking SABnzbd when running "normally", so you may need to add it to the firewall exception list using the normal procedures for your version of Windows if you run into an access problem.  However, if you have already run SABnzbd successfully before installing it as a service, using the same port number, it is likely the exception will already be in effect.</li>
 
     <li><span class="label label-warning">NOTE</span> Before upgrading SABnzbd, it is recommended you stop both services to ensure there are no problems overwriting busy files. See the section below for details on stopping the service via the command line or through the Windows Service Manager.</li>
 </ul>
@@ -70,26 +78,55 @@ If all you need is to run SABnzbd as a service using the same settings used in t
 <p>You can, however, override many of these settings with <a href="/wiki/advanced/command-line-parameters">command line parameters</a>. Simply add the pertinent command to the line that installs the SABnzbd service. Be aware that not all of the available command line options are appropriate when SABnzbd is running as a service—for instance, parameters like <code>–b</code> (start browser) will be ignored even if specified.</p>
 <p><span class="label label-warning">NOTE</span> Any parameter you set in the command line will override the equivalent parameter in the web interface and any changes to the interface settings will be ignored by the service for that parameter.  For parameters not set through the command line, the service will use whatever was set in the GUI at the time the service is launched or updated.
 For example, the following will install the SABnzbd service with the <code>-s host:port</code> command to reflect a different server address:</p>
-<pre><code>SABnzbd-service.exe -f %localappdata%\sabnzbd\sabnzbd.ini –s 127.0.0.1:8081 install</code></pre>
+
+<ul>
+    <li>
+        <strong>SABnzbd 3:</strong><br>
+        <pre><code>SABnzbd-console.exe -f %localappdata%\sabnzbd\sabnzbd.ini –s 127.0.0.1:8081 install</code></pre>
+    </li>
+    <li>
+        <strong>SABnzbd 2:</strong><br>
+        <pre><code>SABnzbd-service.exe -f %localappdata%\sabnzbd\sabnzbd.ini –s 127.0.0.1:8081 install</code></pre>
+    </li>
+</ul>
+
+
+
 <p>In this example, the SABnzbd service will continue to use the specified port (8081) even if you subsequently specify a different port within the web interface.  You would need to reinstall the service by re-entering the above command without the <code>-s 127.0.0.1:8081</code>  argument to have the SABnzbd service once again go back to using the value set in the web interface.</p>
 
 <h3>Updating the service settings</h3>
 <p>Each time the SABnzbd service starts, it reads the SABnzbd ini file for configuration options.  If you change settings within the SABnzbd web interface you can force the service to reread the ini file by typing the following the command in an elevated DOS command window after changing directories to the SABnzbd folder. Of course, you can also simply reboot the computer to cause the service to restart and reread the ini file again.</p>
-<pre><code>SABnzbd-service.exe -f  %localappdata%\sabnzbd\sabnzbd.ini update</code></pre>
+
+<ul>
+    <li>
+        <strong>SABnzbd 3:</strong><br>
+        <pre><code>SABnzbd-console.exe -f  %localappdata%\sabnzbd\sabnzbd.ini update</code></pre>
+    </li>
+    <li>
+        <strong>SABnzbd 2:</strong><br>
+        <pre><code>SABnzbd-service.exe -f  %localappdata%\sabnzbd\sabnzbd.ini update</code></pre>
+    </li>
+</ul>
 
 <h2>Service actions</h2>
 <h3>Removing the services</h3>
 <p>To completely remove the SABnzbd services, follow steps 1 and 2 in the Installation instructions above to open an elevated DOS command window and access the SABnzbd folder, then type or paste the following commands into it, hitting RETURN after each.</p>
-<pre><code>SABnzbd-service.exe remove
+<ul>
+    <li>
+        <strong>SABnzbd 3:</strong><br>
+        <pre><code>SABnzbd-console.exe remove</code></pre>
+    </li>
+    <li>
+        <strong>SABnzbd 2:</strong><br>
+        <pre><code>SABnzbd-service.exe remove
 SABnzbd-helper.exe remove</code></pre>
+    </li>
+</ul>
 
 <h3>Start the services</h3>
-<p><span class="label label-warning">NOTE</span> The helper service should always be started AFTER the main SABnzbd-service.</p>
-<pre><code>net start SABnzbd
-net start SABhelper</code></pre>
-<h3>Stop the services </h3>
-<pre><code>net stop SABnzbd
-net stop SABhelper</code></pre>
+<pre><code>net start SABnzbd</code></pre>
+<h3>Stop the services</h3>
+<pre><code>net stop SABnzbd</code></pre>
 
 <h2>Enabling Network Share Access</h2>
 <p>By default the SABnzbd service will be installed to run as the "Local System" account. This allows full access to local hard drives, but not to network shares.
