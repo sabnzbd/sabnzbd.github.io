@@ -8,7 +8,6 @@ redirect_from: "/wiki/advanced/automation-support"
 <h1>Introduction</h1>
 <p>The SABnzbd API can be reached via:</p>
 <pre><code>http://host:port/sabnzbd/api</code></pre>
-<p>For backwards compatibility you might see <code>tapi</code> used in some of our templates, we recommend using <code>api</code>.
 
 <h2>Request types</h2>
 <p>Supported output types are <code>json</code>, <code>xml</code> and <code>text</code> and can be specified in the request:
@@ -47,10 +46,6 @@ redirect_from: "/wiki/advanced/automation-support"
         <tr>
             <td><a href="#queue">queue</a></td>
             <td>Full Queue output</td>
-        </tr>
-        <tr>
-            <td><a href="#qstatus">qstatus</a></td>
-            <td>Simple Queue output <span class="label label-danger">To be deprecated</span></td>
         </tr>
         <tr>
             <td><a href="#pause">pause</a> (queue)</td>
@@ -296,48 +291,6 @@ redirect_from: "/wiki/advanced/automation-support"
         "have_quota":false,
         "queue_details":"0"
     }
-}
-{% endhighlight %}
-
-<h2 id="qstatus">Simple Queue output</h2>
-<p>Depreciated now by the Full Queue output, this is the old API that just provides limited details on the current queue and state of SABnzbd.</p>
-<p><span class="label label-danger">To be deprecated</span></p>
-<pre><code>api?mode=qstatus</code></pre>
-{% highlight json %}
-{
-    "noofslots_total":2,
-    "have_warnings":"0",
-    "pp_active":false,
-    "mb":1277.6258602142334,
-    "speedlimit_abs":"4718592.0",
-    "jobs":[
-        {
-            "timeleft":"0:00:00",
-            "filename":"TV.Show.S04E11.720p.HDTV.x264",
-            "mbleft":1264.411566734314,
-            "id":"SABnzbd_nzo_p86tgx",
-            "mb":1277.6455068588257
-        },
-        {
-            "timeleft":"0:00:00",
-            "filename":"TV.Show.S04E12.720p.HDTV.x264",
-            "mbleft":1277.7558698654175,
-            "id":"SABnzbd_nzo_ksfai6",
-            "mb":1277.7558698654175
-        }
-    ],
-    "noofslots":2,
-    "paused":true,
-    "pause_int":"0",
-    "state":"Paused",
-    "loadavg":"",
-    "mbleft":1264.3628635406494,
-    "diskspace2":161.14520645141602,
-    "diskspace1":161.14520645141602,
-    "kbpersec":0.0,
-    "speedlimit":"9",
-    "timeleft":"0:00:00",
-    "speed":"0 "
 }
 {% endhighlight %}
 
