@@ -3,11 +3,8 @@ title: SSL Ciphers
 ---
 <h2>Summary</h2>
 <p>Setting SSL Ciphers to the following value will lower encryption strength, increase performance (download speed) and is supported by virtually all nesservers:</p>
-<pre><code>RC4-MD5</code></pre>
-<p>Increases in download speed are most notable (+20%) on systems where CPU power is the limiting factor.</p>
-<p>However, modern operating systems have disabled this cipher and using it will result in errors.
-Since modern processors also have hardware optimizations for AES, you could try:</p>
 <pre><code>AES128-SHA</code></pre>
+<p>Increases in download speed are most notable on systems where CPU power is the limiting factor.</p>
 
 <h2>What are SSL ciphers?</h2>
 
@@ -21,5 +18,5 @@ Since modern processors also have hardware optimizations for AES, you could try:
 <p>It is also possible to specify multiple single cipher settings or a family of ciphers by specifying it in OpenSSL Cipher format. More information can be found here: <a href="https://www.openssl.org/docs/man1.0.2/apps/ciphers.html" target="_blanl">https://www.openssl.org/docs/man1.0.2/apps/ciphers.html</a>.
 
 <h2>What are the risks?</h2>
-<p>Setting your SSL Ciphers to <code>RC4-MD5</code> or <code>AES128-SHA</code> will not suddenly expose your traffic to the world. There is evidence that this and similar protocols can be decrypted, but it seems to require a large amount of resources. <a href="https://blog.cloudflare.com/killing-rc4-the-long-goodbye/">This article</a> describes the implications in more detail.</p>
+<p>Setting your SSL Ciphers to <code>AES128-SHA</code> will not suddenly expose your traffic to the world. There is evidence that this and similar protocols can be decrypted, but it seems to require a large amount of resources. <a href="https://blog.cloudflare.com/killing-rc4-the-long-goodbye/">This article</a> describes the implications in more detail.</p>
 <p>It's up to you to decide how valuable your usenet data is. It should also be noted that your internet service provider will always be able to see to which IP-address you are connecting, with or without SSL. Enabling SSL only shields the contents of the connection, not the target.</p>
