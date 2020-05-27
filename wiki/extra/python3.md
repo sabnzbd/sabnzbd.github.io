@@ -70,7 +70,10 @@ On Ubuntu (and probably Debian), the Howto is:
 
 From the `sabnzbd` directory of the github source:
 ```
-sudo apt install python3-pip
+sudo apt-get update
+sudo apt-get install git par2 unrar python3-setuptools python3-pip
+sudo apt-get install libffi-dev libssl-dev
+# sudo apt install python3-pip
 python3 -m pip install -r requirements.txt -U
 tools/make_mo.py
 ```
