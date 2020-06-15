@@ -176,8 +176,8 @@ redirect_from: "/wiki/advanced/automation-support"
             <td>In bytes/s</td>
         </tr>
         <tr>
-            <td><code>filename</code></td>
-            <td>Labels like <code>DUPLICATE</code> and <code>ENCRYPTED</code> will be part of the <code>filename</code></td>
+            <td><code>labels</code></td>
+            <td>Labels like <code>DUPLICATE</code>, <code>ENCRYPTED</code> and <code>PROPAGATING X min</code> (new in 3.0.0).</td>
         </tr>
         <tr>
             <td><code>unpackopts</code></td>
@@ -190,9 +190,7 @@ redirect_from: "/wiki/advanced/automation-support"
     </tbody>
 </table>
 
-<p><span class="label label-danger">NOTE</span> In 2.0.0+ many fields not related to the queue were deprecated. Only fields related to the queue remain. All those fields can still be found in <a href="#fullstatus">fullstatus</a>.</p>
-
-<p><span class="label label-danger">NOTE</span> In 2.3.0+ the <code>missing</code> field was removed and replaced by <code>mbmissing</code> to actually list the amount of missing data instead of the non-specific number of articles.</p>
+<p><span class="label label-warning">NOTE</span> In 3.0.0+ labels like <code>DUPLICATE</code> and <code>PROPAGATING X min</code> are no longer part of the <code>filename</code>.</p>
 
 {% highlight json %}
 {
@@ -227,6 +225,7 @@ redirect_from: "/wiki/advanced/automation-support"
                 "size":"1.2 GB",
                 "sizeleft":"1.2 GB",
                 "filename":"TV.Show.S04E11.720p.HDTV.x264",
+                "labels": [],
                 "priority":"Normal",
                 "cat":"tv",
                 "eta":"17:52 Thu 21 Jul",
@@ -248,6 +247,7 @@ redirect_from: "/wiki/advanced/automation-support"
                 "size":"1.2 GB",
                 "sizeleft":"1.2 GB",
                 "filename":"TV.Show.S04E12.720p.HDTV.x264",
+                "labels": ["TOO LARGE", "DUPLICATE"],
                 "priority":"Normal",
                 "cat":"tv",
                 "eta":"unknown",
@@ -395,7 +395,8 @@ redirect_from: "/wiki/advanced/automation-support"
 </table>
 
 <h2 id="addfile">Add NZB by file upload</h2>
-<p>Upload NZB using <code>POST multipart/form-data</code>. In your form, set the value of the field <code>mode</code> to <code>addfile</code>; the file data should be in the field <code>name</code>. <br>For other parameters and output see <a href="#addurl">addurl</a>.
+<p>Upload NZB using <code>POST multipart/form-data</code>. In your form, set the value of the field <code>mode</code> to <code>addfile</code>; the file data should be in the field <code>name</code> or the field <code>nzbfile</code>.
+    <br>For other parameters and output see <a href="#addurl">addurl</a>.</p>
 
 <h2 id="addlocalfile">Add NZB by file upload</h2>
 <p>Upload NZB from a location on the file system that SABnzbd can access. The path should be <a href="http://www.w3schools.com/tags/ref_urlencode.asp" target="_blank">URL-encoded</a>. <br>For other parameters and output see <a href="#addurl">addurl</a>.
@@ -482,8 +483,8 @@ redirect_from: "/wiki/advanced/automation-support"
 <h2 id="get_files">Get files in job</h2>
 <p>Get files of job with <code>nzo_id</code>.</p>
 <pre><code>api?mode=get_files&amp;value=NZO_ID</code></pre>
-<p>The <code>status</code> indicates if a file was <code>finished</code>, in the process of being downloaded (<code>active</code>) or will only be downloaded when necessary (<code>queued</code>, like <code>.par2</code> files). The <code>set</code> shows to which part of the download the <code>.par2</code> files belong to, in case of multiple sets in 1 job.</p>
-<p><span class="label label-warning">NOTE</span> In 2.0.0 the <code>id</code> field was replaced by the unique <code>nzf_id</code> field for each file. Files are sorted in order: finished, active, queued.</p>
+<p>The <code>status</code> indicates if a file was <code>finished</code>, in the process of being downloaded (<code>active</code>) or will only be downloaded when necessary (<code>queued</code>, like <code>.par2</code> files). The <code>set</code> shows to which part of the download the <code>.par2</code> files belong to, in case of multiple sets in 1 job. Files are sorted in order: finished, active, queued.</p>
+
 {% highlight json %}
 {
     "files":[
@@ -555,7 +556,7 @@ redirect_from: "/wiki/advanced/automation-support"
 </table>
 
 <h2 id="history">History output</h2>
-<p>Full queue output with details about all jobs. The <code>queue</code> and the <code>history</code> output share many common fields, but the history also contains statistiscs about how much has been downloaded in the past day, week, month and total.</p>
+<p>Full history output with details about all jobs. The <code>queue</code> and the <code>history</code> output share many common fields, but the history also contains statistiscs about how much has been downloaded in the past day, week, month and total.</p>
 <pre><code>api?mode=history&amp;start=START&amp;limit=LIMIT&amp;category=CATEGORY&amp;search=SEARCH&amp;failed_only=0</code></pre>
 <p><span class="label label-warning">NOTE</span> Some of the less obvious output paramaters are described below.</p>
 <table class="table table-bordered table-hover">
@@ -632,8 +633,6 @@ redirect_from: "/wiki/advanced/automation-support"
         </tr>
     </tbody>
 </table>
-
-<p><span class="label label-danger">NOTE</span> In 2.0.0+ many fields not related to the history were deprecated. Only fields related to the history remain. All those fields can still be found in <a href="#fullstatus">fullstatus</a>.</p>
 
 {% highlight json %}
 {
