@@ -7,28 +7,25 @@ title: Install SABnzbd for macOS
 
 
 <hr>
+
 <h2>How to run from sources on macOS</h2>
-<p>If for some reason you don't want to use the app, you can install from source.</p>
+<p>Running the source python (.py) files on a macOS system is not recommended unless you want to try the latest GitHub copy, or make changes yourself.
 
 <ol>
-    <li>Install <code>pip</code>, if it's not already installed, by running:<br>
-    <pre><code>sudo -H easy_install pip</code></pre> (or without <code>sudo</code>, if you have the right permissions)
-    </li>
-    <li>Install the depenencies by running:<br>
-    <pre><code>sudo -H pip install cheetah3
-sudo -H pip install cryptography
-sudo -H pip install sabyenc</code></pre>
-
-    It could be that SABYenc does not get recognized, try the following commands (requires Xcode):
-<pre><code>sudo -H pip uninstall sabyenc -y
-sudo -H pip install git+git://github.com/sabnzbd/sabyenc</code></pre></li>
-    <li>Finally, download the <a href="/downloads">source code</a>, unpack into any folder (e.g. ~/SABnzbd).<br>
-    Don't compile or anything, just run from source:
-    <pre><code>cd SABnzbd/
-./SABnzbd.py</code></pre></li>
+    <li>Get a local copy (clone) of the SABnzbd source by running in the Terminal:
+    <pre><code>git clone https://github.com/sabnzbd/sabnzbd.git
+cd sabnzbd</code></pre></li>
+    <li>Install the depenencies by running (might require Xcode):<br>
+    <pre><code>python3 -m pip install -U -r requirements.txt</code></pre></li>
+    <li>Start SABnzbd by running:<br>
+    <pre><code>python3 SABnzbd.py</code></pre></li>
 </ol>
 
 <p>Your default web browser should now start and show the user interface of SABnzbd.</p>
+
+<p>To update the source files to the latest version, open Terminal and run:
+<pre><code>cd sabnzbd
+git pull</pre></code>
 
 <hr>
 

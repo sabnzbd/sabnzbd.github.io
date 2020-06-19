@@ -1,38 +1,31 @@
 ---
 title: Install SABnzbd for Windows from source
 ---
-<p>Running the source python (.py) files on a window box is not recommended unless you want to try the latest GitHub copy, or make changes yourself.
 
+<p>Running the source python (.py) files on a Windows system is not recommended unless you want to try the latest GitHub copy, or make changes yourself.
 
 <ol>
-    <li><p>Install Python 2.7.x from <a href="http://www.python.org/" target="_blank">Python.org</a><br/>
-    Make sure to select during the installation <em>Add python.exe to path</em>!</li>
-    <li><p>Install <a href="https://git-for-windows.github.io/" target="_blank">Git for Windows</a> on your system. Defaults options are OK
-    <li><p>After installing both, restart your computer and open a Command Prompt. <br/>
-    Run these commands:
-    <pre><code>pip install cheetah3
-pip install cryptography
-pip install subprocessww
-pip install pypiwin32
-pip install sabyenc</pre></code></li>
-
-    <li><p>Get a local copy (clone) of the SABnzbd source by opening Git Bash from the start menu and running:
-    <pre><code>git clone https://github.com/sabnzbd/sabnzbd.git </pre></code>
-    Press "Insert" instead of "Ctrl+V" to paste into Git Bash.
-    <p>You can specify the target directory as a second argument if you don’t want it in the default location (<em>C:\Users\USERNAME\sabnzbd\</em>).</li>
-    <li><p>To enable multi-language support type in the Git Bash you still have open:
+    <li>Install Python 3.5 or above from <a href="http://www.python.org/" target="_blank">Python.org</a><br/>
+    <li>Install <a href="https://git-for-windows.github.io/" target="_blank">Git for Windows</a> on your system. Defaults options are OK
+    <li>Get a local copy (clone) of the SABnzbd source by opening Git Bash from the start menu and running:
+    <pre><code>git clone https://github.com/sabnzbd/sabnzbd.git </code></pre>
+    Press "Insert" instead of "Ctrl+V" to paste into Git Bash.<br>
+    You can specify the target directory as a second argument if you don’t want it in the default location (<code>C:\Users\USERNAME\sabnzbd\</code>).</li>
+    <li>To enable multi-language support type in the Git Bash you still have open:
     <pre><code>cd sabnzbd
 python tools/make_mo.py</pre></code></li>
-    <li><p>Open a Command Prompt. If you did not change the location of the Git clone, you can now start SABnzbd by running
+    <li>Open a Command Prompt or Git Bash and navigate to the location of the Git clone, run:
+    <pre><code>pip install -U -r requirements.txt</pre></code>
+    <li>You can start SABnzbd by running in the Command Prompt or Git Bash:
     <pre><code>python C:\Users\USERNAME\sabnzbd\SABnzbd.py</pre></code></li>
 </ol>
-<p>Optional to update the source files to the latest version, open Git Bash and type:
+<p>To update the source files to the latest version, open Git Bash and type:
 <pre><code>cd sabnzbd
 git pull</pre></code>
 
 
 <p>Optional (not show the DOS command line when SABnzbd is launched):
 <ul>
-    <li><p>Create a .cmd file to easily launch SABnzbd such as: python "path\to\folder\SABnzbd.py"</li>
-    <li><p>Put a shortcut to the .cmd file in your startup folder, and set it to start as minimized.</li>
+    <li>Create a <code>.cmd</code> file to easily launch SABnzbd such as: <code>python "path\to\folder\SABnzbd.py"</code>.</li>
+    <li>Put a shortcut to the .cmd file in your startup folder, and set it to start as minimized.</li>
 </ul>
