@@ -14,16 +14,15 @@ title: Install from source
 <h3 id="toc2">Python</h3>
 
 <p>
-    SABnzbd requires <a href="http://www.python.org" target="_blank">Python 2.7</a>.<br>
-    Python 3.x is <strong>not</strong> supported. Check python version with <code>python --version</code>.
+    SABnzbd 3.0.0 and higher requires <a href="http://www.python.org" target="_blank">Python 3.5 or higher</a>.<br>
+    Check python version with <code>python3 --version</code>.
 </p>
 
 <h3 id="toc3">Must-have Python modules</h3>
-Python comes included with a Python Packages Manager (<code>pip</code>) on many platforms. You can install the required Python modules by simply running the following commands after installing Python:
+Python comes included with a Python Packages Manager (<code>pip</code>) on many platforms. 
+You can install the required Python modules by simply running the following command from the SABnzbd source directory:
 <pre>
-pip install cheetah3
-pip install cryptography
-pip install sabyenc
+python3 -m pip install -r requirements.txt
 </pre>
 
 <p>In case <code>sabyenc</code> installation fails, you can read more <a href="/wiki/extra/sabyenc.html">here</a>.</p>
