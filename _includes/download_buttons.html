@@ -68,6 +68,8 @@
         // Markdown converter
         var converter = new showdown.Converter()
         converter.setOption('headerLevelStart', 2);
+        converter.setOption('simpleLineBreaks', true);
+        converter.setOption('simplifiedAutoLink', true);
 
         // Already show window
         $.featherlight('#stable-changelog');
@@ -103,6 +105,8 @@
         // Markdown converter
         var converter = new showdown.Converter()
         converter.setOption('headerLevelStart', 2);
+        converter.setOption('simpleLineBreaks', true);
+        converter.setOption('simplifiedAutoLink', true);
 
         // Already show window
         $.featherlight('#beta-changelog');
