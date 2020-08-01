@@ -4,7 +4,7 @@ title: SSL Ciphers
 <h2>Summary</h2>
 <p>Setting SSL Ciphers to the following value will lower encryption strength, increase performance (download speed) and is supported by virtually all newsservers:</p>
 <pre><code>AES128-SHA</code></pre>
-<p>Note that setting the SSL Cipher with TLS 1.3 connections is not yet supported by Python and thus SABnzbd. See the relevant <a href="https://docs.python.org/3/library/ssl.html#tls-1-3">Python SSL documentation</a>.
+<p><span class="label label-warning">NOTE</span> Setting the SSL Cipher with news servers that support TLS 1.3 connections is not (yet) supported by Python and thus SABnzbd. See the relevant <a href="https://docs.python.org/3/library/ssl.html#tls-1-3">Python SSL documentation</a>.
 
 <p>Increases in download speed are most notable on systems where CPU power is the limiting factor.</p>
 
