@@ -241,9 +241,28 @@ footer a:hover,
 }
 
 /*** Downloads page ***/
+
 .container-download-page .downloads-row {
     height: auto;
+    padding-bottom: 30px;
 }
+
+.downloads-tip {
+    padding: 7px 7px 15px;
+    border: 1px solid #e3e3e3;
+    background-color: #F5F5F5;
+}
+
+.downloads-tip img {
+    margin-top: 5px;
+    max-width: 100%;
+}
+
+.downloads-tip a {
+    color: black;
+    font-weight: bold;
+}
+
 .container-download-page h2,
 .container-download-page p,
 .container-download-page .download-links {

@@ -9,7 +9,23 @@ redirect_from:
 <div class="main-wrapper content-container">
     <div id="main-container" class="container container-download-page">
         <div class="row downloads-row">
-            <div class="col-sm-6 download-stable {% if site.latest_testing == '' %}col-sm-offset-3{% endif %}">
+            <div class="col-sm-4 {% if site.latest_testing == '' %}col-sm-offset-1{% endif %}">
+                <h2>Tip</h2>
+                <div class="downloads-tip">
+                    <p>
+                        For the fastest downloads, longest retention and best value, we recommend <a href="{{ site.ad_link }}&chan=wtl" target="_blank">Newshosting</a>.
+                    </p>
+                    <p>
+                        We worked with Newshosting to get you a special SABnzbd deal: <a href="{{ site.ad_link }}&chan=wtl" target="_blank">65% discount</a> and a <a href="{{ site.ad_link }}&chan=wtl" target="_blank">750GB free</a> trial!
+                    </p>
+
+                    <a href="{{ site.ad_link }}&chan=wtl" target="_blank">
+                        <img src="/images/specials/nh_wizard_discount_small.png" border="0" alt="Special Newshosting offer for SABnzbd users">
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-sm-4 {% if site.latest_testing == '' %}col-sm-offset-1{% endif %} download-stable">
                 <h2>Latest stable release</h2>
                 <p>Mature and stable. <br/><br/></p>
                 <a class="download-button" href="https://github.com/sabnzbd/sabnzbd/releases/tag/{{ site.latest_stable }}">
@@ -35,7 +51,7 @@ redirect_from:
                 </div>
             </div>
             {% if site.latest_testing != '' %}
-            <div class="col-sm-6 download-beta">
+            <div class="col-sm-4 download-beta">
                 <h2>Latest testing release</h2>
                 <p>Latest features but still in development. <br>Can contain bugs, please <a href="http://forums.sabnzbd.org/viewforum.php?f=11">report them</a>!</p>
                 <a class="download-button" href="https://github.com/sabnzbd/sabnzbd/releases/tag/{{ site.latest_testing }}">
@@ -57,9 +73,6 @@ redirect_from:
                 </div>
             </div>
             {% endif %}
-        </div>
-        <div class="row padding-row text-center">
-            {% include ad_horizontal.html %}
         </div>
     </div>
     <div class="hidden">
