@@ -38,7 +38,7 @@ pip install sabyenc==3.3.1
 ```
 
 <div class="alert alert-warning">
-    These instructions assume that <code>python</code> and <code>pip</code> refer to the Python 2.7 installation on your system.<br>On some systems Python 3 is the default <code>python</code> and you should instead use the <code>python2</code> and <code>pip2</code> commands.
+    These instructions assume that <code>python</code> and <code>pip</code> refer to the Python 3 installation on your system.<br>On some systems Python 2.5 is the default <code>python</code> and you should instead use the <code>python3</code> and <code>pip3</code> commands.
 </div>
 
 <hr/>
@@ -105,28 +105,11 @@ pip install sabyenc --upgrade
 ```
 
 
-### Installation on FreeBSD and NAS4Free
-
-<!-- Info from sabnzbd-forum amaroney-->
-Short: installation of pre-made sabyenc package
-```
-pkg install py27-sabyenc
-```
-<!-- Info from github @gregf -->
-
-
-Longer, with self compiling, thus needs cc:
-```
-su - <password>
-
-pkg install py27-pip-9.0.1
-pip install --upgrade sabyenc
-```
 <hr/>
 
 ## Multiple installations of python
 
-If you have multiple installations of Python on your machine (<code>python</code>/<code>python2</code>/<code>python3</code> or different versions of Python 2.7), you have to make sure SAByenc is installed into the correct Python enviroment. And 'correct' means the Python installation used by SABnzbd. The command is then:
+If you have multiple installations of Python on your machine (<code>python</code>/<code>python2</code>/<code>python3</code> or different versions of Python 3), you have to make sure SAByenc is installed into the correct Python enviroment. And 'correct' means the Python installation used by SABnzbd. The command is then:
 
 ```
 /path/to/correct/python -m pip install sabyenc
@@ -143,7 +126,7 @@ It should print the version of the installed `sabyenc` module, without any error
 
 ## SABnzbd's Checking & Logging
 
-SABnzbd 2.0.0 and higher will check if SAByenc is installed.
+SABnzbd will check if SAByenc is installed.
 If SAByenc is installed, and the version is correct, SABnzbd will print in the log:
 
 ```
