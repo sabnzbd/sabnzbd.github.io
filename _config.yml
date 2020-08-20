@@ -7,7 +7,7 @@ wiki_version: '3.0'
 # For downloads page. Needs the full x.x.x notation!
 # Needs to be a string, for string-comparison
 latest_stable: '3.0.1'
-latest_testing: ''
+latest_testing: '3.1.0-develop'
 
 # Basic ad-URL
 ad_link: 'https://www.newshosting.com/usenet/partners/sabnzbd/?a_aid=sabnzbd'
