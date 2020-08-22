@@ -140,6 +140,10 @@ title: Switches
             <td>If enabled, delete anything that looks like sample files (containing the words <code>sample</code> or <code>proof</code>) after completion of post-processing.</td>
         </tr>
         <tr>
+            <td><strong>Deobfuscate final filenames</strong></td>
+            <td>If enabled, SABnzbd will try to rename the final filenames based on two different methods: First, if a par2 file like rename.par2 exists, SABnzbd will use that to rename files. Second, if filenames of (large) files in the final folder look obfuscated or meaningless (like 19399393.ext or timmof.mkv) they will be renamed to the job name.</td>
+        </tr>
+        <tr>
             <td><strong>Use tags from indexer</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Enable meta-tags coming from indexers or from the content of the NZB. These tags contain cleaned up versions of titles, episode names, etc. If you prefer that everything is derived from the NZB name, disable.</td>
         </tr>
