@@ -4,15 +4,15 @@ redirect_from: "/wiki/advanced/user-pre-queue-script"
 ---
 
 <p>You can choose to let SABnzbd run a script just before an NZB enters the queue.
-    This script will tell whether the NZB should be accepted or not and can modify some parameters.
+    This script determines whether the NZB should be accepted and can modify a number of job parameters.
 </p>
 <p>
-    Scripts can be Python scripts, bash scripts and BAT scripts. All scripts must be located in the scripts-directory, that can be specified in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Config-&gt;Folders</a>. Furthermore, the script must be executable. On Linux this means the x-bit must be on. On Windows, the requirement is that the script's extension is listed in your system's <code>PATHEXT</code> environment variable.
+    Scripts may use any scripting language available on your system; common choices are Python, Unix shell, and Windows batch scripts. All scripts must be located in the Scripts-directory, specified in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Config-&gt;Folders</a> and must be executable. On Unix-like operating systems (Linux, BSD, etc.) this means the x-bit must be on. On Windows, the requirement is that the script's extension is listed in your system's <code>PATHEXT</code> environment variable. Once everything is in place, the Pre-Queue Script can be set in <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a>.
 </p>
 <p>
     The script must write results to the console.
     Exit code <code>0</code> will make SABnzbd inspect the returned output.
-    If the script has an exit code other than <code>0</code>, it's assumed the script failed, and the NZB will be accepted without changes.
+    If the script has an exit code other than <code>0</code>, script failure is assumed and the NZB accepted without changes.
 </p>
 <hr>
 <h2 id="toc1">Input parameters</h2>
@@ -98,7 +98,7 @@ SABnzbd uses the first 7 lines of output, so they should only contain proper dat
     Anything after line 7 is ignored.
 </p>
 
-<p>When you want to manipulate the show/season/episode parameters, you should assemble a new name and return a recognized format.</p>
+<p>To manipulate the show/season/episode parameters, you should assemble a new name and return a recognized format.</p>
 
 <table class="table table-bordered table-hover table-not-fixed">
     <thead>
