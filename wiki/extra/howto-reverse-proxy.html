@@ -1,8 +1,25 @@
 ---
-title: How to hide SABnzbd behind a webserver
+title: How to hide SABnzbd behind a Reverse Proxy
 ---
 <p>Assuming the server is already running correctly and SABnzbd is running on <code>http://localhost:8080</code>.</p>
 
+<h3>What is a Reverse Proxy?</h3>
+<p>A reverse proxy, also known as an "inbound" proxy is a server that receives requests from the Internet and forwards (proxies) them to a small set of servers, usually located on an internal network and not directly accessible from outside.
+A reverse proxy can be used to allow authenticated users access to an intranet even when they are located outside. Users on the internal network can access intranet servers directly (their IP address is their authentication), but users outside it must authenticate themselves to the proxy server (usually with a username and password) in order to be allowed in.
+</p>
+<h3>Why use a Reverse Proxy?</h3>
+<p>Lets say you have SABnzbd, Sonarr, and Radarr installed and working locally.
+   To get to each of these you would navigate to their web server's <code>ip:port</code>.
+   Depending on how you setup the apps (binding an IP to your network adapter) you may not be able to get to the sites outside your network.
+   <span class="label label-warning">NOTE</span> You can use your cellphone with WiFi turned off if you want an easy way to test access outside your network.
+</p>
+<p>So while most likely the apps are running on the same machine then you just have to change the port, but this is not very user friendly. 
+   Using a reverse proxy you could just go to an IP (or hostname if you use dyndns or something similar) but then use <code>/sabnzbd</code>, <code>/sonarr</code>, <code>/whatever</code> instead of a different port. Not only does this make accessing your multiple apps more user friendly, it allows flexibility of being a gatekeeper to all the sites (for access/security/data logging).</p>
+</p>
+
+<p>Below are sample configurations for the two main webservers, Apache and Ngnix:</p>
+
+<hr>
 <h2>Apache 2</h2>
 <p>Required modules: <code>proxy.load</code> and <code>proxy_http.load</code></p>
 <p>The following goes in Apache's <code>httpd.conf</code> file. <br>For Linux: <code>/etc/apache2/httpd.conf</code> and for Windows: <code>C:\Program Files\Apache2.2\conf\httpd.conf</code>.</p>
@@ -21,6 +38,7 @@ title: How to hide SABnzbd behind a webserver
 Config files for <code>a2enmod</code> and <code>proxy proxy_http</code> are located in:
 <code>/etc/apache2/sites-available/000-default.conf</code> (for HTTP) and <code>*ssl*.conf</code> (for HTTPS).</p>
 
+<hr>
 <h2 id="toc1">Nginx</h2>
 <p>The following files go in the nginx <code>conf.d</code> directory <code>/etc/nginx/conf.d/</code>.</p>
 <h3 id="toc2">ssl.conf</h3>
