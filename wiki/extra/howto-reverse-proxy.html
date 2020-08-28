@@ -1,5 +1,7 @@
 ---
 title: How to hide SABnzbd behind a Reverse Proxy
+redirect_from:
+    - /wiki/extra/howto-apache
 ---
 <p>Assuming the server is already running correctly and SABnzbd is running on <code>http://localhost:8080</code>.</p>
 
@@ -11,9 +13,11 @@ A reverse proxy can be used to allow authenticated users access to an intranet e
 <p>Lets say you have SABnzbd, Sonarr, and Radarr installed and working locally.
    To get to each of these you would navigate to their web server's <code>ip:port</code>.
    Depending on how you setup the apps (binding an IP to your network adapter) you may not be able to get to the sites outside your network.
+</p>
+<p>
    <span class="label label-warning">NOTE</span> You can use your cellphone with WiFi turned off if you want an easy way to test access outside your network.
 </p>
-<p>So while most likely the apps are running on the same machine then you just have to change the port, but this is not very user friendly. 
+<p>So while most likely the apps are running on the same machine then you just have to change the port, but this is not very user friendly.
    Using a reverse proxy you could just go to an IP (or hostname if you use dyndns or something similar) but then use <code>/sabnzbd</code>, <code>/sonarr</code>, <code>/whatever</code> instead of a different port. Not only does this make accessing your multiple apps more user friendly, it allows flexibility of being a gatekeeper to all the sites (for access/security/data logging).</p>
 </p>
 
@@ -21,7 +25,7 @@ A reverse proxy can be used to allow authenticated users access to an intranet e
 
 <hr>
 <h2>Apache 2</h2>
-<p>Required modules: <code>proxy.load</code> and <code>proxy_http.load</code></p>
+<p>Required modules: <code>proxy.load</code> and <code>proxy_http.load</code>.</p>
 <p>The following goes in Apache's <code>httpd.conf</code> file. <br>For Linux: <code>/etc/apache2/httpd.conf</code> and for Windows: <code>C:\Program Files\Apache2.2\conf\httpd.conf</code>.</p>
 
 {% highlight aconf %}
@@ -34,8 +38,8 @@ A reverse proxy can be used to allow authenticated users access to an intranet e
 </Location>
 {% endhighlight %}
 
-<p><span class="label label-warning">Note on Apache 2.4</span>
-Config files for <code>a2enmod</code> and <code>proxy proxy_http</code> are located in:
+<p>
+    <span class="label label-warning">NOTE</span> On Apache 2.4 Config files for <code>a2enmod</code> and <code>proxy proxy_http</code> are located in:
 <code>/etc/apache2/sites-available/000-default.conf</code> (for HTTP) and <code>*ssl*.conf</code> (for HTTPS).</p>
 
 <hr>
