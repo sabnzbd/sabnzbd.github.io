@@ -23,14 +23,7 @@ sabnzbdplus
 
 ## From the PPA for Ubuntu
 
-The PPA for SABnzbd for Ubuntu seems to work for Debian too. You need to read and follow the instruction by the author of the Ubuntu PPA (JCFP) in [this forum thread](https://forums.sabnzbd.org/viewtopic.php?f=16&t=9844).
-
-The advantage of this method is that you get SABnzbd updates automatically when updating your Debian system.
-
-Run SABnzbd like this:
-```
-sabnzbdplus
-```
+Starting with version 3.0.0, direct use of the PPA on Debian is no longer an option. If you have such as setup, remove the PPA from your sources.list and go with creating a backport instead. The source packages from the PPA are an excellent basis for those, and that remains the case for 3.0.0.
 
 
 ## From source
@@ -67,7 +60,3 @@ Run SABnzbd like this, from the directory where you installed SABnzbd:
 ```
 ./SABnzbd.py
 ```
-
-
-
-
