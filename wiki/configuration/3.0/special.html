@@ -201,11 +201,6 @@ title: Special settings
             <td>Any download that exceeds this value will be paused and get priority "low". You can use the K/M/G notation, so e.g. 4.7G</td>
         </tr>
         <tr>
-            <td><code>folder_max_length</code></td>
-            <td><code>128</code></td>
-            <td>On Windows, the total path is limited to 255 characters. A combination of long folder names and long file names may lead to problems. Set this option to limit each element of the total path. Each element will be truncated to the specified number. 64 is a safe value. The option will also work for other operating systems but is only usefull on Windows.</td>
-        </tr>
-        <tr>
             <td><code>fsys_type</code></td>
             <td><code>0</code></td>
             <td>Only for Unix/Linux systems. 0 = Determine automatically, 1 = Names are stored as 8-bit ASCII characters, 2 = Names are stored as UTF-8. Use this <strong>only</strong> when the names created by SABnzbd look distorted! It will only work for folders created by SABnzbd itself, not files and folders created by unzip and unrar.</td>
