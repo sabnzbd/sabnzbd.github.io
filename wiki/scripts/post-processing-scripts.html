@@ -246,9 +246,9 @@ redirect_from: "/wiki/advanced/user-scripts"
 {% highlight python %}
 import sys
 try:
-    (scriptname,directory,orgnzbname,jobname,reportnumber,category,group,postprocstatus,url) = sys.argv
+    (scriptname, directory, orgnzbname, jobname, reportnumber, category, group, postprocstatus, url) = sys.argv
 except:
-    print "No commandline parameters found"
+    print("No commandline parameters found")
     sys.exit(1)
 
 # continue script
@@ -265,9 +265,9 @@ sys.exit(0)
 {% highlight python %}
 import os
 
-print 'SABnzbd version: ', os.environ['SAB_VERSION']
-print 'Job location: ', os.environ['SAB_COMPLETE_DIR']
-print 'Fail msg: ', os.environ['SAB_FAIL_MSG']
+print("SABnzbd version:", os.environ['SAB_VERSION'])
+print("Job location:", os.environ['SAB_COMPLETE_DIR'])
+print("Fail msg:", os.environ['SAB_FAIL_MSG'])
 
 # Your code
 
