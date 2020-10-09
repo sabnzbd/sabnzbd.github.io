@@ -116,8 +116,8 @@ title: Switches
             <td>If no par2 files are available, SFV files (if present) will be used to check files</td>
         </tr>
         <tr>
-            <td><strong>Process only verified jobs</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>When the download is incorrect and not repairable it may be safer to skip further post-processing.</td>
+            <td><strong>Post-Process only verified jobs</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>Even if jobs fail the verification stage, still run unpack and scripts. This way scripts can be notified of a failed download. If turned off, all jobs will be marked as Completed even if they are incomplete.</td>
         </tr>
         <tr>
             <td><strong>Enable recursive unpacking</strong><br><span class="label label-primary">Advanced</span></td>
