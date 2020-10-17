@@ -455,7 +455,7 @@ redirect_from: "/wiki/advanced/automation-support"
 <p>Change script of job with <code>nzo_id</code>. List of available scripts can be retrieved from <a href="#get_scripts">get_scripts</a>.</p>
 <pre><code>api?mode=change_script&amp;value=NZO_ID&amp;value2=script.py</code></pre>
 
-<h2 id="priority">Change job priority <span class="label label-primary">True/False</span></h2>
+<h2 id="priority">Change job priority</h2>
 <p>Change priority of job with <code>nzo_id</code>.</p>
 <ul>
     <li><code>-100</code> = Default Priority (of category)</li>
@@ -466,6 +466,12 @@ redirect_from: "/wiki/advanced/automation-support"
     <li><code>2</code> = Force</li>
 </ul>
 <pre><code>api?mode=queue&amp;name=priority&amp;value=NZO_ID&amp;value2=0</code></pre>
+<p>The command will return the new position, since a job's location also depends on its priority:</p>
+{% highlight json %}
+{
+    "position": 42
+}
+{% endhighlight %}
 
 <h2 id="change_opts">Change job post-processing options <span class="label label-primary">True/False</span></h2>
 <p>Change post-processing of job with <code>nzo_id</code>.</p>
