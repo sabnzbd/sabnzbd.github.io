@@ -236,6 +236,11 @@ title: Special settings
             <td>When SABnzbd wants to store files on the final destination, this destination might be an external drive. Especially USB drives can take considerable time to wake up after going into standby. SABnzbd will try 5 times with intervals of one second. You can increase this value if needed.</td>
         </tr>
         <tr>
+            <td><code>max_foldername_length</code></td>
+            <td><code>246</code></td>
+            <td>On most filesystems, the size of each path segment in a filename is limited to 255 characters. Set this option to limit each element of the total path to the provided number of characters. Each element will be truncated to the specified number. Note that this should not be raised above the default (such as to the 'full' 255) since space needs to be reserved for modifications by SABnzbd processes such as automated unpacking.</td>
+        </tr>
+        <tr>
             <td><code>show_sysload</code></td>
             <td><code>2</code></td>
             <td>When working on a Linux/Unix system you can have SABnzbd display no system information (0), Only the CPU load indicators (1) and also the memory usage (2). <br>Linux memory usage "V" is total memory usage of SABnzbd, "R" is actually used physical memory</td>
