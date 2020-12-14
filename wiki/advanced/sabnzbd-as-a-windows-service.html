@@ -12,6 +12,9 @@ redirect_from:
 
 <ol>
     <li>
+        Make sure SABnzbd is not running.
+    </li>
+    <li>
         Open a DOS window with Administrative (elevated) privileges<br>
         <ul>
             <li>Click your Windows Start button</li>
@@ -32,6 +35,9 @@ net start SABnzbd</code></pre>
 
         <p><span class="label label-warning">NOTE</span> The first command uses the <code>%localappdata%</code> system variable to point to the LOCAL  folder within your user's APPDATA folder, which should work on all versions of Windows. If for some reason that does not work on your system and you get a <code>sabnzbd.ini file not found</code> type error you will need to replace the path portion of the above command to explicitly point to your <code>sabnzbd.ini</code> file within your <code>C:\Users\USERNAME\APPDATA\Local\sabnzbd</code> folder.</p>
         <p><span class="label label-danger">NOTE</span> If you used Powershell instead of Command Prompt you will need to use <code>$env:LOCALAPPDATA</code> instead of <code>%localappdata%</code>!</p>
+    </li>
+    <li>You can check SABnzbd is running as a service, with
+        <pre><code>net start | find /i "sabnzbd"</code></pre>
     </li>
 </ol>
 
