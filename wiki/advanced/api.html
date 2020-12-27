@@ -132,7 +132,7 @@ redirect_from: "/wiki/advanced/automation-support"
 
 <h2 id="queue">Full Queue output</h2>
 <p>Full queue output with details about all jobs.</p>
-<pre><code>api?mode=queue&amp;start=START&amp;limit=LIMIT&amp;search=SEARCH</code></pre>
+<pre><code>api?mode=queue&amp;start=START&amp;limit=LIMIT&amp;search=SEARCH&amp;nzo_ids=NZO_ID_1,NZO_ID_2,NZO_ID_3</code></pre>
 <p><span class="label label-warning">NOTE</span> Some of the less obvious output paramaters are described below.</p>
 
 <table class="table table-bordered table-hover">
@@ -154,6 +154,10 @@ redirect_from: "/wiki/advanced/automation-support"
         <tr>
             <td><code>search</code> <small>optional</small></td>
             <td>Filter job names by <code>search</code> term</td>
+        </tr>
+        <tr>
+            <td><code>nzo_ids</code> <small>optional</small></td>
+            <td>Filter jobs by <code>nzo_ids</code></td>
         </tr>
     </tbody>
 </table>
@@ -423,7 +427,7 @@ redirect_from: "/wiki/advanced/automation-support"
 <p><span class="label label-warning">NOTE</span> By default already download files of a job are not removed, add <code>del_files=1</code> to have all files removed.</p>
 <pre><code>api?mode=queue&amp;name=delete&amp;value=NZO_ID</code></pre>
 <p>Deleting multiple items:</p>
-<pre><code>api?mode=queue&amp;name=delete&amp;value=NZO_ID_1,NZO_ID_2,NZO_ID_2</code></pre>
+<pre><code>api?mode=queue&amp;name=delete&amp;value=NZO_ID_1,NZO_ID_2,NZO_ID_3</code></pre>
 <p>Deleting all items:</p>
 <pre><code>api?mode=queue&amp;name=delete&amp;value=all&amp;del_files=1</code></pre>
 
@@ -570,7 +574,7 @@ redirect_from: "/wiki/advanced/automation-support"
 
 <h2 id="history">History output</h2>
 <p>Full history output with details about all jobs. The <code>queue</code> and the <code>history</code> output share many common fields, but the history also contains statistiscs about how much has been downloaded in the past day, week, month and total.</p>
-<pre><code>api?mode=history&amp;start=START&amp;limit=LIMIT&amp;category=CATEGORY&amp;search=SEARCH&amp;failed_only=0</code></pre>
+<pre><code>api?mode=history&amp;start=START&amp;limit=LIMIT&amp;category=CATEGORY&amp;search=SEARCH&amp;nzo_ids=NZO_ID_1,NZO_ID_2,NZO_ID_3&amp;failed_only=0</code></pre>
 <p><span class="label label-warning">NOTE</span> Some of the less obvious output paramaters are described below.</p>
 <table class="table table-bordered table-hover">
     <thead>
@@ -595,6 +599,10 @@ redirect_from: "/wiki/advanced/automation-support"
         <tr>
             <td><code>search</code> <small>optional</small></td>
             <td>Filter job names by <code>search</code> term</td>
+        </tr>
+        <tr>
+            <td><code>nzo_ids</code> <small>optional</small></td>
+            <td>Filter jobs by <code>nzo_ids</code></td>
         </tr>
         <tr>
             <td><code>failed_only</code> <small>optional</small></td>
