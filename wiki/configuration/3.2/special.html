@@ -28,11 +28,6 @@ title: Special settings
             <td>When starting a download, the first article of each file is downloaded. If <code>Abort jobs that cannot be completed</code> is turned on, there are more than 10 files and more than 80% of the first articles is missing the job will be failed. If turned off, it will only be failed if availability is below <code>req_completion_rate</code>.</td>
         </tr>
         <tr>
-            <td><code>ignore_wrong_unrar</code></td>
-            <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>On Linux, SABnzbd checks whether the installed unrar or rar program is supported and issues a warning if not. Set this option if you think you know better.</td>
-        </tr>
-        <tr>
             <td><code>overwrite_files</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
             <td>When unpacking, this will overwrite existing files instead of creating an alternative name.</td>
@@ -53,6 +48,11 @@ title: Special settings
             <td>When the API is accessed by external tools without proper authentication, SABnzbd will show a warning. This is a security warning that you should take seriously. However, it seems that there are some security tools that try to access anything that looks like a webserver. If you cannot disable the cause of the warnings, you can choose to disable the warning.</td>
         </tr>
         <tr>
+            <td><code>helpfull_warnings</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Option to disable helpful warnings about issues on your system such as the usage of FAT filesystems, too long password-files, required <code>unrar</code> versions, etc.</td>
+        </tr>
+        <tr>
             <td><code>ampm</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
             <td>Display ETA in AM/PM notation, only applicable to some locations in older skins.</td>
@@ -68,16 +68,6 @@ title: Special settings
             <td>Normally unpacked files will get the date/time stamp they have in the archive. If you set this option, the files will get the date/time of unpacking.</td>
         </tr>
         <tr>
-            <td><code>debug_log_decoding</code></td>
-            <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Log the decoding of each article in <code>+Debug</code> logging mode. Disabled by default to make debug logs more readable. Requires restart of SABnzbd.</td>
-        </tr>
-        <tr>
-            <td><code>multipar</code></td>
-            <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Windows only. Disable Multipar and use par2tbb instead. This is still supported, but special workarounds for Windows have been removed so can fail on special cases.</td>
-        </tr>
-        <tr>
             <td><code>osx_menu</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Uncheck this to remove the SABnzbd icon in the macOS menu bar</td>
@@ -91,11 +81,6 @@ title: Special settings
             <td><code>win_menu</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Uncheck this to remove the SABnzbd icon from the systray on Windows and Linux</td>
-        </tr>
-        <tr>
-            <td><code>use_pickle</code></td>
-            <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Only check this when there is a problem with one of the standard Python libs.</td>
         </tr>
         <tr>
             <td><code>allow_incomplete_nzb</code></td>
@@ -136,11 +121,6 @@ title: Special settings
             <td><code>max_art_opt</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
             <td>You can choose to use limited retries only for your "optional" servers. This will prevent "Out of retention" failures when your main server is inadvertently off-line</td>
-        </tr>
-        <tr>
-            <td><code>warn_empty_nzb</code></td>
-            <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Will enable warnings about empty NZB files, uncheck to supress warnings.</td>
         </tr>
         <tr>
             <td><code>enable_bonjour</code></td>
@@ -196,14 +176,14 @@ title: Special settings
     </thead>
     <tbody>
         <tr>
+            <td><code>downloader_sleep_time</code></td>
+            <td><code>10</code></td>
+            <td> CPU sleep period that is some times added between reading data from the connections. Higher values may reduce CPU load but too high values will impact the download speed. A value of 0 should only be used if increasing the number of connections is not sufficient to get maximum speed. A value of 10 means 1 ms.</td>
+        </tr>
+        <tr>
             <td><code>size_limit</code></td>
             <td><code>0</code></td>
             <td>Any download that exceeds this value will be paused and get priority "low". You can use the K/M/G notation, so e.g. 4.7G</td>
-        </tr>
-        <tr>
-            <td><code>fsys_type</code></td>
-            <td><code>0</code></td>
-            <td>Only for Unix/Linux systems. 0 = Determine automatically, 1 = Names are stored as 8-bit ASCII characters, 2 = Names are stored as UTF-8. Use this <strong>only</strong> when the names created by SABnzbd look distorted! It will only work for folders created by SABnzbd itself, not files and folders created by unzip and unrar.</td>
         </tr>
         <tr>
             <td><code>movie_rename_limit</code></td>
