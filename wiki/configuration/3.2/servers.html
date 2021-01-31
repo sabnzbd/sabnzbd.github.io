@@ -13,6 +13,11 @@ title: Servers
     When the first tried server doesn't have an article, then another server with the same priority is tried.<br>
     When none of the primary servers has a specific article, a lower priority group is tried. Within the lower priority group, the same method is used: the first server with a free slot is tried.
 </p>
+
+<h2>Article availability</h2>
+<p>This statistic will show you how many of the requested articles were available on this server. The number of requested articles is included, to offer a comparison between the servers. It could be that some higher priority servers are tried less often. If they are tried less often but still have a low article availability, it might not be worth having this subscription.
+</p>
+
 <hr>
 <h2 id="toc2">Basic settings</h2>
 <p><span class="label label-warning">NOTE</span> Check your Usenet provider's documentation for the proper values!</p>
@@ -28,7 +33,7 @@ title: Servers
         </tr>
         <tr>
             <td><strong>Port</strong></td>
-            <td>The standard port is <code>119</code>. Some servers use a different port number. SSL is usually port <code>563</code> or <code>443</code>.</td>
+            <td>The standard port is <code>119</code>. Some servers use a different port number. <br>SSL is usually port <code>563</code> or <code>443</code>.</td>
         </tr>
         <tr>
             <td><strong>SSL</strong></td>
@@ -63,7 +68,7 @@ title: Servers
             <td>
                 <p>SABnzbd can verify the certificates your newsserver uses to verify its identity. Python 2.7.9 or above, OpenSSL 1.0.2 or above and up-to-date local CA certificates are required.</p>
                 <p><span class="label label-danger">WARNING</span> Disabling or setting this check to <code>Minimal</code> allows anyone to redirect and intercept your traffic using <em>any</em> valid certificate!  It is comparable to not using SSL at all.</p>
-                <p>Read more on <a href="/wiki/advanced/certificate-errors.html">Certificate verification</a>.</p>
+                <p>Read more on <a href="/wiki/advanced/certificate-errors">Certificate verification</a>.</p>
                 <ul>
                     <li><code>None</code> = Certificates are not verified</li>
                     <li><code>Minimal</code> = Verify certificates before connecting<br></li>
@@ -83,6 +88,18 @@ title: Servers
         <tr>
             <td><strong>Send group</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Some news servers require the Usenet group to be sent before starting download. Only enable if your server has problems with downloading otherwise.</td>
+        </tr>
+        <tr>
+            <td><strong>Account expiration date</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>If you supply the expiration date of your server subscription, SABnzbd will warn you 5 days in advance.<br>
+            <span class="label label-warning">NOTE</span> The server will not be automatically disabled.</td>
+        </tr>
+        <tr>
+            <td><strong>Quota</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>
+                If you have a block account, SABnzbd can warn you when you quota has expired. Most usefull if you set it at around 75% of the block size that you bought, so you are warned early.<br>
+                <span class="label label-warning">NOTE</span> The server will not be automatically disabled.
+            </td>
         </tr>
         <tr>
             <td><strong>Server description</strong><br><span class="label label-primary">Advanced</span></td>
