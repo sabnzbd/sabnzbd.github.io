@@ -37,7 +37,11 @@ title: General
         </tr>
         <tr>
             <td><strong>Enable HTTPS</strong></td>
-            <td>Enable the webserver to use HTTPS.<br>For more information, see: <a href="/wiki/advanced/https">HTTPS</a>.</td>
+            <td>
+                Enable the webserver to use HTTPS.<br>
+                For more information, see: <a href="/wiki/advanced/https">HTTPS</a>.<br>
+                <span class="label label-warning">NOTE</span> Modern web browsers and other clients will not accept self-signed certificates and will give a warning and/or won't connect at all.
+            </td>
         </tr>
         <tr>
             <td><strong>HTTPS Port</strong><br><span class="label label-primary">Advanced</span></td>
@@ -79,7 +83,7 @@ title: General
                         <strong>Full API &amp; Web Interface:</strong>
                         <ul>
                             <li><code>Full Web Interface</code> = The full API methods and the web interface are available. Users are always shown the login screen if username/password are set.</li>
-                            <li><code>Full Web interface - Only external access requires login</code> = Only users outside the local network ranges are shown the login screen if username/password are set.</li>
+                            <li><code>Full Web interface - Only external access requires login</code> = Only users outside the local network ranges are shown the login screen if username and password are set.</li>
                         </ul>
                     </li>
                 </ul>
@@ -92,6 +96,14 @@ title: General
         <tr>
             <td><strong>API Key</strong></td>
             <td>This is the <em>secret key</em> that is needed in <a href="/wiki/advanced/automation-support">API calls</a>.<br><span class="label label-warning">NOTE</span> When you click the Change button, you'll need to tell your utilities the new key.</td>
+        </tr>
+        <tr>
+            <td><strong>NZB Key</strong></td>
+            <td>
+                This is similar to the API Key, but only allows external applications to add NZB's. <br>
+                <span class="label label-warning">NOTE</span> After adding NZB's, external applications do not have access to the queue to monitor the progress of the download.<br>
+                <span class="label label-warning">NOTE</span> When you click the Change button, you'll need to tell your utilities the new key.
+            </td>
         </tr>
     </tbody>
 </table>
