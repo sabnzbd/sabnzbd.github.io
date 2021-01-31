@@ -11,13 +11,13 @@ title: Switches
             <ul>
                 <li><code>Prevent load-balancing</code> = The first IP-address returned will be used for all connections. </li>
                 <li><code>Allow load-balancing</code> = Each connection will be randomly selected from the available addresses.</li>
-                <li><code>Allow load-balancing with optimization for IPv6</code> = For each connection the fastest IP-address is selected, where IPv6-addresses are given a slight head-start.</li>
+                <li><code>Allow load-balancing with optimization for IPv6</code> = For each connection the fastest IP-address is selected.</li>
             </ul>
             </td>
         </tr>
         <tr>
             <td><strong>Maximum retries</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>To prevent deadlock, SABnzbd will only try each server a limited amount of times. You can increase the value or set it to <code>0</code> to enable endless retries.</td>
+            <td>To prevent deadlock, SABnzbd will only try each server a limited amount of times.</td>
         </tr>
         <tr>
             <td><strong>Disconnect on empty queue</strong><br><span class="label label-primary">Advanced</span></td>
@@ -47,11 +47,11 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Abort jobs that cannot be completed</strong></td>
-            <td>If on, when during download it becomes clear that less than 99% of the total data can be downloaded, the job will be sent to History as a failed one. Should you retry the job, the check will not be done again, but the whole job will be tried instead.</td>
+            <td>If on, when during download it becomes clear that it can never be repaired, it will be aborted and send to the History as failed. Should you retry the job, the check will not be done again, but the whole job will be tried instead.</td>
         </tr>
         <tr>
             <td><strong>Detect duplicate downloads</strong></td>
-            <td>This option will compare the name of the NZB file against all NZB titles in History and items in your .nzb Backup Folder. It will also look whether the content of the NZB is effectively the same.</td>
+            <td>This option will compare the NZB name or NZB content to those in the History. It will also compare the NZB name to the items in your <a href="/wiki/configuration/{{ site.wiki_version }}/folders">.nzb Backup Folder</a>.</td>
         </tr>
         <tr>
             <td><strong>Detect duplicate episodes in series</strong></td>
@@ -59,7 +59,7 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Allow proper releases</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>Bypass series duplicate detection if PROPER, REAL or REPACK is detected in the download name to allow for better quality releases to still be downloaded.</td>
+            <td>Bypass series duplicate detection if <code>PROPER</code>, <code>REAL</code> or <code>REPACK</code> is detected in the download name to allow for better quality releases to still be downloaded.</td>
         </tr>
         <tr>
             <td><strong>Action when encrypted RAR is downloaded</strong></td>
@@ -67,11 +67,12 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Action when unwanted extension detected</strong></td>
-            <td>The presence of .exe files is often a sign of a trojan horse or virus being part of the post. You can abort or pause downloads that contain files with the listed extensions. Example exe,com,cmd,bat will trigger on the most used Windows executable content.</td>
+            <td>The presence of <code>.exe</code> files is often a sign of a trojan horse or virus being part of the post. You can abort or pause downloads that contain files with the listed extensions. Example <code>exe,com,cmd,bat</code> will trigger on the most used Windows executable content.</td>
         </tr>
         <tr>
             <td><strong>Automatically sort queue</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>Every time a job is added to the queue, the queue can be sorted according to this setting. For example if you have a server with low retention time, there is a higher chance of completing it if you sort the queue by age. Beware that custom sorting of the queue is lost every time a new job is added.</td>
+            <td>Every time a job is added to the queue, the queue can be sorted according to this setting. For example if you have a server with low retention time, there is a higher chance of completing it if you sort the queue by age. <br>
+            <span class="label label-warning">NOTE</span> Beware that custom sorting of the queue is lost every time a new job is added.</td>
         </tr>
         <tr>
             <td><strong>Direct Unpack</strong></td>
@@ -92,6 +93,11 @@ title: Switches
             <span class="label label-warning">NOTE</span> SABnzbd will already download extra par2 files if it detects problems during the download, so usually this option is not required.</td>
         </tr>
         <tr>
+            <td><strong>External process priority</strong><br><span class="label label-primary">Advanced</span></td>
+            <td><p>Windows-only. Set process priority of programs started by SABnzbd, like the repair and unpack processes.</p>
+                <p><span class="label label-warning">NOTE</span> Setting <code>High</code> could result in significant slowdown of the system during processing!</p></td>
+        </tr>
+        <tr>
             <td><strong>Extra PAR2 parameters</strong><br><span class="label label-primary">Advanced</span></td>
             <td>
                 <p>Extra arguments that will be passed when running <code>par2</code> or MultiPar for verification and repair.</p>
@@ -107,13 +113,8 @@ title: Switches
             <td>Linux-only. See <a href="#ionice">IONice to reduce disk priority</a>.</td>
         </tr>
         <tr>
-            <td><strong>External process priority</strong><br><span class="label label-primary">Advanced</span></td>
-            <td><p>Windows-only. Set process priority of programs started by SABnzbd, like the repair and unpack processes.</p>
-                <p><span class="label label-warning">NOTE</span> Setting <code>High</code> could result in significant slowdown of the system during processing!</p></td>
-        </tr>
-        <tr>
             <td><strong>Enable SFV-based checks</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>If no par2 files are available, SFV files (if present) will be used to check files</td>
+            <td>If no par2 files are available, <code>.sfv</code> files (if present) will be used to check files</td>
         </tr>
         <tr>
             <td><strong>Post-Process only verified jobs</strong><br><span class="label label-primary">Advanced</span></td>
@@ -128,7 +129,7 @@ title: Switches
             <td>All files will go into a single folder.</td>
         </tr>
         <tr>
-            <td><strong>User script can flag job as failed</strong><br><span class="label label-primary">Advanced</span></td>
+            <td><strong>Post-processing script can flag job as failed</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Some scripts will return a non-zero exit code when they encounter a problem. You can opt to let a non-zero exit code mark the job as failed. This can be useful when you're using an indexer that offers alternative NZB files or use a front-end (like SickBeard) that will look for alternatives when a job fails.</td>
         </tr>
         <tr>
@@ -149,7 +150,7 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Cleanup List</strong></td>
-            <td>List of file (extensions) that should be deleted in the cleanup stage. Examples: <code>.nfo, .nfo, .sfv</code> (You can leave out the dots, so <code>nfo, nzb, sfv</code> will do the same.)</td>
+            <td>List of file (extensions) that should be deleted in the cleanup stage. Examples: <code>.nfo, .nfo, .sfv</code>. You can leave out the dots, so <code>nfo, nzb, sfv</code> will do the same.</td>
         </tr>
         <tr>
             <td><strong>History Retention</strong></td>
@@ -171,7 +172,7 @@ title: Switches
     <tbody>
         <tr>
             <td><strong>Enable folder rename</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>When SABnzbd does unpacking it will do that in a folder prefixed with <code>_UNPACK_</code>. This is to prevent users or other software from processing the file. Some Windows operating systems (most notably Windows Home Server) cannot handle this. Therefor it's possible to disable the feature.</td>
+            <td>When SABnzbd does unpacking it will do that in a folder prefixed with <code>_UNPACK_</code>. This is to prevent users or other software from processing the file. Some operating systems cannot handle this. Therefore it's possible to disable the feature.</td>
         </tr>
         <tr>
             <td><strong>Replace Spaces in folder names</strong><br><span class="label label-primary">Advanced</span></td>
@@ -187,8 +188,8 @@ title: Switches
         </tr>
     </tbody>
 </table>
-<h2 id="toc5">Quota <a name="quota"></a></h2>
-<p>If you're unlucky enough to have an ISP that uses strict download caps, you may want to set a monthly quota for SABnzb.</p>
+<h2 id="toc5">Quota</h2>
+<p id="quota">If you're unlucky enough to have an ISP that uses strict download caps, you may want to set a monthly quota for SABnzb.</p>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -218,13 +219,12 @@ title: Switches
 </table>
 <p><strong>Please note file following:</strong></p>
 <ul>
-    <li>Jobs with "Force" priority will ignore the paused state.</li>
-    <li>Pausing is never immediate. All already requested articles will be received and processed. They probably would be counted by your ISP any way.</li>
-    <li>Don't set the quota too high. Leave room for other Internet use.</li>
+    <li>Jobs with <code>Force</code> priority will ignore the paused state.</li>
+    <li>Don't set the quota too high. Leave room for other internet use.</li>
 </ul>
 
-<h2 id="toc6">Indexing <a name="indexing"></a></h2>
-<p>The protocol that SABnzbd uses can be found here if you want to implement this in your indexer: <a href="/wiki/extra/indexer-feedback">Indexer feedback</a>.</p>
+<h2 id="toc6">Indexing</a></h2>
+<p id="indexing">The protocol that SABnzbd uses can be found here if you want to implement this in your indexer: <a href="/wiki/extra/indexer-feedback">Indexer feedback</a>.</p>
 
 <table class="table table-bordered table-hover">
     <tbody>
