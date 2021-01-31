@@ -28,13 +28,15 @@ title: Command Line Parameters
             </td>
         </tr>
         <tr>
-            <td><code>-p</code></td>
+            <td><code>-s</code></td>
             <td>
-                <code>--pause</code>
+                <code>--server &lt;host:port&gt;</code>
             </td>
-            <td>Start in paused mode</td>
+            <td>
+                <p>Specify IP address and port that SABnzbd should listen on. Value will be stored in the INI file.
+                <p>See <a href="/wiki/configuration/{{ site.wiki_version }}/general">General - Host and Port</a> section for supported notations</p>
+            </td>
         </tr>
-
         <tr>
             <td><code>-t</code></td>
             <td>
@@ -46,61 +48,6 @@ title: Command Line Parameters
                 The name of a standard interface ("Glitter", "Plush" or "smpl")
             </td>
         </tr>
-        <tr>
-            <td><code>-c</code></td>
-            <td>
-                <code>--clean</code>
-            </td>
-            <td>
-                Clear the cache and log directories. All queued downloads will be removed. The <code>download_dir</code> is <strong>not</strong>
-                cleared.
-            </td>
-        </tr>
-
-        <tr>
-            <td><code>-s</code></td>
-            <td>
-                <code>--server &lt;host:port&gt;</code>
-            </td>
-            <td>
-                <p>Specify IP address and port that SABnzbd should listen on. Value will be stored in the INI file.
-                <p>See <a href="/wiki/configuration/{{ site.wiki_version }}/general">General - Host and Port</a> section for supported notations</p>
-            </td>
-        </tr>
-        <tr>
-            <td><code>-h</code></td>
-            <td>
-                <code>--help</code>
-            </td>
-            <td>
-                Show short explanation of the commandline options and exit program (won't work with Win32 binary)
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><code>--repair</code></td>
-            <td>
-                Add orphaned jobs from the incomplete folder to the queue. Can also be performed from the GUI.
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><code>--repair-all</code></td>
-            <td>
-                Try to reconstruct the queue from the incomplete folder with full data reconstruction. Can also be performed from the GUI.
-            </td>
-        </tr>
-        <tr>
-            <td><code>-b</code></td>
-            <td>
-                <code>--browser &lt;0|1&gt;</code>
-            </td>
-            <td>
-                <code>0</code> = Do not show the browser (recommended for servers).<br>
-                <code>1</code> = SABnzbd will start the system's default browser, showing the GUI of SABnznd (default).
-            </td>
-        </tr>
-
         <tr>
             <td><code>-l</code></td>
             <td>
@@ -122,17 +69,16 @@ title: Command Line Parameters
                 Logging of the webserver framework on (use only when analyzing problems)
             </td>
         </tr>
-
         <tr>
-            <td><code>-v</code></td>
+            <td><code>-b</code></td>
             <td>
-                <code>--version</code>
+                <code>--browser &lt;0|1&gt;</code>
             </td>
             <td>
-                Show SABnzbd's version and exit program (won't work with Win32 binary)
+                <code>0</code> = Do not show the browser (recommended for servers).<br>
+                <code>1</code> = SABnzbd will start the system's default browser, showing the GUI of SABnznd (default).
             </td>
         </tr>
-
         <tr>
             <td><code>-d</code></td>
             <td>
@@ -140,43 +86,6 @@ title: Command Line Parameters
             </td>
             <td>
                 Start in daemon mode. Run without a terminal window and do not start the browser. Do NOT assume that the user profile can be used. You must use the <code>-f &lt;path-to-ini&gt;</code> option.
-            </td>
-        </tr>
-
-        <tr>
-            <td></td>
-            <td>
-                <code>--https &lt;port&gt;</code>
-            </td>
-            <td>
-                Set the HTTPS port number and enable HTTPS for the user interface
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <code>--new</code>
-            </td>
-            <td>
-                Normally SABnzbd checks if an instance of SABnzbd is already running. If so and the versions match, the second instance will just activate the web interface of the first instance or send an NZB to the first instance. If you really want to run multiple instances, you will need to use the <code>--new</code> parameter.
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <code>--no-login</code>
-            </td>
-            <td>
-                Start SABnzbd and reset username and password.
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <code>--ipv6_hosting &lt;0|1&gt;</code>
-            </td>
-            <td>
-                Use <code>0</code> when your system cannot handle <code>::1</code> (the IPv6 value of <code>localhost</code>). The setting will be stored in the <code>sabnzbd.ini</code> file.
             </td>
         </tr>
         <tr>
@@ -200,12 +109,115 @@ title: Command Line Parameters
             </td>
         </tr>
         <tr>
+            <td><code>-h</code></td>
+            <td>
+                <code>--help</code>
+            </td>
+            <td>
+                Show short explanation of the commandline options and exit program (won't work with Win32 binary)
+            </td>
+        </tr>
+        <tr>
+            <td><code>-v</code></td>
+            <td>
+                <code>--version</code>
+            </td>
+            <td>
+                Show SABnzbd's version and exit program (won't work with Win32 binary)
+            </td>
+        </tr>
+        <tr>
+            <td><code>-c</code></td>
+            <td>
+                <code>--clean</code>
+            </td>
+            <td>
+                Clear the cache and log directories. All queued downloads will be removed. The <code>download_dir</code> is <strong>not</strong>
+                cleared.
+            </td>
+        </tr>
+        <tr>
+            <td><code>-p</code></td>
+            <td>
+                <code>--pause</code>
+            </td>
+            <td>Start in paused mode</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><code>--repair</code></td>
+            <td>
+                Add orphaned jobs from the incomplete folder to the queue. Can also be performed from the GUI.
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><code>--repair-all</code></td>
+            <td>
+                Try to reconstruct the queue from the incomplete folder with full data reconstruction. Can also be performed from the GUI.
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <code>--https &lt;port&gt;</code>
+            </td>
+            <td>
+                Set the HTTPS port number and enable HTTPS for the user interface
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <code>--ipv6_hosting &lt;0|1&gt;</code>
+            </td>
+            <td>
+                Use <code>0</code> when your system cannot handle <code>::1</code> (the IPv6 value of <code>localhost</code>). The setting will be stored in the <code>sabnzbd.ini</code> file.
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <code>--no-login</code>
+            </td>
+            <td>
+                Start SABnzbd and reset username and password.
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <code>--log-all</code>
+            </td>
+            <td>
+                Log all article handling and enable other excessive logging (for developers).
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <code>--disable-file-log</code>
+            </td>
+            <td>
+                Logging is only written to console, usefull if <code>stdout</code> is redirected to another logging system.
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <code>--new</code>
+            </td>
+            <td>
+                Normally SABnzbd checks if an instance of SABnzbd is already running. If so and the versions match, the second instance will just activate the web interface of the first instance or send an NZB to the first instance. If you really want to run multiple instances, you will need to use the <code>--new</code> parameter.
+            </td>
+        </tr>
+        <tr>
             <td></td>
             <td>
                 <code>--console</code>
             </td>
             <td>
-                Force console logging for macOS app.
+                Force console logging.
             </td>
         </tr>
     </tbody>
