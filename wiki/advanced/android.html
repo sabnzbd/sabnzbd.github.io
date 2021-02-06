@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type" /><title>android.html</title></head><body>
+<h1>Running SABnzbd on Android</h1>
+<br />
+<span style="font-weight: bold;">Note</span>: Experimental and advanced<br />
+<br />
+<h2>Basic SABnzbd 2.x</h2>
+<br />
+It is possible to run SABnzbd on a plain, standard Android.<br />
+<br />
+<ol>
+  <li>On your Android device, install the app UserLAnd from <a href="https://play.google.com/store/apps/details?id=tech.ula">https://play.google.com/store/apps/details?id=tech.ula</a></li>
+  <li>While setting up UserLAnd, choose Ubuntu, and ssh</li>
+  <li>Start UserLAnd. On the command line, type "sudo apt-get install sanbnzbdplus"</li>
+  <li>Start sabnzbd with "sabnzbdplus" </li>
+  <li>On your Android, now access SABnzbd via <a href="http://127.0.0.1:8080">http://127.0.0.1:8080<br />
+</a></li>
+  <li>You can fill out the wizard<br />
+  </li>
+
+</ol>
+<br />
+The above will give (at the time of this writing) the older version SABnzbd 2.x<br />
+<br />
+<h2>Current SABnzbd 3.x</h2>
+<br />
+With some extra work, you can get an uptodate version of SABnzbd:<br />
+<br />
+On the command line of Ubuntu-on-Android, do this:<br />
+<br />
+<pre>sudo apt update -y</pre>
+<pre>sudo apt-get install software-properties-common -y</pre>
+<pre>sudo add-apt-repository ppa:jcfp/ppa -y</pre>
+<pre>sudo apt-get install sabnzbdplus -y</pre>
+<br />
+Due to a bug at the moment of writing, a workaround is needed:<br />
+<br />
+<pre>sudo apt install wget</pre>
+<pre>wget https://github.com/sabnzbd/sabnzbd/releases/download/3.1.1/SABnzbd-3.1.1-src.tar.gz</pre>
+<pre>tar xvzf SABnzbd-3.1.1-src.tar.gz </pre>
+<pre>cd SABnzbd-3.1.1</pre>
+<pre>./SABnzbd.py</pre>
+<br />
+<br />
+You can access SABnzbd via <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080</a><br />
+<br />
+<h2>Remote access to Ubuntu-on-Android</h2>
+You can access Ubunt-on-Android via SSH like this:<br />
+<br />
+ssh &lt;ip address of Android device&gt; -p 2022<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+</body></html>
