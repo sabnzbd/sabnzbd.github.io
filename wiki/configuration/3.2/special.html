@@ -125,7 +125,7 @@ title: Special settings
         <tr>
             <td><code>enable_bonjour</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Will announce itself on Apple's Bonjour protocol. <a href="/wiki/extra/bonjour-support">Read more here</a>.</td>
+            <td>Make announcements on the local network using Simple Service Discovery Protocol (SSDP) and Apple's <a href="/wiki/extra/bonjour-support">Bonjour</a> protocol, allowing other systems to auto-discover SABnzbd.</td>
         </tr>
         <tr>
             <td><code>warn_dupl_jobs</code></td>
@@ -249,6 +249,11 @@ title: Special settings
             <td><code>rating_host</code></td>
             <td></td>
             <td>You can switch the host to connect to for rating. The indexer needs to support this!</td>
+        </tr>
+         <tr>
+            <td><code>ssdp_broadcast_interval</code></td>
+            <td><code>15</code></td>
+            <td>Interval between Simple Service Discovery Protocol (SSDP) broadcasts, announcing the presence of SABnzbd to other systems on the local network.</td>
         </tr>
         <tr>
             <td><code>rss_odd_titles</code></td>
