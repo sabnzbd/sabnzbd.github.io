@@ -25,9 +25,9 @@ It is possible to run SABnzbd on a plain, standard Android.<br>
 <br>
 The above will give (at the time of this writing) Ubuntu 18.04 with the older version SABnzbd 2.3.2. <br>
 <br>
-<h2>Current SABnzbd 3.x</h2>
+<h2>Update to SABnzbd 3.x</h2>
 <br>
-With some extra work, you can get an uptodate version of SABnzbd:<br>
+With some extra work, you can update to the current version of SABnzbd:<br>
 <br>
 On the command line of Ubuntu-on-Android, do this:<br>
 <br>
@@ -38,16 +38,9 @@ On the command line of Ubuntu-on-Android, do this:<br>
 <br>You can start SABnzbd with<br><br><pre style="margin-left: 40px;">sabnzbdplus</pre><br>
 <br>
 You can access SABnzbd via <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080</a><br>
-<br>
-<h2>Remote access to Ubuntu-on-Android</h2>
+<br><br>
+<br><h2>Share downloads to Android<br></h2><br>There are shared directories between UserLAnd and Android:<br><span style="font-family: -apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Helvetica,Arial,sans-serif,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;;"><br><br></span><meta http-equiv="content-type" content="text/html; charset=utf-8">For Internal storage:<br>UserLAnd: /storage/internal/<br>Android app "Files" "internal storage": /Android/data/tech.ula/files/storage<br><br>For SDcard (if any)<br>UserLAnd: /storage/sdcard/<br>Android app "Files" -&gt; "SD Card" -&gt; /Android/data/tech.ula/files/storage<br><br><br>So, in SABnzbd set Complete to /storage/internal/<br><br><br><br><h2>Remote access to Ubuntu-on-Android</h2>
 You can access Ubunt-on-Android via SSH like this:<br>
 <br>
 ssh &lt;ip address of Android device&gt; -p 2022<br>
-<br><br><h2>Work in progress</h2><br>To be found out: shared directory between Ubuntu and Android, so that from Android you can access the downloaded files<br><br>
 <br>
-<br>
-<br>
-<br>
-<br>
-
-
