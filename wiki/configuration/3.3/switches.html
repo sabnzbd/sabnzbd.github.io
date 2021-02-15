@@ -30,7 +30,7 @@ title: Switches
     <tbody>
         <tr>
             <td><strong>Pre-queue user script</strong></td>
-            <td>See: <a href="/wiki/scripts/pre-queue-scripts">User's pre-queue script</a>.</td>
+            <td>See: <a href="/wiki/scripts/pre-queue-scripts">pre-queue script</a>.</td>
         </tr>
         <tr>
             <td><strong>Propagation delay</strong></td>
@@ -66,8 +66,14 @@ title: Switches
             <td>For more info see <a href="/wiki/advanced/password-protected-rars">Password-protected RARs</a>. You can choose to either continue, abort or pause the download.</td>
         </tr>
         <tr>
+            <td><strong>Unwanted extensions</strong></td>
+            <td><p>The presence of <code>.exe</code> files is often a sign of a trojan horse or virus being part of the post. Downloads that contain files with a listed extension can be paused or aborted. Extensions are input as a comma-separated list, for example: <code>exe,com,cmd,bat</code> to trigger on common Windows executable content.</p>
+            <p>In <code>Blacklist</code> mode, only the listed extensions trigger the configured action; everything else is ignored. <code>Whitelist</code> mode is more paranoid: only listed extensions get a free pass; files with any other extension, no matter how small or harmless, will be considered unwanted.</p>
+            <p><span class="label label-warning">NOTE</span> Whitelist mode is best combined with the Pause action, until you have a carefully curated list of wanted extensions.</p></td>
+        </tr>
+        <tr>
             <td><strong>Action when unwanted extension detected</strong></td>
-            <td>The presence of <code>.exe</code> files is often a sign of a trojan horse or virus being part of the post. You can abort or pause downloads that contain files with the listed extensions. Example <code>exe,com,cmd,bat</code> will trigger on the most used Windows executable content.</td>
+            <td>Pause or abort downloads when an unwanted extension is detected. Setting this option to Off disables detection of unwanted extensions.</td>
         </tr>
         <tr>
             <td><strong>Automatically sort queue</strong><br><span class="label label-primary">Advanced</span></td>
