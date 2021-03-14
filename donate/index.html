@@ -13,7 +13,7 @@ redirect_from:
             <div class="col-md-12 text-center">
                 <h1>Support the development of SABnzbd</h1>
                 <p>We work on this project in our spare time, your donations will help us to continue developing SABnzbd.</p>
-                <p>Donations can be send via PayPal or credit card and through Bitcoin (Cash), Ethereum and Litecoin.</p>
+                <p>Donations can be send via PayPal or credit card and through a number of cryptocurrencies.</p>
                 <p>You can also support us by signing up for the special SABnzbd usenet deal with our partner <a href="{{ site.ad_link }}&chan=dftl" target="_blank">Newshosting</a>!</p>
                 <p><strong>It is not required to donate in order to use SABnzbd or any of its features.</strong></p>
                 <p><strong>SABnzbd does not provide usenet access!</strong></p>
@@ -101,7 +101,7 @@ redirect_from:
             </div>
         </div>
         <div class="row qr-codes">
-            <div class="col-sm-3 col-sm-offset-3">
+            <div class="col-sm-4 col-sm-offset-2">
                 <h3>Bitcoin</h3>
                 <div class="input-group">
                     <input type="text" class="form-control" readonly name="btc" value="1KAf7dFEio5X9HS5Qv9SM9Z7484Mf7jNHm">
@@ -110,7 +110,20 @@ redirect_from:
                     </span>
                 </div>
                 <div id="qr-bitcoin" class="crypto-qrs"></div>
-
+            </div>
+            <div class="col-sm-4">
+                <h3>Ethereum</h3>
+                <div class="input-group">
+                    <input type="text" class="form-control" readonly name="eth" value="0xc9c424F21edbC2d200d38643C261407a3A3805F7">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-qrcode"></span></button>
+                    </span>
+                </div>
+                <div id="qr-ethereum" class="crypto-qrs"></div>
+            </div>
+        </div>
+        <div class="row qr-codes">
+            <div class="col-sm-4 col-sm-offset-2">
                 <h3>Bitcoin Cash</h3>
                 <div class="input-group">
                     <input type="text" class="form-control" readonly name="btccash" value="14gJ2ThAsBUzb4CpifUj9aDEvsYDqasbjV">
@@ -120,22 +133,33 @@ redirect_from:
                 </div>
                 <div id="qr-bitcoincash" class="crypto-qrs"></div>
             </div>
-            <div class="col-sm-3">
-                <h3>Ethereum</h3>
-                <div class="input-group">
-                    <input type="text" class="form-control" readonly name="eth" value="0xc9c424F21edbC2d200d38643C261407a3A3805F7">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-qrcode"></span></button>
-                    </span>
-                </div>
-                <div id="qr-ethereum" class="crypto-qrs"></div>
-
+            <div class="col-sm-4">
                 <h3>Litecoin</h3>
                 <div class="input-group">
                     <input type="text" class="form-control" readonly name="ltc" value="LcToBHhN15VDornWjCgvHyFdvxYQTP36Zr">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-qrcode"></span></button>
                     </span>
+                </div>
+                <div id="qr-litecoin" class="crypto-qrs"></div>
+            </div>
+        </div>
+        <div class="row qr-codes">
+            <div class="col-sm-4 col-sm-offset-2">
+                <h3>Chainlink</h3>
+                <div class="input-group">
+                    <input type="text" class="form-control" readonly name="chainlink" value="0xc9c424F21edbC2d200d38643C261407a3A3805F7">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-qrcode"></span></button>
+                    </span>
+                </div>
+                <div id="qr-chainlink" class="crypto-qrs"></div>
+            </div>
+            <div class="col-sm-4">
+                <h3>Stellar Lumens</h3>
+                <div class="input-group">
+                    <input type="text" class="form-control" readonly name="xlm-address" value="GDQP2KPQGKIHYJGXNUIYOMHARUARCA7DJT5FO2FFOOKY3B2WSQHG4W37">
+                    <input type="text" class="form-control" readonly name="xlm-memo" value="2713168744">
                 </div>
                 <div id="qr-litecoin" class="crypto-qrs"></div>
             </div>
@@ -159,6 +183,10 @@ redirect_from:
     });
     $('#qr-litecoin').html('').qrcode({
         text: "LcToBHhN15VDornWjCgvHyFdvxYQTP36Zr",
+        size: 170
+    });
+    $('#qr-chainlink').html('').qrcode({
+        text: "0x8C2f78aa2645C94A483fdA54F4f6f94F76077467",
         size: 170
     });
     $('.qr-codes input').click(function() {

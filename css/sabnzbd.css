@@ -319,7 +319,7 @@ footer a:hover,
     animation: pulseheart 1.2s linear infinite;
 }
 
-.donations-container .col-sm-3 h3 {
+.donations-container h3 {
     text-align: center;
     margin-bottom: 10px;
 }
@@ -333,6 +333,11 @@ footer a:hover,
 .donations-container .qr-codes,
 .donations-container .col-sm-3 {
     margin-bottom: 10px;
+}
+
+.donations-container input[name="xlm-address"],
+.donations-container input[name="xlm-memo"] {
+    width: 50%;
 }
 
 .donations-container .input-group-btn .btn {
