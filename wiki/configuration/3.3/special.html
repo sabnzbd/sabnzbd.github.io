@@ -266,9 +266,14 @@ title: Special settings
             <td>A list of file name extensions that will be ignored during QuickCheck. If they are missing but all other files are correct, QuickCheck will still pass.</td>
         </tr>
         <tr>
-            <td><code>host_whitelist </code></td>
+            <td><code>host_whitelist</code></td>
             <td><code>hostname</code></td>
             <td>See <a href="/wiki/extra/hostname-check.html">Hostname verification</a>.</td>
+        </tr>
+        <tr>
+            <td><code>local_ranges</code></td>
+            <td><code>hostname</code></td>
+            <td>Specify a range of local network ranges (separated by a comma) on which the External internet access rule does not apply and the full interface is available to. All local network addresses start with these prefixes (often <code>192.168.1.</code>). The regular detection based on <a href="https://en.wikipedia.org/wiki/Private_network" target="_blank">rfc1918</a> private network ranges is disabled if custom ranges are defined.</td>
         </tr>
     </tbody>
 </table>

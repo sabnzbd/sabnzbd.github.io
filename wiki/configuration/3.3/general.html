@@ -62,20 +62,21 @@ title: General
     <tbody>
         <tr>
             <td><strong>Web Username/Password</strong></td>
-            <td>You may want to limit access to the web interface to people knowing a username and password for the interface. <br><span class="label label-danger">WARNING</span> This is not a very secure method!</td>
+            <td>You may want to limit access to the web interface to people knowing a username and password for the interface.</td>
         </tr>
         <tr>
             <td><strong>External internet access</strong></td>
             <td>
                 <p>You can set access rights for systems outside your local network. <br>
-                <span class="label label-danger">WARNING</span> Requires List of local network ranges to be defined</p>
+                Local network addresses are those in the <a href="https://en.wikipedia.org/wiki/Private_network" target="_blank">rfc1918</a> private network range, such as <code>192.168.x.x</code>, <code>172.16.x</code>, <code>10.x.x.x</code>. <br>
+                If you want to specify your own local network addresses, you can do so with the <a href="/wiki/configuration/{{ site.wiki_version }}/special">Spevcial</a> setting <code>local_ranges</code>.
                 <ul>
                     <li>
                         <strong>API:</strong>
                         <ul>
                             <li><code>No access</code> = No outside access is allowed at all.</li>
                             <li><code>Add NZB files</code> = Only NZB's can be added via the API, nothing else.</li>
-                            <li><code>API (no config)</code> = API is fully available (queue/history/reading settings/add+remove NZB's/etc), except for methods that edit the configuration.</li>
+                            <li><code>API (no config)</code> = API is fully available (queue/history/add+remove NZB's/etc), except for methods that get or edit the configuration.</li>
                             <li><code>Full API</code> = All API methods are available, including editing the configuration.</li>
                         </ul>
                     </li>
@@ -88,10 +89,6 @@ title: General
                     </li>
                 </ul>
             </td>
-        </tr>
-        <tr>
-            <td><strong>List of local network ranges</strong></td>
-            <td>Specify a range of local network ranges (separated by a comma) on which the External internet access rule does not apply and the full interface is available to. All local network addresses start with these prefixes (often <code>192.168.1.</code>)</td>
         </tr>
         <tr>
             <td><strong>API Key</strong></td>
