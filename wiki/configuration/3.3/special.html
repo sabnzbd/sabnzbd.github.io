@@ -272,8 +272,9 @@ title: Special settings
         </tr>
         <tr>
             <td><code>local_ranges</code></td>
-            <td><code>hostname</code></td>
-            <td>Specify a range of local network ranges (separated by a comma) on which the External internet access rule does not apply and the full interface is available to. All local network addresses start with these prefixes (often <code>192.168.1.</code>). The regular detection based on <a href="https://en.wikipedia.org/wiki/Private_network" target="_blank">rfc1918</a> private network ranges is disabled if custom ranges are defined.</td>
+            <td><code></code></td>
+            <td>Specify a (comma separated) list of one or more network ranges where the <a href="/wiki/configuration/{{ site.wiki_version }}/general">External internet access</a> level doesn't apply and the full interface is available. If defined, these replace the default handling based on rfc1918 and rfc4193 <a href="https://en.wikipedia.org/wiki/Private_network" target="_blank">private</a> network ranges.<br>
+            <br>Network ranges should be set in their standard notation with a prefix or netmask (e.g. <code>192.168.1.0/24</code> or <code>10.42.0.0/255.255.0.0</code>). Input in the form of SABnzbd's older (pre-3.3.0) local_ranges setting (e.g. <code>192.168.1.</code>, intended for use with Python's <code>str.startswith()</code>) is also accepted and continues to work.</td>
         </tr>
     </tbody>
 </table>

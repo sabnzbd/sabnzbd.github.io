@@ -67,9 +67,8 @@ title: General
         <tr>
             <td><strong>External internet access</strong></td>
             <td>
-                <p>You can set access rights for systems outside your local network. <br>
-                Local network addresses are those in the <a href="https://en.wikipedia.org/wiki/Private_network" target="_blank">rfc1918</a> private network range, such as <code>192.168.x.x</code>, <code>172.16.x</code>, <code>10.x.x.x</code>. <br>
-                If you want to specify your own local network addresses, you can do so with the <a href="/wiki/configuration/{{ site.wiki_version }}/special">Spevcial</a> setting <code>local_ranges</code>.
+                <p>Set the access level for connections from outside the local network.<br>
+                <br>By default, all IP addresses in a <a href="https://en.wikipedia.org/wiki/Private_network" target="_blank">private</a> network range, such as <code>192.168.0.0/16</code>, <code>172.16.0.0/12</code>, <code>10.0.0.0/8</code> and <code>fd00::/8</code> are considered local. To define custom local network ranges, use the <a href="/wiki/configuration/{{ site.wiki_version }}/special">Special</a> <code>local_ranges</code> setting.
                 <ul>
                     <li>
                         <strong>API:</strong>
