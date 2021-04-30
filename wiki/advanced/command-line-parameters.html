@@ -63,7 +63,7 @@ title: Command Line Parameters
         <tr>
             <td><code>-w</code></td>
             <td>
-                <code>--weblogging;</code>
+                <code>--weblogging</code>
             </td>
             <td>
                 Logging of the webserver framework on (use only when analyzing problems)
@@ -173,6 +173,15 @@ title: Command Line Parameters
             </td>
             <td>
                 Use <code>0</code> when your system cannot handle <code>::1</code> (the IPv6 value of <code>localhost</code>). The setting will be stored in the <code>sabnzbd.ini</code> file.
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <code>--inet_exposure &lt;0..5&gt;</code>
+            </td>
+            <td>
+                Set the <code>External internet access</code>. See <a href="/wiki/configuration/{{ site.wiki_version }}/general">General - External internet access</a> section for supported levels, starting at <code>0</code> for <code>No access</code> (the default).
             </td>
         </tr>
         <tr>
