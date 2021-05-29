@@ -124,8 +124,12 @@ redirect_from: "/wiki/advanced/automation-support"
             <td>Get details of files in a job</td>
         </tr>
         <tr>
+            <td><a href="#move_nzf_bulk">move_nzf_bulk</a></td>
+            <td>Move file(s) inside a job </td>
+        </tr>
+        <tr>
             <td><a href="#delete_nzf">delete_nzf</a></td>
-            <td>Remove a file from a job</td>
+            <td>Remove file(s) from a job</td>
         </tr>
     </tbody>
 </table>
@@ -181,7 +185,7 @@ redirect_from: "/wiki/advanced/automation-support"
         </tr>
         <tr>
             <td><code>labels</code></td>
-            <td>Labels like <code>DUPLICATE</code>, <code>ENCRYPTED</code> and <code>PROPAGATING X min</code> (new in 3.0.0).</td>
+            <td>Labels like <code>DUPLICATE</code>, <code>ENCRYPTED</code> and <code>PROPAGATING X min</code></td>
         </tr>
         <tr>
             <td><code>unpackopts</code></td>
@@ -364,7 +368,7 @@ redirect_from: "/wiki/advanced/automation-support"
         <tr>
             <td><code>password</code> <small>optional</small></td>
             <td>
-                Password to use when unpacking the job (new in 3.0.0+).
+                Password to use when unpacking the job.
             </td>
         </tr>
         <tr>
@@ -538,9 +542,19 @@ redirect_from: "/wiki/advanced/automation-support"
 }
 {% endhighlight %}
 
-<h2 id="delete_nzf">Remove a file from a job</h2>
-<p>Remove a file using <code>nzo_id</code> of the job and <code>nzf_id</code> of the file. Returns the <code>nzf_id</code> of removed file.
-<pre><code>api?mode=queue&amp;name=delete_nzf&amp;value=NZO_ID&amp;value2=NZF_ID</code></pre>
+<h2 id="move_nzf_bulk">Move file(s) inside a job <span class="label label-primary">True/False</span></h2>
+<p>Move files specified by <code>nzf_ids</code> inside job <code>nzo_id</code> to <code>top</code> or <code>bottom</code>.
+    To move a file a <code>size</code> number of spots, use <code>up</code> or <code>down</code>.</p>
+<p><span class="label label-warning">NOTE</span> New in 3.4.0+</p>
+<pre><code>api?mode=move_nzf_bulk&amp;name=LOCATION&amp;value=NZO_ID&amp;nzf_ids=NZF_ID,NZF_ID2&amp;size=X</code></pre>
+
+<h2 id="delete_nzf">Remove file(s) from a job</h2>
+<p>Remove file(s) using <code>nzo_id</code> of the job and <code>nzf_id</code> of the file(s). Returns the <code>nzf_ids</code> of removed file.</p>
+<p><span class="label label-warning">NOTE</span> Before 3.4.0 only single <code>nzf_id</code> could be used.</p>
+
+<pre><code>api?mode=queue&amp;name=delete_nzf&amp;value=NZO_ID&amp;value2=NZF_ID,NZF_ID2</code></pre>
+
+
 
 <hr>
 <h1 id="history_main">History functions</h1>
@@ -594,7 +608,7 @@ redirect_from: "/wiki/advanced/automation-support"
         </tr>
         <tr>
             <td><code>category</code> <small>optional</small></td>
-            <td>Only return jobs in this category (Only 1.0.0+)</td>
+            <td>Only return jobs in this category</td>
         </tr>
         <tr>
             <td><code>search</code> <small>optional</small></td>
@@ -1145,8 +1159,6 @@ Example of filtering the server settings by keyword:
 
 <h2 id="warnings">Get all active warnings </h2>
 <pre><code>api?mode=warnings</code></pre>
-
-<p><span class="label label-danger">NOTE</span> In 2.3.0+ this API call was changed to now return an array and timestamp to allow for more flexibility. Before 2.3.0 a single-line result was returned for each warning.</p>
 
 {% highlight json %}
 {
