@@ -4,7 +4,7 @@ redirect_from:
     - /hostname-check
 ---
 
-This article is about the message 'Refused connection with hostname "sabnzbd.special.com"', and how to solve it.
+This article is about the message `Refused connection with hostname "sabnzbd.special.com"`, and how to solve it.
 
 # Introduction
 
