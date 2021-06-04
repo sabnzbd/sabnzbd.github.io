@@ -10,7 +10,7 @@ By default, because of security reasons, SABnzbd refuses such connections from I
 If you want to give SABnzbd WebGUI access to devices on Internet, go into SABnzbd's WebGUI -> Config -> General, 
 and at "External internet access", select "Full Web interface"  or "Full Web interface - Only external access requires login"
 
-# Explanation
+# Definition of Internet versus non-Internet/local
 
 Internet is defined as "a public IP address". That access is denied by default.
 
