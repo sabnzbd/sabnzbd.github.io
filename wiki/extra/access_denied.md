@@ -5,9 +5,9 @@
 If you try to access SABnzbd and you get "access denied", the cause is that you're trying to access SABnzbd from an device on Internet. 
 By default, because of security reasons, SABnzbd refuses such connections from Internet
 
-# Quick fix for "access denied" via SABnzbd's WebGUI
+# Quick fix for "access denied"
 
-If you want to give SABnzbd WebGUI access to devices on Internet, go into SABnzbd -> Config -> General, 
+If you want to give SABnzbd WebGUI access to devices on Internet, go into SABnzbd's WebGUI -> Config -> General, 
 and at "External internet access", select "Full Web interface"  or "Full Web interface - Only external access requires login"
 
 # Explanation
