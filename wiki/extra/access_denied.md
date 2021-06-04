@@ -39,9 +39,10 @@ The relevant setting in sabnzbd.ini is `inet_exposure`, with these values:
 ```
 
 
-## Only API access from Internet
+## Only allow API access from Internet (no WebGUI)
 
-If you only want to give access to the API interface (so no Web access), select one of the first "API" options in the SABnzbd's WebGUI
+If you only want to give access to the API interface (so no Web access), select one of the first "API" options in the SABnzbd's WebGUI.
+If you don't know what this means, don't use this option.
 
 
 # Very advanced (danger zone)
