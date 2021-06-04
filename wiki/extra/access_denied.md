@@ -14,7 +14,7 @@ and at "External internet access", select "Full Web interface"  or "Full Web int
 
 Internet is defined as "a public IP address". That access is denied by default.
 
-Access from a private IP address (192.168.x.x, 10.x.x.x and 172.16.x.x), so from your LAN / virtual machine / docker container, will not lead to "access denied"
+Local means a private IP address (192.168.x.x, 10.x.x.x and 172.16.x.x). Access from your LAN, virtual machine, docker container or similar will not lead to "access denied" unless "local ranges" has been defined (see #define-local-ranges).
 
 # Advanced options
 ## Commandline parameter
