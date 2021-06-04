@@ -19,7 +19,7 @@ If you only want to give access to the API interface (so no Web access), select 
 
 ## Advanced: Commandline parameter
 
-From the commandline, you can specify the internet exposure with:
+From the commandline, you can specify the internet exposure parameter with:
 
 ```
 --inet_exposure <0..5>  Set external internet access
@@ -27,7 +27,7 @@ From the commandline, you can specify the internet exposure with:
 
 ## Advanced: in sabnzbd.ini
 
-The relevant setting in sabnzbd.ini is `inet_exposure = 4`
+The relevant setting in sabnzbd.ini is `inet_exposure`
 
 ## Very Advanced: define local ranges
 
@@ -36,7 +36,7 @@ For the very advanced users: via Config -> Special you can define your own local
 ## Values for inet_exposure
 
 ```
-    0=no access
+    0=no access (default)
     1=nzb
     2=api
     3=full_api
