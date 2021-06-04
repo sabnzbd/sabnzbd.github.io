@@ -46,7 +46,7 @@ If you only want to give access to the API interface (so no Web access), select 
 
 ## Define local ranges
 
-For the very advanced users: via Config -> Special you can define your own local ranges. 
+For the very advanced users: via Config -> Special you can define your own local ranges if you want to overrule what SABnzbd defines as local.
 
 
 
