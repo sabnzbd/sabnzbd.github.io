@@ -8,6 +8,23 @@ title: Ubuntu PPA Repository
 <p>JCFP maintains an unofficial repository with the latest version of SABnzbd<sup class="footnoteref"><a href="#toc4">1</a></sup>. Whenever an even newer version of the program is released, you will be automatically notified the same as with any other package update.</p>
 <p>There are two channels on offer: regular or <code>nobetas</code>. The former includes most alpha/beta/rc releases, while the latter is a less risky option that only ever gets final releases. In order to satisfy all dependencies, both Ubuntu's universe and multiverse repositories must be enabled on your system.</p>
 
+
+<h1>Quick Install Guide for Ubuntu Desktop 20.04 and higher</h1>
+
+On a standard Ubuntu Desktop 20.04 and higher, installation of the PPA is easy:
+
+<pre><code>
+sudo add-apt-repository ppa:jcfp/nobetas
+sudo apt-get update && sudo apt-get dist-upgrade
+sudo apt-get install sabnzbdplus
+</code></pre>
+
+After that, you have the newewst stable SABnzbd, and it is updated automatically each time you update Ubuntu.
+
+<h1>Full Install Guide</h1>
+
+If the above does not work, follow this guide.
+
 <p>First, some preparation to make sure your system can handle extra repositories:</p>
 <div class="code">
     <pre><code>sudo apt-get install software-properties-common</code></pre>
