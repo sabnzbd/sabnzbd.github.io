@@ -28,11 +28,6 @@ title: Special settings
             <td>When starting a download, the first article of each file is downloaded. If <code>Abort jobs that cannot be completed</code> is turned on, there are more than 10 files and more than 80% of the first articles is missing the job will be failed. If turned off, it will only be failed if availability is below <code>req_completion_rate</code>.</td>
         </tr>
         <tr>
-            <td><code>ignore_wrong_unrar</code></td>
-            <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>On Linux, SABnzbd checks whether the installed unrar or rar program is supported and issues a warning if not. Set this option if you think you know better.</td>
-        </tr>
-        <tr>
             <td><code>overwrite_files</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
             <td>When unpacking, this will overwrite existing files instead of creating an alternative name.</td>
@@ -53,6 +48,11 @@ title: Special settings
             <td>When the API is accessed by external tools without proper authentication, SABnzbd will show a warning. This is a security warning that you should take seriously. However, it seems that there are some security tools that try to access anything that looks like a webserver. If you cannot disable the cause of the warnings, you can choose to disable the warning.</td>
         </tr>
         <tr>
+            <td><code>helpfull_warnings</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Option to disable helpful warnings about issues on your system such as the usage of FAT filesystems, too long password-files, required <code>unrar</code> versions, etc.</td>
+        </tr>
+        <tr>
             <td><code>ampm</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
             <td>Display ETA in AM/PM notation, only applicable to some locations in older skins.</td>
@@ -68,16 +68,6 @@ title: Special settings
             <td>Normally unpacked files will get the date/time stamp they have in the archive. If you set this option, the files will get the date/time of unpacking.</td>
         </tr>
         <tr>
-            <td><code>debug_log_decoding</code></td>
-            <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Log the decoding of each article in <code>+Debug</code> logging mode. Disabled by default to make debug logs more readable. Requires restart of SABnzbd.</td>
-        </tr>
-        <tr>
-            <td><code>multipar</code></td>
-            <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Windows only. Disable Multipar and use par2tbb instead. This is still supported, but special workarounds for Windows have been removed so can fail on special cases.</td>
-        </tr>
-        <tr>
             <td><code>osx_menu</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Uncheck this to remove the SABnzbd icon in the macOS menu bar</td>
@@ -91,11 +81,6 @@ title: Special settings
             <td><code>win_menu</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Uncheck this to remove the SABnzbd icon from the systray on Windows and Linux</td>
-        </tr>
-        <tr>
-            <td><code>use_pickle</code></td>
-            <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Only check this when there is a problem with one of the standard Python libs.</td>
         </tr>
         <tr>
             <td><code>allow_incomplete_nzb</code></td>
@@ -133,19 +118,9 @@ title: Special settings
             <td>Some people use external or network drives for the "temporary download folder". It can happen that such a drive isn't mounted yet when SABnzbd starts up, causing it to create a new folder at the default location. To prevent this, set the option to 1. This will make SABnzbd wait until the drive is available. Note that SABnzbd will hang until the drive is available! Also, the folder must already exist otherwise SABnzbd will hang until terminated.</td>
         </tr>
         <tr>
-            <td><code>max_art_opt</code></td>
-            <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>You can choose to use limited retries only for your "optional" servers. This will prevent "Out of retention" failures when your main server is inadvertently off-line</td>
-        </tr>
-        <tr>
-            <td><code>warn_empty_nzb</code></td>
+            <td><code>enable_broadcast</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Will enable warnings about empty NZB files, uncheck to supress warnings.</td>
-        </tr>
-        <tr>
-            <td><code>enable_bonjour</code></td>
-            <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Will announce itself on Apple's Bonjour protocol. <a href="/wiki/extra/bonjour-support">Read more here</a>.</td>
+            <td>Make announcements on the local network using Simple Service Discovery Protocol (SSDP) and Apple's <a href="/wiki/extra/bonjour-support">Bonjour</a> protocol, allowing other systems to auto-discover SABnzbd.</td>
         </tr>
         <tr>
             <td><code>warn_dupl_jobs</code></td>
@@ -196,14 +171,14 @@ title: Special settings
     </thead>
     <tbody>
         <tr>
+            <td><code>downloader_sleep_time</code></td>
+            <td><code>10</code></td>
+            <td> CPU sleep period that is some times added between reading data from the connections. Higher values may reduce CPU load but too high values will impact the download speed. A value of 0 should only be used if increasing the number of connections is not sufficient to get maximum speed. A value of 10 means 1 ms.</td>
+        </tr>
+        <tr>
             <td><code>size_limit</code></td>
             <td><code>0</code></td>
             <td>Any download that exceeds this value will be paused and get priority "low". You can use the K/M/G notation, so e.g. 4.7G</td>
-        </tr>
-        <tr>
-            <td><code>fsys_type</code></td>
-            <td><code>0</code></td>
-            <td>Only for Unix/Linux systems. 0 = Determine automatically, 1 = Names are stored as 8-bit ASCII characters, 2 = Names are stored as UTF-8. Use this <strong>only</strong> when the names created by SABnzbd look distorted! It will only work for folders created by SABnzbd itself, not files and folders created by unzip and unrar.</td>
         </tr>
         <tr>
             <td><code>movie_rename_limit</code></td>
@@ -271,6 +246,11 @@ title: Special settings
             <td>You can switch the host to connect to for rating. The indexer needs to support this!</td>
         </tr>
         <tr>
+            <td><code>ssdp_broadcast_interval</code></td>
+            <td><code>15</code></td>
+            <td>Interval between Simple Service Discovery Protocol (SSDP) broadcasts, announcing the presence of SABnzbd to other systems on the local network.</td>
+        </tr>
+        <tr>
             <td><code>rss_odd_titles</code></td>
             <td><code>nzbindex.nl/</code>, <code>nzbindex.com/</code>, <code>nzbclub.com/</code></td>
             <td>Some RSS feeds produce very awkward titles which are fine for filtering, but not as job titles. For all indexers that are listed here, the actual NZB file name will be used instead of the title. </td>
@@ -281,9 +261,15 @@ title: Special settings
             <td>A list of file name extensions that will be ignored during QuickCheck. If they are missing but all other files are correct, QuickCheck will still pass.</td>
         </tr>
         <tr>
-            <td><code>host_whitelist </code></td>
+            <td><code>host_whitelist</code></td>
             <td><code>hostname</code></td>
             <td>See <a href="/wiki/extra/hostname-check.html">Hostname verification</a>.</td>
+        </tr>
+        <tr>
+            <td><code>local_ranges</code></td>
+            <td></td>
+            <td>Specify a (comma separated) list of one or more network ranges where the <a href="/wiki/configuration/{{ site.wiki_version }}/general">External internet access</a> level doesn't apply and the full interface is available. If defined, these replace the default handling based on rfc1918 and rfc4193 <a href="https://en.wikipedia.org/wiki/Private_network" target="_blank">private</a> network ranges.<br>
+            <br>Network ranges should be set in their standard notation with a prefix or netmask (e.g. <code>192.168.1.0/24</code> or <code>10.42.0.0/255.255.0.0</code>). Input in the form of SABnzbd's older (pre-3.3.0) local_ranges setting (e.g. <code>192.168.1.</code>, intended for use with Python's <code>str.startswith()</code>) is also accepted and continues to work.</td>
         </tr>
     </tbody>
 </table>
