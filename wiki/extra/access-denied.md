@@ -57,3 +57,7 @@ If you don't know what this means, don't use this option.
 ## Define local ranges
 
 For the very advanced users: on the [Specials](/wiki/configuration/{{site.wiki_version}}/special) page of the Config you can define your own local ranges if you want to overrule what SABnzbd defines as local. Make sure to read the documentation on how to specify them.
+
+## Disabeling the error message
+
+If you just want to disable the error message, you can do so by turning off `api_warnings` on the [Special](/wiki/configuration/{{site.wiki_version}}/special) page of the Config.
