@@ -3,24 +3,20 @@ title: Sorting
 ---
 <h1>External sorting tools</h1>
 <p><span class="label label-warning">NOTE</span> While SABnzbd supports a number of ways to rename files, external tools (like Sonarr, Radarr, etc.) allow for much more extensive automated download management. These tools can automatically search, add and handle renaming in almost every possible way!</p>
-
 <p>Overview of available <a href="/wiki/extensions-for-sabnzbd#automation">Automation Extensions for SABnzbd</a>.</p>
 
 <hr>
+<h1 id="toc3">Sorting</h1>
+<p>Sorting replaces any pattern keys in the Sort String (such as <em>%sn</em> for the show name) with real values based on the jobname and information in the NZB, before creating the directory structure and renaming files. The Sort String and the affected categories can be set for each type of sorting (Series, Movie, and Date).</p>
 
+<hr>
 <h1 id="toc0">Series Sorting</h1>
-<p>For SABnzbd to know a downloaded nzb is part of a series, it needs to be named in a certain way. SABnzbd requires the show name followed by the episode number and series number in the name of the nzb. It should be either in the format <strong>1x01</strong> (Series<strong>x</strong>Episode) or <strong>S01E01</strong> (<strong>S</strong>series<strong>E</strong>episode)</p>
+<p>For SABnzbd to know a downloaded nzb is part of a series, it needs to be named in a certain way. The more standard the naming, the better your chances of a job getting properly recognized and sorted. Common, well recognized formats for season and episode numbers include <strong>1x01</strong> (Series<strong>x</strong>Episode) or <strong>S01E01</strong> (<strong>S</strong>series<strong>E</strong>episode).</p>
 <h3 id="toc2">Examples</h3>
 <p><code>Show Name - 1x01 - Episode Name.nzb</code><br>
-    <code>Show.Name.S01E01.RLS.nzb</code><br>
+    <code>Show.Name.S01E01.Episode.Name.nzb</code><br>
     <code>ShowName.1x01.nzb</code><br>
-    (Note: <code>ShowName1x01.nzb</code> will currently not work due to the support for specials (eg. Sx01))
 </p>
-<p>Episode Names are special in that they only work when separated after the series/episode number with a - such as in<br>
-    <code>Show Name - 1x01 - Episode Name.nzb</code>
-</p>
-<h2 id="toc3">Sorting</h2>
-<p>Sorting is done using replaceable values such as <em>%sn</em> for the show name.</p>
 <h2 id="toc4">Key</h2>
 <table class="table table-bordered table-hover">
     <thead>
@@ -34,17 +30,52 @@ title: Sorting
         <tr>
             <td>Show Name</td>
             <td>%sn</td>
-            <td>Show Name</td>
+            <td>Show Name (case-adjusted)</td>
         </tr>
         <tr>
             <td></td>
             <td>%s.n</td>
-            <td>Show.Name</td>
+            <td>Show.Name (case-adjusted)</td>
         </tr>
         <tr>
             <td></td>
             <td>%s_n</td>
+            <td>Show_Name (case-adjusted)</td>
+        </tr>
+        <tr>
+            <td>Show Name</td>
+            <td>%sN</td>
+            <td>Show Name</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%s.N</td>
+            <td>Show.Name</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%s_N</td>
             <td>Show_Name</td>
+        </tr>
+        <tr>
+            <td>Resolution</td>
+            <td>%r</td>
+            <td>1080p</td>
+        </tr>
+        <tr>
+            <td>Year</td>
+            <td>%y</td>
+            <td>2021</td>
+        </tr>
+        <tr>
+            <td>Decade</td>
+            <td>%decade</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%0decade</td>
+            <td>2020</td>
         </tr>
         <tr>
             <td>Season Number</td>
@@ -82,11 +113,6 @@ title: Sorting
             <td>Episode_Name</td>
         </tr>
         <tr>
-            <td>Resolution</td>
-            <td>%r</td>
-            <td>1080p</td>
-        </tr>
-        <tr>
             <td>File Extension</td>
             <td>%ext</td>
             <td>avi</td>
@@ -108,7 +134,40 @@ title: Sorting
         </tr>
     </tbody>
 </table>
-<p>You can use these values to construct any type of path/filename combination, however there are some recommended presets.</p>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td colspan=3>
+            <p>Sabnzbd uses the GuessIt module to do much of its sorting-related guess work. In addition to the commonly-used features above that get their own pattern keys, the full suite of GuessIt properties is exposed. The available properties depends on the installed GuessIt version and are listed in the web interface under the pattern key.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>GuessIt Property</strong></td>
+            <td>%GI&lt;property&gt;</td>
+            <td>GuessIt Property</td>
+        </tr>
+            <td></td>
+            <td>%G.I&lt;property&gt;</td>
+            <td>GuessIt.Property</td>
+        </tr>
+            <td></td>
+            <td>%G_I&lt;property&gt;</td>
+            <td>GuessIt_Property</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Affected Categories</strong></td>
+            <td>Control/Shift+Select the categories you want this sorting to be used in.</td>
+        </tr>
+        <tr>
+            <td><strong>Sort String</strong></td>
+            <td>The sorting expression with pattern keys, constructing a path/filename combination of your choice. See the presets/examples below.</td>
+        </tr>
+    </tbody>
+</table>
 <h3 id="toc5">Presets</h3>
 <p><strong>1x01 Season Folder:</strong><br>
     <code>%sn/Season %s/%sn - %sx%0e - %en.%ext</code><br>
@@ -140,7 +199,7 @@ title: Sorting
 </p>
 <hr>
 <h1 id="toc6">Movie Sorting</h1>
-<p>This sorting will rename large files based on the nzb name. It has support for naming files in a sequence such as CD1/CD2/CD3&nbsp;A/B/C 1/2/3. Requires categories to be set-up and used.</p>
+<p>This sorting will rename large files based on the nzb name. It has support for naming files in a sequence such as CD1/CD2/CD3&nbsp;A/B/C 1/2/3.</p>
 <h2 id="toc7">Key</h2>
 <table class="table table-bordered table-hover">
     <thead>
@@ -151,6 +210,21 @@ title: Sorting
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <td>Movie Name</td>
+            <td>%sn</td>
+            <td>Movie Name (case-adjusted)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%s.n</td>
+            <td>Movie.Name (case-adjusted)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%s_n</td>
+            <td>Movie_Name (case-adjusted)</td>
+        </tr>
         <tr>
             <td>Title</td>
             <td>%title</td>
@@ -177,11 +251,6 @@ title: Sorting
             <td>1080p</td>
         </tr>
         <tr>
-            <td>Extension</td>
-            <td>%ext</td>
-            <td>avi</td>
-        </tr>
-        <tr>
             <td>Decade</td>
             <td>%decade</td>
             <td>00</td>
@@ -191,7 +260,11 @@ title: Sorting
             <td>%0decade</td>
             <td>2000</td>
         </tr>
-
+        <tr>
+            <td>Extension</td>
+            <td>%ext</td>
+            <td>avi</td>
+        </tr>
         <tr>
             <td>Original File Name</td>
             <td>%fn</td>
@@ -217,6 +290,28 @@ title: Sorting
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
+            <td colspan=3>
+            <p>Sabnzbd uses the GuessIt module to do much of its sorting-related guess work. In addition to the commonly-used features above that get their own pattern keys, the full suite of GuessIt properties is exposed. The available properties depends on the installed GuessIt version and are listed in the web interface under the pattern key.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>GuessIt Property</strong></td>
+            <td>%GI&lt;property&gt;</td>
+            <td>GuessIt Property</td>
+        </tr>
+            <td></td>
+            <td>%G.I&lt;property&gt;</td>
+            <td>GuessIt.Property</td>
+        </tr>
+            <td></td>
+            <td>%G_I&lt;property&gt;</td>
+            <td>GuessIt_Property</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
             <td><strong>Keep loose downloads in extra folders</strong></td>
             <td>If the download file contains an extra folder (such as VIDEO_TS ect), it will not move the final download to the parent folder. If your downloaded jobs do not end up in their own folders, but dumped in a single folder, then enable this. It is basically to stop messy downloads cluttering up your folder full of downloads</td>
         </tr>
@@ -230,7 +325,7 @@ title: Sorting
         </tr>
         <tr>
             <td><strong>Multi-part label</strong></td>
-            <td>If there is a sequence of files (such as CD1/CD2) what to to insert into sort string before .%ext. The default is " CD%1"(no quotes) which will add " CD1" before the extension for the first CD.</td>
+            <td>If there is a sequence of files (such as CD1/CD2) what to to insert into sort string before .%ext. The default is " CD%1" (no quotes) which will add " CD1" before the extension for the first CD.</td>
         </tr>
     </tbody>
 </table>
@@ -263,7 +358,7 @@ title: Sorting
 <h1 id="toc9">Date Sorting</h1>
 <p>Date sorting will allow for renaming, and sorting of files that contain dates in their nzb name.</p>
 <h2 id="toc10">Detection</h2>
-<p>Supports the following date naming:<br>
+<p>Most standard date formats are recognized, including:<br>
     <code>MM-DD-YYYY/MM.DD.YYYY</code> or <code>YYYY-MM-DD/YYYY.MM.DD</code>
 </p>
 <p>Eg: <code>Show.Name.12.12.2008.HDTV-RLS.nzb</code></p>
@@ -277,6 +372,21 @@ title: Sorting
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <td>Show Name</td>
+            <td>%sn</td>
+            <td>Show Name (case-adjusted)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%s.n</td>
+            <td>Show.Name (case-adjusted)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%s_n</td>
+            <td>Show_Name (case-adjusted)</td>
+        </tr>
         <tr>
             <td>Show Name</td>
             <td>%t</td>
@@ -296,6 +406,16 @@ title: Sorting
             <td>Year</td>
             <td>%y</td>
             <td>2009</td>
+        </tr>
+        <tr>
+            <td>Decade</td>
+            <td>%decade</td>
+            <td>00</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%0decade</td>
+            <td>2000</td>
         </tr>
         <tr>
             <td>Month</td>
@@ -318,16 +438,6 @@ title: Sorting
             <td>02</td>
         </tr>
         <tr>
-            <td>Decade</td>
-            <td>%decade</td>
-            <td>00</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>%0decade</td>
-            <td>2000</td>
-        </tr>
-        <tr>
             <td>Resolution</td>
             <td>%r</td>
             <td>1080p</td>
@@ -346,6 +456,28 @@ title: Sorting
             <td>Lower Case</td>
             <td>{TEXT}</td>
             <td>text</td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td colspan=3>
+            <p>Sabnzbd uses the GuessIt module to do much of its sorting-related guess work. In addition to the commonly-used features above that get their own pattern keys, the full suite of GuessIt properties is exposed. The available properties depends on the installed GuessIt version and are listed in the web interface under the pattern key.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>GuessIt Property</strong></td>
+            <td>%GI&lt;property&gt;</td>
+            <td>GuessIt Property</td>
+        </tr>
+            <td></td>
+            <td>%G.I&lt;property&gt;</td>
+            <td>GuessIt.Property</td>
+        </tr>
+            <td></td>
+            <td>%G_I&lt;property&gt;</td>
+            <td>GuessIt_Property</td>
         </tr>
     </tbody>
 </table>
