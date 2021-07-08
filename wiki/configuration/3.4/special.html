@@ -268,7 +268,7 @@ title: Special settings
         <tr>
             <td><code>local_ranges</code></td>
             <td></td>
-            <td>Specify a (comma separated) list of one or more network ranges where the <a href="/wiki/configuration/{{ site.wiki_version }}/general">External internet access</a> level doesn't apply and the full interface is available. Sending Bonjour and SSDP broadcasts is also limited to these ranges. If defined, these local ranges replace the default handling based on rfc1918 and rfc4193 <a href="https://en.wikipedia.org/wiki/Private_network" target="_blank">private</a> network ranges.<br>
+            <td>Specify a (comma separated) list of one or more network ranges where the <a href="/wiki/configuration/{{ site.wiki_version }}/general">External internet access</a> level doesn't apply and the full interface is available. Sending Bonjour and SSDP broadcasts is also limited to these ranges. If defined, the local ranges replace the default handling based on rfc1918 and rfc4193 <a href="https://en.wikipedia.org/wiki/Private_network" target="_blank">private</a> network ranges.<br>
             <br>Network ranges should be set in their standard notation with a prefix or netmask (e.g. <code>192.168.1.0/24</code> or <code>10.42.0.0/255.255.0.0</code>). Input in the form of SABnzbd's older (pre-3.3.0) local_ranges setting (e.g. <code>192.168.1.</code>, intended for use with Python's <code>str.startswith()</code>) is also accepted and continues to work.</td>
         </tr>
     </tbody>
