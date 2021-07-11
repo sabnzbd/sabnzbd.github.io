@@ -1,4 +1,2 @@
 3.3.1
 https://sabnzbd.org/downloads.html
-3.4.0Beta1
-https://sabnzbd.org/downloads.html
