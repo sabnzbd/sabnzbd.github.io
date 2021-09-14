@@ -149,6 +149,10 @@ redirect_from: "/wiki/advanced/user-scripts"
             <td>What was the password supplied by the NZB or the user</td>
         </tr>
         <tr>
+            <td>SAB_CORRECT_PASSWORD</td>
+            <td>The password that was detected as being the correct password for this job (added in 3.4.0)</td>
+        </tr>
+        <tr>
             <td>SAB_ENCRYPTED</td>
             <td>Was the job detected as encrypted</td>
         </tr>
@@ -201,17 +205,12 @@ redirect_from: "/wiki/advanced/user-scripts"
             <td>Newsgroup where (most of) the job's articles came from</td>
         </tr>
         <tr>
-            <td>SAB_VERSION</td>
-            <td>The version of SABnzbd used</td>
-        </tr>
-    </tbody>
-</table>
-
-<table class="table table-bordered table-hover">
-    <tbody>
-        <tr>
             <td>SAB_ORIG_NZB_GZ</td>
             <td>Path to the original NZB-file of the job. The NZB-file is compressed with gzip (<code>.gz</code>)</td>
+        </tr>
+        <tr>
+            <td>SAB_VERSION</td>
+            <td>The version of SABnzbd used</td>
         </tr>
         <tr>
             <td>SAB_PROGRAM_DIR</td>
