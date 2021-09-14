@@ -31,10 +31,10 @@ sudo apt-get update
 sudo apt-get install par2-tbb
 ```
 
-For `par2cmdline-mt` change the last command to:
+For `par2cmdline` change the last command to:
 
 ```
-sudo apt-get install par2-mt
+sudo apt-get install par2
 ```
 
 
