@@ -9,16 +9,14 @@ Usenet (aka News servers) offers SSL/TLS security. It's called NNTPS, or NNTP wi
 
 When you add a new server and enable SSL its `Certificate verification` setting will be set to `Strict` by default which enforces both functions described above.
 
-There are still a lot of [non-secure news servers](https://www.appelboor.com/newsservers/newsservers-with-SSL.html) around. Therefore, the default setting for existing servers is only `Minimal`. You can set it to `Strict` yourself in the Advanced settings on the [Servers](/wiki/configuration/{{ site.wiki_version }}/servers) page.
-
-You can completely turn-off SABnzbd's security checks and encryption, but you won't have the security described above.
+You can completely turn off SABnzbd's security checks and encryption, but you won't have the security described above.
 
 -------------------
 
 Online news server SSL/TLS check
 -------------------
 
-Verify the SSL/TLS security of your newsserver using the tool provided by [sanderjo](https://github.com/sanderjo).
+Verify the SSL/TLS security of your news server using the tool provided by [sanderjo](https://github.com/sanderjo).
 
 <form class="form-inline newsserver-test" action="https://www.appelboor.com/cgi-bin/check_newsserver.py" method="GET" target="_blank">
   <div class="form-group">
@@ -37,17 +35,20 @@ News server problems
 
     Failed to connect: Server news.someserver.com uses an untrusted certificate [[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:590)]
 
-**A: Your news server does not have valid certificates to verify its identity. The certificates are self-signed and cannot be verified by a [trusted authority](https://en.wikipedia.org/wiki/Certificate_authority) or they are malicious.**
+**A: SABnzbd cannot verify the server's identity using the provided certificates. The reason is one of these:**
 
-Solutions:
+1. The certificates provided by the server are not valid and cannot be verified by a [trusted authority](https://en.wikipedia.org/wiki/Certificate_authority).
+2. Your system has an invalid certificate validation-setup (see below how to check).
+3. The certificates provided by the server are malicious.
+
+**Solutions:**
 
 1. Easy but **not** secure: Don't use SSL (untick SSL).
 2. Easy but **less** secure: Tell SABnzbd to ignore the problem: in SABnzbd's Server-settings, under Advanced, set `Certificate verification` to `Disabled`.<br> <span class="label label-danger">WARNING</span> Disabling this check allows anyone to redirect and intercept your traffic using *any* certificate! It is comparable to not using SSL at all.
-3. Hard but secure: Test the status of your news server online (above) or check out the [News servers with SSL/TLS overview](https://www.appelboor.com/newsservers/newsservers-with-SSL.html).
+3. Hard but secure: Test the status of your news server online (above) or check out the [News servers with SSL/TLS overview](https://www.appelboor.com/news servers/news servers-with-SSL.html).
 
-    1. If the test (or overview) shows an error message such as '`OK NOK NOK`' or '`NOK NOK NOK`', the problem is on the side of the news server. You can ask the news server provider to fix this. But, they could deny there is a problem.
-
-    2. If the test says '`OK OK OK`' or '`OK OK NOK`', then the problem is local (i.e. your computer/NAS): incorrect certificates, a virusscanner doing strange things, or something else. This is not something SABnzbd can solve for you. And the solutions are OS-dependent.
+    1. If the test (or overview) shows an error message such as `OK NOK NOK` or `NOK NOK NOK`, the problem is on the side of the news server. You can ask the news server provider to fix this. But, they could deny there is a problem.
+    2. If the test says `OK OK OK` or `OK OK NOK`, then the problem is local (i.e. your computer/NAS): incorrect (root) certificates, a virusscanner doing strange things, or something else. This is not something SABnzbd can solve for you. And the solutions are OS-dependent.
 
 * * *
 
@@ -57,7 +58,7 @@ Solutions:
 
 **A: Your news server provider has some level of SSL, but their setup is not correct: they are using certificates that do not belong to the hostname you're using.**
 
-Solutions:
+**Solutions:**
 
 1. Easy and half/half-secure: in SABnzbd's Server-settings, under Advanced, set `Certificate verification` to `Default`/`Minimal`. Then try again.<br> <span class="label label-danger">WARNING</span> Disabling this check allows anyone to redirect and intercept your traffic using *any* valid certificate!  It is comparable to not using SSL at all.
 2. You can ask the news server provider to fix this. But, they could deny there is a problem.
@@ -66,7 +67,7 @@ Solutions:
 
 **Q: Which News server provider should I choose?**
 
-**A: Choose one with '`OK OK OK`' on our [News servers with SSL/TLS overview](https://www.appelboor.com/newsservers/newsservers-with-SSL.html)**
+**A: Choose one with `OK OK OK` on our [News servers with SSL/TLS overview](https://www.appelboor.com/news servers/news servers-with-SSL.html)**
 
 * * *
 
@@ -74,7 +75,7 @@ Solutions:
 
 **A: That depends on your circumstances:**
 
-* If you are a (Highwinds, Xennanews, etc) reseller, contact your wholesale provider (Highwinds, Xennanews, etc) to solve this. You will most likely need to provide a certificate to your provider.
+* If you are a (Omicron, Xennanews, etc) reseller, contact your wholesale provider (Omicron, Xennanews, etc) to solve this. You will most likely need to provide a certificate to your provider.
 * If you are hosting your own news server, contact your administrator.
 
 -------------------
@@ -90,7 +91,7 @@ NZB / RSS Index sites are HTTPS sites. HTTPS/SSL/TLS problems on the server side
 
 **A: Open the same URL in your Chrome web browser on the same machine, and on another machine. If Chrome complains too, you know the problem is on the server side.**
 
-Solutions:
+**Solutions:**
 
 1. Check if there is another URL that is secure. For example: nzbindex.COM is secure.
 2. Contact the site owner and inform them of the problem.

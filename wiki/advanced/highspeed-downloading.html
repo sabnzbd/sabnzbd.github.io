@@ -11,7 +11,7 @@ Start with a test of your system: Check at Wrench -> Status -> Refresh symbol, a
     <li>Both Incomplete and Complete should be on a SSD/M.2/NVMe disk. SABnzbd should report the speed of Incomplete and Complete at least 150 MB/s. Slower disks like HDD and NAS have a very negative impact on downloading speed: a slower disk means slower downloads.</li>
     <li>Your CPU shoud be medium or high speed. SABnzbd should report a pysthone of 100.000 or higher. </li>
     <li>Your download speed will never be higher than the Internet speed reported via the Wrench -> Status report. Wired is better than wireless</li>
-    <li>Preferrably you should have a few different newsservers, all at the same prio</li>
+    <li>Preferrably you should have a few different news servers, all at the same prio</li>
     <li>Start with a test download: Wrench -> Test Download -> 1000 MB</li>
 </ol>
 
@@ -27,7 +27,7 @@ On a system with a CPU with at least 100.000 pystones, and SSD drives achieving 
     <li>Turn on "Pause Downloading During Post-Processing". SABnbd will first download, and after downloading it will start processing</li>
     <li>Turn off DirectUnpack. SABnbd will take care of it after downloading</li>
     <li>Turn off Unwanted Extensions and Encrypted Downloads</li>
-    <li>For testing only: set the download to Download, so no Repair, no Unpack at all</li> 
+    <li>For testing only: set the download to Download, so no Repair, no Unpack at all</li>
 </ol>
 
 <h2>More detailed optimizations</h2>
@@ -37,7 +37,7 @@ On a system with a CPU with at least 100.000 pystones, and SSD drives achieving 
     <li>Check if logging is set to only <code>Errors/Warning</code> in the Status window. Especially the <code>+Debug</code> setting writes very frequently tiny bits of data to the disk. This increases CPU load for the writing and occupies the disk.</li>
     <li>For <strong>larger queues</strong> it can be beneficial to enable <code>Only get articles for top of the queue</code> in <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a>, as iterating through the queue to get the next article takes substantial amount of CPU power for large queues.</li>
     <li>Investigate your <strong>connection count</strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/servers">Config-&gt;Servers</a>. It may seem counter-intuitive, since more connections <em>should</em> be faster than fewer connections, but if you use the 50+ connections some hosts give you the overhead from constantly opening and closing connections can slow you down. So start at the max allowed connections and slowly lower your count until you max out your speed. Or do it the other way round: start with 5 connections, measure the speed, and raise to 7, measure again, 9, measure again, etc. Normally 10 connections are enough.</li>
-    <li>If you use SSL to connect to your newsserver, try changing the <a href="/wiki/advanced/ssl-ciphers">SSL Ciphers</a>. This will sightly lower encryption strength but can greatly increase download speeds.</li>
+    <li>If you use SSL to connect to your news server, try changing the <a href="/wiki/advanced/ssl-ciphers">SSL Ciphers</a>. This will sightly lower encryption strength but can greatly increase download speeds.</li>
 </ol>
 <p>If none of the above methods make a difference, have a look at how much CPU is being used while downloading, if it is at 100% it is likely your processor is too slow to maintain high enough speeds. In the Status window ( <span class="glyphicon glyphicon-wrench"></span> ) you can run a PyStone CPU performance test. ARM based systems (NASes for example) will show much lower number (below 25000), and will have a lower maximum download speed than PCs with a current Intel/AMD CPU with a CPU Pystone available performance of 40000 or higher.
 

@@ -2,7 +2,7 @@
 title: SSL Ciphers
 ---
 <h2>Summary</h2>
-<p>Setting SSL Ciphers to the following value will lower encryption strength, increase performance (download speed) and is supported by virtually all newsservers:</p>
+<p>Setting SSL Ciphers to the following value will lower encryption strength, increase performance (download speed) and is supported by virtually all news servers:</p>
 <pre><code>AES128-SHA</code></pre>
 <p><span class="label label-warning">NOTE</span> Setting the SSL Cipher with news servers that support TLS 1.3 connections is not (yet) supported by Python and thus SABnzbd. See the relevant <a href="https://docs.python.org/3/library/ssl.html#tls-1-3">Python SSL documentation</a>.
 
@@ -10,7 +10,7 @@ title: SSL Ciphers
 
 <h2>What are SSL ciphers?</h2>
 
-<p>When you connect to a newsserver using SSL/TLS, the firsts step in the connection process is for SABnzbd and the server to agree how the connection will be secured. The SSL/TLS specifications, such as TLSv1.2, define which protocols can and should be used. These protocols define how the security keys will be exchanged and how the actual data will be encrypted. As you can imagine, stronger encryption requires more CPU power to decode. </p>
+<p>When you connect to a news server using SSL/TLS, the firsts step in the connection process is for SABnzbd and the server to agree how the connection will be secured. The SSL/TLS specifications, such as TLSv1.2, define which protocols can and should be used. These protocols define how the security keys will be exchanged and how the actual data will be encrypted. As you can imagine, stronger encryption requires more CPU power to decode. </p>
 <p>During the initial stage of the connection, the handshake, SABnzbd and the server will let each other know which protocols they support and then use the strongest available on both. By modifying the SSL Ciphers setting, you can specify what SABnzbd should report as available protocols.
 <p>When there are active connections, you can see which protocol is being used for each server in the Status and Interface settings (<span class="glyphicon glyphicon-wrench"></span>, Connections). For example: <code>TLSv1.2 (DHE-RSA-AES128-SHA)</code>.
 

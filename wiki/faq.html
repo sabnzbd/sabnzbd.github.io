@@ -111,14 +111,14 @@ title: FAQ
     This happens because many operating systems have an ambiguous definition of localhost. They list both <code>127.0.0.1</code> and <code>[::1]</code> has IP addresses (IPv4 and IPv6 respectively), while these are in reality two independent addresses.
 </p>
 <h2 id="toc11">SABnzbd says "Out of your server's retention?". What does that mean?</h2>
-<p>This means the post you're trying to download is not available on the newsserver you're using. This might because the post is older than the your newsserver's retention time (number of days the post will stay on the newsserver, somewhere between 10 and 1000 days), or the specific post has been removed by the server's administrator. Also read our information about <a href="/wiki/introduction/downloads-cannot-be-completed.html">Downloads cannot be completed
+<p>This means the post you're trying to download is not available on the news server you're using. This might because the post is older than the your news server's retention time (number of days the post will stay on the news server, somewhere between 10 and 1000 days), or the specific post has been removed by the server's administrator. Also read our information about <a href="/wiki/introduction/downloads-cannot-be-completed.html">Downloads cannot be completed
 </a>.<br>
     You can see the age of a post in the search engine (like binsearch) you use, and by hovering above the line containing the download while it's being downloaded.
 </p>
 <p>Solution: find a 'younger' post, or find a newsprovider with a longer retention.</p>
 <p>If you think it's SABnzbd's fault, you should try to download the same post with another program like Grabit (Windows) or nzbget (Linux) to see if that works.</p>
 <h2 id="toc12">SABnzbd shows a very slow download speed, with a extremely high ETA, but is progressing quite fast through the post, and then fails.</h2>
-<p>These are the symptoms of a post that's not available on your newsserver. Easy check: during the download, hover your mouse above the item; it will show a high number of missing articles.</p>
+<p>These are the symptoms of a post that's not available on your news server. Easy check: during the download, hover your mouse above the item; it will show a high number of missing articles.</p>
 <h2 id="toc13">SABnzbd is stuck repairing a file, how do I fix it?</h2>
 <p>SABnzbd processes files sequentially, so if Par2 stops working the rest of your downloaded files will get hung up. To fix this, open your operating system's task manager and manually kill the par2 process. The item it was working on will be marked as "failed", so you'll have to manually verify and unrar that job.</p>
 <h2 id="toc14">An NZB just failed post-processing, how do I re-process it?</h2>
@@ -136,7 +136,7 @@ See: <a href="/wiki/advanced/directory-setup">Folder Setup</a>.
 
 <h2 id="why-login">SABnzbd is asking for a password and I didn't set one/forgotten the password, what do I do?</h2>
 
-<p>Most likely your browser or password manager automatically filled your newsserver username and password as the main SABnzbd username and password. You can reset them by starting <code>SABnzbd - SafeMode</code> on Windows or clicking the SABnzbd icon in the top bar and use the <code>Troubleshoot</code> options.</p>
+<p>Most likely your browser or password manager automatically filled your news server username and password as the main SABnzbd username and password. You can reset them by starting <code>SABnzbd - SafeMode</code> on Windows or clicking the SABnzbd icon in the top bar and use the <code>Troubleshoot</code> options.</p>
 
 <p>On other systems you can edit <code>sabnzbd.ini</code>.</p>
 
@@ -182,8 +182,8 @@ password = ""</code>
 </p>
 
 <h2 id="toc35">"[Errno 111] Failed to connect: (110, 'timed out') -1 @news.example.com:119" when clicking on Test Server</h2>
-<p>You can test your connection to your newsserver by clicking on Test Server (in Config -&gt; Servers). If the popup says "[Errno 111] Failed to connect: (110, 'timed out') -1@news.example.com:119", SABnzbd cannot connect to the newserver you filled out. You should check two things: the correct name for the newsserver and the correct port (119 is the normal port).</p>
-<p>If you're sure everything is filled out OK and you still get the error message, as a test you can fill out an additional newsserver. You can use news.astraweb.com or newsreader.eweka.nl. After filling out and Save Change, you can click on Test Server. If you get "[Errno 111] Failed to connect: (110, 'timed out') -1@news.astraweb.com:119" for this extra server too, the problem is local: possibly a firewall is blocking outgoing connections. So check your firewall. Or temporarily disable / deinstall your firewall. Then check again with Test Server.</p>
+<p>You can test your connection to your news server by clicking on Test Server (in Config -&gt; Servers). If the popup says "[Errno 111] Failed to connect: (110, 'timed out') -1@news.example.com:119", SABnzbd cannot connect to the newserver you filled out. You should check two things: the correct name for the news server and the correct port (119 is the normal port).</p>
+<p>If you're sure everything is filled out OK and you still get the error message, as a test you can fill out an additional news server. You can use news.astraweb.com or newsreader.eweka.nl. After filling out and Save Change, you can click on Test Server. If you get "[Errno 111] Failed to connect: (110, 'timed out') -1@news.astraweb.com:119" for this extra server too, the problem is local: possibly a firewall is blocking outgoing connections. So check your firewall. Or temporarily disable / deinstall your firewall. Then check again with Test Server.</p>
 <p>NB: after your own server is working, disable the extra setting, or you will see warnings in your log file of SABnzbd still trying to access this server for which you have no account.</p>
 
 <h2 id="endslow">SABnzbd slows down when getting very close to the end of a job - News server timeouts</h2>
@@ -284,15 +284,15 @@ password = ""</code>
 <h2 id="toc32">"Repair failed, not enough repair blocks (585 short) " … what does that mean?</h2>
 <p>If you get something like "Repair failed, not enough repair blocks (585 short)", there can be different causes:</p>
 <ul>
-    <li>the post is not available (anymore) on the newsserver you use because the post is older than the newsserver retention</li>
-    <li>the post is not available (anymore) on the newsserver you use because the post has been (partly) removed (possibly because of DMCA notices)</li>
+    <li>the post is not available (anymore) on the news server you use because the post is older than the news server retention</li>
+    <li>the post is not available (anymore) on the news server you use because the post has been (partly) removed (possibly because of DMCA notices)</li>
     <li>the post itself has too little repair block (par files)</li>
     <li>the NZB you created did not include par files</li>
     <li>The post has an unusual naming convention and SABnzbd doesn't understand the relation between RAR files and PAR2 files. Manual repair is the only solution (Windows users can use QuickPar).</li>
 </ul>
 <p>Things worth trying:</p>
 <ul>
-    <li>use another or - better an addional newsserver</li>
+    <li>use another or - better an addional news server</li>
     <li>find another post with the same contents</li>
     <li>check on binsearch.info to see the post was completely available there</li>
 </ul>
