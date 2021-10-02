@@ -67,8 +67,8 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Unwanted extensions</strong></td>
-            <td><p>Downloads that contain files with a listed extension can be paused or aborted. Extensions are input as a comma-separated list, for example <code>exe,com,cmd,bat</code> to trigger on common Windows executable content. Basic wildcards and regular expressions are also supported, for example <code>re:mp*</code> or <code>re:r[0-9]{2}</code> (the latter matching <code>r00</code> through <code>r99</code>).</p>
-            <p>In <code>Blacklist</code> mode, only the listed extensions trigger the configured action; everything else is ignored. <code>Whitelist</code> mode is more paranoid: only listed extensions get a free pass; files with any other extension, no matter how small or harmless, will be considered unwanted.</p>
+            <td><p>Downloads that contain files with a listed extension can be paused or aborted. Extensions are input as a comma-separated list, for example <code>exe,com,cmd,bat</code> to trigger on common Windows executable content. <br>Basic wildcards and regular expressions are also supported, for example <code>re:mp*</code> or <code>re:r[0-9]{2}</code> (the latter matching <code>r00</code> through <code>r99</code>).</p>
+            <p>In <code>Blacklist</code> mode, only the listed extensions trigger the configured action; everything else is ignored. <code>Whitelist</code> mode is more paranoid: only listed extensions get a free pass; jobs that contain files with <em>any</em> other extension, no matter how small or harmless, will be considered unwanted.</p>
             <p><span class="label label-warning">NOTE</span> Whitelist mode is best combined with the Pause action, until you have a carefully curated list of wanted extensions.</p></td>
         </tr>
         <tr>
@@ -148,7 +148,7 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Deobfuscate final filenames</strong></td>
-            <td>If enabled, SABnzbd will try to rename the final filenames based on two different methods: First, if a <code>.par2</code> file like <code>rename.par2</code> exists, SABnzbd will use that to rename files. Second, if filenames of (large) files in the final folder look obfuscated or meaningless (like <code>19399393.ext</code> or <code>timmof.mkv</code>) they will be renamed to the job name.</td>
+            <td>If filenames of (large) files in the final folder look obfuscated or meaningless (like <code>19399393.ext</code> or <code>timmof.mkv</code>) they will be renamed to the job name. Additionally, attempts to set the correct file extension based on the file signature if the extension is not present or meaningless.</td>
         </tr>
         <tr>
             <td><strong>Use tags from indexer</strong><br><span class="label label-primary">Advanced</span></td>

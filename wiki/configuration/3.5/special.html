@@ -38,6 +38,11 @@ title: Special settings
             <td>Normally SABnzbd will clean up par2 files after verify/repair. You can disable this by using 0. Disabling this will also force all par2 files to be downloaded</td>
         </tr>
         <tr>
+            <td><code>process_unpacked_par2</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>During post-processing, if there are any <code>.par2</code> files unpacked, they will be analysed and any renames will be performed. Only performed if the job is set to <code>+Delete</code>.</td>
+        </tr>
+        <tr>
             <td><code>queue_complete_pers</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
             <td>Set this to 1 if you want end-of-queue actions Shutdown/Standby/Hibernate to be persistent (remembered) after restarts</td>
@@ -183,7 +188,12 @@ title: Special settings
         <tr>
             <td><code>movie_rename_limit</code></td>
             <td><code>100M</code></td>
-            <td>The minimum size of a file to trigger file renaming in the Sort functions</td>
+            <td>The minimum size of a file to trigger file renaming in the Movie sort functions</td>
+        </tr>
+        <tr>
+            <td><code>episode_rename_limit</code></td>
+            <td><code>20M</code></td>
+            <td>The minimum size of a file to trigger file renaming in the Serie sort functions</td>
         </tr>
         <tr>
             <td><code>nomedia_marker</code></td>

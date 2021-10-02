@@ -82,6 +82,11 @@ title: Servers
             <td>See <a href="/wiki/advanced/ssl-ciphers">SSL Ciphers</a>. </td>
         </tr>
         <tr>
+            <td><strong>Required</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>In case of connection failures, the download queue will be paused for a few minutes instead of skipping this server. This way you can prevent secondary (block) servers to be used when there is a temporary problem with your main server. <br>
+            <span class="label label-warning">NOTE</span> If you enable this on multiple servers, they all need to be available before the download queue will be unpaused.</td>
+        </tr>
+        <tr>
             <td><strong>Optional</strong><br><span class="label label-primary">Advanced</span></td>
             <td>If you use multiple servers and some of these servers are not very reliable, you can declare them "optional". This means that if such a server causes too much problems (like time-outs) it will be ignored for some time. <br>When you declare a server with a long retention time as optional and the server is temporary out-of-service, SABnzbd will fall back to another server. If the alternative server has a shorter retention time, you will miss articles if the articles are beyond the retention time of the alternative server. It is best to set your most reliable and longest retention time server as a lower priority server but not as optional. Secondary servers (cheaper, less reliable, shorter retention time) can be set as <em>high priority</em> and <em>optional</em>.</td>
         </tr>
