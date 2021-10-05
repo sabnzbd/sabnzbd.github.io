@@ -45,7 +45,7 @@ News server problems
 
 1. Easy but **not** secure: Don't use SSL (untick SSL).
 2. Easy but **less** secure: Tell SABnzbd to ignore the problem: in SABnzbd's Server-settings, under Advanced, set `Certificate verification` to `Disabled`.<br> <span class="label label-danger">WARNING</span> Disabling this check allows anyone to redirect and intercept your traffic using *any* certificate! It is comparable to not using SSL at all.
-3. Hard but secure: Test the status of your news server online (above) or check out the [News servers with SSL/TLS overview](https://www.appelboor.com/news servers/news servers-with-SSL.html).
+3. Hard but secure: Test the status of your news server online (above) or check out the [News servers with SSL/TLS overview](https://www.appelboor.com/newsservers/newsservers-with-SSL.html).
 
     1. If the test (or overview) shows an error message such as `OK NOK NOK` or `NOK NOK NOK`, the problem is on the side of the news server. You can ask the news server provider to fix this. But, they could deny there is a problem.
     2. If the test says `OK OK OK` or `OK OK NOK`, then the problem is local (i.e. your computer/NAS): incorrect (root) certificates, a virusscanner doing strange things, or something else. This is not something SABnzbd can solve for you. And the solutions are OS-dependent.
@@ -67,7 +67,7 @@ News server problems
 
 **Q: Which News server provider should I choose?**
 
-**A: Choose one with `OK OK OK` on our [News servers with SSL/TLS overview](https://www.appelboor.com/news servers/news servers-with-SSL.html)**
+**A: Choose one with `OK OK OK` on our [News servers with SSL/TLS overview](https://www.appelboor.com/newsservers/newsservers-with-SSL.html)**
 
 * * *
 
