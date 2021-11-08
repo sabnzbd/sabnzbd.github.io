@@ -158,9 +158,9 @@ title: Special settings
             <td>Includes HTTP header with every request that prevents SABnzbd to be included in another site within the browser. Disable when trying to use SABnzbd with tools that let you control your HTPC from a single interface.</td>
         </tr>
         <tr>
-            <td><code>require_modern_tls</code></td>
+            <td><code>allow_old_ssl_tls</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Enforce TLSv1.2+ for SSL-connections to Usenet servers. Older protocol versions (SSLv2, SSLv3, and TLS <= 1.1) will be disallowed.</td>
+            <td>By default SABnzbd enforces TLSv1.2+ for SSL-connections to Usenet servers. Older protocol versions (SSLv2, SSLv3, and TLS <= 1.1) will only be allowed if this is checked.</td>
         </tr>
     </tbody>
 </table>
