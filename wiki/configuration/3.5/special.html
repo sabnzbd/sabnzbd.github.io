@@ -236,6 +236,11 @@ title: Special settings
             <td>When using a reverse proxy (or just if you feel like it), you can change the base-URL of SABnzbd that is used during redirects. Requires restart of SABnzbd. Trailing slash is not allowed and is automatically removed.</td>
         </tr>
         <tr>
+            <td><code>num_decoders</code></td>
+            <td>3</td>
+            <td>Number of decoder threads. Requires restart.</td>
+        </tr>
+        <tr>
             <td><code>direct_unpack_threads</code></td>
             <td><code>3</code></td>
             <td>When Direct Unpack is enabled we only allow this number of unpackers to be active at the same time. This is to limit strain on the system's disks. <br>Note that there can be an additional unpack active if a job is also being post-processed.</td>
