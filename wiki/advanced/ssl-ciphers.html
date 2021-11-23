@@ -17,7 +17,7 @@ title: SSL Ciphers
 <h2>What are the options?</h2>
 <p>SABnzbd will use the OpenSSL library that's available on your system or that's part of Python.
 <p>You can see which ciphers are available on your system by executing <code>openssl ciphers -v</code> on the command line. All the strings on the left of the table can be used as an SSL Ciphers setting.
-<p>It is also possible to specify multiple single cipher settings or a family of ciphers by specifying it in OpenSSL Cipher format. More information can be found here: <a href="https://www.openssl.org/docs/man1.0.2/apps/ciphers.html" target="_blanl">https://www.openssl.org/docs/man1.0.2/apps/ciphers.html</a>.
+<p>It is also possible to specify multiple single cipher settings or a family of ciphers by specifying it in OpenSSL Cipher format. More information can be found here: <a href="https://www.openssl.org/docs/manmaster/man1/openssl-ciphers.html" target="_blank">https://www.openssl.org/docs/manmaster/man1/openssl-ciphers.html</a>.
 
 <h2>What are the risks?</h2>
 <p>Setting your SSL Ciphers to <code>AES128-SHA</code> will not suddenly expose your traffic to the world. There is evidence that this and similar protocols can be decrypted, but it seems to require a large amount of resources. <a href="https://blog.cloudflare.com/killing-rc4-the-long-goodbye/">This article</a> describes the implications in more detail.</p>
