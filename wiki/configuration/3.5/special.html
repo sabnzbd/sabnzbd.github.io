@@ -18,6 +18,11 @@ title: Special settings
             <td>If checked SABnzbd will always start up in "Paused" mode</td>
         </tr>
         <tr>
+            <td><code>preserve_paused_state</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Preserve the downloading state (paused or unpaused) after a restart.</td>
+        </tr>
+        <tr>
             <td><code>no_penalties</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
             <td>Some Usenet servers have intermittent login (or other) problems. For these the server blocking method is not very favorable. Setting this option will limit blocks to 1 minute.</td>
@@ -237,7 +242,7 @@ title: Special settings
         </tr>
         <tr>
             <td><code>num_decoders</code></td>
-            <td>3</td>
+            <td><code>3</code></td>
             <td>Number of decoder threads. Requires restart.</td>
         </tr>
         <tr>
