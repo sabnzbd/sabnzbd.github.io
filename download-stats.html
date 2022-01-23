@@ -56,6 +56,7 @@ title: Older releases and download statistics
             // Table
             var theReleaseTable = $('<table class="table table-stats table-striped table-hover">');
             theReleaseTable.append('<thead><tr><th>#</th><th>File</th><th style="width: 100px">Hits</th></thead>');
+            theReleaseTable.append('<tbody>');
 
             // Each file
             var totalDownloads = 0;
@@ -84,7 +85,10 @@ title: Older releases and download statistics
                                         '<td></td>' +
                                         '<td><strong>Total</strong></td>' +
                                         '<td><strong>'+totalDownloads+'</strong></td>' +
-                                    '</tr>')
+                                    '</tr>');
+
+            // Finish the table
+            theReleaseTable.append('</tbody></table>')
 
 
             // Add this table
