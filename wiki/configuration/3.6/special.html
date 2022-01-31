@@ -55,7 +55,12 @@ title: Special settings
         <tr>
             <td><code>api_warnings</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>When the API is accessed by external tools without proper authentication, SABnzbd will show a warning. This is a security warning that you should take seriously. However, it seems that there are some security tools that try to access anything that looks like a webserver. If you cannot disable the cause of the warnings, you can choose to disable the warning.</td>
+            <td>
+                When the API is accessed by external tools without proper authentication, SABnzbd will show a warning.
+                This is a security warning that you should take seriously. However, it seems that there are some security tools that try to access anything that looks like a webserver.
+                If you cannot remove the cause of the warnings, you can choose to disable the warning.<br>
+                If disabled, for blocked requests no error message (such as <code>Access denied</code>) is returned to the client.
+            </td>
         </tr>
         <tr>
             <td><code>helpfull_warnings</code></td>
