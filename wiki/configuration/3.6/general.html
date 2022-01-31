@@ -119,6 +119,16 @@ title: General
             <td><strong>HTTPS certificate verification</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Verify certificates when connecting to indexers and RSS-sources using HTTPS. Some websites do not have proper certificates and some systems might not be configured correctly.</td>
         </tr>
+        <tr>
+            <td><strong>SOCKS5 Proxy</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>Connection information is entered as a URL, ie:
+                <ul>
+                    <li><code>socks5://username:password@hostname:port</code> or</li>
+                    <li><code>socks5://hostname:port</code> (no login)</li>
+                </ul>
+                <span class="label label-warning">NOTE</span> The connection between the client and the server will use SSL if enabled. However, the connection between the proxy and the client will not.
+                This means that the data transferred between the client and the server is hidden for anyone including the proxy, but the username and password for the proxy and the server address are unencrypted.</td>
+        </tr>
     </tbody>
 </table>
 

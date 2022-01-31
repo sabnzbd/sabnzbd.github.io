@@ -66,7 +66,7 @@ title: Servers
         <tr>
             <td><strong>Certificate verification</strong><br><span class="label label-primary">Advanced</span></td>
             <td>
-                <p>SABnzbd can verify the certificates your news server uses to verify its identity. Python 2.7.9 or above, OpenSSL 1.0.2 or above and up-to-date local CA certificates are required.</p>
+                <p>SABnzbd can verify the certificates your news server uses to verify its identity. OpenSSL 1.0.2 or above and up-to-date local CA certificates are required.</p>
                 <p><span class="label label-danger">WARNING</span> Disabling or setting this check to <code>Minimal</code> allows anyone to redirect and intercept your traffic using <em>any</em> valid certificate!  It is comparable to not using SSL at all.</p>
                 <p>Read more on <a href="/wiki/advanced/certificate-errors">Certificate verification</a>.</p>
                 <ul>
@@ -80,6 +80,11 @@ title: Servers
         <tr>
             <td><strong>SSL Ciphers</strong><br><span class="label label-primary">Advanced</span></td>
             <td>See <a href="/wiki/advanced/ssl-ciphers">SSL Ciphers</a>. </td>
+        </tr>
+        <tr>
+            <td><strong>Required</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>In case of connection failures, the download queue will be paused for a few minutes instead of skipping this server. This way you can prevent secondary (block) servers to be used when there is a temporary problem with your main server. <br>
+            <span class="label label-warning">NOTE</span> If you enable this on multiple servers, they all need to be available before the download queue will be unpaused.</td>
         </tr>
         <tr>
             <td><strong>Optional</strong><br><span class="label label-primary">Advanced</span></td>

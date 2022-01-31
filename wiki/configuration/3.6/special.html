@@ -18,6 +18,11 @@ title: Special settings
             <td>If checked SABnzbd will always start up in "Paused" mode</td>
         </tr>
         <tr>
+            <td><code>preserve_paused_state</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Preserve the downloading state (paused or unpaused) after a restart.</td>
+        </tr>
+        <tr>
             <td><code>no_penalties</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
             <td>Some Usenet servers have intermittent login (or other) problems. For these the server blocking method is not very favorable. Setting this option will limit blocks to 1 minute.</td>
@@ -36,6 +41,11 @@ title: Special settings
             <td><code>enable_par_cleanup</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Normally SABnzbd will clean up par2 files after verify/repair. You can disable this by using 0. Disabling this will also force all par2 files to be downloaded</td>
+        </tr>
+        <tr>
+            <td><code>process_unpacked_par2</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>During post-processing, if there are any <code>.par2</code> files unpacked, they will be analysed and any renames will be performed. Only performed if the job is set to <code>+Delete</code>.</td>
         </tr>
         <tr>
             <td><code>queue_complete_pers</code></td>
@@ -153,9 +163,9 @@ title: Special settings
             <td>Includes HTTP header with every request that prevents SABnzbd to be included in another site within the browser. Disable when trying to use SABnzbd with tools that let you control your HTPC from a single interface.</td>
         </tr>
         <tr>
-            <td><code>require_modern_tls</code></td>
+            <td><code>allow_old_ssl_tls</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Enforce TLSv1.2+ for SSL-connections to Usenet servers. Older protocol versions (SSLv2, SSLv3, and TLS <= 1.1) will be disallowed.</td>
+            <td>By default SABnzbd enforces TLSv1.2+ for SSL-connections to Usenet servers. Older protocol versions (SSLv2, SSLv3, and TLS <= 1.1) will only be allowed if this is checked.</td>
         </tr>
     </tbody>
 </table>
@@ -183,7 +193,12 @@ title: Special settings
         <tr>
             <td><code>movie_rename_limit</code></td>
             <td><code>100M</code></td>
-            <td>The minimum size of a file to trigger file renaming in the Sort functions</td>
+            <td>The minimum size of a file to trigger file renaming in the Movie sort functions</td>
+        </tr>
+        <tr>
+            <td><code>episode_rename_limit</code></td>
+            <td><code>20M</code></td>
+            <td>The minimum size of a file to trigger file renaming in the Serie sort functions</td>
         </tr>
         <tr>
             <td><code>nomedia_marker</code></td>
@@ -224,6 +239,11 @@ title: Special settings
             <td><code>url_base</code></td>
             <td><code>/sabnzbd</code></td>
             <td>When using a reverse proxy (or just if you feel like it), you can change the base-URL of SABnzbd that is used during redirects. Requires restart of SABnzbd. Trailing slash is not allowed and is automatically removed.</td>
+        </tr>
+        <tr>
+            <td><code>num_decoders</code></td>
+            <td><code>3</code></td>
+            <td>Number of decoder threads. Requires restart.</td>
         </tr>
         <tr>
             <td><code>direct_unpack_threads</code></td>
@@ -268,7 +288,7 @@ title: Special settings
         <tr>
             <td><code>local_ranges</code></td>
             <td></td>
-            <td>Specify a (comma separated) list of one or more network ranges where the <a href="/wiki/configuration/{{ site.wiki_version }}/general">External internet access</a> level doesn't apply and the full interface is available. If defined, these replace the default handling based on rfc1918 and rfc4193 <a href="https://en.wikipedia.org/wiki/Private_network" target="_blank">private</a> network ranges.<br>
+            <td>Specify a (comma separated) list of one or more network ranges where the <a href="/wiki/configuration/{{ site.wiki_version }}/general">External internet access</a> level doesn't apply and the full interface is available. Sending Bonjour and SSDP broadcasts is also limited to these ranges. If defined, the local ranges replace the default handling based on rfc1918 and rfc4193 <a href="https://en.wikipedia.org/wiki/Private_network" target="_blank">private</a> network ranges.<br>
             <br>Network ranges should be set in their standard notation with a prefix or netmask (e.g. <code>192.168.1.0/24</code> or <code>10.42.0.0/255.255.0.0</code>). Input in the form of SABnzbd's older (pre-3.3.0) local_ranges setting (e.g. <code>192.168.1.</code>, intended for use with Python's <code>str.startswith()</code>) is also accepted and continues to work.</td>
         </tr>
     </tbody>
