@@ -1,4 +1,4 @@
 3.5.0
 https://sabnzbd.org/downloads.html
-3.5.1RC1
+3.5.1RC2
 https://sabnzbd.org/downloads.html
