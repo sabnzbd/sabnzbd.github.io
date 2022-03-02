@@ -1,5 +1,5 @@
 ---
-title: SABYenc
+title: SABYenc 3
 redirect_from:
     - /sabyenc
     - /wiki/extra/sabyenc.html
@@ -7,7 +7,7 @@ redirect_from:
 
 # Introduction to SAByenc
 
-In SABnzbd 2.0.0 we introduced a new module called `sabyenc` to increase the download speed on CPU-limited devices, which was further improved in SABnzbd 2.3.0.
+In SABnzbd 3.0.0 we introduced a new module called `sabyenc3` to increase the download speed on CPU-limited devices, which was further improved in SABnzbd 2.3.0.
 
 The Windows- and macOS-packages of SABnzbd automatically contain that module. On other platforms (like Linux and FreeBSD) you have to make sure the module is installed. The information below is for packagers and source code users on those platforms.
 
@@ -19,27 +19,25 @@ The Windows- and macOS-packages of SABnzbd automatically contain that module. On
 
 # Installation on Linux
 
+<div class="alert alert-warning">
+    These instructions assume that <code>python</code> and <code>pip</code> refer to the Python 3 installation on your system.<br>On some systems Python 2.5 is the default <code>python</code> and you should instead use the <code>python3</code> and <code>pip3</code> commands.
+</div>
+
 ### Installation in general
 
-
-
-With Linux on x86 and x86-64, the latest version of the module can be installed via Python's packaging manager `pip` by running
+With Linux on x86 and aarch64, the latest version of the module can be installed via Python's packaging manager `pip` (or `pip3`) by running
 
 ```
-pip install sabyenc --upgrade
+pip install sabyenc3
 ```
 
-On other platforms (ARM, MIPS, etc), you need to first install the python-development module (`python-dev` or `python-devel`), and then run the above `pip` command.
+On other platforms you need to first install the python-development module (`python3-dev` or `python3-devel`), and then run the above `pip` command.
 
 If you need to install a specific version to match your version of SABnzbd, you can specify this in the command:
 
 ```
-pip install sabyenc==3.3.1
+pip install sabyenc3==4.0.2
 ```
-
-<div class="alert alert-warning">
-    These instructions assume that <code>python</code> and <code>pip</code> refer to the Python 3 installation on your system.<br>On some systems Python 2.5 is the default <code>python</code> and you should instead use the <code>python3</code> and <code>pip3</code> commands.
-</div>
 
 <hr/>
 
@@ -53,19 +51,18 @@ sudo apt-get update
 sudo apt-get install python-sabyenc
 ```
 
-
 ### Installation on Ubuntu (without PPA)
 
 Short method, only works on X86 and X86-64
 ```
-sudo apt-get install python-pip
-sudo -H pip install sabyenc --upgrade
+sudo apt-get install python3-pip
+sudo -H pip install sabyenc3 --upgrade
 ```
 
 Long, with your own compiling:
 ```
-sudo apt-get install python-dev python-pip
-sudo -H pip install sabyenc --upgrade
+sudo apt-get install python3-dev python3-pip
+sudo -H pip install sabyenc3 --upgrade
 ```
 
 ### Installation on Fedora / RedHat
@@ -75,7 +72,7 @@ Short method, only works on X86 and X86-64
 All as root:
 ```
 pip install --upgrade pip
-pip install sabyenc --upgrade
+pip install sabyenc3 --upgrade
 ```
 
 Long, with your own compiling:
@@ -83,7 +80,7 @@ Long, with your own compiling:
 ```
 yum install -y python-devel gcc redhat-rpm-config
 pip install --upgrade pip
-pip install sabyenc --upgrade
+pip install sabyenc3 --upgrade
 ```
 
 ### Installation on OpenSuSE
@@ -93,7 +90,7 @@ Short, works on X86 and X86-64
 ```
 zypper install -y python-pip
 pip install --upgrade pip
-pip install sabyenc --upgrade
+pip install sabyenc3 --upgrade
 ```
 
 Long, with your own compiling:
@@ -101,9 +98,8 @@ Long, with your own compiling:
 ```
 zypper install -y python-pip python-devel gcc
 pip install --upgrade pip
-pip install sabyenc --upgrade
+pip install sabyenc3 --upgrade
 ```
-
 
 <hr/>
 
@@ -112,16 +108,16 @@ pip install sabyenc --upgrade
 If you have multiple installations of Python on your machine (<code>python</code>/<code>python2</code>/<code>python3</code> or different versions of Python 3), you have to make sure SAByenc is installed into the correct Python enviroment. And 'correct' means the Python installation used by SABnzbd. The command is then:
 
 ```
-/path/to/correct/python -m pip install sabyenc
+/path/to/correct/python -m pip install sabyenc3
 ```
 
-## Check if sabyenc is correctly installed
+## Check if SABYenc is correctly installed
 
-To check if sabyenc is correctly installed, run this Python oneliner:
+To check if SABYenc is correctly installed, run this Python oneliner:
 ```
-python -c "import sabyenc ; print sabyenc.__version__ "
+python -c "import sabyenc3; print(sabyenc3.__version__);"
 ```
-It should print the version of the installed `sabyenc` module, without any errors.
+It should print the version of the installed `sabyenc3` module, without any errors.
 
 
 ## SABnzbd's Checking & Logging
@@ -130,20 +126,14 @@ SABnzbd will check if SAByenc is installed.
 If SAByenc is installed, and the version is correct, SABnzbd will print in the log:
 
 ```
-SABYenc module (v2.7.0)... found!
+SABYenc module (v4.0.2)... found!
 ```
 
-If you have no `sabyenc` module installed, or an incorrect version (too low or too high (!)), you will get a warning:
+If you have no `sabyenc3` module installed, or an incorrect version (too low or too high (!)), you will get a warning:
 
 ```
-SABYenc module... NOT found! Expecting v2.7.0
+SABYenc module... NOT found! Expecting v4.0.2
 ```
-
-on start-up to make users aware of the change. You can still download, but not with the improved speed.
-
-## Notes
-
-<span class="label label-warning">NOTE</span> The regular `_yenc` module will stay supported and download speed will stay the same as in SABnzbd 1.x.
 
 ## Issues
 
