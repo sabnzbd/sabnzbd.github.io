@@ -7,9 +7,40 @@ redirect_from:
 
 # Introduction to SAByenc
 
-In SABnzbd 3.0.0 we introduced a new module called `sabyenc3` to increase the download speed on CPU-limited devices, which was further improved in SABnzbd 2.3.0.
+In SABnzbd 3.0.0 we introduced a new module called `sabyenc3` to increase the download speed on CPU-limited devices. `sabyenc3` takes care of decoding yencoded articles on usenet.
+
+With SABnzbd 3.6.0, we introduced version 5.0.0 of sabyenc3 which uses SIMD ("Single instruction, multiple data", a type of parallel processing by the CPU) on x86 and ARM processors, which speeds up yenc decoding with a factor 5 to 10.
 
 The Windows- and macOS-packages of SABnzbd automatically contain that module. On other platforms (like Linux and FreeBSD) you have to make sure the module is installed. The information below is for packagers and source code users on those platforms.
+
+### Version dependency
+
+SABnzbd 3.5.x and lower only works with `sabyenc3` version 4.0.x
+
+SABnzbd 3.6.x and higher only works with `sabyenc3` version 5.0.x
+
+If SABnzbd detects the wrong version of `sabyenc3`, it will print out an error message.
+
+
+
+# Installation with Python's packaging manager pip 
+
+Inside the source directory of SABnzbd, run this command
+
+```
+python3 -m pip install -r requirements.txt -U
+```
+
+It will take care of installing the right version of `sabyenc3`. This will work for x86 and ARM.
+
+You might need to first install the python-development module (`python3-dev` or `python3-devel`), and then run the above `pip` command.
+
+If you need to install a specific version to match your version of SABnzbd, you can specify this in the command:
+
+```
+pip install sabyenc3==4.0.2
+```
+
 
 <hr/>
 
@@ -20,24 +51,9 @@ The Windows- and macOS-packages of SABnzbd automatically contain that module. On
 # Installation on Linux
 
 <div class="alert alert-warning">
-    These instructions assume that <code>python</code> and <code>pip</code> refer to the Python 3 installation on your system.<br>On some systems Python 2.5 is the default <code>python</code> and you should instead use the <code>python3</code> and <code>pip3</code> commands.
+    These instructions assume that <code>python</code> and <code>pip</code> refer to the Python 3 installation on your system.<br>On some older systems Python 2 is the default <code>python</code> and you should instead use the <code>python3</code> and <code>pip3</code> commands.
 </div>
 
-### Installation in general
-
-With Linux on x86 and aarch64, the latest version of the module can be installed via Python's packaging manager `pip` (or `pip3`) by running
-
-```
-pip install sabyenc3
-```
-
-On other platforms you need to first install the python-development module (`python3-dev` or `python3-devel`), and then run the above `pip` command.
-
-If you need to install a specific version to match your version of SABnzbd, you can specify this in the command:
-
-```
-pip install sabyenc3==4.0.2
-```
 
 <hr/>
 
@@ -115,7 +131,7 @@ If you have multiple installations of Python on your machine (<code>python</code
 
 To check if SABYenc is correctly installed, run this Python oneliner:
 ```
-python -c "import sabyenc3; print(sabyenc3.__version__);"
+python -c "import sabyenc3; print(sabyenc3.__version__, sabyenc3.__file__);"
 ```
 It should print the version of the installed `sabyenc3` module, without any errors.
 
@@ -129,11 +145,24 @@ If SAByenc is installed, and the version is correct, SABnzbd will print in the l
 SABYenc module (v4.0.2)... found!
 ```
 
+If you a version of sabyen3 which does not match the version required by SABnzbd, you get:
+```
+SABYenc disabled: no correct version found! (Found v4.0.2, expecting v5.0.1)
+```
+
+
 If you have no `sabyenc3` module installed, or an incorrect version (too low or too high (!)), you will get a warning:
 
 ```
 SABYenc module... NOT found! Expecting v4.0.2
 ```
+
+
+
+# Compiling from source
+
+On less mainstream platforms (RISCV64, PowerPC), you might need to compile `sabyenc3` yourself. See https://github.com/sabnzbd/sabyenc
+
 
 ## Issues
 
