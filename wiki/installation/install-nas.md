@@ -14,4 +14,9 @@ Packages maintained by the community.
 * [Sherpa mini package manager](https://git.io/sherpa)
 * [Install through Docker](/wiki/installation/install-unix) (if supported on your platform)
 
+## ASUSTOR
+
+* [SABnzbdplus](https://www.asustor.com/app_central/app_detail?id=98)
+* [SABnzbd](https://www.asustor.com/app_central/app_detail?id=1075) (uses Docker, not supported on all models)
+
 Do you have a NAS instruction we should add? [Let us know](https://github.com/sabnzbd/sabnzbd.github.io/issues/new?title=Improve%3A+Install+SABnzbdon+a+NAS&body=%23%23+URL%3A+%2Fwiki%2Finstallation%2Finstall-nas.html%0A%0AImprovement:%0A)
