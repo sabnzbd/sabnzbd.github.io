@@ -20,15 +20,19 @@ SABnzbd 3.5.x and lower only works with `sabyenc3` version 4.0.x
 SABnzbd 3.6.x and higher only works with `sabyenc3` version 5.0.x
 
 If SABnzbd detects the wrong version of `sabyenc3`, it will print out an error message.
+    
+# Installation with Python's packaging manager `pip` 
 
+<div class="alert alert-warning">
+    These instructions assume that <code>python</code> and <code>pip</code> refer to the Python 3 installation on your system.<br>On some older systems Python 2 is the default <code>python</code> and you should instead use the <code>python3</code> and <code>pip3</code> commands.
+</div>
 
-
-# Installation with Python's packaging manager pip 
+<hr/>
 
 Inside the source directory of SABnzbd, run this command
 
 ```
-python3 -m pip install -r requirements.txt -U
+pip install -r requirements.txt
 ```
 
 It will take care of installing the right version of `sabyenc3`. This will work for x86 and ARM.
@@ -41,21 +45,12 @@ If you need to install a specific version to match your version of SABnzbd, you 
 pip install sabyenc3==4.0.2
 ```
 
-
 <hr/>
 
-**Jump to: [Ubuntu (via PPA)](#installation-on-ubuntu-via-ppa), [Ubuntu](#installation-on-ubuntu-without-ppa), [Fedora / RedHat](#installation-on-fedora--redhat), [OpenSuSE](#installation-on-opensuse) or [FreeBSD](#installation-on-freebsd).**
-
-<hr/>
 
 # Installation on Linux
 
-<div class="alert alert-warning">
-    These instructions assume that <code>python</code> and <code>pip</code> refer to the Python 3 installation on your system.<br>On some older systems Python 2 is the default <code>python</code> and you should instead use the <code>python3</code> and <code>pip3</code> commands.
-</div>
-
-
-<hr/>
+**Jump to: [Ubuntu (via PPA)](#installation-on-ubuntu-via-ppa), [Ubuntu](#installation-on-ubuntu-without-ppa), [Fedora / RedHat](#installation-on-fedora--redhat), [OpenSuSE](#installation-on-opensuse) or [FreeBSD](#installation-on-freebsd).**
 
 ### Installation on Ubuntu via PPA
 
@@ -145,24 +140,16 @@ If SAByenc is installed, and the version is correct, SABnzbd will print in the l
 SABYenc module (v4.0.2)... found!
 ```
 
-If you a version of sabyen3 which does not match the version required by SABnzbd, you get:
+If your version of `sabyenc3` does not match the version required by SABnzbd, you get:
 ```
 SABYenc disabled: no correct version found! (Found v4.0.2, expecting v5.0.1)
 ```
-
 
 If you have no `sabyenc3` module installed, or an incorrect version (too low or too high (!)), you will get a warning:
 
 ```
 SABYenc module... NOT found! Expecting v4.0.2
 ```
-
-
-
-# Compiling from source
-
-On less mainstream platforms (RISCV64, PowerPC), you might need to compile `sabyenc3` yourself. See https://github.com/sabnzbd/sabyenc
-
 
 ## Issues
 
