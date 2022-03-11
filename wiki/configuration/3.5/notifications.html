@@ -179,26 +179,17 @@ title: Notifications
 <p>You need a Pushbullet subscription and an API-key.</p>
 
 <h3 id="nscript">Notification script</h3>
-<p>Allows implementation of custom notification services. See <a href="/wiki/scripts/notification-scripts">Notification Scripts</a>.
-</p>
-<p><a href="https://github.com/caronc/nzb-notify" target="_blank">NZB-Notify</a>'s notification script provides a wide range of notification services, extending on the build-in providers of SABnzbd. <br>These services are currently supported by <a href="https://github.com/caronc/nzb-notify" target="_blank">NZB-Notify</a>:</p>
+<p>Allows implementation of custom notification services. See <a href="/wiki/scripts/notification-scripts">Notification Scripts</a>.</p>
+<p><a href="https://github.com/caronc/nzb-notify" target="_blank">NZB-Notify</a>'s notification script provides a very wide range of notification services, listed <a href="https://github.com/caronc/apprise#popular-notification-services" target="_blank">here</a>.</p>
+<h4>NZB-Notify setup:</h4>
 <ul>
-    <li>Boxcar</li>
-    <li>Faast</li>
-    <li>JSON (Simple)</li>
-    <li>KODI</li>
-    <li>Notify My Android</li>
-    <li>Join</li>
-    <li>Pushalot</li>
-    <li>Pushjet</li>
-    <li>Toasty</li>
-    <li>XBMC</li>
-    <li>Slack</li>
-    <li>Super Toasty</li>
-    <li>Rocket.Chat</li>
-    <li>MatterMost</li>
-    <li>Telegram</li>
-    <li>Twitter</li>
-    <li>XML (Simple)</li>
+    <li>In <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Config-&gt;Folders</a>, select a <code>Scripts Folder</code>.</li>
+    <li>On Windows and macOS, download and install Python from <a href="https://www.python.org/">python.org</a>. Restart the system after the installation.</li>
+    <li>Download <a href="https://github.com/caronc/nzb-notify/archive/refs/heads/master.zip">NZB-Notify</a> and unpack the contents of the <code>nzb-notify-master</code> folder to the <code>Scripts Folder</code>.</li>
+    <li>Open a terminal (macOS/Linux) or command line window (Windows) and navigate to the <code>Scripts Folder</code>.</li>
+    <li>Run <code>pip install -r requirements.txt</code> (on some systems you might have to replace <code>pip</code> by <code>pip3</code>).</li>
+    <li>You can now select <code>sabnzbd-notify.py</code> in <a href="/wiki/configuration/{{ site.wiki_version }}/notifications">Config-&gt;Notifications</a>.</li>
+    <li>Specify the URL for <a href="https://github.com/caronc/apprise#popular-notification-services" target="_blank">your service</a> such as <code>kodi://192.168.0.2</code> in the <code>Parameters</code> section.
+        You can specify more than one URL here by simply using a comma (<code>,</code>) as a delimiter.</li>
 </ul>
 
