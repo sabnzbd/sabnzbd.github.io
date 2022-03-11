@@ -48,12 +48,8 @@ title: General
             <td>Port to be used for listening. Must be different from the normal HTTP port. If empty, the SABnzbd Port set above will only listen to HTTPS (this is the default setting).</td>
         </tr>
         <tr>
-            <td><strong>HTTPS Certificate</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>File containing the HTTPS certificate.</td>
-        </tr>
-        <tr>
-            <td><strong>HTTPS Key</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>File containing the HTTPS key.</td>
+            <td><strong>HTTPS Certificate/Key/Chain Certificates</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>Files containing the HTTPS certificate, key and (optionally) chain Certificates.</td>
         </tr>
     </tbody>
 </table>
@@ -158,6 +154,21 @@ title: General
                 <p>See <a href="/wiki/advanced/highspeed-downloading">High speed downloading</a> for more information.<br>
                 Article Cache is limited to <code>1G</code> on 32bit systems and <code>4G</code> on 64bit systems.</p>
             </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="toc3">Backup</h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Download backup</strong></td>
+            <td>Download a backup of the configuration file and databases.<br>
+                <span class="label label-danger">WARNING</span> The backup contains all sensitive information like your passwords and API keys!</td>
+        </tr>
+        <tr>
+            <td><strong>Restore backup</strong></td>
+            <td>Restore a backup of the configuration file and databases.</td>
         </tr>
     </tbody>
 </table>
