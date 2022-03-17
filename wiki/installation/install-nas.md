@@ -12,6 +12,7 @@ Packages maintained by the community.
 ## QNAP
 
 * [Sherpa mini package manager](https://git.io/sherpa)
+* [Qnapclub](https://www.qnapclub.eu/qpkg/1012)
 * [Install through Docker](/wiki/installation/install-unix) (if supported on your platform)
 
 ## ASUSTOR
