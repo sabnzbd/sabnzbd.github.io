@@ -246,22 +246,12 @@ title: Special settings
             <td>When using a reverse proxy (or just if you feel like it), you can change the base-URL of SABnzbd that is used during redirects. Requires restart of SABnzbd. Trailing slash is not allowed and is automatically removed.</td>
         </tr>
         <tr>
-            <td><code>decoders</code></td>
+            <td><code>num_simd_decoders</code></td>
             <td><code>0</code></td>
             <td>
                 Number of decoder threads. If set to <code>0</code> defaults will be used:<br>
-                If SIMD instruction sets are available, no more than 1 thread should be required as more will just slow things down.<br>
+                If a SIMD CPU instruction set is available, no more than 1 thread should be required as more threads will just slow things down.<br>
                 If <em>no</em> SIMD instruction sets are available on the CPU, 2 decoder threads will be used.<br>
-                Requires restart.
-            </td>
-        </tr>
-        <tr>
-            <td><code>assemblers</code></td>
-            <td><code>0</code></td>
-            <td>
-                Number of assembler threads. If set to <code>0</code> defaults will be used:<br>
-                If SIMD instruction sets are available, 2 threads will be used to increase throughput.<br>
-                If <em>no</em> SIMD instruction sets are available on the CPU, only 1 thread will be used since article decoding will be slower and higher disk throughput is not needed.<br>
                 Requires restart.
             </td>
         </tr>
