@@ -10,7 +10,7 @@ latest_stable: '3.5.3'
 latest_testing: '3.6.0Beta5'
 
 # Basic ad-URL
-ad_link: 'https://www.newshosting.com/usenet/partners/sabnzbd/?a_aid=sabnzbd'
+ad_link: 'https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sabnzbd'
 
 # Extra plugins
 plugins:

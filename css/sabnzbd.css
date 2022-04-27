@@ -182,10 +182,6 @@ footer a:hover,
     top: 3px;
 }
 
-#banner-wide {
-    display: none;
-}
-
 .highlights {
     float: right;
     height: 120px;
@@ -636,20 +632,11 @@ aside {
     text-align: right;
 }
 
-aside a {
-    display: none;
-}
 /***** */
 
-.content-container .banner-wide-text,
 .content-container .banner-tall-text {
     font-weight: bold;
     color: black;
-}
-
-.banner-wide,
-#wiki-side-bar .banner-tall {
-    display: none;
 }
 
 .banner-wide img {
@@ -661,6 +648,7 @@ aside a {
     .downloads-row {
         height: 130px;
     }
+
     .downloads-container img {
         margin: 10px auto;
     }
@@ -689,8 +677,7 @@ aside a {
 
     /* Show the horizontal ad */
     #banner-wide {
-        display: block;
-        font-weight: bold;
+        display: block !important;
         padding-bottom: 15px;
     }
 }
@@ -755,6 +742,10 @@ aside a {
 
 /* Anything bigger than a phone */
 @media only screen and (min-width: 767px) {
+    #banner-wide {
+        display: none;
+    }
+
     #navbar {
         padding-left: 0;
         margin-left: -15px;
@@ -766,6 +757,7 @@ aside a {
     #wiki-side-bar {
         display: block !important;
     }
+    
     .navbar-wiki-button {
         display: none;
     }
