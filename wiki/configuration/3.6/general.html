@@ -6,7 +6,7 @@ title: General
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td><strong>Host</strong></td>
+            <td><strong>SABnzbd Host</strong></td>
             <td>
                 The hostname that will be used to access SABnzbd.
 
@@ -20,7 +20,7 @@ title: General
             </td>
         </tr>
         <tr>
-            <td><strong>Port</strong></td>
+            <td><strong>SABnzbd Port</strong></td>
             <td>
                 The internal webserver needs a port to listen on. The default port is <code>8080</code>. Try another one if this address is already occupied by another program on your computer.
                 <br><span class="label label-warning">NOTE</span>  macOS and Linux users: ports below <code>1025</code> may require SABnzbd launched as root.
@@ -48,7 +48,12 @@ title: General
             <td>Port to be used for listening. Must be different from the normal HTTP port. If empty, the SABnzbd Port set above will only listen to HTTPS (this is the default setting).</td>
         </tr>
         <tr>
-            <td><strong>HTTPS Certificate/Key/Chain Certificates</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>
+                <strong>HTTPS Certificate</strong><br>
+                <strong>HTTPS Key</strong><br>
+                <strong>HTTPS Chain Certificates</strong><br>
+                <span class="label label-primary">Advanced</span>
+            </td>
             <td>Files containing the HTTPS certificate, key and (optionally) chain Certificates.</td>
         </tr>
     </tbody>
@@ -57,7 +62,10 @@ title: General
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td><strong>Web Username/Password</strong></td>
+            <td>
+                <strong>SABnzbd Username</strong><br>
+                <strong>SABnzbd Password</strong>
+            </td>
             <td>You may want to limit access to the web interface to people knowing a username and password for the interface.</td>
         </tr>
         <tr>

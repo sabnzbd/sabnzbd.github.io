@@ -6,7 +6,7 @@ title: Switches
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td><strong>Server load-balancing</strong><br><span class="label label-primary">Advanced</span></td>
+            <td><strong>Server IP address selection</strong><br><span class="label label-primary">Advanced</span></td>
             <td>A number of news servers has multiple IP-addresses, these can be IPv4 or IPv6.
             <ul>
                 <li><code>First IP address</code> = The first IP-address returned will be used for all connections. </li>
@@ -37,7 +37,7 @@ title: Switches
             <td>If you experience very young posts failing due to missing blocks your server might still be in the process of receiving the posts. Delaying the these very young posts a few minutes might solve these issues. Posts will be paused until they are at least this age. <br>Setting job priority to Force will skip the delay.</td>
         </tr>
         <tr>
-            <td><strong>Only get articles for top of the queue</strong></td>
+            <td><strong>Only get articles for top of queue</strong></td>
             <td>When a top-job stalls for some reason, start downloading segments for the next job. This prevents a job from blocking the queue when you have an unreliable Usenet server. If you need this behavior, set the option off. If you have a reliable server (most paid servers), you might as well set this on.</td>
         </tr>
         <tr>
@@ -181,11 +181,11 @@ title: Switches
             <td>When SABnzbd does unpacking it will do that in a folder prefixed with <code>_UNPACK_</code>. This is to prevent users or other software from processing the file. Some operating systems cannot handle this. Therefore it's possible to disable the feature.</td>
         </tr>
         <tr>
-            <td><strong>Replace Spaces in folder names</strong><br><span class="label label-primary">Advanced</span></td>
+            <td><strong>Replace Spaces in folder name</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Enable to replace spaces with underscores in folder names.</td>
         </tr>
         <tr>
-            <td><strong>Replace dots in folder names</strong><br><span class="label label-primary">Advanced</span></td>
+            <td><strong>Replace dots in folder name</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Enable to replace dots with spaces in folder names.</td>
         </tr>
         <tr>
@@ -203,7 +203,7 @@ title: Switches
             <td>In bytes. Example: <code>5G</code> (for 5 GB) or <code>1T</code> (for 1 TB)</td>
         </tr>
         <tr>
-            <td><strong>Period</strong></td>
+            <td><strong>Quota Period</strong></td>
             <td>Daily, Weekly or Monthly quota</td>
         </tr>
         <tr>
