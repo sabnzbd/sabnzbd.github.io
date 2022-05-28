@@ -1,0 +1,182 @@
+---
+title: General
+---
+
+<h2 id="toc0">Web server</h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>SABnzbd Host</strong></td>
+            <td>
+                The hostname that will be used to access SABnzbd.
+
+                <ul>
+                    <li><code>127.0.0.1</code> or <code>[::1]</code> or <code>localhost</code> <em>(default)</em> = Access from this computer only</li>
+                    <li>empty = Finds and listens on your local (IPv4) IP address. Used for accessing from other computers. localhost will not work anymore so update your bookmarks.</li>
+                    <li><code>0.0.0.0</code> = Listens on multiple interfaces (both local IP and localhost).</li>
+                    <li><code>::</code> = Listen on both IPv4 and IPv6 addresses for local and network access.</li>
+                </ul>
+                For more information and option to overwrite this setting at startup see <a href="/wiki/advanced/command-line-parameters">Command Line Parameters</a>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>SABnzbd Port</strong></td>
+            <td>
+                The internal webserver needs a port to listen on. The default port is <code>8080</code>. Try another one if this address is already occupied by another program on your computer.
+                <br><span class="label label-warning">NOTE</span>  macOS and Linux users: ports below <code>1025</code> may require SABnzbd launched as root.
+            </td>
+        </tr>
+
+        <tr>
+            <td><strong>Web Interface</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>SABnzbd comes with a few different skins (web interface styles). Pick one here and click on save. For the skin to become active, you have to shutdown SABnzbd and restart it again. Some skins support multiple color schemas. </td>
+        </tr>
+        <tr>
+            <td><strong>Language</strong></td>
+            <td>The program supports more languages.<br><span class="label label-warning">NOTE</span> Help us translate SABnzbd in your language: <a href="/wiki/translate">add untranslated texts or improved existing translations</a>.</td>
+        </tr>
+        <tr>
+            <td><strong>Enable HTTPS</strong></td>
+            <td>
+                Enable the webserver to use HTTPS.<br>
+                For more information, see: <a href="/wiki/advanced/https">HTTPS</a>.<br>
+                <span class="label label-warning">NOTE</span> Modern web browsers and other clients will not accept self-signed certificates and will give a warning and/or won't connect at all.
+            </td>
+        </tr>
+        <tr>
+            <td><strong>HTTPS Port</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>Port to be used for listening. Must be different from the normal HTTP port. If empty, the SABnzbd Port set above will only listen to HTTPS (this is the default setting).</td>
+        </tr>
+        <tr>
+            <td>
+                <strong>HTTPS Certificate</strong><br>
+                <strong>HTTPS Key</strong><br>
+                <strong>HTTPS Chain Certificates</strong><br>
+                <span class="label label-primary">Advanced</span>
+            </td>
+            <td>Files containing the HTTPS certificate, key and (optionally) chain Certificates.</td>
+        </tr>
+    </tbody>
+</table>
+<h2>Security</h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td>
+                <strong>SABnzbd Username</strong><br>
+                <strong>SABnzbd Password</strong>
+            </td>
+            <td>You may want to limit access to the web interface to people knowing a username and password for the interface.</td>
+        </tr>
+        <tr>
+            <td><strong>External internet access</strong></td>
+            <td>
+                <p>Set the access level for connections from outside the local network.<br>
+                <br>By default, all IP addresses in a <a href="https://en.wikipedia.org/wiki/Private_network" target="_blank">private</a> network range, such as <code>192.168.0.0/16</code>, <code>172.16.0.0/12</code>, <code>10.0.0.0/8</code> and <code>fd00::/8</code> are considered local. To define custom local network ranges, use the <a href="/wiki/configuration/{{ site.wiki_version }}/special">Special</a> <code>local_ranges</code> setting.
+                <ul>
+                    <li>
+                        <strong>API:</strong>
+                        <ul>
+                            <li><code>No access</code> = No outside access is allowed at all.</li>
+                            <li><code>Add NZB files</code> = Only NZB's can be added via the API, nothing else.</li>
+                            <li><code>API (no config)</code> = API is fully available (queue/history/add+remove NZB's/etc), except for methods that get or edit the configuration.</li>
+                            <li><code>Full API</code> = All API methods are available, including editing the configuration.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Full API &amp; Web Interface:</strong>
+                        <ul>
+                            <li><code>Full Web Interface</code> = The full API methods and the web interface are available. Users are always shown the login screen if username/password are set.</li>
+                            <li><code>Full Web interface - Only external access requires login</code> = Only users outside the local network ranges are shown the login screen if username and password are set.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>API Key</strong></td>
+            <td>This is the <em>secret key</em> that is needed in <a href="/wiki/advanced/automation-support">API calls</a>.<br><span class="label label-warning">NOTE</span> When you click the Change button, you'll need to tell your utilities the new key.</td>
+        </tr>
+        <tr>
+            <td><strong>NZB Key</strong></td>
+            <td>
+                This is similar to the API Key, but only allows external applications to add NZB's. <br>
+                <span class="label label-warning">NOTE</span> After adding NZB's, external applications do not have access to the queue to monitor the progress of the download.<br>
+                <span class="label label-warning">NOTE</span> When you click the Change button, you'll need to tell your utilities the new key.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Switches</h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Launch browser on startup</strong></td>
+            <td>Enable to auto-launch of the browser when SABnzbd is started.</td>
+        </tr>
+        <tr>
+            <td><strong>Check for new release</strong></td>
+            <td>If enabled, SABnzbd will check once a week whether a new release has been published.</td>
+        </tr>
+        <tr>
+            <td><strong>HTTPS certificate verification</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>Verify certificates when connecting to indexers and RSS-sources using HTTPS. Some websites do not have proper certificates and some systems might not be configured correctly.</td>
+        </tr>
+        <tr>
+            <td><strong>SOCKS5 Proxy</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>Connection information is entered as a URL, ie:
+                <ul>
+                    <li><code>socks5://username:password@hostname:port</code> or</li>
+                    <li><code>socks5://hostname:port</code> (no login)</li>
+                </ul>
+                <span class="label label-warning">NOTE</span> The connection between the client and the server will use SSL if enabled. However, the connection between the proxy and the client will not.
+                This means that the data transferred between the client and the server is hidden for anyone including the proxy, but the username and password for the proxy and the server address are unencrypted.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="toc2">Tuning</h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Maximum line speed</strong></td>
+            <td>Set how fast your internet connection is, in bytes/sec. <br><span class="label label-warning">NOTE</span> If you have an ISP-speed of 10Mbit/sec, you should enter <code>1MB/s</code> here.</td>
+        </tr>
+        <tr>
+            <td><strong>Percentage of line speed</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>Which percentage of the line speed should SABnzbd use, e.g. 50. This value is used as the default value when SABnzbd starts. <br/>Setting a value of <code>0</code> disables any limit.</td>
+        </tr>
+        <tr>
+            <td><strong>Article Cache Limit</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>
+                <p>How much memory (RAM) can be used for caching (reducing disk access). This value is set automatically when SABnzbd is started for the first time to 25% of the system's memory or <code>2G</code> if you have more than 8GB of memory.<br>
+                You enter the amount in bytes but you can use factors like K, M, G etc. eg: 70M = 70 MB cache. </p>
+
+                <ul>
+                    <li><code>number</code> = Maximum memory (in bytes)</li>
+                    <li><code>0</code> = Disable Cache </li>
+                    <li><code>-1</code> = Unlimited, up to maximum for your system (1 or 4GB).</li>
+                </ul>
+
+                <p>See <a href="/wiki/advanced/highspeed-downloading">High speed downloading</a> for more information.<br>
+                Article Cache is limited to <code>1G</code> on 32bit systems and <code>4G</code> on 64bit systems.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="toc3">Backup</h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Download backup</strong></td>
+            <td>Download a backup of the configuration file and databases.<br>
+                <span class="label label-danger">WARNING</span> The backup contains all sensitive information like your passwords and API keys!</td>
+        </tr>
+        <tr>
+            <td><strong>Restore backup</strong></td>
+            <td>Restore a backup of the configuration file and databases.</td>
+        </tr>
+    </tbody>
+</table>
