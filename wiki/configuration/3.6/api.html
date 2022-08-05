@@ -1045,6 +1045,10 @@ redirect_from: "/wiki/advanced/automation-support"
             <td>Get the anonymized log file</td>
         </tr>
         <tr>
+            <td><a href="#del_config">del_config</a></td>
+            <td><span class="label label-primary">True/False</span> Delete configuration item within "servers", "rss", or "categories" sections.</td>
+        </tr>
+        <tr>
             <td><a href="#get_config">get_config</a></td>
             <td>Get value of configuration item</td>
         </tr>
@@ -1175,12 +1179,27 @@ redirect_from: "/wiki/advanced/automation-support"
 <p><span class="label label-warning">NOTE</span> This call ignores the <code>output</code> parameter, it will always serve the file as a download.</p>
 <pre><code>api?mode=showlog</code></pre>
 
+<h2 id="del_config">Delete configuration item within "servers", "rss", or "categories" sections.</h2>
+<p>Used to delete an entry from the limited sections.</p>
+
+Example of deleting a <code>servers</code> by keyword:
+<pre><code>api?mode=del_config&amp;section=servers&amp;keyword=ServerName</code></pre>
+
+Example of deleting a <code>rss</code> by keyword:
+<pre><code>api?mode=del_config&amp;section=rss&amp;keyword=Feed1</code></pre>
+
+Example of deleting a <code>categories</code> by keyword:
+<pre><code>api?mode=del_config&amp;section=categories&amp;keyword=audio</code></pre>
+
+<p>If you attempt to delete the default category <code>*</code> from the <code>categories</code> section, the system will replace the default categories.
+<pre><code>api?mode=del_config&amp;section=categories&amp;keyword=*</code></pre>
+
 <h2 id="get_config">Get config item(s)</h2>
 <p>You can read the whole configuration, a sub-set or a single setting.</p>
 <p><span class="label label-warning">NOTE</span> You will never receive passwords, each character will be replaced by <code>***</code> characters. You can set new passwords through the <a href="#set_config">set_config</a> call.</p>
 <pre><code>api?mode=get_config</code></pre>
 
-All elements in <code>misc</code> section
+All elements in <code>misc</code> section:
 <pre><code>api?mode=get_config&amp;section=misc</code></pre>
 
 Example of filtering the server settings by keyword:
