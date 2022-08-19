@@ -49,6 +49,6 @@ or
 Refused connection with hostname "mysabhost.duckdns.org" from: ::ffff:2.14.253.70>Mozilla/5.0 (Linux; Android 7.0; SM-G930F Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.109 Mobile Safari/537.36
 ```
 
-# Disabeling the error message
+# Disabling the error message
 
 If you just want to disable the error message, you can do so by turning off `api_warnings` on the [Special](/wiki/configuration/{{site.wiki_version}}/special) page of the Config.
