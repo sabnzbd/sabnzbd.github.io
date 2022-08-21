@@ -170,9 +170,13 @@ title: General
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td><strong>Download backup</strong></td>
-            <td>Download a backup of the configuration file and databases.<br>
-                <span class="label label-danger">WARNING</span> The backup contains all sensitive information like your passwords and API keys!</td>
+            <td><strong>Create backup</strong></td>
+            <td>
+                Create a backup of the configuration file and databases in the Complete Download Folder.<br>
+                You can also schedule a recurring backup in <a href="/wiki/configuration/{{ site.wiki_version }}/scheduling">Scheduling</a>.<br>
+                <span class="label label-danger">WARNING</span> The backup contains all sensitive information like your passwords and API keys!<br>
+                The backup can only be created in this folder to prevent an attacker easy access to all your passwords and API-keys if they somehow manage to enter the configuration.
+            </td>
         </tr>
         <tr>
             <td><strong>Restore backup</strong></td>
