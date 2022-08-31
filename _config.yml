@@ -16,6 +16,19 @@ ad_link: 'https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sab
 plugins:
   - jekyll-redirect-from
 
+exclude:
+  - .jekyll-cache/
+  - README.md
+  - LICENSE.md
+  - "*.psd"
+
+keep_files:
+  - css/
+  - fonts/
+  - images/
+  - js/
+  - tests/
+
 # Template settings
 defaults:
   -
