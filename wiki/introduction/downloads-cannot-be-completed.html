@@ -12,14 +12,13 @@ redirect_from:
     <li><code>Download failed - Not on your server(s)</code></li>
 </ul>
 
-
 <h2>There can be different causes for this:</h2>
 
 <ol>
     <li>The most likely cause: the post is not available (anymore) on the news server you use because the post has been (partly) removed because of DMCA notices. <a href="https://en.wikipedia.org/wiki/Digital_Millennium_Copyright_Act" target="_blank">More info on DMCA</a>.</li>
     <li>The post is not yet available on the news server you use. This can happen in the first few minutes or hours after posting. Wait an hour longer or use the <a href="/wiki/configuration/{{ site.wiki_version }}/switches#toc2">Propagation Delay</a> feature.</li>
     <li>The post is not available anymore on the news server you use because the post is older than the news server retention. For example: retention is 1000 days, and the post is 1200 days old.</li>
-    <li>The post itself has too little repair block (<code>par2</code> files).</li>
+    <li>The post itself has too little repair blocks (<code>par2</code> files).</li>
 </ol>
 
 <h2>Things worth trying:</h2>
@@ -27,6 +26,10 @@ redirect_from:
 
 <ul>
     <li>Use another or an additional news server that is not using the same <a href="https://upload.wikimedia.org/wikipedia/commons/7/7d/Usenet_Providers_and_Backbones.svg" target="_blank">backbone</a>.</li>
+    <li>
+        For example, we recommend trying <a href="{{ site.ad_link }}&chan=it" target="_blank">Newshosting</a> for the fastest downloads, longest retention and best search results.<br>
+        {% include ad_horizontal.html %}
+    </li>
     <li>Find another post with the same contents.</li>
-    <li>Check on a Usenet search engine to see if the post was completely available.</li>
+    <li>Check on an Usenet search engine to see if the post was completely available.</li>
 </ul>
