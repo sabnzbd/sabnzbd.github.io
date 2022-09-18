@@ -77,8 +77,16 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Automatically sort queue</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>Every time a job is added to the queue, the queue can be sorted according to this setting. For example if you have a server with low retention time, there is a higher chance of completing it if you sort the queue by age. <br>
-            <span class="label label-warning">NOTE</span> Beware that custom sorting of the queue is lost every time a new job is added.</td>
+            <td>Every time a job is added to the queue, the queue can be sorted according to this setting.<br>
+            <span class="label label-warning">NOTE</span> Beware that custom sorting of the queue is lost every time a new job is added.
+            <ul>
+                <li><code>Default</code> = No auto sorting.</li>
+                <li><code>Sort by % downloaded</code> = Sort jobs by percentage downloaded (re-sorts every 30 seconds).</li>
+                <li><code>Sort by Age</code> = Sort jobs by their usenet date.</li>
+                <li><code>Sort by Name</code> = Sort jobs by their Name (not case sensitve).</li>
+                <li><code>Sort by Size</code> = Sort jobs by their Size/Bytes. </li>
+            </ul>
+            </td>
         </tr>
         <tr>
             <td><strong>Direct Unpack</strong></td>
