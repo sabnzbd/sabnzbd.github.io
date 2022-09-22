@@ -191,10 +191,6 @@ redirect_from: "/wiki/advanced/automation-support"
             <td><code>unpackopts</code></td>
             <td>See <a href="#change_opts">change_opts</a></td>
         </tr>
-        <tr>
-            <td><code>loadavg</code></td>
-            <td>On Linux this will contain a string with information about system load</td>
-        </tr>
     </tbody>
 </table>
 
@@ -272,7 +268,6 @@ redirect_from: "/wiki/advanced/automation-support"
         "diskspace2_norm": "161.2 G",
         "have_warnings": "0",
         "pause_int": "0",
-        "loadavg": "",
         "left_quota": "0 ",
         "version": "3.x.x",
         "finish": 2,
@@ -887,6 +882,10 @@ redirect_from: "/wiki/advanced/automation-support"
             <td><code>pystone</code></td>
             <td>Indication of CPU speed, see <a href="/wiki/advanced/highspeed-downloading">Highspeed Downloading</a></td>
         </tr>
+        <tr>
+            <td><code>loadavg</code></td>
+            <td>On Linux this will contain a string with information about system load</td>
+        </tr>
     </tbody>
 </table>
 {% highlight json %}
@@ -901,6 +900,7 @@ redirect_from: "/wiki/advanced/automation-support"
         ],
         "cpumodel": "Intel(R) Core(TM) i5-4200U CPU @ 1.60GHz",
         "pystone": 88738,
+        "loadavg": "",
         "downloaddir": "C:\\SABnzbd",
         "downloaddirspeed": 0,
         "completedir": "C:\\Users\\xxx\\Videos\\Complete",
