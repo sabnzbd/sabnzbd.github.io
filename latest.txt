@@ -1,2 +1,4 @@
 3.6.1
 https://sabnzbd.org/downloads.html
+3.7.0Alpha1
+https://sabnzbd.org/downloads.html
