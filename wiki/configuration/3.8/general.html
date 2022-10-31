@@ -6,7 +6,7 @@ title: General
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td><strong>Host</strong></td>
+            <td><strong>SABnzbd Host</strong></td>
             <td>
                 The hostname that will be used to access SABnzbd.
 
@@ -20,7 +20,7 @@ title: General
             </td>
         </tr>
         <tr>
-            <td><strong>Port</strong></td>
+            <td><strong>SABnzbd Port</strong></td>
             <td>
                 The internal webserver needs a port to listen on. The default port is <code>8080</code>. Try another one if this address is already occupied by another program on your computer.
                 <br><span class="label label-warning">NOTE</span>  macOS and Linux users: ports below <code>1025</code> may require SABnzbd launched as root.
@@ -48,12 +48,13 @@ title: General
             <td>Port to be used for listening. Must be different from the normal HTTP port. If empty, the SABnzbd Port set above will only listen to HTTPS (this is the default setting).</td>
         </tr>
         <tr>
-            <td><strong>HTTPS Certificate</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>File containing the HTTPS certificate.</td>
-        </tr>
-        <tr>
-            <td><strong>HTTPS Key</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>File containing the HTTPS key.</td>
+            <td>
+                <strong>HTTPS Certificate</strong><br>
+                <strong>HTTPS Key</strong><br>
+                <strong>HTTPS Chain Certificates</strong><br>
+                <span class="label label-primary">Advanced</span>
+            </td>
+            <td>Files containing the HTTPS certificate, key and (optionally) chain Certificates.</td>
         </tr>
     </tbody>
 </table>
@@ -61,7 +62,10 @@ title: General
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td><strong>Web Username/Password</strong></td>
+            <td>
+                <strong>SABnzbd Username</strong><br>
+                <strong>SABnzbd Password</strong>
+            </td>
             <td>You may want to limit access to the web interface to people knowing a username and password for the interface.</td>
         </tr>
         <tr>
@@ -119,6 +123,16 @@ title: General
             <td><strong>HTTPS certificate verification</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Verify certificates when connecting to indexers and RSS-sources using HTTPS. Some websites do not have proper certificates and some systems might not be configured correctly.</td>
         </tr>
+        <tr>
+            <td><strong>SOCKS5 Proxy</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>Connection information is entered as a URL, ie:
+                <ul>
+                    <li><code>socks5://username:password@hostname:port</code> or</li>
+                    <li><code>socks5://hostname:port</code> (no login)</li>
+                </ul>
+                <span class="label label-warning">NOTE</span> The connection between the client and the server will use SSL if enabled. However, the connection between the proxy and the client will not.
+                This means that the data transferred between the client and the server is hidden for anyone including the proxy, but the username and password for the proxy and the server address are unencrypted.</td>
+        </tr>
     </tbody>
 </table>
 
@@ -148,6 +162,26 @@ title: General
                 <p>See <a href="/wiki/advanced/highspeed-downloading">High speed downloading</a> for more information.<br>
                 Article Cache is limited to <code>1G</code> on 32bit systems and <code>4G</code> on 64bit systems.</p>
             </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="toc3">Backup</h2>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td><strong>Create backup</strong></td>
+            <td>
+                Create a backup of the configuration file and databases in the <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Backup Folder</a>.
+                If the Backup Folder is not set, the backup will be created in the Completed Download Folder.<br>
+                You can also schedule a recurring backup in <a href="/wiki/configuration/{{ site.wiki_version }}/scheduling">Scheduling</a>.<br>
+                <span class="label label-danger">WARNING</span> The backup contains all sensitive information like your passwords and API keys!<br>
+                <span class="label label-warning">NOTE</span> The backup can only be created in this folder to prevent an attacker easy access to all your passwords and API-keys if they somehow manage to enter the configuration.
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Restore backup</strong></td>
+            <td>Restore a backup of the configuration file and databases.</td>
         </tr>
     </tbody>
 </table>

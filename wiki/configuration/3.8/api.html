@@ -191,10 +191,6 @@ redirect_from: "/wiki/advanced/automation-support"
             <td><code>unpackopts</code></td>
             <td>See <a href="#change_opts">change_opts</a></td>
         </tr>
-        <tr>
-            <td><code>loadavg</code></td>
-            <td>On Linux this will contain a string with information about system load</td>
-        </tr>
     </tbody>
 </table>
 
@@ -210,7 +206,6 @@ redirect_from: "/wiki/advanced/automation-support"
         "noofslots": 2,
         "limit": 10,
         "start": 0,
-        "eta": "17:52 Thu 21 Jul",
         "timeleft": "0:16:44",
         "speed": "1.3 M",
         "kbpersec": "1296.02",
@@ -225,7 +220,7 @@ redirect_from: "/wiki/advanced/automation-support"
                 "password": "",
                 "avg_age": "2895d",
                 "script": "None",
-                "has_rating": false,
+                "direct_unpack": "10/30",
                 "mb": "1277.65",
                 "mbleft": "1271.59",
                 "mbmissing": "0.0",
@@ -235,7 +230,6 @@ redirect_from: "/wiki/advanced/automation-support"
                 "labels": [],
                 "priority": "Normal",
                 "cat": "tv",
-                "eta": "17:52 Thu 21 Jul",
                 "timeleft": "0:16:44",
                 "percentage": "0",
                 "nzo_id": "SABnzbd_nzo_p86tgx",
@@ -247,7 +241,7 @@ redirect_from: "/wiki/advanced/automation-support"
                 "password": "",
                 "avg_age": "2895d",
                 "script": "None",
-                "has_rating": false,
+                "direct_unpack": null,
                 "mb": "1277.76",
                 "mbleft": "1277.76",
                 "mbmissing": "0.0",
@@ -260,23 +254,11 @@ redirect_from: "/wiki/advanced/automation-support"
                 ],
                 "priority": "Normal",
                 "cat": "tv",
-                "eta": "unknown",
                 "timeleft": "0:00:00",
                 "percentage": "0",
                 "nzo_id": "SABnzbd_nzo_ksfai6",
                 "unpackopts": "3"
             }
-        ],
-        "categories": [
-            "*",
-            "movies",
-            "series",
-            "tv"
-        ],
-        "scripts": [
-            "None",
-            "Notify.py",
-            "sabnzbd-notify.py"
         ],
         "diskspace1": "161.16",
         "diskspace2": "161.16",
@@ -284,22 +266,17 @@ redirect_from: "/wiki/advanced/automation-support"
         "diskspacetotal2": "465.21",
         "diskspace1_norm": "161.2 G",
         "diskspace2_norm": "161.2 G",
-        "rating_enable": false,
         "have_warnings": "0",
         "pause_int": "0",
-        "loadavg": "",
         "left_quota": "0 ",
-        "refresh_rate": "1",
-        "version": "2.x.x",
+        "version": "3.x.x",
         "finish": 2,
         "cache_art": "16",
         "cache_size": "6 MB",
-        "cache_max": "1073741824",
         "finishaction": null,
         "paused_all": false,
         "quota": "0 ",
         "have_quota": false,
-        "queue_details": "0"
     }
 }
 {% endhighlight %}
@@ -588,8 +565,8 @@ redirect_from: "/wiki/advanced/automation-support"
 </table>
 
 <h2 id="history">History output</h2>
-<p>Full history output with details about all jobs. The <code>queue</code> and the <code>history</code> output share many common fields, but the history also contains statistiscs about how much has been downloaded in the past day, week, month and total.</p>
-<pre><code>api?mode=history&amp;start=START&amp;limit=LIMIT&amp;category=CATEGORY&amp;search=SEARCH&amp;nzo_ids=NZO_ID_1,NZO_ID_2,NZO_ID_3&amp;failed_only=0</code></pre>
+<p>Full history output with details about all jobs. The <code>queue</code> and the <code>history</code> output share many common fields, but the history also contains statistics about how much has been downloaded in the past day, week, month and total.</p>
+<pre><code>api?mode=history&amp;start=START&amp;limit=LIMIT&amp;cat=CATEGORY&amp;search=SEARCH&amp;nzo_ids=NZO_ID_1,NZO_ID_2,NZO_ID_3&amp;failed_only=0</code></pre>
 <p><span class="label label-warning">NOTE</span> Some of the less obvious output parameters are described below.</p>
 <table class="table table-bordered table-hover">
     <thead>
@@ -608,7 +585,7 @@ redirect_from: "/wiki/advanced/automation-support"
             <td>Number of jobs to display</td>
         </tr>
         <tr>
-            <td><code>category</code> <small>optional</small></td>
+            <td><code>cat</code> <small>optional</small></td>
             <td>Only return jobs in this category</td>
         </tr>
         <tr>
@@ -905,6 +882,10 @@ redirect_from: "/wiki/advanced/automation-support"
             <td><code>pystone</code></td>
             <td>Indication of CPU speed, see <a href="/wiki/advanced/highspeed-downloading">Highspeed Downloading</a></td>
         </tr>
+        <tr>
+            <td><code>loadavg</code></td>
+            <td>On Linux this will contain a string with information about system load</td>
+        </tr>
     </tbody>
 </table>
 {% highlight json %}
@@ -919,6 +900,7 @@ redirect_from: "/wiki/advanced/automation-support"
         ],
         "cpumodel": "Intel(R) Core(TM) i5-4200U CPU @ 1.60GHz",
         "pystone": 88738,
+        "loadavg": "",
         "downloaddir": "C:\\SABnzbd",
         "downloaddirspeed": 0,
         "completedir": "C:\\Users\\xxx\\Videos\\Complete",
@@ -1001,7 +983,7 @@ redirect_from: "/wiki/advanced/automation-support"
 
 <pre><code>api?mode=status&amp;name=delete_orphan&amp;value=FOLDERNAME</code></pre>
 
-<h2 id="delete_orphan">Retry orphaned job <span class="label label-primary">True/False</span></h2>
+<h2 id="add_orphan">Retry orphaned job <span class="label label-primary">True/False</span></h2>
 <p>Retry orphaned job based on the folder name from the <a href="#fullstatus">status</a>. Make sure that you URL-encode the folder name.</p>
 
 <pre><code>api?mode=status&amp;name=add_orphan&amp;value=FOLDERNAME</code></pre>

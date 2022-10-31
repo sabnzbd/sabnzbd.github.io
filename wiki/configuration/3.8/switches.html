@@ -6,12 +6,12 @@ title: Switches
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td><strong>Server load-balancing</strong><br><span class="label label-primary">Advanced</span></td>
+            <td><strong>Server IP address selection</strong><br><span class="label label-primary">Advanced</span></td>
             <td>A number of news servers has multiple IP-addresses, these can be IPv4 or IPv6.
             <ul>
-                <li><code>Prevent load-balancing</code> = The first IP-address returned will be used for all connections. </li>
-                <li><code>Allow load-balancing</code> = Each connection will be randomly selected from the available addresses.</li>
-                <li><code>Allow load-balancing with optimization for IPv6</code> = For each connection the fastest IP-address is selected.</li>
+                <li><code>First IP address</code> = The first IP-address returned will be used for all connections. </li>
+                <li><code>Randomly selected IP address</code> = Each connection will be randomly selected from the available addresses.</li>
+                <li><code>Quickest IP address, preferring IPv6</code> = For each connection the fastest IP-address is selected, with a small head start for IPv6 addresses.</li>
             </ul>
             </td>
         </tr>
@@ -37,7 +37,7 @@ title: Switches
             <td>If you experience very young posts failing due to missing blocks your server might still be in the process of receiving the posts. Delaying the these very young posts a few minutes might solve these issues. Posts will be paused until they are at least this age. <br>Setting job priority to Force will skip the delay.</td>
         </tr>
         <tr>
-            <td><strong>Only get articles for top of the queue</strong></td>
+            <td><strong>Only get articles for top of queue</strong></td>
             <td>When a top-job stalls for some reason, start downloading segments for the next job. This prevents a job from blocking the queue when you have an unreliable Usenet server. If you need this behavior, set the option off. If you have a reliable server (most paid servers), you might as well set this on.</td>
         </tr>
         <tr>
@@ -77,8 +77,16 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Automatically sort queue</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>Every time a job is added to the queue, the queue can be sorted according to this setting. For example if you have a server with low retention time, there is a higher chance of completing it if you sort the queue by age. <br>
-            <span class="label label-warning">NOTE</span> Beware that custom sorting of the queue is lost every time a new job is added.</td>
+            <td>Every time a job is added to the queue, the queue can be sorted according to this setting.<br>
+            <span class="label label-warning">NOTE</span> Beware that custom sorting of the queue is lost every time a new job is added.
+            <ul>
+                <li><code>Default</code> = No auto sorting.</li>
+                <li><code>Sort by % downloaded</code> = Sort jobs by percentage downloaded (re-sorts every 30 seconds).</li>
+                <li><code>Sort by Age</code> = Sort jobs by their usenet date.</li>
+                <li><code>Sort by Name</code> = Sort jobs by their Name (not case sensitve).</li>
+                <li><code>Sort by Size</code> = Sort jobs by their Size/Bytes. </li>
+            </ul>
+            </td>
         </tr>
         <tr>
             <td><strong>Direct Unpack</strong></td>
@@ -151,10 +159,6 @@ title: Switches
             <td>If filenames of (large) files in the final folder look obfuscated or meaningless (like <code>19399393.ext</code> or <code>timmof.mkv</code>) they will be renamed to the job name. Additionally, attempts to set the correct file extension based on the file signature if the extension is not present or meaningless.</td>
         </tr>
         <tr>
-            <td><strong>Use tags from indexer</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>Enable meta-tags coming from indexers or from the content of the NZB. These tags contain cleaned up versions of titles, episode names, etc. If you prefer that everything is derived from the NZB name, disable.</td>
-        </tr>
-        <tr>
             <td><strong>Cleanup List</strong></td>
             <td>List of file (extensions) that should be deleted in the cleanup stage. Examples: <code>.nfo, .nfo, .sfv</code>. You can leave out the dots, so <code>nfo, nzb, sfv</code> will do the same.</td>
         </tr>
@@ -181,11 +185,15 @@ title: Switches
             <td>When SABnzbd does unpacking it will do that in a folder prefixed with <code>_UNPACK_</code>. This is to prevent users or other software from processing the file. Some operating systems cannot handle this. Therefore it's possible to disable the feature.</td>
         </tr>
         <tr>
-            <td><strong>Replace Spaces in folder names</strong><br><span class="label label-primary">Advanced</span></td>
+            <td><strong>Replace Spaces in folder name</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Enable to replace spaces with underscores in folder names.</td>
         </tr>
         <tr>
-            <td><strong>Replace dots in folder names</strong><br><span class="label label-primary">Advanced</span></td>
+            <td><strong>Replace underscores in folder name</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>Enable to replace underscores with dots in folder names.</td>
+        </tr>
+        <tr>
+            <td><strong>Replace dots in folder name</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Enable to replace dots with spaces in folder names.</td>
         </tr>
         <tr>
@@ -203,7 +211,7 @@ title: Switches
             <td>In bytes. Example: <code>5G</code> (for 5 GB) or <code>1T</code> (for 1 TB)</td>
         </tr>
         <tr>
-            <td><strong>Period</strong></td>
+            <td><strong>Quota Period</strong></td>
             <td>Daily, Weekly or Monthly quota</td>
         </tr>
         <tr>
@@ -229,26 +237,6 @@ title: Switches
     <li>Don't set the quota too high. Leave room for other internet use.</li>
 </ul>
 
-<h2 id="toc6">Indexing</h2>
-
-<table class="table table-bordered table-hover">
-    <tbody>
-        <tr>
-            <td><strong>Enable Indexer Integration</strong></td>
-            <td>Set this to enable enhanced functionality including ratings and SABnzbd can report to the indexer if a job couldn't be completed, when connected to a supported indexer.</td>
-        </tr>
-        <tr>
-            <td><strong>API Key</strong></td>
-            <td>Insert your Indexer API key in here. Check your profile on the indexer's website.</td>
-        </tr>
-
-        <tr>
-            <td><strong>Enable Filtering</strong></td>
-            <td>Based on the rating supplied by the indexer at time the NZB is added, you can automatically pause or abort jobs that do not meet the specified criteria.</td>
-        </tr>
-    </tbody>
-</table>
-
 <hr>
 
 <h2 id="multi-core">Extra Par2 Parameters for Linux</h2>
@@ -268,8 +256,6 @@ title: Switches
      <li><code>-pL</code> to process at low priority</li>
      <li><code>-pI</code> to process at idle (lowest) priority</li>
 </ul>
-<p><span class="label label-warning">NOTE</span> Specifying more than 1 extra parameter might not always work.</p>
-
 
 <hr>
 <h2 id="multi-core-multipar">Extra Par2 Parameters for Windows</h2>
@@ -305,9 +291,6 @@ title: Switches
         </ul>
     </li>
 </ul>
-
-<p><span class="label label-warning">NOTE</span> Specifying more than 1 extra parameter might not always work.</p>
-
 
 <hr>
 <h2 id="toc8">Nice to reduce CPU priority</h2>
