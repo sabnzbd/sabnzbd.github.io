@@ -15,7 +15,7 @@ title: Special settings
         <tr>
             <td><code>start_paused</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>If checked SABnzbd will always start up in "Paused" mode</td>
+            <td>If checked SABnzbd will always start up in "Paused" mode.</td>
         </tr>
         <tr>
             <td><code>preserve_paused_state</code></td>
@@ -40,7 +40,7 @@ title: Special settings
         <tr>
             <td><code>enable_par_cleanup</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Normally SABnzbd will clean up par2 files after verify/repair. You can disable this by using 0. Disabling this will also force all par2 files to be downloaded</td>
+            <td>Normally SABnzbd will clean up par2 files after verify/repair. You can disable this by using 0. Disabling this will also force all par2 files to be downloaded.</td>
         </tr>
         <tr>
             <td><code>process_unpacked_par2</code></td>
@@ -50,7 +50,7 @@ title: Special settings
         <tr>
             <td><code>queue_complete_pers</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Set this to 1 if you want end-of-queue actions Shutdown/Standby/Hibernate to be persistent (remembered) after restarts</td>
+            <td>Check this if you want end-of-queue actions to be persistent (remembered) after restarts of SABnzbd.</td>
         </tr>
         <tr>
             <td><code>api_warnings</code></td>
@@ -85,7 +85,7 @@ title: Special settings
         <tr>
             <td><code>tray_icon</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Uncheck this to remove the SABnzbd icon from the tray on Windows, macOS and Linux</td>
+            <td>Uncheck this to remove the SABnzbd icon from the tray on Windows, macOS and Linux.</td>
         </tr>
         <tr>
             <td><code>allow_incomplete_nzb</code></td>
@@ -130,12 +130,12 @@ title: Special settings
         <tr>
             <td><code>warn_dupl_jobs</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>If checked, will issue a warning when a duplicate job is detected and subsequently paused or deleted. Uncheck if you find the warnings a nuisance</td>
+            <td>If checked, will issue a warning when a duplicate job is detected and subsequently paused or deleted. Uncheck if you find the warnings a nuisance.</td>
         </tr>
         <tr>
             <td><code>backup_for_duplicates</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Check to backup duplicate NZB's.</td>
+            <td>In the duplicate check, also include exact filename matches from the NZB Backup Folder..</td>
         </tr>
         <tr>
             <td><code>disable_api_key</code></td>
@@ -173,22 +173,22 @@ title: Special settings
         <tr>
             <td><code>downloader_sleep_time</code></td>
             <td><code>10</code></td>
-            <td> CPU sleep period that is some times added between reading data from the connections. Higher values may reduce CPU load but too high values will impact the download speed. A value of 0 should only be used if increasing the number of connections is not sufficient to get maximum speed. A value of 10 means 1 ms.</td>
+            <td> CPU sleep period that is sometimes added between reading data from the connections. Higher values may reduce CPU load but too high values will impact the download speed. A value of 0 should only be used if increasing the number of connections is not sufficient to get maximum speed. A value of 10 means 1 ms.</td>
         </tr>
         <tr>
             <td><code>size_limit</code></td>
             <td><code>0</code></td>
-            <td>Any download that exceeds this value will be paused and get priority "low". You can use the K/M/G notation, so e.g. 4.7G</td>
+            <td>Any download that exceeds this value will be paused and get priority "low". You can use the K/M/G notation, so e.g. 4.7G.</td>
         </tr>
         <tr>
             <td><code>movie_rename_limit</code></td>
             <td><code>100M</code></td>
-            <td>The minimum size of a file to trigger file renaming in the Movie sort functions</td>
+            <td>The minimum size of a file to trigger file renaming in the Movie sort functions.</td>
         </tr>
         <tr>
             <td><code>episode_rename_limit</code></td>
             <td><code>20M</code></td>
-            <td>The minimum size of a file to trigger file renaming in the Serie sort functions</td>
+            <td>The minimum size of a file to trigger file renaming in the Serie sort functions.</td>
         </tr>
         <tr>
             <td><code>nomedia_marker</code></td>
@@ -243,7 +243,7 @@ title: Special settings
         <tr>
             <td><code>ipv6_servers</code></td>
             <td><code>1</code></td>
-            <td>Control the use of IPv6 Usenet server addresses. Only useful when you have an IPv6 capable ISP and connect to servers that (also) have IPv6 addresses. Meaning: 0 = don't use, 1 = use when available and reachable, 2 = force usage (when SABnzbd's detection fails)</td>
+            <td>Control the use of IPv6 Usenet server addresses. Only useful when you have an IPv6 capable ISP and connect to servers that (also) have IPv6 addresses. Meaning: 0 = don't use, 1 = use when available and reachable, 2 = force usage (when SABnzbd's detection fails).</td>
         </tr>
         <tr>
             <td><code>selftest_host</code></td>
@@ -258,7 +258,7 @@ title: Special settings
         <tr>
             <td><code>rss_odd_titles</code></td>
             <td><code>nzbindex.nl/</code>, <code>nzbindex.com/</code>, <code>nzbclub.com/</code></td>
-            <td>Some RSS feeds produce very awkward titles which are fine for filtering, but not as job titles. For all indexers that are listed here, the actual NZB file name will be used instead of the title. </td>
+            <td>Some RSS feeds produce very awkward titles which are fine for filtering, but not as job titles. For all indexers that are listed here, the actual NZB file name will be used instead of the title.</td>
         </tr>
         <tr>
             <td><code>quick_check_ext_ignore</code></td>
@@ -279,7 +279,7 @@ title: Special settings
         <tr>
             <td><code>ext_rename_ignore</code></td>
             <td></td>
-            <td>Specify a (comma separated) list of one or more additional extensions that SABnzbd should handle als well-known extensions and thus not touch.
+            <td>Specify a (comma separated) list of one or more additional extensions that SABnzbd should handle als well-known extensions and thus not touch.</td>
         </tr>
     </tbody>
 </table>
