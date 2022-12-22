@@ -6,7 +6,8 @@ title: SSL Ciphers
 <pre><code>AES128</code></pre>
 <p><span class="label label-warning">NOTE</span> Setting the SSL Cipher with news servers that support TLS 1.3 connections is not (yet) supported by Python and thus SABnzbd. Setting custom ciphers forces the maximum TLS version to 1.2.
 
-<p>Increases in download speed are most notable on systems where CPU power is the limiting factor.</p>
+<p>Increases in download speed are most notable on systems where CPU power is the limiting factor. 
+  Note that some older CPU's might lack AES hardware acceleration and <code>CHACHA20</code> might be faster than <code>AES128</code>.</p>
 
 <h2>What are SSL ciphers?</h2>
 
@@ -20,5 +21,5 @@ title: SSL Ciphers
 <p>It is also possible to specify multiple single cipher settings or a family of ciphers by specifying it in OpenSSL Cipher format. More information can be found here: <a href="https://www.openssl.org/docs/manmaster/man1/openssl-ciphers.html" target="_blank">https://www.openssl.org/docs/manmaster/man1/openssl-ciphers.html</a>.
 
 <h2>What are the risks?</h2>
-<p>Setting your SSL Ciphers to <code>AES128</code> will not suddenly expose your traffic to the world. There is evidence that this and similar protocols can be decrypted, but it seems to require a large amount of resources. <a href="https://blog.cloudflare.com/killing-rc4-the-long-goodbye/">This article</a> describes the implications in more detail.</p>
+<p>Setting your SSL Ciphers to <code>AES128</code> will not suddenly expose your traffic to the world. There is evidence that this and similar protocols can be decrypted, but it seems to require a large amount of resources.</p>
 <p>It's up to you to decide how valuable your usenet data is. It should also be noted that your internet service provider will always be able to see to which IP-address you are connecting, with or without SSL. Enabling SSL only shields the contents of the connection, not the target.</p>
