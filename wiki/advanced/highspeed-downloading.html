@@ -40,6 +40,7 @@ On a system with a CPU with at least 100.000 pystones, and SSD drives achieving 
     <li>If you use SSL to connect to your news server, try changing the <a href="/wiki/advanced/ssl-ciphers">SSL Ciphers</a>. This will sightly lower encryption strength but can greatly increase download speeds.</li>
     <li>Try different values for <a href="/wiki/configuration/{{ site.wiki_version }}/special">downloader_sleep_time</a>. Suggested initial test values are 0, 10 and 30.</li>
     <li>Increasing or reducing the number of decoder threads using the <a href="/wiki/configuration/{{ site.wiki_version }}/special">num_decoders</a> value may help.</li>
+    <li>Set <strong>Maximum line speed</strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/general#toc2">Config-&gt;General</a> to 0. This will slightly reduce time used on updating the bandwidth.</li>
 </ol>
 <p>If none of the above methods make a difference, have a look at how much CPU is being used while downloading, if it is at 100% it is likely your processor is too slow to maintain high enough speeds. In the Status window ( <span class="glyphicon glyphicon-wrench"></span> ) you can run a PyStone CPU performance test. ARM based systems (NASes for example) will show much lower number (below 25000), and will have a lower maximum download speed than PCs with a current Intel/AMD CPU with a CPU Pystone available performance of 40000 or higher.
 
