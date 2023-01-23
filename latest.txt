@@ -1,4 +1,4 @@
 3.7.1
 https://sabnzbd.org/downloads.html
-3.7.2Beta1
+3.7.2RC1
 https://sabnzbd.org/downloads.html
