@@ -8,48 +8,53 @@ title: High speed Downloading
 The bottom line for high speed downloading is easy:
 Start with a test of your system: Check at Wrench -> Status -> Refresh symbol, and note the performance numbers reported, and check them against these required values:
 <ol>
-    <li>Both Incomplete and Complete should be on a SSD/M.2/NVMe disk. SABnzbd should report the speed of Incomplete and Complete at least 150 MB/s. Slower disks like HDD and NAS have a very negative impact on downloading speed: a slower disk means slower downloads.</li>
-    <li>Your CPU shoud be medium or high speed. SABnzbd should report a pysthone of 100.000 or higher. </li>
-    <li>Your download speed will never be higher than the Internet speed reported via the Wrench -> Status report. Wired is better than wireless</li>
-    <li>Preferrably you should have a few different news servers, all at the same prio</li>
-    <li>Start with a test download: Wrench -> Test Download -> 1000 MB</li>
+    <li><strong>Both Incomplete and Complete should be on a SSD/M.2/NVMe disk.</strong> If you have limited space then the Incomplete directory should be on SSD. SABnzbd should report the speed of Incomplete and Complete at least 150 MB/s. Slower disks like HDD and NAS have a very negative impact on downloading speed: a slower disk means slower downloads.</li>
+    <li><strong>Your CPU should be medium or high speed.</strong> SABnzbd should report a pysthone of 100.000 or higher.</li>
+    <li><strong>Use multiple news servers at the same priority.</strong> This may allow higher speed as they can all download at the same time.</li>
+    <li><strong>Start with a test download:</strong> Wrench -> Test Download -> 1000 MB.</li>
 </ol>
 
-On a system with a CPU with at least 100.000 pystones, and SSD drives achieving 150 MB/s, a Gigabit Internet connection reported as 100 MB/s by SAB, and 3 different newservers, you should be able to get 100 MB/s newsgroup downloads.
+- On a system with a CPU with at least 100.000 pystones, and SSD drives achieving 150 MB/s, a Gigabit Internet connection reported as 100 MB/s by SAB you should be able to get 100 MB/s newsgroup downloads.
 
 <p>If you are posting a question if you think your download speed is too low, post the info reported by the Wrench tool.
 
 <h2>Additional settings for high-speed downloading</h2>
-<p>If your focus is on pure high-speed downloading itself, you should let SABnzbd focus on downloading only (and not any simultaneous processing), and the following settings will help (in order of importance):</p>
-
+<p>If your focus is on pure high-speed downloading itself then you should let SABnzbd do downloading only (and not any simultaneous processing). The following settings may help (in order of importance):</p>
 
 <ol>
-    <li>Turn on "Pause Downloading During Post-Processing". SABnbd will first download, and after downloading it will start processing</li>
-    <li>Turn off DirectUnpack. SABnbd will take care of it after downloading</li>
-    <li>Turn off Unwanted Extensions and Encrypted Downloads</li>
-    <li>For testing only: set the download to Download, so no Repair, no Unpack at all</li>
+    <li><strong>Turn on "Pause Downloading During Post-Processing"</strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a>. SABnbd will first download, and after downloading it will start processing</li>
+    <li><strong>Turn off DirectUnpack</strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a>. More concurrent disk activity may reduce the speed.</li>
+    <li><strong>Turn off SSL</strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/servers">Config-&gt;Servers</a>. This will disable encrypted transfer and reduce CPU load.</li>
+    <li><strong>Turn off Unwanted Extensions</strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a>.</li>
+    <li><strong>For testing only:</strong> set the download to Download in <a href="/wiki/configuration/{{ site.wiki_version }}/categories">Config-&gt;Categories</a>, so no Repair, no Unpack at all.</li>
 </ol>
 
 <h2>More detailed optimizations</h2>
 <ol>
-    <li>Use a wired network connection, not wireless. Test your speed via <a href="https://fast.com/"> fast.com </a>. Divide that result from fast.com by 10 (8.05 to be more exact) to get the speed in MB/s </li>
-    <li>Set the <strong>Article Cache Limit</strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/general#toc2">Config-&gt;General</a>. This will keep articles in memory and not write them to disk (which is slower). Depending on how much RAM you can spare, two good values are <code>500M</code> (the M denotes megabytes and is required) or <code>1G</code> (1GB). If you download a lot of rar files that are 200MB or larger then use the latter value. The cache will only be used when nessecary, cache usages above 400MB are rare.</li>
-    <li>Check if logging is set to only <code>Errors/Warning</code> in the Status window. Especially the <code>+Debug</code> setting writes very frequently tiny bits of data to the disk. This increases CPU load for the writing and occupies the disk.</li>
-    <li>For <strong>larger queues</strong> it can be beneficial to enable <code>Only get articles for top of the queue</code> in <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a>, as iterating through the queue to get the next article takes substantial amount of CPU power for large queues.</li>
-    <li>Investigate your <strong>connection count</strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/servers">Config-&gt;Servers</a>. It may seem counter-intuitive, since more connections <em>should</em> be faster than fewer connections, but if you use the 50+ connections some hosts give you the overhead from constantly opening and closing connections can slow you down. So start at the max allowed connections and slowly lower your count until you max out your speed. Or do it the other way round: start with 5 connections, measure the speed, and raise to 7, measure again, 9, measure again, etc. Normally 10 connections are enough.</li>
-    <li>If you use SSL to connect to your news server, try changing the <a href="/wiki/advanced/ssl-ciphers">SSL Ciphers</a>. This will sightly lower encryption strength but can greatly increase download speeds.</li>
-    <li>Try different values for <a href="/wiki/configuration/{{ site.wiki_version }}/special">downloader_sleep_time</a>. Suggested initial test values are 0, 10 and 30.</li>
-    <li>Increasing or reducing the number of decoder threads using the <a href="/wiki/configuration/{{ site.wiki_version }}/special">num_decoders</a> value may help.</li>
-    <li>Set <strong>Maximum line speed</strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/general#toc2">Config-&gt;General</a> to 0. This will slightly reduce time used on updating the bandwidth.</li>
+    <li><strong>Use a wired network connection, not wireless.</strong><br/>
+        Test your speed via <a href="https://fast.com/"> fast.com</a>. Divide the result from fast.com by 8 to get the speed in MB/s.</li>
+    <li><strong>Set the <code>Article Cache Limit</code></strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/general#toc2">Config-&gt;General</a>.<br/>
+        This will keep articles in memory until they can be written to the correct file instead of first writing them to individual temporary files which has to be read back later. Depending on how much RAM you can spare, two good values are <code>500M</code> (the M denotes megabytes) or <code>1G</code> (1GB). If you download a lot of rar files that are 200MB or larger then use the latter value. The cache will only be used when nessecary, cache usages above 400MB are rare.</li>
+    <li><strong>Check that logging is set to <code>Errors/Warning</code> only</strong> in the Status window.<br/>
+        Especially the <code>+Debug</code> setting writes very frequently tiny bits of data to the disk. This increases CPU load for the writing and occupies the disk.</li>
+    <li><strong>Enable <code>Only get articles for top of the queue</code></strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a>.<br/>
+        For larger queues it can be beneficial as iterating through the queue to get the next article takes substantial amount of CPU power for large queues. The drawback is that if you have multiple servers then they will all have to wait for the first nzb to finish before any of them can continue to the next.</li>
+    <li><strong>Try different connection numbers</strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/servers">Config-&gt;Servers</a>.<br/>
+        A higher number will increase the overhead so more connections is not always better. It may also make web browsing, gaming and other internet activities less responsive while downloading.</li>
+    <li><strong>Change <a href="/wiki/advanced/ssl-ciphers">SSL Ciphers</a> to <code>AES128</code> or <code>CHACHA20</code></strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/servers">Config-&gt;Servers</a>.<br/>
+        This will sightly lower encryption strength but can greatly increase download speeds. CHACHA20 is useful for CPUs without hardware AES support (ie. Raspberry Pi) but is not supported by all servers.</li>
+    <li><strong>Try different values for <code>downloader_sleep_time</code></strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/special">Config-&gt;Special</a>.<br/>
+        SABnzbd will sleep for a short while between each check for new data to reduce CPU usage if possible. Suggested initial test values are 0 (disable, will use more CPU), 20 and 40.</li>
+    <li><strong>Increase <code>num_decoders</code></strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/special">Config-&gt;Special</a></strong>.<br/>
+        This determines how many threads are used for decoding yenc data.</li>
+    <li><strong>Set <code>Maximum line speed</code> to 0</strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/general#toc2">Config-&gt;General</a>.<br/>
+        This will slightly reduce the time used to keep track of the download speed.</li>
 </ol>
-<p>If none of the above methods make a difference, have a look at how much CPU is being used while downloading, if it is at 100% it is likely your processor is too slow to maintain high enough speeds. In the Status window ( <span class="glyphicon glyphicon-wrench"></span> ) you can run a PyStone CPU performance test. ARM based systems (NASes for example) will show much lower number (below 25000), and will have a lower maximum download speed than PCs with a current Intel/AMD CPU with a CPU Pystone available performance of 40000 or higher.
-
-
+<p>If neither of the above methods make a difference, have a look at how much CPU is being used while downloading. If it is at 100% then it is likely that your processor is too slow to maintain full speed. In the Status window ( <span class="glyphicon glyphicon-wrench"></span> ) you can run a PyStone CPU performance test. ARM based systems (NASes for example) will show much lower number (below 25000), and will have a lower maximum download speed than PCs with a current Intel/AMD CPU with a CPU Pystone available performance of 40000 or higher.
 
 <h2>Results with different setups with 1GB and 10GB downloads</h2>
 <ol>
 <li>On a 2017 Intel Celeron J4105 (4GB RAM, System Performance (Pystone) 95.000), built-in SSD and a 700/700 Mbps fiber line, SABnzbd can achieve a sustained 80 MB/s, thus linespeed.</li>
-<li>On an ARM box (51MB RAM, System Performance (Pystone) 8.000), SABnzbd can achieve a sustained 20 MB/s. The low-speed CPU and/or disk are the bottleneck. So, checking: SABnzbd reports 25 MB/s on Incomplete and Complete, so that is the bottleneck.</li>
+<li>On an ARM box (512MB RAM, System Performance (Pystone) 8.000), SABnzbd can achieve a sustained 20 MB/s. The low-speed CPU and/or disk are the bottlenecks. So, checking: SABnzbd reports 25 MB/s on Incomplete and Complete, so that is the bottleneck.</li>
 </ol>
 </p>
-
