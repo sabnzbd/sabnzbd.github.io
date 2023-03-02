@@ -228,12 +228,12 @@ title: Special settings
         <tr>
             <td><code>receive_threads</code></td>
             <td><code>2</code></td>
-            <td>Number of receive threads. Requires restart.</td>
+            <td>Number of threads being used to read and decode data concurrently. Setting it to 1 may reduce CPU consumption and make bandwidth limiting smoother. Increasing it may improve download speed. Requires restart.</td>
         </tr>
         <tr>
-            <td><code>num_simd_decoders</code></td>
-            <td><code>2</code></td>
-            <td>Number of decoder threads. Requires restart.</td>
+            <td><code>switchinterval</code></td>
+            <td><code>0.005</code></td>
+            <td>The number of seconds a thread is allowed to run before switching to another. Setting a lower number may improve disk write speed. Requires restart.</td>
         </tr>
         <tr>
             <td><code>direct_unpack_threads</code></td>
