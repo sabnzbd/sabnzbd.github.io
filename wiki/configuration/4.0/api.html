@@ -1035,7 +1035,7 @@ redirect_from: "/wiki/advanced/automation-support"
         </tr>
         <tr>
             <td><a href="#del_config">del_config</a></td>
-            <td><span class="label label-primary">True/False</span> Delete configuration item within "servers", "rss", or "categories" sections.</td>
+            <td><span class="label label-primary">True/False</span> Delete a configuration item within the "servers", "rss", "categories", or "sorters" sections.</td>
         </tr>
         <tr>
             <td><a href="#get_config">get_config</a></td>
@@ -1168,7 +1168,7 @@ redirect_from: "/wiki/advanced/automation-support"
 <p><span class="label label-warning">NOTE</span> This call ignores the <code>output</code> parameter, it will always serve the file as a download.</p>
 <pre><code>api?mode=showlog</code></pre>
 
-<h2 id="del_config">Delete configuration item within "servers", "rss", or "categories" sections.</h2>
+<h2 id="del_config">Delete a configuration item within the "servers", "rss", "categories", or "sorters" sections.</h2>
 <p>Used to delete an entry from the limited sections.</p>
 
 Example of deleting a <code>servers</code> by keyword:
@@ -1201,19 +1201,16 @@ Example of filtering the server settings by keyword:
 <p>For example, changing the Cleanup-list to <code>.sfv,.nzb,.nfo,.ext</code> would look like this:</p>
 <pre><code>api?mode=set_config&amp;section=misc&amp;keyword=cleanup_list&amp;value=.sfv,.nzb,.nfo,.ext</code></pre>
 
-<h2>Setting Server settings</h2>
-<p>Changing settings for Servers is a bit different and requires you to specify the correct <code>name</code> of the server. This <code>name</code> you can find in your <code>sabnzbd.ini</code>, where it will for example say <code>[news.newshosting.com]</code>. Here you can also see the values you could set via the API directly. If the <code>name</code> doesn't match an existing server, a new one will be added.</p>
-<p>For example:</p>
+<h2>Setting server, RSS feed, category, or sorter settings</h2>
+<p>Changing settings for these sections is a bit different and requires one to specify the correct <code>name</code> of the server, RSS feed, category, or sorter. This <code>name</code> you can find in between double square brackets in the relevant section of your <code>sabnzbd.ini</code>, where it will for example say <code>[[news.newshosting.com]]</code> within the <code>[servers]</code> section, or <code>[[Feed1]]</code> in the <code>[rss]</code> section, and so on. Below the name you can see all variables you could set via the API for an item in that section. If the specified <code>name</code> doesn't match an existing one in the given section, it will be added there as a new item.</p>
+<p>Server example:</p>
 <pre><code>api?mode=set_config&amp;section=servers&amp;name=SERVER_NAME&amp;username=VALUE_1&amp;connections=VALUE_2</code></pre>
-
-<h2>Setting Category settings</h2>
-<p>Changing settings for Categories is also a bit different and requires you to specify the correct <code>name</code> of the category. This <code>name</code> you can find in your <code>sabnzbd.ini</code>, where it will for example say <code>[movies]</code>. Here you can also see the values you could set via the API directly. If the <code>name</code> doesn't match an existing category, a new one will be added.</p>
+<p>Category example:</p>
 <pre><code>api?mode=set_config&amp;section=categories&amp;name=CATEGORY_NAME&amp;dir=CATEGORY_DIR</code></pre>
-
-<h2>Setting RSS settings</h2>
-<p>Changing settings for RSS feeds is a bit different and requires you to specify the correct <code>name</code> of the feed. This <code>name</code> you can find in your <code>sabnzbd.ini</code>, where it will for example say <code>[Feed1]</code>. Here you can also see the values you could set via the API directly. If the <code>name</code> doesn't match an existing RSS feed, a new one will be added.</p>
-<p>For example:</p>
+<p>RSS feed example:</p>
 <pre><code>api?mode=set_config&amp;section=rss&amp;name=FEED_NAME&amp;enable=VALUE_1&amp;pp=VALUE_2</code></pre>
+<p>Sorter example:</p>
+<pre><code>api?mode=set_config&amp;section=sorters&amp;name=SORTER_NAME&amp;sort_string=VALUE_1&amp;sort_cats=VALUE_2&amp;sort_type=VALUE_3</code></pre>
 
 <h2 id="set_config_default">Reset config item to default value <span class="label label-primary">True/False</span></h2>
 <p><span class="label label-warning">NOTE</span> Currently only for settings in the <code>misc</code> section of the config. Can accept multiple keywords to reset.</p>
