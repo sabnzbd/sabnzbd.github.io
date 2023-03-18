@@ -229,13 +229,18 @@ title: Sorting
 </p>
 
 <h3>Date naming</h2>
-<p>Date sorting allows for renaming and sorting of jobs with dates in their nzb name. Most standard date formats are recognized, including MM-DD-YYYY, MM.DD.YYYY and YYYY-MM-DD/YYYY.MM.DD.</p>
+<p>Most standard date formats are recognized, including MM-DD-YYYY, MM.DD.YYYY and YYYY-MM-DD/YYYY.MM.DD.</p>
 <p>For example:
-    <br><code>Show.Name.12.12.2008.HDTV-RLS.nzb</code></p>
+    <br><code>Show.Name.25.12.2022.HDTV-RLS.nzb</code></p>
 </p>
 
 <hr>
 <h2 id="toc6">Sort String examples</h2>
+<p><strong>Job Name as File Name:</strong><br>
+    <code>%dn.%ext</code><br>
+    Example: Job Name.mkv
+</p>
+
 <h3>Series examples</h3>
 <p><strong>1x01 Season Folder:</strong><br>
     <code>%sn/Season %s/%sn - %sx%0e - %en.%ext</code><br>
@@ -253,10 +258,6 @@ title: Sorting
     <code>%sn/S%0sE%0e - %en/%sn - S%0sE%0e - %en.%ext</code><br>
     Example: Show Name/S01E05 - Episode Name/Show Name - S01E05 - Episode Name.mkv
 </p>
-<p><strong>Job Name as Folder Name:</strong><br>
-    <code>%dn.%ext</code><br>
-    Example: Job Name.mkv
-</p>
 <p><strong>Show name and season directories without file renaming:</strong><br>
     <code>%sn/Season %s</code><br>
     Example: Show Name/Season 1/old filename.avi
@@ -270,10 +271,6 @@ title: Sorting
 <p><strong>No folders:</strong><br>
     <code>%title (%y).%ext</code><br>
     Example: Movie Name (2000).mkv
-</p>
-<p><strong>Job Name as File Name:</strong><br>
-    <code>%dn.%ext</code><br>
-    Example: Job Name.mkv
 </p>
 
 <h3>Date examples</h3>
