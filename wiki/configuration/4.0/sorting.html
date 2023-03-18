@@ -7,7 +7,7 @@ title: Sorting
 
 <hr>
 <h1 id="toc1">Sorting</h1>
-<p>Sorting replaces any pattern keys in the Sort String (such as <em>%sn</em> for the show name) with real values, before creating the directory structure and renaming files. The Sort String as well as the affected categories and job types can be set for every sorter.</p>
+<p>Sorting replaces any pattern keys in the sort string (such as <em>%sn</em> for the show or movie name) with real values, before creating the directory structure and renaming files. The sort string as well as the affected categories and job types can be set for every sorter. Sorters are tried in order of appearance, and can be reordered by dragging and dropping in the web interface. The first active sorter that meets both selection criteria (affected category and job type) is applied.</p>
 
 <p>The job name serves as the primary sources of information for the sorting. The more standard the naming, the better your chances of a job getting properly recognized, assigned the right job type, and correctly sorted. Additional information may be sourced from metadata embedded in the NZB.</p>
 
@@ -32,11 +32,11 @@ title: Sorting
         </tr>
         <tr>
             <td><strong>Affected Job Types</strong></td>
-            <td>The job types this sorter should apply to. Use <em>Ctrl/Shift</em> to select multiple options.</td>
+            <td>The job type(s) this sorter should apply to. Use <em>Ctrl</em> or <em>Shift</em> to select multiple options.</td>
         </tr>
         <tr>
             <td><strong>Affected Categories</strong></td>
-            <td>The categories this sorter should apply to. Use <em>Ctrl/Shift</em> to select multiple options.</td>
+            <td>One or more categories this sorter should apply to. Use <em>Ctrl</em> or <em>Shift</em> to select multiple options.</td>
         </tr>
         <tr>
             <td><strong>Minimum Filesize</strong><br><span class="label label-primary">Advanced</span></td>
