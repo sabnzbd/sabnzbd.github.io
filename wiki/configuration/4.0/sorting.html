@@ -11,8 +11,6 @@ title: Sorting
 
 <p>The job name serves as the primary source of information for the sorting. The more standard the naming, the better your chances of a job getting properly recognized, assigned the right job type, and correctly sorted. Additional information may be sourced from metadata embedded in the NZB.</p>
 
-<p>If the sort string ends in a pattern that indicates a filename (<em>.%ext</em> or <em>%fn</em>), its last part will be used for renaming files; otherwise, the constructed path will be created as a directory and the downloaded files moved there without renaming.</p>
-
 <hr>
 <h2 id="toc2">Basic settings</h2>
 <table class="table table-bordered table-hover">
@@ -28,7 +26,7 @@ title: Sorting
         </tr>
         <tr>
             <td><strong>Sort String</strong></td>
-            <td>The sorting expression with pattern keys, constructing a path of your choice. See the presets and the <a href="#toc6">sort string examples</a> section below for examples.</td>
+            <td>The sorting expression with pattern keys, constructing a path of your choice. If the sort string ends in a pattern that indicates a file name (<em>.%ext</em> or <em>%fn</em>), its last part will be used for renaming files; otherwise, the constructed path will be created as a directory and the downloaded files moved there without renaming. See the presets and the <a href="#toc6">sort string examples</a> section below for examples.</td>
         </tr>
         <tr>
             <td><strong>Affected Job Types</strong></td>
@@ -168,12 +166,12 @@ title: Sorting
         <tr>
             <td>Original File Name</td>
             <td>%fn</td>
-            <td>filename</td>
+            <td>file name</td>
         </tr>
         <tr>
             <td>Original Job Name</td>
             <td>%dn</td>
-            <td>foldername</td>
+            <td>folder name</td>
         </tr>
         <tr>
             <td>Lower Case</td>
@@ -221,14 +219,14 @@ title: Sorting
 <p>For example:
     <br><code>Show Name - 1x01 - Episode Name.nzb</code>
     <br><code>Show.Name.S01E01.Episode.Name.nzb</code>
-    <br><code>ShowName.1x01.nzb</code>
+    <br><code>Show Name.1x01.nzb</code>
 </p>
 
 <h3 id="toc5">Season packs</h3>
 <p>The sorting includes support for season packs. Season pack handling is automatically activated for qualifying jobs, unless it has been disabled globally via the <a href="/wiki/configuration/{{ site.wiki_version }}/special">Special</a> <code>enable_season_sorting</code> setting. Episode numbers are detected from the names of the downloaded files; all other information is based on the job name or metadata. To qualify for season pack handling, a job must be detected as type <em>tv</em>, its name must indicate a single <em>season</em> and either <em>multiple episodes</em>, or <em>no episodes</em> at all.</p>
 <p>Examples of job names that would be recognised as season packs include:
-    <br><code>Show Name S02E04-05-06 Resolution-Groupname.nzb</code>
-    <br><code>Show.Name.S04.Resolution.Source.Codec-Groupname.nzb</code>
+    <br><code>Show Name S02E04-05-06 Resolution-Group.nzb</code>
+    <br><code>Show.Name.S04.Resolution.Source.Codec-Group.nzb</code>
     <br><code>Show Name S03E02E05E66.nzb</code>
     <br><code>Show Name 4x01-02.nzb</code>
 </p>
@@ -265,7 +263,7 @@ title: Sorting
 </p>
 <p><strong>Show name and season directories without file renaming:</strong><br>
     <code>%sn/Season %s</code><br>
-    Example: Show Name/Season 1/old filename.avi
+    Example: Show Name/Season 1/old file name.avi
 </p>
 
 <h3>Movie examples</h3>
