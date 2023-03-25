@@ -17,7 +17,6 @@ redirect_from: "/wiki/advanced/user-pre-queue-script"
 <hr>
 <h2 id="toc1">Input parameters</h2>
 <p>All parameters (except 1) can be empty, meaning a default value. Use <code>%1</code> in Windows scripts and <code>$1</code> in Unix scripts. Note that on Windows the input parameters are surrounded by quotes (e.g. <code>"job name"</code>).</p>
-<p><span class="label label-warning">NOTE</span> Parameters 12 through 18 require SABnzbd version 4.0.0 or higher.</p>
 
 <p><span class="label label-warning">NOTE</span> <strong>Much more information is available to scripts via environment variables, <a href="#env_vars">see below</a>!</strong></p>
 
@@ -89,6 +88,10 @@ redirect_from: "/wiki/advanced/user-pre-queue-script"
         <tr>
             <td>11</td>
             <td>Episode name</td>
+        </tr>
+        <tr>
+            <td><span class="label label-warning">NOTE</span></td>
+            <td>Parameters 12 through 18 require SABnzbd version 4.0.0 or higher.</td>
         </tr>
         <tr>
             <td>12</td>
