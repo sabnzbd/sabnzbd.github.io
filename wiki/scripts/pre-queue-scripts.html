@@ -311,16 +311,19 @@ if %6 LSS 2000000000 echo 1
 import sys
 
 try:
+    # Parse the 18 input variables for SABnzbd version >= 4.0.0
+    (scriptname, nzbname, postprocflags, category, script, prio, downloadsize, grouplist, showname, season, episodenumber, episodename, is_proper, resolution, decade, year, month, day, type) = sys.argv
+except ValueError:
+    # ...or 11 variables for earlier versions
     (scriptname, nzbname, postprocflags, category, script, prio, downloadsize, grouplist, showname, season, episodenumber, episodename) = sys.argv
-    downloadsize = int(downloadsize)
-except:
-    sys.exit(1)    # exit with 1 causes SABnzbd to ignore the output of this script
+except Exception:
+    sys.exit(1)  # a non-zero exit status causes SABnzbd to ignore the output of this script
 
 prio = -100    # Default
-if downloadsize > 50111222:
+if int(downloadsize) > 50111222:
     prio = 2
 
-print("1")    # Accept
+print("1")  # Accept the job
 print()
 print()
 print()
