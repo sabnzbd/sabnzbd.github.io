@@ -18,7 +18,7 @@ redirect_from: "/wiki/advanced/automation-support"
 
 <pre><code>http://host:port/sabnzbd/api?output=json&amp;apikey=APIKEY</code></pre>
 <p>If the API-key is missing the request will return <code>error: API Key Required</code>, if it is incorrect: <code>error: API Key Incorrect</code>.
-<p>There is also a seperate NZB key, which only allowes for adding, modifying and removing jobs in the queue. When this key is used for something else, the request will return <code>error: API Key Incorrect</code>.
+<p>There is also a separate NZB key, which only allows for adding, modifying and removing jobs in the queue. When this key is used for something else, the request will return <code>error: API Key Incorrect</code>.
 <p>The <code><a href="#version">version</a></code> and <code><a href="#auth">auth</a></code> functions do not require the API key.</p>
 
 
@@ -439,7 +439,7 @@ redirect_from: "/wiki/advanced/automation-support"
 <h2 id="move">Move job in queue</h2>
 <p>Job's can be switched by providing 2 <code>nzo_id</code>, <code>value</code> is the item you want to move, <code>value2</code> is the name of the job where you want to put <code>value</code> one above, shifting job <code>value2</code> down.
 <pre><code>api?mode=switch&amp;value=NZO_ID_1&amp;value2=NZO_ID_2</code></pre>
-<p>You can also move to a specific location in the queu, where <code>0</code> is the top of the queue:</p>
+<p>You can also move to a specific location in the queue, where <code>0</code> is the top of the queue:</p>
 <pre><code>api?mode=switch&amp;value=NZO_ID&amp;value2=2</code></pre>
 <p>Both commands will return the new position and priority, since a job's location is also dependent on its priority:</p>
 {% highlight json %}
@@ -1208,7 +1208,7 @@ Example of filtering the server settings by keyword:
 <h2 id="set_config">Set config item</h2>
 <p>In order to change a setting, you need to provide the <code>section</code> and <code>keyword</code> of the setting:</p>
 <pre><code>api?mode=set_config&amp;section=SECTION&amp;keyword=KEYWORD&amp;value=VALUE</code></pre>
-<p>Returns the new setting when saved succesfully.</p>
+<p>Returns the new setting when saved successfully.</p>
 <p>For example, changing the Cleanup-list to <code>.sfv,.nzb,.nfo,.ext</code> would look like this:</p>
 <pre><code>api?mode=set_config&amp;section=misc&amp;keyword=cleanup_list&amp;value=.sfv,.nzb,.nfo,.ext</code></pre>
 
