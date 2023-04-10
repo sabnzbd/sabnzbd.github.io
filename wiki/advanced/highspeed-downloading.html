@@ -2,7 +2,7 @@
 title: High speed Downloading
 ---
 
-<p>If you have a fast Internet connection (50MB/s aka 400 Mbps, and over) and are not getting the full speeds you require, you can try the following:</p>
+<p>If you have a fast Internet connection (60MB/s aka 500 Mbps, and over) and are not getting the full speeds you require, you can try the following:</p>
 
 <h2>Basic requirements for your system and Internet connection</h2>
 The bottom line for high speed downloading is easy:
@@ -14,7 +14,7 @@ Start with a test of your system: Check at Wrench -> Status -> Refresh symbol, a
     <li><strong>Start with a test download:</strong> Wrench -> Test Download -> 1000 MB.</li>
 </ol>
 
-- On a system with a CPU with at least 100.000 pystones, and SSD drives achieving 150 MB/s, a Gigabit Internet connection reported as 100 MB/s by SAB you should be able to get 100 MB/s newsgroup downloads.
+- On a system with a CPU with at least 100,000 pystones, and SSD drives achieving 150 MB/s, a Gigabit Internet connection reported as 100 MB/s by SAB you should be able to get 100 MB/s newsgroup downloads.
 
 <p>If you are posting a question if you think your download speed is too low, post the info reported by the Wrench tool.
 
@@ -34,7 +34,7 @@ Start with a test of your system: Check at Wrench -> Status -> Refresh symbol, a
     <li><strong>Use a wired network connection, not wireless.</strong><br/>
         Test your speed via <a href="https://fast.com/"> fast.com</a>. Divide the result from fast.com by 8 to get the speed in MB/s.</li>
     <li><strong>Set the <code>Article Cache Limit</code></strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/general#toc2">Config-&gt;General</a>.<br/>
-        This will keep articles in memory until they can be written to the correct file instead of first writing them to individual temporary files which has to be read back later. Depending on how much RAM you can spare, two good values are <code>500M</code> (the M denotes megabytes) or <code>1G</code> (1GB). If you download a lot of rar files that are 200MB or larger then use the latter value. The cache will only be used when nessecary, cache usages above 400MB are rare.</li>
+        This will keep articles in memory until they can be written to the correct file instead of first writing them to individual temporary files which has to be read back later. Depending on how much RAM you can spare, two good values are <code>500M</code> (the M denotes megabytes) or <code>1G</code> (1GB). If you download a lot of rar files that are 200MB or larger then use the latter value. The cache will only be used when necessary, cache usages above 400MB are rare.</li>
     <li><strong>Check that logging is set to <code>Errors/Warning</code> only</strong> in the Status window.<br/>
         Especially the <code>+Debug</code> setting writes very frequently tiny bits of data to the disk. This increases CPU load for the writing and occupies the disk.</li>
     <li><strong>Enable <code>Only get articles for top of the queue</code></strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a>.<br/>
@@ -42,7 +42,7 @@ Start with a test of your system: Check at Wrench -> Status -> Refresh symbol, a
     <li><strong>Try different connection numbers</strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/servers">Config-&gt;Servers</a>.<br/>
         A higher number will increase the overhead so more connections is not always better. It may also make web browsing, gaming and other internet activities less responsive while downloading.</li>
     <li><strong>Change <a href="/wiki/advanced/ssl-ciphers">SSL Ciphers</a> to <code>AES128</code> or <code>CHACHA20</code></strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/servers">Config-&gt;Servers</a>.<br/>
-        This will sightly lower encryption strength but can greatly increase download speeds. CHACHA20 is useful for CPUs without hardware AES support (ie. Raspberry Pi) but is not supported by all servers.</li>
+        This will slightly lower encryption strength but can greatly increase download speeds. CHACHA20 is useful for CPUs without hardware AES support (ie. Raspberry Pi) but is not supported by all servers.</li>
     <li><strong>Try different values for <code>downloader_sleep_time</code></strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/special">Config-&gt;Special</a>.<br/>
         SABnzbd will sleep for a short while between each check for new data to reduce CPU usage if possible. Suggested initial test values are 0 (disable, will use more CPU), 20 and 40.</li>
     <li><strong>Increase <code>num_decoders</code></strong> in <a href="/wiki/configuration/{{ site.wiki_version }}/special">Config-&gt;Special</a></strong>.<br/>
