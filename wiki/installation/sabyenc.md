@@ -116,7 +116,7 @@ pip install sabyenc3 --upgrade
 
 ## Multiple installations of python
 
-If you have multiple installations of Python on your machine (<code>python</code>/<code>python2</code>/<code>python3</code> or different versions of Python 3), you have to make sure SAByenc is installed into the correct Python enviroment. And 'correct' means the Python installation used by SABnzbd. The command is then:
+If you have multiple installations of Python on your machine (<code>python</code>/<code>python2</code>/<code>python3</code> or different versions of Python 3), you have to make sure SAByenc is installed into the correct Python environment. And 'correct' means the Python installation used by SABnzbd. The command is then:
 
 ```
 /path/to/correct/python -m pip install sabyenc3

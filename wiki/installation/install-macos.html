@@ -15,7 +15,7 @@ title: Install SABnzbd for macOS
     <li>Get a local copy (clone) of the SABnzbd source by running in the Terminal:
     <pre><code>git clone https://github.com/sabnzbd/sabnzbd.git
 cd sabnzbd</code></pre></li>
-    <li>Install the depenencies by running (might require Xcode):<br>
+    <li>Install the dependencies by running (might require Xcode):<br>
     <pre><code>python3 -m pip install -U -r requirements.txt</code></pre></li>
     <li>Start SABnzbd by running:<br>
     <pre><code>python3 SABnzbd.py</code></pre></li>
@@ -30,7 +30,7 @@ git pull</pre></code>
 <hr>
 
 <h2 id="toc2">Running from Terminal</h2>
-<p>Since the "-d" option of SABnzbd is not working under Leopard, we need to create a daemon environment. This can easily be done by running the command in <em>screen</em>. This also adds running at a low priority so that it willl affect system performance less. The final command looks like this (provided that SABnzbd is still on your desktop):</p>
+<p>Since the "-d" option of SABnzbd is not working under Leopard, we need to create a daemon environment. This can easily be done by running the command in <em>screen</em>. This also adds running at a low priority so that it will affect system performance less. The final command looks like this (provided that SABnzbd is still on your desktop):</p>
 {% highlight sh %}
 cd SABnzbd/
 /usr/bin/screen -m -d /usr/bin/nice -n 20 ~/SABnzbd/SABnzbd.py -b 0
