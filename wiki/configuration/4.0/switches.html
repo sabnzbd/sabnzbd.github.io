@@ -156,7 +156,11 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Deobfuscate final filenames</strong></td>
-            <td>If filenames of (large) files in the final folder look obfuscated or meaningless (like <code>19399393.ext</code> or <code>timmof.mkv</code>) they will be renamed to the job name. Additionally, attempts to set the correct file extension based on the file signature if the extension is not present or meaningless.</td>
+            <td>
+                <p>If filenames of (large) files in the final folder look obfuscated or meaningless (like <code>19399393.ext</code> or <code>timmof.mkv</code>) they will be renamed to the job name.
+                    Additionally, attempts to set the correct file extension based on the file signature if the extension is not present or meaningless.</p>
+                <p><span class="label label-warning">NOTE</span> If <a href="/wiki/configuration/{{ site.wiki_version }}/sorting">Sorting</a> is active for a specific job, this feature will not be applied.</p>
+            </td>
         </tr>
         <tr>
             <td><strong>Cleanup List</strong></td>
