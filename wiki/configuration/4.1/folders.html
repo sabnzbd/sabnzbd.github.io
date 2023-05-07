@@ -33,7 +33,7 @@ title: Folders
         <tr>
             <td><strong>Watched Folder</strong></td>
             <td>
-                <p>This is a folder that is periodically checked for new NZB files. When a file is stored in this folder, SABnzbd will consider this a download job. It processes the file, puts it in the queue and removes the NZB file. ZIP and RAR files that contain <em>only</em> NZB files are also imported (<code>.nfo</code> files are allowed too, but ignored).</p>
+                <p>This is a folder that is periodically checked for new NZB files. When a file is stored in this folder, SABnzbd will consider this a download job. It will scan the folder and processes the supported files: <code>.nzb, .gz, or .bz2</code> and archives <code>.zip, .rar, or .7z,</code>. The process will add the NZB to the queue and remove the file from the watched folder if successful. ZIP/RAR/7z archives should only contain .nzb files inside (.nfo are silently ignored).</p>
                 <p>The Watched Folder supports <a href="/wiki/configuration/{{ site.wiki_version }}/categories">Categories</a> in two ways:
                 <ul>
                     <li><strong>Categories:</strong> Create a folder inside your watched folder with the same name as one of your categories. Placing a file inside that folder will add the category with the same name as the sub-folder when it is imported. <br>
