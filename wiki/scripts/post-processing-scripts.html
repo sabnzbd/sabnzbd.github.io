@@ -10,7 +10,10 @@ redirect_from: "/wiki/advanced/user-scripts"
 </p>
 
 <p>
-    Scripts may use any scripting language available on your system; common choices are Python, Unix shell, and Windows batch scripts. All scripts must be located in the Scripts-directory, specified in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Config-&gt;Folders</a> and must be executable. On Unix-like operating systems (Linux, BSD, etc.) this means the x-bit must be on. On Windows, the requirement is that the script's extension is listed in your system's <code>PATHEXT</code> environment variable.
+    Scripts may use any scripting language available on your system; common choices are Python, Unix shell, and Windows batch scripts.
+    All scripts must be located in the Scripts-directory, specified in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Config-&gt;Folders</a> and must be executable.
+    On Unix-like operating systems (Linux, BSD, etc.) this means the x-bit must be on.
+    On Windows, the requirement is that the script's extension is listed in your system's <code>PATHEXT</code> environment variable.
 </p>
 
 <p>
@@ -22,7 +25,9 @@ redirect_from: "/wiki/advanced/user-scripts"
     The "return" code that your script itself returns should be <code>0</code> if all went well or non-zero if errors occurred. If the return code is something else than <code>0</code>, SABnzbd's History will show that return code (also known as exit code) as <code>Exit(...)</code> in the History. By default the job will not be flagged as failed in case the exit code is non-zero. In <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a> there is the option to let a non-zero code mark the job as failed.
 </p>
 
-<p>Example scripts are included in the <code>scripts</code> directory of your SABnzbd installation and are shown at the end of this page.</p>
+<p>
+    Example scripts are included in the <code>scripts</code> directory of your SABnzbd installation and are shown at the end of this page.
+</p>
 
 <hr>
 <h2>Basic parameters</h2>
@@ -87,7 +92,7 @@ redirect_from: "/wiki/advanced/user-scripts"
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>Position</th>
+            <th>Variable</th>
             <th>Description</th>
         </tr>
     </thead>
@@ -235,6 +240,10 @@ redirect_from: "/wiki/advanced/user-scripts"
         <tr>
             <td>SAB_7ZIP_COMMAND</td>
             <td>The path to the <code>7z</code> command on the system that SABnzbd uses. Not all systems have 7zip installed (it's optional for SABnzbd), so this can also be empty</td>
+        </tr>
+        <tr>
+            <td>PYTHONUNBUFFERED</td>
+            <td>This variable is set to 1 when running a Python script (<code>.py</code>), in order to force Python to write output to SABnzbd directly instead of buffering it</td>
         </tr>
     </tbody>
 </table>
