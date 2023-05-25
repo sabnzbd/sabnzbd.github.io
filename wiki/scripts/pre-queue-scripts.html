@@ -320,7 +320,7 @@ except Exception:
     sys.exit(1)  # a non-zero exit status causes SABnzbd to ignore the output of this script
 
 prio = -100  # Default
-if int(downloadsize) > 50111222:
+if int(downloadsize) < 50*1024**2:
     prio = 2
 
 print("1")  # Accept the job
