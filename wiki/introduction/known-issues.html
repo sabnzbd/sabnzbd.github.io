@@ -10,7 +10,7 @@ title: Known issues
     <li><a href="#toc0">Size limit</a></li>
     <li><a href="#toc1">Hangup of post-processing</a></li>
     <li><a href="#toc2">Decoder failure: Out of memory</a></li>
-    <li><a href="#toc14">Memory usage (leaks)</a></li>
+    <li><a href="#toc3">Memory usage (leaks)</a></li>
     <li><a href="#toc5">Unreliable Usenet servers</a></li>
     <li><a href="#toc6">macOS and foreign characters</a></li>
     <li><a href="#toc7">Linux and foreign characters</a></li>
@@ -19,6 +19,7 @@ title: Known issues
     <li><a href="#toc12">Blocked email</a></li>
     <li><a href="#toc13">Mounting external drives and network shares</a></li>
     <li><a href="#toc14">Speed drops to KB/s when using a VPN</a></li>
+    <li><a href="#toc15">Data downloaded of all items when some items set to Force</a></li>
 </ul>
 
 <h2 id="toc0">Size limit</h2>
@@ -39,7 +40,7 @@ title: Known issues
     <li>If you run SABnzbd as a Windows Service, try running it not as a Service but regular. When SABnzbd is used as a service, Windows can unpredictably limit the allocation of memory to SABnzbd when it thinks it's usage is too high.</li>
 </ul>
 
-<h2 id="toc14">Memory usage (leaks)</h2>
+<h2 id="toc3">Memory usage (leaks)</h2>
 <p>Some users have complained about ever growing memory use by SABnzbd.<br>
     So far we have not been able to reproduce this behavior, but that doesn't mean it can never happen.<br>
     We would like to receive information on how to reproduce this problem.<br>
@@ -100,3 +101,7 @@ title: Known issues
     this feature is not active.
 </p>
 
+<h2 id="toc15">Data downloaded of all items when some items set to Force</h2>
+<p>If the queue is paused but one or more jobs have the Force priority, SABnzbd might still
+  download some data from other jobs in the queue if active servers have unused connections.
+</p>

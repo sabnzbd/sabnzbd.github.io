@@ -1,0 +1,28 @@
+---
+title: Login from multiple IP addresses
+redirect_from:
+    - /multiple-adresses
+---
+<p>If you get the warning <code>Login from multiple different IP addresses</code>, it means your news server provider sees your account logging in from different IP addresses.
+News server provider often don't allow this, because it looks like you're sharing your account with someone else. However, the cause is often different: you're not sharing your account, but your logins come from different IP addresses.
+
+<h2>There can be different causes for this:</h2>
+
+<ol>
+    <li>You're switching between VPN and no-VPN, or fixed and mobile internet connection.</li>
+    <li>Your account is used from a different location at the same time, by you or maybe someone else (= account sharing).</li>
+    <li>You have more than one (combined) Internet connection, for example two mobile connections, or fixed plus mobile.</li>
+    <li>SABnzbd is switching between IPv4 and IPv6.</li>
+    <li>Your ISP is using a technology "CGNAT" (Carrier Grade NAT), in which you share one IP address with other ISP customers, and that IP address can change for different sessions.</li>
+
+</ol>
+
+<h2>Things worth trying:</h2>
+<ul>
+    <li>Don't do the things above.</li>
+    <li>If you're behind CGNAT, hopefully your ISP also provides you IPv6. You can check the IPv6 address in SABnzbd in the Status and Interface settings (<span class="glyphicon glyphicon-wrench"></span> window. If so, use the IPv6 address of your news server</li>
+</ul>
+
+<h2>Probable account sharing</h2>
+
+In SABnzbd 3.7.1 and older, the error message was "Probable account sharing".

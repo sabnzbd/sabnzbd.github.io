@@ -89,6 +89,38 @@ redirect_from: "/wiki/advanced/user-pre-queue-script"
             <td>11</td>
             <td>Episode name</td>
         </tr>
+        <tr>
+            <td><span class="label label-warning">NOTE</span></td>
+            <td>Parameters 12 through 18 require SABnzbd version 4.0.0 or higher.</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>Tagged as Proper (True or False)</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>Resolution</td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>Decade</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>Year</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>Month</td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td>Day</td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td>Job type (tv, date, movie, or unknown)</td>
+        </tr>
     </tbody>
 </table>
 
@@ -164,12 +196,12 @@ SABnzbd uses the first 7 lines of output, so they should only contain proper dat
 </table>
 
 <hr>
-<h2 id="env_vars">Enviroment variables</h2>
-<p>Your script can get extra information via environment variables (return information should still be send as plain output):</p>
+<h2 id="env_vars">Environment variables</h2>
+<p>Your script can get extra information via environment variables (return information should still be sent as plain output):</p>
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>Position</th>
+            <th>Variable</th>
             <th>Description</th>
         </tr>
     </thead>
@@ -279,16 +311,19 @@ if %6 LSS 2000000000 echo 1
 import sys
 
 try:
+    # Parse the 18 input variables for SABnzbd version >= 4.0.0
+    (scriptname, nzbname, postprocflags, category, script, prio, downloadsize, grouplist, showname, season, episodenumber, episodename, is_proper, resolution, decade, year, month, day, job_type) = sys.argv
+except ValueError:
+    # ...or 11 variables for earlier versions
     (scriptname, nzbname, postprocflags, category, script, prio, downloadsize, grouplist, showname, season, episodenumber, episodename) = sys.argv
-    downloadsize = int(downloadsize)
-except:
-    sys.exit(1)    # exit with 1 causes SABnzbd to ignore the output of this script
+except Exception:
+    sys.exit(1)  # a non-zero exit status causes SABnzbd to ignore the output of this script
 
-prio = -100    # Default
-if downloadsize > 50111222:
+prio = -100  # Default
+if int(downloadsize) < 50*1024**2:
     prio = 2
 
-print("1")    # Accept
+print("1")  # Accept the job
 print()
 print()
 print()

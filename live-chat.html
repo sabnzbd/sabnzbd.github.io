@@ -9,8 +9,13 @@ redirect_from: "/live-chat/"
     <div id="main-container" class="container">
         <div class="row">
             <div class="col-md-12">
-                <p>SABnzbd has a support &#038; discussion channel on the synIRC IRC Network. If you&#8217;re familiar with IRC you can find us in <b>#sabnzbd</b> on <b>irc.synirc.net</b>. If you aren&#8217;t, you can use the Mibbit web client embedded on this page.</p>
-                <p>Before jumping in to the chat please check <a href="/wiki/" target="blank">the wiki</a> to see if we&#8217;ve already answered your question in our <a href="/wiki/faq" target="blank">FAQ</a>. We very well might have! Here are our top requests:</p>
+                <p>
+                    SABnzbd has support &#038; discussion channels on our Discord server and on the synIRC IRC Network.<br>
+                    There is a two-way IRC-Discord relay bot that links our Discord's <code>#support</code> channel with <code>#sabnzbd</code> IRC channel to allow each group to assist each other.
+                </p>
+
+                <p>Before jumping in to the chat please check <a href="/wiki/" target="blank">the wiki</a> to see if we have already answered your question in our <a href="/wiki/faq" target="blank">FAQ</a>.</p>
+                <p>Here are our top requests:</p>
                 <ul>
                     <li><a href="/wiki/faq#toc21" target="blank">SABnzbd is asking for a password, how do I reset it?</a></li>
                     <li><a href="/wiki/introduction/usage" target="blank">How do I get files into SABnzbd?</a></li>
@@ -18,20 +23,33 @@ redirect_from: "/live-chat/"
                     <li><a href="/wiki/introduction/nzb-sources" target="blank">How do I search?</a></li>
                 </ul>
 
-                <h3><a href="#" id="chat-link" onclick="javascript:showChat()">Click Here to open the chat</a></h3>
+                <p><b>Note:</b> While we try to respond promptly to whatever questions you may come in with, please keep in mind that we can't always respond <i>instantaneously</i>. So please, stick around for a couple of minutes and give us a chance to realize there's channel activity before you give up.</p>
+                <p>However, if we really all do seem asleep, feel free to ask your question <a href="http://forums.sabnzbd.org">over on the forums</a>.</p>
 
-                <p><b>Note:</b> While we try to respond promptly to whatever questions you may come in with, please keep in mind that we can&#8217;t always respond <i>instantaneously</i>. So please, stick around for a couple minutes and give us a chance to realize there&#8217;s channel activity before you give up.</p>
-                <p>(However, if we really all do seem asleep, feel free to ask your question <a href="http://forums.sabnzbd.org">over on the forums</a>.)</p>
+                <hr/>
+
+                <h3>Discord</h3>
+                <p>
+                    <a href="https://discord.gg/KQzDe7fvNU" target="_blank"><img src="https://img.shields.io/discord/976737547558461480?color=7289DA&label=Discord&logo=Discord&logoColor=white&style=for-the-badge" alt="Join our Discord server" /></a><br>
+                    Join our Discord server!
+                </p>
+
+                <hr/>
+
+                <h3>IRC</h3>
+                <p>If you are familiar with IRC you can find us in <b>#sabnzbd</b> on <b>irc.synirc.net</b>. If you aren't, you can use the Mibbit web client embedded on this page.</p>
+
+                <p><a href="#" id="chat-link" onclick="showChat()">Click here to connect to the chat</a></p>
 
                 <p><iframe id="chat" width="100%" height="600" scrolling="no" style="border:0; display:none;" src=""></iframe></p>
 
                 <script type="text/javascript">
-                    var chatOpen = false
+                    var chatOpen = false;
                     function showChat() {
-                        chatOpen = true
+                        chatOpen = true;
                         $('#chat').show();
                         $('#chat').attr('src','https://embed.mibbit.com/?server=irc.synirc.net&channel=%23sabnzbd&noServerNotices=true&noServerMotd=true&parseLinks=true&chatOutputShowTimes=true');
-                        $('#chat-link').hide()
+                        $('#chat-link').hide();
                     }
 
                     window.onbeforeunload = confirmExit;

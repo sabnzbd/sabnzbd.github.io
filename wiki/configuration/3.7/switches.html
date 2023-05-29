@@ -34,7 +34,7 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Propagation delay</strong></td>
-            <td>If you experience very young posts failing due to missing blocks your server might still be in the process of receiving the posts. Delaying the these very young posts a few minutes might solve these issues. Posts will be paused until they are at least this age. <br>Setting job priority to Force will skip the delay.</td>
+            <td>If you experience very young posts failing due to missing blocks your server might still be in the process of receiving the posts. Delaying these very young posts a few minutes might solve these issues. Posts will be paused until they are at least this age. <br>Setting job priority to Force will skip the delay.</td>
         </tr>
         <tr>
             <td><strong>Only get articles for top of queue</strong></td>
@@ -77,8 +77,16 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Automatically sort queue</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>Every time a job is added to the queue, the queue can be sorted according to this setting. For example if you have a server with low retention time, there is a higher chance of completing it if you sort the queue by age. <br>
-            <span class="label label-warning">NOTE</span> Beware that custom sorting of the queue is lost every time a new job is added.</td>
+            <td>Every time a job is added to the queue, the queue can be sorted according to this setting.<br>
+            <span class="label label-warning">NOTE</span> Beware that custom sorting of the queue is lost every time a new job is added.
+            <ul>
+                <li><code>Default</code> = No auto sorting.</li>
+                <li><code>Sort by % downloaded</code> = Sort jobs by percentage downloaded (re-sorts every 30 seconds).</li>
+                <li><code>Sort by Age</code> = Sort jobs by their usenet date.</li>
+                <li><code>Sort by Name</code> = Sort jobs by their Name (not case sensitive).</li>
+                <li><code>Sort by Size</code> = Sort jobs by their Size/Bytes. </li>
+            </ul>
+            </td>
         </tr>
         <tr>
             <td><strong>Direct Unpack</strong></td>
@@ -179,6 +187,10 @@ title: Switches
         <tr>
             <td><strong>Replace Spaces in folder name</strong><br><span class="label label-primary">Advanced</span></td>
             <td>Enable to replace spaces with underscores in folder names.</td>
+        </tr>
+        <tr>
+            <td><strong>Replace underscores in folder name</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>Enable to replace underscores with dots in folder names.</td>
         </tr>
         <tr>
             <td><strong>Replace dots in folder name</strong><br><span class="label label-primary">Advanced</span></td>

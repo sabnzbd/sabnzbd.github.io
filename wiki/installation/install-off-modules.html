@@ -11,6 +11,11 @@ title: Install from source
 
 <h2>Linux platforms</h2>
 
+<h3 id="toc1">Source</h3>
+Get a local copy (clone) of the SABnzbd source from github or via git with:
+<pre><code>git clone https://github.com/sabnzbd/sabnzbd.git </code></pre>
+
+
 <h3 id="toc2">Python</h3>
 
 <p>
@@ -19,49 +24,71 @@ title: Install from source
 </p>
 
 <h3 id="toc3">Must-have Python modules</h3>
-Python comes included with a Python Packages Manager (<code>pip</code>) on many platforms.
-You can install the required Python modules by simply running the following command from the SABnzbd source directory:
-<pre>
-python3 -m pip install -r requirements.txt -U
-</pre>
+Python comes included with a Python Packages Manager (<code>pip</code>) on many platforms.<br>
+Which may be required to be updated to handle building/installing newer packages for your system.<br><br>
 
 <p>
-You might also need the following OS packages:
+Upgrade the python package manager and build modules:
 <pre>
-python3-dev python3-setuptools python3-pip libffi-dev libssl-dev
+python3 -m pip install --upgrade pip wheel
 </pre>
-You might need the python3 package "wheel":
+
+Install the Python module requirements from the SABnzbd source directory:
 <pre>
-python3 -m pip install wheel
+pip3 install --upgrade -r requirements.txt
+</pre>
+
+If you plan to do development work, you might need the following OS packages:
+<pre>
+pip3 install --upgrade -r builder/requirements.txt
+pip3 install --upgrade -r tests/requirements.txt
+</pre>
+
+On <b>non-x86</b> linux platforms you may need to install:
+<pre>
+python3-dev python3-setuptools python3-pip libffi-dev libssl-dev openssl-dev musl-dev cargo
 </pre>
 </p>
 
-<p>In case <code>sabyenc</code> installation fails, you can read more <a href="/wiki/extra/sabyenc.html">here</a>.</p>
+<p>If the <code>sabctools</code> (formerly called <code>sabyenc</code>) installation fails, read <a href="/sabctools">here</a>.</p>
 
-<p>Start SABnzbd by running:</p>
-<pre><code> ./SABnzbd.py</code></pre>
+<p>Start SABnzbd by running:
+<pre><code>./SABnzbd.py</code></pre>
+</p>
 
-<h2>Multi-language support</h2>
-<p>To enable multi-language support (and fix mistakes in English texts) you will need to run this command once before starting SABnzbd for the first time and after each major update:</p>
+<h3>Multi-language support</h3>
+<p>To enable multi-language support (and fix mistakes in English texts) you will need to run this command once before starting SABnzbd for the first time and after each major update:
 <pre>python3 tools/make_mo.py</pre>
-
-<h3 id="toc8">Must-have utilities</h3>
-<h4 id="toc9"><code>unrar</code></h4>
-<p>We recommend release 5.5 or higher from the RarLab site or your package manager:<br>
-    <a href="http://www.rarlab.com/rar_add.htm" target="_blank">http://www.rarlab.com/rar_add.htm</a>
 </p>
 
-<h4 id="toc11"><code>par2</code></h4>
-<p>Available through package managers as <code>par2</code>, <code>par2cmdline</code> or via <a href="https://github.com/Parchive/par2cmdline/releases">GitHub</a>. <br>Faster multicore versions of <code>par2</code> can also be installed, read more <a href="/wiki/installation/multicore-par2">here</a>.
+<h3 id="toc4">Must-have utilities</h3>
+<h4><code>unrar</code></h4>
+<p>We recommend release 5.5 or higher your package manager or the <a href="http://www.rarlab.com/rar_add.htm" target="_blank">official website</a>.
+</p>
+
+<h4><code>par2</code></h4>
+<p>Available through package managers as <code>par2</code>, <code>par2cmdline</code> or via <a href="https://github.com/Parchive/par2cmdline/releases">GitHub</a>.<br>
+Optimized versions of <code>par2</code> can also be installed, read more <a href="/wiki/installation/multicore-par2">here</a>.
 </p>
 
 
-<h3>Optional utilities</h3>
-<h4 id="toc10"><code>unzip</code></h4>
-<p>Any <code>unzip</code> command that supports passwords (via <code>-P</code> option) will function. Can usually be installed via package managers, alternatively InfoZip's unzip program can be optained <a href="http://gnuwin32.sourceforge.net/packages/unzip.htm" target="_blank">here</a>.
+<h3 id="toc5">Optional utilities</h3>
+<h4><code>unzip</code></h4>
+<p>Any <code>unzip</code> command that supports passwords (via <code>-P</code> option) will function.<br>
+Can usually be installed via package managers, alternatively InfoZip's unzip program can be obtained <a href="http://gnuwin32.sourceforge.net/packages/unzip.htm" target="_blank">here</a>.
 </p>
 
 <h4><code>7zip</code></h4>
-<p>7zip can be obtained via package managers, the command that SABnzbd looks for is <code>7za</code> or <code>7z</code>. The package is called <code>p7zip-full</code> or can be obtained from the <a href="http://www.7-zip.org/">offical website</a>.<br>
+<p>7zip can be obtained via package managers, the command that SABnzbd looks for is <code>7za</code> or <code>7z</code>.<br>
+The package is called <code>7zip</code> or can be obtained from the <a href="http://www.7-zip.org/" target="_blank">official website</a>.<br>
+<code>p7zip</code> was a modification of 7zip to provide linux support which has been abanonded.
 </p>
 
+<h4><code>nice</code></h4>
+<p>To adjust the <b>CPU priority</b> of external tools that SABnzbd runs (ex: par / unrar)</p>
+
+<h4><code>ionice</code></h4>
+<p>To adjust the <b>disk priority</b> of external tools that SABnzbd runs (ex: par / unrar)</p>
+
+<h4><code>notify-osd</code></h4>
+<p>NotifyOSD provides desktop pop-up notifications. Available through package managers as <code>notify-osd</code>.</p>

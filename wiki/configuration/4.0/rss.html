@@ -1,0 +1,168 @@
+---
+title: RSS
+---
+<p>
+    SABnzbd can read RSS-feeds provided by indexers or public RSS websites.
+    These sites offer the latest downloads or return results based on a query. For a list of supported RSS sites, <a href="/wiki/introduction/nzb-sources">see here.</a>
+</p>
+<p>
+    Each feed is analyzed using filters.
+    A filter looks for a text-pattern in the title of entries and will reject or accept a job based on that pattern.
+    A filter "matches" a title if the filter text is found inside that title.
+    You can add <code>*</code> to match arbitrary parts of the title or <code>?</code> for one arbitrary character at that place.
+    The filters are analyzed in order and the first one matched will be selected.
+</p>
+
+
+<hr>
+<h2>An example</h2>
+<p>
+    Suppose you subscribe to a feed and the output of titles in this feed is:
+</p>
+<div class="code">
+<pre><code>My first baby steps hdtv xvid Part 1
+You and me and the dog Part 1
+You and me and the dog Part 2
+My first teen steps hdtv xvid Part 1
+My first baby steps xvid Part 1
+My first baby steps hdtv xvid Part 2
+The making of My first baby steps xvid hdtv</code>
+</pre>
+</div>
+
+<p>Now, suppose you want to get all <code>My ... first steps</code> episodes, but only when marked <code>hdtv</code> and you're not interested in <code>Making of</code>:</p>
+<pre><code>Reject || making of
+Accept || first*steps*hdtv</code>
+</pre>
+
+<p>The <code>Reject</code> filter should be placed first, otherwise the <code>Accept</code> filter will also pick the <code>Making of</code>.</p>
+<p>
+    It's also possible to setup a <code>Required</code> filter.
+    This means that the following filters are only applied when a title matches the <code>Required</code> filter.<br>
+</p>
+<p>
+    For example: if you are only interested in <code>hdtv</code> format, you would create filters like this:
+</p>
+<div class="code">
+    <pre><code>Reject || making of
+Requires || hdtv
+Accept || first*steps
+Accept || second*steps</code>
+</pre>
+</div>
+
+<hr>
+<h2>Categories</h2>
+<p>
+    For each feed you can set the category or the <a href="/wiki/extra/job-options">job options</a> for all jobs in the feed in the top row, or for each <code>Accept</code> filter specifically.<br>
+    If all category settings are left as <code>Default</code> and the indexer category matches one of your categories (by category name or by <a href="/wiki/configuration/{{ site.wiki_version }}/categories">custom <code>Indexer tag</code></a>), it will be automatically assigned to that category. <br>
+</p>
+<p>
+    The assigned or automatically matched category is shown in the Category column.
+</p>
+
+
+<hr>
+<h2>Filters</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Filter name</th>
+            <th>Meaning</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>Accept</code></td>
+            <td>Accept job when the title matches the expression.<br>If not matched, go to next filter.</td>
+        </tr>
+        <tr>
+            <td><code>Requires</code></td>
+            <td>Require job title to contain this expression. <br>If matched, go to next filter. If not matched, reject job.</td>
+        </tr>
+        <tr>
+            <td><code>Reject</code></td>
+            <td>Reject job when the title matches the expression.<br>If not matched, go to next filter.</td>
+        </tr>
+        <tr>
+            <td><code>RequiresCat</code></td>
+            <td>Require job to have this category (<strong>after</strong> mapping the indexer category to your own categories). <br>If matched, go to next filter. If not matched, reject job.</td>
+        </tr>
+        <tr>
+            <td><code>At Least</code></td>
+            <td>The size of the job should be at least this. You can use <code>K/M/G</code> notation, where <code>100M</code> means at least 100Mbyte. <br>If size correct, go to next filter. If size not correct, reject job.</td>
+        </tr>
+        <tr>
+            <td><code>At Most</code></td>
+            <td>The size of the job should be at most this. You can use <code>K/M/G</code> notation, where <code>200M</code> means at most 200Mbyte. <br>If size correct, go to next filter. If size not correct, reject job.</td>
+        </tr>
+        <tr>
+            <td><code>From SxxEyy</code></td>
+            <td>Only this season/episode and newer will be accepted. <br>If matched, go to next filter. If not matched, reject job.</td>
+        </tr>
+        <tr>
+            <td><code>From Show SxxEyy</code></td>
+            <td>
+                Accept this and newer episodes of this specific show. <br>Accept if matched. If not matched, go to next filter.<br>
+                Directly accepts job, this permits multiple shows in a single feed.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p><span class="label label-danger">WARNING</span> The <code>,</code> (comma) and <code>#</code> characters are <strong>not</strong> allowed.</p>
+<p><span class="label label-warning">NOTE</span> The <code>From SxxEyy</code> and <code>From Show SxxEyy</code> will only work when SABnzbd recognizes the season/episode notation in the job title. Wildcards (<code>*</code> and <code>?</code>) are not supported.</p>
+<p><span class="label label-warning">NOTE</span> The <code>RequireCat</code> only works for indexers whose categories have been mapped to your <a href="/wiki/configuration/{{ site.wiki_version }}/categories">own</a>.</p>
+<p><span class="label label-warning">NOTE</span> Some websites require the inclusion of authentication details in the URL. Please check with your feed provider.</p>
+
+
+<h3 id="toc1">Feed buttons</h3>
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td>Read feed</td>
+            <td>Read the RSS source again and apply the filters.</td>
+        </tr>
+        <tr>
+            <td>Force download</td>
+            <td>Send all matching items to the queue.</td>
+        </tr>
+        <tr>
+            <td>Clear download</td>
+            <td>Clear the list of items already sent to the queue.</td>
+        </tr>
+        <tr>
+            <td>Apply Filters</td>
+            <td>New or altered filters are not directly applied to existing results, click this button to re-filter the results.</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+<h2>Regular expressions</h2>
+<p>
+    If you prefix a filter with <code>re:</code> it will be interpreted as a Python regular expression (case-insensitive).
+</p>
+<p>
+    Here's a <a href="https://regexone.com/" target="_blank">tutorial on regular expressions</a>.
+    For all the details see <a href="http://docs.python.org/dev/howto/regex.html" target="_blank">the Python manual</a>.
+</p>
+<p>
+    Simple example: <code>re: this|that</code> will match all jobs containing <code>this</code> or <code>that</code> in the title.
+</p>
+
+<hr>
+<h2>Automatic processing</h2>
+<p>
+    If you check the checkbox next to the name of the feed, it will be automatically processed. The time between scans can be set with <code>RSS checking rate</code>. This can be overridden by using the Scheduler.
+</p>
+
+<hr>
+<h2>First batch</h2>
+<p>
+    To prevent the download of a (potentially) large backlog, the first batch of NZBs will <b>not</b> automatically download. These lines are marked with an asterisk <code>*</code>. If you want these matched feed items in this first batch to download, click the <code>Force Download</code> button.
+</p>
+<p>
+    Then, new feed items in subsequent RSS reads will download automatically (if the feed is enabled).
+</p>

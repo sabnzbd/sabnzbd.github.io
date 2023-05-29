@@ -2,12 +2,12 @@
 name: SABnzbd
 
 # Needs to be a string, for string-comparison
-wiki_version: '3.6'
+wiki_version: '4.0'
 
 # For downloads page. Needs the full x.x.x notation!
 # Needs to be a string, for string-comparison
-latest_stable: '3.6.0'
-latest_testing: ''
+latest_stable: '4.0.1'
+latest_testing: '4.0.2RC1'
 
 # Basic ad-URL
 ad_link: 'https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sabnzbd'
@@ -15,6 +15,19 @@ ad_link: 'https://www.newshosting.com/partners/exclusive-usenet-offer/?a_aid=sab
 # Extra plugins
 plugins:
   - jekyll-redirect-from
+
+exclude:
+  - .jekyll-cache/
+  - README.md
+  - LICENSE.md
+  - "*.psd"
+
+keep_files:
+  - css/
+  - fonts/
+  - images/
+  - js/
+  - tests/
 
 # Template settings
 defaults:
