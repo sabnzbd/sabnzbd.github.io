@@ -118,6 +118,11 @@ title: Special settings
             <td>Do post-processing and run the user script even if nothing has been downloaded. This is useful in combination with tools like SickBeard, for which running the script on an empty or failed download is a trigger to try an alternative NZB. Note that the "Status" parameter for the script will be -1.</td>
         </tr>
         <tr>
+            <td><code>new_nzb_on_failure</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Some indexers provide an alternative NZB through a HTTP-header (<code>X-DNZB-Failure</code>) when the download is added as an URL. If the first download fails, try and fetch the alternative NZB.</td>
+        </tr>
+        <tr>
             <td><code>html_login</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>HTML based login form, uncheck for basic authentication. Both offer similar security but password managers might not be able to fill basic authentication automatically.</td>
