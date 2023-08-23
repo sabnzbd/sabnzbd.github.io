@@ -38,14 +38,16 @@ layout: null
         <div class="lang lang-en">
             <p>
                 <strong>Tip:</strong><br>
-                To download from Usenet, you need access to a premium Usenet provider.
-                We recommend <a href="{{ site.ad_link }}&chan=cfs" target="_blank">Newshosting</a> for the fastest downloads, longest retention and best search results.
+                You can support the development of SABnzbd <em>and</em> get access to a great deal from our partner!
+            </p>
+            <p>
+                Check out <a href="{{ site.ad_link }}&chan=cfs" target="_blank">Newshosting</a> for the fastest downloads, longest retention and best search results.
             </p>
             <p>
                 Official Newshosting Promo: <a href="{{ site.ad_link }}&chan=cfs" target="_blank">Get 70% Off plus 3 MONTHS FREE</a> with SABnzbd's #1 Rated Usenet Provider.
             </p>
         </div>
-
+        <!--
         <div class="lang lang-nl">
             <p>
                 <strong>Tip:</strong><br>
@@ -75,6 +77,7 @@ layout: null
                 Promotion officielle Newshosting: <a href="{{ site.ad_link }}&chan=cfs" target="_blank">profitez de 70 % de réduction et de 3 MOIS GRATUITS</a> avec le fournisseur Usenet classé n 1 par SABnzbd.
             </p>
         </div>
+        -->
     </div>
     <script type="text/javascript">
         // Google Analytics
@@ -111,7 +114,13 @@ layout: null
         for (const hostname_key in all_hostnames) {
             if(document.location.hash.includes(all_hostnames[hostname_key])) {
                 $(".main-well").hide()
+                // Tell SABnzbd we don't need to load
+                window.parent.postMessage('hide_server', document.referrer);
+            } else {
+                // Tell SABnzbd we are ready to show
+                window.parent.postMessage('show_server', document.referrer);
             }
+
         }
 
         // Fetch installer-language
@@ -129,12 +138,6 @@ layout: null
             // English
             $('.lang-en').show()
         }
-
-        // Track the languages used (just for fun)
-        ga('send', 'event', 'servers', 'click', lang);
-
-        // Save it in localStorage to use when people return
-        localStorage.setItem('user_lang', lang);
     </script>
 </body>
 </html>
