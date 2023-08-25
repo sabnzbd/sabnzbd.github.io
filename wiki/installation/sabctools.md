@@ -62,7 +62,7 @@ sudo -H pip install sabctools --upgrade
 Long, with your own compiling:
 ```
 sudo apt-get install python3-dev python3-pip
-sudo -H pip install sabctools --upgrade
+sudo -H pip install -r requirements.txt
 ```
 
 ### Installation on Fedora / RedHat
@@ -72,7 +72,7 @@ Short method, only works on X86 and X86-64
 All as root:
 ```
 pip install --upgrade pip
-pip install sabctools --upgrade
+pip install -r requirements.txt
 ```
 
 Long, with your own compiling:
@@ -80,7 +80,7 @@ Long, with your own compiling:
 ```
 yum install -y python-devel gcc redhat-rpm-config
 pip install --upgrade pip
-pip install sabctools --upgrade
+pip install -r requirements.txt
 ```
 
 ### Installation on OpenSuSE
@@ -90,7 +90,7 @@ Short, works on X86 and X86-64
 ```
 zypper install -y python-pip
 pip install --upgrade pip
-pip install sabctools --upgrade
+pip install -r requirements.txt
 ```
 
 Long, with your own compiling:
@@ -98,7 +98,7 @@ Long, with your own compiling:
 ```
 zypper install -y python-pip python-devel gcc
 pip install --upgrade pip
-pip install sabctools --upgrade
+pip install -r requirements.txt
 ```
 
 <hr/>
@@ -108,7 +108,7 @@ pip install sabctools --upgrade
 If you have multiple installations of Python on your machine (<code>python</code>/<code>python2</code>/<code>python3</code> or different versions of Python 3), you have to make sure SABCTools is installed into the correct Python environment. And 'correct' means the Python installation used by SABnzbd. The command is then:
 
 ```
-/path/to/correct/python -m pip install sabctools
+/path/to/correct/python -m pip install -r requirements.txt
 ```
 
 ## Check if SABCTools is correctly installed
