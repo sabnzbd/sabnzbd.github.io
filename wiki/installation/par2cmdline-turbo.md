@@ -1,5 +1,6 @@
 ---
 title: Installing par2cmdline-turbo
+redirect_from: /wiki/installation/multicore-par2
 ---
 
 `par2cmdline-turbo` is a drop-in replacement for the original `par2cmdline` and it's forks (`mt` and `tbb`). 
