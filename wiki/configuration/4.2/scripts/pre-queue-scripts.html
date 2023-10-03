@@ -1,0 +1,384 @@
+---
+title: Pre-queue scripts
+redirect_from: "/wiki/advanced/user-pre-queue-script"
+---
+
+<p>You can choose to let SABnzbd run a script just before an NZB enters the queue.
+    This script determines whether the NZB should be accepted and can modify a number of job parameters.
+</p>
+<p>
+    Scripts may use any scripting language available on your system; common choices are Python, Unix shell, and Windows batch scripts. All scripts must be located in the Scripts-directory, specified in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Config-&gt;Folders</a> and must be executable. On Unix-like operating systems (Linux, BSD, etc.) this means the x-bit must be on. On Windows, the requirement is that the script's extension is listed in your system's <code>PATHEXT</code> environment variable. Once everything is in place, the Pre-Queue Script can be set in <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a>.
+</p>
+<p>
+    The script must write results to the console.
+    Exit code <code>0</code> will make SABnzbd inspect the returned output.
+    If the script has an exit code other than <code>0</code>, script failure is assumed and the NZB accepted without changes.
+</p>
+<hr>
+<h2 id="toc1">Input parameters</h2>
+<p>All parameters (except 1) can be empty, meaning a default value. Use <code>%1</code> in Windows scripts and <code>$1</code> in Unix scripts. Note that on Windows the input parameters are surrounded by quotes (e.g. <code>"job name"</code>).</p>
+
+<p><span class="label label-warning">NOTE</span> <strong>Much more information is available to scripts via environment variables, <a href="#env_vars">see below</a>!</strong></p>
+
+<table class="table table-bordered table-hover table-not-fixed">
+    <thead>
+        <tr>
+            <th>Position</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Clean version of the job name (no path info and <code>.nzb</code> removed) includes the password if present, in the <code>job name / password</code> notation</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Post Processing (PP) flags:
+                <ul>
+                    <li><code>0</code> = Download</li>
+                    <li><code>1</code> = +Repair</li>
+                    <li><code>2</code></code> = +Unpack</li>
+                    <li><code>3</code> = +Delete</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Category</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Script (no path)</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Priority
+                <ul>
+                    <li><code>-100</code> = Default</li>
+                    <li><code>-3</code> = Duplicate</li>
+                    <li><code>-2</code> = Paused</li>
+                    <li><code>-1</code> = Low</li>
+                    <li><code>0</code> = Normal</li>
+                    <li><code>1</code> = High</li>
+                    <li><code>2</code> = Force</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Size of the download (in bytes)</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Group list (separated by spaces)</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Show name</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>Season (1..99)</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>Episode (1..99)</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>Episode name</td>
+        </tr>
+        <tr>
+            <td><span class="label label-warning">NOTE</span></td>
+            <td>Parameters 12 through 18 require SABnzbd version 4.0.0 or higher.</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>Tagged as Proper (True or False)</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>Resolution</td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>Decade</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>Year</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>Month</td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td>Day</td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td>Job type (tv, date, movie, or unknown)</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+<h2 id="toc2">Return parameters</h2>
+<p>The script can refuse or accept the NZB and it can also return alternative parameters. These parameters should be written to the console, each parameter on a separate line.
+SABnzbd uses the first 7 lines of output, so they should only contain proper data (or be empty).
+    Anything after line 7 is ignored.
+</p>
+
+<p>To manipulate the show/season/episode parameters, you should assemble a new name and return a recognized format.</p>
+
+<table class="table table-bordered table-hover table-not-fixed">
+    <thead>
+        <tr>
+            <th>Position</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>
+                <ul>
+                    <li><code>0</code> = Refuse</li>
+                    <li><code>1</code> = Accept</li>
+                    <li><code>2</code> = Accept but fail, this way post-processing scripts for the job will be activated if necessary.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Clean version of the job name (no path info and <code>.nzb</code> removed) can be used to set a password when provided in the <code>job name / password</code> notation</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Post Processing (PP) flags:
+                <ul>
+                    <li><code>0</code> = Download</li>
+                    <li><code>1</code> = +Repair</li>
+                    <li><code>2</code></code> = +Unpack</li>
+                    <li><code>3</code> = +Delete</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Category</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Script (no path)</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Priority
+                <ul>
+                    <li><code>-100</code> = Default</li>
+                    <li><code>-3</code> = Duplicate</li>
+                    <li><code>-2</code> = Paused</li>
+                    <li><code>-1</code> = Low</li>
+                    <li><code>0</code> = Normal</li>
+                    <li><code>1</code> = High</li>
+                    <li><code>2</code> = Force</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Group to be used (in case your provider doesn't carry all groups and there are multiple groups in the NZB)</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+<h2 id="env_vars">Environment variables</h2>
+<p>Your script can get extra information via environment variables (return information should still be sent as plain output):</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Variable</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SAB_SCRIPT</td>
+            <td>The name of the current script</td>
+        </tr>
+        <tr>
+            <td>SAB_FINAL_NAME</td>
+            <td>The name of the job in the queue and of the final folder</td>
+        </tr>
+        <tr>
+            <td>SAB_FILENAME</td>
+            <td>The NZB filename (after grabbing from the URL)</td>
+        </tr>
+        <tr>
+            <td>SAB_CAT</td>
+            <td>What category was assigned</td>
+        </tr>
+        <tr>
+            <td>SAB_BYTES</td>
+            <td>Total number of bytes</td>
+        </tr>
+        <tr>
+            <td>SAB_DUPLICATE</td>
+            <td>Was it detected as duplicate</td>
+        </tr>
+        <tr>
+            <td>SAB_PASSWORD</td>
+            <td>What was the password supplied by the NZB or the user</td>
+        </tr>
+        <tr>
+            <td>SAB_STATUS</td>
+            <td>Current status (completed/failed/running)</td>
+        </tr>
+        <tr>
+            <td>SAB_PP</td>
+            <td>What post-processing was activated (download/repair/unpack/delete)</td>
+        </tr>
+        <tr>
+            <td>SAB_REPAIR</td>
+            <td>Was repair selected by user</td>
+        </tr>
+        <tr>
+            <td>SAB_UNPACK</td>
+            <td>Was unpack selected by user</td>
+        </tr>
+        <tr>
+            <td>SAB_PRIORITY</td>
+            <td>Priority set by user</td>
+        </tr>
+        <tr>
+            <td>SAB_GROUPS</td>
+            <td>Newsgroups listed in the NZB</td>
+        </tr>
+        <tr>
+            <td>SAB_VERSION</td>
+            <td>The version of SABnzbd used</td>
+        </tr>
+        <tr>
+            <td>SAB_PROGRAM_DIR</td>
+            <td>The directory where the current SABnzbd instance is located</td>
+        </tr>
+        <tr>
+            <td>SAB_PAR2_COMMAND</td>
+            <td>The path to the <code>par2</code> command on the system that SABnzbd uses</td>
+        </tr>
+        <tr>
+            <td>SAB_MULTIPAR_COMMAND</td>
+            <td>Windows-only (empty on other systems). The path to the MultiPar command on the system that SABnzbd uses</td>
+        </tr>
+        <tr>
+            <td>SAB_RAR_COMMAND</td>
+            <td>The path to the <code>unrar</code> command on the system that SABnzbd uses</td>
+        </tr>
+        <tr>
+            <td>SAB_ZIP_COMMAND</td>
+            <td>The path to the <code>unzip</code> command on the system that SABnzbd uses</td>
+        </tr>
+        <tr>
+            <td>SAB_7ZIP_COMMAND</td>
+            <td>The path to the <code>7z</code> command on the system that SABnzbd uses. Not all systems have 7zip installed (it's optional for SABnzbd), so this can also be empty</td>
+        </tr>
+        <tr>
+            <td><span class="label label-warning">NOTE</span></td>
+            <td>Parameters below require SABnzbd version 4.0.0 or higher.</td>
+        </tr>
+        <tr>
+            <td>SAB_SHOW_NAME</td>
+            <td>Show name</td>
+        </tr>
+        <tr>
+            <td>SAB_SHOW_SEASON</td>
+            <td>Season (1..99)</td>
+        </tr>
+        <tr>
+            <td>SAB_SHOW_EPISODE</td>
+            <td>Episode (1..99)</td>
+        </tr>
+        <tr>
+            <td>SAB_SHOW_EPISODE_NAME</td>
+            <td>Episode name</td>
+        </tr>
+        <tr>
+            <td>SAB_PROPER</td>
+            <td>Tagged as Proper (True or False)</td>
+        </tr>
+        <tr>
+            <td>SAB_RESOLUTION</td>
+            <td>Resolution</td>
+        </tr>
+        <tr>
+            <td>SAB_DECADE</td>
+            <td>Decade</td>
+        </tr>
+        <tr>
+            <td>SAB_YEAR</td>
+            <td>Year</td>
+        </tr>
+        <tr>
+            <td>SAB_MONTH</td>
+            <td>Month</td>
+        </tr>
+        <tr>
+            <td>SAB_DAY</td>
+            <td>Day</td>
+        </tr>
+        <tr>
+            <td>SAB_TYPE</td>
+            <td>Job type (tv, date, movie, or unknown)</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<h2>Example Script 1</h2>
+<p>Example of a Windows batch file that forces high priority on anything smaller than 2GB.</p>
+{% highlight dosbatch %}
+@echo off
+echo 1
+echo.
+echo.
+echo.
+echo.
+if %6 LSS 2000000000 echo 1
+{% endhighlight %}
+
+<p>Save it as file <code>size-checker.cmd</code> and put in the scripts folder.</p>
+
+<h2>Example Script 2</h2>
+<p>A python script to set prio to Force on downloads smaller than 50MB:</p>
+{% highlight python %}
+import sys
+
+try:
+    # Parse the 18 input variables for SABnzbd version >= 4.0.0
+    (scriptname, nzbname, postprocflags, category, script, prio, downloadsize, grouplist, showname, season, episodenumber, episodename, is_proper, resolution, decade, year, month, day, job_type) = sys.argv
+except ValueError:
+    # ...or 11 variables for earlier versions
+    (scriptname, nzbname, postprocflags, category, script, prio, downloadsize, grouplist, showname, season, episodenumber, episodename) = sys.argv
+except Exception:
+    sys.exit(1)  # a non-zero exit status causes SABnzbd to ignore the output of this script
+
+prio = -100  # Default
+if int(downloadsize) < 50*1024**2:
+    prio = 2
+
+print("1")  # Accept the job
+print()
+print()
+print()
+print()
+print(prio)
+print()
+
+# 0 means OK
+sys.exit(0)
+{% endhighlight %}

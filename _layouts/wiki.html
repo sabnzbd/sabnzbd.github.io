@@ -40,7 +40,7 @@
                 <a href="#wiki-menu-configure" data-toggle="collapse">
                     Configuration <span class="caret"></span>
                 </a>
-                <ul id="wiki-menu-configure" class="collapse {% if page.url contains "/configuration/" %}in{% endif %}" >
+                <ul id="wiki-menu-configure" class="collapse {% if page.url contains "/configuration/" %}{% unless page.url contains "/scripts/" %}in{% endunless %}{% endif %}" >
                     <li><a href="/wiki/configuration/{{ site.wiki_version }}/configure">Configure</a></li>
                     <li><a href="/wiki/configuration/{{ site.wiki_version }}/general">General</a></li>
                     <li><a href="/wiki/configuration/{{ site.wiki_version }}/folders">Folders</a></li>
@@ -59,9 +59,9 @@
                     Scripts <span class="caret"></span>
                 </a>
                 <ul id="wiki-menu-scripts" class="collapse {% if page.url contains "/scripts/" %}in{% endif %}" >
-                    <li><a href="/wiki/scripts/pre-queue-scripts">Pre-queue scripts</a></li>
-                    <li><a href="/wiki/scripts/post-processing-scripts">Post-processing scripts</a></li>
-                    <li><a href="/wiki/scripts/notification-scripts">Notification scripts</a></li>
+                    <li><a href="/wiki/configuration/{{ site.wiki_version }}/scripts/pre-queue-scripts">Pre-queue scripts</a></li>
+                    <li><a href="/wiki/configuration/{{ site.wiki_version }}/scripts/post-processing-scripts">Post-processing scripts</a></li>
+                    <li><a href="/wiki/configuration/{{ site.wiki_version }}/scripts/notification-scripts">Notification scripts</a></li>
                 </ul>
 
                 <a href="#wiki-menu-advanced" data-toggle="collapse">
