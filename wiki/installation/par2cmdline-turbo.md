@@ -54,3 +54,16 @@ make install
 <span class="label label-warning">NOTE</span> Safest to uninstall your existing `par2` first!
 
 After this, you can delete the `par2cmdline-turbo` folder.
+
+
+-------------------
+
+
+## Checking of par2 version
+
+With `par2 --version` you can check the version of par2. After installing par2cmdline-turbo you should see "-turbo" in the output.
+
+```commandline
+$ par2 --version
+par2cmdline-turbo version 0.9.0
+```
