@@ -20,6 +20,21 @@ sudo apt-get install par2-turbo
 
 -------------------
 
+## Installation of pre-built binaries
+
+On https://github.com/animetosho/par2cmdline-turbo/releases you can find pre-built binaries for different Linux (plus MacOS and Windows) versions. Download the correct version, unpack, and install.
+
+Example of unpacking and putting into `/usr/local/bin/` on Linux x86_64:
+
+```
+xz -dv par2cmdline-turbo-v1.1.0-linux-amd64.xz
+sudo mv /usr/local/bin/par2 /usr/local/bin/par2.old
+sudo cp par2cmdline-turbo-v1.1.0-linux-amd64 /usr/local/bin/par2
+```
+
+-------------------
+
+
 ## Installation on other distributions
 
 Tools required: `git`, `automake` and `make` (install via your distribution's package manager)
