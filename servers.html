@@ -109,6 +109,7 @@ layout: null
         });
 
         // Hostnames we don't want to show anything for
+        var post_message = 'show_server';
         var all_hostnames = [
             "newshosting.com",
             "eweka.nl",
@@ -121,15 +122,12 @@ layout: null
         ]
         for (const hostname_key in all_hostnames) {
             if(document.location.hash.includes(all_hostnames[hostname_key])) {
-                $(".main-well").hide()
-                // Tell SABnzbd we don't need to load
-                window.parent.postMessage('hide_server', document.referrer);
-            } else {
-                // Tell SABnzbd we are ready to show
-                window.parent.postMessage('show_server', document.referrer);
+                // Stop SABnzbd from loading
+                post_message = 'hide_server'
+                break;
             }
-
         }
+        window.parent.postMessage(post_message, document.referrer);
 
         // Fetch installer-language
         var lang = document.location.hash.replace('#', '').substring(0,2)
