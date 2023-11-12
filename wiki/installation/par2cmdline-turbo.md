@@ -28,8 +28,11 @@ Example of unpacking and putting into `/usr/local/bin/` on Linux x86_64:
 
 ```
 xz -dv par2cmdline-turbo-v1.1.0-linux-amd64.xz
-sudo mv /usr/local/bin/par2 /usr/local/bin/par2.old
-sudo cp par2cmdline-turbo-v1.1.0-linux-amd64 /usr/local/bin/par2
+chmod +x par2cmdline-turbo-v1.1.0-linux-amd64
+which par2 # note the location, and use that:
+sudo mv /usr/bin/par2 /usr/bin/par2.old
+sudo cp par2cmdline-turbo-v1.1.0-linux-amd64 /usr/bin/par2
+par2 --version # check it says "par2cmdline-turbo"
 ```
 
 -------------------
