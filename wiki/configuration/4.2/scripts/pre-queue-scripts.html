@@ -3,11 +3,15 @@ title: Pre-queue scripts
 redirect_from: "/wiki/advanced/user-pre-queue-script"
 ---
 
-<p>You can choose to let SABnzbd run a script just before an NZB enters the queue.
+<p>
+    You can choose to let SABnzbd run a script just before an NZB enters the queue.
     This script determines whether the NZB should be accepted and can modify a number of job parameters.
 </p>
 <p>
-    Scripts may use any scripting language available on your system; common choices are Python, Unix shell, and Windows batch scripts. All scripts must be located in the Scripts-directory, specified in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Config-&gt;Folders</a> and must be executable. On Unix-like operating systems (Linux, BSD, etc.) this means the x-bit must be on. On Windows, the requirement is that the script's extension is listed in your system's <code>PATHEXT</code> environment variable. Once everything is in place, the Pre-Queue Script can be set in <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a>.
+    Scripts may use any scripting language available on your system; common choices are Python, Unix shell, and Windows batch scripts.
+    All scripts must be located in the Scripts-directory, specified in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Config-&gt;Folders</a> and must be executable.
+    On Unix-like operating systems (Linux, BSD, etc.) this means the x-bit must be on. On Windows, the requirement is that the script's extension is listed in your system's <code>PATHEXT</code> environment variable.
+    Once everything is in place, the Pre-Queue Script can be set in <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a> (enable Advanced Settings).
 </p>
 <p>
     The script must write results to the console.

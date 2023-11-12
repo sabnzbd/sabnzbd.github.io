@@ -47,21 +47,27 @@ layout: null
                 Official Newshosting Promo: <a href="{{ site.ad_link }}&chan=cfs" target="_blank">Get 70% Off plus 3 MONTHS FREE</a> with SABnzbd's #1 Rated Usenet Provider.
             </p>
         </div>
-        <!--
+
         <div class="lang lang-nl">
             <p>
                 <strong>Tip:</strong><br>
-                Om van Usenet te downloaden heeft u toegang nodig tot een premium Usenet-provider. Wij bevelen <a href="{{ site.ad_link }}&chan=cfs" target="_blank">Newshosting</a> aan voor de snelste downloads, de langste retentie en de beste zoekresultaten.
+                U kunt de ontwikkeling van SABnzbd ondersteunen <em>en</em> profiteren van een geweldige aanbieding van onze partner!
             </p>
             <p>
-                Officiële Newshosting Promo: <a href="{{ site.ad_link }}&chan=cfs" target="_blank">Krijg 70% korting plus 3 MAANDEN GRATIS</a> bij SABnzbd's #1 gewaardeerde Usenet-provider.
+                Wij raden <a href="{{ site.ad_link }}&chan=cfs" target="_blank">Newshosting</a> aan voor de snelste downloads, de langste retentie en de beste zoekresultaten.
+            </p>
+            <p>
+                Officiële Newshosting Promo: <a href="{{ site.ad_link }}&chan=cfs" target="_blank">Krijg 70% korting plus 3 MAANDEN GRATIS</a> bij SABnzbd's #1 Usenet-provider.
             </p>
         </div>
 
         <div class="lang lang-de">
             <p>
-                <strong>Tip:</strong><br>
-                Um aus dem Usenet herunterladen zu können, benötigen Sie Zugang zu einem Premium-Usenet-Provider. Wir empfehlen <a href="{{ site.ad_link }}&chan=cfs" target="_blank">Newshosting</a> für die schnellsten Downloads, die längste Aufbewahrung und die besten Suchergebnisse.
+                <strong>Tipp:</strong><br>
+                Sie können die Entwicklung von SABnzbd unterstützen <em>und</em> von einem großartigen Angebot unseres Partners profitieren!
+            </p>
+            <p>
+                Wir empfehlen <a href="{{ site.ad_link }}&chan=cfs" target="_blank">Newshosting</a> für die schnellsten Downloads, die längste Aufbewahrung und die besten Suchergebnisse.
             </p>
             <p>
                 Offizielles Newshosting-Angebot: <a href="{{ site.ad_link }}&chan=cfs" target="_blank">Erhalten Sie 70 % Rabatt plus 3 MONATE KOSTENLOS</a> bei SABnzbds Nr.1 Usenet-Anbieter.
@@ -71,13 +77,15 @@ layout: null
         <div class="lang lang-fr">
             <p>
                 <strong>Tip:</strong><br>
-                Pour télécharger sur Usenet, vous devez avoir accès à un fournisseur Usenet premium. Nous vous recommandons <a href="{{ site.ad_link }}&chan=cfs" target="_blank">Newshosting</a> pour les téléchargements les plus rapides et le délai de rétention.
+                Vous pouvez soutenir le développement de SABnzbd <em>et</em> bénéficier d'une offre exceptionnelle de notre partenaire !
+            </p>
+            <p>
+                Découvrez <a href="{{ site.ad_link }}&chan=cfs" target="_blank">Newshosting</a> pour des téléchargements plus rapides, la plus longue rétention et les meilleurs résultats de recherche.
             </p>
             <p>
                 Promotion officielle Newshosting: <a href="{{ site.ad_link }}&chan=cfs" target="_blank">profitez de 70 % de réduction et de 3 MOIS GRATUITS</a> avec le fournisseur Usenet classé n 1 par SABnzbd.
             </p>
         </div>
-        -->
     </div>
     <script type="text/javascript">
         // Google Analytics
@@ -101,6 +109,7 @@ layout: null
         });
 
         // Hostnames we don't want to show anything for
+        var post_message = 'show_server';
         var all_hostnames = [
             "newshosting.com",
             "eweka.nl",
@@ -113,15 +122,12 @@ layout: null
         ]
         for (const hostname_key in all_hostnames) {
             if(document.location.hash.includes(all_hostnames[hostname_key])) {
-                $(".main-well").hide()
-                // Tell SABnzbd we don't need to load
-                window.parent.postMessage('hide_server', document.referrer);
-            } else {
-                // Tell SABnzbd we are ready to show
-                window.parent.postMessage('show_server', document.referrer);
+                // Stop SABnzbd from loading
+                post_message = 'hide_server'
+                break;
             }
-
         }
+        window.parent.postMessage(post_message, document.referrer);
 
         // Fetch installer-language
         var lang = document.location.hash.replace('#', '').substring(0,2)
