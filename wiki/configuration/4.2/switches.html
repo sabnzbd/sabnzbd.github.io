@@ -45,30 +45,16 @@ title: Switches
             <td>If on, when during download it becomes clear that it can never be repaired, it will be aborted and send to the History as failed. Should you retry the job, the check will not be done again, but the whole job will be tried instead.</td>
         </tr>
         <tr>
-            <td><strong>Detect duplicate downloads</strong></td>
-            <td>
-                This option will compare the NZB name or NZB content to those in the History and the Queue.
-                It will also compare the NZB name to the items in your <a href="/wiki/configuration/{{ site.wiki_version }}/folders">.nzb Backup Folder</a>.
-                If the original job is still in the queue, the duplicate will be added to the queue paused and labeled <code>ALTERNATIVE</code>.
-                If the original job fails, the first alternative will automatically start downloading.
-                If the original job succeeds, the alternatives will be handled as configured here.
-            </td>
+            <td><strong>Identical download detection</strong></td>
+            <td>See: <a href="/wiki/extra/duplicate-detection">Duplicate Detection</a></td>
         </tr>
         <tr>
-            <td><strong>Detect duplicate episodes in series</strong></td>
-            <td>
-                This option will analyze NZB titles for Series/Season/Episode information and will check whether the episode is already in the History or the Queue.
-                If the original job is still in the queue, the duplicate will be added to the queue paused and labeled <code>ALTERNATIVE</code>.
-                If the original job fails, the first alternative will automatically start downloading.
-                If the original job succeeds, the alternatives will be handled as configured here.
-            </td>
+            <td><strong>Smart duplicate detection</strong></td>
+            <td>See: <a href="/wiki/extra/duplicate-detection">Duplicate Detection</a></td>
         </tr>
         <tr>
             <td><strong>Allow proper releases</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>
-                Bypass series duplicate detection if <code>PROPER</code>, <code>REAL</code> or <code>REPACK</code> is detected in the download name to allow for better quality releases to still be downloaded.
-                Only 1 proper release will be allowed to bypass the detection, any further proper releases will be handled as duplicate.
-            </td>
+            <td>See: <a href="/wiki/extra/duplicate-detection">Duplicate Detection</a></td>
         </tr>
         <tr>
             <td><strong>Action when encrypted RAR is downloaded</strong></td>
