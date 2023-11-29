@@ -156,13 +156,17 @@ redirect_from: "/wiki/advanced/automation-support"
             <td>Number of jobs to display</td>
         </tr>
         <tr>
+            <td><code>search</code> <small>optional</small></td>
+            <td>Filter job names by <code>search</code> term</td>
+        </tr>
+        <tr>
             <td><code>category</code> / <code>cat</code> <small>optional</small></td>
-            <td>Only return jobs for one or more categories (separated by a comma)<br>
+            <td>Only return jobs with the specified category or categories (separated by a comma)<br>
                 Use <code>*</code> for Default
         </td>
         <tr>
             <td><code>priority</code> <small>optional</small></td>
-            <td>Only return jobs for one or more priorities (separated by a comma)
+            <td>Only return jobs with the specified priority or priorities (separated by a comma)
                 <ul>
                     <li><code>-2</code> = Paused</li>
                     <li><code>-1</code> = Low Priority</li>
@@ -173,12 +177,20 @@ redirect_from: "/wiki/advanced/automation-support"
             </td>
         </tr>
         <tr>
-            <td><code>search</code> <small>optional</small></td>
-            <td>Filter job names by <code>search</code> term</td>
+            <td><code>status</code> <small>optional</small></td>
+            <td>Only return jobs with the specified status or statuses (separated by a comma)
+                <ul>
+                    <li><code>Downloading</code></li>
+                    <li><code>Queued</code></li>
+                    <li><code>Paused</code></li>
+                    <li><code>Propagating</code> = Delayed download</li>
+                    <li><code>Fetching</code> = Job is downloading extra par2 files</li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td><code>nzo_ids</code> <small>optional</small></td>
-            <td>Filter jobs by <code>nzo_ids</code></td>
+            <td>Only return jobs with these <code>nzo_ids</code> (separated by a comma)</td>
         </tr>
     </tbody>
 </table>
@@ -602,20 +614,38 @@ redirect_from: "/wiki/advanced/automation-support"
             <td>Number of jobs to display</td>
         </tr>
         <tr>
-            <td><code>category</code> / <code>cat</code> <small>optional</small></td>
-            <td>Only return jobs in this category</td>
-        </tr>
-        <tr>
             <td><code>search</code> <small>optional</small></td>
             <td>Filter job names by <code>search</code> term</td>
         </tr>
         <tr>
+            <td><code>category</code> / <code>cat</code> <small>optional</small></td>
+            <td>Only return jobs with the specified category or categories (separated by a comma)<br>
+                Use <code>*</code> for Default
+        </td>
+        <tr>
+            <td><code>status</code> <small>optional</small></td>
+            <td>Only return jobs with the specified status or statuses (separated by a comma)
+                <ul>
+                    <li><code>Completed</code></li>
+                    <li><code>Failed</code></li>
+                    <li><code>Queued</code> = Waiting for post-processing</li>
+                    <li><code>QuickCheck</code></li>
+                    <li><code>Verifying</code></li>
+                    <li><code>Repairing</code></li>
+                    <li><code>Fetching</code> = Job is downloading extra par2 files</li>
+                    <li><code>Extracting</code></li>
+                    <li><code>Moving</code></li>
+                    <li><code>Running</code> = Post-processing script is running</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
             <td><code>nzo_ids</code> <small>optional</small></td>
-            <td>Filter jobs by <code>nzo_ids</code></td>
+            <td>Only return jobs with these <code>nzo_ids</code> (separated by a comma)</td>
         </tr>
         <tr>
             <td><code>failed_only</code> <small>optional</small></td>
-            <td>Only show failed jobs</td>
+            <td>Only show failed jobs (shorthand for <code>status=Failed</code>)</td>
         </tr>
         <tr>
             <td><code>last_history_update</code> <small>optional</small></td>
