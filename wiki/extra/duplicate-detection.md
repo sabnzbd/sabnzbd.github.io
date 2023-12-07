@@ -56,4 +56,5 @@ For each type, here are some examples that would be detected as **duplicate**:
 * With `Allow proper releases` [Switch](/wiki/configuration/{{site.wiki_version}}/switches) enabled, Smart duplicate detection is bypassed _once_ if `PROPER`, `REAL` or `REPACK` is found. 
 If a second _proper_ job is added, it will be seen as a duplicate of the first _proper_ job.
 * You can prevent checking against the `.nzb Backup Folder` by disabling the [Special](/wiki/configuration/{{site.wiki_version}}/special) setting `backup_for_duplicates`.
+* If a [Pre-queue script](/wiki/configuration/{{site.wiki_version}}/scripts/pre-queue-scripts) changes the name of a job, duplicate detection will be triggered again.
 * Notifications about duplicate jobs can be enabled or disabled by the [Special](/wiki/configuration/{{site.wiki_version}}/special) setting `warn_dupl_jobs`.

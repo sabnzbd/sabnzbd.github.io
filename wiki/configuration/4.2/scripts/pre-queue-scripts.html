@@ -82,11 +82,11 @@ redirect_from: "/wiki/advanced/user-pre-queue-script"
 <hr>
 <h2 id="toc2">Return parameters</h2>
 <p>The script can refuse or accept the NZB and it can also return alternative parameters. These parameters should be written to the console, each parameter on a separate line.
-SABnzbd uses the first 7 lines of output, so they should only contain proper data (or be empty).
+SABnzbd uses the first 7 lines of output, so they should be empty (original value will be used) or only contain proper data.
     Anything after line 7 is ignored.
 </p>
 
-<p>To manipulate the show/season/episode parameters, you should assemble a new name and return a recognized format.</p>
+<p><span class="label label-warning">NOTE</span> To manipulate duplicate detection, you should assemble a new name and return a recognized format.</p>
 
 <table class="table table-bordered table-hover table-not-fixed">
     <thead>
@@ -108,7 +108,8 @@ SABnzbd uses the first 7 lines of output, so they should only contain proper dat
         </tr>
         <tr>
             <td>2</td>
-            <td>Clean version of the job name (no path info and <code>.nzb</code> removed) can be used to set a password when provided in the <code>job name / password</code> notation</td>
+            <td>
+                Clean version of the job name (no path info and <code>.nzb</code> removed) can be used to set a password when provided in the <code>job name / password</code> notation</td>
         </tr>
         <tr>
             <td>3</td>
