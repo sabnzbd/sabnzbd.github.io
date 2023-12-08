@@ -183,7 +183,11 @@ SABnzbd uses the first 7 lines of output, so they should be empty (original valu
         </tr>
         <tr>
             <td>SAB_DUPLICATE</td>
-            <td>Was it detected as duplicate</td>
+            <td>Is this a duplicate and what type</td>
+        </tr>
+        <tr>
+            <td>SAB_DUPLICATE_KEY</td>
+            <td>The key used for Smart Duplicate Detection</td>
         </tr>
         <tr>
             <td>SAB_PASSWORD</td>
@@ -240,10 +244,6 @@ SABnzbd uses the first 7 lines of output, so they should be empty (original valu
         <tr>
             <td>SAB_7ZIP_COMMAND</td>
             <td>The path to the <code>7z</code> command on the system that SABnzbd uses. Not all systems have 7zip installed (it's optional for SABnzbd), so this can also be empty</td>
-        </tr>
-        <tr>
-            <td><span class="label label-warning">NOTE</span></td>
-            <td>Parameters below require SABnzbd version 4.0.0 or higher.</td>
         </tr>
         <tr>
             <td>SAB_TITLE</td>
