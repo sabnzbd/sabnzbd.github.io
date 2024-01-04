@@ -41,6 +41,7 @@ title: FAQ
             <li><a href="#toc25">Why doesn't SABnzbd download all PARs for a post?</a></li>
             <li><a href="#toc26">How can I download a set of PAR files without activating auto-par2 mode?</a></li>
             <li><a href="#toc27">How do I upgrade SABnzbd to a new version?</a></li>
+            <li><a href="#virusscanners">Virus scanners and false positives with new SABnzbd releases</a></li>
             <li><a href="#toc28">What does R/U/D or Repair/Unpack/Delete mean?</a></li>
             <li><a href="#toc29">How do I change my download folder to another drive?</a></li>
             <li><a href="#toc30">How do I run SABnzbd as a portable/self contained program?</a></li>
@@ -49,7 +50,6 @@ title: FAQ
             <li><a href="#toc36">A download says "ENCRYPTED". What does that mean, and is there anything I can do?</a></li>
             <li><a href="#toc37">Do I need port forwarding for SABnzbd usage?</a></li>
             <li><a href="#deobfuscate">Some of the files after unpacking have very strange names (deobfuscation)</a></li>
-            <li><a href="#virusscanners">Virus scanners and false positives with new SABnzbd releases</a></li>
         </ul>
     </li>
 </ul>
@@ -231,6 +231,18 @@ password = ""</code>
     <strong>For Windows</strong> just run the installer and it will replace your old version!<br>
     <strong>For macOS / Linux</strong> just overwrite your current SABnzbd folder with the new files.
 </p>
+
+<h2 id="virusscanners">Virus scanners and false positives with new SABnzbd releases</h2>
+<p>
+    In the first one or two weeks after a new SABnzbd release, a virus scanner (like Windows Defender) might say the new SABnzbd release contains a virus or that it's malicious.
+    The reason for this is that SABnzbd is written in the programming langauge Python, but many malicious programs are <em>also</em> written in Python.
+    Just because of that virus scanners are triggered automatically after a new release, as the SABnzbd binary is unknown to them.<br>
+    These results are false-positives. <br>
+    You can upload the SABnzbd binary yourself to <a href="https://www.virustotal.com/" target="_blank">www.virustotal.com</a>, which checks the binary
+    against all available virus scanners. If the binary did contain some virus, all the scanners would be triggered. Usually, it's just a few false-positives.<br>
+    After one or two weeks, most virus scanners are updated and will no longer react to SABnzbd.
+</p>
+
 <h2 id="toc28">What does R/U/D or Repair/Unpack/Delete mean?</h2>
 <table class="table table-bordered table-hover">
     <thead>
@@ -323,14 +335,6 @@ password = ""</code>
             This doesn't always work perfectly, if it cannot correctly parse the name of the job.</li>
     </ul>
 </p>
-
-<h2 id="virusscanners">Virus scanners and false positives with new SABnzbd releases</h2>
-<p>In the first one or two weeks after a new SABnzbd release, a virus scanner (like Windows Defender) might say the new SABnzbd release
-    contains a virus / is malicious. This is caused by the new SABnzbd binary, which is new and thus unknown to some virus scanners.
-    After one or two weeks, the virus scanners are OK with the new release.
-    You can follow statistics what virus scanners say on www.virustotal.com
-</p>
-
 
 <div class="footnotes-footer">
     <div class="title">Footnotes</div>
