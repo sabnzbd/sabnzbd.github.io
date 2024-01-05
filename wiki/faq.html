@@ -234,12 +234,15 @@ password = ""</code>
 
 <h2 id="virusscanners">Virus scanners and false positives with new SABnzbd releases</h2>
 <p>
-    In the first one or two weeks after a new SABnzbd release, a virus scanner (like Windows Defender) might say the new SABnzbd release contains a virus or that it's malicious.
-    The reason for this is that SABnzbd is written in the programming langauge Python, but many malicious programs are <em>also</em> written in Python.
-    Just because of that virus scanners are triggered automatically after a new release, as the SABnzbd binary is unknown to them.<br>
-    These results are false-positives. <br>
-    You can upload the SABnzbd binary yourself to <a href="https://www.virustotal.com/" target="_blank">www.virustotal.com</a>, which checks the binary
-    against all available virus scanners. If the binary did contain some virus, all the scanners would be triggered. Usually, it's just a few false-positives.<br>
+    Within the first few weeks after a new SABnzbd release, a virus scanner (like Windows Defender/Avast/McAfee) might say the new SABnzbd release contains a virus or that it's malicious. These results are <b>false-positives</b>.<br>
+    If your antivirus has quarantined/removed SABnzbd or a provided utilities, you would need to restore/release it from your antivirus quarantine after you have updated your antivirus application. If you are having problems you can try re-installing SABnzbd again to restore missing files.<br>
+    <br>
+    SABnzbd triggers plenty of antivirus red flags: Packing/executable compression, multiple executables inside, lots of network connections, a listening socket/web interface, scheduler, database stuff. 
+    AV makers may give their products fancy names loaded with buzzwords, "smart-this", "cloud-that", "AI" and so on but under all that varnish is still just a bunch of 'best guess' scoring mechanisms. 
+    Thus false positives remain until they add a manual override for the stuff they get enough complaints about, or enough time passes and their algorithms catch up.<br>
+    <br>
+    You can upload the SABnzbd binary yourself to <a href="https://www.virustotal.com/" target="_blank">www.virustotal.com</a>, which checks the binary against all available virus scanners.
+    If the binary did contain some virus, all the scanners would be triggered. Usually, it's just a few false-positives due to lack of reputation of seeing the release before.
     After one or two weeks, most virus scanners are updated and will no longer react to SABnzbd.
 </p>
 
