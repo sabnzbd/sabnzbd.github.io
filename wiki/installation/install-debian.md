@@ -5,25 +5,23 @@ title: SABnzbd installation on Debian
 
 There are two ways to install SABnzbd on Debian.
 
-## Debian contrib repository
+## From the official Debian repository
 
-First make sure you have the Debian repository `contrib` activated. Then
+Make sure you have the `contrib` and `non-free` repositories activated, then run:
 
 ```
-sudo apt-get install sabnzbdplus
+sudo apt install sabnzbdplus
 ```
 
-This is an easy way, but note that this version of SABnzbd can be old and **outdated**. 
+While this is the easiest install method, the version of SABnzbd can be old and **outdated**. Nevertheless, this way is always a good **first** step because it is easy, and it takes care of dependencies and system integration (desktop menu, autocomplete, system service, etc.).
 
-Nevertheless, this way is always a good **first** step because it is easy, and it takes care of dependencies if running SABnzbd from source/github.
+Several options for installing newer releases on Debian via apt are listed in [this](https://forums.sabnzbd.org/viewtopic.php?p=60238) forum post.
 
-Run SABnzbd like this:
+To start the program, execute:
 ```
 sabnzbdplus
 ```
 
 ## Alternatives
 
-You can use any of the other Linux based installation methods liken [Docker, Snap or Flatpak](/wiki/installation/install-unix).
-
-Or, you can run SABnzbd [from sources](/wiki/installation/install-off-modules).
+You can use any of the other Linux based installation methods such as [Docker, Snap or Flatpak](/wiki/installation/install-unix), or run SABnzbd [from sources](/wiki/installation/install-off-modules) entirely.
