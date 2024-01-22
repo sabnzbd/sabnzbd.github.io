@@ -1,0 +1,290 @@
+---
+title: Post-processing scripts
+redirect_from: "/wiki/advanced/user-scripts"
+---
+
+<p>
+    SABnzbd can run a user-provided post-processing scripts. The scripts can be associated with a job entry when adding the job manually, via <a href="/wiki/configuration/{{ site.wiki_version }}/categories">category</a> or during downloading. Scripts can also be run as an end-of-queue event.
+    A post-processing script will only run when the job has completed without errors.
+    If you want to always run the script, you need to disable the option <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Post-Process Only Verified Jobs</a>.
+</p>
+
+<p>
+    Scripts may use any scripting language available on your system; common choices are Python, Unix shell, and Windows batch scripts.
+    All scripts must be located in the Scripts-directory, specified in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Config-&gt;Folders</a> and must be executable.
+    On Unix-like operating systems (Linux, BSD, etc.) this means the x-bit must be on.
+    On Windows, the requirement is that the script's extension is listed in your system's <code>PATHEXT</code> environment variable.
+</p>
+
+<p>
+    The console output of the script is captured by SABnzbd and is saved in the so called "Script Log" which can be opened from the history details.
+    The output will be added to the (optional) notification email and can be examined in the History page.
+</p>
+
+<p>
+    The "return" code that your script itself returns should be <code>0</code> if all went well or non-zero if errors occurred. If the return code is something else than <code>0</code>, SABnzbd's History will show that return code (also known as exit code) as <code>Exit(...)</code> in the History. By default the job will not be flagged as failed in case the exit code is non-zero. In <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a> there is the option to let a non-zero code mark the job as failed.
+</p>
+
+<p>
+    Example scripts are included in the <code>scripts</code> directory of your SABnzbd installation and are shown at the end of this page.
+</p>
+
+<hr>
+<h2>Basic parameters</h2>
+
+<p>The script will receive the parameters described below. Use <code>%1</code> in Windows scripts and <code>$1</code> in Unix scripts. Note that on Windows the input parameters are surrounded by quotes (e.g. <code>"job name"</code>).</p>
+
+<p><span class="label label-warning">NOTE</span> <strong>Much more information is available to scripts via environment variables, <a href="#env_vars">see below</a>!</strong></p>
+
+<table class="table table-bordered table-hover table-not-fixed">
+    <thead>
+        <tr>
+            <th>Position</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>The final directory of the job (full path)</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>The original name of the NZB file</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Clean version of the job name (no path info and ".nzb" removed)</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Indexer's report number (if supported)</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>User-defined category</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Group that the NZB was posted in e.g. alt.binaries.x</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Status of post processing.
+            <ul>
+                <li><code>0</code> = OK</li>
+                <li><code>1</code> = Failed verification</li>
+                <li><code>2</code> = Failed unpack</li>
+                <li><code>3</code> = 1+2</li>
+                <li><code>-1</code> = Failed post processing</li>
+            </ul></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>URL to be called when job failed (if provided by the server, it is always sent, so check parameter 7!). <br>The URL is provided by some indexers as the X-DNZB-Failure header</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+<h2 id="env_vars">Environment variables</h2>
+<p>Your script can get extra information via environment variables:</p>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Variable</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SAB_SCRIPT</td>
+            <td>The name of the current script</td>
+        </tr>
+        <tr>
+            <td>SAB_NZO_ID</td>
+            <td>The unique ID assigned to the job</td>
+        </tr>
+        <tr>
+            <td>SAB_FINAL_NAME</td>
+            <td>The name of the job in the queue and of the final folder</td>
+        </tr>
+        <tr>
+            <td>SAB_FILENAME</td>
+            <td>The NZB filename (after grabbing from the URL)</td>
+        </tr>
+        <tr>
+            <td>SAB_COMPLETE_DIR</td>
+            <td>The whole path to the output directory of the job</td>
+        </tr>
+        <tr>
+            <td>SAB_PP_STATUS</td>
+            <td>Was post-processing successfully completed (repair and/or unpack, if enabled by user)</td>
+        </tr>
+        <tr>
+            <td>SAB_CAT</td>
+            <td>What category was assigned</td>
+        </tr>
+        <tr>
+            <td>SAB_BYTES</td>
+            <td>Total number of bytes</td>
+        </tr>
+        <tr>
+            <td>SAB_BYTES_TRIED</td>
+            <td>How many bytes of the total bytes were tried</td>
+        </tr>
+        <tr>
+            <td>SAB_BYTES_DOWNLOADED</td>
+            <td>How many bytes were received (can be more than tried, due to overhead)</td>
+        </tr>
+        <tr>
+            <td>SAB_DUPLICATE</td>
+            <td>Was this a duplicate and what type</td>
+        </tr>
+        <tr>
+            <td>SAB_DUPLICATE_KEY</td>
+            <td>The key used for Smart Duplicate Detection</td>
+        </tr>
+        <tr>
+            <td>SAB_UNWANTED_EXT</td>
+            <td>Were there unwanted extensions</td>
+        </tr>
+        <tr>
+            <td>SAB_OVERSIZED</td>
+            <td>Was the job over the user's size limit</td>
+        </tr>
+        <tr>
+            <td>SAB_PASSWORD</td>
+            <td>What was the password supplied by the NZB or the user</td>
+        </tr>
+        <tr>
+            <td>SAB_CORRECT_PASSWORD</td>
+            <td>The password that was detected as being the correct password for this job (added in 3.4.0)</td>
+        </tr>
+        <tr>
+            <td>SAB_ENCRYPTED</td>
+            <td>Was the job detected as encrypted</td>
+        </tr>
+        <tr>
+            <td>SAB_STATUS</td>
+            <td>Current status (completed/failed/running)</td>
+        </tr>
+        <tr>
+            <td>SAB_FAIL_MSG</td>
+            <td>If job failed, why did it fail</td>
+        </tr>
+        <tr>
+            <td>SAB_AGE</td>
+            <td>Average age of the articles in the post</td>
+        </tr>
+        <tr>
+            <td>SAB_URL</td>
+            <td>URL from which the NZB was retrieved</td>
+        </tr>
+        <tr>
+            <td>SAB_AVG_BPS</td>
+            <td>Average bytes/second speed during active downloading</td>
+        </tr>
+        <tr>
+            <td>SAB_DOWNLOAD_TIME</td>
+            <td>How many seconds did we download</td>
+        </tr>
+        <tr>
+            <td>SAB_PP</td>
+            <td>What post-processing was activated (download/repair/unpack/delete)</td>
+        </tr>
+        <tr>
+            <td>SAB_REPAIR</td>
+            <td>Was repair selected by user</td>
+        </tr>
+        <tr>
+            <td>SAB_UNPACK</td>
+            <td>Was unpack selected by user</td>
+        </tr>
+        <tr>
+            <td>SAB_FAILURE_URL</td>
+            <td>Provided by some indexers as alternative NZB if download fails</td>
+        </tr>
+        <tr>
+            <td>SAB_PRIORITY</td>
+            <td>Priority set by user</td>
+        </tr>
+        <tr>
+            <td>SAB_GROUP</td>
+            <td>Newsgroup where (most of) the job's articles came from</td>
+        </tr>
+        <tr>
+            <td>SAB_ORIG_NZB_GZ</td>
+            <td>Path to the original NZB-file of the job. The NZB-file is compressed with gzip (<code>.gz</code>)</td>
+        </tr>
+        <tr>
+            <td>SAB_VERSION</td>
+            <td>The version of SABnzbd used</td>
+        </tr>
+        <tr>
+            <td>SAB_PROGRAM_DIR</td>
+            <td>The directory where the current SABnzbd instance is located</td>
+        </tr>
+        <tr>
+            <td>SAB_PAR2_COMMAND</td>
+            <td>The path to the <code>par2</code> command on the system that SABnzbd uses</td>
+        </tr>
+        <tr>
+            <td>SAB_MULTIPAR_COMMAND</td>
+            <td>Windows-only (empty on other systems). The path to the MultiPar command on the system that SABnzbd uses</td>
+        </tr>
+        <tr>
+            <td>SAB_RAR_COMMAND</td>
+            <td>The path to the <code>unrar</code> command on the system that SABnzbd uses</td>
+        </tr>
+        <tr>
+            <td>SAB_ZIP_COMMAND</td>
+            <td>The path to the <code>unzip</code> command on the system that SABnzbd uses</td>
+        </tr>
+        <tr>
+            <td>SAB_7ZIP_COMMAND</td>
+            <td>The path to the <code>7z</code> command on the system that SABnzbd uses. Not all systems have 7zip installed (it's optional for SABnzbd), so this can also be empty</td>
+        </tr>
+        <tr>
+            <td>PYTHONUNBUFFERED</td>
+            <td>This variable is set to 1 when running a Python script (<code>.py</code>), in order to force Python to write output to SABnzbd directly instead of buffering it</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+<h2 id="toc0">Example Python script using basic parameters</h2>
+<p>The get the parameters in python, you can do this:</p>
+{% highlight python %}
+import sys
+try:
+    (scriptname, directory, orgnzbname, jobname, reportnumber, category, group, postprocstatus, url) = sys.argv
+except:
+    print("No commandline parameters found")
+    sys.exit(1)
+
+# continue script
+
+# Your code goes here
+
+# Success code
+sys.exit(0)
+{% endhighlight %}
+
+<hr>
+<h2>Example Python script using environment variables</h2>
+
+{% highlight python %}
+import os
+
+print("SABnzbd version:", os.environ['SAB_VERSION'])
+print("Job location:", os.environ['SAB_COMPLETE_DIR'])
+print("Fail msg:", os.environ['SAB_FAIL_MSG'])
+
+# Your code
+
+# Success code
+sys.exit(0)
+{% endhighlight %}
+
+
