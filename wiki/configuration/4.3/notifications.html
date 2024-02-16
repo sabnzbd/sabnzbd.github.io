@@ -161,17 +161,13 @@ title: Notifications
     When SABnzbd detects support for this protocol, it will allow you to enable the service.
 </p>
 
+<h3 id="apprise">Apprise</h3>
+<p>SABnzbd has built-in support for Apprise, which allows you to connect to basically any notification service out there.<br>
+    The full list of supported services and how to configure them can be found on the <a href="https://github.com/caronc/apprise/wiki" target="_blank">Apprise wiki</a>.
+</p>
+<p>Use a comma and/or space to identify more than one URL.
+    You can override the default URLs for specific notification types, if desired.
+</p>
+
 <h3 id="nscript">Notification script</h3>
 <p>Allows implementation of custom notification services. See <a href="/wiki/configuration/{{ site.wiki_version }}/scripts/notification-scripts">Notification Scripts</a>.</p>
-<p><a href="https://github.com/caronc/nzb-notify" target="_blank">NZB-Notify</a>'s notification script provides a very wide range of notification services, listed <a href="https://github.com/caronc/apprise#popular-notification-services" target="_blank">here</a>.</p>
-<h4>NZB-Notify setup:</h4>
-<ul>
-    <li>In <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Config-&gt;Folders</a>, select a <code>Scripts Folder</code>.</li>
-    <li>On Windows and macOS, download and install Python from <a href="https://www.python.org/">python.org</a>. Restart the system after the installation.</li>
-    <li>Download <a href="https://github.com/caronc/nzb-notify/archive/refs/heads/master.zip">NZB-Notify</a> and unpack the contents of the <code>nzb-notify-master</code> folder to the <code>Scripts Folder</code>.</li>
-    <li>Open a terminal (macOS/Linux) or command line window (Windows) and navigate to the <code>Scripts Folder</code>.</li>
-    <li>Run <code>pip install -r requirements.txt</code> (on some systems you might have to replace <code>pip</code> by <code>pip3</code>).</li>
-    <li>You can now select <code>sabnzbd-notify.py</code> in <a href="/wiki/configuration/{{ site.wiki_version }}/notifications">Config-&gt;Notifications</a>.</li>
-    <li>Specify the URL for <a href="https://github.com/caronc/apprise#popular-notification-services" target="_blank">your service</a> such as <code>kodi://192.168.0.2</code> in the <code>Parameters</code> section.
-        You can specify more than one URL here by simply using a comma (<code>,</code>) as a delimiter.</li>
-</ul>
