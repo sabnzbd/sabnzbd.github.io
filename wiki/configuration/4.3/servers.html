@@ -95,10 +95,6 @@ title: Servers
             <td>If you use multiple servers and some of these servers are not very reliable, you can declare them "optional". This means that if such a server causes too much problems (like time-outs) it will be ignored for some time. <br>When you declare a server with a long retention time as optional and the server is temporary out-of-service, SABnzbd will fall back to another server. If the alternative server has a shorter retention time, you will miss articles if the articles are beyond the retention time of the alternative server. It is best to set your most reliable and longest retention time server as a lower priority server but not as optional. Secondary servers (cheaper, less reliable, shorter retention time) can be set as <em>high priority</em> and <em>optional</em>.</td>
         </tr>
         <tr>
-            <td><strong>Send group</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>Some news servers require the Usenet group to be sent before starting download. Only enable if your server has problems with downloading otherwise.</td>
-        </tr>
-        <tr>
             <td><strong>Account expiration date</strong><br><span class="label label-primary">Advanced</span></td>
             <td>If you supply the expiration date of your server subscription, SABnzbd will warn you 5 days in advance.<br>
             <span class="label label-warning">NOTE</span> The server will not be automatically disabled.</td>
