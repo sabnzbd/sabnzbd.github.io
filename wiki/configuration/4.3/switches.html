@@ -162,12 +162,14 @@ title: Switches
             <td>Automatically delete <strong>completed</strong> jobs from History when new jobs are added or every day at midnight.
 
             <ul>
-                <li><code>Keep all jobs</code> = Do not auto-delete any history.</li>
-                <li><code>Keep maximum number of completed jobs</code> = Specify exact amount of jobs to keep, removing the oldest ones.</li>
-                <li><code>Keep completed jobs maximum number of days</code> = Delete jobs automatically when they are older than the set amount of days.</li>
-                <li><code>Do not keep any completed jobs</code> = No jobs are saved in the History. </li>
+                <li><code>Move jobs to the archive if the history exceeds specified number of jobs</code> = Specify exact amount of jobs to keep, moving the oldest ones to the archive.</li>
+                <li><code>Delete jobs if the history exceeds specified number of jobs</code> = Specify exact amount of jobs to keep, removing the oldest ones.</li>
+                <li><code>Move jobs to the archive after specified number of days</code> = Move jobs to the archive when they are older than the set amount of days.</li>
+                <li><code>Delete jobs after specified number of days</code> = Delete jobs automatically when they are older than the set amount of days.</li>
+                <li><code>Move all completed jobs to archive</code> = All jobs are moved to the archive.</li>
+                <li><code>Delete all completed jobs</code> = No jobs are saved in the History.</li>
             </ul>
-            <span class="label label-warning">NOTE</span> Beware that Duplicate Detection and some external tools rely on History information.<br>
+            <span class="label label-warning">NOTE</span> Beware that Duplicate Detection and some external tools rely on History information, so keep items in the History or Archive if you want them checked for Duplicate Detection.<br>
             </td>
         </tr>
     </tbody>
