@@ -142,6 +142,11 @@ title: Special settings
             <td>HTML based login form, uncheck for basic authentication. Both offer similar security but password managers might not be able to fill basic authentication automatically.</td>
         </tr>
         <tr>
+            <td><code>disable_archive</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Enable to always skip the Archive when jobs are deleted. <br>Does not delete jobs that are already in the Archive or jobs moved to the Archive using the History Retention option.</td>
+        </tr>
+        <tr>
             <td><code>wait_for_dfolder</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
             <td>Some people use external or network drives for the "temporary download folder". It can happen that such a drive isn't mounted yet when SABnzbd starts up, causing it to create a new folder at the default location. To prevent this, set the option to 1. This will make SABnzbd wait until the drive is available. Note that SABnzbd will hang until the drive is available! Also, the folder must already exist otherwise SABnzbd will hang until terminated.</td>
