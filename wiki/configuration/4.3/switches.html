@@ -6,16 +6,6 @@ title: Switches
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td><strong>Server IP address selection</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>A number of news servers has multiple IP-addresses, these can be IPv4 or IPv6.
-            <ul>
-                <li><code>First IP address</code> = The first IP-address returned will be used for all connections. </li>
-                <li><code>Randomly selected IP address</code> = Each connection will be randomly selected from the available addresses.</li>
-                <li><code>Quickest IP address, preferring IPv6</code> = For each connection the fastest IP-address is selected, with a small head start for IPv6 addresses.</li>
-            </ul>
-            </td>
-        </tr>
-        <tr>
             <td><strong>Maximum retries</strong><br><span class="label label-primary">Advanced</span></td>
             <td>To prevent deadlock, SABnzbd will only try each server a limited amount of times.</td>
         </tr>
@@ -29,8 +19,13 @@ title: Switches
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td><strong>Pre-queue user script</strong></td>
+            <td><strong>Pre-queue script</strong><br><span class="label label-primary">Advanced</span></td>
             <td>See: <a href="/wiki/configuration/{{ site.wiki_version }}/scripts/pre-queue-scripts">pre-queue script</a>.</td>
+        </tr>
+        <tr>
+            <td><strong>On queue finish script</strong><br><span class="label label-primary">Advanced</span></td>
+            <td>Executed after the queue finishes downloading. No special parameters are supplied.
+                For more information on running scripts, read the general information here: <a href="/wiki/configuration/{{ site.wiki_version }}/scripts/pre-queue-scripts">pre-queue script</a>.</td>
         </tr>
         <tr>
             <td><strong>Propagation delay</strong></td>
@@ -50,16 +45,16 @@ title: Switches
             <td>If on, when during download it becomes clear that it can never be repaired, it will be aborted and send to the History as failed. Should you retry the job, the check will not be done again, but the whole job will be tried instead.</td>
         </tr>
         <tr>
-            <td><strong>Detect duplicate downloads</strong></td>
-            <td>This option will compare the NZB name or NZB content to those in the History. It will also compare the NZB name to the items in your <a href="/wiki/configuration/{{ site.wiki_version }}/folders">.nzb Backup Folder</a>.</td>
+            <td><strong>Identical download detection</strong></td>
+            <td>See: <a href="/wiki/extra/duplicate-detection">Duplicate Detection</a></td>
         </tr>
         <tr>
-            <td><strong>Detect duplicate episodes in series</strong></td>
-            <td>This option will analyze NZB titles for Series/Season/Episode information and will check whether the episode has already been downloaded. It will check against the History database.</td>
+            <td><strong>Smart duplicate detection</strong></td>
+            <td>See: <a href="/wiki/extra/duplicate-detection">Duplicate Detection</a></td>
         </tr>
         <tr>
             <td><strong>Allow proper releases</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>Bypass series duplicate detection if <code>PROPER</code>, <code>REAL</code> or <code>REPACK</code> is detected in the download name to allow for better quality releases to still be downloaded.</td>
+            <td>See: <a href="/wiki/extra/duplicate-detection">Duplicate Detection</a></td>
         </tr>
         <tr>
             <td><strong>Action when encrypted RAR is downloaded</strong></td>
@@ -147,10 +142,6 @@ title: Switches
             <td>Some scripts will return a non-zero exit code when they encounter a problem. You can opt to let a non-zero exit code mark the job as failed. This can be useful when you're using an indexer that offers alternative NZB files or use a front-end (like SickBeard) that will look for alternatives when a job fails.</td>
         </tr>
         <tr>
-            <td><strong>On failure, try alternative NZB</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>Some servers provide an alternative NZB when a download fails and we can try that one.</td>
-        </tr>
-        <tr>
             <td><strong>Ignore samples</strong></td>
             <td>If enabled, delete anything that looks like sample files (containing the words <code>sample</code> or <code>proof</code>) after completion of post-processing.</td>
         </tr>
@@ -171,12 +162,14 @@ title: Switches
             <td>Automatically delete <strong>completed</strong> jobs from History when new jobs are added or every day at midnight.
 
             <ul>
-                <li><code>Keep all jobs</code> = Do not auto-delete any history.</li>
-                <li><code>Keep maximum number of completed jobs</code> = Specify exact amount of jobs to keep, removing the oldest ones.</li>
-                <li><code>Keep completed jobs maximum number of days</code> = Delete jobs automatically when they are older than the set amount of days.</li>
-                <li><code>Do not keep any completed jobs</code> = No jobs are saved in the History. </li>
+                <li><code>Move jobs to the archive if the history exceeds specified number of jobs</code> = Specify exact amount of jobs to keep, moving the oldest ones to the archive.</li>
+                <li><code>Delete jobs if the history exceeds specified number of jobs</code> = Specify exact amount of jobs to keep, removing the oldest ones.</li>
+                <li><code>Move jobs to the archive after specified number of days</code> = Move jobs to the archive when they are older than the set amount of days.</li>
+                <li><code>Delete jobs after specified number of days</code> = Delete jobs automatically when they are older than the set amount of days.</li>
+                <li><code>Move all completed jobs to archive</code> = All jobs are moved to the archive.</li>
+                <li><code>Delete all completed jobs</code> = No jobs are saved in the History.</li>
             </ul>
-            <span class="label label-warning">NOTE</span> Beware that Duplicate Detection and some external tools rely on History information.<br>
+            <span class="label label-warning">NOTE</span> Beware that Duplicate Detection and some external tools rely on History information, so keep items in the History or Archive if you want them checked for Duplicate Detection.<br>
             </td>
         </tr>
     </tbody>
@@ -251,14 +244,6 @@ title: Switches
 <ul>
     <li><code>-t1</code> Use it single-core</li>
     <li><code>-t&lt;n&gt;</code> Use <code>n</code> cores</li>
-    <li><code>-t0</code> [par2tbb] Use multi-core for repairs but not for verify (prevents disk trashing)</li>
-</ul>
-
-<p>If you use the <code>par2-tbb</code> version you can also set the process priority:</p>
-<ul>
-     <li><code>-pN</code> to process at normal priority [default]</li>
-     <li><code>-pL</code> to process at low priority</li>
-     <li><code>-pI</code> to process at idle (lowest) priority</li>
 </ul>
 
 <hr>

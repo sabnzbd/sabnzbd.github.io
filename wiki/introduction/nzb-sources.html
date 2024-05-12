@@ -59,135 +59,12 @@ title: NZB Sources
     </tbody>
 </table>
 
-<button class="btn pull-right" onclick="filterIndexers(); $(this).hide()"><span class="glyphicon glyphicon-eye-open"></span> Show closed indexers</button>
 <h2>Indexers</h2>
 
-<p>Indexers parse headers to build releases so as to present a user-friendly way to browse content.</p>
-<div class="alert alert-info">
-    Updated list from the <a href="https://www.reddit.com/r/usenet/wiki/indexers" target="_blank" class="alert-link">Reddit /r/usenet</a> indexer listing on Januari 30th 2021.<br>
-    If you see outdated information, please let us know and we will be happy to make the necessary changes.
+<p>Indexers parse headers to build releases in order to present a user-friendly way to browse content.</p>
+<div class="alert alert-warning">
+    Please check the up-to-date indexer listing at <a href="https://www.reddit.com/r/usenet/wiki/indexers" target="_blank" class="alert-link">Reddit /r/usenet</a>.
 </div>
-
-<table class="table table-bordered table-hover table-shuffle" id="table-filter-open">
-    <thead>
-        <tr>
-            <th>Site</th>
-            <th>Code Base</th>
-            <th>Registrations</th>
-            <th>Free Account Limits</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><a href="https://abnzb.com/" target="_blank">abNZB</a></td>
-            <td><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
-            <td>Open</td>
-            <td>25 NZBs, 10 API hits/day</td>
-        </tr>
-        <tr>
-            <td><a href="https://althub.co.za/" target="_blank">altHUB</a></td>
-            <td><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
-            <td>Open</td>
-            <td>Free to use for 14 days, then unusable until you pay</td>
-        </tr>
-        <tr>
-            <td><a href="https://dognzb.cr/login" target="_blank">DOGnzb</a></td>
-            <td><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
-            <td>Invite Only</td>
-            <td>Lite Tier only for former "Lifetime" account holders: 10 NZBs, 100 API hits/day, No Watchlist feature</td>
-        </tr>
-        <tr>
-            <td><a href="https://drunkenslug.com/" target="_blank">DrunkenSlug</a></td>
-            <td><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
-            <td>Closed</td>
-            <td>5 NZBs, 25 API hits</td>
-        </tr>
-        <tr>
-            <td><a href="http://headphones.codeshy.com/vip" target="_blank">Headphones VIP Server</a></td>
-            <td><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
-            <td>Donate Only</td>
-            <td>?</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.gingadaddy.com/" target="_blank">GingaDADDY</a></td>
-            <td>Custom</td>
-            <td>Open</td>
-            <td>3 downloads/day, no XXX</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.miatrix.com/" target="_blank">Miatrix</a></td>
-            <td><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
-            <td>Open</td>
-            <td>2 NZBs, 10 API hits/day</td>
-        </tr>
-        <tr>
-            <td><a href="https://nzb.cat/" target="_blank">NZBCat</a></td>
-            <td><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
-            <td>Donate/Invite Only</td>
-            <td>5 NZBs, 50 API hits/day, No XXX, No Special Features</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.nzbnoob.com/" target="_blank">NzbNooB</a></td>
-            <td><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
-            <td>Open</td>
-            <td>5 downloads, 100 api hits/day</td>
-        </tr>
-        <tr>
-            <td><a href="https://nzbplanet.net/" target="_blank">NzbPlanet</a></td>
-            <td><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
-            <td>Invite Only</td>
-            <td>Reduced retention, no access to VIP NZBs, No API access for free accounts</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.nzbfinder.ws/" target="_blank">NZB Finder</a></td>
-            <td><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
-            <td>Open</td>
-            <td>10 NZBs, 100 API hits/day</td>
-        </tr>
-        <tr>
-            <td><a href="https://nzbgeek.info/" target="_blank">NZBgeek</a></td>
-            <td><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
-            <td>Open</td>
-            <td>14 day trial period</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.nzbndx.com/" target="_blank">NZBNDX</a></td>
-            <td><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
-            <td>Open</td>
-            <td>2 week trial period</td>
-        </tr>
-        <tr>
-            <td><a href="https://nzb.su/" target="_blank">NZB.su</a></td>
-            <td><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
-            <td>Open</td>
-            <td>0 NZBs, 0 API, no forum access</td>
-        </tr>
-        <tr>
-            <td><a href="https://omgwtfnzbs.me/" target="_blank">omgwtfnzbs</a></td>
-            <td>Custom + Newznab API</td>
-            <td>Donate/Invite Only</td>
-            <td>10 NZBs/day</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.oznzb.com/" target="_blank">OZnzb</a></td>
-            <td><a href="http://www.newznab.com/" target="_blank">Newznab</a></td>
-            <td>Closed</td>
-            <td>5 NZBs, 500 API hits/day</td>
-        </tr>
-        <tr>
-            <td><a href="https://simplynzbs.com/" target="_blank">SimplyNZBs</a></td>
-            <td><a href="https://nzedb.github.io/" target="_blank">nZEDb</a></td>
-            <td>Open</td>
-            <td>5 NZBs, 10 API hits/day</td>
-        </tr>
-        <tr>
-            <td><a href="https://www.tabula-rasa.pw/" target="_blank">Tabula-Rasa</a></td>
-            <td><a href="https://github.com/DariusIII/newznab-tmux" target="_blank">NNTmux</a></td>
-            <td>Open</td>
-            <td>10 NZBs, 100 API hits/day</td>
-        </tr>
-    </tbody>
-</table>
 
 <script type="text/javascript">
     //Shuffle all rows, while keeping the first column
@@ -216,14 +93,4 @@ title: NZB Sources
     }
 
     $(".table-shuffle").shuffleRows()
-
-    function filterIndexers() {
-        $('#table-filter-open tbody').find('tr').each(function() {
-            // Is it open?
-            if($(this).children().eq(2).text() != 'Open') {
-                $(this).toggle()
-            }
-        })
-    }
-    filterIndexers()
 </script>

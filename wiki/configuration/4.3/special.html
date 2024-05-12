@@ -28,6 +28,20 @@ title: Special settings
             <td>Some Usenet servers have intermittent login (or other) problems. For these the server blocking method is not very favorable. Setting this option will limit blocks to 1 minute.</td>
         </tr>
         <tr>
+            <td><code>ipv6_servers</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Allow connections to IPv6 addresses if they are available for your news server.</td>
+        </tr>
+        <tr>
+            <td><code>ipv6_staging</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>
+                Enable IPv6 features that are non yet mainstream:<br>
+                Add IPv6 hostnames during address selection.<br>
+                Internet Bandwidth is measured separately for IPv4 and IPv6.
+            </td>
+        </tr>
+        <tr>
             <td><code>fast_fail</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>When starting a download, the first article of each file is downloaded. If <code>Abort jobs that cannot be completed</code> is turned on, there are more than 10 files and more than 80% of the first articles is missing the job will be failed. If turned off, it will only be failed if availability is below <code>req_completion_rate</code>.</td>
@@ -73,6 +87,11 @@ title: Special settings
             <td>Display ETA in AM/PM notation, only applicable to some locations in older skins.</td>
         </tr>
         <tr>
+            <td><code>enable_multipar</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Disable to use par2cmdline-turbo instead of Multipar on Windows.</td>
+        </tr>
+        <tr>
             <td><code>enable_unrar</code>, <code>enable_unzip</code>, <code>enable_7zip</code>, <code>enable_filejoin</code>, <code>enable_tsjoin</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Enable or disable the UnRar, UnZip, 7zip, filejoin and TSJoin tools. If disabled, the archive/split files will not be unpacked.</td>
@@ -113,9 +132,19 @@ title: Special settings
             <td>Do post-processing and run the user script even if nothing has been downloaded. This is useful in combination with tools like SickBeard, for which running the script on an empty or failed download is a trigger to try an alternative NZB. Note that the "Status" parameter for the script will be -1.</td>
         </tr>
         <tr>
+            <td><code>new_nzb_on_failure</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Some indexers provide an alternative NZB through a HTTP-header (<code>X-DNZB-Failure</code>) when the download is added as an URL. If the first download fails, try and fetch the alternative NZB.</td>
+        </tr>
+        <tr>
             <td><code>html_login</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>HTML based login form, uncheck for basic authentication. Both offer similar security but password managers might not be able to fill basic authentication automatically.</td>
+        </tr>
+        <tr>
+            <td><code>disable_archive</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Enable to always skip the Archive when jobs are deleted. <br>Does not delete jobs that are already in the Archive or jobs moved to the Archive using the History Retention option.</td>
         </tr>
         <tr>
             <td><code>wait_for_dfolder</code></td>
@@ -129,8 +158,8 @@ title: Special settings
         </tr>
         <tr>
             <td><code>warn_dupl_jobs</code></td>
-            <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>If checked, will issue a warning when a duplicate job is detected and subsequently paused or deleted. Uncheck if you find the warnings a nuisance.</td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>If checked, will issue a warning when a duplicate job is detected and subsequently paused or deleted.</td>
         </tr>
         <tr>
             <td><code>backup_for_duplicates</code></td>
@@ -161,6 +190,11 @@ title: Special settings
             <td><code>enable_season_sorting</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Enable <a href="/wiki/configuration/{{ site.wiki_version }}/sorting#toc5">season pack</a> handling when sorting Series. This makes the sorting try to extract episode numbers from the file names of the downloaded files in case a season pack is detected, so it can properly rename all files.</td>
+        </tr>
+        <tr>
+            <td><code>verify_xff_header</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Take the IP address(es) in the X-Forwarded-For header into consideration when determining access rights for incoming connections, <b>in addition to</b> the client/remote IP. Intended for use with a reverse proxy setup, where the IP address making the connection (as seen from the perspective of SABnzbd) is that of the proxy server rather than the system where the request actually originated, causing access to be granted even if the <a href="/wiki/configuration/{{ site.wiki_version }}/general#toc-eia">External internet access</a> setting is configured to deny connections from outside the local network. For details, see the <a href="https://github.com/sabnzbd/sabnzbd/pull/2611#issue-1787915678">pull request</a> that added this feature.</td>
         </tr>
     </tbody>
 </table>
@@ -244,11 +278,6 @@ title: Special settings
             <td><code>direct_unpack_threads</code></td>
             <td><code>3</code></td>
             <td>When Direct Unpack is enabled we only allow this number of unpackers to be active at the same time. This is to limit strain on the system's disks. <br>Note that there can be an additional unpack active if a job is also being post-processed.</td>
-        </tr>
-        <tr>
-            <td><code>ipv6_servers</code></td>
-            <td><code>1</code></td>
-            <td>Control the use of IPv6 Usenet server addresses. Only useful when you have an IPv6 capable ISP and connect to servers that (also) have IPv6 addresses. Meaning: 0 = don't use, 1 = use when available and reachable, 2 = force usage (when SABnzbd's detection fails).</td>
         </tr>
         <tr>
             <td><code>selftest_host</code></td>

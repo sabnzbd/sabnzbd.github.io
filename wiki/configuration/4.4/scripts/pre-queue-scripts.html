@@ -161,131 +161,142 @@ SABnzbd uses the first 7 lines of output, so they should be empty (original valu
     </thead>
     <tbody>
         <tr>
-            <td>SAB_SCRIPT</td>
+            <td><code>SAB_SCRIPT</code></td>
             <td>The name of the current script</td>
         </tr>
         <tr>
-            <td>SAB_FINAL_NAME</td>
+            <td><code>SAB_FINAL_NAME</code></td>
             <td>The name of the job in the queue and of the final folder</td>
         </tr>
         <tr>
-            <td>SAB_FILENAME</td>
+            <td><code>SAB_FILENAME</code></td>
             <td>The NZB filename (after grabbing from the URL)</td>
         </tr>
         <tr>
-            <td>SAB_CAT</td>
+            <td><code>SAB_CAT</code></td>
             <td>What category was assigned</td>
         </tr>
         <tr>
-            <td>SAB_BYTES</td>
+            <td><code>SAB_BYTES</code></td>
             <td>Total number of bytes</td>
         </tr>
         <tr>
-            <td>SAB_DUPLICATE</td>
+            <td><code>SAB_DUPLICATE</code></td>
             <td>Is this a duplicate and what type</td>
         </tr>
         <tr>
-            <td>SAB_DUPLICATE_KEY</td>
+            <td><code>SAB_DUPLICATE_KEY</code></td>
             <td>The key used for Smart Duplicate Detection</td>
         </tr>
         <tr>
-            <td>SAB_PASSWORD</td>
+            <td><code>SAB_PASSWORD</code></td>
             <td>What was the password supplied by the NZB or the user</td>
         </tr>
         <tr>
-            <td>SAB_STATUS</td>
+            <td><code>SAB_STATUS</code></td>
             <td>Current status (completed/failed/running)</td>
         </tr>
         <tr>
-            <td>SAB_PP</td>
+            <td><code>SAB_PP</code></td>
             <td>What post-processing was activated (download/repair/unpack/delete)</td>
         </tr>
         <tr>
-            <td>SAB_REPAIR</td>
+            <td><code>SAB_REPAIR</code></td>
             <td>Was repair selected by user</td>
         </tr>
         <tr>
-            <td>SAB_UNPACK</td>
+            <td><code>SAB_UNPACK</code></td>
             <td>Was unpack selected by user</td>
         </tr>
         <tr>
-            <td>SAB_PRIORITY</td>
+            <td><code>SAB_PRIORITY</code></td>
             <td>Priority set by user</td>
         </tr>
         <tr>
-            <td>SAB_GROUPS</td>
+            <td><code>SAB_GROUPS</code></td>
             <td>Newsgroups listed in the NZB</td>
         </tr>
         <tr>
-            <td>SAB_VERSION</td>
+            <td><code>SAB_VERSION</code></td>
             <td>The version of SABnzbd used</td>
         </tr>
         <tr>
-            <td>SAB_PROGRAM_DIR</td>
+            <td><code>SAB_PROGRAM_DIR</code></td>
             <td>The directory where the current SABnzbd instance is located</td>
         </tr>
         <tr>
-            <td>SAB_PAR2_COMMAND</td>
+            <td><code>SAB_API_KEY</code></td>
+            <td>The API-key that you can use to communicate with the SABnzbd <a href="/wiki/configuration/{{ site.wiki_version }}/api">API</a>.</td>
+        </tr>
+        <tr>
+            <td><code>SAB_API_URL</code></td>
+            <td>
+                The URL to the SABnzbd <a href="/wiki/configuration/{{ site.wiki_version }}/api">API</a>, for example <code>http://127.0.0.1:8080/sabnzbd/api</code>.<br>
+                It does not include the required <code>apikey</code> parameter, use <code>SAB_API_KEY</code>.
+            </td>
+        </tr>
+        <tr>
+            <td><code>SAB_PAR2_COMMAND</code></td>
             <td>The path to the <code>par2</code> command on the system that SABnzbd uses</td>
         </tr>
         <tr>
-            <td>SAB_MULTIPAR_COMMAND</td>
+            <td><code>SAB_MULTIPAR_COMMAND</code></td>
             <td>Windows-only (empty on other systems). The path to the MultiPar command on the system that SABnzbd uses</td>
         </tr>
         <tr>
-            <td>SAB_RAR_COMMAND</td>
+            <td><code>SAB_RAR_COMMAND</code></td>
             <td>The path to the <code>unrar</code> command on the system that SABnzbd uses</td>
         </tr>
         <tr>
-            <td>SAB_ZIP_COMMAND</td>
+            <td><code>SAB_ZIP_COMMAND</code></td>
             <td>The path to the <code>unzip</code> command on the system that SABnzbd uses</td>
         </tr>
         <tr>
-            <td>SAB_7ZIP_COMMAND</td>
+            <td><code>SAB_7ZIP_COMMAND</code></td>
             <td>The path to the <code>7z</code> command on the system that SABnzbd uses. Not all systems have 7zip installed (it's optional for SABnzbd), so this can also be empty</td>
         </tr>
         <tr>
-            <td>SAB_TITLE</td>
+            <td><code>SAB_TITLE</code></td>
             <td>Title of the movie or show</td>
         </tr>
         <tr>
-            <td>SAB_SEASON</td>
+            <td><code>SAB_SEASON</code></td>
             <td>Season (1..99)</td>
         </tr>
         <tr>
-            <td>SAB_EPISODE</td>
+            <td><code>SAB_EPISODE</code></td>
             <td>Episode (1..99)</td>
         </tr>
         <tr>
-            <td>SAB_EPISODE_NAME</td>
+            <td><code>SAB_EPISODE_NAME</code></td>
             <td>Episode name</td>
         </tr>
         <tr>
-            <td>SAB_IS_PROPER</td>
+            <td><code>SAB_IS_PROPER</code></td>
             <td>Tagged as Proper (True or False)</td>
         </tr>
         <tr>
-            <td>SAB_RESOLUTION</td>
+            <td><code>SAB_RESOLUTION</code></td>
             <td>Resolution</td>
         </tr>
         <tr>
-            <td>SAB_DECADE</td>
+            <td><code>SAB_DECADE</code></td>
             <td>Decade</td>
         </tr>
         <tr>
-            <td>SAB_YEAR</td>
+            <td><code>SAB_YEAR</code></td>
             <td>Year</td>
         </tr>
         <tr>
-            <td>SAB_MONTH</td>
+            <td><code>SAB_MONTH</code></td>
             <td>Month</td>
         </tr>
         <tr>
-            <td>SAB_DAY</td>
+            <td><code>SAB_DAY</code></td>
             <td>Day</td>
         </tr>
         <tr>
-            <td>SAB_JOB_TYPE</td>
+            <td><code>SAB_JOB_TYPE</code></td>
             <td>Job type (tv, date, movie, or unknown)</td>
         </tr>
     </tbody>

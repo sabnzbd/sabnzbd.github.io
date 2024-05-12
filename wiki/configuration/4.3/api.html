@@ -1,6 +1,5 @@
 ---
 title: API reference
-redirect_from: "/wiki/advanced/automation-support"
 ---
 <h3><span class="glyphicon glyphicon-star"></span> Jump quickly to: <a href="#queue_main">Queue functions</a>, <a href="#history_main">History functions</a>, <a href="#status_main">Status functions</a> and <a href="#other_main">Other functions</a>.</h3>
 <hr>
@@ -10,7 +9,7 @@ redirect_from: "/wiki/advanced/automation-support"
 <pre><code>http://host:port/sabnzbd/api</code></pre>
 
 <h2>Request types</h2>
-<p>Supported output types are <code>json</code>, <code>xml</code> and <code>text</code> and can be specified in the request:
+<p>Supported output types are <code>json</code> (default) and <code>xml</code>, which can be specified in the request:
 <pre><code>http://host:port/sabnzbd/api?output=json</code></pre>
 
 <h2>API Key and NZB key</h2>
@@ -156,13 +155,17 @@ redirect_from: "/wiki/advanced/automation-support"
             <td>Number of jobs to display</td>
         </tr>
         <tr>
+            <td><code>search</code> <small>optional</small></td>
+            <td>Filter job names by <code>search</code> term</td>
+        </tr>
+        <tr>
             <td><code>category</code> / <code>cat</code> <small>optional</small></td>
-            <td>Only return jobs for one or more categories (separated by a comma)<br>
+            <td>Only return jobs with the specified category or categories (separated by a comma)<br>
                 Use <code>*</code> for Default
         </td>
         <tr>
             <td><code>priority</code> <small>optional</small></td>
-            <td>Only return jobs for one or more priorities (separated by a comma)
+            <td>Only return jobs with the specified priority or priorities (separated by a comma)
                 <ul>
                     <li><code>-2</code> = Paused</li>
                     <li><code>-1</code> = Low Priority</li>
@@ -173,12 +176,20 @@ redirect_from: "/wiki/advanced/automation-support"
             </td>
         </tr>
         <tr>
-            <td><code>search</code> <small>optional</small></td>
-            <td>Filter job names by <code>search</code> term</td>
+            <td><code>status</code> <small>optional</small></td>
+            <td>Only return jobs with the specified status or statuses (separated by a comma)
+                <ul>
+                    <li><code>Downloading</code></li>
+                    <li><code>Queued</code></li>
+                    <li><code>Paused</code></li>
+                    <li><code>Propagating</code> = Delayed download</li>
+                    <li><code>Fetching</code> = Job is downloading extra par2 files</li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td><code>nzo_ids</code> <small>optional</small></td>
-            <td>Filter jobs by <code>nzo_ids</code></td>
+            <td>Only return jobs with these <code>nzo_ids</code> (separated by a comma)</td>
         </tr>
     </tbody>
 </table>
@@ -313,7 +324,6 @@ redirect_from: "/wiki/advanced/automation-support"
 <pre><code>api?mode=config&amp;name=speedlimit&amp;value=30</code></pre>
 <p> It can also be followed by <code>K,M</code> to define speedlimit in <code>KB/s,MB/s</code>, respectively.
 <pre><code>api?mode=config&amp;name=speedlimit&amp;value=400K</code></pre>
-<p><span class="label label-warning">NOTE</span> In SABnzbd 0.7.20 and below the <code>value</code> is always interpreted as <code>KB/s</code>, no percentages.</p>
 
 <h2 id="change_complete_action">Action on queue complete <span class="label label-primary">True/False</span></h2>
 <p>Set an end-of-queue action</p>
@@ -540,12 +550,10 @@ redirect_from: "/wiki/advanced/automation-support"
 <h2 id="move_nzf_bulk">Move file(s) inside a job <span class="label label-primary">True/False</span></h2>
 <p>Move files specified by <code>nzf_ids</code> inside job <code>nzo_id</code> to <code>top</code> or <code>bottom</code>.
     To move a file a <code>size</code> number of spots, use <code>up</code> or <code>down</code>.</p>
-<p><span class="label label-warning">NOTE</span> New in 3.4.0+</p>
 <pre><code>api?mode=move_nzf_bulk&amp;name=LOCATION&amp;value=NZO_ID&amp;nzf_ids=NZF_ID,NZF_ID2&amp;size=X</code></pre>
 
 <h2 id="delete_nzf">Remove file(s) from a job</h2>
 <p>Remove file(s) using <code>nzo_id</code> of the job and <code>nzf_id</code> of the file(s). Returns the <code>nzf_ids</code> of removed file.</p>
-<p><span class="label label-warning">NOTE</span> Before 3.4.0 only single <code>nzf_id</code> could be used.</p>
 
 <pre><code>api?mode=queue&amp;name=delete_nzf&amp;value=NZO_ID&amp;value2=NZF_ID,NZF_ID2</code></pre>
 
@@ -576,7 +584,7 @@ redirect_from: "/wiki/advanced/automation-support"
         </tr>
         <tr>
             <td><a href="#delete_history">delete</a></td>
-            <td>Delete history item</td>
+            <td>Delete/Archive history item</td>
         </tr>
     </tbody>
 </table>
@@ -602,20 +610,42 @@ redirect_from: "/wiki/advanced/automation-support"
             <td>Number of jobs to display</td>
         </tr>
         <tr>
-            <td><code>category</code> / <code>cat</code> <small>optional</small></td>
-            <td>Only return jobs in this category</td>
+            <td><code>archive</code> <small>optional</small></td>
+            <td>Display history (default) or archived items</td>
         </tr>
         <tr>
             <td><code>search</code> <small>optional</small></td>
             <td>Filter job names by <code>search</code> term</td>
         </tr>
         <tr>
+            <td><code>category</code> / <code>cat</code> <small>optional</small></td>
+            <td>Only return jobs with the specified category or categories (separated by a comma)<br>
+                Use <code>*</code> for Default
+        </td>
+        <tr>
+            <td><code>status</code> <small>optional</small></td>
+            <td>Only return jobs with the specified status or statuses (separated by a comma)
+                <ul>
+                    <li><code>Completed</code></li>
+                    <li><code>Failed</code></li>
+                    <li><code>Queued</code> = Waiting for post-processing</li>
+                    <li><code>QuickCheck</code></li>
+                    <li><code>Verifying</code></li>
+                    <li><code>Repairing</code></li>
+                    <li><code>Fetching</code> = Job is downloading extra par2 files</li>
+                    <li><code>Extracting</code></li>
+                    <li><code>Moving</code></li>
+                    <li><code>Running</code> = Post-processing script is running</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
             <td><code>nzo_ids</code> <small>optional</small></td>
-            <td>Filter jobs by <code>nzo_ids</code></td>
+            <td>Only return jobs with these <code>nzo_ids</code> (separated by a comma)</td>
         </tr>
         <tr>
             <td><code>failed_only</code> <small>optional</small></td>
-            <td>Only show failed jobs</td>
+            <td>Only show failed jobs (shorthand for <code>status=Failed</code>)</td>
         </tr>
         <tr>
             <td><code>last_history_update</code> <small>optional</small></td>
@@ -632,7 +662,7 @@ redirect_from: "/wiki/advanced/automation-support"
     </thead>
     <tbody>
         <tr>
-            <td><code>series</code></td>
+            <td><code>duplicate_key</code></td>
             <td>How SABnzbd identified the show and season/episode info</td>
         </tr>
         <tr>
@@ -664,6 +694,7 @@ redirect_from: "/wiki/advanced/automation-support"
 {
     "history": {
         "noofslots": 220,
+        "ppslots": 1,
         "day_size": "1.9 G",
         "week_size": "30.4 G",
         "month_size": "167.3 G",
@@ -672,12 +703,10 @@ redirect_from: "/wiki/advanced/automation-support"
         "slots": [
             {
                 "action_line": "",
-                "series": "TV.Show/4/2",
-                "script_log": "",
+                "duplicate_key": "TV.Show/4/2",
                 "meta": null,
                 "fail_message": "",
                 "loaded": false,
-                "id": 235,
                 "size": "2.3 GB",
                 "category": "tv",
                 "pp": "D",
@@ -699,6 +728,7 @@ redirect_from: "/wiki/advanced/automation-support"
                 "name": "TV.Show.S04E02.720p.BluRay.x264-xHD",
                 "url": "TV.Show.S04E02.720p.BluRay.x264-xHD.nzb",
                 "md5sum": "d2c16aeecbc1b1921d04422850e93013",
+                "archive": false,
                 "bytes": 2436906376,
                 "url_info": "",
                 "stage_log": [
@@ -736,12 +766,10 @@ redirect_from: "/wiki/advanced/automation-support"
             },
             {
                 "action_line": "",
-                "series": "TV.Show/4/13",
-                "script_log": "",
+                "duplicate_key": "TV.Show/4/13",
                 "meta": null,
                 "fail_message": "",
                 "loaded": false,
-                "id": 234,
                 "size": "2.3 GB",
                 "category": "tv",
                 "pp": "D",
@@ -763,6 +791,7 @@ redirect_from: "/wiki/advanced/automation-support"
                 "name": "TV.Show.S04E13.720p.BluRay.x264-xHD",
                 "url": "TV.Show.S04E13.720p.BluRay.x264-xHD.nzb",
                 "md5sum": "85baf55ec0de0dc732c2af6537c5c01b",
+                "archive": true,
                 "bytes": 2491255137,
                 "url_info": "",
                 "stage_log": [
@@ -812,13 +841,13 @@ redirect_from: "/wiki/advanced/automation-support"
 <p>Will retry all failed jobs in the history. However, you are not able to supply passwords or extra NZB's.
 <pre><code>api?mode=retry_all</code></pre>
 
-
-<h2 id="delete_history">Delete history items <span class="label label-primary">True/False</span></h2>
-<p>Delete history item(s) based on <code>nzo_id</code>.</p>
+<h2 id="delete_history">Delete/Archive history items <span class="label label-primary">True/False</span></h2>
+<p>Delete or archive history item(s) based on <code>nzo_id</code>.</p>
 <p><span class="label label-warning">NOTE</span> By default files of failed jobs are not removed, add <code>del_files=1</code> to also have them removed.</p>
+<p><span class="label label-warning">NOTE</span> By default items are moved to the Archive, add <code>archive=0</code> to completely remove them.</p>
 <pre><code>api?mode=history&amp;name=delete&amp;value=NZO_ID</code></pre>
-<p>Deleting multiple items:</p>
-<pre><code>api?mode=history&amp;name=delete&amp;value=NZO_ID_1,NZO_ID_2,NZO_ID_3</code></pre>
+<p>Deleting multiple items (skipping Archive):</p>
+<pre><code>api?mode=history&amp;name=delete&amp;archive=0&amp;value=NZO_ID_1,NZO_ID_2,NZO_ID_3</code></pre>
 <p>Deleting all items:</p>
 <pre><code>api?mode=history&amp;name=delete&amp;value=all</code></pre>
 <p>Deleting all <strong>failed</strong> items:</p>
@@ -867,7 +896,6 @@ redirect_from: "/wiki/advanced/automation-support"
 <h2 id="fullstatus">Status information</h2>
 <p>Get all status information available from SABnzbd. Below are only the values that are different from calls to <code>queue</code>.</p>
 
-<p><span class="label label-warning">NOTE</span> Added <code>status</code> in 3.4.0, older versions only have <code>fullstatus</code>.</p>
 <p><span class="label label-warning">NOTE</span> Getting the public IPv4 address might take some time, so it can be skipped by setting <code>skip_dashboard=1</code>. To calculate performance measures, add <code>calculate_performance=1</code>.</p>
 
 
@@ -927,7 +955,7 @@ redirect_from: "/wiki/advanced/automation-support"
         "configfn": "C:\\Users\\xxx\\AppData\\Local\\sabnzbd\\sabnzbd.ini",
         "nt": true,
         "darwin": false,
-        "helpuri": "https://sabnzbd.org/wiki/",
+        "confighelpuri": "https://sabnzbd.org/wiki/configuration/{{ site.wiki_version }}/",
         "uptime": "3h",
         "color_scheme": "Default",
         "webdir": "C:\\Program Files\\SABnzbd\\interfaces\\Glitter\\templates",

@@ -1,19 +1,25 @@
-
 * {
     border-radius: 0 !important;
 }
+
 body {
     background-color: #e7e7e7;
     font-family: 'Lato', sans-serif;
     color: black;
 }
+
 code {
     color: black;
     background-color: #f5f5f5;
     white-space: nowrap;
 }
+
 pre {
     max-height: 500px;
+}
+
+abbr[title] {
+    text-decoration: none;
 }
 
 .padding-row {

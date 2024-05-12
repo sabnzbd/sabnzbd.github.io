@@ -33,6 +33,15 @@ title: Special settings
             <td>Allow connections to IPv6 addresses if they are available for your news server.</td>
         </tr>
         <tr>
+            <td><code>ipv6_staging</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>
+                Enable IPv6 features that are non yet mainstream:<br>
+                Add IPv6 hostnames during address selection.<br>
+                Internet Bandwidth is measured separately for IPv4 and IPv6.
+            </td>
+        </tr>
+        <tr>
             <td><code>fast_fail</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>When starting a download, the first article of each file is downloaded. If <code>Abort jobs that cannot be completed</code> is turned on, there are more than 10 files and more than 80% of the first articles is missing the job will be failed. If turned off, it will only be failed if availability is below <code>req_completion_rate</code>.</td>
@@ -133,6 +142,11 @@ title: Special settings
             <td>HTML based login form, uncheck for basic authentication. Both offer similar security but password managers might not be able to fill basic authentication automatically.</td>
         </tr>
         <tr>
+            <td><code>disable_archive</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Enable to always skip the Archive when jobs are deleted. <br>Does not delete jobs that are already in the Archive or jobs moved to the Archive using the History Retention option.</td>
+        </tr>
+        <tr>
             <td><code>wait_for_dfolder</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
             <td>Some people use external or network drives for the "temporary download folder". It can happen that such a drive isn't mounted yet when SABnzbd starts up, causing it to create a new folder at the default location. To prevent this, set the option to 1. This will make SABnzbd wait until the drive is available. Note that SABnzbd will hang until the drive is available! Also, the folder must already exist otherwise SABnzbd will hang until terminated.</td>
@@ -144,8 +158,8 @@ title: Special settings
         </tr>
         <tr>
             <td><code>warn_dupl_jobs</code></td>
-            <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>If checked, will issue a warning when a duplicate job is detected and subsequently paused or deleted. Uncheck if you find the warnings a nuisance.</td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>If checked, will issue a warning when a duplicate job is detected and subsequently paused or deleted.</td>
         </tr>
         <tr>
             <td><code>backup_for_duplicates</code></td>

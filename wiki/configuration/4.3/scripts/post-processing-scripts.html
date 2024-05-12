@@ -1,6 +1,5 @@
 ---
 title: Post-processing scripts
-redirect_from: "/wiki/advanced/user-scripts"
 ---
 
 <p>
@@ -98,151 +97,166 @@ redirect_from: "/wiki/advanced/user-scripts"
     </thead>
     <tbody>
         <tr>
-            <td>SAB_SCRIPT</td>
+            <td><code>SAB_SCRIPT</code></td>
             <td>The name of the current script</td>
         </tr>
         <tr>
-            <td>SAB_NZO_ID</td>
+            <td><code>SAB_NZO_ID</code></td>
             <td>The unique ID assigned to the job</td>
         </tr>
         <tr>
-            <td>SAB_FINAL_NAME</td>
+            <td><code>SAB_FINAL_NAME</code></td>
             <td>The name of the job in the queue and of the final folder</td>
         </tr>
         <tr>
-            <td>SAB_FILENAME</td>
+            <td><code>SAB_FILENAME</code></td>
             <td>The NZB filename (after grabbing from the URL)</td>
         </tr>
         <tr>
-            <td>SAB_COMPLETE_DIR</td>
+            <td><code>SAB_COMPLETE_DIR</code></td>
             <td>The whole path to the output directory of the job</td>
         </tr>
         <tr>
-            <td>SAB_PP_STATUS</td>
+            <td><code>SAB_PP_STATUS</code></td>
             <td>Was post-processing successfully completed (repair and/or unpack, if enabled by user)</td>
         </tr>
         <tr>
-            <td>SAB_CAT</td>
+            <td><code>SAB_CAT</code></td>
             <td>What category was assigned</td>
         </tr>
         <tr>
-            <td>SAB_BYTES</td>
+            <td><code>SAB_BYTES</code></td>
             <td>Total number of bytes</td>
         </tr>
         <tr>
-            <td>SAB_BYTES_TRIED</td>
+            <td><code>SAB_BYTES_TRIED</code></td>
             <td>How many bytes of the total bytes were tried</td>
         </tr>
         <tr>
-            <td>SAB_BYTES_DOWNLOADED</td>
+            <td><code>SAB_BYTES_DOWNLOADED</code></td>
             <td>How many bytes were received (can be more than tried, due to overhead)</td>
         </tr>
         <tr>
-            <td>SAB_DUPLICATE</td>
-            <td>Was it detected as duplicate</td>
+            <td><code>SAB_DUPLICATE</code></td>
+            <td>Was this a duplicate and what type</td>
         </tr>
         <tr>
-            <td>SAB_UNWANTED_EXT</td>
+            <td><code>SAB_DUPLICATE_KEY</code></td>
+            <td>The key used for Smart Duplicate Detection</td>
+        </tr>
+        <tr>
+            <td><code>SAB_UNWANTED_EXT</code></td>
             <td>Were there unwanted extensions</td>
         </tr>
         <tr>
-            <td>SAB_OVERSIZED</td>
+            <td><code>SAB_OVERSIZED</code></td>
             <td>Was the job over the user's size limit</td>
         </tr>
         <tr>
-            <td>SAB_PASSWORD</td>
+            <td><code>SAB_PASSWORD</code></td>
             <td>What was the password supplied by the NZB or the user</td>
         </tr>
         <tr>
-            <td>SAB_CORRECT_PASSWORD</td>
+            <td><code>SAB_CORRECT_PASSWORD</code></td>
             <td>The password that was detected as being the correct password for this job (added in 3.4.0)</td>
         </tr>
         <tr>
-            <td>SAB_ENCRYPTED</td>
+            <td><code>SAB_ENCRYPTED</code></td>
             <td>Was the job detected as encrypted</td>
         </tr>
         <tr>
-            <td>SAB_STATUS</td>
+            <td><code>SAB_STATUS</code></td>
             <td>Current status (completed/failed/running)</td>
         </tr>
         <tr>
-            <td>SAB_FAIL_MSG</td>
+            <td><code>SAB_FAIL_MSG</code></td>
             <td>If job failed, why did it fail</td>
         </tr>
         <tr>
-            <td>SAB_AGE</td>
+            <td><code>SAB_AGE</code></td>
             <td>Average age of the articles in the post</td>
         </tr>
         <tr>
-            <td>SAB_URL</td>
+            <td><code>SAB_URL</code></td>
             <td>URL from which the NZB was retrieved</td>
         </tr>
         <tr>
-            <td>SAB_AVG_BPS</td>
+            <td><code>SAB_AVG_BPS</code></td>
             <td>Average bytes/second speed during active downloading</td>
         </tr>
         <tr>
-            <td>SAB_DOWNLOAD_TIME</td>
+            <td><code>SAB_DOWNLOAD_TIME</code></td>
             <td>How many seconds did we download</td>
         </tr>
         <tr>
-            <td>SAB_PP</td>
+            <td><code>SAB_PP</code></td>
             <td>What post-processing was activated (download/repair/unpack/delete)</td>
         </tr>
         <tr>
-            <td>SAB_REPAIR</td>
+            <td><code>SAB_REPAIR</code></td>
             <td>Was repair selected by user</td>
         </tr>
         <tr>
-            <td>SAB_UNPACK</td>
+            <td><code>SAB_UNPACK</code></td>
             <td>Was unpack selected by user</td>
         </tr>
         <tr>
-            <td>SAB_FAILURE_URL</td>
+            <td><code>SAB_FAILURE_URL</code></td>
             <td>Provided by some indexers as alternative NZB if download fails</td>
         </tr>
         <tr>
-            <td>SAB_PRIORITY</td>
+            <td><code>SAB_PRIORITY</code></td>
             <td>Priority set by user</td>
         </tr>
         <tr>
-            <td>SAB_GROUP</td>
+            <td><code>SAB_GROUP</code></td>
             <td>Newsgroup where (most of) the job's articles came from</td>
         </tr>
         <tr>
-            <td>SAB_ORIG_NZB_GZ</td>
+            <td><code>SAB_ORIG_NZB_GZ</code></td>
             <td>Path to the original NZB-file of the job. The NZB-file is compressed with gzip (<code>.gz</code>)</td>
         </tr>
         <tr>
-            <td>SAB_VERSION</td>
+            <td><code>SAB_VERSION</code></td>
             <td>The version of SABnzbd used</td>
         </tr>
         <tr>
-            <td>SAB_PROGRAM_DIR</td>
+            <td><code>SAB_PROGRAM_DIR</code></td>
             <td>The directory where the current SABnzbd instance is located</td>
         </tr>
         <tr>
-            <td>SAB_PAR2_COMMAND</td>
+            <td><code>SAB_API_KEY</code></td>
+            <td>The API-key that you can use to communicate with the SABnzbd <a href="/wiki/configuration/{{ site.wiki_version }}/api">API</a>.</td>
+        </tr>
+        <tr>
+            <td><code>SAB_API_URL</code></td>
+            <td>
+                The URL to the SABnzbd <a href="/wiki/configuration/{{ site.wiki_version }}/api">API</a>, for example <code>http://127.0.0.1:8080/sabnzbd/api</code>.<br>
+                It does not include the required <code>apikey</code> parameter, use <code>SAB_API_KEY</code>.
+            </td>
+        </tr>
+        <tr>
+            <td><code>SAB_PAR2_COMMAND</code></td>
             <td>The path to the <code>par2</code> command on the system that SABnzbd uses</td>
         </tr>
         <tr>
-            <td>SAB_MULTIPAR_COMMAND</td>
+            <td><code>SAB_MULTIPAR_COMMAND</code></td>
             <td>Windows-only (empty on other systems). The path to the MultiPar command on the system that SABnzbd uses</td>
         </tr>
         <tr>
-            <td>SAB_RAR_COMMAND</td>
+            <td><code>SAB_RAR_COMMAND</code></td>
             <td>The path to the <code>unrar</code> command on the system that SABnzbd uses</td>
         </tr>
         <tr>
-            <td>SAB_ZIP_COMMAND</td>
+            <td><code>SAB_ZIP_COMMAND</code></td>
             <td>The path to the <code>unzip</code> command on the system that SABnzbd uses</td>
         </tr>
         <tr>
-            <td>SAB_7ZIP_COMMAND</td>
+            <td><code>SAB_7ZIP_COMMAND</code></td>
             <td>The path to the <code>7z</code> command on the system that SABnzbd uses. Not all systems have 7zip installed (it's optional for SABnzbd), so this can also be empty</td>
         </tr>
         <tr>
-            <td>PYTHONUNBUFFERED</td>
+            <td><code>PYTHONUNBUFFERED</code></td>
             <td>This variable is set to 1 when running a Python script (<code>.py</code>), in order to force Python to write output to SABnzbd directly instead of buffering it</td>
         </tr>
     </tbody>

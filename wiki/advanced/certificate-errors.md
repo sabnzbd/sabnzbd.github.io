@@ -1,6 +1,7 @@
 ---
 title: SABnzbd and SSL/TLS security
-redirect_from: "/certificate-errors"
+redirect_from: 
+    - /certificate-errors
 ---
 Usenet (aka News servers) offers SSL/TLS security. It's called NNTPS, or NNTP with SSL. Just like HTTPS, it has two functions:
 

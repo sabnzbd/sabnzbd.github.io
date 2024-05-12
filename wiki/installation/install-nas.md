@@ -11,8 +11,8 @@ Packages maintained by the community.
 
 ## QNAP
 
-* [Sherpa mini package manager](https://git.io/sherpa)
-* [Qnapclub](https://www.qnapclub.eu/qpkg/1012)
+* Install with the [sherpa mini package manager](https://git.io/sherpa)
+* Add the [MyQNAP](https://www.myqnap.org/product/sabnzbdplus-apache83) repository to your App Center (also requires purchase of the Apache83 QPKG from MyQNAP)
 * [Install through Docker](/wiki/installation/install-unix) (if supported on your platform)
 
 ## ASUSTOR
