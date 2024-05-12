@@ -25,6 +25,17 @@ Internet is defined as "a public IP address". That access is denied by default.
 
 Local means a private IP address (`192.168.x.x`, `10.x.x.x` and `172.16.x.x`). Access from your LAN, virtual machine, docker container, or similar will not lead to `External internet access denied` unless [`local_ranges` have been defined](#define-local-ranges).
 
+# Check your logging
+
+If your client gets "External internet access denied", and you don't understand that, check your SABnzbd GUI or sabnzbd.log for the exact logging.
+You will see the IP address of the client which is refused. For example
+
+`Refused connection from: 1.2.3.4 [curl/8.2.1]`
+
+Especially with virtual machines, docker, tunnels, proxies and IPv6, you might see a different IP address than you expected. 
+Anyway: allow External Access, if you trust that access. Or add that IP range to SABnzbd's local_ranges.
+
+
 # Advanced options
 ## Commandline parameter
 
