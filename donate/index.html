@@ -143,14 +143,14 @@ title: Donate
         </div>
         <div class="row qr-codes">
             <div class="col-sm-4 col-sm-offset-2">
-                <h3>Chainlink</h3>
+                <h3>Solana</h3>
                 <div class="input-group">
-                    <input type="text" class="form-control" readonly name="chainlink" value="0xc9c424F21edbC2d200d38643C261407a3A3805F7">
+                    <input type="text" class="form-control" readonly name="solana" value="HxtYCFBvp6rUJ93Tn63hShLn8WzQ7WWr86GDNWPbwvxU">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-qrcode"></span></button>
                     </span>
                 </div>
-                <div id="qr-chainlink" class="crypto-qrs"></div>
+                <div id="qr-solana" class="crypto-qrs"></div>
             </div>
             <div class="col-sm-4">
                 <h3>Stellar Lumens</h3>
@@ -158,7 +158,6 @@ title: Donate
                     <input type="text" class="form-control" readonly name="xlm-address" value="GDQP2KPQGKIHYJGXNUIYOMHARUARCA7DJT5FO2FFOOKY3B2WSQHG4W37">
                     <input type="text" class="form-control" readonly name="xlm-memo" value="2713168744">
                 </div>
-                <div id="qr-litecoin" class="crypto-qrs"></div>
             </div>
         </div>
     </div>
@@ -182,8 +181,8 @@ title: Donate
         text: "LcToBHhN15VDornWjCgvHyFdvxYQTP36Zr",
         size: 170
     });
-    $('#qr-chainlink').html('').qrcode({
-        text: "0x8C2f78aa2645C94A483fdA54F4f6f94F76077467",
+    $('#qr-solana').html('').qrcode({
+        text: "HxtYCFBvp6rUJ93Tn63hShLn8WzQ7WWr86GDNWPbwvxU",
         size: 170
     });
     $('.qr-codes input').click(function() {
