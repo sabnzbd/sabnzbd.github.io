@@ -143,6 +143,28 @@ title: Donate
         </div>
         <div class="row qr-codes">
             <div class="col-sm-4 col-sm-offset-2">
+                <h3>Tether (on ETH)</h3>
+                <div class="input-group">
+                    <input type="text" class="form-control" readonly name="tether" value="0xb86f1a99998Ddb78e10Cdf0753f81eC8181C2aB1">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-qrcode"></span></button>
+                    </span>
+                </div>
+                <div id="qr-tether" class="crypto-qrs"></div>
+            </div>
+            <div class="col-sm-4">
+                <h3>USDC (on SOL)</h3>
+                <div class="input-group">
+                    <input type="text" class="form-control" readonly name="usdc" value="6radQdydnvxXHaAZG2m2JAPXT8nm8V2taSzys88mXMen">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-qrcode"></span></button>
+                    </span>
+                </div>
+                <div id="qr-usdc" class="crypto-qrs"></div>
+            </div>
+        </div>
+        <div class="row qr-codes">
+            <div class="col-sm-4 col-sm-offset-2">
                 <h3>Solana</h3>
                 <div class="input-group">
                     <input type="text" class="form-control" readonly name="solana" value="HxtYCFBvp6rUJ93Tn63hShLn8WzQ7WWr86GDNWPbwvxU">
@@ -179,6 +201,14 @@ title: Donate
     });
     $('#qr-litecoin').html('').qrcode({
         text: "LcToBHhN15VDornWjCgvHyFdvxYQTP36Zr",
+        size: 170
+    });
+    $('#qr-tether').html('').qrcode({
+        text: "0xb86f1a99998Ddb78e10Cdf0753f81eC8181C2aB1",
+        size: 170
+    });
+    $('#qr-usdc').html('').qrcode({
+        text: "6radQdydnvxXHaAZG2m2JAPXT8nm8V2taSzys88mXMen",
         size: 170
     });
     $('#qr-solana').html('').qrcode({
