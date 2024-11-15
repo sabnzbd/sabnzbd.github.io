@@ -4,7 +4,7 @@ title: SABnzbd installation on Debian
 
 ## Notice About Application Versions
 
-Debian has a _very_ long development cycle as part of their intentional focus on stability. This means if you pull SABnzbd directly from APT you will _almost certainly_ recieve a version that is considered unsupported by the SABnzbd team. For example, at time of writing the version present in Debian Stable is two years out of date, and it will likely reach 2.5 years of being outdated by the time the next Stable version of Debian ships.
+Debian has a _very_ long development cycle as part of their intentional focus on stability. This means if you pull SABnzbd directly from APT you will _almost certainly_ receive a version that is considered unsupported by the SABnzbd team. For example, at time of writing the version present in Debian Stable is two years out of date, and it will likely reach 2.5 years of being outdated by the time the next Stable version of Debian ships.
 
 If your base distribution is Debian we _strongly_ recommend using some kind of containerized solution to install SABnzbd, be it Docker, Flatpak, Snapcraft, or something else. Those options are documented on the main [Unix Installation page](/wiki/installation/install-unix).
 
