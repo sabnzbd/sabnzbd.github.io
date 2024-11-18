@@ -50,13 +50,6 @@
         $('.download-stable .download-button').attr('href', 'https://github.com/sabnzbd/sabnzbd/releases/latest')
     }
 
-    // Warn that legacy release will no longer be supported
-    // TODO: Remove after releasing 4.4.0
-    $('.download-link-win32-bin').click(function () {
-        alert("Because Python 3.8 is no longer officially supported, we will no longer provide the 32bit/legacy releases after 4.3!")
-        return true
-    })
-
     // Redirect to donate page
     $('.download-stable .download-button, .download-stable a[class^="download-link"]').attr('target', '_blank').click(function() {
         setTimeout(function() {
