@@ -35,7 +35,11 @@ title: Special settings
         <tr>
             <td><code>ipv6_staging</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Enable IPv6 features that are non yet mainstream.</td>
+            <td>
+                Enable IPv6 features that are non yet mainstream:<br>
+                Add IPv6 hostnames during address selection.<br>
+                Internet Bandwidth is measured separately for IPv4 and IPv6.
+            </td>
         </tr>
         <tr>
             <td><code>fast_fail</code></td>
@@ -83,9 +87,9 @@ title: Special settings
             <td>Display ETA in AM/PM notation, only applicable to some locations in older skins.</td>
         </tr>
         <tr>
-            <td><code>enable_multipar</code></td>
-            <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Disable to use par2cmdline-turbo instead of Multipar on Windows.</td>
+            <td><code>disable_par2cmdline</code></td>
+            <td><span class="glyphicon glyphicon-uncheck"></span></td>
+            <td>Enable to use Multipar instead of par2cmdline-turbo on Windows.</td>
         </tr>
         <tr>
             <td><code>enable_unrar</code>, <code>enable_unzip</code>, <code>enable_7zip</code>, <code>enable_filejoin</code>, <code>enable_tsjoin</code></td>
@@ -138,6 +142,11 @@ title: Special settings
             <td>HTML based login form, uncheck for basic authentication. Both offer similar security but password managers might not be able to fill basic authentication automatically.</td>
         </tr>
         <tr>
+            <td><code>disable_archive</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>Enable to always skip the Archive when jobs are deleted. <br>Does not delete jobs that are already in the Archive or jobs moved to the Archive using the History Retention option.</td>
+        </tr>
+        <tr>
             <td><code>wait_for_dfolder</code></td>
             <td><span class="glyphicon glyphicon-unchecked"></span></td>
             <td>Some people use external or network drives for the "temporary download folder". It can happen that such a drive isn't mounted yet when SABnzbd starts up, causing it to create a new folder at the default location. To prevent this, set the option to 1. This will make SABnzbd wait until the drive is available. Note that SABnzbd will hang until the drive is available! Also, the folder must already exist otherwise SABnzbd will hang until terminated.</td>
@@ -154,8 +163,8 @@ title: Special settings
         </tr>
         <tr>
             <td><code>backup_for_duplicates</code></td>
-            <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>In the duplicate check, also include exact filename matches from the NZB Backup Folder..</td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>In the duplicate check, also include exact filename matches from the NZB Backup Folder.</td>
         </tr>
         <tr>
             <td><code>disable_api_key</code></td>
@@ -252,8 +261,8 @@ title: Special settings
         </tr>
         <tr>
             <td><code>url_base</code></td>
-            <td><code>/sabnzbd</code></td>
-            <td>When using a reverse proxy (or just if you feel like it), you can change the base-URL of SABnzbd that is used during redirects. Requires restart of SABnzbd. Trailing slash is not allowed and is automatically removed.</td>
+            <td></td>
+            <td>When using a reverse proxy (or just if you feel like it), you can change the base-URL of SABnzbd that is used during redirects.  Trailing slash is not allowed and is automatically removed. Leading slash is required and automatically added.<br>SABnzbd will forcefully restart after changing this setting, you will need to reload the page after the restart completes.</td>
         </tr>
         <tr>
             <td><code>receive_threads</code></td>

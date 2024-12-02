@@ -107,19 +107,44 @@ title: Switches
                 <p><span class="label label-warning">NOTE</span> Setting <code>High</code> could result in significant slowdown of the system during processing!</p></td>
         </tr>
         <tr>
-            <td><strong>Extra PAR2 parameters</strong><br><span class="label label-primary">Advanced</span></td>
+            <td><strong>Extra Par2 parameters</strong><br><span class="label label-primary">Advanced</span></td>
             <td>
-                <p>Extra arguments that will be passed when running <code>par2</code> or MultiPar for verification and repair.</p>
-                <p>Detailed information: <a href="#multi-core-multipar">Windows</a> and <a href="#multi-core">Linux</a>. No extra parameters are available on macOS.</p>
+                <p>Extra arguments that will be passed when running <code>par2</code> for verification and repair.</p>
+                <p>Please make sure that you use `par2cmdline-turbo`. On the first page of the Config a warning will be displayed if it is not installed. If you don't see a warning there, you already have it!</p>
+                <ul>
+                    <li><code>-m</code> Set the maximum amount of memory it allowed to use.</li>
+                    <li><code>-t</code> Limit how many CPU threads it is allowed to use. By default it will use all available threads. You can use <code>-t1</code> to only force it to be single-threaded.</li>
+                    <li><code>-T</code> When verifying files, by default it will scan 2 files at once. If you have an older system with physical drives (HDD's), you can set this to <code>-T1</code>. If you have a very fast SDD, you could set this to <code>-T10</code>.</li>
+                </ul>
             </td>
         </tr>
         <tr>
             <td><strong>Nice parameters</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>Linux-only. See <a href="#nice">Nice to reduce CPU priority</a>.</td>
+            <td>
+                <p>
+                    Linux-only. When SABnzbd runs external tools like <code>par2</code> and <code>unrar</code>, these tools may use up all CPU capacity.
+                    If you specify any parameters here, the <code>nice</code> command will be used to reduce the load on your system.
+                </p>
+                <p>Popular setting is <code>-n10</code>.</p>
+                <p>
+                    For more info, see the <a href="http://linux.die.net/man/1/nice" target="_blank">nice man-page</a>.<br>
+                    If this field is disabled, <code>nice</code> is not available on your system.
+                </p>
+            </td>
         </tr>
         <tr>
             <td><strong>IONice parameters</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>Linux-only. See <a href="#ionice">IONice to reduce disk priority</a>.</td>
+            <td>
+                <p>
+                    Linux-only. When SABnzbd runs external tools like <code>par2</code> and <code>unrar</code>, these tools may use up all disk capacity.
+                    If you specify any parameters here, the <code>ionice</code> command will be used to reduce the load on your system.
+                </p>
+                <p>Popular setting is <code>-c2 -n4</code>.</p>
+                <p>
+                    For more info, see the <a href="http://linux.die.net/man/1/ionice" target="_blank">ionice man-page</a>.<br>
+                    If this field is disabled, <code>ionice</code> is not available on your system.
+                </p>
+            </td>
         </tr>
         <tr>
             <td><strong>Enable SFV-based checks</strong><br><span class="label label-primary">Advanced</span></td>
@@ -162,12 +187,14 @@ title: Switches
             <td>Automatically delete <strong>completed</strong> jobs from History when new jobs are added or every day at midnight.
 
             <ul>
-                <li><code>Keep all jobs</code> = Do not auto-delete any history.</li>
-                <li><code>Keep maximum number of completed jobs</code> = Specify exact amount of jobs to keep, removing the oldest ones.</li>
-                <li><code>Keep completed jobs maximum number of days</code> = Delete jobs automatically when they are older than the set amount of days.</li>
-                <li><code>Do not keep any completed jobs</code> = No jobs are saved in the History. </li>
+                <li><code>Move jobs to the archive if the history exceeds specified number of jobs</code> = Specify exact amount of jobs to keep, moving the oldest ones to the archive.</li>
+                <li><code>Delete jobs if the history exceeds specified number of jobs</code> = Specify exact amount of jobs to keep, removing the oldest ones.</li>
+                <li><code>Move jobs to the archive after specified number of days</code> = Move jobs to the archive when they are older than the set amount of days.</li>
+                <li><code>Delete jobs after specified number of days</code> = Delete jobs automatically when they are older than the set amount of days.</li>
+                <li><code>Move all completed jobs to archive</code> = All jobs are moved to the archive.</li>
+                <li><code>Delete all completed jobs</code> = No jobs are saved in the History.</li>
             </ul>
-            <span class="label label-warning">NOTE</span> Beware that Duplicate Detection and some external tools rely on History information.<br>
+            <span class="label label-warning">NOTE</span> Beware that Duplicate Detection and some external tools rely on History information, so keep items in the History or Archive if you want them checked for Duplicate Detection.<br>
             </td>
         </tr>
     </tbody>
@@ -231,70 +258,3 @@ title: Switches
     <li>Jobs with <code>Force</code> priority will ignore the paused state.</li>
     <li>Don't set the quota too high. Leave room for other internet use.</li>
 </ul>
-
-<hr>
-
-<h2 id="multi-core">Extra Par2 Parameters for Linux</h2>
-<p><span class="label label-warning">NOTE</span> For Windows, see <a href="#multi-core-multipar">below</a>.</p>
-<p>You will need to install the multi-core versions of <code>par2</code> yourself, <a href="/wiki/installation/par2cmdline-turbo">as described here</a>.</p>
-
-<p>The behavior of multi-core PAR2 can be influenced by an extra parameter. By default it will use all available cores.</p>
-<ul>
-    <li><code>-t1</code> Use it single-core</li>
-    <li><code>-t&lt;n&gt;</code> Use <code>n</code> cores</li>
-</ul>
-
-<hr>
-<h2 id="multi-core-multipar">Extra Par2 Parameters for Windows</h2>
-<p>The Windows version of SABnzbd has MultiPar integrated which allows you to specify the multi-core behavior and memory usage. Additionally, you can also enable the use of the GPU. Beware: GPU performance varies between systems and can also be slower on some systems.</p>
-
-<ul>
-    <li>
-        <p><code>-lc</code> Set this if you want to set number of using threads or want to disable extra feature (SSE2 is always used).</p>
-        <ul>
-            <li><code>-lc&lt;n&gt;</code> where <code>n</code> is from 1 to 11 for specific number of cores</li>
-            <li><code>-lc12</code> to use quarter number of physical cores</li>
-            <li><code>-lc13</code> to use half of physical cores</li>
-            <li><code>-lc14</code> to use 3/4 number of physical cores</li>
-            <li><code>-lc15</code> to use the number of physical cores (disable Hyper-Threading)</li>
-        </ul>
-        <p>You may set additional combinations by adding the following options to the already specified value:</p>
-        <ul>
-            <li><code>+16</code> to disable SSSE3</li>
-            <li><code>+128</code> to disable CLMUL</li>
-            <li><code>+256</code> to disable JIT</li>
-            <li><code>+512</code> to disable AVX2</li>
-            <li><code>+32</code> or <code>+64</code> (slower device) to enable GPU acceleration</li>
-        </ul>
-        <p><strong>For example:</strong> <code>-lc1</code> to use single core, <code>-lc32</code> to enable GPU usage or <code>-lc45</code> to use half cores and GPU usage.</p>
-    </li>
-    <li>
-        <p><code>-m</code> Set this if you want to set memory usage. Value is specified from 1 to 7 (1/7th to 7/8th):</p>
-        <ul>
-            <li><code>-m0</code> = Default (between 6/8 and 7/8 mostly)</li>
-            <li><code>-m1</code> = 1/8, 12.5%</li>
-            <li><code>-m4</code> = 4/8, 50%</li>
-            <li><code>-m7</code> = 7/8, 87.5%</li>
-        </ul>
-    </li>
-</ul>
-
-<hr>
-<h2 id="toc8">Nice to reduce CPU priority</h2>
-<p><a name="nice"></a> When SABnzbd runs external tools like <strong>par2</strong> and <strong>unrar</strong>, these tools may use up all CPU capacity.
-    If you set parameters in the <strong>nice</strong> option box, the tool will be used (if installed).
-    You will need to experiment with the parameters. Leaving the box empty will disable the use of <strong>nice</strong>.<br>
-    Popular parameters are <code>-n10</code>.<br>
-    For more info, see the <a href="http://linux.die.net/man/1/nice" target="_blank">nice man-page</a>
-</p>
-
-<hr>
-<h2 id="toc9">IONice to reduce disk priority</h2>
-<p><a name="ionice"></a> When SABnzbd runs external tools like <strong>par2</strong> and <strong>unrar</strong>, these tools may use up all disk capacity
-    This can make simultaneous use of the system problematic, e.g. when you want to watch a movie.
-    If you set parameters in the <strong>ionice</strong> option box, the tool will be used (if installed).
-    You will need to experiment with the parameters. Leaving the box empty will disable the use of <strong>ionice</strong>.<br>
-    Popular parameters are <code>-c2 -n4</code>.<br>
-    For more info, see the <a href="http://linux.die.net/man/1/ionice" target="_blank">ionice man-page</a>
-</p>
-<p>Be careful, using wrong parameters will make all external tools fail!</p>
