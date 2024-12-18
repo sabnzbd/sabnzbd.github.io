@@ -86,12 +86,13 @@ title: Servers
             <td><strong>Certificate verification</strong><br><span class="label label-primary">Advanced</span></td>
             <td>
                 <p>SABnzbd will verify the certificates your server uses in order to verify its identity.</p>
-                <p><span class="label label-danger">WARNING</span> Disabling or setting this check to <code>Minimal</code> allows anyone to redirect and intercept your traffic using <em>any</em> valid certificate! It is comparable to not using SSL at all.</p>
                 <p>Read more on <a href="/wiki/advanced/certificate-errors">Certificate verification</a>.</p>
+                <p><span class="label label-danger">WARNING</span> Disabling or setting this check to <code>Minimal</code> allows anyone to redirect and intercept your traffic using <em>any</em> valid certificate! It is comparable to not using SSL at all.</p>
                 <ul>
-                    <li><code>None</code> = Certificates are not verified</li>
-                    <li><code>Minimal</code> = Verify certificates before connecting<br></li>
-                    <li><code>Strict</code> = Verify and enforce matching hostname</li>
+                    <li><code>Strict</code> = Enforce full certificate verification. This is the most secure setting.</li>
+                    <li><code>Medium</code> = Verify that the certificate is valid and matches the server address, but allow certificates locally injected (for example by firewall or virus scanner).</li>
+                    <li><code>Minimal</code> = Verify that the certificate is valid. This is not secure, any valid certificate could be used.</li>
+                    <li><code>None</code> = No certification verification. This is not secure at all, anyone could intercept your connection.</li>
                 </ul>
             </td>
         </tr>
