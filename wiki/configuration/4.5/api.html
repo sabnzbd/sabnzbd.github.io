@@ -338,7 +338,7 @@ title: API reference
 <p>On some systems additional packages are required to allow SABnzbd to control power states, if there are problems in <a href="#queue">queue</a> it will show as <code>power_options=false</code>.
 
 <h2 id="sort">Sort the queue <span class="label label-primary">True/False</span></h2>
-<p>Sort the queue by <code>avg_age</code>, <code>name</code> or <code>size</code> in <code>asc</code> or <code>desc</code> order.
+<p>Sort the queue by <code>avg_age</code>, <code>name</code> , <code>remaining</code> (Sort by % downloaded) or <code>size</code> in <code>asc</code> (low to high) or <code>desc</code> (high to low) order.
 <pre><code>api?mode=queue&amp;name=sort&amp;sort=avg_age&amp;dir=desc</code></pre>
 
 <h2 id="addurl">Add NZB by URL</h2>
