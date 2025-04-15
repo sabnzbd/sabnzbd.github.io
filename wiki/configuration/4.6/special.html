@@ -87,11 +87,6 @@ title: Special settings
             <td>Display ETA in AM/PM notation, only applicable to some locations in older skins.</td>
         </tr>
         <tr>
-            <td><code>enable_multipar</code></td>
-            <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Disable to use par2cmdline-turbo instead of Multipar on Windows.</td>
-        </tr>
-        <tr>
             <td><code>enable_unrar</code>, <code>enable_unzip</code>, <code>enable_7zip</code>, <code>enable_filejoin</code>, <code>enable_tsjoin</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Enable or disable the UnRar, UnZip, 7zip, filejoin and TSJoin tools. If disabled, the archive/split files will not be unpacked.</td>
@@ -220,16 +215,6 @@ title: Special settings
             <td>Any download that exceeds this value will be paused and get priority "low". You can use the K/M/G notation, so e.g. 4.7G.</td>
         </tr>
         <tr>
-            <td><code>movie_rename_limit</code></td>
-            <td><code>100M</code></td>
-            <td>The minimum size of a file to trigger file renaming in the Movie sort functions.</td>
-        </tr>
-        <tr>
-            <td><code>episode_rename_limit</code></td>
-            <td><code>20M</code></td>
-            <td>The minimum size of a file to trigger file renaming in the Series sort functions.</td>
-        </tr>
-        <tr>
             <td><code>nomedia_marker</code></td>
             <td></td>
             <td>Just before unpacking of files into the final folder, SABnzbd will put a special marker file (e.g. ".nomedia") in the folder. Afterwards it will be deleted. This prevents some media player software from trying to index the folder while still incomplete. You can disable the feature by clearing the field, or you can set an alternative name. Check your media software's manual.</td>
@@ -261,8 +246,8 @@ title: Special settings
         </tr>
         <tr>
             <td><code>url_base</code></td>
-            <td><code>/sabnzbd</code></td>
-            <td>When using a reverse proxy (or just if you feel like it), you can change the base-URL of SABnzbd that is used during redirects. Requires restart of SABnzbd. Trailing slash is not allowed and is automatically removed.</td>
+            <td></td>
+            <td>When using a reverse proxy (or just if you feel like it), you can change the base-URL of SABnzbd that is used during redirects.  Trailing slash is not allowed and is automatically removed. Leading slash is required and automatically added.<br>SABnzbd will forcefully restart after changing this setting, you will need to reload the page after the restart completes.</td>
         </tr>
         <tr>
             <td><code>receive_threads</code></td>
@@ -288,6 +273,11 @@ title: Special settings
             <td><code>ssdp_broadcast_interval</code></td>
             <td><code>15</code></td>
             <td>Interval between Simple Service Discovery Protocol (SSDP) broadcasts, announcing the presence of SABnzbd to other systems on the local network.</td>
+        </tr>
+        <tr>
+            <td><code>unrar_parameters</code></td>
+            <td></td>
+            <td>Extra parameters for the unrar extraction commands. Supported parameters are <code>-mlp</code> (large memory pages; all operating systems), <code>-om</code> (mark of the web; Windows only), and <code>-ri</code> (priority and sleep time; also Windows only).</td>
         </tr>
         <tr>
             <td><code>rss_odd_titles</code></td>
