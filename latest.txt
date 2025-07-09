@@ -1,4 +1,2 @@
-4.5.1
-https://sabnzbd.org/downloads.html
-4.5.2RC2
+4.5.2
 https://sabnzbd.org/downloads.html
