@@ -204,7 +204,11 @@ title: Switches
     <tbody>
         <tr>
             <td><strong>Enable folder rename</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>When SABnzbd does unpacking it will do that in a folder prefixed with <code>_UNPACK_</code>. This is to prevent users or other software from processing the file. Some operating systems cannot handle this. Therefore it's possible to disable the feature.</td>
+            <td>
+                When SABnzbd unpacks, it will do so in a folder prefixed with <code>_UNPACK_</code>. This is to prevent users or other software from processing the file before unpacking finishes. <br>
+                Some operating systems cannot handle this. Therefore, it's possible to disable the feature.<br>
+                Additionally, if the unpack folder contains only a single subfolder, the contents of the subfolder will be moved to the main folder and the subfolder will be deleted.
+            </td>
         </tr>
         <tr>
             <td><strong>Replace Spaces in folder name</strong><br><span class="label label-primary">Advanced</span></td>
