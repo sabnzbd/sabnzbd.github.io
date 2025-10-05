@@ -592,6 +592,10 @@ title: API reference
             <td><a href="#delete_history">delete</a></td>
             <td>Delete/Archive history item</td>
         </tr>
+        <tr>
+            <td><a href="#mark_as_completed">mark_as_completed</a></td>
+            <td>Mark failed job as completed</td>
+        </tr>
     </tbody>
 </table>
 
@@ -864,6 +868,13 @@ title: API reference
 <pre><code>api?mode=history&amp;name=delete&amp;value=all</code></pre>
 <p>Deleting all <strong>failed</strong> items:</p>
 <pre><code>api?mode=history&amp;name=delete&amp;value=failed</code></pre>
+
+<h2 id="mark_as_completed">Mark failed job as completed <span class="label label-primary">True/False</span></h2>
+<p>Mark a failed history item as completed based on <code>nzo_id</code>. This is useful when you want to manually mark a failed job as completed without having to delete it from history.</p>
+<p><span class="label label-warning">NOTE</span> This will automatically remove any incomplete download files associated with the job and update the job status to "Completed".</p>
+<pre><code>api?mode=history&name=mark_as_completed&value=NZO_ID</code></pre>
+<p>Marking multiple items as completed:</p>
+<pre><code>api?mode=history&name=mark_as_completed&value=NZO_ID_1,NZO_ID_2,NZO_ID_3</code></pre>
 
 <hr>
 <h1 id="status_main">Status functions</h1>
