@@ -29,16 +29,16 @@ keep_files:
   - js/
   - tests/
 
+include: [".well-known"]
+
 # Template settings
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
     values:
       layout: "default"
       name: SABnzbd.org
-  -
-    scope:
+  - scope:
       path: "wiki"
     values:
       layout: "wiki"
