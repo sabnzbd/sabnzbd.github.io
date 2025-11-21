@@ -188,8 +188,8 @@ title: Special settings
         </tr>
         <tr>
             <td><code>verify_xff_header</code></td>
-            <td><span class="glyphicon glyphicon-unchecked"></span></td>
-            <td>Take the IP address(es) in the X-Forwarded-For header into consideration when determining access rights for incoming connections, <b>in addition to</b> the client/remote IP. Intended for use with a reverse proxy setup, where the IP address making the connection (as seen from the perspective of SABnzbd) is that of the proxy server rather than the system where the request actually originated, causing access to be granted even if the <a href="/wiki/configuration/{{ site.wiki_version }}/general#toc-eia">External internet access</a> setting is configured to deny connections from outside the local network. For details, see the <a href="https://github.com/sabnzbd/sabnzbd/pull/2611#issue-1787915678">pull request</a> that added this feature.</td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>Take the IP address(es) in the X-Forwarded-For header into consideration when determining access rights for incoming connections, <b>in addition to</b> the client/remote IP. Intended for use with a reverse proxy setup, where the IP address making the connection (as seen from the perspective of SABnzbd) is that of the proxy server rather than the system where the request actually originated, causing access to be granted even if the <a href="/wiki/configuration/{{ site.wiki_version }}/general#toc-eia">External internet access</a> setting is configured to deny connections from outside the local network.</td>
         </tr>
     </tbody>
 </table>
