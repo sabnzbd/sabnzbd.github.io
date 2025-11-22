@@ -11,7 +11,7 @@
     var platform = '';
     var downloadTitle = 'Browse packages';
     if (navigator.appVersion.indexOf('Win')!=-1)    { platform = 'win'; downloadTitle = 'For Windows'}
-    if (navigator.appVersion.indexOf('Mac')!=-1)    { platform = 'osx'; downloadTitle = 'For macOS'}
+    if (navigator.appVersion.indexOf('Mac')!=-1)    { platform = 'macos'; downloadTitle = 'For macOS'}
     if (navigator.appVersion.indexOf('X11')!=-1)    { platform = 'src'; downloadTitle = 'For Linux'}
     if (navigator.appVersion.indexOf('Linux')!=-1)  { platform = 'src'; downloadTitle = 'For Linux'}
 
@@ -27,13 +27,13 @@
     // Stable
     downloadsStable = []
     downloadsStable['win'] = gitBase + '{{ site.latest_stable }}/SABnzbd-{{ site.latest_stable }}-win-setup.exe'
-    downloadsStable['osx'] = gitBase + '{{ site.latest_stable }}/SABnzbd-{{ site.latest_stable }}-osx.dmg'
+    downloadsStable['macos'] = gitBase + '{{ site.latest_stable }}/SABnzbd-{{ site.latest_stable }}-macos.dmg'
     downloadsStable['src'] = gitBase + '{{ site.latest_stable }}/SABnzbd-{{ site.latest_stable }}-src.tar.gz'
 
     // Testing
     downloadsTesting = []
     downloadsTesting['win'] = gitBase + '{{ site.latest_testing }}/SABnzbd-{{ site.latest_testing }}-win-setup.exe'
-    downloadsTesting['osx'] = gitBase + '{{ site.latest_testing }}/SABnzbd-{{ site.latest_testing }}-macos.dmg'
+    downloadsTesting['macos'] = gitBase + '{{ site.latest_testing }}/SABnzbd-{{ site.latest_testing }}-macos.dmg'
     downloadsTesting['src'] = gitBase + '{{ site.latest_testing }}/SABnzbd-{{ site.latest_testing }}-src.tar.gz'
 
     // Set titles

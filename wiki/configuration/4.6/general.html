@@ -131,7 +131,7 @@ title: General
                     <li><code>socks5://hostname:port</code> (no login)</li>
                 </ul>
                 <span class="label label-warning">NOTE</span> The connection between the client and the server will use SSL if enabled. However, the connection between the proxy and the client will not.
-                This means that the data transferred between the client and the server is hidden for anyone including the proxy, but the username and password for the proxy and the server address are unencrypted.</td>
+                This means that the data transferred between the client and the server are hidden for anyone including the proxy, but the username and password for the proxy and the server address are unencrypted.</td>
         </tr>
     </tbody>
 </table>
@@ -141,7 +141,11 @@ title: General
     <tbody>
         <tr>
             <td><strong>Maximum line speed</strong></td>
-            <td>Set how fast your internet connection is, in bytes/sec. <br><span class="label label-warning">NOTE</span> If you have an ISP-speed of 10Mbit/sec, you should enter <code>1MB/s</code> here.</td>
+            <td>
+                Set how fast your internet connection is, in bytes/sec. <br>
+                <span class="label label-warning">NOTE</span> If you have an ISP-speed of 10Mbit/sec, you should enter <code>1MB/s</code> here.<br>
+                <span class="label label-info">NOTE</span> If you set a value of <code>150MB/s</code> or higher, some <a href="/wiki/configuration/{{ site.wiki_version }}/special#toc1">performance settings</a> are increased automatically.
+            </td>
         </tr>
         <tr>
             <td><strong>Percentage of line speed</strong><br><span class="label label-primary">Advanced</span></td>

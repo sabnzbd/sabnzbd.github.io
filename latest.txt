@@ -1,4 +1,4 @@
-4.5.1
+4.5.4
 https://sabnzbd.org/downloads.html
-4.5.2RC2
+4.6.0Alpha1
 https://sabnzbd.org/downloads.html
