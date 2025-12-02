@@ -303,6 +303,11 @@ title: Special settings
             <td>The specific local IP address (IPv4/IPv6) SABnzbd will use for its outgoing NNTP (Network News Transfer Protocol) connections. This is useful on systems with multiple network interfaces (like a VPN) to force traffic through a specific IP.</td>
         </tr>
         <tr>
+            <td><code>pipelining_requests</code></td>
+            <td>2</td>
+            <td>The number of requests sent to each connection without waiting for earlier responses first. This reduces the idle gaps between requests and can improve overall throughput, especially on high-latency connections. However, the pipeline depth should be tuned carefully to balance the amount against the expected number of responses per second.</td>
+        </tr>
+        <tr>
             <td><code>rss_odd_titles</code></td>
             <td><code>nzbindex.nl/</code>, <code>nzbindex.com/</code>, <code>nzbclub.com/</code></td>
             <td>Some RSS feeds produce very awkward titles which are fine for filtering, but not as job titles. For all indexers that are listed here, the actual NZB file name will be used instead of the title.</td>
