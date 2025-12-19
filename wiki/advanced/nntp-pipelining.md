@@ -18,20 +18,17 @@ Pipelining provides the most benefit in these situations:
 
 ## Adjusting Pipelining
 
-Pipelining is enabled by default with a value of 2. To adjust it:
-
-1. Go to **[Config → Special](/wiki/configuration/{{site.wiki_version}}/special)**
-2. Find the `pipelining_requests` setting
-3. Adjust the value to control how many article requests are sent to each connection without waiting for responses
+Pipelining is enabled by default with a value of 2. To adjust it go to **[Config → Special](/wiki/configuration/{{site.wiki_version}}/special)** and adjust `pipelining_requests`.
 
 ## Recommended Settings
 
 The default value of **2** is conservative and works well for most users. If you want to experiment:
 
 * **Default (2)**: Good starting point for most connections
-* **Higher latency connections (100+ ms)**: Try values of 5-10
-* **Very high latency (200+ ms)**: Try values up to 15-20
+* **Higher latency connections (100+ ms)**: Try values of 2-5
+* **Very high latency (200+ ms)**: Try values up to 5-10
 * **Low latency connections (< 50 ms)**: The default of 2 is often sufficient
+* **Fast internet connections (>1 GBit)**: Try values of 5-10
 * **Server Connections**: Use 8-12 connections per server
 * **SSL/TLS**: Pipelining works with both SSL and non-SSL connections
 
@@ -40,7 +37,7 @@ The default value of **2** is conservative and works well for most users. If you
 ## Troubleshooting
 
 **Speeds didn't improve:**
-* The default value of 2 is conservative - try increasing to 5-10 for high-latency connections
+* The default value of 2 is conservative - try increasing to 2-10 for high-latency connections
 * Verify your server supports pipelining (check with your provider)
 * Check if your connection is already saturated
 * Low latency connections (< 20ms) may show minimal improvement even with higher values
