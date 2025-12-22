@@ -12,22 +12,22 @@ Pipelining provides the most benefit in these situations:
 * **Higher latency connections** (80+ ms) - The performance improvement is most dramatic when your connection to the news server has noticeable delay
 * **Fast internet connections** - If you have bandwidth to spare, pipelining helps utilize it more effectively
 
-<span class="label label-primary">NOTE</span> Pipelining is **enabled by default** with a conservative value of 2 requests per connection.
+<span class="label label-primary">NOTE</span> Pipelining can be configured per server with a default value of 1 request per connection (disabled).
 
 # Configuration
 
 ## Adjusting Pipelining
 
-Pipelining is enabled by default with a value of 2. To adjust it go to **[Config → Special](/wiki/configuration/{{site.wiki_version}}/special)** and adjust `pipelining_requests`.
+Pipelining is configured per server in **[Config → Servers](/wiki/configuration/{{site.wiki_version}}/servers)** under Advanced settings. The setting is called **Articles per request**.
 
 ## Recommended Settings
 
-The default value of **2** is conservative and works well for most users. If you want to experiment:
+The default value of **1** disables pipelining. If you want to enable it and experiment:
 
-* **Default (2)**: Good starting point for most connections
-* **Higher latency connections (100+ ms)**: Try values of 2-5
-* **Very high latency (200+ ms)**: Try values up to 5-10
-* **Low latency connections (< 50 ms)**: The default of 2 is often sufficient
+* **Default (1)**: Pipelining disabled - safe for all servers
+* **Low latency connections (< 50 ms)**: Try 2-4
+* **Higher latency connections (100+ ms)**: Try values of 4-8
+* **Very high latency (200+ ms)**: Try values up to 8-15
 * **Fast internet connections (>1 GBit)**: Try values of 5-10
 * **Server Connections**: Use 8-12 connections per server
 * **SSL/TLS**: Pipelining works with both SSL and non-SSL connections
@@ -37,18 +37,17 @@ The default value of **2** is conservative and works well for most users. If you
 ## Troubleshooting
 
 **Speeds didn't improve:**
-* The default value of 2 is conservative - try increasing to 2-10 for high-latency connections
+* The default value of 1 disables pipelining - try increasing to 2-10 for high-latency connections
 * Verify your server supports pipelining (check with your provider)
 * Check if your connection is already saturated
 * Low latency connections (< 20ms) may show minimal improvement even with higher values
 
 **Getting connection errors:**
-* Reduce `pipelining_requests` to 1 (effectively disabling pipelining)
+* Set `Articles per request` to 1 (disabling pipelining) - this is the default
 * Some servers may have limits on concurrent requests
-* Set to 0 to completely disable pipelining if issues persist
 
 **Unstable downloads:**
-* Reduce the `pipelining_requests` value incrementally
+* Reduce the `Articles per request` value incrementally
 * Ensure your network connection is stable
 * Check server load with your provider
 
