@@ -27,6 +27,7 @@ Open the Status window ( <span class="glyphicon glyphicon-wrench"></span> ), run
 
 * Make sure `Maximum line speed` in [Config-&gt;General](/wiki/configuration/{{site.wiki_version}}/general) is set to the correct value for your connection.
 * Try different connection numbers for your servers. Start with 8 and increase from there. A higher number will increase the overhead so more connections might actually reduce your speed.
+* Increase `Articles per request` in [Config-&gt;Servers](/wiki/configuration/{{site.wiki_version}}/servers) (Advanced settings). The default is `1` (disabled), but increasing to `2-10` can improve speed if your server supports it. See [NNTP Pipelining](/wiki/advanced/nntp-pipelining) for more information.
 * Turn Off `Direct Unpack` in [Config-&gt;Switches](/wiki/configuration/{{site.wiki_version}}/switches) to reduce disk load.
 * Turn On `Pause Downloading During Post-Processing` in [Config-&gt;Switches](/wiki/configuration/{{site.wiki_version}}/switches). This will reduce disk load, as downloading and post-processing are not performed simultaneously.
 * Change [SSL Ciphers](/wiki/advanced/ssl-ciphers) to `AES128` or `CHACHA20` in [Config-&gt;Servers](/wiki/configuration/{{site.wiki_version}}/servers). This can slightly reduce CPU load.

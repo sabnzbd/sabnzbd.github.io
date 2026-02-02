@@ -191,6 +191,14 @@ title: Special settings
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>Take the IP address(es) in the X-Forwarded-For header into consideration when determining access rights for incoming connections, <b>in addition to</b> the client/remote IP. Intended for use with a reverse proxy setup, where the IP address making the connection (as seen from the perspective of SABnzbd) is that of the proxy server rather than the system where the request actually originated, causing access to be granted even if the <a href="/wiki/configuration/{{ site.wiki_version }}/general#toc-eia">External internet access</a> setting is configured to deny connections from outside the local network.</td>
         </tr>
+        <tr>
+            <td><code>direct_write</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>                
+                <p>Enable Direct Write mode for the assembler, which uses the Article Cache and sparse files to write data at the correct offsets for improved performance and repair behavior.</p>
+                <p>See <a href="/wiki/advanced/direct-write.html">Direct Write</a> for detailed information and tuning tips.</p>
+            </td>
+        </tr>
     </tbody>
 </table>
 <hr>
