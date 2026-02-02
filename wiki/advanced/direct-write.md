@@ -2,7 +2,7 @@
 title: Direct Write
 ---
 
-Direct Write is SABnzbd's optimized way of assembling files. SABnzbd keeps articles in the Article Cache as long as possible and then writes larger contiguous chunks into the final file at the correct positions.
+Direct Write is SABnzbd's optimized way of assembling files. SABnzbd keeps articles in the Article Cache until it can write larger chunks to the final file at the correct positions, preferring contiguous writes when possible but not requiring them.
 
 This can significantly reduce disk I/O and CPU overhead on fast local storage, but it has a few important requirements and limitations.
 
@@ -91,7 +91,7 @@ In practice this means:
 The Article Cache and Direct Write are tightly coupled:
 
 - The Article Cache holds decoded articles in memory until there is enough data ready to write efficiently.
-- SABnzbd uses internal thresholds (based on the configured cache limit and queue size) to decide when to trigger Direct Write versus simple append writes.
+- SABnzbd uses internal thresholds (based on the configured cache limit and time since last write) to decide when to trigger Direct Write versus simple append writes.
 - By default SABnzbd prefers sequential writes from the cache, only performing non-contiguous writes when cache pressure forces it.
 - If the Article Cache Limit is disabled (<code>0</code>), Direct Write may never be activated and SABnzbd will behave like the traditional append-based assembler.
 
