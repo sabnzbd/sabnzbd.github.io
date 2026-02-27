@@ -1,4 +1,4 @@
 4.5.4
 https://sabnzbd.org/downloads.html
-5.0.0Beta1
+5.0.0Beta2
 https://sabnzbd.org/downloads.html
