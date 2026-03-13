@@ -3,9 +3,8 @@ title: Post-processing scripts
 ---
 
 <p>
-    SABnzbd can run a user-provided post-processing scripts. The scripts can be associated with a job entry when adding the job manually, via <a href="/wiki/configuration/{{ site.wiki_version }}/categories">category</a> or during downloading. Scripts can also be run as an end-of-queue event.
-    A post-processing script will only run when the job has completed without errors.
-    If you want to always run the script, you need to disable the option <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Post-Process Only Verified Jobs</a>.
+    SABnzbd can run a user-provided post-processing scripts. The scripts can be associated with a job entry when adding the job manually, via <a href="/wiki/configuration/{{ site.wiki_version }}/categories">category</a> or during downloading.
+    A post-processing script will always run, even when the job has completed with errors.
 </p>
 
 <p>
@@ -21,7 +20,9 @@ title: Post-processing scripts
 </p>
 
 <p>
-    The "return" code that your script itself returns should be <code>0</code> if all went well or non-zero if errors occurred. If the return code is something else than <code>0</code>, SABnzbd's History will show that return code (also known as exit code) as <code>Exit(...)</code> in the History. By default the job will not be flagged as failed in case the exit code is non-zero. In <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a> there is the option to let a non-zero code mark the job as failed.
+    The "return" code that your script itself returns should be <code>0</code> if all went well or non-zero if errors occurred.
+    If the return code is something else than <code>0</code>, SABnzbd's History will show that return code (also known as exit code) as <code>Exit(...)</code> in the History.
+    By default the job will not be flagged as failed in case the exit code is non-zero. In <a href="/wiki/configuration/{{ site.wiki_version }}/switches">Config-&gt;Switches</a> there is the option to let a non-zero code mark the job as failed.
 </p>
 
 <p>
