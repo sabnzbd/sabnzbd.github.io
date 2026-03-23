@@ -12,7 +12,7 @@ Pipelining provides the most benefit in these situations:
 * **Higher latency connections** (80+ ms) - The performance improvement is most dramatic when your connection to the news server has noticeable delay
 * **Fast internet connections** - If you have bandwidth to spare, pipelining helps utilize it more effectively
 
-<span class="label label-primary">NOTE</span> Pipelining can be configured per server with a default value of 1 request per connection (disabled).
+<span class="label label-primary">NOTE</span> Pipelining can be configured per server with a default value of 2 requests per connection.
 
 # Configuration
 
@@ -22,9 +22,10 @@ Pipelining is configured per server in **[Config → Servers](/wiki/configuratio
 
 ## Recommended Settings
 
-The default value of **1** disables pipelining. If you want to enable it and experiment:
+The default value of **2** enables light pipelining out of the box. To experiment further:
 
-* **Default (1)**: Pipelining disabled - safe for all servers
+* **Disable pipelining (1)**: Safe fallback for servers that do not support pipelining
+* **Default (2)**: Light pipelining, works with most servers
 * **Low latency connections (< 50 ms)**: Try 2-4
 * **Higher latency connections (100+ ms)**: Try values of 4-8
 * **Very high latency (200+ ms)**: Try values up to 8-15
@@ -37,13 +38,13 @@ The default value of **1** disables pipelining. If you want to enable it and exp
 ## Troubleshooting
 
 **Speeds didn't improve:**
-* The default value of 1 disables pipelining - try increasing to 2-10 for high-latency connections
+* Try increasing `Articles per request` to 4-10 for high-latency connections
 * Verify your server supports pipelining (check with your provider)
 * Check if your connection is already saturated
 * Low latency connections (< 20ms) may show minimal improvement even with higher values
 
 **Getting connection errors:**
-* Set `Articles per request` to 1 (disabling pipelining) - this is the default
+* Set `Articles per request` to 1 to disable pipelining
 * Some servers may have limits on concurrent requests
 
 **Unstable downloads:**
