@@ -22,30 +22,27 @@ Pipelining is configured per server in **[Config → Servers](/wiki/configuratio
 
 ## Recommended Settings
 
-The default value of **2** enables light pipelining out of the box. To experiment further:
+The default value of **2** enables light pipelining out of the box. Ping time to your news server is the most important factor, it determines how aggressively you need to pipeline to keep connections busy.
 
 * **Disable pipelining (1)**: Safe fallback for servers that do not support pipelining
 * **Default (2)**: Light pipelining, works with most servers
-* **Low latency connections (< 50 ms)**: Try 2-4
-* **Higher latency connections (100+ ms)**: Try values of 4-8
-* **Very high latency (200+ ms)**: Try values up to 8-15
-* **Fast internet connections (>1 GBit)**: Try values of 5-10
-* **Server Connections**: Use 8-12 connections per server
-* **SSL/TLS**: Pipelining works with both SSL and non-SSL connections
+* **Low latency connections (< 20 ms)**: The default of 2 is often sufficient; increasing the number of connections has more impact than raising pipelining
+* **Higher latency connections (> 50 ms)**: Try values of 5–10; pipelining has the largest impact here
+* **Fast internet connections (> 1 Gbit)**: Try 5–10, combined with 20 or more connections
 
-<span class="label label-warning">NOTE</span> The pipeline depth should be tuned carefully. Values that are too high can reduce performance due to increased overhead and the amount of responses buffered. Increase gradually while monitoring your speeds.
+<span class="label label-warning">NOTE</span> The pipeline depth should be tuned carefully. Values that are too high can reduce performance due to increased overhead and the amount of responses buffered. Increase gradually while monitoring your speeds. Also be mindful of server connection limits, exceeding them causes errors.
 
 ## Troubleshooting
 
 **Speeds didn't improve:**
-* Try increasing `Articles per request` to 4-10 for high-latency connections
+* For high-latency connections (> 50ms), try increasing `Articles per request` to 5–10, this has the largest impact
+* For low-latency connections, try increasing the number of connections instead
 * Verify your server supports pipelining (check with your provider)
 * Check if your connection is already saturated
-* Low latency connections (< 20ms) may show minimal improvement even with higher values
 
 **Getting connection errors:**
 * Set `Articles per request` to 1 to disable pipelining
-* Some servers may have limits on concurrent requests
+* Reduce the number of server connections — many providers enforce a limit (e.g. 50 connections) and exceeding it causes errors
 
 **Unstable downloads:**
 * Reduce the `Articles per request` value incrementally
