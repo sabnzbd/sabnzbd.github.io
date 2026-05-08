@@ -633,6 +633,10 @@ aside {
     height: 218px;
     width: 218px;
     text-align: right;
+    overflow: hidden;
+}
+
+aside img {
     margin-right: -1px;
 }
 
