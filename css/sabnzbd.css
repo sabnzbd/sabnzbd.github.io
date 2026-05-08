@@ -636,6 +636,7 @@ aside {
     height: 218px;
     width: 218px;
     text-align: right;
+    margin-right: -1px;
 }
 
 /***** */
@@ -646,7 +647,10 @@ aside {
 }
 
 .banner-wide img {
-    max-width: 100%
+    width: 100%;
+    max-width: 468px;
+    height: auto;
+    max-height: 60px;
 }
 
 /* Special for tablets and small desktops */
