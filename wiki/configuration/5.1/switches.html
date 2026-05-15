@@ -180,7 +180,18 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Cleanup List</strong></td>
-            <td>List of file (extensions) that should be deleted in the cleanup stage. Examples: <code>.nfo, .nfo, .sfv</code>. You can leave out the dots, so <code>nfo, nzb, sfv</code> will do the same.</td>
+            <td>
+                List of file extensions, filenames, patterns, or paths that should be deleted in the cleanup stage. All matching is case-insensitive. <br>
+                Supports:
+                <ul>
+                    <li><strong>Extensions:</strong> <code>nfo, exe, sfv</code> (matches <code>.nfo</code>, <code>.exe</code>, <code>.sfv</code> files)</li>
+                    <li><strong>Filenames:</strong> <code>thumbs.db</code> (matches that exact filename)</li>
+                    <li><strong>Wildcard patterns:</strong> <code>*.tmp, cleanup.*</code> (matches using wildcards)</li>
+                    <li><strong>Path patterns:</strong> <code>images/*, */test.jpg, cache/*.log</code> (matches relative to the download folder)</li>
+                </ul>
+                <p>Examples: <code>nfo, sfv, thumbs.db, *.tmp, images/*</code></p>
+                <p><span class="label label-warning">NOTE</span> Path patterns containing <code>..</code> are silently ignored for security.</p>
+            </td>
         </tr>
         <tr>
             <td><strong>History Retention</strong></td>
