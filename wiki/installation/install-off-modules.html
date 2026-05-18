@@ -23,25 +23,36 @@ Get a local copy (clone) of the SABnzbd source from github or via git with:
     Check python version with <code>python3 --version</code>.
 </p>
 
-<h3 id="toc3">Must-have Python modules</h3>
-Python comes included with a Python Packages Manager (<code>pip</code>) on many platforms.<br>
-Which may be required to be updated to handle building/installing newer packages for your system.<br><br>
+<h3 id="toc3">Must-haves</h3>
+Python comes included with a Python Packages Manager (<code>pip</code>) on many platforms. If not, install it using the package manager for your system; typical package names are <code>python3-pip</code> or <code>python-pip</code> (try in that order).<br>
 
+<h3 id="toc3.1">Create a Virtual Environment (venv)</h3>
+The best practise is using pip in a virtual environment. Doing so keeps all modules used by a project in one place and avoids the risk of breaking your system-wide Python install.<br><br>
+
+To initialize a fresh new virtual environment in the sabnzbd_venv directory, run the following command. This step needs to be done only once:
+<pre>python3 -m venv sabnzbd_venv</pre>
+
+Every time you want to work in the virtual environment, you need to activate it. If you already created the venv before, this is where you start:
+<pre>source sabnzbd_venv/bin/activate</pre>
+
+Any <code>pip</code> commands run inside the virtual environment only affect the venv, not your system-wide Python install.
+
+<h3 id="toc3.2">Installing and updating modules required by SABnzbd</h3>
 <p>
 Upgrade the python package manager and build modules:
 <pre>
 python3 -m pip install --upgrade pip wheel
 </pre>
 
-Install the Python module requirements from the SABnzbd source directory:
+Install the runtime requirements using the requirements.txt from the SABnzbd source directory:
 <pre>
-pip3 install --upgrade -r requirements.txt
+python3 -m pip install --upgrade -r requirements.txt
 </pre>
 
-If you plan to do development work, you might need the following OS packages:
+If you plan to do development work, you might also need the test and build requirements:
 <pre>
-pip3 install --upgrade -r builder/requirements.txt
-pip3 install --upgrade -r tests/requirements.txt
+python3 -m pip install --upgrade -r builder/requirements.txt
+python3 -m pip install --upgrade -r tests/requirements.txt
 </pre>
 
 On <b>non-x86</b> linux platforms you may need to install:
@@ -60,6 +71,12 @@ python3-dev python3-setuptools python3-pip libffi-dev libssl-dev openssl-dev mus
 <p>To enable multi-language support (and fix mistakes in English texts) you will need to run this command once before starting SABnzbd for the first time and after each major update:
 <pre>python3 tools/make_mo.py</pre>
 </p>
+
+<h3 id="toc3.3">Deactivating the Virtual Environment</h3>
+When you finish your work, just deactivate the virtual environment:
+<pre>deactivate</pre>
+
+This will store the venv with the currently installed modules, ready to be activated again.
 
 <h3 id="toc4">Must-have utilities</h3>
 <h4><code>unrar</code></h4>
