@@ -257,6 +257,13 @@ title: Post-processing scripts
             <td>The path to the <code>7z</code> command on the system that SABnzbd uses. Not all systems have 7zip installed (it's optional for SABnzbd), so this can also be empty</td>
         </tr>
         <tr>
+            <td><code>SAB_FILES</code></td>
+            <td>
+                File paths created by the job, paths are relative to <code>SAB_COMPLETE_DIR</code>
+                <p><span class="label label-warning">NOTE</span> The value is a JSON encoded array</p>
+            </td>
+        </tr>
+        <tr>
             <td><code>PYTHONUNBUFFERED</code></td>
             <td>This variable is set to 1 when running a Python script (<code>.py</code>), in order to force Python to write output to SABnzbd directly instead of buffering it</td>
         </tr>
