@@ -108,6 +108,15 @@ Accept || second*steps</code>
                 Directly accepts job, this permits multiple shows in a single feed.
             </td>
         </tr>
+        <tr>
+            <td><code>Age</code></td>
+            <td>
+                Require the job's age to match this expression.<br>
+                Use <code>&lt;</code> or <code>&gt;</code> followed by a number and a unit: <code>s</code> (seconds), <code>m</code> (minutes), <code>h</code> (hours), <code>d</code> (days), <code>w</code> (weeks), <code>mo</code> (months), or <code>y</code> (years).<br>
+                E.g. <code>&lt;30d</code> means younger than 30 days, <code>&gt;12h</code> means older than 12 hours.<br>
+                If matched, go to next filter. If not matched, reject job.
+            </td>
+        </tr>
     </tbody>
 </table>
 
