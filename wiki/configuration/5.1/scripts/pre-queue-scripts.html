@@ -324,7 +324,7 @@ if %6 LSS 2000000000 echo 1
 import sys
 
 try:
-    # Parse the input variables for SABnzbd version >= 4.2.0
+    # Parse the input variables
     (scriptname, nzbname, postprocflags, category, script, prio, downloadsize, grouplist) = sys.argv
 except Exception:
     sys.exit(1)  # a non-zero exit status causes SABnzbd to ignore the output of this script

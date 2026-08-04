@@ -6,7 +6,7 @@ title: Queue and History searching
 
 The queue search box appears only when there are more items than the Queue/History item limit (set in Status and Interface settings), or when editing multiple jobs.
 
-All options accept multiple values, seperated by a comma.
+All options accept multiple values, separated by a comma.
 
 ### Category: `cat` or `category`
 

@@ -6,7 +6,7 @@ redirect_from:
 
 # Introduction to SABCTools
 
-In SABnzbd 4.0.0 we introduced a new module called `sabctools` to optimise (essential) CPU intensive tasks.
+SABnzbd uses a module called `sabctools` to optimise (essential) CPU intensive tasks.
 
 The Windows- and macOS-packages of SABnzbd automatically contain that module. On other platforms (like Linux and FreeBSD) you have to make sure the module is installed. The information below is for packagers and source code users on those platforms.
 

@@ -53,7 +53,7 @@ If all you need is to run SABnzbd as a service using the same settings used in t
 
 <h2>Specifying additional options </h2>
 <p>By default, installing SABnzbd as a service (as detailed in step 4 of the above installation instructions) will cause it to run using the same settings used by the SABnzbd web interface on your system.</p>
-<p>You can, however, override many of these settings with <a href="/wiki/advanced/command-line-parameters">command line parameters</a>. Simply add the pertinent command to the line that installs the SABnzbd service. Be aware that not all of the available command line options are appropriate when SABnzbd is running as a service—for instance, parameters like <code>–b</code> (start browser) will be ignored even if specified.</p>
+<p>You can, however, override many of these settings with <a href="/wiki/advanced/command-line-parameters">command line parameters</a>. Simply add the pertinent command to the line that installs the SABnzbd service. Be aware that not all of the available command line options are appropriate when SABnzbd is running as a service. For instance, parameters like <code>-b</code> (start browser) will be ignored even if specified.</p>
 <p><span class="label label-warning">NOTE</span> Any parameter you set in the command line will override the equivalent parameter in the web interface and any changes to the interface settings will be ignored by the service for that parameter.  For parameters not set through the command line, the service will use whatever was set in the GUI at the time the service is launched or updated.
 For example, the following will install the SABnzbd service with the <code>-s host:port</code> command to reflect a different server address:</p>
 

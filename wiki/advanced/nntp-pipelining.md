@@ -42,7 +42,7 @@ The default value of **2** enables light pipelining out of the box. Ping time to
 
 **Getting connection errors:**
 * Set `Articles per request` to 1 to disable pipelining
-* Reduce the number of server connections — many providers enforce a limit (e.g. 50 connections) and exceeding it causes errors
+* Reduce the number of server connections: many providers enforce a limit (e.g. 50 connections) and exceeding it causes errors
 
 **Unstable downloads:**
 * Reduce the `Articles per request` value incrementally

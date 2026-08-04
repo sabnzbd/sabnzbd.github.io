@@ -10,7 +10,7 @@ This article is about the message `Refused connection with hostname "sabnzbd.spe
 
 Due to something called [DNS hijacking](https://en.wikipedia.org/wiki/DNS_hijacking), attackers could access your SABnzbd installation even if you have not exposed it to the internet.
 
-To prevent this, in SABnzbd 2.3.3 measures were taken and a new [Special](/wiki/configuration/{{site.wiki_version}}/special) setting was introduced called `host_whitelist` where you can specify what URL's that are allowed to represent your SABnzbd.
+To prevent this, SABnzbd has a [Special](/wiki/configuration/{{site.wiki_version}}/special) setting called `host_whitelist` where you can specify which URLs are allowed to represent your SABnzbd.
 
 For normal usage (i.e., access from your LAN), SABnzbd will fill out this setting automatically with your hostname and you don't have to do anything at all.
 

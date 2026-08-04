@@ -17,28 +17,28 @@ A reverse proxy can be used to allow authenticated users access to an intranet e
 </p>
 <p>So while most likely the apps are running on the same machine then you just have to change the port, but this is not very user friendly.
    Using a reverse proxy you could just go to an IP (or hostname if you use dyndns or something similar) but then use <code>/sabnzbd</code>, <code>/sonarr</code>, <code>/whatever</code> instead of a different port. Not only does this make accessing your multiple apps more user friendly, it allows flexibility of being a gatekeeper to all the sites (for access/security/data logging).</p>
+
+<p>
+    <span class="label label-warning">NOTE</span> SABnzbd serves its interface under <code>/sabnzbd</code> by default (the <code>url_base</code> setting), which is why proxying the <code>/sabnzbd</code> path works without extra configuration.
 </p>
 
-<p>Below are sample configurations for the two main webservers, Apache and Ngnix:</p>
+<p>Below are sample configurations for the two main webservers, Apache and Nginx:</p>
 
 <hr>
-<h2>Apache 2</h2>
-<p>Required modules: <code>proxy.load</code> and <code>proxy_http.load</code>.</p>
-<p>The following goes in Apache's <code>httpd.conf</code> file. <br>For Linux: <code>/etc/apache2/httpd.conf</code> and for Windows: <code>C:\Program Files\Apache2.2\conf\httpd.conf</code>.</p>
+<h2>Apache</h2>
+<p>Required modules: <code>proxy</code> and <code>proxy_http</code>. On Debian/Ubuntu, enable them with:</p>
+<div class="code">
+    <pre><code>sudo a2enmod proxy proxy_http</code></pre>
+</div>
+<p>The following goes in your site configuration. <br>On Debian/Ubuntu: <code>/etc/apache2/sites-available/000-default.conf</code> (for HTTP) or your <code>*ssl*.conf</code> (for HTTPS); on other systems Apache's <code>httpd.conf</code>.</p>
 
 {% highlight aconf %}
 <Location /sabnzbd>
-    order deny,allow
-    deny from all
-    allow from all
+    Require all granted
     ProxyPass http://localhost:8080/sabnzbd
     ProxyPassReverse http://localhost:8080/sabnzbd
 </Location>
 {% endhighlight %}
-
-<p>
-    <span class="label label-warning">NOTE</span> On Apache 2.4 Config files for <code>a2enmod</code> and <code>proxy proxy_http</code> are located in:
-<code>/etc/apache2/sites-available/000-default.conf</code> (for HTTP) and <code>*ssl*.conf</code> (for HTTPS).</p>
 
 <hr>
 <h2 id="toc1">Nginx</h2>
@@ -48,7 +48,7 @@ A reverse proxy can be used to allow authenticated users access to an intranet e
 ssl_certificate      /etc/pki/tls/certs/example_com.crt;
 ssl_certificate_key  /etc/pki/tls/private/example_com.key;
 ssl_session_timeout  5m;
-ssl_protocols  TLSv1 TLSv1.1 TLSv1.2;
+ssl_protocols  TLSv1.2 TLSv1.3;
 ssl_ciphers  HIGH:!aNULL:!MD5;
 ssl_prefer_server_ciphers   on;
 {% endhighlight %}
@@ -82,27 +82,17 @@ proxy_buffers 32 4k;
 
 <h3 id="toc4">sabnzbd.conf</h3>
 {% highlight nginx %}
-upstream SABnzbd {
-    server localhost:8080;
-    keepalive 512;
-}
-
-upstream sickbeard {
-    server localhost:8081;
-    keepalive 512;
-}
-
 server {
     listen 80;
-    listen 443 default ssl;
+    listen 443 ssl default_server;
     server_name example.com;
 
     access_log      /var/log/nginx/sabnzbd-access.log;
-    error_log       /var/log/nginx/sabnzbd-error.log debug;
+    error_log       /var/log/nginx/sabnzbd-error.log;
 
     if ( $scheme = http )
     {
-        rewrite ^ https://$server_name$request_uri? permanent;
+        return 301 https://$server_name$request_uri;
     }
 
     include /etc/nginx/conf.d/ssl.conf;
@@ -117,14 +107,9 @@ server {
         proxy_pass http://localhost:8080/sabnzbd;
     }
 
-    location /sickbeard {
+    location /sonarr {
         include /etc/nginx/conf.d/proxy.conf;
-        proxy_pass http://localhost:8081;
-    }
-
-    location /nginx_status {
-        stub_status on;
-        access_log off;
+        proxy_pass http://localhost:8989;
     }
 }
 {% endhighlight %}
