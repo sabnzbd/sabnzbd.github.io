@@ -2,25 +2,25 @@
 title: Ubuntu PPA Repository
 ---
 
-<h1 id="toc0">PPA Setup</h1>
+<h2 id="toc0">PPA Setup</h2>
 <p>JCFP maintains an unofficial repository with the latest version of SABnzbd<sup class="footnoteref"><a href="#toc4">1</a></sup>. Whenever an even newer version of the program is released, you will be automatically notified the same as with any other package update.</p>
 <p>There are two channels on offer: regular or <code>nobetas</code>. The former includes most alpha/beta/rc releases, while the latter is a less risky option that only ever gets final releases. In order to satisfy all dependencies, both Ubuntu's universe and multiverse repositories must be enabled on your system.</p>
 
 
-<h1>Quick Install Guide for Ubuntu Desktop 20.04 and higher</h1>
+<h2>Quick Install Guide for Ubuntu Desktop 20.04 and higher</h2>
 
-On a standard Ubuntu Desktop 20.04 and higher, installation of the PPA is easy:
+<p>On a standard Ubuntu Desktop 20.04 and higher, installation of the PPA is easy:</p>
 
 <pre><code>sudo add-apt-repository ppa:jcfp/nobetas
 sudo apt-get update && sudo apt-get dist-upgrade
 sudo apt-get install sabnzbdplus
 </code></pre>
 
-After that, you have the newewst stable SABnzbd, and it is updated automatically each time you update Ubuntu.
+<p>After that, you have the newest stable SABnzbd, and it is updated automatically each time you update Ubuntu.</p>
 
-<h1>Full Install Guide</h1>
+<h2>Full Install Guide</h2>
 
-If the above does not work, follow this guide.
+<p>If the above does not work, follow this guide.</p>
 
 <p>First, some preparation to make sure your system can handle extra repositories:</p>
 <div class="code">
@@ -49,7 +49,7 @@ sudo add-apt-repository universe
 sudo apt-get install sabnzbdplus</code></pre>
 </div>
 <hr>
-<h1 id="toc2">How To Start</h1>
+<h2 id="toc2">How To Start</h2>
 <p>To start the program, find the SABnzbd item in the Networking section of your desktop menu, or from the command line just execute:</p>
 <div class="code">
     <pre><code>sabnzbdplus</code>
@@ -58,7 +58,7 @@ sudo apt-get install sabnzbdplus</code></pre>
 <p>You should run SABnzbd as a normal user: the program does not need root access or any other special permissions.</p>
 
 <hr>
-<h1 id="toc3">How To Run as a Service</h1>
+<h2 id="toc3">How To Run as a Service</h2>
 <p>If you want the program to be started as a service (i.e., in the background on system boot), edit (as root) the text file <code>/etc/default/sabnzbdplus</code> and set the required <code>USER= </code> and the optional settings to your liking. If your system uses systemd, which has been the default since Ubuntu 15.04, run <code>sudo systemctl daemon-reload</code> after modifying the settings.</p>
 <p>Once configured correctly, the service can be started and stopped with the usual commands:</p>
 <div class="code">
@@ -72,9 +72,9 @@ sudo apt-get install sabnzbdplus</code></pre>
 </div>
 <p>Although for obvious reasons no browser is auto-started when running the program like this, the web interface is still available at the usual location of <code>http://localhost:8080/sabnzbd/</code> (or whatever other host and port you configured).</p>
 <hr>
-<h1 id="toc4">The Fine Print</h1>
+<h2 id="toc4">The Fine Print</h2>
 <ol>
-    <li>Remember that this package is not created and therefore <strong>not</strong> supported by the SABnzbd team! But do feel free to ask questions on the forum, which is frequently vistited by JCFP.</li>
+    <li>Remember that this package is not created and therefore <strong>not</strong> supported by the SABnzbd team! But do feel free to ask questions on the forum, which is frequently visited by JCFP.</li>
     <li>For always up-to-date information about supported Ubuntu versions, read the package <a href="https://forums.sabnzbd.org/viewtopic.php?f=16&t=387">forum post</a>.</li>
     <li>This is an unofficial package from an unofficial repository. Don't file bugs about packages installed from this repository in Ubuntu's bug tracker, instead complain in a <a href="https://forums.sabnzbd.org/viewforum.php?f=16">forum</a> topic.</li>
     <li>The <code>sabnzbdplus</code> package is also available from the official <a href="https://launchpad.net/ubuntu/+source/sabnzbdplus">Ubuntu</a> repositories (jaunty/9.04 and newer, in multiverse) as well as from <a href="http://packages.debian.org/search?keywords=sabnzbdplus">Debian</a> (debian 6.0/squeeze and newer, in contrib). In case the PPA and the official repositories both have the same release the design of the package will cause the official repositories to take precedence.</li>

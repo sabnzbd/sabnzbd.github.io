@@ -1,5 +1,5 @@
 ---
-title: SABCTools 3
+title: SABCTools
 redirect_from:
     - /sabctools
 ---
@@ -43,7 +43,7 @@ pip install sabctools==7.0.1
 
 ### Installation on Ubuntu via PPA
 
-For Ubuntu there is a PPA with `sabctools`, by the same creator (JCFP) as the SABnzbd PPA. This will work on X86, X86-64, ARM (32bit) and ARM64 architectures.
+For Ubuntu there is a PPA with `sabctools`, by the same creator (JCFP) as the SABnzbd PPA. This will work on x86, x86-64, ARM (32bit) and ARM64 architectures.
 Install it like this:
 ```
 sudo add-apt-repository ppa:jcfp/sab-addons
@@ -53,7 +53,7 @@ sudo apt-get install sabctools
 
 ### Installation on Ubuntu (without PPA)
 
-Short method, only works on X86 and X86-64
+Short method:
 ```
 sudo apt-get install python3-pip
 sudo -H pip install sabctools --upgrade
@@ -67,7 +67,7 @@ sudo -H pip install -r requirements.txt
 
 ### Installation on Fedora / RedHat
 
-Short method, only works on X86 and X86-64
+Short method:
 
 All as root:
 ```
@@ -86,7 +86,7 @@ pip install -r requirements.txt
 ### Installation on OpenSuSE
 All as root
 
-Short, works on X86 and X86-64
+Short method:
 ```
 zypper install -y python-pip
 pip install --upgrade pip

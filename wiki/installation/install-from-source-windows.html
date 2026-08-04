@@ -2,29 +2,29 @@
 title: Install SABnzbd for Windows from source
 ---
 
-<p>Running the source python (.py) files on a Windows system is not recommended unless you want to try the latest GitHub copy, or make changes yourself.
+<p>Running the source Python (.py) files on a Windows system is not recommended unless you want to try the latest GitHub copy, or make changes yourself.</p>
 
 <ol>
-    <li>Install Python from <a href="http://www.python.org/" target="_blank">Python.org</a><br/>
-    <li>Install <a href="https://git-for-windows.github.io/" target="_blank">Git for Windows</a> on your system. Defaults options are OK
+    <li>Install Python 3.10 or higher from <a href="http://www.python.org/" target="_blank">Python.org</a>.</li>
+    <li>Install <a href="https://git-for-windows.github.io/" target="_blank">Git for Windows</a> on your system. The default options are OK.</li>
     <li>Get a local copy (clone) of the SABnzbd source by opening Git Bash from the start menu and running:
-    <pre><code>git clone -b master https://github.com/sabnzbd/sabnzbd.git </code></pre>
+    <pre><code>git clone -b master https://github.com/sabnzbd/sabnzbd.git</code></pre>
     Press "Insert" instead of "Ctrl+V" to paste into Git Bash.<br>
     You can specify the target directory as a second argument if you don’t want it in the default location (<code>C:\Users\USERNAME\sabnzbd\</code>).</li>
-    <li>To enable multi-language support type in the Git Bash you still have open:
+    <li>Install the required modules by opening a Command Prompt or Git Bash, navigating to the location of the Git clone, and running:
     <pre><code>cd sabnzbd
-python tools/make_mo.py</pre></code></li>
-    <li>Open a Command Prompt or Git Bash and navigate to the location of the Git clone, run:
-    <pre><code>pip install -U -r requirements.txt</pre></code>
+pip install -r requirements.txt</code></pre></li>
+    <li>To enable multi-language support, run in the same window:
+    <pre><code>python tools/make_mo.py</code></pre></li>
     <li>You can start SABnzbd by running in the Command Prompt or Git Bash:
-    <pre><code>python C:\Users\USERNAME\sabnzbd\SABnzbd.py</pre></code></li>
+    <pre><code>python C:\Users\USERNAME\sabnzbd\SABnzbd.py</code></pre></li>
 </ol>
 <p>To update the source files to the latest version, open Git Bash and type:
 <pre><code>cd sabnzbd
-git pull</pre></code>
+git pull</code></pre>
 
 
-<p>Optional (not show the DOS command line when SABnzbd is launched):
+<p>Optional (hide the console window when SABnzbd is launched):
 <ul>
     <li>Create a <code>.cmd</code> file to easily launch SABnzbd such as: <code>python "path\to\folder\SABnzbd.py"</code>.</li>
     <li>Put a shortcut to the .cmd file in your startup folder, and set it to start as minimized.</li>

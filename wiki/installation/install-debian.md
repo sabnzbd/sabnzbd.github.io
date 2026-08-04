@@ -4,13 +4,13 @@ title: SABnzbd installation on Debian
 
 ## Notice About Application Versions
 
-Debian has a _very_ long development cycle as part of their intentional focus on stability. This means if you pull SABnzbd directly from APT you will _almost certainly_ receive a version that is considered unsupported by the SABnzbd team. For example, at time of writing the version present in Debian Stable is two years out of date, and it will likely reach 2.5 years of being outdated by the time the next Stable version of Debian ships.
+Debian has a very long development cycle as part of their intentional focus on stability. This means if you pull SABnzbd directly from APT you will almost certainly receive a version that is considered unsupported by the SABnzbd team. For example, at time of writing the version present in Debian Stable is two years out of date, and it will likely reach 2.5 years of being outdated by the time the next Stable version of Debian ships.
 
 If your base distribution is Debian we _strongly_ recommend using some kind of containerized solution to install SABnzbd, be it Docker, Flatpak, Snapcraft, or something else. Those options are documented on the main [Unix Installation page](/wiki/installation/install-unix).
 
 ## Installing from Debian Backports
 
-If you _must_ install from APT we recommend you use [Debian Backports](https://backports.debian.org/) to ensure you receive an actually up-to-date version of SABnzbd. These specific instructions are based on the current stable version of Debian 13 'Trixie', but the instructions should hold true for most versions of Debian, including future releases. Just _literally_ swap out all the references below from `trixie` to `forky` or whatever Debian release you're running.
+If you _must_ install from APT we recommend you use [Debian Backports](https://backports.debian.org/) to ensure you receive an actually up-to-date version of SABnzbd. These specific instructions are based on the current stable version of Debian 13 'Trixie', but the instructions should hold true for most versions of Debian, including future releases. Just swap out all the references below from `trixie` to `forky` or whatever Debian release you're running.
 
 - Edit `/etc/apt/sources.list` with sudo / as root
 - Confirm that your existing sources include Debian's `main`, `contrib`, and `non-free` repos. Your configuration should look something like this:

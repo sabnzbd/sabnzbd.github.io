@@ -4,7 +4,7 @@ redirect_from:
     - /wiki/installation/multicore-par2
 ---
 
-`par2cmdline-turbo` is a drop-in replacement for the original `par2cmdline` and it's forks (`mt` and `tbb`). 
+`par2cmdline-turbo` is a drop-in replacement for the original `par2cmdline` and its forks (`mt` and `tbb`). 
 It greatly improves verification and repair performance by using optimizations on x86 and ARM platforms.
 
 ## Installation on Ubuntu via PPA
@@ -23,7 +23,7 @@ sudo apt-get install par2-turbo
 
 ## Installation of pre-built binaries
 
-On https://github.com/animetosho/par2cmdline-turbo/releases you can find pre-built binaries for different Linux (plus MacOS and Windows) versions. Download the correct version, unpack, and install.
+On https://github.com/animetosho/par2cmdline-turbo/releases you can find pre-built binaries for different Linux (plus macOS and Windows) versions. Download the correct version, unpack, and install.
 
 Example of unpacking and putting into `/usr/local/bin/` on Linux x86_64:
 

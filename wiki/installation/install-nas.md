@@ -20,4 +20,4 @@ Packages maintained by the community.
 * [SABnzbdplus](https://www.asustor.com/app_central/app_detail?id=98)
 * [SABnzbd](https://www.asustor.com/app_central/app_detail?id=1075) (uses Docker, not supported on all models)
 
-Do you have a NAS instruction we should add? [Let us know](https://github.com/sabnzbd/sabnzbd.github.io/issues/new?title=Improve%3A+Install+SABnzbdon+a+NAS&body=%23%23+URL%3A+%2Fwiki%2Finstallation%2Finstall-nas.html%0A%0AImprovement:%0A)
+Do you have a NAS instruction we should add? [Let us know](https://github.com/sabnzbd/sabnzbd.github.io/issues/new?title=Improve%3A+Install+SABnzbd+on+a+NAS&body=%23%23+URL%3A+%2Fwiki%2Finstallation%2Finstall-nas.html%0A%0AImprovement:%0A)
