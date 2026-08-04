@@ -114,6 +114,6 @@ Tools to test SSL/TLS news servers and websites
 * Tool `testssl.sh`
 * Tool `curl`
 * Tool `wget`
-* Python (2.7.9 or higher)
+* Python
     * `python -c "import urllib2; response = urllib2.urlopen('https://api.oznzb.com/') "`
 
