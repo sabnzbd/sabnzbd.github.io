@@ -17,7 +17,7 @@ title: API reference
 
 <pre><code>http://host:port/api?output=json&amp;apikey=APIKEY</code></pre>
 <p>If the API-key is missing the request will return <code>error: API Key Required</code>, if it is incorrect: <code>error: API Key Incorrect</code>.
-<p>There is also a separate NZB key, which only allows for adding, modifying and removing jobs in the queue. When this key is used for something else, the request will return <code>error: API Key Incorrect</code>.
+<p>There is also a separate NZB key, which only allows for adding jobs to the queue. When this key is used for something else, the request will return <code>error: API Key Incorrect</code>.
 <p>The <code><a href="#version">version</a></code> and <code><a href="#auth">auth</a></code> functions do not require the API key.</p>
 
 
@@ -30,6 +30,8 @@ title: API reference
     "status": true
 }
 {% endhighlight %}
+
+<p><span class="label label-warning">Config lock</span> Indicates the function changes the configuration and is refused with <code>error: Configuration locked</code> while the <code>config_lock</code> <a href="/wiki/configuration/{{ site.wiki_version }}/special">Special</a> setting is enabled.</p>
 <hr>
 
 <h1 id="queue_main">Queue functions</h1>
@@ -55,7 +57,7 @@ title: API reference
             <td>Resume whole queue</td>
         </tr>
         <tr>
-            <td><a href="#speedlimit">speedlimit</a></td>
+            <td><a href="#speedlimit">speedlimit</a> <span class="label label-warning">Config lock</span></td>
             <td>Set speedlimit</td>
         </tr>
         <tr>
@@ -318,14 +320,14 @@ title: API reference
 <h2 id="pause">Pause queue <span class="label label-primary">True/False</span></h2>
 <p>Pauses the whole queue (do not confuse this will pausing an individual download, this is a global pause).</p>
 <pre><code>api?mode=pause</code></pre>
-<p>Pauses for <code>value</code> minutes.</p>
+<p>Pauses for <code>value</code> minutes. <span class="label label-warning">Config lock</span></p>
 <pre><code>api?mode=config&amp;name=set_pause&amp;value=50</code></pre>
 
 <h2 id="resume">Resume queue <span class="label label-primary">True/False</span></h2>
 <p>Resumes the whole queue (do not confuse this will resuming an individual download, this is a global pause).</p>
 <pre><code>api?mode=resume</code></pre>
 
-<h2 id="speedlimit">Set speedlimit <span class="label label-primary">True/False</span></h2>
+<h2 id="speedlimit">Set speedlimit <span class="label label-primary">True/False</span> <span class="label label-warning">Config lock</span></h2>
 <p>Sets the speedlimit to <code>value</code> in percentage of the maximum line speed (set by user).</p>
 <pre><code>api?mode=config&amp;name=speedlimit&amp;value=30</code></pre>
 <p> It can also be followed by <code>K,M</code> to define speedlimit in <code>KB/s,MB/s</code>, respectively.
@@ -396,7 +398,6 @@ title: API reference
             <td>Priority to be assigned:
                 <ul>
                     <li><code>-100</code> = Default Priority (of category)</li>
-                    <li><code>-3</code> = Duplicate</li>
                     <li><code>-2</code> = Paused</li>
                     <li><code>-1</code> = Low Priority</li>
                     <li><code>0</code> = Normal Priority</li>
@@ -481,7 +482,6 @@ title: API reference
 <ul>
     <li><code>-100</code> = Default Priority (of category)</li>
     <li><code>-4</code> = Stop</li>
-    <li><code>-3</code> = Duplicate</li>
     <li><code>-2</code> = Paused</li>
     <li><code>-1</code> = Low Priority</li>
     <li><code>0</code> = Normal Priority</li>
@@ -868,6 +868,10 @@ title: API reference
 <pre><code>api?mode=history&name=delete&value=all</code></pre>
 <p>Deleting all <strong>failed</strong> items:</p>
 <pre><code>api?mode=history&name=delete&value=failed</code></pre>
+<p>Deleting all <strong>completed</strong> items:</p>
+<pre><code>api?mode=history&name=delete&value=completed</code></pre>
+<p>The special values <code>all</code>, <code>failed</code> and <code>completed</code> can be combined with <code>search</code> to only remove matching jobs:</p>
+<pre><code>api?mode=history&name=delete&value=failed&search=SEARCH</code></pre>
 
 <h2 id="mark_as_completed">Mark failed job as completed <span class="label label-primary">True/False</span></h2>
 <p>Mark a failed history item as completed based on <code>nzo_id</code>. This is useful when you want to manually mark a failed job as completed without having to delete it from history.</p>
@@ -933,11 +937,11 @@ title: API reference
     </thead>
     <tbody>
         <tr>
-            <td><code>darwin</code></td>
+            <td><code>macos</code></td>
             <td><code>true</code> when OS running SABnzbd is macOS</td>
         </tr>
         <tr>
-            <td><code>nt</code></td>
+            <td><code>windows</code></td>
             <td><code>true</code> when OS running SABnzbd is Windows</td>
         </tr>
         <tr>
@@ -964,7 +968,6 @@ title: API reference
         "folders": [
             "Lost.Folder.BRRip.x264.1080p"
         ],
-        "cpumodel": "Intel(R) Core(TM) i5-4200U CPU @ 1.60GHz",
         "pystone": 88738,
         "loadavg": "",
         "downloaddir": "C:\\SABnzbd",
@@ -974,14 +977,13 @@ title: API reference
         "loglevel": "0",
         "logfile": "C:\\Users\\xxx\\AppData\\Local\\sabnzbd\\logs\\sabnzbd.log",
         "configfn": "C:\\Users\\xxx\\AppData\\Local\\sabnzbd\\sabnzbd.ini",
-        "nt": true,
-        "darwin": false,
+        "windows": true,
+        "macos": false,
         "confighelpuri": "https://sabnzbd.org/wiki/configuration/{{ site.wiki_version }}/",
         "uptime": "3h",
         "color_scheme": "Default",
         "webdir": "C:\\Program Files\\SABnzbd\\interfaces\\Glitter\\templates",
         "active_lang": "en",
-        "restart_req": false,
         "power_options": true,
         "pp_pause_event": false,
         "pid": 123,
@@ -1100,7 +1102,7 @@ title: API reference
             <td>Get the anonymized log file</td>
         </tr>
         <tr>
-            <td><a href="#del_config">del_config</a></td>
+            <td><a href="#del_config">del_config</a> <span class="label label-warning">Config lock</span></td>
             <td><span class="label label-primary">True/False</span> Delete a configuration item within the "servers", "rss", "categories", or "sorters" sections.</td>
         </tr>
         <tr>
@@ -1108,11 +1110,11 @@ title: API reference
             <td>Get value of configuration item</td>
         </tr>
         <tr>
-            <td><a href="#set_config">set_config</a></td>
+            <td><a href="#set_config">set_config</a> <span class="label label-warning">Config lock</span></td>
             <td>Set configuration item to value</td>
         </tr>
         <tr>
-            <td><a href="#set_config_default">set_config_default</a></td>
+            <td><a href="#set_config_default">set_config_default</a> <span class="label label-warning">Config lock</span></td>
             <td><span class="label label-primary">True/False</span> Reset config item to default value</td>
         </tr>
         <tr>
@@ -1144,20 +1146,36 @@ title: API reference
             <td><span class="label label-primary">True/False</span> Scan Watched Folder now</td>
         </tr>
         <tr>
+            <td><code>disconnect</code></td>
+            <td><span class="label label-primary">True/False</span> Disconnect from all news servers</td>
+        </tr>
+        <tr>
+            <td><a href="#cancel_pp">cancel_pp</a></td>
+            <td>Cancel post-processing of a job</td>
+        </tr>
+        <tr>
             <td><code>reset_quota</code></td>
             <td><span class="label label-primary">True/False</span> Reset the user defined quota to 0</td>
         </tr>
         <tr>
-            <td><code>mode=config</code> <code>name=set_apikey</code></td>
+            <td><code>mode=config</code> <code>name=set_apikey</code> <span class="label label-warning">Config lock</span></td>
             <td>Reset the API key, returns the new key</td>
         </tr>
         <tr>
-            <td><code>mode=config</code> <code>name=set_nzbkey</code></td>
+            <td><code>mode=config</code> <code>name=set_nzbkey</code> <span class="label label-warning">Config lock</span></td>
             <td>Reset the NZB key, returns the new key</td>
         </tr>
         <tr>
-            <td><code>mode=config</code> <code>name=regenerate_certs</code></td>
+            <td><code>mode=config</code> <code>name=regenerate_certs</code> <span class="label label-warning">Config lock</span></td>
             <td><span class="label label-primary">True/False</span> Regenerate the self-signed certificate for HTTPS connection to interface, requires SABnzbd restart to take effect</td>
+        </tr>
+        <tr>
+            <td><code>mode=config</code> <code><a href="#create_backup">name=create_backup</a></code> <span class="label label-warning">Config lock</span></td>
+            <td>Create a backup of the configuration, returns the location of the backup file</td>
+        </tr>
+        <tr>
+            <td><code>mode=config</code> <code><a href="#purge_log_files">name=purge_log_files</a></code> <span class="label label-warning">Config lock</span></td>
+            <td><span class="label label-primary">True/False</span> Remove all old log files, keeping only the current <code>sabnzbd.log</code></td>
         </tr>
         <tr>
             <td><a href="#translate">translate</a></td>
@@ -1165,6 +1183,21 @@ title: API reference
         </tr>
     </tbody>
 </table>
+
+<h2 id="cancel_pp">Cancel post-processing</h2>
+<p>Cancel the post-processing of one or more jobs, based on <code>nzo_id</code>. Direct Unpack is aborted and any external tool that is running for the job (such as <code>par2</code>, <code>unrar</code> or a user script) is terminated.</p>
+<p>The exact result depends on how far post-processing had progressed, since any stage that already completed is not undone. The remaining stages are skipped and the job ends up in the history with status <code>Failed</code> and the message <code>Post-processing was aborted</code>.</p>
+<pre><code>api?mode=cancel_pp&amp;value=NZO_ID</code></pre>
+<p>Cancelling multiple jobs:</p>
+<pre><code>api?mode=cancel_pp&amp;value=NZO_ID_1,NZO_ID_2,NZO_ID_3</code></pre>
+<p>Returns the <code>nzo_id</code>'s that were supplied:</p>
+{% highlight json %}
+{
+    "status": true,
+    "nzo_ids": ["SABnzbd_nzo_kyt1f0"]
+}
+{% endhighlight %}
+<p><span class="label label-warning">NOTE</span> Returns <code>error: item does not exist</code> if none of the supplied <code>nzo_id</code>'s are being post-processed.</p>
 
 <h2 id="get_cats">Get all categories</h2>
 <pre><code>api?mode=get_cats</code></pre>
@@ -1234,7 +1267,7 @@ title: API reference
 <p><span class="label label-warning">NOTE</span> This call ignores the <code>output</code> parameter, it will always serve the file as a download.</p>
 <pre><code>api?mode=showlog</code></pre>
 
-<h2 id="del_config">Delete a configuration item within the "servers", "rss", "categories", or "sorters" sections.</h2>
+<h2 id="del_config">Delete a configuration item within the "servers", "rss", "categories", or "sorters" sections. <span class="label label-warning">Config lock</span></h2>
 <p>Used to delete an entry from the limited sections.</p>
 
 Example of deleting a <code>servers</code> by keyword:
@@ -1260,7 +1293,7 @@ All elements in <code>misc</code> section:
 Example of filtering the server settings by keyword:
 <pre><code>api?mode=get_config&amp;section=servers&amp;keyword=ServerName</code></pre>
 
-<h2 id="set_config">Set config item</h2>
+<h2 id="set_config">Set config item <span class="label label-warning">Config lock</span></h2>
 <p>In order to change a setting, you need to provide the <code>section</code> and <code>keyword</code> of the setting:</p>
 <pre><code>api?mode=set_config&amp;section=SECTION&amp;keyword=KEYWORD&amp;value=VALUE</code></pre>
 <p>Returns the new setting when saved successfully.</p>
@@ -1278,9 +1311,26 @@ Example of filtering the server settings by keyword:
 <p>Sorter example:</p>
 <pre><code>api?mode=set_config&amp;section=sorters&amp;name=SORTER_NAME&amp;sort_string=VALUE_1&amp;sort_cats=VALUE_2&amp;sort_type=VALUE_3</code></pre>
 
-<h2 id="set_config_default">Reset config item to default value <span class="label label-primary">True/False</span></h2>
+<h2 id="set_config_default">Reset config item to default value <span class="label label-primary">True/False</span> <span class="label label-warning">Config lock</span></h2>
 <p><span class="label label-warning">NOTE</span> Currently only for settings in the <code>misc</code> section of the config. Can accept multiple keywords to reset.</p>
 <pre><code>api?mode=set_config_default&amp;keyword=SETTING_1&amp;keyword=SETTING_2</code></pre>
+
+<h2 id="create_backup">Create a configuration backup <span class="label label-warning">Config lock</span></h2>
+<p>Stores the configuration and the administration files in a zip file. The file is written to the Backup Folder set in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Config -&gt; Folders</a>, or to the Completed Download Folder when no Backup Folder is configured.</p>
+<pre><code>api?mode=config&amp;name=create_backup</code></pre>
+<p>Returns whether the backup succeeded and the full path of the created file:</p>
+{% highlight json %}
+{
+    "value": {
+        "result": true,
+        "message": "/home/user/backup/sabnzbd_backup_{{ site.latest_stable }}_2026.08.04_11.22.33.zip"
+    }
+}
+{% endhighlight %}
+
+<h2 id="purge_log_files">Purge the log files <span class="label label-primary">True/False</span> <span class="label label-warning">Config lock</span></h2>
+<p>Performs a rollover of the current log file and then removes all older log files, keeping only <code>sabnzbd.log</code>.</p>
+<pre><code>api?mode=config&amp;name=purge_log_files</code></pre>
 
 <h2 id="warnings">Get all active warnings</h2>
 <pre><code>api?mode=warnings</code></pre>
