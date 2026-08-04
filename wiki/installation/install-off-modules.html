@@ -88,13 +88,7 @@ This will store the venv with the currently installed modules, ready to be activ
 Optimized versions of <code>par2</code> can also be installed, read more <a href="/wiki/installation/par2cmdline-turbo">here</a>.
 </p>
 
-
-<h3 id="toc5">Optional utilities</h3>
-<h4><code>unzip</code></h4>
-<p>Any <code>unzip</code> command that supports passwords (via <code>-P</code> option) will function.<br>
-Can usually be installed via package managers, alternatively InfoZip's unzip program can be obtained <a href="http://gnuwin32.sourceforge.net/packages/unzip.htm" target="_blank">here</a>.
-</p>
-
+<h3 id="toc5">Optional utilities and features</h3>
 <h4><code>7zip</code></h4>
 <p>7zip can be obtained via package managers, the command that SABnzbd looks for is <code>7za</code> or <code>7z</code>.<br>
 The package is called <code>7zip</code> or can be obtained from the <a href="http://www.7-zip.org/" target="_blank">official website</a>.<br>
@@ -102,10 +96,19 @@ The package is called <code>7zip</code> or can be obtained from the <a href="htt
 </p>
 
 <h4><code>nice</code></h4>
-<p>To adjust the <b>CPU priority</b> of external tools that SABnzbd runs (ex: par / unrar)</p>
+<p>To adjust the <b>CPU priority</b> of external tools that SABnzbd runs (par, unrar). Part of <code>coreutils</code>, installed by default on most Linux systems.</p>
 
 <h4><code>ionice</code></h4>
-<p>To adjust the <b>disk priority</b> of external tools that SABnzbd runs (ex: par / unrar)</p>
+<p>To adjust the <b>disk priority</b> of external tools that SABnzbd runs (par, unrar). Part of <code>util-linux</code>, installed by default on most Linux systems.</p>
 
-<h4><code>notify-osd</code></h4>
-<p>NotifyOSD provides desktop pop-up notifications. Available through package managers as <code>notify-osd</code>.</p>
+<h4><code>Desktop notifications</code></h4>
+<p>Notify2 provides desktop pop-up notifications. Available through package managers as <code>python3-notify2</code>.</p>
+
+<h4><code>Tray icon</code></h4>
+<p>SABnzbd includes support for multiple tray icon backends: <b>AppIndicator</b>, <b>Xapp</b>, and the older <b>Gtk.StatusIcon</b>. The code tries them in that order, so should you. The backends are available through package managers under a variety of names, including <code>gir1.2-ayatanaappindicator3-0.1</code>, <code>libappindicator</code> or <code>libayatana-appindicator</code> for AppIndicator, <code>gir1.2-xapp-1.0</code>, <code>libxapps-gir</code> or <code>python3-xapp</code> for Xapp, and <code>python3-gi</code> for the venerable StatusIcon. Some desktop environment may require an extension such as <code>gnome-shell-extension-appindicator</code> to display tray icons.</p>
+
+<h4><code>Automatic service discovery</code></h4>
+<p>Automatic discovery of the SABnzbd service is supported via Avahi's DNS-SD libary ("DNS-based Service Discovery", compatible with Apple's "Bonjour" and similar Zeroconf implementations), as well as via SSDP ("Simple Service Discovery Protocol"). When enabled, SABnzbd will announce itself on the local network. Bonjour/Zeroconf support requires Avahi and a compatibility library (<i>libdns_sd</i>); the latter is available through package managers as <code>libavahi-compat-libdnssd1</code>, <code>avahi-compat-libdns_sd</code> or similar.</p>
+
+<h4><code>Power management</code></h4>
+<p>System power management is possible via <b>dbus-python</b>, enabling funtionality such as shutting down the system on queue finish. Available through package managers as <code>python3-dbus</code>.</p>
