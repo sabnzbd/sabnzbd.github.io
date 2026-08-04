@@ -57,8 +57,8 @@ title: API reference
             <td>Resume whole queue</td>
         </tr>
         <tr>
-            <td><a href="#speedlimit">speedlimit</a> <span class="label label-warning">Config lock</span></td>
-            <td>Set speedlimit</td>
+            <td><a href="#speedlimit">speedlimit</a></td>
+            <td><span class="label label-warning">Config lock</span> Set speedlimit</td>
         </tr>
         <tr>
             <td><a href="#change_complete_action">change_complete_action</a></td>
@@ -1102,20 +1102,20 @@ title: API reference
             <td>Get the anonymized log file</td>
         </tr>
         <tr>
-            <td><a href="#del_config">del_config</a> <span class="label label-warning">Config lock</span></td>
-            <td><span class="label label-primary">True/False</span> Delete a configuration item within the "servers", "rss", "categories", or "sorters" sections.</td>
+            <td><a href="#del_config">del_config</a></td>
+            <td><span class="label label-primary">True/False</span> <span class="label label-warning">Config lock</span> Delete a configuration item within the "servers", "rss", "categories", or "sorters" sections.</td>
         </tr>
         <tr>
             <td><a href="#get_config">get_config</a></td>
             <td>Get value of configuration item</td>
         </tr>
         <tr>
-            <td><a href="#set_config">set_config</a> <span class="label label-warning">Config lock</span></td>
-            <td>Set configuration item to value</td>
+            <td><a href="#set_config">set_config</a></td>
+            <td><span class="label label-warning">Config lock</span> Set configuration item to value</td>
         </tr>
         <tr>
-            <td><a href="#set_config_default">set_config_default</a> <span class="label label-warning">Config lock</span></td>
-            <td><span class="label label-primary">True/False</span> Reset config item to default value</td>
+            <td><a href="#set_config_default">set_config_default</a></td>
+            <td><span class="label label-primary">True/False</span> <span class="label label-warning">Config lock</span> Reset config item to default value</td>
         </tr>
         <tr>
             <td><code>shutdown</code></td>
@@ -1158,24 +1158,24 @@ title: API reference
             <td><span class="label label-primary">True/False</span> Reset the user defined quota to 0</td>
         </tr>
         <tr>
-            <td><code>mode=config</code> <code>name=set_apikey</code> <span class="label label-warning">Config lock</span></td>
-            <td>Reset the API key, returns the new key</td>
+            <td><code>mode=config</code> <code>name=set_apikey</code></td>
+            <td><span class="label label-warning">Config lock</span> Reset the API key, returns the new key</td>
         </tr>
         <tr>
-            <td><code>mode=config</code> <code>name=set_nzbkey</code> <span class="label label-warning">Config lock</span></td>
-            <td>Reset the NZB key, returns the new key</td>
+            <td><code>mode=config</code> <code>name=set_nzbkey</code></td>
+            <td><span class="label label-warning">Config lock</span> Reset the NZB key, returns the new key</td>
         </tr>
         <tr>
-            <td><code>mode=config</code> <code>name=regenerate_certs</code> <span class="label label-warning">Config lock</span></td>
-            <td><span class="label label-primary">True/False</span> Regenerate the self-signed certificate for HTTPS connection to interface, requires SABnzbd restart to take effect</td>
+            <td><code>mode=config</code> <code>name=regenerate_certs</code></td>
+            <td><span class="label label-primary">True/False</span> <span class="label label-warning">Config lock</span> Regenerate the self-signed certificate for HTTPS connection to interface, requires SABnzbd restart to take effect</td>
         </tr>
         <tr>
-            <td><code>mode=config</code> <code><a href="#create_backup">name=create_backup</a></code> <span class="label label-warning">Config lock</span></td>
-            <td>Create a backup of the configuration, returns the location of the backup file</td>
+            <td><code>mode=config</code> <code><a href="#create_backup">name=create_backup</a></code></td>
+            <td><span class="label label-warning">Config lock</span> Create a backup of the configuration, returns the location of the backup file</td>
         </tr>
         <tr>
-            <td><code>mode=config</code> <code><a href="#purge_log_files">name=purge_log_files</a></code> <span class="label label-warning">Config lock</span></td>
-            <td><span class="label label-primary">True/False</span> Remove all old log files, keeping only the current <code>sabnzbd.log</code></td>
+            <td><code>mode=config</code> <code><a href="#purge_log_files">name=purge_log_files</a></code></td>
+            <td><span class="label label-primary">True/False</span> <span class="label label-warning">Config lock</span> Remove all old log files, keeping only the current <code>sabnzbd.log</code></td>
         </tr>
         <tr>
             <td><a href="#translate">translate</a></td>
