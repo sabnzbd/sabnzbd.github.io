@@ -27,15 +27,15 @@ The default value of **2** enables light pipelining out of the box. Ping time to
 * **Disable pipelining (1)**: Safe fallback for servers that do not support pipelining
 * **Default (2)**: Light pipelining, works with most servers
 * **Low latency connections (< 20 ms)**: The default of 2 is often sufficient; increasing the number of connections has more impact than raising pipelining
-* **Higher latency connections (> 50 ms)**: Try values of 5–10; pipelining has the largest impact here
-* **Fast internet connections (> 1 Gbit)**: Try 5–10, combined with 20 or more connections
+* **Higher latency connections (> 50 ms)**: Try values of 5-10; pipelining has the largest impact here
+* **Fast internet connections (> 1 Gbit)**: Try 5-10, combined with 20 or more connections
 
 <span class="label label-warning">NOTE</span> The pipeline depth should be tuned carefully. Values that are too high can reduce performance due to increased overhead and the amount of responses buffered. Increase gradually while monitoring your speeds. Also be mindful of server connection limits, exceeding them causes errors.
 
 ## Troubleshooting
 
 **Speeds didn't improve:**
-* For high-latency connections (> 50ms), try increasing `Articles per request` to 5–10, this has the largest impact
+* For high-latency connections (> 50ms), try increasing `Articles per request` to 5-10, this has the largest impact
 * For low-latency connections, try increasing the number of connections instead
 * Verify your server supports pipelining (check with your provider)
 * Check if your connection is already saturated

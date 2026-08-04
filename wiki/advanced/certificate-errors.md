@@ -49,7 +49,7 @@ News server problems
 3. Hard but secure: Test the status of your news server online (above) or check out the [News servers with SSL/TLS overview](https://www.appelboor.com/newsservers/newsservers-with-SSL.html).
 
     1. If the test (or overview) shows an error message such as `OK NOK NOK` or `NOK NOK NOK`, the problem is on the side of the news server. You can ask the news server provider to fix this. But, they could deny there is a problem.
-    2. If the test says `OK OK OK` or `OK OK NOK`, then the problem is local (i.e. your computer/NAS): incorrect (root) certificates, a virusscanner doing strange things, or something else. This is not something SABnzbd can solve for you. And the solutions are OS-dependent.
+    2. If the test says `OK OK OK` or `OK OK NOK`, then the problem is local (i.e. your computer/NAS): incorrect (root) certificates, a virus scanner doing strange things, or something else. This is not something SABnzbd can solve for you. And the solutions are OS-dependent.
 
 * * *
 
@@ -84,7 +84,7 @@ News server problems
 NZB / RSS Index site problems
 -----------------------------
 
-NZB / RSS Index sites are HTTPS sites. HTTPS/SSL/TLS problems on the server side are (in 2017) uncommon because web browsers have been rejecting incorrect SSL/TLS setups for some time.
+NZB / RSS Index sites are HTTPS sites. HTTPS/SSL/TLS problems on the server side are uncommon, because web browsers have been rejecting incorrect SSL/TLS setups for a long time.
 
 **Q: I get a certificate error trying to read a RSS or NZB**
 
@@ -115,5 +115,5 @@ Tools to test SSL/TLS news servers and websites
 * Tool `curl`
 * Tool `wget`
 * Python
-    * `python -c "import urllib2; response = urllib2.urlopen('https://api.oznzb.com/') "`
+    * `python3 -c "import urllib.request; urllib.request.urlopen('https://api.oznzb.com/')"`
 

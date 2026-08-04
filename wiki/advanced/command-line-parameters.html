@@ -43,9 +43,8 @@ title: Command Line Parameters
                 <code>--templates &lt;template&gt;</code>
             </td>
             <td>
-                Select another set of user interface templates. Use a name of a set in the <code>interfaces</code>
-                folder.<br>
-                The name of a standard interface ("Glitter", "Plush" or "smpl")
+                Select another set of user interface templates. Use the name of a set in the <code>interfaces</code>
+                folder. The standard interface is "Glitter".
             </td>
         </tr>
         <tr>
@@ -76,7 +75,16 @@ title: Command Line Parameters
             </td>
             <td>
                 <code>0</code> = Do not show the browser (recommended for servers).<br>
-                <code>1</code> = SABnzbd will start the system's default browser, showing the GUI of SABnznd (default).
+                <code>1</code> = SABnzbd will start the system's default browser, showing the GUI of SABnzbd (default).
+            </td>
+        </tr>
+        <tr>
+            <td><code>-n</code></td>
+            <td>
+                <code>--nobrowser</code>
+            </td>
+            <td>
+                Do not start the browser. Same as <code>--browser 0</code>, but the setting is not stored in the INI file.
             </td>
         </tr>
         <tr>
@@ -94,7 +102,7 @@ title: Command Line Parameters
                 <code>--pid &lt;path-file&gt;</code>
             </td>
             <td>
-                Create a file with the PID (process number) of the SABnznbd process. The file will exists as long as the instance of SABnzbd lives (unless it crashes). A full directory path is required. The file name will be <code>sabnzbd-port.pid</code> where
+                Create a file with the PID (process number) of the SABnzbd process. The file will exist as long as the instance of SABnzbd lives (unless it crashes). A full directory path is required. The file name will be <code>sabnzbd-port.pid</code> where
                 <code>port</code>
                 is the port number used for the web server. [Only Unix/macOS]
             </td>
@@ -114,7 +122,7 @@ title: Command Line Parameters
                 <code>--help</code>
             </td>
             <td>
-                Show short explanation of the commandline options and exit program (won't work with Win32 binary)
+                Show short explanation of the command line options and exit program. On Windows, use <code>SABnzbd-console.exe</code> to see the output.
             </td>
         </tr>
         <tr>
@@ -123,7 +131,7 @@ title: Command Line Parameters
                 <code>--version</code>
             </td>
             <td>
-                Show SABnzbd's version and exit program (won't work with Win32 binary)
+                Show SABnzbd's version and exit program. On Windows, use <code>SABnzbd-console.exe</code> to see the output.
             </td>
         </tr>
         <tr>

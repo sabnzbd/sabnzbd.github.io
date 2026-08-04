@@ -51,18 +51,18 @@ Direct Write relies on the following settings:
 
 1. **Direct Write switch**
 
-   - Location: [Config-&gt;Special](/wiki/configuration/{{ site.wiki_version }}/special#toc0), option <code>direct_write</code>.
+   - Location: [Config->Special](/wiki/configuration/{{ site.wiki_version }}/special#toc0), option `direct_write`.
    - Enable this to allow SABnzbd to use Direct Write when the filesystem supports it.
 
 2. **Article Cache Limit** (recommended)
 
-   - Location: [Config-&gt;General](/wiki/configuration/{{ site.wiki_version }}/general#toc2), option <strong>Article Cache Limit</strong>.
+   - Location: [Config->General](/wiki/configuration/{{ site.wiki_version }}/general#toc2), option **Article Cache Limit**.
    - While Direct Write can operate without a cache, configuring one is recommended as it reduces disk activity by allowing SABnzbd to batch articles into larger writes.
    - Running without a cache is only recommended on SSD/NVMe storage.
 
    Recommended values:
 
-   - For typical desktop systems: start with <code>500M</code>–<code>1000M</code>.
+   - For typical desktop systems: start with `500M` to `1000M`.
    - For very fast lines and SSD/NVMe storage: consider higher values if you have free RAM.
    - As a rule of thumb, try to size the cache so that it can hold at least one of your "typical" files in memory.
 
@@ -79,7 +79,7 @@ Direct Write depends on the ability to create **sparse files** on the destinatio
 If creating a sparse file fails, SABnzbd will:
 
 - Log a debug message that the sparse call failed.
-- Automatically disable <code>direct_write</code> in the configuration.
+- Automatically disable `direct_write` in the configuration.
 - Fall back to the normal append-based write mode for subsequent downloads.
 
 In practice this means:
@@ -95,7 +95,7 @@ When an Article Cache is configured, Direct Write and the cache work together:
 - SABnzbd uses internal thresholds (based on the configured cache limit and time since last write) to decide when to flush data to disk.
 - By default SABnzbd prefers sequential writes from the cache, only performing non-contiguous writes when cache pressure forces it.
 
-When no Article Cache is configured (set to <code>0</code>), Direct Write operates independently by writing each decoded article directly to its position in the sparse file. This avoids the need for temporary files but produces many small random writes. This mode is only recommended on SSD/NVMe storage where random write performance is not a concern.
+When no Article Cache is configured (set to `0`), Direct Write operates independently by writing each decoded article directly to its position in the sparse file. This avoids the need for temporary files but produces many small random writes. This mode is only recommended on SSD/NVMe storage where random write performance is not a concern.
 
 <span class="label label-info">TIP</span> For high-speed setups, first tune the Article Cache Limit (see [High speed Downloading](/wiki/advanced/highspeed-downloading)), then enable Direct Write and monitor CPU, disk and RAM usage in the Status window.
 
@@ -104,6 +104,6 @@ When no Article Cache is configured (set to <code>0</code>), Direct Write operat
 If you enable Direct Write and do not observe any change in disk activity or performance:
 
 1. Verify that the Temporary and Completed folders are on local storage, not a network share.
-2. Check the SABnzbd logs (in <strong>Debug</strong> level) for messages about sparse file creation failures or Direct Write being disabled.
+2. Check the SABnzbd logs (in **Debug** level) for messages about sparse file creation failures or Direct Write being disabled.
 3. If using an HDD, make sure the **Article Cache Limit** is configured to a reasonable value to avoid excessive random writes.
-4. If problems persist, you can safely disable <code>direct_write</code> again; SABnzbd will continue to work using the standard assembly method.
+4. If problems persist, you can safely disable `direct_write` again; SABnzbd will continue to work using the standard assembly method.

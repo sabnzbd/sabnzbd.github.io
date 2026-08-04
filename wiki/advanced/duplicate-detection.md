@@ -2,6 +2,7 @@
 title: Duplicate detection
 redirect_from:
     - /wiki/duplicate-detection
+    - /wiki/extra/duplicate-detection
 ---
 
 # Introduction

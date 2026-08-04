@@ -1,23 +1,25 @@
-# IPv6 Staging
+---
+title: IPv6 Staging
+---
 
-With ipv6-staging, you can activate special IPv6 features in SABnzbd that are not yet mainstream.
+With `ipv6_staging`, you can activate special IPv6 features in SABnzbd that are not yet mainstream.
 
-You can find ipv6-staging in Config -> Special.
+You can find `ipv6_staging` on the [Special](/wiki/configuration/{{ site.wiki_version }}/special) page of the Config.
 
 ## Features
 
-### Enrich newsservers with IPv6 connectivity.
+### Enrich news servers with IPv6 connectivity
 
-Some usenet providers have an IPv4-only newsserver, and a separate IPv6-only newsserver. 
-To be more exact: it's probably the same newsserver, but there is an IPv4-ony name (FQDN), and an IPV6-only.
-For example: news.eweka.nl and news6.eweka.nl. 
+Some usenet providers have an IPv4-only news server, and a separate IPv6-only news server.
+To be more exact: it's probably the same news server, but there is an IPv4-only name (FQDN), and an IPv6-only one.
+For example: `news.eweka.nl` and `news6.eweka.nl`.
 
-These providers want the user to specify this separate newsserver by hand. 
-However, this is more work for the user (a separate entry in the Server list), and it's annoying if the user has a laptop which sometimes has and sometimes hasn't got IPv6-ocnnectivity.
+These providers want the user to specify this separate news server by hand.
+However, this is more work for the user (a separate entry in the Server list), and it's annoying if the user has a laptop which sometimes has and sometimes hasn't got IPv6 connectivity.
 
-SABnzbd solves this with this ipv6-staging feature: If you turn it on, SABnzbd will enrich 
-the IPv4-only name with the IPv6-only name (for well-known nesservers).
-Combined with HappyEyeballs, SABnzbd will find the connection that works quickest.
+SABnzbd solves this with the `ipv6_staging` feature: if you turn it on, SABnzbd will enrich
+the IPv4-only name with the IPv6-only name (for well-known news servers).
+Combined with Happy Eyeballs, SABnzbd will find the connection that works quickest.
 This is fail-safe: if there is no IPv6, or it's slow, SABnzbd will use IPv4.
 
 What is the advantage of using IPv6? With IPv6, you have no NAT (and no CGNAT), so the IPv6 connection might be faster.
