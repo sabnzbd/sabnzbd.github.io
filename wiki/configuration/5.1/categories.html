@@ -10,8 +10,8 @@ title: Categories
 <ul>
     <li>What priority to give them. Note that jobs with "Force" priority will ignore the paused state of the queue.</li>
     <li>How the file should be processed (see <a href="/wiki/extra/job-options">Job Options</a>).</li>
-    <li>The user-script to execute after the download (Scripts folders defined in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Folders</a>).</li>
-    <li>The Folder or full path for final storage (relative folders are based of your complete folder, full paths are also allowed). <br>Ending the path with an asterisk <code>*</code> will prevent creation of job folders.</li>
+    <li>The user-script to execute after the download (from the Scripts Folder defined in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Folders</a>).</li>
+    <li>The folder or full path for final storage. A relative folder is placed inside your Completed Download Folder; a full path is used as-is. <br>Ending the path with an asterisk <code>*</code> will prevent creation of job folders.</li>
 </ul>
 
 <p>
@@ -30,8 +30,8 @@ title: Categories
 
 <h3 id="toc0">Indexer tag or Group field</h3>
 <p>
-    By default, downloads are automatically categorized by the indexer providing a category inside the nzb or the newsgroup in which the job is located (i.e., <code>alt.binaries.teevee</code>). Categories can be re-ordered to set the order in which matching should happen. For example this way you can put <code>Movies &gt; 4K</code> in a special category and the rest of the movies in a categories with just the indexer tag <code>Movies</code>.
+    By default, downloads are automatically categorized by the indexer providing a category inside the nzb or the newsgroup in which the job is located (i.e., <code>alt.binaries.teevee</code>). Categories can be re-ordered to set the order in which matching should happen. For example, this lets you put <code>Movies &gt; 4K</code> in a special category and the rest of the movies in a category with just the indexer tag <code>Movies</code>.
 </p>
 <p>
-    Basic wildcards are supported. For example, some <a href="/wiki/introduction/nzb-sources">indexers</a> uses sub-categories like <code>TV &gt; HD</code>. Instead of listing all possible categories, you may simply use <code>TV*</code>. The same applies to newsgroups (i.e., <code>alt.bin*</code>).
+    Basic wildcards are supported. For example, some <a href="/wiki/introduction/nzb-sources">indexers</a> use sub-categories like <code>TV &gt; HD</code>. Instead of listing all possible categories, you may simply use <code>TV*</code>. The same applies to newsgroups (i.e., <code>alt.bin*</code>).
 </p>
