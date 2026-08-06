@@ -29,7 +29,7 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Propagation delay</strong></td>
-            <td>If you experience very young posts failing due to missing blocks your server might still be in the process of receiving the posts. Delaying the these very young posts a few minutes might solve these issues. Posts will be paused until they are at least this age. <br>Setting job priority to Force will skip the delay.</td>
+            <td>If you experience very young posts failing due to missing blocks, your server might still be in the process of receiving the posts. Delaying these very young posts a few minutes might solve these issues. Posts will be paused until they are at least this age. <br>Setting job priority to Force will skip the delay.</td>
         </tr>
         <tr>
             <td><strong>Only get articles for top of queue</strong></td>
@@ -37,12 +37,12 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Check before download</strong><br><span class="label label-primary">Advanced</span></td>
-            <td><p>To prevent wasteful downloading, you can let SABnzbd check the presence of a job on the server, before actually downloading it. If less than 100.2% of the total available data (including par2 files) is available, the job will be send to History as failed. When you click "Retry", SABnzbd will attempt the download anyway. </p>
+            <td><p>To prevent wasteful downloading, you can let SABnzbd check the presence of a job on the server, before actually downloading it. If less than 100.2% of the total available data (including par2 files) is available, the job will be sent to History as failed. When you click "Retry", SABnzbd will attempt the download anyway. </p>
             <p><span class="label label-warning">NOTE</span> The check slows down the total download considerably, use only when you're not in a hurry but wish not to waste your quota instead. Also it cannot be completely reliable, due to the way some servers remove posts.</p></td>
         </tr>
         <tr>
             <td><strong>Abort jobs that cannot be completed</strong></td>
-            <td>If on, when during download it becomes clear that it can never be repaired, it will be aborted and send to the History as failed. Should you retry the job, the check will not be done again, but the whole job will be tried instead.</td>
+            <td>If on, when it becomes clear during download that a job can never be repaired, it will be aborted and sent to the History as failed. Should you retry the job, the check will not be done again, but the whole job will be tried instead.</td>
         </tr>
         <tr>
             <td><strong>Identical download detection</strong></td>
@@ -76,16 +76,19 @@ title: Switches
             <span class="label label-warning">NOTE</span> Beware that custom sorting of the queue is lost every time a new job is added.
             <ul>
                 <li><code>Default</code> = No auto sorting.</li>
-                <li><code>Sort by % downloaded</code> = Sort jobs by percentage downloaded (re-sorts every 30 seconds).</li>
-                <li><code>Sort by Age</code> = Sort jobs by their usenet date.</li>
-                <li><code>Sort by Name</code> = Sort jobs by their Name (not case sensitive).</li>
-                <li><code>Sort by Size</code> = Sort jobs by their Size/Bytes. </li>
+                <li><code>Sort by % downloaded</code> = Sort jobs by percentage downloaded (most to least).</li>
+                <li><code>Sort by Remaining Size</code> = Sort jobs by the number of bytes still to download (smallest to largest).</li>
+                <li><code>Sort by Age</code> = Sort jobs by their usenet date (oldest to newest, or newest to oldest).</li>
+                <li><code>Sort by Name</code> = Sort jobs by their Name, not case sensitive (A to Z, or Z to A).</li>
+                <li><code>Sort by Size</code> = Sort jobs by their Size/Bytes (smallest to largest, or largest to smallest).</li>
             </ul>
+            Each of Age, Name and Size can be sorted in either direction.<br>
+            <span class="label label-warning">NOTE</span> When <code>Sort by % downloaded</code> or <code>Sort by Remaining Size</code> is selected, the queue re-sorts every 30 seconds as jobs progress.
             </td>
         </tr>
         <tr>
             <td><strong>Direct Unpack</strong></td>
-            <td>Jobs will start unpacking during the downloading to reduce post-processing time. Only works for jobs that do not need repair and do not have strongly obfuscated filenames.<br> This feature is enabled automatically when your disk-speed is greater than 40MB/s. It will not be enabled automatically again if you manual disable it.</td>
+            <td>Jobs will start unpacking during the downloading to reduce post-processing time. Only works for jobs that do not need repair and do not have strongly obfuscated filenames.<br> This feature is enabled automatically when your disk-speed is greater than 100MB/s. It will not be enabled automatically again if you manual disable it.</td>
         </tr>
     </tbody>
 </table>
@@ -110,11 +113,11 @@ title: Switches
             <td><strong>Extra Par2 parameters</strong><br><span class="label label-primary">Advanced</span></td>
             <td>
                 <p>Extra arguments that will be passed when running <code>par2</code> for verification and repair.</p>
-                <p>Please make sure that you use `par2cmdline-turbo`. On the first page of the Config a warning will be displayed if it is not installed. If you don't see a warning there, you already have it!</p>
+                <p>Please make sure that you use <code>par2cmdline-turbo</code>. On the first page of the Config a warning will be displayed if it is not installed. If you don't see a warning there, you already have it!</p>
                 <ul>
-                    <li><code>-m</code> Set the maximum amount of memory it allowed to use.</li>
-                    <li><code>-t</code> Limit how many CPU threads it is allowed to use. By default it will use all available threads. You can use <code>-t1</code> to only force it to be single-threaded.</li>
-                    <li><code>-T</code> When verifying files, by default it will scan 2 files at once. If you have an older system with physical drives (HDD's), you can set this to <code>-T1</code>. If you have a very fast SDD, you could set this to <code>-T10</code>.</li>
+                    <li><code>-m</code> Set the maximum amount of memory it is allowed to use.</li>
+                    <li><code>-t</code> Limit how many CPU threads it is allowed to use. By default it will use all available threads. You can use <code>-t1</code> to force it to be single-threaded.</li>
+                    <li><code>-T</code> When verifying files, by default it will scan 2 files at once. If you have an older system with physical drives (HDDs), you can set this to <code>-T1</code>. If you have a very fast SSD, you could set this to <code>-T10</code>.</li>
                 </ul>
             </td>
         </tr>
@@ -198,10 +201,11 @@ title: Switches
             <td>Automatically delete <strong>completed</strong> jobs from History when new jobs are added or every day at midnight.
 
             <ul>
+                <li><code>Keep all jobs</code> = No automatic retention; all completed jobs stay in the History. This is the default.</li>
                 <li><code>Move jobs to the archive if the history exceeds specified number of jobs</code> = Specify exact amount of jobs to keep, moving the oldest ones to the archive.</li>
-                <li><code>Delete jobs if the history exceeds specified number of jobs</code> = Specify exact amount of jobs to keep, removing the oldest ones.</li>
+                <li><code>Delete jobs if the history and archive exceeds specified number of jobs</code> = Specify exact amount of jobs to keep, removing the oldest ones from both the history and the archive.</li>
                 <li><code>Move jobs to the archive after specified number of days</code> = Move jobs to the archive when they are older than the set amount of days.</li>
-                <li><code>Delete jobs after specified number of days</code> = Delete jobs automatically when they are older than the set amount of days.</li>
+                <li><code>Delete jobs from the history and archive after specified number of days</code> = Delete jobs from both the history and the archive when they are older than the set amount of days.</li>
                 <li><code>Move all completed jobs to archive</code> = All jobs are moved to the archive.</li>
                 <li><code>Delete all completed jobs</code> = No jobs are saved in the History.</li>
             </ul>
@@ -240,7 +244,7 @@ title: Switches
     </tbody>
 </table>
 <h2 id="toc5">Quota</h2>
-<p id="quota">If you're unlucky enough to have an ISP that uses strict download caps, you may want to set a monthly quota for SABnzb.</p>
+<p id="quota">If you're unlucky enough to have an ISP that uses strict download caps, you may want to set a monthly quota for SABnzbd.</p>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
@@ -249,7 +253,7 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Quota Period</strong></td>
-            <td>Daily, Weekly or Monthly quota</td>
+            <td>Daily, Weekly, Monthly or Manual quota. With <code>Manual</code> the quota is never reset automatically; you reset it yourself.</td>
         </tr>
         <tr>
             <td><strong>Reset day</strong></td>
@@ -264,11 +268,11 @@ title: Switches
         </tr>
         <tr>
             <td><strong>Auto resume</strong></td>
-            <td>Set this on when you want to resume downloading once the quota has been reset. Otherwise you will have to resume manually</td>
+            <td>Set this on when you want to resume downloading once the quota has been reset. Otherwise you will have to resume manually.</td>
         </tr>
     </tbody>
 </table>
-<p><strong>Please note file following:</strong></p>
+<p><strong>Please note the following:</strong></p>
 <ul>
     <li>Jobs with <code>Force</code> priority will ignore the paused state.</li>
     <li>Don't set the quota too high. Leave room for other internet use.</li>
