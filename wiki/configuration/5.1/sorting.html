@@ -103,7 +103,7 @@ title: Sorting
         <tr>
             <td></td>
             <td>%_title</td>
-            <td>Show.or.Movie_Name</td>
+            <td>Show_or_Movie_Name</td>
         </tr>
         <tr>
             <td>Resolution</td>
@@ -124,6 +124,26 @@ title: Sorting
             <td></td>
             <td>%0decade</td>
             <td>2020</td>
+        </tr>
+        <tr>
+            <td>Month</td>
+            <td>%m</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%0m</td>
+            <td>01</td>
+        </tr>
+        <tr>
+            <td>Day</td>
+            <td>%d</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>%0d</td>
+            <td>02</td>
         </tr>
         <tr>
             <td>Season Number</td>
@@ -292,14 +312,14 @@ title: Sorting
     Example: 00/Movie Name (2000).mkv
 </p>
 <p><strong>Show Name folder:</strong><br>
-    <code>%t/%t - %y-%0m-%0d - %desc.%ext</code><br>
+    <code>%title/%title - %y-%0m-%0d - %en.%ext</code><br>
     Example: Show Name/Show Name - 2009-01-02 - Episode Name.mkv
 </p>
 <p><strong>Year-Month folders:</strong><br>
-    <code>%y-%0m/%t - %y-%0m-%0d - %desc.%ext</code><br>
+    <code>%y-%0m/%title - %y-%0m-%0d - %en.%ext</code><br>
     Example: 2009-01/Show Name - 2009-01-02 - Episode Name.mkv
 </p>
 <p><strong>Daily folders:</strong><br>
-    <code>%y-%0m-%0d/%t - %y-%0m-%0d - %desc.%ext</code><br>
+    <code>%y-%0m-%0d/%title - %y-%0m-%0d - %en.%ext</code><br>
     Example: 2009-01-02/Show Name - 2009-01-02 - Episode Name.mkv
 </p>
