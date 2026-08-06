@@ -9,7 +9,7 @@ title: RSS
     Each feed is analyzed using filters.
     A filter looks for a text-pattern in the title of entries and will reject or accept a job based on that pattern.
     A filter "matches" a title if the filter text is found inside that title.
-    You can add <code>*</code> to match arbitrary parts of the title or <code>?</code> for one arbitrary character at that place.
+    You can add <code>*</code> to match any part of the title, or <code>?</code> to match a single character in that position.
     The filters are analyzed in order and the first one matched will be selected.
 </p>
 
@@ -30,15 +30,15 @@ The making of My first baby steps xvid hdtv</code>
 </pre>
 </div>
 
-<p>Now, suppose you want to get all <code>My ... first steps</code> episodes, but only when marked <code>hdtv</code> and you're not interested in <code>Making of</code>:</p>
+<p>Now, suppose you want to get all <code>My first ... steps</code> episodes, but only when marked <code>hdtv</code>, and you're not interested in the <code>Making of</code>:</p>
 <pre><code>Reject || making of
 Accept || first*steps*hdtv</code>
 </pre>
 
 <p>The <code>Reject</code> filter should be placed first, otherwise the <code>Accept</code> filter will also pick the <code>Making of</code>.</p>
 <p>
-    It's also possible to setup a <code>Required</code> filter.
-    This means that the following filters are only applied when a title matches the <code>Required</code> filter.<br>
+    It's also possible to set up a <code>Requires</code> filter.
+    This means that the following filters are only applied when a title matches the <code>Requires</code> filter.<br>
 </p>
 <p>
     For example: if you are only interested in <code>hdtv</code> format, you would create filters like this:
@@ -105,7 +105,7 @@ Accept || second*steps</code>
             <td><code>From Show SxxEyy</code></td>
             <td>
                 Accept this and newer episodes of this specific show. <br>Accept if matched. If not matched, go to next filter.<br>
-                Directly accepts job, this permits multiple shows in a single feed.
+                Because it accepts the job directly, you can track multiple shows in a single feed.
             </td>
         </tr>
         <tr>
@@ -122,7 +122,7 @@ Accept || second*steps</code>
 
 <p><span class="label label-danger">WARNING</span> The <code>,</code> (comma) and <code>#</code> characters are <strong>not</strong> allowed.</p>
 <p><span class="label label-warning">NOTE</span> The <code>From SxxEyy</code> and <code>From Show SxxEyy</code> will only work when SABnzbd recognizes the season/episode notation in the job title. Wildcards (<code>*</code> and <code>?</code>) are not supported.</p>
-<p><span class="label label-warning">NOTE</span> The <code>RequireCat</code> only works for indexers whose categories have been mapped to your <a href="/wiki/configuration/{{ site.wiki_version }}/categories">own</a>.</p>
+<p><span class="label label-warning">NOTE</span> The <code>RequiresCat</code> only works for indexers whose categories have been mapped to your <a href="/wiki/configuration/{{ site.wiki_version }}/categories">own</a>.</p>
 <p><span class="label label-warning">NOTE</span> Some websites require the inclusion of authentication details in the URL. Please check with your feed provider.</p>
 
 
@@ -130,23 +130,20 @@ Accept || second*steps</code>
 <table class="table table-bordered table-hover">
     <tbody>
         <tr>
-            <td>Read feed</td>
+            <td>Read Feed</td>
             <td>Read the RSS source again and apply the filters.</td>
         </tr>
         <tr>
-            <td>Force download</td>
+            <td>Force Download</td>
             <td>Send all matching items to the queue.</td>
         </tr>
         <tr>
-            <td>Clear download</td>
+            <td>Clear Downloaded</td>
             <td>Clear the list of items already sent to the queue.</td>
-        </tr>
-        <tr>
-            <td>Apply Filters</td>
-            <td>New or altered filters are not directly applied to existing results, click this button to re-filter the results.</td>
         </tr>
     </tbody>
 </table>
+<p><span class="label label-warning">NOTE</span> When you add or change a filter, it is applied to the existing results automatically; you do not need to read the feed again. Use <code>Read Feed</code> only when you want to fetch fresh entries from the source.</p>
 
 <hr>
 <h2>Regular expressions</h2>
