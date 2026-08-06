@@ -2,7 +2,7 @@
 title: Notifications
 ---
 <h2>Email notifications</h2>
-<p>SABnzbd can send you emails about completion of jobs and about disk almost full condition.
+<p>SABnzbd can send you emails about completion of jobs and about a disk-almost-full condition.
     You can send email through the SMTP server of your ISP. This is generally the easiest option, that doesn't require you to set a user account and password.
     SABnzbd will try to use SSL secured email when supported by the mail server (this normally requires a user account and password).
     Even Google mail (gmail.com) is possible.
@@ -39,7 +39,7 @@ title: Notifications
         </tr>
         <tr>
             <td><strong>Email sender</strong></td>
-            <td>The email address of the sender. This can be a fake address, but you emails may be flagged as spam. Especially when you also set an account name and password, it is better to use your own real email address.</td>
+            <td>The email address of the sender. This can be a fake address, but your emails may be flagged as spam. Especially when you also set an account name and password, it is better to use your own real email address.</td>
         </tr>
         <tr>
             <td><strong>Account name</strong></td>
@@ -76,12 +76,8 @@ title: Notifications
         </tr>
     </tbody>
 </table>
-<p>Please note that Gmail security has become a lot stricter.<br>
-    If you are using two-factor authentication then you need to create an "application-specific" password for SABnzbd.<br>
+<p>Gmail requires you to enable 2-Step Verification on your Google account and then create an "App Password" for SABnzbd to use as the Account password.<br>
     See: <a href="https://support.google.com/mail/answer/1173270?hl=en">https://support.google.com/mail/answer/1173270?hl=en</a>
-</p>
-<p>If not, then SABnzbd is only allowed to access Gmail when you allow "less secure apps".<br>
-    See: <a href="https://www.google.com/settings/security/lesssecureapps">https://www.google.com/settings/security/lesssecureapps</a>
 </p>
 <p>For security reasons we recommend that you create a separate email account, just to send SABnzbd emails.</p>
 
@@ -89,8 +85,8 @@ title: Notifications
 <h2 id="toc3">Notification Services</h2>
 <p>SABnzbd can send notifications to several notification services.
     All events that can produce a notification are assigned to a group.
-    Such groups can be enabled per notification services.<br>
-    Additionally, you can specify for the job related notifications if they only should be send for specific categories.
+    Such groups can be enabled per notification service.<br>
+    Additionally, for the job related notifications you can specify that they should only be sent for specific categories.
 </p>
 <table class="table table-bordered table-hover">
     <thead>
@@ -111,7 +107,7 @@ title: Notifications
         </tr>
         <tr>
             <td>Added NZB</td>
-            <td>New NZB's are added</td>
+            <td>New NZBs are added</td>
         </tr>
         <tr>
             <td>Post-processing</td>
@@ -140,6 +136,14 @@ title: Notifications
         <tr>
             <td>Error</td>
             <td>Error</td>
+        </tr>
+        <tr>
+            <td>Disk full</td>
+            <td>The disk is almost full and downloading is paused</td>
+        </tr>
+        <tr>
+            <td>Quota</td>
+            <td>A download or server quota has been reached</td>
         </tr>
         <tr>
             <td>Other</td>
