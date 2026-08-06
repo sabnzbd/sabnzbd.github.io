@@ -11,7 +11,7 @@ title: Folders
         </tr>
         <tr>
             <td><strong>Minimum Free Space for Temporary Download Folder</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>There should be enough space to contain the largest complete job + 10% to repair jobs. When free space on the drive that holds the temporary folder is below this, SABnzbd is automatically pauses. <br>You enter the amount in bytes but you can use factors like <code>K, M, G</code> etc.</td>
+            <td>There should be enough space to contain the largest complete job + 10% to repair jobs. When free space on the drive that holds the temporary folder is below this, SABnzbd automatically pauses. <br>You enter the amount in bytes but you can use factors like <code>K, M, G</code> etc.</td>
         </tr>
         <tr>
             <td><strong>Completed Download Folder</strong></td>
@@ -19,8 +19,7 @@ title: Folders
         </tr>
         <tr>
             <td><strong>Minimum Free Space for Completed Download Folder</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>There should be enough space to contain the largest complete job and some more if the extracted files are larger when unpacked. When free space on the drive that holds the complete folder is below this, SABnzbd is automatically paused. <br>You enter the amount in bytes but you can use factors like <code>K, M, G</code> etc.
-            <br><span class="label label-warning">NOTE</span> Will not work if a <a href="/wiki/configuration/{{ site.wiki_version }}/categories">category folder</a> is on a different disk than the main Complete Download Folder.</td>
+            <td>There should be enough space to contain the largest complete job and some more if the extracted files are larger when unpacked. When free space on the drive that holds the complete folder is below this, SABnzbd is automatically paused. <br>You enter the amount in bytes but you can use factors like <code>K, M, G</code> etc.</td>
         </tr>
         <tr>
             <td><strong>Auto resume</strong><br><span class="label label-primary">Advanced</span></td>
@@ -28,7 +27,10 @@ title: Folders
         </tr>
         <tr>
             <td><strong>Permissions for completed downloads</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>Set permissions pattern for completed files/folders using octal notation, for macOS and Linux only.<br>Example: <code>755</code> or <code>777</code>, see: <a href="/wiki/advanced/unix-permissions">Unix permissions</a>.</td>
+            <td>Set permissions pattern for completed files/folders using octal notation, for macOS and Linux only.<br>Example: <code>755</code> or <code>777</code>.<br>
+                The pattern is applied to folders. For files SABnzbd always removes the execute bits (and the setuid/setgid bits), because downloaded files should not be executable. So a folder pattern of <code>755</code> results in <code>644</code> on the files inside it.<br>
+                <span class="label label-warning">NOTE</span> When empty, no other permissions are forced and the result follows the process <code>umask</code>. The execute bits are stripped from completed files even when this field is left empty. <br>
+                See: <a href="/wiki/advanced/unix-permissions">Unix permissions</a>.</td>
         </tr>
         <tr>
             <td><strong>Watched Folder</strong></td>
@@ -59,7 +61,7 @@ title: Folders
         </tr>
         <tr>
             <td><strong>Password File</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>A text file of known passwords, one password per line, that should be attempted on passworded RAR files. See also <a href="/wiki/advanced/password-protected-rars">Password-protected RARs</a>.<br><span class="label label-danger">WARNING</span> Checking passwords takes time, do not list more than ~20 passwords in this file!</td>
+            <td>A text file of known passwords, one password per line, that should be attempted on passworded archives (RAR, 7z and ZIP). See also <a href="/wiki/advanced/password-protected-rars">Password-protected RARs</a>.<br><span class="label label-danger">WARNING</span> Checking passwords takes time, do not list more than ~30 passwords in this file!</td>
         </tr>
     </tbody>
 </table>
@@ -85,7 +87,7 @@ title: Folders
         </tr>
         <tr>
             <td><strong>.nzb Backup Folder</strong><br><span class="label label-primary">Advanced</span></td>
-            <td>When SABnzbd adds an nzb to the queue it creates a local of the NZB file in this folder. If you leave this box empty, no files will be saved.</td>
+            <td>When SABnzbd adds an nzb to the queue it creates a copy of the NZB file in this folder. If you leave this box empty, no files will be saved.</td>
         </tr>
     </tbody>
 </table>
