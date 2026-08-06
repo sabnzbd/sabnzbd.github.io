@@ -1,7 +1,7 @@
 ---
 title: Scheduling
 ---
-<p>You can use the scheduler to set up tasks to be performed at specific days and times. Each schedule block is repeated one per week or every day.</p>
+<p>You can use the scheduler to set up tasks to be performed at specific days and times. Each schedule block is repeated once per week or every day.</p>
 
 <table class="table table-bordered table-hover">
     <thead>
@@ -49,11 +49,11 @@ title: Scheduling
         </tr>
         <tr>
             <td><strong>Scan watched folder</strong></td>
-            <td>Read watched folder (this will disable the interval in <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Folders</a>).</td>
+            <td>Trigger an immediate scan of the <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Watched Folder</a>. The automatic scan interval keeps running as configured.</td>
         </tr>
         <tr>
             <td><strong>Create backup</strong></td>
-            <td>Create a scheduled backup of the configuration file and databases in the Complete Download Folder.</td>
+            <td>Create a scheduled backup of the configuration file and databases in the <a href="/wiki/configuration/{{ site.wiki_version }}/folders">Backup Folder</a>, or the Completed Download Folder if the Backup Folder is not set.</td>
         </tr>
         <tr>
             <td><strong>Read RSS feeds</strong></td>
@@ -69,7 +69,7 @@ title: Scheduling
         </tr>
         <tr>
             <td><strong>Pause low/normal/high priority jobs</strong></td>
-            <td> All jobs with a low/normal/high  priority will set to paused mode.</td>
+            <td> All jobs with a low/normal/high priority will be set to paused mode.</td>
         </tr>
         <tr>
             <td><strong>Resume low/normal/high priority jobs</strong></td>
@@ -84,7 +84,7 @@ title: Scheduling
             <td> Enable or disable a server on the given time.</td>
         </tr>
         <tr>
-            <td><strong>Pause/Resume <code>category-name<code></strong></td><td>All jobs within the selected category will be paused/unpaused.</td>
+            <td><strong>Pause/Resume <code>category-name</code></strong></td><td>All jobs within the selected category will be paused/unpaused.</td>
         </tr>
     </tbody>
 </table>
@@ -111,5 +111,5 @@ title: Scheduling
     <code>11:00 Sunday Pause</code>
 </p>
 <p>Enable server on Monday 6:00AM:<br>
-    <code>06:00 my.usenet.com:119&nbsp;1</code>
+    <code>06:00 Monday Enable my.usenet.com:119</code>
 </p>
