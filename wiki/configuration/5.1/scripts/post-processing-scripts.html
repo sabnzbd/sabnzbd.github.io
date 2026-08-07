@@ -3,7 +3,7 @@ title: Post-processing scripts
 ---
 
 <p>
-    SABnzbd can run a user-provided post-processing scripts. The scripts can be associated with a job entry when adding the job manually, via <a href="/wiki/configuration/{{ site.wiki_version }}/categories">category</a> or during downloading.
+    SABnzbd can run user-provided post-processing scripts. A script can be associated with a job when adding the job manually, via a <a href="/wiki/configuration/{{ site.wiki_version }}/categories">category</a>, or during downloading.
     A post-processing script will always run, even when the job has completed with errors.
 </p>
 
@@ -15,7 +15,7 @@ title: Post-processing scripts
 </p>
 
 <p>
-    The console output of the script is captured by SABnzbd and is saved in the so called "Script Log" which can be opened from the history details.
+    The console output of the script is captured by SABnzbd and is saved in the so-called "Script Log" which can be opened from the history details.
     The output will be added to the (optional) notification email and can be examined in the History page.
 </p>
 
@@ -58,7 +58,7 @@ title: Post-processing scripts
         </tr>
         <tr>
             <td>4</td>
-            <td>Indexer's report number (if supported)</td>
+            <td>Legacy field, kept only for positional compatibility. Always empty.</td>
         </tr>
         <tr>
             <td>5</td>
@@ -241,16 +241,8 @@ title: Post-processing scripts
             <td>The path to the <code>par2</code> command on the system that SABnzbd uses</td>
         </tr>
         <tr>
-            <td><code>SAB_MULTIPAR_COMMAND</code></td>
-            <td>Windows-only (empty on other systems). The path to the MultiPar command on the system that SABnzbd uses</td>
-        </tr>
-        <tr>
             <td><code>SAB_RAR_COMMAND</code></td>
             <td>The path to the <code>unrar</code> command on the system that SABnzbd uses</td>
-        </tr>
-        <tr>
-            <td><code>SAB_ZIP_COMMAND</code></td>
-            <td>The path to the <code>unzip</code> command on the system that SABnzbd uses</td>
         </tr>
         <tr>
             <td><code>SAB_7ZIP_COMMAND</code></td>
@@ -272,7 +264,7 @@ title: Post-processing scripts
 
 <hr>
 <h2 id="toc0">Example Python script using basic parameters</h2>
-<p>The get the parameters in python, you can do this:</p>
+<p>To get the parameters in Python, you can do this:</p>
 {% highlight python %}
 import sys
 try:
@@ -294,6 +286,7 @@ sys.exit(0)
 
 {% highlight python %}
 import os
+import sys
 
 print("SABnzbd version:", os.environ['SAB_VERSION'])
 print("Job location:", os.environ['SAB_COMPLETE_DIR'])

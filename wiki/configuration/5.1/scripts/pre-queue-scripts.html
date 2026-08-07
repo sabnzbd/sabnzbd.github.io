@@ -33,7 +33,7 @@ title: Pre-queue scripts
     <tbody>
         <tr>
             <td>1</td>
-            <td>Clean version of the job name (no path info and <code>.nzb</code> removed) includes the password if present, in the <code>job name / password</code> notation</td>
+            <td>Clean version of the job name (no path info, <code>.nzb</code> removed). Includes the password if present, in the <code>job name / password</code> notation.</td>
         </tr>
         <tr>
             <td>2</td>
@@ -108,7 +108,7 @@ SABnzbd uses the first 7 lines of output, so they should be empty (original valu
         <tr>
             <td>2</td>
             <td>
-                Clean version of the job name (no path info and <code>.nzb</code> removed) can be used to set a password when provided in the <code>job name / password</code> notation</td>
+                Clean version of the job name (no path info, <code>.nzb</code> removed). Can be used to set a password when provided in the <code>job name / password</code> notation.</td>
         </tr>
         <tr>
             <td>3</td>
@@ -194,7 +194,7 @@ SABnzbd uses the first 7 lines of output, so they should be empty (original valu
         </tr>
         <tr>
             <td><code>SAB_STATUS</code></td>
-            <td>Current status (completed/failed/running)</td>
+            <td>Current status of the job. At pre-queue time this is <code>Queued</code>, or <code>Checking</code> when Check-before-download is enabled.</td>
         </tr>
         <tr>
             <td><code>SAB_PP</code></td>
@@ -240,16 +240,8 @@ SABnzbd uses the first 7 lines of output, so they should be empty (original valu
             <td>The path to the <code>par2</code> command on the system that SABnzbd uses</td>
         </tr>
         <tr>
-            <td><code>SAB_MULTIPAR_COMMAND</code></td>
-            <td>Windows-only (empty on other systems). The path to the MultiPar command on the system that SABnzbd uses</td>
-        </tr>
-        <tr>
             <td><code>SAB_RAR_COMMAND</code></td>
             <td>The path to the <code>unrar</code> command on the system that SABnzbd uses</td>
-        </tr>
-        <tr>
-            <td><code>SAB_ZIP_COMMAND</code></td>
-            <td>The path to the <code>unzip</code> command on the system that SABnzbd uses</td>
         </tr>
         <tr>
             <td><code>SAB_7ZIP_COMMAND</code></td>
@@ -329,9 +321,9 @@ try:
 except Exception:
     sys.exit(1)  # a non-zero exit status causes SABnzbd to ignore the output of this script
 
-prio = -100  # Default
+prio = -100  # Start from Default priority, ignoring the incoming value
 if int(downloadsize) < 50*1024**2:
-    prio = 2
+    prio = 2  # Force
 
 print("1")  # Accept the job
 print()
