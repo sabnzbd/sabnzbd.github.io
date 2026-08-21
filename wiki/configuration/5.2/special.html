@@ -192,6 +192,14 @@ title: Special settings
                 <p>See <a href="/wiki/advanced/direct-write.html">Direct Write</a> for detailed information and tuning tips.</p>
             </td>
         </tr>
+        <tr>
+            <td><code>direct_decode</code></td>
+            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td>
+                <p>Write each article to its final position in the file as it is decoded, instead of holding it in the cache for the assembler to write later. This lowers memory usage and CPU load, and a disk that cannot keep up slows down only the connection waiting on it instead of pausing all downloading. Requires <code>direct_write</code>.</p>
+                <p>Off by default because it writes many small pieces scattered across the file, which suits an SSD or NVMe but is slow on a spinning disk. Only enable it if your <code>Temporary Download Folder</code> is on an SSD or NVMe.</p>
+            </td>
+        </tr>
     </tbody>
 </table>
 <hr>
