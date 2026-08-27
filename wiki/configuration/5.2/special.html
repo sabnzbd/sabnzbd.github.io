@@ -194,10 +194,10 @@ title: Special settings
         </tr>
         <tr>
             <td><code>direct_decode</code></td>
-            <td><span class="glyphicon glyphicon-unchecked"></span></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
             <td>
-                <p>Write each article to its final position in the file as it is decoded, instead of holding it in the cache for the assembler to write later. This lowers memory usage and CPU load, and a disk that cannot keep up slows down only the connection waiting on it instead of pausing all downloading. Requires <code>direct_write</code>.</p>
-                <p>Off by default because it writes many small pieces scattered across the file, which suits an SSD or NVMe but is slow on a spinning disk. Only enable it if your <code>Temporary Download Folder</code> is on an SSD or NVMe.</p>
+                <p>Write each article to its final position in the file as it is decoded, instead of holding it in the Article Cache for the assembler to write later. This lowers memory usage and CPU load. Requires <code>direct_write</code>.</p>
+                <p>Writing articles as they arrive scatters small writes across the file, which suits an SSD or NVMe but not every disk. SABnzbd measures what your <code>Temporary Download Folder</code> is absorbing and goes back to filling the Article Cache whenever it stops keeping up, trying again periodically, so this setting grants permission rather than forcing the behaviour. Turning it on for a disk that cannot take it changes nothing.</p>
             </td>
         </tr>
     </tbody>
@@ -266,15 +266,6 @@ title: Special settings
                 Setting it to 1 may reduce CPU consumption and make bandwidth limiting smoother.
                 Increasing it may improve download speed. <br>
                 If you configure a <a href="/wiki/configuration/{{ site.wiki_version }}/general">Maximum line speed</a> of more than <code>150MB</code> it will automatically be set from <code>2</code> to <code>4</code>.<br>
-                Requires manual restart of SABnzbd to become active.
-            </td>
-        </tr>
-        <tr>
-            <td><code>assembler_max_queue_size</code></td>
-            <td><code>12</code></td>
-            <td>
-                Maximum size of the queue of articles waiting to be written to disk. Increasing it may improve download speed. <br>
-                If you configure a <a href="/wiki/configuration/{{ site.wiki_version }}/general">Maximum line speed</a> of more than <code>150MB</code> it will automatically be set from <code>12</code> to <code>30</code>.<br>
                 Requires manual restart of SABnzbd to become active.
             </td>
         </tr>
