@@ -182,7 +182,8 @@ title: Special settings
         <tr>
             <td><code>verify_xff_header</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
-            <td>Take the IP address(es) in the X-Forwarded-For header into consideration when determining access rights for incoming connections, <b>in addition to</b> the client/remote IP. Intended for use with a reverse proxy setup, where the IP address making the connection (as seen from the perspective of SABnzbd) is that of the proxy server rather than the system where the request actually originated, causing access to be granted even if the <a href="/wiki/configuration/{{ site.wiki_version }}/general#toc-eia">External internet access</a> setting is configured to deny connections from outside the local network.</td>
+            <td>Use the address in the <code>X-Forwarded-For</code> header to determine who a request came from, when the header is sent by a trusted proxy. Intended for use with a reverse proxy setup, where the IP address making the connection (as seen from the perspective of SABnzbd) is that of the proxy server rather than the system where the request actually originated. Which proxies are trusted is set with <code>xff_trusted_hosts</code>.<br>
+            <br>When disabled no proxy is trusted, and a request carrying the header is refused rather than treated as coming from the proxy, because the client behind it cannot be identified. Requires a restart.</td>
         </tr>
         <tr>
             <td><code>direct_write</code></td>
@@ -321,7 +322,15 @@ title: Special settings
             <td><code>local_ranges</code></td>
             <td></td>
             <td>Specify a (comma separated) list of one or more network ranges where the <a href="/wiki/configuration/{{ site.wiki_version }}/general">External internet access</a> level doesn't apply and the full interface is available. Sending Bonjour and SSDP broadcasts is also limited to these ranges. If defined, the local ranges replace the default handling based on rfc1918 and rfc4193 <a href="https://en.wikipedia.org/wiki/Private_network" target="_blank">private</a> network ranges.<br>
-            <br>Network ranges should be set in their standard notation with a prefix or netmask (e.g. <code>192.168.1.0/24</code> or <code>10.42.0.0/255.255.0.0</code>). Input in the form of SABnzbd's older local_ranges setting (e.g. <code>192.168.1.</code>, intended for use with Python's <code>str.startswith()</code>) is also accepted and continues to work.</td>
+            <br>Network ranges should be set in their standard notation with a prefix or netmask (e.g. <code>192.168.1.0/24</code> or <code>10.42.0.0/255.255.0.0</code>). Input in the form of SABnzbd's older local_ranges setting (e.g. <code>192.168.1.</code>, intended for use with Python's <code>str.startswith()</code>) is also accepted and continues to work.<br>
+            <br>Which hosts may identify the clients behind them is set separately, with <code>xff_trusted_hosts</code>. Naming a range as local can only restrict that, never extend it.</td>
+        </tr>
+        <tr>
+            <td><code>xff_trusted_hosts</code></td>
+            <td></td>
+            <td>Specify a (comma separated) list of one or more network ranges whose <code>X-Forwarded-For</code> header may be trusted, so the client it names is used instead of the address of the proxy that connected. Needed when the reverse proxy in front of SABnzbd is not on your local network. Unlike <code>local_ranges</code>, listing a range grants it no access of its own; the clients it names are subject to <a href="/wiki/configuration/{{ site.wiki_version }}/general#toc-eia">External internet access</a> as usual.<br>
+            <br>These ranges replace the default, which is the private network ranges narrowed by <code>local_ranges</code>. Loopback is always trusted, entries that are not networks are ignored with a warning, and a change requires a restart.<br>
+            <br>Only trust a provider's published ranges if your server cannot be reached except through your own account with that provider, or anyone else using it can choose the address the header names.</td>
         </tr>
         <tr>
             <td><code>ext_rename_ignore</code></td>
