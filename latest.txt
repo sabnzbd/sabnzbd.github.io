@@ -1,2 +1,4 @@
 5.1.3
 https://sabnzbd.org/downloads.html
+5.2.0Beta1
+https://sabnzbd.org/downloads.html
