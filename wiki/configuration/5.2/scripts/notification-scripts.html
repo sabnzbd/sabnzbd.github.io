@@ -11,23 +11,21 @@ title: Notification Scripts
 <p>If everything went well, SABnzbd expects the script to exit with status code <code>0</code>. If the returned exit status is non-zero, the output will be shown to the user as an error.</p>
 
 <hr>
-<h2>Parameters</h2>
-<p> The script will receive the parameters described below.
-    Use <code>%1</code> in Windows scripts and <code>$1</code> in Unix scripts. Note that on Windows the input parameters are surrounded by quotes (e.g. <code>"job name"</code>).
-</p>
+<h2 id="env_vars">Environment variables</h2>
+<p>All information is passed to the script via environment variables.</p>
 
-<p><span class="label label-warning">NOTE</span> <strong>Much more information is available to scripts via environment variables, <a href="#env_vars">see below</a>!</strong></p>
+<p><span class="label label-warning">NOTE</span> <strong>Since SABnzbd 5.2.0, scripts no longer receive command-line parameters.</strong></p>
 
-<table class="table table-bordered table-hover table-not-fixed">
+<table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>Position</th>
+            <th>Variable</th>
             <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
+            <td><code>SAB_NOTIFICATION_TYPE</code></td>
             <td>Type of notification
                 <ul>
                     <li><code>startup</code> = Startup/Shutdown</li>
@@ -47,31 +45,17 @@ title: Notification Scripts
             </td>
         </tr>
         <tr>
-            <td>2</td>
+            <td><code>SAB_NOTIFICATION_TITLE</code></td>
             <td>The title of the notification in the user's language</td>
         </tr>
         <tr>
-            <td>3</td>
+            <td><code>SAB_NOTIFICATION_MESSAGE</code></td>
             <td>The notification message</td>
         </tr>
         <tr>
-            <td>Environment variable: <br><code>SAB_NOTIFICATION_PARAMETERS</code></td>
+            <td><code>SAB_NOTIFICATION_PARAMETERS</code></td>
             <td>Parameters (can be specified in <a href="/wiki/configuration/{{ site.wiki_version }}/notifications">Config-&gt;Notifications</a>)</td>
         </tr>
-    </tbody>
-</table>
-
-<hr>
-<h2 id="env_vars">Environment variables</h2>
-<p>Notification scripts receive a limited amount of extra information via environment variables, in addition to any notification script parameters set in the config:</p>
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Variable</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
         <tr>
             <td><code>SAB_VERSION</code></td>
             <td>The version of SABnzbd</td>
@@ -108,16 +92,14 @@ title: Notification Scripts
 
 <hr>
 <h2>Example Python script</h2>
-<p>To get the parameters in Python, you can do this:</p>
+<p>To get the notification details in Python, you can do this:</p>
 {% highlight python %}
 import os
 import sys
-try:
-    (scriptname, notification_type, notification_title, notification_text) = sys.argv
-except:
-    print("No commandline parameters found")
-    sys.exit(1)
 
+notification_type = os.environ["SAB_NOTIFICATION_TYPE"]
+notification_title = os.environ["SAB_NOTIFICATION_TITLE"]
+notification_text = os.environ["SAB_NOTIFICATION_MESSAGE"]
 parameters = os.environ.get("SAB_NOTIFICATION_PARAMETERS")
 
 # continue script

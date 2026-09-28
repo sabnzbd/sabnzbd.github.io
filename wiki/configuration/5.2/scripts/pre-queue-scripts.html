@@ -17,66 +17,7 @@ title: Pre-queue scripts
     Exit code <code>0</code> will make SABnzbd inspect the returned output.
     If the script has an exit code other than <code>0</code>, script failure is assumed and the NZB accepted without changes.
 </p>
-<hr>
-<h2 id="toc1">Input parameters</h2>
-<p>All parameters (except 1) can be empty, meaning a default value. Use <code>%1</code> in Windows scripts and <code>$1</code> in Unix scripts. Note that on Windows the input parameters are surrounded by quotes (e.g. <code>"job name"</code>).</p>
-
-<p><span class="label label-warning">NOTE</span> <strong>Much more information is available to scripts via environment variables, <a href="#env_vars">see below</a>!</strong></p>
-
-<table class="table table-bordered table-hover table-not-fixed">
-    <thead>
-        <tr>
-            <th>Position</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>Clean version of the job name (no path info, <code>.nzb</code> removed). Includes the password if present, in the <code>job name / password</code> notation.</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Post Processing (PP) flags:
-                <ul>
-                    <li><code>0</code> = Download</li>
-                    <li><code>1</code> = +Repair</li>
-                    <li><code>2</code> = +Unpack</li>
-                    <li><code>3</code> = +Delete</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Category</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Script (no path)</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>Priority
-                <ul>
-                    <li><code>-100</code> = Default</li>
-                    <li><code>-2</code> = Paused</li>
-                    <li><code>-1</code> = Low</li>
-                    <li><code>0</code> = Normal</li>
-                    <li><code>1</code> = High</li>
-                    <li><code>2</code> = Force</li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>Size of the download (in bytes)</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>Group list (separated by spaces)</td>
-        </tr>
-    </tbody>
-</table>
+<p><span class="label label-warning">NOTE</span> <strong>Since SABnzbd 5.2.0, scripts no longer receive command-line parameters. All input is passed via <a href="#env_vars">environment variables</a>.</strong></p>
 
 <hr>
 <h2 id="toc2">Return parameters</h2>
@@ -151,7 +92,7 @@ SABnzbd uses the first 7 lines of output, so they should be empty (original valu
 
 <hr>
 <h2 id="env_vars">Environment variables</h2>
-<p>Your script can get extra information via environment variables (return information should still be sent as plain output):</p>
+<p>All information is passed to the script via environment variables (return information should still be sent as plain output):</p>
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -198,7 +139,14 @@ SABnzbd uses the first 7 lines of output, so they should be empty (original valu
         </tr>
         <tr>
             <td><code>SAB_PP</code></td>
-            <td>What post-processing was activated (download/repair/unpack/delete)</td>
+            <td>What post-processing was activated
+                <ul>
+                    <li><code>0</code> = Download</li>
+                    <li><code>1</code> = +Repair</li>
+                    <li><code>2</code> = +Unpack</li>
+                    <li><code>3</code> = +Delete</li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td><code>SAB_REPAIR</code></td>
@@ -210,11 +158,19 @@ SABnzbd uses the first 7 lines of output, so they should be empty (original valu
         </tr>
         <tr>
             <td><code>SAB_PRIORITY</code></td>
-            <td>Priority set by user</td>
+            <td>Priority set by user
+                <ul>
+                    <li><code>-2</code> = Paused</li>
+                    <li><code>-1</code> = Low</li>
+                    <li><code>0</code> = Normal</li>
+                    <li><code>1</code> = High</li>
+                    <li><code>2</code> = Force</li>
+                </ul>
+            </td>
         </tr>
         <tr>
             <td><code>SAB_GROUPS</code></td>
-            <td>Newsgroups listed in the NZB</td>
+            <td>Newsgroups listed in the NZB (separated by spaces)</td>
         </tr>
         <tr>
             <td><code>SAB_VERSION</code></td>
@@ -305,7 +261,7 @@ echo.
 echo.
 echo.
 echo.
-if %6 LSS 2000000000 echo 1
+if %SAB_BYTES% LSS 2000000000 echo 1
 {% endhighlight %}
 
 <p>Save it as file <code>size-checker.cmd</code> and put in the scripts folder.</p>
@@ -313,16 +269,16 @@ if %6 LSS 2000000000 echo 1
 <h2>Example Script 2</h2>
 <p>A python script to set prio to Force on downloads smaller than 50MB:</p>
 {% highlight python %}
+import os
 import sys
 
 try:
-    # Parse the input variables
-    (scriptname, nzbname, postprocflags, category, script, prio, downloadsize, grouplist) = sys.argv
+    downloadsize = int(os.environ["SAB_BYTES"])
 except Exception:
     sys.exit(1)  # a non-zero exit status causes SABnzbd to ignore the output of this script
 
 prio = -100  # Start from Default priority, ignoring the incoming value
-if int(downloadsize) < 50*1024**2:
+if downloadsize < 50*1024**2:
     prio = 2  # Force
 
 print("1")  # Accept the job
