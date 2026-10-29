@@ -18,6 +18,15 @@ title: Install SABnzbd for Unix/Linux
 
 <a href="https://snapcraft.io/sabnzbd"><img alt="Get it from the Snap Store" width="182" src="https://snapcraft.io/en/light/install.svg" /></a>
 
+The Snap is confined, so SABnzbd can only access your home directory (excluding hidden folders) by default.
+To use folders on `/media` or `/mnt`, such as external drives or network shares, connect the `removable-media` permission once:
+
+```
+sudo snap connect sabnzbd:removable-media
+```
+
+Folders outside these locations cannot be used by the Snap.
+
 ## Flatpak
 
 <a href="https://flathub.org/apps/org.sabnzbd.sabnzbd"><img alt="Get it from Flathub" width="182" src="https://dl.flathub.org/assets/badges/flathub-badge-i-en.svg" /></a>
