@@ -196,6 +196,14 @@ title: Special settings
                 <p>Writing articles as they arrive scatters small writes across the file, which suits an SSD or NVMe but not every disk. SABnzbd measures what your <code>Temporary Download Folder</code> is absorbing and goes back to filling the Article Cache whenever it stops keeping up, trying again periodically, so this setting grants permission rather than forcing the behaviour. Turning it on for a disk that cannot take it changes nothing.</p>
             </td>
         </tr>
+        <tr>
+            <td><code>par2_quick_verify</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>
+                <p>Verify downloads against the par2 files as they arrive, instead of reading every file back from disk afterwards. A complete download then needs no separate verification step, and only the parts affected by missing articles are checked by par2.</p>
+                <p>Disable to have par2 read and check every file in full.</p>
+            </td>
+        </tr>
     </tbody>
 </table>
 <hr>
