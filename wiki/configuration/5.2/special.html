@@ -200,7 +200,7 @@ title: Special settings
             <td><code>par2_quick_verify</code></td>
             <td><span class="glyphicon glyphicon-check"></span></td>
             <td>
-                <p>Verify downloads against the par2 files as they arrive, instead of reading every file back from disk afterwards. A complete download then needs no separate verification step, and only the parts affected by missing articles are checked by par2.</p>
+                <p>Verify downloads against the par2 files using the checksums recorded while the articles were downloaded, instead of reading every file back from disk afterwards. A complete download then needs no full read of its files to verify them, and par2 only reads the parts that the downloaded checksums cannot prove.</p>
                 <p>Disable to have par2 read and check every file in full.</p>
             </td>
         </tr>
