@@ -196,6 +196,14 @@ title: Special settings
                 <p>Writing articles as they arrive scatters small writes across the file, which suits an SSD or NVMe but not every disk. SABnzbd measures what your <code>Temporary Download Folder</code> is absorbing and goes back to filling the Article Cache whenever it stops keeping up, trying again periodically, so this setting grants permission rather than forcing the behaviour. Turning it on for a disk that cannot take it changes nothing.</p>
             </td>
         </tr>
+        <tr>
+            <td><code>par2_quick_verify</code></td>
+            <td><span class="glyphicon glyphicon-check"></span></td>
+            <td>
+                <p>Verify downloads against the par2 files using the checksums recorded while the articles were downloaded, instead of reading every file back from disk afterwards. A complete download then needs no full read of its files to verify them, and par2 only reads the parts that the downloaded checksums cannot prove.</p>
+                <p>Disable to have par2 read and check every file in full.</p>
+            </td>
+        </tr>
     </tbody>
 </table>
 <hr>
@@ -277,6 +285,16 @@ title: Special settings
             <td><code>direct_unpack_threads</code></td>
             <td><code>3</code></td>
             <td>When Direct Unpack is enabled we only allow this number of unpackers to be active at the same time. This is to limit strain on the system's disks. <br>Note that there can be an additional unpack active if a job is also being post-processed.</td>
+        </tr>
+        <tr>
+            <td><code>par2_threads</code></td>
+            <td><code>0</code></td>
+            <td>Limit how many CPU threads par2 is allowed to use for verification and repair. By default it will use all available threads but one. You can use <code>1</code> to force it to be single-threaded.</td>
+        </tr>
+        <tr>
+            <td><code>par2_file_threads</code></td>
+            <td><code>0</code></td>
+            <td>When verifying files, by default par2 will scan 2 files at once. If you have an older system with physical drives (HDDs), you can set this to <code>1</code>. If you have a very fast SSD, you could set this to <code>10</code>.</td>
         </tr>
         <tr>
             <td><code>selftest_host</code></td>
