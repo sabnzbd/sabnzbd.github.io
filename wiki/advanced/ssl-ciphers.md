@@ -10,10 +10,9 @@ Setting SSL Ciphers to the following value will lower encryption strength, incre
 AES128
 ```
 
-<span class="label label-warning">NOTE</span> Setting the SSL Cipher with news servers that support TLS 1.3 connections is not (yet) supported by Python and thus SABnzbd. Setting custom ciphers forces the maximum TLS version to 1.2.
+Ciphers like `AES128` only apply to TLS 1.2 and older. Setting custom ciphers forces the maximum TLS version to 1.2, unless you also specify TLS 1.3 cipher suites (see below).
 
-Increases in download speed are most notable on systems where CPU power is the limiting factor.
-Note that some older CPUs might lack AES hardware acceleration and `CHACHA20` might be faster than `AES128`.
+<span class="label label-warning">NOTE</span> Some older CPUs might lack AES hardware acceleration and `CHACHA20` might be faster than `AES128`.
 
 ## What are SSL ciphers?
 
@@ -29,7 +28,21 @@ SABnzbd will use the OpenSSL library that's available on your system or that's p
 
 You can see which ciphers are available on your system by executing `openssl ciphers -v` on the command line. All the strings on the left of the table can be used as an SSL Ciphers setting.
 
+You can see which TLS 1.3 suites are available on your system by executing `openssl ciphers -v -tls1_3`.
+
 It is also possible to specify multiple single cipher settings or a family of ciphers by specifying it in OpenSSL Cipher format. More information can be found here: [https://www.openssl.org/docs/manmaster/man1/openssl-ciphers.html](https://www.openssl.org/docs/manmaster/man1/openssl-ciphers.html).
+
+## TLS 1.3 cipher suites
+
+TLS 1.3 uses its own cipher suites, named like `TLS_AES_128_GCM_SHA256`. These can only be set when SABnzbd (5.2+) runs on Python 3.15 or newer.
+
+If the SSL Ciphers setting contains a name starting with `TLS_`, SABnzbd will no longer limit the connection to TLS 1.2 and will set the TLS 1.3 cipher suites using the value you entered. Multiple suites can be separated with a colon:
+
+```
+TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256
+```
+
+When doing so, only the TLS 1.3 suites are taken from your setting. If the server does not support TLS 1.3, SABnzbd will fall back to TLS 1.2 using the default (`HIGH`) ciphers, so any TLS 1.2 ciphers in the same setting are ignored. Only use this if you know your news server supports TLS 1.3.
 
 ## What are the risks?
 
